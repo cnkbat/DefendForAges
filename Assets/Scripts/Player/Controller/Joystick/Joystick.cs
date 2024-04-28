@@ -20,7 +20,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void OnPointerDown(PointerEventData ped)
     {
-        Debug.Log("pointer down");
         ChangeJoy(ped.position);
     }
     public void OnDrag(PointerEventData ped)

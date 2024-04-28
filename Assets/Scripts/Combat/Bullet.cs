@@ -5,10 +5,11 @@ using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour, IPoolableObject
 {
-    
     private float damage;
     [SerializeField] float moveSpeed;
-    GameObject target;
+    Transform target;
+    Transform targetPos;
+    Transform firedPoint;
 
     [SerializeField] float fireRange = 150f;
 
@@ -17,20 +18,22 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
     public void OnObjectPooled()
     {
-        // targetPos = target.transform.position;
+        targetPos = target.transform;
     }
 
     void Update()
     {
-        if (target != null && target.activeSelf)
+        if (target != null && !target.gameObject.activeSelf)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
-
-            if (transform.position.z <= target.transform.position.z - 5)
-            {
-                gameObject.SetActive(false);
-            }
-
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        }
+        else if (target != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPos.transform.position, moveSpeed * Time.deltaTime);
+        }
+        else if (fireRange < Vector3.Distance(transform.position, firedPoint.position))
+        {
+            gameObject.SetActive(false);
         }
         else
         {
@@ -52,9 +55,14 @@ public class Bullet : MonoBehaviour, IPoolableObject
         damage = newDmg;
     }
 
-    public void SetTarget(GameObject newTarget)
+    public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+    }
+
+    public void SetFiredPoint(Transform newTransform)
+    {
+        firedPoint = newTransform;
     }
 
     public void SetTrailColor(Color startColor, Color endColor)

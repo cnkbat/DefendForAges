@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMovement instance;
     [SerializeField] private Joystick joystick;
 
     [SerializeField] private float rotationSpeed = 5f;
@@ -18,14 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private float vertical;
     private float targetAngle = 0;
 
-    private void Awake()
-    {
-        instance = this;
-    }
-
     private void Start()
     {
-     //   joystick = FindObjectOfType<Joystick>();
+        joystick = FindObjectOfType<Joystick>();
     }
 
     private void FixedUpdate()
@@ -37,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         ToMove();
     }
-    
+
     void ToInputAxis()
     {
         horizontal = joystick.result.x;

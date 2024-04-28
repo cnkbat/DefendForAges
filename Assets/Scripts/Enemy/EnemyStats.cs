@@ -24,7 +24,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     public bool isLockedToPlayer;
 
     [Header("Hit FX")]
-    public Transform hitPoint;
+   
     [SerializeField] ParticleSystem hitFX;
 
     [Header("Animation")]
@@ -262,10 +262,6 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
     #region Getters
 
-    public Transform GetEnemyHitPoint()
-    {
-        return hitPoint;
-    }
 
     #endregion
 

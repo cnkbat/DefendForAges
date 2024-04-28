@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-public class ObjectPooler : MonoBehaviour
+public class ObjectPooler : Singleton<ObjectPooler>
 {
     [System.Serializable]
     public class Pool
@@ -16,20 +16,12 @@ public class ObjectPooler : MonoBehaviour
         public int size;
     }
 
-    public static ObjectPooler instance { get; private set; }
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
     public bool isObjPoolingActive;
 
     #region Singleton
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-
-        }
-    }
+   
     #endregion
 
     void Start()
@@ -56,7 +48,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 spawnPos, GameObject fireTarget = null)
+    public GameObject SpawnFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null)
     {
 
         if (!poolDictionary.ContainsKey(tag))
@@ -69,13 +61,13 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.SetActive(true);
 
         objectToSpawn.transform.position = spawnPos;
-        
-        
+
+
         if (objectToSpawn.TryGetComponent(out Bullet bullet))
         {
             bullet.GetComponent<Bullet>().SetTarget(fireTarget);
         }
-        
+
         if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
         {
             pooled.OnObjectPooled();

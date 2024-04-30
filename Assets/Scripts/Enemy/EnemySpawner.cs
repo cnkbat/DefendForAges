@@ -38,28 +38,26 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Positions")]
     [SerializeField] private List<Transform> enemySpawnPoints; //a list to store all the spawn points of enemies
-    [SerializeField] private Tower currentTower;
+    [SerializeField] private CityManager currentCity;
 
     int spawnIndex;
     bool CanBeginNextWave = false;
-    
+
 
     [Header("Total Health")]
     public float totalHealthValue;
 
     private void Start()
     {
-        
+
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
+        currentCity.OnEnemySpawnPosesUpdated += AssignEnemySpawnPoints;
 
         CalculateEnemyQuota();
-        CalculateTotalHealth();
         spawnIndex = 0;
-
+        AssignEnemySpawnPoints();
     }
-
-
 
     private void Update()
     {
@@ -156,7 +154,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
     }
-   
+
     //Call when the enemy dies
     public void OnEnemyKilled()
     {
@@ -164,19 +162,26 @@ public class EnemySpawner : MonoBehaviour
         EnemiesAlive--;
     }
 
-
-    public void CalculateTotalHealth()
+    private void AssignEnemySpawnPoints()
     {
-        for (int i = 0; i < Waves.Count; i++)
-        {
-            for (int a = 0; a < Waves[i].EnemyGroups.Count; a++)
-            {
-                for (int j = 0; j < Waves[i].EnemyGroups[a].EnemyCount; j++)
-                {
-                    totalHealthValue += Waves[i].EnemyGroups[a].EnemyPrefab.GetComponent<EnemyStats>().EnemySO.GetMaxHealth();
-                }
-
-            }
-        }
+        enemySpawnPoints = currentCity.GetEnemySpawnPoses();
     }
+
+    // Total health calculator
+
+    /* public void CalculateTotalHealth()
+     {
+         for (int i = 0; i < Waves.Count; i++)
+         {
+             for (int a = 0; a < Waves[i].EnemyGroups.Count; a++)
+             {
+                 for (int j = 0; j < Waves[i].EnemyGroups[a].EnemyCount; j++)
+                 {
+                     totalHealthValue += Waves[i].EnemyGroups[a].EnemyPrefab.GetComponent<EnemyStats>().EnemySO.GetMaxHealth();
+                 }
+
+             }
+         }
+     } */
+
 }

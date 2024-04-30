@@ -4,11 +4,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 public static class SaveSystem
 {
+
     public static void SavePlayerData(PlayerStats playerStats)
     {
 
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/stairCombatPlayer-version-0.2.txt";
+        string path = Application.persistentDataPath + "/defend-for-ages-player.txt";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData playersData = new PlayerData(playerStats);
@@ -20,7 +21,7 @@ public static class SaveSystem
     public static PlayerData LoadPlayerData()
     {
 
-        string path = Application.persistentDataPath + "/stairCombatPlayer-version-0.2.txt";
+        string path = Application.persistentDataPath + "/defend-for-ages-player.txt";
 
         if (File.Exists(path))
         {

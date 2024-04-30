@@ -13,7 +13,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
     public EnemySO EnemySO;
     public bool canMove = true;
-    [HideInInspector] public float currentHealth;
+    public float currentHealth;
     [HideInInspector] public float currentMoveSpeed;
     [HideInInspector] float maxHealth;
     [HideInInspector] public bool isBoss;
@@ -24,7 +24,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     public bool isLockedToPlayer;
 
     [Header("Hit FX")]
-   
+
     [SerializeField] ParticleSystem hitFX;
 
     [Header("Animation")]
@@ -43,19 +43,22 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     private void Start()
     {
         gameManager = GameManager.instance;
+
+        // testing
+        OnObjectPooled();
     }
 
     public void OnObjectPooled()
     {
 
 
-        animator = GetComponent<Animator>();
+
         //    GetComponent<EnemyMovement>().StartMovement();
-        animator = GetComponent<Animator>();
+        //   animator = GetComponent<Animator>();
 
         GetEnemySOValues();
-        UpdateHealthBar();
-        ResetEnemy();
+        // UpdateHealthBar();
+        //  ResetEnemy();
 
     }
 
@@ -88,14 +91,6 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
         gameObject.layer = LayerMask.NameToLayer("Zombie");
     }
 
-    private void FixedUpdate()
-    {
-        if (healthBarImages[0].color.a > 0)
-        {
-            healthBar.transform.DORotate(new Vector3(0, 120, 180), 0);
-        }
-
-    }
 
     #region  Damage & Death
     public void TakeDamage(float dmg)
@@ -107,12 +102,12 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
         canMove = false;
 
-        if (!isBoss)
-        {
-            animator.SetBool("isMoving", false);
-            animator.SetBool("hitTaken", true);
-            animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
-        }
+        //   if (!isBoss)
+        // {
+        //   animator.SetBool("isMoving", false);
+        // animator.SetBool("hitTaken", true);
+        // animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
+        // }
 
 
         StartCoroutine(EnableMovement());
@@ -144,12 +139,12 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
         if (isDead) yield return null;
 
-        if (!isBoss)
-        {
-            animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
-            animator.SetBool("isMoving", true);
-            animator.SetBool("hitTaken", false);
-        }
+        /* if (!isBoss)
+         {
+             animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
+             animator.SetBool("isMoving", true);
+             animator.SetBool("hitTaken", false);
+         } */
 
         canMove = true;
 

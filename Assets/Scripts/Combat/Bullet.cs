@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
     private float damage;
     [SerializeField] float moveSpeed;
     Transform target;
-    Transform targetPos;
+    Vector3 targetPos;
     Transform firedPoint;
 
     [SerializeField] float fireRange = 150f;
@@ -16,20 +16,34 @@ public class Bullet : MonoBehaviour, IPoolableObject
     [Header("VFX")]
     [SerializeField] TrailRenderer trailFX;
 
+    bool targetReached = false;
     public void OnObjectPooled()
     {
-        targetPos = target.transform;
+        targetReached = false;
+        targetPos = target.transform.position;
+
+        Vector3 worldAimTarget = targetPos;
+        worldAimTarget.y = transform.position.y;
+        Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+
+        transform.forward = aimDirection;
     }
 
     void Update()
     {
-        if (target != null && !target.gameObject.activeSelf)
+
+        if (target != null && (!target.gameObject.activeSelf || targetReached))
         {
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
         else if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+
+            if (transform.position == targetPos)
+            {
+                targetReached = true;
+            }
         }
         else if (fireRange < Vector3.Distance(transform.position, firedPoint.position))
         {

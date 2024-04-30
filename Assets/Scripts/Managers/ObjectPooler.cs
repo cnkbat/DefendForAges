@@ -21,7 +21,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
     public bool isObjPoolingActive;
 
     #region Singleton
-   
+
     #endregion
 
     void Start()
@@ -48,7 +48,32 @@ public class ObjectPooler : Singleton<ObjectPooler>
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null)
+    public GameObject SpawnFromPool(string tag, Vector3 spawnPos)
+    {
+
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.Log("object spawn error with " + tag);
+            return null;
+        }
+
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        objectToSpawn.SetActive(true);
+
+        objectToSpawn.transform.position = spawnPos;
+
+        if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
+        {
+            pooled.OnObjectPooled();
+        }
+
+
+        poolDictionary[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
+    }
+
+    public GameObject SpawnBulletFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null, float damage = 0)
     {
 
         if (!poolDictionary.ContainsKey(tag))
@@ -65,7 +90,8 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
         if (objectToSpawn.TryGetComponent(out Bullet bullet))
         {
-            bullet.GetComponent<Bullet>().SetTarget(fireTarget);
+            bullet.SetTarget(fireTarget);
+            bullet.SetDamage(damage);
         }
 
         if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))

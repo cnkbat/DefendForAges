@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour
     {
         damage = playerStats.GetDamage();
 
-        objectPooler.SpawnFromPool(bulletTag, tipOfWeapon.position, newTransform);
+        objectPooler.SpawnBulletFromPool(bulletTag, tipOfWeapon.position, newTransform, damage);
 
     }
 

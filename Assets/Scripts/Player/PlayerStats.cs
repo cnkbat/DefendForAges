@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
-    [SerializeField] RPGSystemSO rPGSystemSO;
+    [SerializeField] private RPGSystemSO rPGSystemSO;
 
     [Header("Saved Indexes")]
     public int money;

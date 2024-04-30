@@ -26,21 +26,23 @@ public class EnemySpawner : MonoBehaviour
         public int spawnedEnemyCounter; //the number of enemies already enemies spawned in this wave
     }
 
-    public List<Wave> Waves; // a list of all the waves in the game
-    public int CurrentWaveCount; //the index of current Wave [Remember, a list starts from  0]
+    [SerializeField] private List<Wave> Waves; // a list of all the waves in the game
+    [SerializeField] private int CurrentWaveCount; //the index of current Wave [Remember, a list starts from  0]
 
     [Header("Spawn Atrributes")]
     float SpawnTimer; // Timer use to spawn next enemy
-    public int EnemiesAlive;
-    public int MaxEnemiesAllowed; // maxnumber of allowed enemies to enhance gameplay
-    public bool MaxEnemiesReached = false;   // a flag indicating if the maximum number of enemies has been reached
-    public float WaveGap; // the interval between each wave
+    [SerializeField] private int EnemiesAlive;
+    [SerializeField] private int MaxEnemiesAllowed; // maxnumber of allowed enemies to enhance gameplay
+    [SerializeField] private bool MaxEnemiesReached = false;   // a flag indicating if the maximum number of enemies has been reached
+    [SerializeField] private float WaveGap; // the interval between each wave
 
     [Header("Spawn Positions")]
-    public List<Transform> enemySpawnPoints; //a list to store all the spawn points of enemies
+    [SerializeField] private List<Transform> enemySpawnPoints; //a list to store all the spawn points of enemies
+    [SerializeField] private Tower currentTower;
+
     int spawnIndex;
     bool CanBeginNextWave = false;
-    Transform playerTransfrom;
+    
 
     [Header("Total Health")]
     public float totalHealthValue;
@@ -51,8 +53,6 @@ public class EnemySpawner : MonoBehaviour
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
 
-
-        AssignSpawnTransforms();
         CalculateEnemyQuota();
         CalculateTotalHealth();
         spawnIndex = 0;
@@ -156,17 +156,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
     }
-    private void AssignSpawnTransforms()
-    {
-        // komple değişecek
-        enemySpawnPoints.Add(GameObject.Find("EnemySpawnTransform1").transform);
-        enemySpawnPoints.Add(GameObject.Find("EnemySpawnTransform2").transform);
-        enemySpawnPoints.Add(GameObject.Find("EnemySpawnTransform3").transform);
-        enemySpawnPoints.Add(GameObject.Find("EnemySpawnTransform4").transform);
-        enemySpawnPoints.Add(GameObject.Find("EnemySpawnTransform5").transform);
-        enemySpawnPoints.Add(GameObject.Find("EnemySpawnTransform6").transform);
-
-    }
+   
     //Call when the enemy dies
     public void OnEnemyKilled()
     {

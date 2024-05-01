@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefencesBehaviourBase : MonoBehaviour
+public class DefencesBehaviourBase : EnemyTarget
 {
     protected DefencesStatsBase defencesStatsBase;
     protected float currentHealth;
@@ -18,7 +18,7 @@ public class DefencesBehaviourBase : MonoBehaviour
         currentHealth = defencesStatsBase.GetMaxHealth();
     }
 
-    public virtual void TakeDamage(float dmg)
+    public override void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
     }

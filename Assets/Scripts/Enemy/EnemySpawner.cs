@@ -129,7 +129,7 @@ public class EnemySpawner : MonoBehaviour
 
                     GameObject spawnedEnemy = objectPooler.SpawnFromPool(EnemyGroup.EnemyName,
                         enemySpawnPoints[spawnIndex].position);
-
+                    
 
                     spawnIndex++;
 

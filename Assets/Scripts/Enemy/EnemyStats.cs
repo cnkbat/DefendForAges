@@ -77,7 +77,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     private void ResetEnemy()
     {
         // kesin değişecek
-        animator.SetBool("isMoving", true);
+      /*  animator.SetBool("isMoving", true);
         animator.SetBool("isDead", false);
         animator.SetBool("isDead", false);
 
@@ -85,10 +85,9 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
         canMove = true;
         isDead = false;
-        isLockedToPlayer = false;
         transform.forward = Vector3.forward;
 
-        gameObject.layer = LayerMask.NameToLayer("Zombie");
+        gameObject.layer = LayerMask.NameToLayer("Zombie"); */
     }
 
 

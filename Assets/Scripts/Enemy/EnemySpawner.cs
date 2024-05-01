@@ -54,11 +54,11 @@ public class EnemySpawner : MonoBehaviour
 
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
-        currentCity.OnEnemySpawnPosesUpdated += AssignEnemySpawnPoints;
+        currentCity.OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
 
         CalculateEnemyQuota();
         spawnIndex = 0;
-        AssignEnemySpawnPoints();
+        OnAssignEnemySpawnPoints();
     }
 
     private void Update()
@@ -165,7 +165,7 @@ public class EnemySpawner : MonoBehaviour
         EnemiesAlive--;
     }
 
-    private void AssignEnemySpawnPoints()
+    private void OnAssignEnemySpawnPoints()
     {
         enemySpawnPoints = currentCity.GetEnemySpawnPoses();
     }

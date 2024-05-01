@@ -254,15 +254,19 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     #endregion
 
     #region Getters & Setters
-    public int getMoneyValue()
+    public float GetDamage()
+    {
+        return currentDamage;
+    }
+    public int GetMoneyValue()
     {
         return moneyValue;
     }
-    public float getKnockbackDuration()
+    public float GetKnockbackDuration()
     {
         return knockbackDur;
     }
-    public Slider getHealthBar()
+    public Slider GetHealthBar()
     {
         return healthBar;
     }

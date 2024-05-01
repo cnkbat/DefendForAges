@@ -38,7 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (collision.transform.Equals(enemyTargeter.GetTarget()))
         {
-            Attack();
+            Attack(collision.transform);
         }   
     }
     private void ResetEnemy()
@@ -59,7 +59,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage()
     {
         canMove = false;
-        StartCoroutine(EnableMovement(enemyStats.getKnockbackDuration()));
+        StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
     }
 
     IEnumerator EnableMovement(float duration)
@@ -81,12 +81,14 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     #region States
-    public void Attack()
+    public void Attack(Transform target)
     {
         canMove = false;
         // play animation
         // deal damage
 
+        // for now this is only for the player, needs to be changed when other targetables are implemented
+        target.gameObject.GetComponent<PlayerStats>().TakeDamage(enemyStats.GetDamage());
         StartCoroutine(EnableMovement(attackDur));
     }
     public void Move()
@@ -104,7 +106,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         // enemyStats.getHealthBar().gameObject.SetActive(false);
 
-        int moneyValue = enemyStats.getMoneyValue();
+        int moneyValue = enemyStats.GetMoneyValue();
         PlayerStats.instance.IncrementMoney(moneyValue);
 
         ////para kazanma

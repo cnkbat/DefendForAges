@@ -25,16 +25,42 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private bool isDualWeaponActive;
     [SerializeField] private float maxHealth;
     private float currentHealth;
-
+    private float killTimer;
+    private CityManager cityManager;
     private void Start()
     {
+        // current health needs to be moved to LoadPlayerData
+        // this is just testing value.
+        currentHealth = 50;
         LoadPlayerData();
         FillCurrentHealth();
+        cityManager = FindObjectOfType<CityManager>();
     }
     public void IncrementMoney(int money_)
     {
         money += money_;
     }
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
+    }
+    public void Kill()
+    {
+        gameObject.SetActive(false);
+        Time.timeScale = 0;
+        // activate UI with revive button
+    }
+    // will be connected to revive button
+    public void Revive()
+    {
+        transform.position = cityManager.GetRevivePoint().position;
+        gameObject.SetActive(true);
+    }
+    
 
     #region Save & Load
     private void SavePlayerData()

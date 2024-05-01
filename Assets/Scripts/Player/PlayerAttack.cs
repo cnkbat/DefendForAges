@@ -12,7 +12,10 @@ public class PlayerAttack : MonoBehaviour
     [Header("Nearest Enemy Finding")]
     private float nearestEnemyDistance;
     float distance;
-    [SerializeField] Transform nearestEnemy;
+    private Transform nearestEnemy;
+
+    [Header("Fire Range")]
+    public float fireRange;
 
     [Tooltip("Attack Speed")]
     float currentAttackSpeed;
@@ -53,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
         if (closestEnemy != null)
         {
             //[SerializeField] Transform headAimObject;
-            // anim rigging yapcaz ? belki
+            // ! anim rigging yapcaz ? belki
             //  headAimObject.transform.parent = closestEnemy;
             //headAimObject.transform.localPosition = Vector3.zero;
 
@@ -89,8 +92,13 @@ public class PlayerAttack : MonoBehaviour
             }
 
 
-            LookAtNearstEnemy(nearestEnemy);
-            return nearestEnemy;
+            if (nearestEnemyDistance < fireRange)
+            {
+                LookAtNearstEnemy(nearestEnemy);
+                return nearestEnemy;
+            }
+            else return null;
+            
         }
 
         else return null;

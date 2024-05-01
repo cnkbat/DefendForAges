@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dfc121ca858d8409e646979d3005ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nearestEnemy: {fileID: 0}
+  fireRange: 0
 --- !u!114 &882205072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,6 +1066,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSpawnedEnemies:
   - {fileID: 129864733}
+  allCities: []
+  currentCityIndex: 0
 --- !u!4 &1818629410
 Transform:
   m_ObjectHideFlags: 0

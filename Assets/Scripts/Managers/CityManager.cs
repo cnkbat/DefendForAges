@@ -18,6 +18,7 @@ public class CityManager : MonoBehaviour
     }
 
     #region Getters & Setters
+    
     public List<Transform> GetEnemySpawnPoses()
     {
         return enemySpawnPoses;

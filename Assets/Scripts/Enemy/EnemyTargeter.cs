@@ -3,39 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyTargeter : MonoBehaviour
+public class EnemyTargeter : MonoBehaviour, IPoolableObject
 {
     private Transform target;
     private float targetTimer;
     private float closestDistance;
+    [SerializeField] EnemyTarget[] targetList;
+
+    public void OnObjectPooled()
+    {
+        throw new System.NotImplementedException();
+        // object poolera geçince start taşınacak.
+    }
     
     private void Start()
     {
         targetTimer = 2f;
         closestDistance = -1;
+        UpdateTargetList();
     }
 
-    // every two seconds, find the closest target
     private void Update()
     {
-        if(targetTimer >= 2)
+        if (targetTimer >= 2)
         {
-            var targetList = FindObjectsOfType<MonoBehaviour>().OfType<ITargetable>();
-            
-            foreach(var targetable in targetList)
+            foreach (var targetable in targetList)
             {
-                if(closestDistance == -1)
+                if (closestDistance == -1)
                 {
-                    closestDistance = Vector3.Distance(transform.position, targetable.target().position);
-                    SetTarget(targetable.target());
+                    closestDistance = Vector3.Distance(transform.position, targetable.GetTarget().position);
+                    SetTarget(targetable.GetTarget());
                     targetTimer = 0;
                 }
                 else
                 {
-                    if(closestDistance > Vector3.Distance(transform.position, targetable.target().position))
+                    if (closestDistance > Vector3.Distance(transform.position, targetable.GetTarget().position))
                     {
-                        closestDistance = Vector3.Distance(transform.position, targetable.target().position);
-                        SetTarget(targetable.target());
+                        closestDistance = Vector3.Distance(transform.position, targetable.GetTarget().position);
+                        SetTarget(targetable.GetTarget());
                         targetTimer = 0;
                     }
                 }
@@ -46,6 +51,13 @@ public class EnemyTargeter : MonoBehaviour
             targetTimer += Time.deltaTime;
         }
     }
+
+    private void UpdateTargetList()
+    {
+        targetList = FindObjectsOfType<EnemyTarget>();
+    }
+
+    #region  Getters & Setters
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
@@ -55,4 +67,6 @@ public class EnemyTargeter : MonoBehaviour
     {
         return target;
     }
+
+    #endregion
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ITargetable{
-    Transform target();
+public interface ITargetable
+{
+    void TakeDamage(float dmg);  
 }

@@ -10,6 +10,8 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 {
 
     GameManager gameManager;
+    EnemyBehaviour enemyBehaviour;
+
 
     public EnemySO EnemySO;
     public bool canMove = true;
@@ -43,6 +45,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     private void Start()
     {
         gameManager = GameManager.instance;
+        enemyBehaviour = this.GetComponent<EnemyBehaviour>();
 
         // testing
         OnObjectPooled();
@@ -74,21 +77,21 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
         currentHealth = maxHealth;
     }
 
-    private void ResetEnemy()
-    {
-        // kesin değişecek
-      /*  animator.SetBool("isMoving", true);
-        animator.SetBool("isDead", false);
-        animator.SetBool("isDead", false);
+    //private void ResetEnemy()
+    //{
+    //    // kesin değişecek
+    //  /*  animator.SetBool("isMoving", true);
+    //    animator.SetBool("isDead", false);
+    //    animator.SetBool("isDead", false);
 
-        animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
+    //    animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
 
-        canMove = true;
-        isDead = false;
-        transform.forward = Vector3.forward;
+    //    canMove = true;
+    //    isDead = false;
+    //    transform.forward = Vector3.forward;
 
-        gameObject.layer = LayerMask.NameToLayer("Zombie"); */
-    }
+    //    gameObject.layer = LayerMask.NameToLayer("Zombie"); */
+    //}
 
 
     #region  Damage & Death
@@ -99,7 +102,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
         UpdateHealthBar();
 
-        canMove = false;
+        enemyBehaviour.TakeDamage();
 
         //   if (!isBoss)
         // {
@@ -107,9 +110,6 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
         // animator.SetBool("hitTaken", true);
         // animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
         // }
-
-
-        StartCoroutine(EnableMovement());
 
         if (hitFX)
         {
@@ -126,56 +126,55 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
         if (currentHealth <= 0)
         {
-            Kill();
+            enemyBehaviour.Kill();
         }
 
 
     }
-    IEnumerator EnableMovement()
-    {
+    //IEnumerator EnableMovement()
+    //{
 
-        yield return new WaitForSeconds(knockbackDur);
+    //    yield return new WaitForSeconds(knockbackDur);
 
-        if (isDead) yield return null;
+    //    if (isDead) yield return null;
 
-        /* if (!isBoss)
-         {
-             animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
-             animator.SetBool("isMoving", true);
-             animator.SetBool("hitTaken", false);
-         } */
+    //    /* if (!isBoss)
+    //     {
+    //         animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
+    //         animator.SetBool("isMoving", true);
+    //         animator.SetBool("hitTaken", false);
+    //     } */
 
-        canMove = true;
+    //    canMove = true;
 
-    }
+    //}
+    //private void Kill()
+    //{
+    //    isDead = true;
+    //    EnemySpawner EnemySpawner = FindObjectOfType<EnemySpawner>();
+    //    EnemySpawner.OnEnemyKilled();
 
-    private void Kill()
-    {
-        isDead = true;
-        EnemySpawner EnemySpawner = FindObjectOfType<EnemySpawner>();
-        EnemySpawner.OnEnemyKilled();
+    //    healthBar.gameObject.SetActive(false);
 
-        healthBar.gameObject.SetActive(false);
+    //    // para kazanma
+    //    //player.IncrementMoney(moneyValue);
 
-        // para kazanma
-        //player.IncrementMoney(moneyValue);
+    //    //    if (!gameManager.isPowerEnabled)
+    //    //  {
+    //    //    player.IncrementPowerUpValue(powerUpAddOnValue);
+    //    // }
+    //    // power up sistemi böyle olmayacak tabi
 
-        //    if (!gameManager.isPowerEnabled)
-        //  {
-        //    player.IncrementPowerUpValue(powerUpAddOnValue);
-        // }
-        // power up sistemi böyle olmayacak tabi
+    //    GameObject spawnedFloatingText = ObjectPooler.instance.SpawnFromPool("Floating Text", floatingTextTransform.position);
 
-        GameObject spawnedFloatingText = ObjectPooler.instance.SpawnFromPool("Floating Text", floatingTextTransform.position);
+    //    spawnedFloatingText.GetComponent<FloatingTextAnimation>().SetText("$" + moneyValue.ToString());
 
-        spawnedFloatingText.GetComponent<FloatingTextAnimation>().SetText("$" + moneyValue.ToString());
+    //    gameObject.layer = LayerMask.NameToLayer("DeadZombie");
 
-        gameObject.layer = LayerMask.NameToLayer("DeadZombie");
+    //    PlayDeathAnimation();
 
-        PlayDeathAnimation();
-
-        gameManager.allSpawnedEnemies.Remove(gameObject);
-    }
+    //    gameManager.allSpawnedEnemies.Remove(gameObject);
+    //}
 
     private void UpdateHealthBar()
     {
@@ -226,37 +225,39 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     #endregion
 
     #region  Animations
-    public void PlayDeathAnimation()
-    {
-        animator.SetBool("isMoving", false);
-        animator.SetBool("isDead", true);
-        animator.SetBool("hitTaken", false);
-        animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
+    //public void PlayDeathAnimation()
+    //{
+    //    animator.SetBool("isMoving", false);
+    //    animator.SetBool("isDead", true);
+    //    animator.SetBool("hitTaken", false);
+    //    animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
 
-        canMove = false;
-        StartCoroutine(DestroyObject());
-    }
+    //    canMove = false;
+    //    StartCoroutine(DestroyObject());
+    //}
 
-    public void PlayLevelEndAnimation()
-    {
-        animator.SetBool("isMoving", false);
-        animator.SetBool("isDead", false);
-        animator.SetBool("hitTaken", false);
-        animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
-        canMove = false;
-    }
+    //public void PlayLevelEndAnimation()
+    //{
+    //    animator.SetBool("isMoving", false);
+    //    animator.SetBool("isDead", false);
+    //    animator.SetBool("hitTaken", false);
+    //    animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
+    //    canMove = false;
+    //}
 
-    IEnumerator DestroyObject()
-    {
-        yield return new WaitForSeconds(deathAnimDur);
-        gameObject.SetActive(false);
-    }
+    //IEnumerator DestroyObject()
+    //{
+    //    yield return new WaitForSeconds(deathAnimDur);
+    //    gameObject.SetActive(false);
+    //}
 
     #endregion
 
-    #region Getters
-
-
+    #region Getters & Setters
+    public Slider getHealthBar()
+    {
+        return healthBar;
+    }
     #endregion
 
 }

@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Cities")]
     [SerializeField] private List<CityManager> allCities;
     [SerializeField] private int currentCityIndex;
-
+    
     void Start()
     {
 

@@ -31,6 +31,10 @@ public class PlayerStats : Singleton<PlayerStats>
         LoadPlayerData();
         FillCurrentHealth();
     }
+    public void IncrementMoney(int money_)
+    {
+        money += money_;
+    }
 
     #region Save & Load
     private void SavePlayerData()

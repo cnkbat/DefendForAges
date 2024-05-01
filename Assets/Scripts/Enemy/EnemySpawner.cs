@@ -36,6 +36,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private bool MaxEnemiesReached = false;   // a flag indicating if the maximum number of enemies has been reached
     [SerializeField] private float WaveGap; // the interval between each wave
 
+    public CityManager cityManager;
+
     [Header("Spawn Positions")]
     [SerializeField] private List<Transform> enemySpawnPoints; //a list to store all the spawn points of enemies
     [SerializeField] private CityManager currentCity;
@@ -130,6 +132,7 @@ public class EnemySpawner : MonoBehaviour
                     GameObject spawnedEnemy = objectPooler.SpawnFromPool(EnemyGroup.EnemyName,
                         enemySpawnPoints[spawnIndex].position);
                     
+                    spawnedEnemy.GetComponent<EnemyTargeter>().SetCityManager(cityManager);
 
                     spawnIndex++;
 

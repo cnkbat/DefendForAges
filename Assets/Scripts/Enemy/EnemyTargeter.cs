@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class EnemyTargeter : MonoBehaviour, IPoolableObject
 {
-    private Transform target;
+    [SerializeField] private Transform target;
     private float targetTimer;
     private float closestDistance;
     [SerializeField] EnemyTarget[] targetList;
+    public CityManager cityManager;
 
     public void OnObjectPooled()
     {
@@ -19,7 +20,8 @@ public class EnemyTargeter : MonoBehaviour, IPoolableObject
     private void Start()
     {
         targetTimer = 2f;
-        closestDistance = -1;
+        closestDistance = 999999;
+        cityManager.UpdateTargetList(); // sonra silinicek, targetlar üzerinden updatelenecek.
         UpdateTargetList();
     }
 
@@ -27,22 +29,16 @@ public class EnemyTargeter : MonoBehaviour, IPoolableObject
     {
         if (targetTimer >= 2)
         {
+            closestDistance = 999999;
+            cityManager.UpdateTargetList(); // sonra silinicek, targetlar üzerinden updatelenecek.
+            UpdateTargetList();
             foreach (var targetable in targetList)
             {
-                if (closestDistance == -1)
+                if (closestDistance > Vector3.Distance(transform.position, targetable.GetTarget().position))
                 {
                     closestDistance = Vector3.Distance(transform.position, targetable.GetTarget().position);
                     SetTarget(targetable.GetTarget());
                     targetTimer = 0;
-                }
-                else
-                {
-                    if (closestDistance > Vector3.Distance(transform.position, targetable.GetTarget().position))
-                    {
-                        closestDistance = Vector3.Distance(transform.position, targetable.GetTarget().position);
-                        SetTarget(targetable.GetTarget());
-                        targetTimer = 0;
-                    }
                 }
             }
         }
@@ -54,10 +50,14 @@ public class EnemyTargeter : MonoBehaviour, IPoolableObject
 
     private void UpdateTargetList()
     {
-        targetList = FindObjectsOfType<EnemyTarget>();
+        targetList = cityManager.GetTargetList();
     }
 
     #region  Getters & Setters
+    public void SetCityManager(CityManager newCityManager)
+    {
+        cityManager = newCityManager;
+    }
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;

@@ -26,7 +26,9 @@ public class EnemyTargeter : MonoBehaviour
             {
                 if(closestDistance == -1)
                 {
+                    closestDistance = Vector3.Distance(transform.position, targetable.target().position);
                     SetTarget(targetable.target());
+                    targetTimer = 0;
                 }
                 else
                 {
@@ -34,9 +36,14 @@ public class EnemyTargeter : MonoBehaviour
                     {
                         closestDistance = Vector3.Distance(transform.position, targetable.target().position);
                         SetTarget(targetable.target());
+                        targetTimer = 0;
                     }
                 }
             }
+        }
+        else
+        {
+            targetTimer += Time.deltaTime;
         }
     }
     public void SetTarget(Transform newTarget)

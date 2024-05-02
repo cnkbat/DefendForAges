@@ -16,6 +16,7 @@ MonoBehaviour:
   maxHealth: 10
   damage: 2
   moneyValue: 10
+  expValue: 10
   powerUpAddOnValue: 1
   isBoss: 0
   knockbackDur: 0.2

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     EnemyStats enemyStats;
     GameManager gameManager;
     EnemyTargeter enemyTargeter;
+    PlayerStats playerStats;
 
     public float attackDur;
     public bool isDead;
@@ -21,8 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
         attackDur = 1;
         canMove = true;
         isDead = false;
-        // sonra silinecekler ^^
 
+        playerStats = PlayerStats.instance;
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
         gameManager = GameManager.instance;
@@ -99,6 +101,8 @@ public class EnemyBehaviour : MonoBehaviour
     public void Kill()
     {
         isDead = true;
+        playerStats.OnEnemyDeathMoney.Invoke(enemyStats.GetMoneyValue());
+        playerStats.OnEnemyDeathExp.Invoke(enemyStats.GetExpValue());
 
         // test için commentlendi, geri getirilicek
         // EnemySpawner EnemySpawner = FindObjectOfType<EnemySpawner>();
@@ -106,7 +110,6 @@ public class EnemyBehaviour : MonoBehaviour
 
         // enemyStats.getHealthBar().gameObject.SetActive(false);
 
-        PlayerStats.instance.IncrementMoney(enemyStats.GetMoneyValue());
 
         ////para kazanma
         //player.IncrementMoney(moneyValue);

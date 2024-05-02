@@ -22,6 +22,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
     public float currentDamage;
     private int moneyValue;
+    private float expValue;
     private float powerUpAddOnValue;
     public bool isLockedToPlayer;
 
@@ -72,6 +73,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
         currentMoveSpeed = EnemySO.GetMoveSpeed();
         currentDamage = EnemySO.GetDamage();
         moneyValue = EnemySO.GetMoneyValue();
+        expValue = EnemySO.GetExpValue();
         maxHealth = EnemySO.GetMaxHealth();
 
         currentHealth = maxHealth;
@@ -261,6 +263,10 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     public int GetMoneyValue()
     {
         return moneyValue;
+    }
+    public float GetExpValue()
+    {
+        return expValue;
     }
     public float GetKnockbackDuration()
     {

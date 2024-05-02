@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
@@ -8,6 +9,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     [Header("Saved Indexes")]
     public int money;
+    public float exp;
     public int damageIndex;
     public int attackSpeedIndex;
     public int movementSpeedIndex;
@@ -27,6 +29,11 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float maxHealth;
     private float currentHealth;
     DeathHandler deathHandler;
+
+    [Header("Events")]
+    public Action<int> OnEnemyDeathMoney;
+    public Action<float> OnEnemyDeathExp;
+
     private void Start()
     {
         // current health needs to be moved to LoadPlayerData
@@ -35,10 +42,16 @@ public class PlayerStats : Singleton<PlayerStats>
         LoadPlayerData();
         FillCurrentHealth();
         deathHandler = GetComponent<DeathHandler>();
+        OnEnemyDeathMoney += IncrementMoney;
+        OnEnemyDeathExp += IncrementExp;
     }
     public void IncrementMoney(int money_)
     {
         money += money_;
+    }
+    public void IncrementExp(float exp_)
+    {
+        exp += exp_;
     }
     public void TakeDamage(float damage)
     {

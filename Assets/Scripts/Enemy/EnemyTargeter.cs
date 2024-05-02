@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ public class EnemyTargeter : MonoBehaviour, IPoolableObject
     [SerializeField] EnemyTarget[] targetList;
     public CityManager cityManager;
 
+    [Header("Events")]
+    public Action OnTargetListChanged;
     public void OnObjectPooled()
     {
         throw new System.NotImplementedException();
@@ -21,8 +24,11 @@ public class EnemyTargeter : MonoBehaviour, IPoolableObject
     {
         targetTimer = 2f;
         closestDistance = 999999;
-        cityManager.UpdateTargetList(); // sonra silinicek, targetlar üzerinden updatelenecek.
-        UpdateTargetList();
+
+        OnTargetListChanged += UpdateTargetList;
+
+        cityManager.OnNewTarget?.Invoke(); // sonra silinicek, targetlar üzerinden updatelenecek.
+        OnTargetListChanged?.Invoke(); // yeri değişebilir 
     }
 
     private void Update()
@@ -30,8 +36,8 @@ public class EnemyTargeter : MonoBehaviour, IPoolableObject
         if (targetTimer >= 2)
         {
             closestDistance = 999999;
-            cityManager.UpdateTargetList(); // sonra silinicek, targetlar üzerinden updatelenecek.
-            UpdateTargetList();
+            cityManager.OnNewTarget?.Invoke(); // sonra silinicek, targetlar üzerinden updatelenecek.
+            OnTargetListChanged?.Invoke(); // yeri değişebilir
             foreach (var targetable in targetList)
             {
                 if (closestDistance > Vector3.Distance(transform.position, targetable.GetTarget().position))

@@ -5,9 +5,13 @@ using UnityEngine;
 public class DeathHandler : MonoBehaviour
 {
     UIManager uiManager;
+    CityManager cityManager;
+    PlayerStats playerStats;
     public void Start()
     {
         uiManager = UIManager.instance;
+        cityManager = FindObjectOfType<CityManager>();
+        playerStats = GetComponent<PlayerStats>();
     }
     public void Kill()
     {
@@ -18,10 +22,8 @@ public class DeathHandler : MonoBehaviour
     // will be connected to revive button
     public void Revive()
     {
-
-        CityManager cityManager = FindObjectOfType<CityManager>();
         transform.position = cityManager.GetRevivePoint().position;
-        this.GetComponent<PlayerStats>().FillCurrentHealth();
+        playerStats.FillCurrentHealth();
         gameObject.SetActive(true);
         uiManager.HandleReviveUI();
         Time.timeScale = 1;

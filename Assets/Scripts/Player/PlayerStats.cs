@@ -25,6 +25,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private bool isDualWeaponActive;
     [SerializeField] private float maxHealth;
     private float currentHealth;
+    DeathHandler deathHandler;
     private void Start()
     {
         // current health needs to be moved to LoadPlayerData
@@ -32,7 +33,7 @@ public class PlayerStats : Singleton<PlayerStats>
         currentHealth = 50;
         LoadPlayerData();
         FillCurrentHealth();
-        
+        deathHandler = GetComponent<DeathHandler>();
     }
     public void IncrementMoney(int money_)
     {
@@ -43,7 +44,7 @@ public class PlayerStats : Singleton<PlayerStats>
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            this.GetComponent<DeathHandler>().Kill();
+            deathHandler.Kill();
         }
     }
     

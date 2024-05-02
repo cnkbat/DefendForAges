@@ -7,10 +7,21 @@ public class CityManager : MonoBehaviour
 {
 
     [SerializeField] List<Transform> enemySpawnPoses;
-    public Action OnEnemySpawnPosesUpdated;
+    
     [SerializeField] private Transform revivePoint;
     [SerializeField] private Transform startPoint;
     [SerializeField] EnemyTarget[] targetList;
+
+    [Header("Events")]
+    public Action OnEnemySpawnPosesUpdated;
+    public Action OnNewTarget;
+    public Action OnRemoveTarget;
+
+    public void Start()
+    {
+        OnNewTarget += UpdateTargetList;
+        OnRemoveTarget += UpdateTargetList;
+    }
     public void AddEnemyPos(Transform newTransform)
     {
         enemySpawnPoses.Add(newTransform);

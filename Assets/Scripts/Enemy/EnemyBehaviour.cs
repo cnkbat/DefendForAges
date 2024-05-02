@@ -34,10 +34,12 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void Update()
     {
-        if (!isDead)
-        {
-            if (canMove && enemyTargeter.GetTarget() != null) Move();
-        }
+        if (isDead) return;
+        if (!canMove) return;
+        if (enemyTargeter.GetTarget() == null) return;
+
+        Move();
+
     }
     private void OnCollisionEnter(Collision collision)
     {

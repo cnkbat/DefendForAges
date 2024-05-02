@@ -19,9 +19,12 @@ public class PlayerStats : Singleton<PlayerStats>
     public int lifeStealIndex;
     public int maxHealthIndex;
     public bool isDualWeaponActiveSavedValue;
-    public int currentWaveIndex;
+    public int waveIndex;
+    public int cityIndex;
 
     [Header("Ingame Values")]
+    private int currentCityIndex;
+    private int currentWaveIndex;
     [SerializeField] private int currentXP;
     [SerializeField] private float damage;
     [SerializeField] private float attackSpeed;
@@ -37,6 +40,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action<int> OnEnemyDeathMoney;
     public Action<int> OnEnemyDeathExp;
     public Action OnDataChanged;
+    public Action WaveWon;
 
     private void Start()
     {
@@ -76,6 +80,25 @@ public class PlayerStats : Singleton<PlayerStats>
     }
     #endregion
 
+    #region Wave System
+
+    public void IncrementWaveIndex()
+    {
+        currentWaveIndex++;
+
+        OnDataChanged?.Invoke();
+
+        WaveWon?.Invoke();
+    }
+
+    public void SetWaveSystemBackToCheckpoint()
+    {
+        // gamemanagerdan eventle ulaşılması
+        // wave indexin en son checkpoint değerine atanması
+        // save edilmesi
+    }
+
+    #endregion
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -100,6 +123,8 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             this.money = playerData.money;
             this.experiencePoint = playerData.experiencePoint;
+            this.cityIndex = playerData.cityIndex;
+            this.waveIndex = playerData.waveIndex;
             this.damageIndex = playerData.damageIndex;
             this.attackSpeedIndex = playerData.attackSpeedIndex;
             this.movementSpeedIndex = playerData.movementSpeedIndex;
@@ -121,6 +146,8 @@ public class PlayerStats : Singleton<PlayerStats>
         lifeSteal = rPGSystemSO.lifeStealValues[lifeStealIndex];
         maxHealth = rPGSystemSO.maxHealthValues[maxHealthIndex];
         currentXP = this.experiencePoint;
+        currentCityIndex = this.cityIndex;
+        currentWaveIndex = this.waveIndex;
     }
 
 
@@ -144,6 +171,12 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         return movementSpeed;
     }
+
+    public int GetCurrentWaveIndex()
+    {
+        return currentWaveIndex;
+    }
+
 
     #endregion
 }

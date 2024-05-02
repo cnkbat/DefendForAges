@@ -9,6 +9,8 @@ public class PlayerData
     public int currentTimelineIndex;
     public int money;
     public int experiencePoint;
+    public int cityIndex;
+    public int waveIndex;
 
     public int damageIndex;
     public int attackSpeedIndex;

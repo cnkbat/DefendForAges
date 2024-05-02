@@ -800,7 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rPGSystemSO: {fileID: 11400000, guid: 963bf65ddef16cb4a9999a6b5fa25d86, type: 2}
   money: 0
-  exp: 0
+  experiencePoint: 0
   damageIndex: 0
   attackSpeedIndex: 0
   movementSpeedIndex: 0
@@ -809,6 +809,7 @@ MonoBehaviour:
   maxHealthIndex: 0
   isDualWeaponActiveSavedValue: 0
   currentWaveIndex: 0
+  currentXP: 0
   damage: 0
   attackSpeed: 0
   movementSpeed: 0
@@ -1619,15 +1620,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves: []
+  waves:
+  - waveName: 
+    enemyGroups:
+    - enemyName: 
+      enemyCount: 0
+      spawnedEnemyCounter: 0
+    enemyQuota: 0
+    spawnGap: 0
+    spawnCount: 0
+    totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
   maxEnemiesAllowed: 0
   maxEnemiesReached: 0
   waveGap: 0
-  cityManager: {fileID: 0}
   enemySpawnPoints: []
-  currentCity: {fileID: 0}
+  currentCity: {fileID: 95569757}
   totalHealthValue: 0
 --- !u!4 &1436782354
 Transform:

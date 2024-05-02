@@ -11,7 +11,7 @@ public class CityManager : MonoBehaviour
 
     [Header("Waves")]
     public List<EnemySpawner> waveList;
-    int waveIndex;
+
 
     [Header("Points")]
 
@@ -34,11 +34,10 @@ public class CityManager : MonoBehaviour
 
         for (int i = 0; i < waveList.Count; i++)
         {
-            waveList[i].OnWaveCompleted += IncrementWaveIndex;
+            waveList[i].OnWaveCompleted += StopWaves;
         }
 
         playerStats = PlayerStats.instance;
-        playerStats.currentWaveIndex = waveIndex;
     }
 
     public void AddEnemyPos(Transform newTransform)
@@ -58,7 +57,7 @@ public class CityManager : MonoBehaviour
     {
         StopWaves();
 
-        waveList[waveIndex].gameObject.SetActive(true);
+        waveList[playerStats.GetCurrentWaveIndex()].gameObject.SetActive(true);
     }
 
     public void StopWaves()
@@ -67,22 +66,7 @@ public class CityManager : MonoBehaviour
         {
             waveList[i].gameObject.SetActive(false);
         }
-    }
-
-    // waveler tamamen bittiğinde çalışacak.    
-    public void IncrementWaveIndex()
-    {
-        waveIndex++;
-
-        StopWaves();
-    }
-
-    public void SetWaveSystemBackToCheckpoint()
-    {
-        // gamemanagerdan eventle ulaşılması
-        // wave indexin en son checkpoint değerine atanması
-        // save edilmesi
-    }
+    }    
 
     #region Getters & Setters
     public TowerBehaviour GetTower()

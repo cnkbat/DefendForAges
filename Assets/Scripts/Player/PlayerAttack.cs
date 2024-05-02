@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
 {
     PlayerStats playerStats;
     GameManager gameManager;
-    ObjectPooler objectPooler;
 
     [Header("Nearest Enemy Finding")]
     private float nearestEnemyDistance;
@@ -26,7 +25,6 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.instance;
-        objectPooler = ObjectPooler.instance;
         playerStats = GetComponent<PlayerStats>();
         ResetAttackSpeed();
     }

@@ -14,13 +14,11 @@ public class CityManager : MonoBehaviour
 
     [Header("Events")]
     public Action OnEnemySpawnPosesUpdated;
-    public Action OnNewTarget;
-    public Action OnRemoveTarget;
+    public Action OnTargetListUpdated;
 
     public void Start()
     {
-        OnNewTarget += UpdateTargetList;
-        OnRemoveTarget += UpdateTargetList;
+        UpdateTargetList();
     }
     public void AddEnemyPos(Transform newTransform)
     {
@@ -31,6 +29,7 @@ public class CityManager : MonoBehaviour
     public void UpdateTargetList()
     {
         targetList = FindObjectsOfType<EnemyTarget>();
+        OnTargetListUpdated?.Invoke();
     }
 
     #region Getters & Setters

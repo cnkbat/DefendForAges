@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Elements")]
     public GameObject reviveUI;
-
+    [SerializeField] Button reviveButton;
 
     private void Awake()
     {
@@ -17,9 +18,14 @@ public class UIManager : MonoBehaviour
             instance = this;
         }
     }
+    private void Start()
+    {
+        reviveButton.onClick.AddListener(OnReviveButtonPressed);
+    }
+
     public void HandleReviveUI()
     {
-        if(reviveUI.activeSelf)
+        if (reviveUI.activeSelf)
         {
             reviveUI.SetActive(false);
         }
@@ -27,5 +33,10 @@ public class UIManager : MonoBehaviour
         {
             reviveUI.SetActive(true);
         }
+    }
+
+    private void OnReviveButtonPressed()
+    {
+        Debug.Log("revived");
     }
 }

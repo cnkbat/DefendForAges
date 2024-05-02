@@ -17,12 +17,14 @@ public class EnemyTargeter : MonoBehaviour, IPoolableObject
         throw new System.NotImplementedException();
         // object poolera geçince start taşınacak.
     }
-    
+    private void OnEnable()
+    {
+        cityManager.OnTargetListUpdated += UpdateTargetList;
+    }
     private void Start()
     {
         targetTimer = 2f;
         closestDistance = 999999;
-        cityManager.OnTargetListUpdated += UpdateTargetList;
     }
 
     private void Update()

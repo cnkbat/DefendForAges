@@ -31,7 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (!isDead)
         {
-            if (canMove && enemyTargeter.GetTarget()!= null) Move();
+            if (canMove && enemyTargeter.GetTarget() != null) Move();
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -39,7 +39,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.transform.Equals(enemyTargeter.GetTarget()))
         {
             Attack(collision.transform);
-        }   
+        }
     }
     private void ResetEnemy()
     {
@@ -106,8 +106,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         // enemyStats.getHealthBar().gameObject.SetActive(false);
 
-        int moneyValue = enemyStats.GetMoneyValue();
-        PlayerStats.instance.IncrementMoney(moneyValue);
+        PlayerStats.instance.IncrementMoney(enemyStats.GetMoneyValue());
 
         ////para kazanma
         //player.IncrementMoney(moneyValue);

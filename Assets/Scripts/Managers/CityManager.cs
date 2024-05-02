@@ -30,6 +30,8 @@ public class CityManager : MonoBehaviour
     public void Start()
     {
         UpdateTargetList();
+        
+        playerStats = PlayerStats.instance;
         playerStats.currentWaveIndex = waveIndex;
     }
     public void AddEnemyPos(Transform newTransform)

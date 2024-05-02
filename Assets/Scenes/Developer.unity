@@ -168,9 +168,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawnPoses: []
+  waveList: []
   revivePoint: {fileID: 0}
   startPoint: {fileID: 0}
   targetList: []
+  tower: {fileID: 0}
 --- !u!1 &129864733
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +762,7 @@ Transform:
   - {fileID: 1818629410}
   - {fileID: 690251066}
   - {fileID: 95569756}
+  - {fileID: 1283394148}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -852,6 +855,7 @@ MonoBehaviour:
   lifeStealIndex: 0
   maxHealthIndex: 0
   isDualWeaponActiveSavedValue: 0
+  currentWaveIndex: 0
   damage: 0
   attackSpeed: 0
   movementSpeed: 0
@@ -908,7 +912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873758cfecefbec4da3944f018a02fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reviveUI: {fileID: 1028947050}
 --- !u!1 &890809659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.000000006584597, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.000000006584596, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 15, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1220,6 +1223,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1283394147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1283394148}
+  - component: {fileID: 1283394149}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1283394148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283394147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 861108713}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1283394149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283394147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bd56d7f59c4d9489e57b2b8c415285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reviveUI: {fileID: 1028947050}
+  reviveButton: {fileID: 1934017933}
 --- !u!1 &1335822664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1555,7 @@ MonoBehaviour:
   - {fileID: 129864733}
   allCities: []
   currentCityIndex: 0
+  towers: []
 --- !u!4 &1818629410
 Transform:
   m_ObjectHideFlags: 0
@@ -1812,9 +1862,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 882205076}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DeathHandler, Assembly-CSharp
-        m_MethodName: Revive
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1924,7 +1974,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.000000006584597, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.000000006584596, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 15, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -31,8 +31,6 @@ public class CityManager : MonoBehaviour
     {
         UpdateTargetList();
         playerStats.currentWaveIndex = waveIndex;
-        OnNewTarget += UpdateTargetList;
-        OnRemoveTarget += UpdateTargetList;
     }
     public void AddEnemyPos(Transform newTransform)
     {

@@ -8,32 +8,21 @@ public class CityManager : MonoBehaviour
     PlayerStats playerStats;
 
     [SerializeField] List<Transform> enemySpawnPoses;
-<<<<<<< HEAD
-    public Action OnEnemySpawnPosesUpdated;
 
     [Header("Waves")]
     public List<EnemySpawner> waveList;
     int waveIndex;
     [Header("Points")]
-=======
-    
->>>>>>> Developer
+
     [SerializeField] private Transform revivePoint;
     [SerializeField] private Transform startPoint;
 
     [Header("Targeting")]
     [SerializeField] EnemyTarget[] targetList;
 
-<<<<<<< HEAD
     [Header("Tower")]
     [SerializeField] private TowerBehaviour tower;
 
-    private void Start()
-    {
-        playerStats.currentWaveIndex = waveIndex;
-    }
-
-=======
     [Header("Events")]
     public Action OnEnemySpawnPosesUpdated;
     public Action OnNewTarget;
@@ -41,10 +30,10 @@ public class CityManager : MonoBehaviour
 
     public void Start()
     {
+        playerStats.currentWaveIndex = waveIndex;
         OnNewTarget += UpdateTargetList;
         OnRemoveTarget += UpdateTargetList;
     }
->>>>>>> Developer
     public void AddEnemyPos(Transform newTransform)
     {
         enemySpawnPoses.Add(newTransform);

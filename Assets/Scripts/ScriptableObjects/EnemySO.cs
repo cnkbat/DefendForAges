@@ -12,7 +12,7 @@ public class EnemySO : ScriptableObject
     [SerializeField] float maxHealth;
     [SerializeField] float damage;
     [SerializeField] int moneyValue;
-    [SerializeField] float expValue;
+    [SerializeField] int expValue;
     [SerializeField] float powerUpAddOnValue;
     [SerializeField] bool isBoss;
     [SerializeField] float knockbackDur;
@@ -25,7 +25,7 @@ public class EnemySO : ScriptableObject
     public float GetDamage() { return damage; }
     public void SetDamage(float dmg) { damage = dmg; }
     public int GetMoneyValue() { return moneyValue; }
-    public float GetExpValue() { return expValue; }
+    public int GetExpValue() { return expValue; }
     public bool GetIsBoss() { return isBoss; }
     public float GetKnockbackDur() { return knockbackDur; }
     

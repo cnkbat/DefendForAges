@@ -8,6 +8,8 @@ public class PlayerData
     public int currentEraIndex;
     public int currentTimelineIndex;
     public int money;
+    public int experiencePoint;
+
     public int damageIndex;
     public int attackSpeedIndex;
     public int movementSpeedIndex;

@@ -22,7 +22,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
     public float currentDamage;
     private int moneyValue;
-    private float expValue;
+    private int expValue;
     private float powerUpAddOnValue;
     public bool isLockedToPlayer;
 
@@ -264,7 +264,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     {
         return moneyValue;
     }
-    public float GetExpValue()
+    public int GetExpValue()
     {
         return expValue;
     }

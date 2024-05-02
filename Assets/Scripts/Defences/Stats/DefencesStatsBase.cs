@@ -10,7 +10,7 @@ public class DefencesStatsBase : MonoBehaviour
 
     public void Start()
     {
-        staticDefenceSO = Resources.Load<StaticDefenceSO>("DefenceSO");
+        //  staticDefenceSO = Resources.Load<StaticDefenceSO>("DefenceSO"); Test kısmında okey ama hep elle yerleştirelim 
         GetSOValues();
     }
     public float GetMaxHealth()

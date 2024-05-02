@@ -7,6 +7,8 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Enemies")]
     public List<GameObject> allSpawnedEnemies;
+    public EnemySpawner activeWave;
+    public bool canSpawnEnemy;
 
     [Header("Cities")]
     [SerializeField] private List<CityManager> allCities;
@@ -29,6 +31,11 @@ public class GameManager : Singleton<GameManager>
         // yoksa her şey level bitti.
     }
 
+    public void SetActiveWave(EnemySpawner newActiveWave)
+    {
+        activeWave = newActiveWave;
+    }
+
     #region  Getters & Setters
     public void SetCurrentCityIndex(int newIndex)
     {
@@ -36,4 +43,5 @@ public class GameManager : Singleton<GameManager>
     }
 
     #endregion
+
 }

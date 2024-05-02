@@ -12,6 +12,7 @@ public class CityManager : MonoBehaviour
     [Header("Waves")]
     public List<EnemySpawner> waveList;
     int waveIndex;
+
     [Header("Points")]
 
     [SerializeField] private Transform revivePoint;
@@ -30,10 +31,16 @@ public class CityManager : MonoBehaviour
     public void Start()
     {
         UpdateTargetList();
-        
+
+        for (int i = 0; i < waveList.Count; i++)
+        {
+            waveList[i].OnWaveCompleted += IncrementWaveIndex;
+        }
+
         playerStats = PlayerStats.instance;
         playerStats.currentWaveIndex = waveIndex;
     }
+
     public void AddEnemyPos(Transform newTransform)
     {
         enemySpawnPoses.Add(newTransform);
@@ -49,19 +56,25 @@ public class CityManager : MonoBehaviour
 
     public void OnWaveCalled()
     {
-        for (int i = 0; i < waveList.Count; i++)
-        {
-            waveList[i].gameObject.SetActive(false);
-        }
+        StopWaves();
 
         waveList[waveIndex].gameObject.SetActive(true);
     }
 
+    public void StopWaves()
+    {
+        for (int i = 0; i < waveList.Count; i++)
+        {
+            waveList[i].gameObject.SetActive(false);
+        }
+    }
 
     // waveler tamamen bittiğinde çalışacak.    
     public void IncrementWaveIndex()
     {
         waveIndex++;
+
+        StopWaves();
     }
 
     public void SetWaveSystemBackToCheckpoint()

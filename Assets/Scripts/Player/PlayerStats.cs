@@ -5,11 +5,13 @@ using System;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
+    SaveManager saveManager;
+
     [SerializeField] private RPGSystemSO rPGSystemSO;
 
     [Header("Saved Indexes")]
     public int money;
-    public float exp;
+    public int experiencePoint;
     public int damageIndex;
     public int attackSpeedIndex;
     public int movementSpeedIndex;
@@ -20,6 +22,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public int currentWaveIndex;
 
     [Header("Ingame Values")]
+    [SerializeField] private int currentXP;
     [SerializeField] private float damage;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float movementSpeed;
@@ -32,27 +35,47 @@ public class PlayerStats : Singleton<PlayerStats>
 
     [Header("Events")]
     public Action<int> OnEnemyDeathMoney;
-    public Action<float> OnEnemyDeathExp;
+    public Action<int> OnEnemyDeathExp;
+    public Action OnDataChanged;
 
     private void Start()
     {
-        // current health needs to be moved to LoadPlayerData
-        // this is just testing value.
-        currentHealth = 50;
+        saveManager = SaveManager.instance;
+
+        if (saveManager != null)
+        {
+            saveManager.OnSaved += SavePlayerData;
+            OnDataChanged += saveManager.DataChanged;
+        }
+
         LoadPlayerData();
         FillCurrentHealth();
         deathHandler = GetComponent<DeathHandler>();
-        OnEnemyDeathMoney += IncrementMoney;
-        OnEnemyDeathExp += IncrementExp;
     }
-    public void IncrementMoney(int money_)
+
+    #region  MONEY
+    public void IncrementMoney(int value)
     {
-        money += money_;
+        money += value;
     }
-    public void IncrementExp(float exp_)
+
+    public void DecrementMoney(int value)
     {
-        exp += exp_;
+        money -= value;
     }
+    #endregion
+
+    #region  XP
+    public void IncrementExp(int value)
+    {
+        currentXP += value;
+    }
+    public void DecrementXP(int value)
+    {
+        currentXP -= value;
+    }
+    #endregion
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -61,7 +84,7 @@ public class PlayerStats : Singleton<PlayerStats>
             deathHandler.Kill();
         }
     }
-    
+
 
     #region Save & Load
     private void SavePlayerData()
@@ -76,6 +99,7 @@ public class PlayerStats : Singleton<PlayerStats>
         if (playerData != null)
         {
             this.money = playerData.money;
+            this.experiencePoint = playerData.experiencePoint;
             this.damageIndex = playerData.damageIndex;
             this.attackSpeedIndex = playerData.attackSpeedIndex;
             this.movementSpeedIndex = playerData.movementSpeedIndex;
@@ -84,6 +108,7 @@ public class PlayerStats : Singleton<PlayerStats>
             this.maxHealthIndex = playerData.maxHealthIndex;
             this.isDualWeaponActiveSavedValue = playerData.isDualWeaponActiveSavedValue;
         }
+
         UpdateStats();
     }
 
@@ -95,7 +120,9 @@ public class PlayerStats : Singleton<PlayerStats>
         powerupDur = rPGSystemSO.powerupDurValues[powerupDurIndex];
         lifeSteal = rPGSystemSO.lifeStealValues[lifeStealIndex];
         maxHealth = rPGSystemSO.maxHealthValues[maxHealthIndex];
+        currentXP = this.experiencePoint;
     }
+
 
     #endregion 
 

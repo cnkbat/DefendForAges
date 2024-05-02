@@ -18,6 +18,9 @@ public class EnemyBehaviour : MonoBehaviour
     public bool canMove;
     Animator animator;
     [SerializeField] float deathAnimDur;
+
+    public Action OnEnemyKilled;
+
     public void Start()
     {
         attackDur = 1;
@@ -99,8 +102,10 @@ public class EnemyBehaviour : MonoBehaviour
     public void Kill()
     {
         isDead = true;
+
         playerStats.OnEnemyDeathMoney.Invoke(enemyStats.GetMoneyValue());
         playerStats.OnEnemyDeathExp.Invoke(enemyStats.GetExpValue());
+        OnEnemyKilled?.Invoke();
 
         // test için commentlendi, geri getirilicek
         // EnemySpawner EnemySpawner = FindObjectOfType<EnemySpawner>();

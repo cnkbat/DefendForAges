@@ -5,7 +5,7 @@ using UnityEngine;
 public class DefencesBehaviourBase : EnemyTarget
 {
     protected DefencesStatsBase defencesStatsBase;
-    protected float currentHealth;
+    protected bool isDestroyed;
 
     void Start()
     {
@@ -13,13 +13,23 @@ public class DefencesBehaviourBase : EnemyTarget
         ResetHealthValue();
     }
 
-    protected virtual void ResetHealthValue()
+    public override void TakeDamage(float dmg)
+    {
+        currentHealth -= dmg;
+
+        if (currentHealth <= 0)
+        {
+            DestroyDefence();
+        }
+    }
+    
+    public override void ResetHealthValue()
     {
         currentHealth = defencesStatsBase.GetMaxHealth();
     }
 
-    public override void TakeDamage(float dmg)
+    protected virtual void DestroyDefence()
     {
-        currentHealth -= dmg;
+        isDestroyed = true;
     }
 }

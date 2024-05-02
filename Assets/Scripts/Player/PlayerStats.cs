@@ -15,6 +15,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public int lifeStealIndex;
     public int maxHealthIndex;
     public bool isDualWeaponActiveSavedValue;
+    public int currentWaveIndex;
 
     [Header("Ingame Values")]
     [SerializeField] private float damage;

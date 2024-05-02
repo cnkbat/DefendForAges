@@ -35,4 +35,8 @@ public class DeathHandler : EnemyTarget
         uiManager.HandleReviveUI();
         Time.timeScale = 1;
     }
+    public override void TakeDamage(float dmg)
+    {
+        playerStats.TakeDamage(dmg);
+    }
 }

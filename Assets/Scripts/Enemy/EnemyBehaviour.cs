@@ -79,7 +79,6 @@ public class EnemyBehaviour : MonoBehaviour
          } */
 
         canMove = true;
-
     }
 
     #region States
@@ -89,8 +88,7 @@ public class EnemyBehaviour : MonoBehaviour
         // play animation
         // deal damage
 
-        // for now this is only for the player, needs to be changed when other targetables are implemented
-        target.gameObject.GetComponent<PlayerStats>().TakeDamage(enemyStats.GetDamage());
+        target.gameObject.GetComponent<EnemyTarget>().TakeDamage(enemyStats.GetDamage());
         StartCoroutine(EnableMovement(attackDur));
     }
     public void Move()

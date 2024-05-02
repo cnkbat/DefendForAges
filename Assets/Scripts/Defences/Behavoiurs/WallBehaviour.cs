@@ -11,23 +11,25 @@ public class WallBehaviour : DefencesBehaviourBase
         currentHealth -= dmg;
         if (currentHealth < 12)
         {
+            if (currentHealth < 10)
+            {
+                if (currentHealth < 8)
+                {
+                    if (currentHealth < 6)
+                    {
+                        if (currentHealth <= 0)
+                        {
+                            DestroyDefence();
+                        }
+                        wallStats.wallParts[3].SetActive(false);
+                    }
+                    wallStats.wallParts[2].SetActive(false);
+                }
+                wallStats.wallParts[1].SetActive(false);
+            }
             wallStats.wallParts[0].SetActive(false);
         }
-        if (currentHealth < 10)
-        {
-            wallStats.wallParts[1].SetActive(false);
-        }
-        if (currentHealth < 8)
-        {
-            wallStats.wallParts[2].SetActive(false);
-        }
-        if (currentHealth < 6)
-        {
-            wallStats.wallParts[3].SetActive(false);
-        }
-        if (currentHealth <= 0)
-        {
-            DestroyDefence();
-        }
+
+
     }
 }

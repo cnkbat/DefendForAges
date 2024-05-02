@@ -26,12 +26,29 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private bool isDualWeaponActive;
     [SerializeField] private float maxHealth;
     private float currentHealth;
-
+    DeathHandler deathHandler;
     private void Start()
     {
+        // current health needs to be moved to LoadPlayerData
+        // this is just testing value.
+        currentHealth = 50;
         LoadPlayerData();
         FillCurrentHealth();
+        deathHandler = GetComponent<DeathHandler>();
     }
+    public void IncrementMoney(int money_)
+    {
+        money += money_;
+    }
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            deathHandler.Kill();
+        }
+    }
+    
 
     #region Save & Load
     private void SavePlayerData()
@@ -69,7 +86,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     #endregion 
 
-    private void FillCurrentHealth()
+    public void FillCurrentHealth()
     {
         currentHealth = maxHealth;
     }

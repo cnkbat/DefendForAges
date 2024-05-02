@@ -38,7 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (collision.transform.Equals(enemyTargeter.GetTarget()))
         {
-            Attack();
+            Attack(collision.transform);
         }   
     }
     private void ResetEnemy()
@@ -59,13 +59,13 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage()
     {
         canMove = false;
-        StartCoroutine(EnableMovement());
+        StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
     }
 
-    IEnumerator EnableMovement()
+    IEnumerator EnableMovement(float duration)
     {
 
-        yield return new WaitForSeconds(attackDur);
+        yield return new WaitForSeconds(duration);
 
         if (isDead) yield return null;
 
@@ -81,13 +81,15 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     #region States
-    public void Attack()
+    public void Attack(Transform target)
     {
         canMove = false;
         // play animation
         // deal damage
 
-        StartCoroutine(EnableMovement());
+        // for now this is only for the player, needs to be changed when other targetables are implemented
+        target.gameObject.GetComponent<PlayerStats>().TakeDamage(enemyStats.GetDamage());
+        StartCoroutine(EnableMovement(attackDur));
     }
     public void Move()
     {
@@ -97,25 +99,30 @@ public class EnemyBehaviour : MonoBehaviour
     public void Kill()
     {
         isDead = true;
-        EnemySpawner EnemySpawner = FindObjectOfType<EnemySpawner>();
-        EnemySpawner.OnEnemyKilled();
 
-        enemyStats.getHealthBar().gameObject.SetActive(false);
+        // test için commentlendi, geri getirilicek
+        // EnemySpawner EnemySpawner = FindObjectOfType<EnemySpawner>();
+        // EnemySpawner.OnEnemyKilled();
 
-        // para kazanma
+        // enemyStats.getHealthBar().gameObject.SetActive(false);
+
+        int moneyValue = enemyStats.GetMoneyValue();
+        PlayerStats.instance.IncrementMoney(moneyValue);
+
+        ////para kazanma
         //player.IncrementMoney(moneyValue);
-        //    if (!gameManager.isPowerEnabled)
-        //  {
+        //if (!gameManager.isPowerEnabled)
+        //{
         //    player.IncrementPowerUpValue(powerUpAddOnValue);
-        // }
-        // power up sistemi böyle olmayacak tabi
-        // GameObject spawnedFloatingText = ObjectPooler.instance.SpawnFromPool("Floating Text", floatingTextTransform.position);
-        // spawnedFloatingText.GetComponent<FloatingTextAnimation>().SetText("$" + moneyValue.ToString());
+        //}
+        ////power up sistemi böyle olmayacak tabi
+        //GameObject spawnedFloatingText = ObjectPooler.instance.SpawnFromPool("Floating Text", floatingTextTransform.position);
+        //spawnedFloatingText.GetComponent<FloatingTextAnimation>().SetText("$" + moneyValue.ToString());
 
-        gameObject.layer = LayerMask.NameToLayer("DeadZombie");
-        PlayDeathAnimation();
+        //gameObject.layer = LayerMask.NameToLayer("DeadZombie");
+        //PlayDeathAnimation();
 
-        gameManager.allSpawnedEnemies.Remove(gameObject);
+        //gameManager.allSpawnedEnemies.Remove(gameObject);
     }
     #endregion
     #region  Animations

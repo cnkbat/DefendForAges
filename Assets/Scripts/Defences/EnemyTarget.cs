@@ -1,20 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTarget : MonoBehaviour, ITargetable
 {
+    private GameManager gameManager;
+    protected PlayerStats playerStats;
 
     protected float currentHealth;
-
-    void Start()
+    public Action OnTargetDestroyed;
+    private void OnEnable()
     {
+        playerStats = PlayerStats.instance;
+        gameManager = GameManager.instance;
 
+        OnTargetDestroyed += gameManager.allCities[playerStats.GetCurrentCityIndex()].UpdateTargetList;
     }
-
-    void Update()
+    private void OnDisable()
     {
-
+        OnTargetDestroyed -= gameManager.allCities[playerStats.GetCurrentCityIndex()].UpdateTargetList;
     }
 
     /// fiziksel hasar
@@ -37,5 +42,5 @@ public class EnemyTarget : MonoBehaviour, ITargetable
         return transform;
     }
 
-    
+
 }

@@ -12,9 +12,7 @@ public class CityManager : MonoBehaviour
     [Header("Waves")]
     public List<EnemySpawner> waveList;
 
-
     [Header("Points")]
-
     [SerializeField] private Transform revivePoint;
     [SerializeField] private Transform startPoint;
 
@@ -28,6 +26,7 @@ public class CityManager : MonoBehaviour
     public Action OnEnemySpawnPosesUpdated;
     public Action OnTargetListUpdated;
 
+
     public void Start()
     {
         UpdateTargetList();
@@ -36,7 +35,6 @@ public class CityManager : MonoBehaviour
         {
             waveList[i].OnWaveCompleted += StopWaves;
         }
-
         playerStats = PlayerStats.instance;
     }
 
@@ -66,7 +64,7 @@ public class CityManager : MonoBehaviour
         {
             waveList[i].gameObject.SetActive(false);
         }
-    }    
+    }
 
     #region Getters & Setters
     public TowerBehaviour GetTower()

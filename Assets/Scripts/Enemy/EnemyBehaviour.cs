@@ -95,6 +95,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         target.gameObject.GetComponent<EnemyTarget>().TakeDamage(enemyStats.GetDamage());
         StartCoroutine(EnableMovement(attackDur));
+
     }
     public void Move()
     {
@@ -105,31 +106,20 @@ public class EnemyBehaviour : MonoBehaviour
     {
         isDead = true;
 
-        playerStats.OnEnemyDeathMoney.Invoke(enemyStats.GetMoneyValue());
-        playerStats.OnEnemyDeathExp.Invoke(enemyStats.GetExpValue());
+        playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetPowerUpValue());
+
         OnEnemyKilled?.Invoke();
+        gameManager.allSpawnedEnemies.Remove(gameObject);
 
         // test için commentlendi, geri getirilicek
-        // EnemySpawner EnemySpawner = FindObjectOfType<EnemySpawner>();
-        // EnemySpawner.OnEnemyKilled();
-
         // enemyStats.getHealthBar().gameObject.SetActive(false);
 
-
-        ////para kazanma
-        //player.IncrementMoney(moneyValue);
-        //if (!gameManager.isPowerEnabled)
-        //{
-        //    player.IncrementPowerUpValue(powerUpAddOnValue);
-        //}
-        ////power up sistemi böyle olmayacak tabi
         //GameObject spawnedFloatingText = ObjectPooler.instance.SpawnFromPool("Floating Text", floatingTextTransform.position);
         //spawnedFloatingText.GetComponent<FloatingTextAnimation>().SetText("$" + moneyValue.ToString());
 
         //gameObject.layer = LayerMask.NameToLayer("DeadZombie");
-        //PlayDeathAnimation();
 
-        //gameManager.allSpawnedEnemies.Remove(gameObject);
+
     }
     #endregion
     #region  Animations

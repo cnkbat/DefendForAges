@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerCollisionHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter(Collision other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.gameObject.TryGetComponent(out ICollectable collectable))
+        {
+            collectable.Collect();
+        }
     }
 }

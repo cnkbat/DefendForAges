@@ -60,13 +60,13 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
         //    GetComponent<EnemyMovement>().StartMovement();
         //   animator = GetComponent<Animator>();
 
-        GetEnemySOValues();
+        SetEnemySOValues();
         // UpdateHealthBar();
         //  ResetEnemy();
 
     }
 
-    private void GetEnemySOValues()
+    private void SetEnemySOValues()
     {
         powerUpAddOnValue = EnemySO.GetPowerUpAddOnValue();
         knockbackDur = EnemySO.GetKnockbackDur();
@@ -275,6 +275,10 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     public Slider GetHealthBar()
     {
         return healthBar;
+    }
+    public float GetPowerUpValue()
+    {
+        return powerUpAddOnValue;
     }
     #endregion
 

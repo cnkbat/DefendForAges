@@ -7,16 +7,16 @@ public class DeathHandler : EnemyTarget
 {
     UIManager uiManager;
     CityManager cityManager;
-    PlayerStats playerStats;
-
     public Action OnPlayerKilled;
 
     public void Start()
     {
         uiManager = UIManager.instance;
         cityManager = FindObjectOfType<CityManager>();
-        playerStats = GetComponent<PlayerStats>();
+
+        playerStats.OnRevive += Revive;
     }
+
     public void Kill()
     {
         gameObject.SetActive(false);
@@ -25,11 +25,11 @@ public class DeathHandler : EnemyTarget
         // OnPlayerKilled?.Invoke();
         uiManager.HandleReviveUI();
     }
+
     // will be connected to revive button
     public void Revive()
     {
         transform.position = cityManager.GetRevivePoint().position;
-        playerStats.FillCurrentHealth();
         gameObject.SetActive(true);
 
         uiManager.HandleReviveUI();
@@ -37,6 +37,25 @@ public class DeathHandler : EnemyTarget
     }
     public override void TakeDamage(float dmg)
     {
-        playerStats.TakeDamage(dmg);
+
+        currentHealth -= dmg;
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
     }
+
+
+    #region Getters & Setters
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetCurrentHealth(float newHealth)
+    {
+        currentHealth = newHealth;
+    }
+    #endregion
+
 }

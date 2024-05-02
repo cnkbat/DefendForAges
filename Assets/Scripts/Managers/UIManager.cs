@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    public static UIManager instance { get; private set; }
+    PlayerStats playerStats;
 
     [Header("UI Elements")]
     public GameObject reviveUI;
     [SerializeField] Button reviveButton;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
+
     private void Start()
     {
+        playerStats = PlayerStats.instance;
         reviveButton.onClick.AddListener(OnReviveButtonPressed);
     }
 
@@ -37,6 +32,6 @@ public class UIManager : MonoBehaviour
 
     private void OnReviveButtonPressed()
     {
-        Debug.Log("revived");
+        playerStats.OnRevive?.Invoke();
     }
 }

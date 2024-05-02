@@ -37,14 +37,16 @@ public class PlayerStats : Singleton<PlayerStats>
     DeathHandler deathHandler;
 
     [Header("Events")]
-    public Action<int> OnEnemyDeathMoney;
-    public Action<int> OnEnemyDeathExp;
+    public Action<int, int, float> OnKillEnemy;
     public Action OnDataChanged;
-    public Action WaveWon;
+    public Action OnWaveWon;
+    public Action OnMovementChanged;
+    public Action OnRevive;
 
     private void Start()
     {
         saveManager = SaveManager.instance;
+        deathHandler = GetComponent<DeathHandler>();
 
         if (saveManager != null)
         {
@@ -52,9 +54,13 @@ public class PlayerStats : Singleton<PlayerStats>
             OnDataChanged += saveManager.DataChanged;
         }
 
+        OnKillEnemy += EarnBonusOnKill;
+
+        OnRevive += FillCurrentHealth;
+
         LoadPlayerData();
         FillCurrentHealth();
-        deathHandler = GetComponent<DeathHandler>();
+
     }
 
     #region  MONEY
@@ -82,32 +88,46 @@ public class PlayerStats : Singleton<PlayerStats>
 
     #region Wave System
 
+    public void EarnBonusOnKill(int moneyValue, int xpValue, float powerUpAddOnValue)
+    {
+        IncrementMoney(moneyValue);
+        IncrementExp(xpValue);
+        // power up eklenmedi daha
+    }
+
     public void IncrementWaveIndex()
     {
         currentWaveIndex++;
 
         OnDataChanged?.Invoke();
 
-        WaveWon?.Invoke();
+        OnWaveWon?.Invoke();
     }
 
+    #endregion
+
+    #region CheckPoint Related
     public void SetWaveSystemBackToCheckpoint()
     {
+        // kaybettiğimizde devreye girecek
         // gamemanagerdan eventle ulaşılması
         // wave indexin en son checkpoint değerine atanması
         // save edilmesi
     }
 
-    #endregion
-    public void TakeDamage(float damage)
+    public void CheckPointReached()
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            deathHandler.Kill();
-        }
-    }
 
+        currentCityIndex++;
+        // coroutinele bağlanabilir
+        // diğer şehre hareketi
+        // kazanılan bonus
+        // araya giren ads popupları   
+
+        OnDataChanged?.Invoke();
+
+    }
+    #endregion
 
     #region Save & Load
     private void SavePlayerData()
@@ -155,7 +175,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void FillCurrentHealth()
     {
-        currentHealth = maxHealth;
+        deathHandler.SetCurrentHealth(maxHealth);
     }
 
     #region  Getters & Setters
@@ -177,6 +197,10 @@ public class PlayerStats : Singleton<PlayerStats>
         return currentWaveIndex;
     }
 
+    public int GetCurrentCityIndex()
+    {
+        return currentCityIndex;
+    }
 
     #endregion
 }

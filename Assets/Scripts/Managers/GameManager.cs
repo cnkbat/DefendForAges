@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,13 @@ public class GameManager : Singleton<GameManager>
     public bool canSpawnEnemy;
 
     [Header("Cities")]
-    [SerializeField] private List<CityManager> allCities;
-    [SerializeField] private List<int> checkpointWaveIndexes;
+    [SerializeField] public List<CityManager> allCities;
     [SerializeField] private List<TowerBehaviour> towers;
 
+    [Header("Events")]
+    public Action OnCheckPointReached;
+
+    //******///
     bool isEraCompleted = false;
     int allWavesCount;
 
@@ -33,8 +37,9 @@ public class GameManager : Singleton<GameManager>
             allWavesCount += allCities[i].waveList.Count;
         }
 
-        playerStats.WaveWon += CheckIfCheckPointReached;
+        playerStats.OnWaveWon += CheckIfCheckPointReached;
 
+        OnCheckPointReached += playerStats.CheckPointReached;
     }
 
     public void LevelLost()
@@ -71,6 +76,13 @@ public class GameManager : Singleton<GameManager>
     public void CheckIfCheckPointReached()
     {
         if (isEraCompleted) return;
+
+        if (playerStats.GetCurrentWaveIndex() >= allCities[playerStats.GetCurrentCityIndex()].waveList.Count)
+        {
+            OnCheckPointReached?.Invoke();
+            // şehirdeki animasyonlar
+            // Fxler
+        }
     }
     public void SetActiveWave(EnemySpawner newActiveWave)
     {

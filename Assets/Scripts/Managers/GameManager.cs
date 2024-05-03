@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Enemies")]
     public List<GameObject> allSpawnedEnemies;
-    public EnemySpawner activeWave;
+    private EnemySpawner activeWave;
     public bool canSpawnEnemy;
 
     [Header("Cities")]
@@ -40,7 +40,11 @@ public class GameManager : Singleton<GameManager>
         playerStats.OnWaveWon += CheckIfCheckPointReached;
 
         OnCheckPointReached += playerStats.CheckPointReached;
+
+    
     }
+
+    #region  Win & Lose Conditions
 
     public void LevelLost()
     {
@@ -56,6 +60,8 @@ public class GameManager : Singleton<GameManager>
         // fonksiyonun olması şart değil 
         // polish kısmında tekrardan düzenlecek.
     }
+
+
     public void CheckIfEraFinished()
     {
         if (playerStats.GetCurrentWaveIndex() >= allWavesCount)
@@ -84,12 +90,21 @@ public class GameManager : Singleton<GameManager>
             // Fxler
         }
     }
+
+    #endregion
+
+    public void OnWaveCalled()
+    {
+        allCities[playerStats.GetCurrentCityIndex()].OnWaveCalled();
+        canSpawnEnemy = true;
+    }
+
+    #region  Getters & Setters
     public void SetActiveWave(EnemySpawner newActiveWave)
     {
         activeWave = newActiveWave;
     }
 
-    #region  Getters & Setters
 
     #endregion
 

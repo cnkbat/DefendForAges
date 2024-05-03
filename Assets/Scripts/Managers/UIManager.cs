@@ -6,17 +6,25 @@ using UnityEngine.UI;
 public class UIManager : Singleton<UIManager>
 {
     PlayerStats playerStats;
+    GameManager gameManager;
 
-    [Header("UI Elements")]
-    public GameObject reviveUI;
+    [Header("Wave Control")]
+    [SerializeField] Button waveCallButton;
+    [SerializeField] GameObject gameHud;
+
+    [Header("Revive")]
     [SerializeField] Button reviveButton;
-
+    public GameObject reviveUI;
 
     private void Start()
     {
         playerStats = PlayerStats.instance;
+        gameManager = GameManager.instance;
         reviveButton.onClick.AddListener(OnReviveButtonPressed);
+        waveCallButton.onClick.AddListener(OnWaveCallClicked);
     }
+
+    #region Revive
 
     public void HandleReviveUI()
     {
@@ -33,5 +41,13 @@ public class UIManager : Singleton<UIManager>
     private void OnReviveButtonPressed()
     {
         playerStats.OnRevive?.Invoke();
+    }
+
+    #endregion
+
+    private void OnWaveCallClicked()
+    {
+        gameManager.OnWaveCalled();
+        waveCallButton.gameObject.SetActive(false);
     }
 }

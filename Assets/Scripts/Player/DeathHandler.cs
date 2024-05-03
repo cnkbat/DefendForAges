@@ -9,11 +9,12 @@ public class DeathHandler : EnemyTarget
     CityManager cityManager;
     public Action OnPlayerKilled;
 
-    public void Start()
+    override protected void Start()
     {
+        base.Start();
+        
         uiManager = UIManager.instance;
         cityManager = FindObjectOfType<CityManager>();
-
         playerStats.OnRevive += Revive;
     }
 

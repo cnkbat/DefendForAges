@@ -4,27 +4,37 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyTargeter : MonoBehaviour, IPoolableObject
+public class EnemyTargeter : MonoBehaviour
 {
     [SerializeField] private Transform target;
     private float targetTimer;
     private float closestDistance;
+
+    [Header("City Related")]
     [SerializeField] EnemyTarget[] targetList;
     public CityManager cityManager;
-
-    public void OnObjectPooled()
+    
+    public void EnemySpawned()
     {
-        throw new System.NotImplementedException();
-        // object poolera geçince start taşınacak.
-    }
-    private void OnEnable()
-    {
-        cityManager.OnTargetListUpdated += UpdateTargetList;
-    }
-    private void Start()
-    {
+        UpdateTargetList();
         targetTimer = 2f;
         closestDistance = 999999;
+    }
+
+    private void OnEnable()
+    {
+        if (cityManager != null)
+        {
+            cityManager.OnTargetListUpdated += UpdateTargetList;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (cityManager != null)
+        {
+            cityManager.OnTargetListUpdated -= UpdateTargetList;
+        }
     }
 
     private void Update()

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 {
     //  saldırı, yürüme , ölme
     EnemyStats enemyStats;
@@ -13,25 +13,62 @@ public class EnemyBehaviour : MonoBehaviour
     EnemyTargeter enemyTargeter;
     PlayerStats playerStats;
 
+    private EnemySpawner assignedEnemySpawner;
+
+    [Header("Attacking")]
     public float attackDur;
+
+    [Header("States")]
     public bool isDead;
     public bool canMove;
     Animator animator;
+    [Header("Animation")]
     [SerializeField] float deathAnimDur;
 
-    public Action OnEnemyKilled;
+    [Header("Health")]
+    float currentHealth;
 
-    public void Start()
+    [Header("Events")]
+    public Action OnEnemyKilled;
+    public Action OnEnemySpawned;
+
+
+    public void OnEnable()
     {
+        enemyTargeter = this.GetComponent<EnemyTargeter>();
+        enemyStats = this.GetComponent<EnemyStats>();
+
+        OnEnemySpawned += enemyTargeter.EnemySpawned;
+        OnEnemySpawned += enemyStats.EnemySpawned;
+
+        if (assignedEnemySpawner != null)
+        {
+            OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
+        }
+    }
+
+    public void OnDisable()
+    {
+        if (assignedEnemySpawner != null)
+        {
+            OnEnemyKilled -= assignedEnemySpawner.OnEnemyKilled;
+        }
+    }
+
+    public void OnObjectPooled()
+    {
+
         attackDur = 1;
         canMove = true;
         isDead = false;
 
         playerStats = PlayerStats.instance;
-        enemyTargeter = this.GetComponent<EnemyTargeter>();
-        enemyStats = this.GetComponent<EnemyStats>();
         gameManager = GameManager.instance;
+
+        OnEnemySpawned?.Invoke();
     }
+
+
     public void Update()
     {
         if (isDead) return;
@@ -39,36 +76,17 @@ public class EnemyBehaviour : MonoBehaviour
         if (enemyTargeter.GetTarget() == null) return;
 
         Move();
-
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.Equals(enemyTargeter.GetTarget()))
+        if (collision.gameObject.TryGetComponent(out ITargetable targetable))
         {
-            Attack(collision.transform);
+            Attack(targetable);
         }
     }
-    private void ResetEnemy()
-    {
-        // kesin değişecek
-        /*  animator.SetBool("isMoving", true);
-          animator.SetBool("isDead", false);
-          animator.SetBool("isDead", false);
 
-          animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
 
-          canMove = true;
-          isDead = false;
-          transform.forward = Vector3.forward;
-
-          gameObject.layer = LayerMask.NameToLayer("Zombie"); */
-    }
-    public void TakeDamage()
-    {
-        canMove = false;
-        StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
-    }
-
+    #region  Movement
     IEnumerator EnableMovement(float duration)
     {
 
@@ -86,22 +104,40 @@ public class EnemyBehaviour : MonoBehaviour
         canMove = true;
     }
 
-    #region States
-    public void Attack(Transform target)
-    {
-        canMove = false;
-        // play animation
-        // deal damage
-
-        target.gameObject.GetComponent<EnemyTarget>().TakeDamage(enemyStats.GetDamage());
-        StartCoroutine(EnableMovement(attackDur));
-
-    }
     public void Move()
     {
         Vector3 targetPosition = enemyTargeter.GetTarget().position;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyStats.currentMoveSpeed * Time.deltaTime);
     }
+
+    #endregion
+
+    #region Combat Related
+    public void Attack(ITargetable target)
+    {
+        canMove = false;
+        // play animation
+        // deal damage
+
+        target.TakeDamage(enemyStats.GetDamage());
+        StartCoroutine(EnableMovement(attackDur));
+
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        currentHealth -= dmg;
+
+        canMove = false;
+        StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
+
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
+
+    }
+
     public void Kill()
     {
         isDead = true;
@@ -122,26 +158,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
     #endregion
-    #region  Animations
-    public void PlayDeathAnimation()
-    {
-        animator.SetBool("isMoving", false);
-        animator.SetBool("isDead", true);
-        animator.SetBool("hitTaken", false);
-        animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
-
-        canMove = false;
-        StartCoroutine(DestroyObject());
-    }
-
-    public void PlayLevelEndAnimation()
-    {
-        animator.SetBool("isMoving", false);
-        animator.SetBool("isDead", false);
-        animator.SetBool("hitTaken", false);
-        animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
-        canMove = false;
-    }
 
     IEnumerator DestroyObject()
     {
@@ -149,6 +165,11 @@ public class EnemyBehaviour : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    #endregion
 
+    #region  Getters & Setters
+    public void SetEnemySpawner(EnemySpawner newEnemySpawner)
+    {
+        assignedEnemySpawner = newEnemySpawner;
+    }
+    #endregion
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
+public class EnemyStats : MonoBehaviour
 {
 
     GameManager gameManager;
@@ -43,22 +43,10 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
     [SerializeField] Slider healthBar;
     [SerializeField] List<Image> healthBarImages;
 
-    private void Start()
+    public void EnemySpawned()
     {
         gameManager = GameManager.instance;
         enemyBehaviour = this.GetComponent<EnemyBehaviour>();
-
-        // testing
-        OnObjectPooled();
-    }
-
-    public void OnObjectPooled()
-    {
-
-
-
-        //    GetComponent<EnemyMovement>().StartMovement();
-        //   animator = GetComponent<Animator>();
 
         SetEnemySOValues();
         // UpdateHealthBar();
@@ -76,107 +64,17 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
         expValue = EnemySO.GetExpValue();
         maxHealth = EnemySO.GetMaxHealth();
 
+        RefillHealth();
+    }
+
+
+
+   
+
+    private void RefillHealth()
+    {
         currentHealth = maxHealth;
     }
-
-    //private void ResetEnemy()
-    //{
-    //    // kesin değişecek
-    //  /*  animator.SetBool("isMoving", true);
-    //    animator.SetBool("isDead", false);
-    //    animator.SetBool("isDead", false);
-
-    //    animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
-
-    //    canMove = true;
-    //    isDead = false;
-    //    transform.forward = Vector3.forward;
-
-    //    gameObject.layer = LayerMask.NameToLayer("Zombie"); */
-    //}
-
-
-    #region  Damage & Death
-    public void TakeDamage(float dmg)
-    {
-        currentHealth -= dmg;
-
-
-        UpdateHealthBar();
-
-        enemyBehaviour.TakeDamage();
-
-        //   if (!isBoss)
-        // {
-        //   animator.SetBool("isMoving", false);
-        // animator.SetBool("hitTaken", true);
-        // animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
-        // }
-
-        if (hitFX)
-        {
-            if (hitFX.isPlaying)
-            {
-                hitFX.Stop();
-                hitFX.Play();
-            }
-            else
-            {
-                hitFX.Play();
-            }
-        }
-
-        if (currentHealth <= 0)
-        {
-            enemyBehaviour.Kill();
-        }
-
-
-    }
-    //IEnumerator EnableMovement()
-    //{
-
-    //    yield return new WaitForSeconds(knockbackDur);
-
-    //    if (isDead) yield return null;
-
-    //    /* if (!isBoss)
-    //     {
-    //         animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
-    //         animator.SetBool("isMoving", true);
-    //         animator.SetBool("hitTaken", false);
-    //     } */
-
-    //    canMove = true;
-
-    //}
-    //private void Kill()
-    //{
-    //    isDead = true;
-    //    EnemySpawner EnemySpawner = FindObjectOfType<EnemySpawner>();
-    //    EnemySpawner.OnEnemyKilled();
-
-    //    healthBar.gameObject.SetActive(false);
-
-    //    // para kazanma
-    //    //player.IncrementMoney(moneyValue);
-
-    //    //    if (!gameManager.isPowerEnabled)
-    //    //  {
-    //    //    player.IncrementPowerUpValue(powerUpAddOnValue);
-    //    // }
-    //    // power up sistemi böyle olmayacak tabi
-
-    //    GameObject spawnedFloatingText = ObjectPooler.instance.SpawnFromPool("Floating Text", floatingTextTransform.position);
-
-    //    spawnedFloatingText.GetComponent<FloatingTextAnimation>().SetText("$" + moneyValue.ToString());
-
-    //    gameObject.layer = LayerMask.NameToLayer("DeadZombie");
-
-    //    PlayDeathAnimation();
-
-    //    gameManager.allSpawnedEnemies.Remove(gameObject);
-    //}
 
     private void UpdateHealthBar()
     {
@@ -204,56 +102,7 @@ public class EnemyStats : MonoBehaviour, IDamagable, IPoolableObject
 
     }
 
-    #endregion
 
-    #region  Collisions
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.TryGetComponent(out PlayerStats playerStats))
-        {
-            // player.KillPlayer();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out PlayerStats playerStats))
-        {
-            //   player.KillPlayer();
-        }
-    }
-
-    #endregion
-
-    #region  Animations
-    //public void PlayDeathAnimation()
-    //{
-    //    animator.SetBool("isMoving", false);
-    //    animator.SetBool("isDead", true);
-    //    animator.SetBool("hitTaken", false);
-    //    animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
-
-    //    canMove = false;
-    //    StartCoroutine(DestroyObject());
-    //}
-
-    //public void PlayLevelEndAnimation()
-    //{
-    //    animator.SetBool("isMoving", false);
-    //    animator.SetBool("isDead", false);
-    //    animator.SetBool("hitTaken", false);
-    //    animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
-    //    canMove = false;
-    //}
-
-    //IEnumerator DestroyObject()
-    //{
-    //    yield return new WaitForSeconds(deathAnimDur);
-    //    gameObject.SetActive(false);
-    //}
-
-    #endregion
 
     #region Getters & Setters
     public float GetDamage()

@@ -55,7 +55,6 @@ public class PlayerStats : Singleton<PlayerStats>
         }
 
         OnKillEnemy += EarnBonusOnKill;
-
         OnRevive += FillCurrentHealth;
 
         LoadPlayerData();
@@ -123,7 +122,6 @@ public class PlayerStats : Singleton<PlayerStats>
         // diğer şehre hareketi
         // kazanılan bonus
         // araya giren ads popupları   
-
         OnDataChanged?.Invoke();
 
     }
@@ -171,7 +169,7 @@ public class PlayerStats : Singleton<PlayerStats>
     }
 
 
-    #endregion 
+    #endregion
 
     public void FillCurrentHealth()
     {

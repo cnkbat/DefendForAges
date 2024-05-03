@@ -7,15 +7,18 @@ public class EnemyTarget : MonoBehaviour, ITargetable
 {
     private GameManager gameManager;
     protected PlayerStats playerStats;
-
     protected float currentHealth;
     public Action OnTargetDestroyed;
+
+    protected virtual void Start()
+    {
+        OnTargetDestroyed += gameManager.allCities[playerStats.GetCurrentCityIndex()].UpdateTargetList;
+    }
+
     private void OnEnable()
     {
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
-
-        OnTargetDestroyed += gameManager.allCities[playerStats.GetCurrentCityIndex()].UpdateTargetList;
     }
     private void OnDisable()
     {

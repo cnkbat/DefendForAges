@@ -6,6 +6,7 @@ using UnityEngine;
 public class CityManager : MonoBehaviour
 {
     PlayerStats playerStats;
+    GameManager gameManager;
 
     [SerializeField] List<Transform> enemySpawnPoses;
 
@@ -30,6 +31,7 @@ public class CityManager : MonoBehaviour
     public void Start()
     {
         UpdateTargetList();
+        gameManager = GameManager.instance;
 
         for (int i = 0; i < waveList.Count; i++)
         {
@@ -55,7 +57,9 @@ public class CityManager : MonoBehaviour
     {
         StopWaves();
 
-        waveList[playerStats.GetCurrentWaveIndex()].gameObject.SetActive(true);
+        EnemySpawner currentWave = waveList[playerStats.GetCurrentWaveIndex()];
+        currentWave.gameObject.SetActive(true);
+        gameManager.SetActiveWave(currentWave);
     }
 
     public void StopWaves()

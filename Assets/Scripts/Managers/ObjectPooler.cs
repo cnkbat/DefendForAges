@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -16,6 +17,8 @@ public class ObjectPooler : Singleton<ObjectPooler>
         public int size;
     }
 
+    GameManager gameManager;
+    PlayerStats playerStats;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
     public bool isObjPoolingActive;
@@ -27,6 +30,9 @@ public class ObjectPooler : Singleton<ObjectPooler>
     void Start()
     {
         if (!isObjPoolingActive) return;
+
+        playerStats = PlayerStats.instance;
+        gameManager = GameManager.instance;
 
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
@@ -61,6 +67,41 @@ public class ObjectPooler : Singleton<ObjectPooler>
         objectToSpawn.SetActive(true);
 
         objectToSpawn.transform.position = spawnPos;
+
+        if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
+        {
+            pooled.OnObjectPooled();
+        }
+
+
+        poolDictionary[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
+    }
+
+    public GameObject SpawnEnemyFromPool(string tag, Vector3 spawnPos, EnemySpawner newEnemySpawner, CityManager newCityManager)
+    {
+
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.Log("object spawn error with " + tag);
+            return null;
+        }
+
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        objectToSpawn.SetActive(true);
+
+        objectToSpawn.transform.position = spawnPos;
+
+        if (objectToSpawn.TryGetComponent(out EnemyBehaviour enemyBehaviour))
+        {
+            enemyBehaviour.SetEnemySpawner(newEnemySpawner);
+        }
+
+        if (objectToSpawn.TryGetComponent(out EnemyTargeter enemyTargeter))
+        {
+            enemyTargeter.SetCityManager(gameManager.allCities[playerStats.GetCurrentCityIndex()]);
+        }
 
         if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
         {

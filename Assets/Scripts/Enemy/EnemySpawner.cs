@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
 {
     ObjectPooler objectPooler;
     GameManager gameManager;
+    PlayerStats playerStats;
 
     [System.Serializable]
     public class Wave
@@ -21,7 +22,6 @@ public class EnemySpawner : MonoBehaviour
 
         private void Start()
         {
-            Debug.Log("enemy group start");
             totalNumOfEnemiesInWave = 0;
         }
 
@@ -30,7 +30,8 @@ public class EnemySpawner : MonoBehaviour
     [System.Serializable]
     public class EnemyGroup
     {
-        public string enemyName;
+        [Tooltip("No Need To Fill")] public string enemyName = "Enemy Name";
+        public GameObject enemyPrefab;
         public int enemyCount; // the total number of eneies to spawn in this wave
         public int spawnedEnemyCounter; //the number of enemies already enemies spawned in this wave
     }
@@ -47,11 +48,11 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Positions")]
     [SerializeField] private List<Transform> enemySpawnPoints; //a list to store all the spawn points of enemies
-    [SerializeField] private CityManager currentCity;
+
 
     [Header("Private Variables")]
     int spawnIndex;
-    bool CanBeginNextWave = false;
+    bool canBeginNextWave = false;
     int totalNumOfEnemiesOfSpawner;
     int killedEnemies;
 
@@ -68,6 +69,8 @@ public class EnemySpawner : MonoBehaviour
 
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
+        playerStats = PlayerStats.instance;
+
 
         for (int i = 0; i < waves.Count; i++)
         {
@@ -77,7 +80,8 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        currentCity.OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
+
+        gameManager.allCities[playerStats.GetCurrentCityIndex()].OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
 
         CalculateEnemyQuota();
         spawnIndex = 0;
@@ -92,7 +96,7 @@ public class EnemySpawner : MonoBehaviour
         if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == waves[currentWaveCount].enemyQuota) // check if the wave end and is there more?
         {
             StartCoroutine(BeginNextWave());
-            CanBeginNextWave = true;
+            canBeginNextWave = true;
         }
 
         spawnTimer += Time.deltaTime;
@@ -111,24 +115,24 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(waveGap);
 
         //move on to the next wave
-        if (currentWaveCount < waves.Count - 1 && CanBeginNextWave)
+        if (currentWaveCount < waves.Count - 1 && canBeginNextWave)
         {
             currentWaveCount++;
-            CanBeginNextWave = false;
+            canBeginNextWave = false;
             CalculateEnemyQuota();
         }
 
     }
     void CalculateEnemyQuota()
     {
-        int CurrentEnemyQuota = 0;
+        int currentEnemyQuota = 0;
 
         foreach (var EnemyGroup in waves[currentWaveCount].enemyGroups)
         {
-            CurrentEnemyQuota += EnemyGroup.enemyCount;
+            currentEnemyQuota += EnemyGroup.enemyCount;
         }
 
-        waves[currentWaveCount].enemyQuota = CurrentEnemyQuota;
+        waves[currentWaveCount].enemyQuota = currentEnemyQuota;
     }
 
     //<<SUMMARY>>
@@ -140,11 +144,11 @@ public class EnemySpawner : MonoBehaviour
         if (waves[currentWaveCount].spawnCount < waves[currentWaveCount].enemyQuota && !maxEnemiesReached)
         {
             // spawn each type of enemy until the quota is filled
-            foreach (var EnemyGroup in waves[currentWaveCount].enemyGroups)
+            foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
             {
 
                 //check if the minimum number of enemies of this type have been spawned
-                if (EnemyGroup.spawnedEnemyCounter < EnemyGroup.enemyCount)
+                if (enemyGroup.spawnedEnemyCounter < enemyGroup.enemyCount)
                 {
 
                     // checking for the maxenemies for not breaking the game
@@ -154,12 +158,9 @@ public class EnemySpawner : MonoBehaviour
                         return;
                     }
 
+                    GameObject spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
+                        enemySpawnPoints[spawnIndex].position, this, gameManager.allCities[playerStats.GetCurrentCityIndex()]);
 
-                    GameObject spawnedEnemy = objectPooler.SpawnFromPool(EnemyGroup.enemyName,
-                        enemySpawnPoints[spawnIndex].position);
-
-                    spawnedEnemy.GetComponent<EnemyTargeter>().SetCityManager(currentCity);
-                    spawnedEnemy.GetComponent<EnemyBehaviour>().OnEnemyKilled += OnEnemyKilled;
                     spawnIndex++;
 
                     if (spawnIndex >= enemySpawnPoints.Count)
@@ -169,7 +170,7 @@ public class EnemySpawner : MonoBehaviour
 
                     gameManager.allSpawnedEnemies.Add(spawnedEnemy);
 
-                    EnemyGroup.spawnedEnemyCounter++;
+                    enemyGroup.spawnedEnemyCounter++;
                     waves[currentWaveCount].spawnCount++;
                     enemiesAlive++;
                 }
@@ -200,7 +201,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnAssignEnemySpawnPoints()
     {
-        enemySpawnPoints = currentCity.GetEnemySpawnPoses();
+        enemySpawnPoints = gameManager.allCities[playerStats.GetCurrentCityIndex()].GetEnemySpawnPoses();
     }
 
     // Total health calculator

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class WallBehaviour : DefencesBehaviourBase
 {
-    WallStats wallStats;
-    override protected void Start()
-    {
-        base.Start();
-        wallStats = GetComponent<WallStats>();
-    }
+
+    //override protected void Start()
+    //{
+    //    base.Start();
+    //    wallStats = GetComponent<WallStats>();
+    //}
     public override void TakeDamage(float dmg)
-    {   
+    {
+        WallStats wallStats = GetComponent<WallStats>();
         currentHealth -= dmg;
         if (currentHealth < 12)
         {

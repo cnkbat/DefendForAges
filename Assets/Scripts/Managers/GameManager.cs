@@ -95,7 +95,7 @@ public class GameManager : Singleton<GameManager>
 
     public void OnWaveCalled()
     {
-        allCities[playerStats.GetCurrentCityIndex()].OnWaveCalled();
+        allCities[playerStats.GetCurrentCityIndex()].WaveCalled();
         canSpawnEnemy = true;
     }
 

@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class WallBehaviour : DefencesBehaviourBase
 {
+    WallStats wallStats;
+    CityManager cityManager;
+    EnemySpawner enemySpawner;
+    override protected void Start()
+    {
+        cityManager = FindObjectOfType<CityManager>();
+        cityManager.OnWaveCalled += connectToSpawner;
 
-    //override protected void Start()
-    //{
-    //    base.Start();
-    //    wallStats = GetComponent<WallStats>();
-    //}
+        base.Start();
+
+        defencesStatsBase = GetComponent<DefencesStatsBase>();
+        ResetHealthValue();
+
+        wallStats = GetComponent<WallStats>();
+    }
     public override void TakeDamage(float dmg)
     {
         WallStats wallStats = GetComponent<WallStats>();
@@ -36,5 +45,21 @@ public class WallBehaviour : DefencesBehaviourBase
         }
 
 
+    }
+
+    public void connectToSpawner()
+    {
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner.OnWaveCompleted += EnableRepair;
+    }
+    public void EnableRepair()
+    {
+        gameObject.SetActive(true);
+    }
+    protected override void DestroyDefence()
+    {
+        isDestroyed = true;
+        gameObject.SetActive(false);
+        cityManager.OnTargetListUpdated?.Invoke();
     }
 }

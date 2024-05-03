@@ -26,7 +26,7 @@ public class CityManager : MonoBehaviour
     [Header("Events")]
     public Action OnEnemySpawnPosesUpdated;
     public Action OnTargetListUpdated;
-
+    public Action OnWaveCalled;
 
     public void Start()
     {
@@ -53,13 +53,15 @@ public class CityManager : MonoBehaviour
         OnTargetListUpdated?.Invoke();
     }
 
-    public void OnWaveCalled()
+    public void WaveCalled()
     {
+        
         StopWaves();
 
         EnemySpawner currentWave = waveList[playerStats.GetCurrentWaveIndex()];
         currentWave.gameObject.SetActive(true);
         gameManager.SetActiveWave(currentWave);
+        OnWaveCalled?.Invoke();
     }
 
     public void StopWaves()

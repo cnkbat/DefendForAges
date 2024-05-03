@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class WallBehaviour : DefencesBehaviourBase
 {
-    public override void TakeDamage(float dmg)
+    WallStats wallStats;
+    override protected void Start()
     {
-        // start fonksiyonu kullanırsam superclassın startını overridelıyor, wallstatsı burada her hasar aldığında alıyorum, değiştirilmeli
-        WallStats wallStats = GetComponent<WallStats>();
+        base.Start();
+        wallStats = GetComponent<WallStats>();
+    }
+    public override void TakeDamage(float dmg)
+    {   
         currentHealth -= dmg;
         if (currentHealth < 12)
         {

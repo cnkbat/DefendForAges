@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     EnemyTargeter enemyTargeter;
     PlayerStats playerStats;
 
+    CityManager cityManager;
     private EnemySpawner assignedEnemySpawner;
 
     [Header("Attacking")]
@@ -41,10 +42,14 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
 
-        if (assignedEnemySpawner != null)
-        {
-            OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
-        }
+        // this will never activate
+        //if (assignedEnemySpawner != null)
+        //{
+        //    OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
+        //}
+        // instead
+        cityManager = FindObjectOfType<CityManager>();
+        cityManager.OnWaveCalled += ConnectToSpawner;
     }
 
     public void OnDisable()
@@ -85,6 +90,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         }
     }
 
+    public void ConnectToSpawner()
+    {
+        assignedEnemySpawner = FindObjectOfType<EnemySpawner>();
+        OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
+    }
 
     #region  Movement
     IEnumerator EnableMovement(float duration)

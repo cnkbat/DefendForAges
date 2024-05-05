@@ -10,7 +10,7 @@ public class WallBehaviour : DefencesBehaviourBase
     override protected void Start()
     {
         cityManager = FindObjectOfType<CityManager>();
-        cityManager.OnWaveCalled += connectToSpawner;
+        cityManager.OnWaveCalled += ConnectToSpawner;
 
         base.Start();
 
@@ -47,7 +47,7 @@ public class WallBehaviour : DefencesBehaviourBase
 
     }
 
-    public void connectToSpawner()
+    public void ConnectToSpawner()
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
         enemySpawner.OnWaveCompleted += EnableRepair;

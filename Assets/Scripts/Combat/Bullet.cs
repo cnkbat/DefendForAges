@@ -17,7 +17,13 @@ public class Bullet : MonoBehaviour, IPoolableObject
     [SerializeField] TrailRenderer trailFX;
 
     bool targetReached = false;
+
+    #region IPoolableObject Functions
     public void OnObjectPooled()
+    {
+        ResetObjectData();
+    }
+    public void ResetObjectData()
     {
         targetReached = false;
         targetPos = target.transform.position;
@@ -28,6 +34,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
         transform.forward = aimDirection;
     }
+    #endregion
 
     void Update()
     {
@@ -64,6 +71,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
         }
     }
 
+    #region Getters & Setters
     public void SetDamage(float newDmg)
     {
         damage = newDmg;
@@ -86,4 +94,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
         trailFX.endColor = endColor;
 
     }
+
+    #endregion
 }

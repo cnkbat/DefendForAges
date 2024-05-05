@@ -62,6 +62,22 @@ public class EnemySpawner : MonoBehaviour
     [Header("Events")]
     public Action OnWaveCompleted;
 
+    private void OnEnable()
+    {
+        objectPooler = ObjectPooler.instance;
+        gameManager = GameManager.instance;
+        playerStats = PlayerStats.instance;
+        gameManager.allCities[playerStats.GetCurrentCityIndex()].OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
+    }
+
+    private void OnDisable()
+    {
+        objectPooler = ObjectPooler.instance;
+        gameManager = GameManager.instance;
+        playerStats = PlayerStats.instance;
+        gameManager.allCities[playerStats.GetCurrentCityIndex()].OnEnemySpawnPosesUpdated -= OnAssignEnemySpawnPoints;
+    }
+
     private void Start()
     {
         totalNumOfEnemiesOfSpawner = 0;
@@ -80,8 +96,6 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-
-        gameManager.allCities[playerStats.GetCurrentCityIndex()].OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
 
         CalculateEnemyQuota();
         spawnIndex = 0;

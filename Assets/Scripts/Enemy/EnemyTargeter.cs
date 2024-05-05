@@ -7,62 +7,57 @@ using UnityEngine;
 public class EnemyTargeter : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    private float targetTimer;
+    [SerializeField] private float targetTimer = 3;
+    private float currentTargetTimer;
     private float closestDistance;
 
     [Header("City Related")]
-    [SerializeField] EnemyTarget[] targetList;
     public CityManager cityManager;
-    
+
     public void EnemySpawned()
     {
-        
-        UpdateTargetList();
-        targetTimer = 2f;
+        ResetTargetTimer();
         closestDistance = 999999;
     }
 
     private void OnEnable()
     {
         cityManager = FindObjectOfType<CityManager>();
-        if (cityManager != null)
-        {
-            cityManager.OnTargetListUpdated += UpdateTargetList;
-        }
+
+        cityManager.OnTargetListUpdated += ResetTargetTimer;
     }
 
     private void OnDisable()
     {
-        if (cityManager != null)
-        {
-            cityManager.OnTargetListUpdated -= UpdateTargetList;
-        }
+        cityManager.OnTargetListUpdated -= ResetTargetTimer;
     }
 
     private void Update()
     {
-        if (targetTimer >= 2)
+        currentTargetTimer -= Time.deltaTime;
+        if (currentTargetTimer < 0)
         {
             closestDistance = 999999;
-            foreach (var targetable in targetList)
+            foreach (var targetable in cityManager.GetTargetList())
             {
                 if (closestDistance > Vector3.Distance(transform.position, targetable.GetTarget().position))
                 {
                     closestDistance = Vector3.Distance(transform.position, targetable.GetTarget().position);
                     SetTarget(targetable.GetTarget());
-                    targetTimer = 0;
+                    UpdateTargetTimer();
                 }
             }
         }
-        else
-        {
-            targetTimer += Time.deltaTime;
-        }
     }
 
-    private void UpdateTargetList()
+    private void UpdateTargetTimer()
     {
-        targetList = cityManager.GetTargetList();
+        currentTargetTimer = targetTimer;
+    }
+
+    private void ResetTargetTimer()
+    {
+        currentTargetTimer = 0;
     }
 
     #region  Getters & Setters

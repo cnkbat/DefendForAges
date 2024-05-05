@@ -15,13 +15,13 @@ public class TowerStats : DefencesStatsBase
     private float attackSpeed;
     private int weaponIndex;
 
-    private void Start() 
+    override protected void Start()
     {
-        
+
     }
 
     private void OnUpgradeCompleted()
     {
-        
+
     }
 }

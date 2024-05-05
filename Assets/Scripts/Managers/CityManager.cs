@@ -28,15 +28,26 @@ public class CityManager : MonoBehaviour
     public Action OnTargetListUpdated;
     public Action OnWaveCalled;
 
-    public void Start()
+    private void OnEnable()
     {
-        UpdateTargetList();
-        gameManager = GameManager.instance;
-
         for (int i = 0; i < waveList.Count; i++)
         {
             waveList[i].OnWaveCompleted += StopWaves;
         }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < waveList.Count; i++)
+        {
+            waveList[i].OnWaveCompleted -= StopWaves;
+        }
+    }
+    
+    public void Start()
+    {
+        UpdateTargetList();
+        gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
     }
 
@@ -55,7 +66,7 @@ public class CityManager : MonoBehaviour
 
     public void WaveCalled()
     {
-        
+
         StopWaves();
 
         EnemySpawner currentWave = waveList[playerStats.GetCurrentWaveIndex()];

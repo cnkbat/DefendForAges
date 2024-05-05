@@ -5,9 +5,9 @@ using UnityEngine;
 public class DefencesBehaviourBase : EnemyTarget
 {
     protected DefencesStatsBase defencesStatsBase;
-    protected bool isDestroyed;
+    
 
-    void Start()
+    override protected void Start()
     {
         defencesStatsBase = GetComponent<DefencesStatsBase>();
         ResetHealthValue();
@@ -30,6 +30,7 @@ public class DefencesBehaviourBase : EnemyTarget
 
     protected virtual void DestroyDefence()
     {
-        isDestroyed = true;
+        base.TargetDestroyed();
+        // hapticler
     }
 }

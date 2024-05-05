@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPoolableObject 
+public interface IPoolableObject
 {
     void OnObjectPooled();
-    
+
+    void ResetObjectData();
 }

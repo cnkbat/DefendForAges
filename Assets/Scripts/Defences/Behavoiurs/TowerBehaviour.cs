@@ -8,7 +8,7 @@ public class TowerBehaviour : DefencesBehaviourBase
     TowerStats towerStats;
     public Action OnTowerDestroyed;
 
-    void Start()
+    override protected void Start()
     {
         towerStats = GetComponent<TowerStats>();
     }
@@ -16,11 +16,8 @@ public class TowerBehaviour : DefencesBehaviourBase
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
-        if (isDestroyed)
-        {
-            // ağır haptic oynat
-            return;
-        }
+
+
         // haptic oynat
         // feeli ver.
     }
@@ -28,7 +25,7 @@ public class TowerBehaviour : DefencesBehaviourBase
     protected override void DestroyDefence()
     {
         base.DestroyDefence();
-
+        // ağır haptic oynat
         OnTowerDestroyed?.Invoke();
     }
 

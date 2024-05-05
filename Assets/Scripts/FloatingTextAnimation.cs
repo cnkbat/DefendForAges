@@ -30,4 +30,8 @@ public class FloatingTextAnimation : MonoBehaviour, IPoolableObject
         coinText.text = newText;
     }
 
+    public void ResetObjectData()
+    {
+        throw new System.NotImplementedException();
+    }
 }

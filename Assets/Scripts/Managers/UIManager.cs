@@ -18,6 +18,22 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] Button reviveButton;
     public GameObject reviveUI;
 
+    private void OnEnable()
+    {
+        cityManager = FindObjectOfType<CityManager>();
+
+        reviveButton.onClick.AddListener(OnReviveButtonPressed);
+        waveCallButton.onClick.AddListener(OnWaveCallClicked);
+        cityManager.OnWaveCalled += ConnectToSpawner;
+    }
+
+    private void OnDisable()
+    {
+        reviveButton.onClick.RemoveListener(OnReviveButtonPressed);
+        waveCallButton.onClick.RemoveListener(OnWaveCallClicked);
+        cityManager.OnWaveCalled -= ConnectToSpawner;
+    }
+
     private void Start()
     {
         cityManager = FindObjectOfType<CityManager>();

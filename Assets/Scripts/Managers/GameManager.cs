@@ -23,10 +23,9 @@ public class GameManager : Singleton<GameManager>
     bool isEraCompleted = false;
     int allWavesCount;
 
-    void Start()
+    private void OnEnable()
     {
         playerStats = PlayerStats.instance;
-
         for (int i = 0; i < towers.Count; i++)
         {
             towers[i].OnTowerDestroyed += LevelLost;
@@ -40,8 +39,23 @@ public class GameManager : Singleton<GameManager>
         playerStats.OnWaveWon += CheckIfCheckPointReached;
 
         OnCheckPointReached += playerStats.CheckPointReached;
+    }
 
-        
+    private void OnDisable()
+    {
+        for (int i = 0; i < towers.Count; i++)
+        {
+            towers[i].OnTowerDestroyed -= LevelLost;
+        }
+
+        for (int i = 0; i < allCities.Count; i++)
+        {
+            allWavesCount -= allCities[i].waveList.Count;
+        }
+
+        playerStats.OnWaveWon -= CheckIfCheckPointReached;
+
+        OnCheckPointReached -= playerStats.CheckPointReached;
     }
 
     #region  Win & Lose Conditions
@@ -100,7 +114,16 @@ public class GameManager : Singleton<GameManager>
     }
     public void OnWaveFinished()
     {
-        // reset enemies
+
+        for (int i = 0; i < allSpawnedEnemies.Count; i++)
+        {
+            if (allSpawnedEnemies[i].TryGetComponent(out IPoolableObject poolableObject))
+            {
+                poolableObject.ResetObjectData();
+            }
+        }
+        
+        allSpawnedEnemies.Clear();
     }
 
     #region  Getters & Setters

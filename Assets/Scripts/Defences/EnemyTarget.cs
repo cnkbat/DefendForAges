@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EnemyTarget : MonoBehaviour, ITargetable
@@ -10,19 +11,20 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     protected float currentHealth;
     public Action OnTargetDestroyed;
 
-    protected virtual void Start()
-    {
-        OnTargetDestroyed += gameManager.allCities[playerStats.GetCurrentCityIndex()].UpdateTargetList;
-    }
-
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
+        OnTargetDestroyed += gameManager.allCities[playerStats.GetCurrentCityIndex()].UpdateTargetList;
     }
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        OnTargetDestroyed -= gameManager.allCities[playerStats.GetCurrentCityIndex()].UpdateTargetList;
+
+    }
+
+    protected virtual void Start()
+    {
+
     }
 
     /// fiziksel hasar
@@ -40,6 +42,11 @@ public class EnemyTarget : MonoBehaviour, ITargetable
         // childlara atamak için
     }
 
+    public virtual void TargetDestroyed()
+    {
+        OnTargetDestroyed?.Invoke();
+        OnTargetDestroyed -= gameManager.allCities[playerStats.GetCurrentCityIndex()].UpdateTargetList;
+    }
     public Transform GetTarget()
     {
         return transform;

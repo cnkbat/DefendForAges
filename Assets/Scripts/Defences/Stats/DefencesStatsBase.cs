@@ -6,19 +6,16 @@ public class DefencesStatsBase : MonoBehaviour
 {
     public StaticDefenceSO staticDefenceSO;
     [SerializeField] private int defencesID;
-    protected float maxHealth;
 
-    public void Start()
+   
+    protected virtual void Start()
     {
-        //  staticDefenceSO = Resources.Load<StaticDefenceSO>("DefenceSO"); Test kısmında okey ama hep elle yerleştirelim 
-        GetSOValues();
+       //
     }
+
     public float GetMaxHealth()
     {
-        return maxHealth;
+        return staticDefenceSO.maxHealth;
     }
-    public void GetSOValues()
-    {
-        maxHealth = staticDefenceSO.maxHealth;
-    }
+
 }

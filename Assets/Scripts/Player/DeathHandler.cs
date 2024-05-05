@@ -9,13 +9,24 @@ public class DeathHandler : EnemyTarget
     CityManager cityManager;
     public Action OnPlayerKilled;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        playerStats.OnRevive += Revive;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        playerStats.OnRevive -= Revive;
+    }
+
     override protected void Start()
     {
         base.Start();
-        
+
         uiManager = UIManager.instance;
         cityManager = FindObjectOfType<CityManager>();
-        playerStats.OnRevive += Revive;
     }
 
     public void Kill()
@@ -23,7 +34,7 @@ public class DeathHandler : EnemyTarget
         gameObject.SetActive(false);
         Time.timeScale = 0.5f; // sonra balancelicaz
 
-        // OnPlayerKilled?.Invoke();
+        OnTargetDestroyed?.Invoke();
         uiManager.HandleReviveUI();
     }
 

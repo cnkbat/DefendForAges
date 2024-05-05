@@ -17,9 +17,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private EnemySpawner assignedEnemySpawner;
     private Rigidbody rb;
 
-    [Header("Attacking")]
-    public float attackDur;
-
     [Header("States")]
     public bool isDead;
     public bool canMove;
@@ -35,8 +32,15 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public Action OnEnemySpawned;
 
 
-    public void OnEnable()
+    #region IPoolableObject Functions
+    public void OnObjectPooled()
     {
+        canMove = true;
+        isDead = false;
+
+        playerStats = PlayerStats.instance;
+        gameManager = GameManager.instance;
+
         rb = this.GetComponent<Rigidbody>();
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
@@ -44,37 +48,24 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
 
-        // this will never activate
-        //if (assignedEnemySpawner != null)
-        //{
-        //    OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
-        //}
-        // instead
         cityManager = FindObjectOfType<CityManager>();
         cityManager.OnWaveCalled += ConnectToSpawner;
-    }
-
-    public void OnDisable()
-    {
-        if (assignedEnemySpawner != null)
-        {
-            OnEnemyKilled -= assignedEnemySpawner.OnEnemyKilled;
-        }
-    }
-
-    public void OnObjectPooled()
-    {
-
-        attackDur = 1;
-        canMove = true;
-        isDead = false;
-
-        playerStats = PlayerStats.instance;
-        gameManager = GameManager.instance;
 
         OnEnemySpawned?.Invoke();
     }
 
+    public void ResetObjectData()
+    {
+        OnEnemySpawned -= enemyTargeter.EnemySpawned;
+        OnEnemySpawned -= enemyStats.EnemySpawned;
+
+        cityManager = FindObjectOfType<CityManager>();
+        cityManager.OnWaveCalled -= ConnectToSpawner;
+        OnEnemyKilled -= assignedEnemySpawner.OnEnemyKilled;
+
+    }
+
+    #endregion
 
     public void Update()
     {
@@ -107,20 +98,21 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         if (isDead) yield return null;
 
-        /* if (!isBoss)
-         {
-             animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
-             animator.SetBool("isMoving", true);
-             animator.SetBool("hitTaken", false);
-         } */
-
         canMove = true;
     }
 
     public void Move()
     {
-        Vector3 targetPosition = enemyTargeter.GetTarget().position;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyStats.currentMoveSpeed * Time.deltaTime);
+        Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
+        worldAimTarget.y = transform.position.y;
+        Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+
+        transform.forward = aimDirection;
+
+        //Vector3 targetPosition = enemyTargeter.GetTarget().position;
+        // transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyStats.currentMoveSpeed * Time.deltaTime);
+
+        transform.position += transform.forward * enemyStats.currentMoveSpeed * Time.deltaTime;
     }
 
     #endregion
@@ -128,12 +120,13 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     #region Combat Related
     public void Attack(ITargetable target)
     {
+
         canMove = false;
         // play animation
         // deal damage
 
         target.TakeDamage(enemyStats.GetDamage());
-        StartCoroutine(EnableMovement(attackDur));
+        StartCoroutine(EnableMovement(enemyStats.attackDur));
 
     }
 
@@ -159,6 +152,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         OnEnemyKilled?.Invoke();
         gameManager.allSpawnedEnemies.Remove(gameObject);
+
+        gameObject.SetActive(false);
 
         // test için commentlendi, geri getirilicek
         // enemyStats.getHealthBar().gameObject.SetActive(false);

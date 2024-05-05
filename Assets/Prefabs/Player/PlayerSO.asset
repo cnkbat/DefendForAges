@@ -13,35 +13,41 @@ MonoBehaviour:
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
   attackSpeedValues:
+  - 0.5
   - 2
   - 2
   - 2
-  - 2
+  attackSpeedCosts: 
   damageValues:
+  - 10
   - 3
   - 3
-  - 3
+  damageCosts: 
   movementSpeedValues:
   - 0
   - 0
   - 0
   - 0
   - 0
+  movementSpeedCosts: 
   lifeStealValues:
   - 0
   - 0
   - 0
   - 0
   - 0
+  lifeStealCosts: 
   powerupDurValues:
   - 0
   - 0
   - 0
   - 0
   - 0
+  powerupDurCosts: 
   maxHealthValues:
   - 0
   - 0
   - 0
   - 0
   - 0
+  maxHealthCosts: 

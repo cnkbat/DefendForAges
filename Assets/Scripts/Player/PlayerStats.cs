@@ -48,6 +48,13 @@ public class PlayerStats : Singleton<PlayerStats>
         saveManager = SaveManager.instance;
         deathHandler = GetComponent<DeathHandler>();
 
+        LoadPlayerData();
+        FillCurrentHealth();
+
+    }
+
+    private void OnEnable()
+    {
         if (saveManager != null)
         {
             saveManager.OnSaved += SavePlayerData;
@@ -56,10 +63,18 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy += EarnBonusOnKill;
         OnRevive += FillCurrentHealth;
+    }
 
-        LoadPlayerData();
-        FillCurrentHealth();
+    private void OnDisable()
+    {
+        if (saveManager != null)
+        {
+            saveManager.OnSaved -= SavePlayerData;
+            OnDataChanged -= saveManager.DataChanged;
+        }
 
+        OnKillEnemy -= EarnBonusOnKill;
+        OnRevive -= FillCurrentHealth;
     }
 
     #region  MONEY

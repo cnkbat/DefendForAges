@@ -12,32 +12,23 @@ public class EnemyStats : MonoBehaviour
     GameManager gameManager;
     EnemyBehaviour enemyBehaviour;
 
-
     public EnemySO EnemySO;
-    public bool canMove = true;
     public float currentHealth;
     [HideInInspector] public float currentMoveSpeed;
     [HideInInspector] float maxHealth;
-    [HideInInspector] public bool isBoss;
 
+
+    [Header("Attacking")]
+    public float attackSpeed;
+    public float attackDur;
+    public float knockbackDur;
     public float currentDamage;
+
+    [Header("Earnings")]
     private int moneyValue;
     private int expValue;
     private float powerUpAddOnValue;
-    public bool isLockedToPlayer;
-
-    [Header("Hit FX")]
-
-    [SerializeField] ParticleSystem hitFX;
-
-    [Header("Animation")]
-    [SerializeField] float deathAnimDur;
-    public bool isDead;
-    Animator animator;
-    float knockbackDur;
-
-    [Header("Floating Text")]
-    [SerializeField] Transform floatingTextTransform;
+   
 
     [Header("Health Bar")]
     [SerializeField] Slider healthBar;
@@ -69,7 +60,8 @@ public class EnemyStats : MonoBehaviour
 
 
 
-   
+
+    #region Health Related
 
     private void RefillHealth()
     {
@@ -91,8 +83,6 @@ public class EnemyStats : MonoBehaviour
 
             healthBar.value = currentHealth / maxHealth;
 
-            if (isBoss) return;
-
             for (int i = 0; i < healthBarImages.Count; i++)
             {
                 healthBarImages[i].DOFade(0, 1);
@@ -102,7 +92,7 @@ public class EnemyStats : MonoBehaviour
 
     }
 
-
+    #endregion
 
     #region Getters & Setters
     public float GetDamage()

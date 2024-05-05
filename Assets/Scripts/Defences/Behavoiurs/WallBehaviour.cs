@@ -7,44 +7,52 @@ public class WallBehaviour : DefencesBehaviourBase
     WallStats wallStats;
     CityManager cityManager;
     EnemySpawner enemySpawner;
-    override protected void Start()
+
+    protected override void OnEnable()
     {
+        base.OnEnable();
         cityManager = FindObjectOfType<CityManager>();
         cityManager.OnWaveCalled += ConnectToSpawner;
+    }
 
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        cityManager.OnWaveCalled -= ConnectToSpawner;
+    }
+
+    override protected void Start()
+    {
         base.Start();
 
         defencesStatsBase = GetComponent<DefencesStatsBase>();
-        ResetHealthValue();
-
         wallStats = GetComponent<WallStats>();
     }
+
     public override void TakeDamage(float dmg)
     {
-        WallStats wallStats = GetComponent<WallStats>();
         currentHealth -= dmg;
-        if (currentHealth < 12)
+
+        if (currentHealth < wallStats.healthParts[3])
         {
-            if (currentHealth < 10)
+            if (currentHealth < wallStats.healthParts[2])
             {
-                if (currentHealth < 8)
+                if (currentHealth < wallStats.healthParts[1])
                 {
-                    if (currentHealth < 6)
+                    if (currentHealth < wallStats.healthParts[0])
                     {
                         if (currentHealth <= 0)
                         {
                             DestroyDefence();
                         }
-                        wallStats.wallParts[3].SetActive(false);
+                        wallStats.wallParts[0].SetActive(false);
                     }
-                    wallStats.wallParts[2].SetActive(false);
+                    wallStats.wallParts[1].SetActive(false);
                 }
-                wallStats.wallParts[1].SetActive(false);
+                wallStats.wallParts[2].SetActive(false);
             }
-            wallStats.wallParts[0].SetActive(false);
+            wallStats.wallParts[3].SetActive(false);
         }
-
-
     }
 
     public void ConnectToSpawner()
@@ -52,6 +60,8 @@ public class WallBehaviour : DefencesBehaviourBase
         enemySpawner = FindObjectOfType<EnemySpawner>();
         enemySpawner.OnWaveCompleted += EnableRepair;
     }
+
+    #region Repair Related
     public void EnableRepair()
     {
         gameObject.SetActive(true);
@@ -60,17 +70,17 @@ public class WallBehaviour : DefencesBehaviourBase
     public void RepairDefences()
     {
         ResetHealthValue();
-        foreach(var wallPart in wallStats.wallParts)
+        foreach (var wallPart in wallStats.wallParts)
         {
             wallPart.SetActive(true);
         }
 
     }
+    #endregion 
+
     protected override void DestroyDefence()
     {
-        isDestroyed = true;
         gameObject.SetActive(false);
-        cityManager.UpdateTargetList();
-        cityManager.OnTargetListUpdated?.Invoke();
+        base.DestroyDefence();
     }
 }

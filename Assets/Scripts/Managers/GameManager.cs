@@ -41,7 +41,7 @@ public class GameManager : Singleton<GameManager>
 
         OnCheckPointReached += playerStats.CheckPointReached;
 
-    
+        
     }
 
     #region  Win & Lose Conditions
@@ -98,11 +98,16 @@ public class GameManager : Singleton<GameManager>
         allCities[playerStats.GetCurrentCityIndex()].WaveCalled();
         canSpawnEnemy = true;
     }
+    public void OnWaveFinished()
+    {
+        // reset enemies
+    }
 
     #region  Getters & Setters
     public void SetActiveWave(EnemySpawner newActiveWave)
     {
         activeWave = newActiveWave;
+        activeWave.OnWaveCompleted += OnWaveFinished;
     }
 
 

@@ -7,6 +7,8 @@ public class UIManager : Singleton<UIManager>
 {
     PlayerStats playerStats;
     GameManager gameManager;
+    EnemySpawner enemySpawner;
+    CityManager cityManager;
 
     [Header("Wave Control")]
     [SerializeField] Button waveCallButton;
@@ -18,10 +20,13 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
+        cityManager = FindObjectOfType<CityManager>();
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
+
         reviveButton.onClick.AddListener(OnReviveButtonPressed);
         waveCallButton.onClick.AddListener(OnWaveCallClicked);
+        cityManager.OnWaveCalled += ConnectToSpawner;
     }
 
     #region Revive
@@ -49,5 +54,14 @@ public class UIManager : Singleton<UIManager>
     {
         gameManager.OnWaveCalled();
         waveCallButton.gameObject.SetActive(false);
+    }
+    private void WaveCompleted()
+    {
+        waveCallButton.gameObject.SetActive(true);
+    }
+    private void ConnectToSpawner()
+    {
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner.OnWaveCompleted += WaveCompleted;
     }
 }

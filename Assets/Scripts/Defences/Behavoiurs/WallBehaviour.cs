@@ -55,6 +55,16 @@ public class WallBehaviour : DefencesBehaviourBase
     public void EnableRepair()
     {
         gameObject.SetActive(true);
+        RepairDefences();
+    }
+    public void RepairDefences()
+    {
+        ResetHealthValue();
+        foreach(var wallPart in wallStats.wallParts)
+        {
+            wallPart.SetActive(true);
+        }
+
     }
     protected override void DestroyDefence()
     {

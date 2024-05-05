@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.EditorTools;
 
 public class EnemyStats : MonoBehaviour
 {
@@ -12,13 +13,12 @@ public class EnemyStats : MonoBehaviour
     GameManager gameManager;
     EnemyBehaviour enemyBehaviour;
 
-    public EnemySO EnemySO;
-    public float currentHealth;
+    public EnemySO enemySO;
+
     [HideInInspector] public float currentMoveSpeed;
-    [HideInInspector] float maxHealth;
+    [HideInInspector] public float maxHealth;
 
-
-    [Header("Attacking")]
+    [Tooltip("Attacking")]
     public float attackSpeed;
     public float attackDur;
     public float knockbackDur;
@@ -28,7 +28,7 @@ public class EnemyStats : MonoBehaviour
     private int moneyValue;
     private int expValue;
     private float powerUpAddOnValue;
-   
+
 
     [Header("Health Bar")]
     [SerializeField] Slider healthBar;
@@ -40,57 +40,44 @@ public class EnemyStats : MonoBehaviour
         enemyBehaviour = this.GetComponent<EnemyBehaviour>();
 
         SetEnemySOValues();
-        // UpdateHealthBar();
-        //  ResetEnemy();
-
     }
 
     private void SetEnemySOValues()
     {
-        powerUpAddOnValue = EnemySO.GetPowerUpAddOnValue();
-        knockbackDur = EnemySO.GetKnockbackDur();
-        currentMoveSpeed = EnemySO.GetMoveSpeed();
-        currentDamage = EnemySO.GetDamage();
-        moneyValue = EnemySO.GetMoneyValue();
-        expValue = EnemySO.GetExpValue();
-        maxHealth = EnemySO.GetMaxHealth();
-
-        RefillHealth();
+        powerUpAddOnValue = enemySO.GetPowerUpAddOnValue();
+        knockbackDur = enemySO.GetKnockbackDur();
+        currentMoveSpeed = enemySO.GetMoveSpeed();
+        currentDamage = enemySO.GetDamage();
+        moneyValue = enemySO.GetMoneyValue();
+        expValue = enemySO.GetExpValue();
+        maxHealth = enemySO.GetMaxHealth();
     }
-
-
-
 
     #region Health Related
 
-    private void RefillHealth()
-    {
-        currentHealth = maxHealth;
-    }
+    /*  private void UpdateHealthBar()
+      {
 
-    private void UpdateHealthBar()
-    {
+          if (!healthBar) return;
+          healthBar.gameObject.SetActive(true);
 
-        if (!healthBar) return;
-        healthBar.gameObject.SetActive(true);
+          if (currentHealth < maxHealth)
+          {
+              for (int i = 0; i < healthBarImages.Count; i++)
+              {
+                  healthBarImages[i].DOFade(255f, 0);
+              }
 
-        if (currentHealth < maxHealth)
-        {
-            for (int i = 0; i < healthBarImages.Count; i++)
-            {
-                healthBarImages[i].DOFade(255f, 0);
-            }
+              healthBar.value = currentHealth / maxHealth;
 
-            healthBar.value = currentHealth / maxHealth;
-
-            for (int i = 0; i < healthBarImages.Count; i++)
-            {
-                healthBarImages[i].DOFade(0, 1);
-            }
-        }
+              for (int i = 0; i < healthBarImages.Count; i++)
+              {
+                  healthBarImages[i].DOFade(0, 1);
+              }
+          }
 
 
-    }
+      } */
 
     #endregion
 
@@ -118,6 +105,11 @@ public class EnemyStats : MonoBehaviour
     public float GetPowerUpValue()
     {
         return powerUpAddOnValue;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
     }
     #endregion
 

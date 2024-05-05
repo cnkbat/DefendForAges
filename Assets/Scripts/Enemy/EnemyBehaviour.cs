@@ -35,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     #region IPoolableObject Functions
     public void OnObjectPooled()
     {
+
         canMove = true;
         isDead = false;
 
@@ -48,14 +49,20 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
 
+
         cityManager = FindObjectOfType<CityManager>();
-        cityManager.OnWaveCalled += ConnectToSpawner;
+        ConnectToSpawner();
 
         OnEnemySpawned?.Invoke();
+
+        RefillHealth(enemyStats.GetMaxHealth());
+
+        Debug.Log(currentHealth);
     }
 
     public void ResetObjectData()
     {
+
         OnEnemySpawned -= enemyTargeter.EnemySpawned;
         OnEnemySpawned -= enemyStats.EnemySpawned;
 
@@ -88,6 +95,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         assignedEnemySpawner = FindObjectOfType<EnemySpawner>();
         OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
+        Debug.Log("connected");
     }
 
     #region  Movement
@@ -152,8 +160,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         OnEnemyKilled?.Invoke();
         gameManager.allSpawnedEnemies.Remove(gameObject);
+        Debug.Log("killed");
 
         gameObject.SetActive(false);
+
+        ResetObjectData();
 
         // test için commentlendi, geri getirilicek
         // enemyStats.getHealthBar().gameObject.SetActive(false);
@@ -162,9 +173,14 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         //spawnedFloatingText.GetComponent<FloatingTextAnimation>().SetText("$" + moneyValue.ToString());
 
         //gameObject.layer = LayerMask.NameToLayer("DeadZombie");
-
-
     }
+
+
+    public void RefillHealth(float newCurrentHealth)
+    {
+        currentHealth = newCurrentHealth;
+    }
+
     #endregion
 
     IEnumerator DestroyObject()

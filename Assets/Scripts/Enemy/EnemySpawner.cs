@@ -207,6 +207,7 @@ public class EnemySpawner : MonoBehaviour
 
         killedEnemies++;
 
+        Debug.Log("enemy killed");
         if (killedEnemies >= totalNumOfEnemiesOfSpawner)
         {
             OnWaveCompleted?.Invoke();

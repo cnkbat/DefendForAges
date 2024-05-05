@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     CityManager cityManager;
     private EnemySpawner assignedEnemySpawner;
+    private Rigidbody rb;
 
     [Header("Attacking")]
     public float attackDur;
@@ -36,6 +37,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void OnEnable()
     {
+        rb = this.GetComponent<Rigidbody>();
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
 
@@ -76,6 +78,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void Update()
     {
+        rb.velocity = Vector3.zero;
         if (isDead) return;
         if (!canMove) return;
         if (enemyTargeter.GetTarget() == null) return;

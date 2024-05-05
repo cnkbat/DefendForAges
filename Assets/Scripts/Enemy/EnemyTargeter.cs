@@ -16,6 +16,7 @@ public class EnemyTargeter : MonoBehaviour
     
     public void EnemySpawned()
     {
+        
         UpdateTargetList();
         targetTimer = 2f;
         closestDistance = 999999;
@@ -23,6 +24,7 @@ public class EnemyTargeter : MonoBehaviour
 
     private void OnEnable()
     {
+        cityManager = FindObjectOfType<CityManager>();
         if (cityManager != null)
         {
             cityManager.OnTargetListUpdated += UpdateTargetList;

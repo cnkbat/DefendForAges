@@ -60,6 +60,7 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         isDestroyed = true;
         gameObject.SetActive(false);
+        cityManager.UpdateTargetList();
         cityManager.OnTargetListUpdated?.Invoke();
     }
 }

@@ -100,7 +100,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
         if (objectToSpawn.TryGetComponent(out EnemyTargeter enemyTargeter))
         {
-            enemyTargeter.SetCityManager(gameManager.allCities[playerStats.GetCurrentCityIndex()]);
+            enemyTargeter.SetCityManager(gameManager.allCities[playerStats.GetCityIndex()]);
         }
 
         if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))

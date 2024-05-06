@@ -57,7 +57,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         RefillHealth(enemyStats.GetMaxHealth());
 
-        Debug.Log(currentHealth);
+        
     }
 
     public void ResetObjectData()
@@ -95,7 +95,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         assignedEnemySpawner = FindObjectOfType<EnemySpawner>();
         OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
-        Debug.Log("connected");
+        
     }
 
     #region  Movement

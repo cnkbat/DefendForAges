@@ -23,8 +23,6 @@ public class PlayerStats : Singleton<PlayerStats>
     public int cityIndex;
 
     [Header("Ingame Values")]
-    private int currentCityIndex;
-    private int currentWaveIndex;
     [SerializeField] private int currentXP;
     [SerializeField] private float damage;
     [SerializeField] private float attackSpeed;
@@ -39,22 +37,19 @@ public class PlayerStats : Singleton<PlayerStats>
     [Header("Events")]
     public Action<int, int, float> OnKillEnemy;
     public Action OnDataChanged;
-    public Action OnWaveWon;
     public Action OnMovementChanged;
     public Action OnRevive;
+    public Action OnWaveWon;
 
-    private void Start()
+    protected override void Awake()
     {
-        saveManager = SaveManager.instance;
-        deathHandler = GetComponent<DeathHandler>();
-
         LoadPlayerData();
-        FillCurrentHealth();
-
     }
 
     private void OnEnable()
     {
+        saveManager = SaveManager.instance;
+
         if (saveManager != null)
         {
             saveManager.OnSaved += SavePlayerData;
@@ -67,6 +62,8 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void OnDisable()
     {
+        saveManager = SaveManager.instance;
+
         if (saveManager != null)
         {
             saveManager.OnSaved -= SavePlayerData;
@@ -75,6 +72,14 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy -= EarnBonusOnKill;
         OnRevive -= FillCurrentHealth;
+    }
+
+    private void Start()
+    {
+        saveManager = SaveManager.instance;
+        deathHandler = GetComponent<DeathHandler>();
+
+        FillCurrentHealth();
     }
 
     #region  MONEY
@@ -102,6 +107,10 @@ public class PlayerStats : Singleton<PlayerStats>
 
     #region Wave System
 
+    public void WaveWon()
+    {
+        IncrementWaveIndex();
+    }
     public void EarnBonusOnKill(int moneyValue, int xpValue, float powerUpAddOnValue)
     {
         IncrementMoney(moneyValue);
@@ -109,13 +118,12 @@ public class PlayerStats : Singleton<PlayerStats>
         // power up eklenmedi daha
     }
 
-    public void IncrementWaveIndex()
+    private void IncrementWaveIndex()
     {
-        currentWaveIndex++;
-
-        OnDataChanged?.Invoke();
-
+        waveIndex++;
         OnWaveWon?.Invoke();
+        OnDataChanged?.Invoke();
+        Debug.Log(waveIndex);
     }
 
     #endregion
@@ -132,7 +140,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public void CheckPointReached()
     {
 
-        currentCityIndex++;
+        cityIndex++;
         // coroutinele bağlanabilir
         // diğer şehre hareketi
         // kazanılan bonus
@@ -146,6 +154,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private void SavePlayerData()
     {
         SaveSystem.SavePlayerData(this);
+        Debug.Log("player data saved");
     }
 
     private void LoadPlayerData()
@@ -179,8 +188,6 @@ public class PlayerStats : Singleton<PlayerStats>
         lifeSteal = rPGSystemSO.lifeStealValues[lifeStealIndex];
         maxHealth = rPGSystemSO.maxHealthValues[maxHealthIndex];
         currentXP = this.experiencePoint;
-        currentCityIndex = this.cityIndex;
-        currentWaveIndex = this.waveIndex;
     }
 
 
@@ -205,14 +212,14 @@ public class PlayerStats : Singleton<PlayerStats>
         return movementSpeed;
     }
 
-    public int GetCurrentWaveIndex()
+    public int GetWaveIndex()
     {
-        return currentWaveIndex;
+        return waveIndex;
     }
 
-    public int GetCurrentCityIndex()
+    public int GetCityIndex()
     {
-        return currentCityIndex;
+        return cityIndex;
     }
 
     #endregion

@@ -25,7 +25,14 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnable()
     {
+
+        for (int i = 0; i < allCities.Count; i++)
+        {
+            towers.Add(allCities[i].GetTower());
+        }
+
         playerStats = PlayerStats.instance;
+
         for (int i = 0; i < towers.Count; i++)
         {
             towers[i].OnTowerDestroyed += LevelLost;
@@ -33,10 +40,11 @@ public class GameManager : Singleton<GameManager>
 
         for (int i = 0; i < allCities.Count; i++)
         {
+            playerStats.OnWaveWon += CheckIfCheckPointReached;
+
             allWavesCount += allCities[i].waveList.Count;
         }
 
-        playerStats.OnWaveWon += CheckIfCheckPointReached;
 
         OnCheckPointReached += playerStats.CheckPointReached;
     }
@@ -48,8 +56,12 @@ public class GameManager : Singleton<GameManager>
             towers[i].OnTowerDestroyed -= LevelLost;
         }
 
+        towers.Clear();
+
         for (int i = 0; i < allCities.Count; i++)
         {
+            playerStats.OnWaveWon -= CheckIfCheckPointReached;
+
             allWavesCount -= allCities[i].waveList.Count;
         }
 
@@ -78,7 +90,7 @@ public class GameManager : Singleton<GameManager>
 
     public void CheckIfEraFinished()
     {
-        if (playerStats.GetCurrentWaveIndex() >= allWavesCount)
+        if (playerStats.GetWaveIndex() >= allWavesCount)
         {
             isEraCompleted = true;
             // animasyon oynaması
@@ -97,7 +109,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (isEraCompleted) return;
 
-        if (playerStats.GetCurrentWaveIndex() >= allCities[playerStats.GetCurrentCityIndex()].waveList.Count)
+        if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].waveList.Count)
         {
             OnCheckPointReached?.Invoke();
             // şehirdeki animasyonlar
@@ -109,7 +121,7 @@ public class GameManager : Singleton<GameManager>
 
     public void OnWaveCalled()
     {
-        allCities[playerStats.GetCurrentCityIndex()].WaveCalled();
+        allCities[playerStats.GetCityIndex()].WaveCalled();
         canSpawnEnemy = true;
     }
     public void OnWaveFinished()
@@ -122,7 +134,7 @@ public class GameManager : Singleton<GameManager>
                 poolableObject.ResetObjectData();
             }
         }
-        
+
         allSpawnedEnemies.Clear();
     }
 
@@ -132,7 +144,6 @@ public class GameManager : Singleton<GameManager>
         activeWave = newActiveWave;
         activeWave.OnWaveCompleted += OnWaveFinished;
     }
-
 
     #endregion
 

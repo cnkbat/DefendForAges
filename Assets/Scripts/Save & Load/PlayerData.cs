@@ -25,7 +25,17 @@ public class PlayerData
     public PlayerData(PlayerStats playerStats)
     {
 
-        money = playerStats.money;
+        this.money = playerStats.money;
+        this.experiencePoint = playerStats.experiencePoint;
+        this.cityIndex = playerStats.cityIndex;
+        this.waveIndex = playerStats.waveIndex;
+        this.damageIndex = playerStats.damageIndex;
+        this.attackSpeedIndex = playerStats.attackSpeedIndex;
+        this.movementSpeedIndex = playerStats.movementSpeedIndex;
+        this.powerupDurIndex = playerStats.powerupDurIndex;
+        this.lifeStealIndex = playerStats.lifeStealIndex;
+        this.maxHealthIndex = playerStats.maxHealthIndex;
+        this.isDualWeaponActiveSavedValue = playerStats.isDualWeaponActiveSavedValue;
 
         // isHapticActive = playerStats.isHapticActive;
         // isSoundFXActive = playerStats.isSoundFXActive;

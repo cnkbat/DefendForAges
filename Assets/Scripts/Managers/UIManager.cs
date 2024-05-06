@@ -30,6 +30,7 @@ public class UIManager : Singleton<UIManager>
     [Header("Upgrade Buttons")]
     [SerializeField] private GameObject upgradePanel;
     [SerializeField] private Button upgradeHudButton;
+    [SerializeField] private Button exitUpgradeHudButton;
     [SerializeField] private Button upgradeAttackSpeedButton;
     [SerializeField] private Button upgradeDamageButton;
     [SerializeField] private Button upgradeLifeStealButton;
@@ -104,6 +105,7 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnUpgradeCompleted += UpdateUpgradeUI;
 
         upgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
+        exitUpgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
         upgradeAttackSpeedButton.onClick.AddListener(playerStats.AttemptUpgradeAttackSpeed);
         upgradeDamageButton.onClick.AddListener(playerStats.AttemptUpgradeDamage);
         upgradeLifeStealButton.onClick.AddListener(playerStats.AttemptUpgradeLifeSteal);
@@ -131,6 +133,7 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnUpgradeCompleted -= UpdateUpgradeUI;
 
         upgradeHudButton.onClick.RemoveAllListeners();
+        exitUpgradeHudButton.onClick.RemoveAllListeners();
         upgradeAttackSpeedButton.onClick.RemoveAllListeners();
         upgradeDamageButton.onClick.RemoveAllListeners();
         upgradeLifeStealButton.onClick.RemoveAllListeners();

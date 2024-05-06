@@ -30,10 +30,20 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float lifeSteal;
     [SerializeField] private float maxHealth;
     DeathHandler deathHandler;
-    [Header("Stat Change Events")]
-    public Action OnUpgradeCompleted;
+
+    [Header("-------Stat Change Events ------")]
     public Action<int, int, float> OnKillEnemy;
+
+    [Header("Upgrade Events")]
     public Action OnMovementChanged;
+    public Action OnAttackSpeedUpgraded;
+    public Action OnDamageUpgraded;
+    public Action OnLifeStealUpgraded;
+    public Action OnMovementSpeedUpgraded;
+    public Action OnPowerupDurUpgraded;
+    public Action OnMaxHealthUpgraded;
+    public Action OnDualWeaponUpgraded;
+
 
     [Header("Save Load Events")]
     public Action OnDataChanged;
@@ -96,14 +106,14 @@ public class PlayerStats : Singleton<PlayerStats>
 
     #region Upgrading
 
-    private void AttemptUpgradeStat(int indexToUpgrade, List<int> cost, CurrencyType currencyType)
+    private void AttemptUpgradeStat(int indexToUpgrade, List<int> cost, CurrencyType currencyType, RPGUpgradesType upgradeType = RPGUpgradesType.empty)
     {
 
         if (currencyType == CurrencyType.money)
         {
             if (cost[indexToUpgrade] >= money)
             {
-                UpgradeSuccesful(indexToUpgrade);
+                UpgradeSuccesful(indexToUpgrade, upgradeType);
                 DecrementMoney(cost[indexToUpgrade]);
             }
             else
@@ -115,7 +125,7 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             if (cost[indexToUpgrade] >= experiencePoint)
             {
-                UpgradeSuccesful(indexToUpgrade);
+                UpgradeSuccesful(indexToUpgrade, upgradeType);
                 DecrementXP(cost[indexToUpgrade]);
             }
             else
@@ -126,11 +136,41 @@ public class PlayerStats : Singleton<PlayerStats>
 
     }
 
-    private void UpgradeSuccesful(int indexToUpgrade)
+    private void UpgradeSuccesful(int indexToUpgrade, RPGUpgradesType upgradesType)
     {
         indexToUpgrade++;
         UpdateStats();
-        OnUpgradeCompleted?.Invoke();
+
+        if (upgradesType == RPGUpgradesType.empty) return;
+
+        if (upgradesType == RPGUpgradesType.attackSpeed)
+        {
+            OnAttackSpeedUpgraded?.Invoke();
+        }
+        else if (upgradesType == RPGUpgradesType.damage)
+        {
+            OnDamageUpgraded?.Invoke();
+        }
+        else if (upgradesType == RPGUpgradesType.lifeSteal)
+        {
+            OnLifeStealUpgraded?.Invoke();
+        }
+        else if (upgradesType == RPGUpgradesType.movementSpeed)
+        {
+            OnMovementChanged?.Invoke();
+        }
+        else if (upgradesType == RPGUpgradesType.powerupDur)
+        {
+            OnPowerupDurUpgraded?.Invoke();
+        }
+        else if (upgradesType == RPGUpgradesType.maxHealth)
+        {
+            OnMaxHealthUpgraded?.Invoke();
+        }
+        else if (upgradesType == RPGUpgradesType.dualWeapon)
+        {
+            OnDualWeaponUpgraded?.Invoke();
+        }
     }
 
     public void AttemptUpgradeAttackSpeed()
@@ -180,7 +220,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         isDualWeaponActive = true;
 
-        OnUpgradeCompleted?.Invoke();
+        OnDualWeaponUpgraded?.Invoke();
     }
 
     private void LookForDualWeapon()

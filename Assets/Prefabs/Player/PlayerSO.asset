@@ -17,38 +17,38 @@ MonoBehaviour:
   - 2
   - 2
   - 2
-  attackSpeedCosts: 
+  attackSpeedCosts: 0000000000000000000000000000000000000000
   damageValues:
   - 10
   - 3
   - 3
-  damageCosts: 
+  damageCosts: 0000000000000000000000000000000000000000
   movementSpeedValues:
   - 10
   - 0
   - 0
   - 0
   - 0
-  movementSpeedCosts: 
+  movementSpeedCosts: 0000000000000000000000000000000000000000
   lifeStealValues:
   - 0
   - 0
   - 0
   - 0
   - 0
-  lifeStealCosts: 
+  lifeStealCosts: 0000000000000000000000000000000000000000
   powerupDurValues:
   - 0
   - 0
   - 0
   - 0
   - 0
-  powerupDurCosts: 
+  powerupDurCosts: 0000000000000000000000000000000000000000
   maxHealthValues:
   - 0
   - 0
   - 0
   - 0
   - 0
-  maxHealthCosts: 
-  dualWeaponCost: 0
+  maxHealthCosts: 0000000000000000000000000000000000000000
+  dualWeaponCost: 100

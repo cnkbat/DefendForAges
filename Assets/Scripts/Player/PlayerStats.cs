@@ -7,7 +7,7 @@ public class PlayerStats : Singleton<PlayerStats>
 {
     SaveManager saveManager;
 
-    [SerializeField] private RPGSystemSO rPGSystemSO;
+    [SerializeField] private RPGSystemSO rpgSystemSO;
 
     [Header("Saved Indexes")]
     public int money;
@@ -18,28 +18,34 @@ public class PlayerStats : Singleton<PlayerStats>
     public int powerupDurIndex;
     public int lifeStealIndex;
     public int maxHealthIndex;
-    public bool isDualWeaponActiveSavedValue;
+    public bool isDualWeaponActive;
     public int waveIndex;
     public int cityIndex;
 
     [Header("Ingame Values")]
-    [SerializeField] private int currentXP;
     [SerializeField] private float damage;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float powerupDur;
     [SerializeField] private float lifeSteal;
-    [SerializeField] private bool isDualWeaponActive;
     [SerializeField] private float maxHealth;
-    private float currentHealth;
     DeathHandler deathHandler;
-
-    [Header("Events")]
+    [Header("Stat Change Events")]
+    public Action OnUpgradeCompleted;
     public Action<int, int, float> OnKillEnemy;
-    public Action OnDataChanged;
     public Action OnMovementChanged;
+
+    [Header("Save Load Events")]
+    public Action OnDataChanged;
+
+    [Header("Action Events")]
     public Action OnRevive;
     public Action OnWaveWon;
+
+    [Header("UI Events")]
+    public Action OnXPChange;
+    public Action OnMoneyChange;
+
 
     protected override void Awake()
     {
@@ -85,28 +91,144 @@ public class PlayerStats : Singleton<PlayerStats>
         deathHandler = GetComponent<DeathHandler>();
 
         FillCurrentHealth();
+        LookForDualWeapon();
     }
 
+    #region Upgrading
+
+    private void AttemptUpgradeStat(int indexToUpgrade, List<int> cost, CurrencyType currencyType)
+    {
+
+        if (currencyType == CurrencyType.money)
+        {
+            if (cost[indexToUpgrade] >= money)
+            {
+                UpgradeSuccesful(indexToUpgrade);
+                DecrementMoney(cost[indexToUpgrade]);
+            }
+            else
+            {
+                // pop up offer
+            }
+        }
+        else if (currencyType == CurrencyType.experiencePoint)
+        {
+            if (cost[indexToUpgrade] >= experiencePoint)
+            {
+                UpgradeSuccesful(indexToUpgrade);
+                DecrementXP(cost[indexToUpgrade]);
+            }
+            else
+            {
+                // pop up offer
+            }
+        }
+
+    }
+
+    private void UpgradeSuccesful(int indexToUpgrade)
+    {
+        indexToUpgrade++;
+        UpdateStats();
+        OnUpgradeCompleted?.Invoke();
+    }
+
+    public void AttemptUpgradeAttackSpeed()
+    {
+        AttemptUpgradeStat(attackSpeedIndex, rpgSystemSO.GetAttackSpeedCosts(), CurrencyType.experiencePoint);
+    }
+    public void AttemptUpgradeDamage()
+    {
+        AttemptUpgradeStat(damageIndex, rpgSystemSO.GetDamageCosts(), CurrencyType.experiencePoint);
+    }
+    public void AttemptUpgradeMovementSpeed()
+    {
+        AttemptUpgradeStat(movementSpeedIndex, rpgSystemSO.GetMovementSpeedCosts(), CurrencyType.experiencePoint);
+    }
+    public void AttemptUpgradeLifeSteal()
+    {
+        AttemptUpgradeStat(lifeStealIndex, rpgSystemSO.GetLifeStealCosts(), CurrencyType.experiencePoint);
+    }
+    public void AttemptUpgradePowerupDuration()
+    {
+        AttemptUpgradeStat(powerupDurIndex, rpgSystemSO.GetPowerupDurCosts(), CurrencyType.experiencePoint);
+    }
+    public void AttemptUpgradeMaxHealth()
+    {
+        AttemptUpgradeStat(maxHealthIndex, rpgSystemSO.GetMaxHealthCosts(), CurrencyType.experiencePoint);
+    }
+
+    public void AttemptUpgradeDualWeapon()
+    {
+        if (isDualWeaponActive) return;
+
+        if (rpgSystemSO.GetDualWeaponCost() >= experiencePoint)
+        {
+            ActiveDualWeapon();
+            DecrementXP(rpgSystemSO.GetDualWeaponCost());
+        }
+        else
+        {
+            // pop up offer
+        }
+    }
+
+    #endregion
+
+    #region Dual Weapon
+    private void ActiveDualWeapon()
+    {
+        isDualWeaponActive = true;
+
+        OnUpgradeCompleted?.Invoke();
+    }
+
+    private void LookForDualWeapon()
+    {
+        if (isDualWeaponActive)
+        {
+            // ikinci silahın aktivasyonu
+            // animasyonun dual weapon yapısına geçmesi
+            Debug.Log("dual weapon active");
+        }
+    }
+    #endregion
+
     #region  MONEY
+
     public void IncrementMoney(int value)
     {
         money += value;
+        MoneyChange();
     }
 
     public void DecrementMoney(int value)
     {
         money -= value;
+        MoneyChange();
+    }
+
+    private void MoneyChange()
+    {
+        OnMoneyChange?.Invoke();
     }
     #endregion
 
     #region  XP
     public void IncrementExp(int value)
     {
-        currentXP += value;
+        experiencePoint += value;
+        XPChange();
     }
     public void DecrementXP(int value)
     {
-        currentXP -= value;
+        experiencePoint -= value;
+        XPChange();
+    }
+
+    private void XPChange()
+    {
+        OnXPChange?.Invoke();
     }
     #endregion
 
@@ -128,7 +250,6 @@ public class PlayerStats : Singleton<PlayerStats>
         waveIndex++;
         OnWaveWon?.Invoke();
         OnDataChanged?.Invoke();
-        Debug.Log(waveIndex);
     }
 
     #endregion
@@ -159,7 +280,6 @@ public class PlayerStats : Singleton<PlayerStats>
     private void SavePlayerData()
     {
         SaveSystem.SavePlayerData(this);
-        Debug.Log("player data saved");
     }
 
     private void LoadPlayerData()
@@ -178,7 +298,7 @@ public class PlayerStats : Singleton<PlayerStats>
             this.powerupDurIndex = playerData.powerupDurIndex;
             this.lifeStealIndex = playerData.lifeStealIndex;
             this.maxHealthIndex = playerData.maxHealthIndex;
-            this.isDualWeaponActiveSavedValue = playerData.isDualWeaponActiveSavedValue;
+            this.isDualWeaponActive = playerData.isDualWeaponActiveSavedValue;
         }
 
         UpdateStats();
@@ -200,20 +320,20 @@ public class PlayerStats : Singleton<PlayerStats>
             this.powerupDurIndex = 0;
             this.lifeStealIndex = 0;
             this.maxHealthIndex = 0;
-            this.isDualWeaponActiveSavedValue = false;
+            this.isDualWeaponActive = false;
         }
 
         SavePlayerData();
     }
+
     private void UpdateStats()
     {
-        damage = rPGSystemSO.damageValues[damageIndex];
-        attackSpeed = rPGSystemSO.attackSpeedValues[attackSpeedIndex];
-        movementSpeed = rPGSystemSO.movementSpeedValues[movementSpeedIndex];
-        powerupDur = rPGSystemSO.powerupDurValues[powerupDurIndex];
-        lifeSteal = rPGSystemSO.lifeStealValues[lifeStealIndex];
-        maxHealth = rPGSystemSO.maxHealthValues[maxHealthIndex];
-        currentXP = this.experiencePoint;
+        damage = rpgSystemSO.GetDamageValues()[damageIndex];
+        attackSpeed = rpgSystemSO.GetAttackSpeedValues()[attackSpeedIndex];
+        movementSpeed = rpgSystemSO.GetMovementSpeedValues()[movementSpeedIndex];
+        powerupDur = rpgSystemSO.GetPowerupDurValues()[powerupDurIndex];
+        lifeSteal = rpgSystemSO.GetLifeStealValues()[lifeStealIndex];
+        maxHealth = rpgSystemSO.GetMaxHealthValues()[maxHealthIndex];
     }
 
 
@@ -248,6 +368,11 @@ public class PlayerStats : Singleton<PlayerStats>
     public int GetCityIndex()
     {
         return cityIndex;
+    }
+
+    public RPGSystemSO GetPlayerSO()
+    {
+        return rpgSystemSO;
     }
 
     #endregion

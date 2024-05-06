@@ -35,7 +35,7 @@ public class PlayerData
         this.powerupDurIndex = playerStats.powerupDurIndex;
         this.lifeStealIndex = playerStats.lifeStealIndex;
         this.maxHealthIndex = playerStats.maxHealthIndex;
-        this.isDualWeaponActiveSavedValue = playerStats.isDualWeaponActiveSavedValue;
+        this.isDualWeaponActiveSavedValue = playerStats.isDualWeaponActive;
 
         // isHapticActive = playerStats.isHapticActive;
         // isSoundFXActive = playerStats.isSoundFXActive;

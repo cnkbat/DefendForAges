@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private PlayerStats playerStats;
     [SerializeField] private Joystick joystick;
-
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float speed = 5f;
 
@@ -17,9 +17,20 @@ public class PlayerMovement : MonoBehaviour
     private float vertical;
     private float targetAngle = 0;
 
+    private void OnEnable()
+    {
+        playerStats = GetComponent<PlayerStats>();
+        playerStats.OnMovementChanged += UpdateMovementSpeed;
+    }
+
+    private void OnDisable()
+    {
+        playerStats.OnMovementChanged -= UpdateMovementSpeed;
+    }
     private void Start()
     {
         joystick = FindObjectOfType<Joystick>();
+        UpdateMovementSpeed();
     }
 
     private void FixedUpdate()
@@ -49,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), rotationSpeed * Time.deltaTime);
         }
+    }
+
+
+    private void UpdateMovementSpeed()
+    {
+        speed = playerStats.GetMovementSpeed();
     }
 }
 

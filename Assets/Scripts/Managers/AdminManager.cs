@@ -21,7 +21,7 @@ public class AdminManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            OpenCloseAdminPanel();
+            EnableDisableAdminPanel();
         }
 
         if (!adminPanel.activeSelf) return;
@@ -33,7 +33,7 @@ public class AdminManager : MonoBehaviour
 
     }
 
-    private void OpenCloseAdminPanel()
+    private void EnableDisableAdminPanel()
     {
         adminPanel.SetActive(!adminPanel.activeSelf);
     }

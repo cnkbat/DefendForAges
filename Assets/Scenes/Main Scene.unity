@@ -442,6 +442,17 @@ Transform:
   m_Father: {fileID: 1005398139}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &285684186 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1587243441320056686, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+  m_PrefabInstance: {fileID: 310772934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &290525705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1428,7 @@ GameObject:
   - component: {fileID: 1005398137}
   - component: {fileID: 1005398136}
   m_Layer: 0
-  m_Name: TestWalls
+  m_Name: TestEnviroment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1522,7 +1533,7 @@ GameObject:
   - component: {fileID: 1165537892}
   - component: {fileID: 1165537891}
   m_Layer: 0
-  m_Name: '!Admin'
+  m_Name: '!* Admin *!'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1632,10 +1643,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bd56d7f59c4d9489e57b2b8c415285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSO: {fileID: 0}
+  moneyText: {fileID: 2042565498}
+  xpText: {fileID: 285684186}
+  waveIndexText: {fileID: 1897685005}
   waveCallButton: {fileID: 957588906}
   gameHud: {fileID: 0}
   reviveButton: {fileID: 1934017933}
   reviveUI: {fileID: 1028947050}
+  upgradePanel: {fileID: 0}
+  upgradeHudButton: {fileID: 0}
+  upgradeAttackSpeedButton: {fileID: 0}
+  upgradeDamageButton: {fileID: 0}
+  upgradeLifeStealButton: {fileID: 0}
+  upgradeMovementSpeedButton: {fileID: 0}
+  upgradePowerupDurButton: {fileID: 0}
+  upgradeMaxHealthButton: {fileID: 0}
+  upgradeDualWeaponButton: {fileID: 0}
+  attackSpeedCurrentText: {fileID: 0}
+  attackSpeedNextText: {fileID: 0}
+  attackSpeedCostText: {fileID: 0}
+  damageCurrentText: {fileID: 0}
+  damageNextText: {fileID: 0}
+  damageCostText: {fileID: 0}
+  lifeStealCurrentText: {fileID: 0}
+  lifeStealNextText: {fileID: 0}
+  lifeStealCostText: {fileID: 0}
+  movementSpeedCurrentText: {fileID: 0}
+  movementSpeedNextText: {fileID: 0}
+  movementSpeedCostText: {fileID: 0}
+  powerupDurCurrentText: {fileID: 0}
+  powerupDurNextText: {fileID: 0}
+  powerupDurCostText: {fileID: 0}
+  maxHealthCurrentText: {fileID: 0}
+  maxHealthNextText: {fileID: 0}
+  maxHealthCostText: {fileID: 0}
+  dualWeaponCostText: {fileID: 0}
+  attackSpeedVisualValues: []
+  damageVisualValues: []
+  lifeStealVisualValues: []
+  movementSpeedVisualValues: []
 --- !u!1 &1335822664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2256,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1897685005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3408028478327290192, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+  m_PrefabInstance: {fileID: 310772934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1934017933 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1934017933, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
@@ -2379,6 +2437,17 @@ Transform:
   m_Father: {fileID: 1005398139}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &2042565498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8202747446275803444, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+  m_PrefabInstance: {fileID: 310772934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2110134526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2636,5 +2705,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4197459822926179249, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
+      propertyPath: rpgSystemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 963bf65ddef16cb4a9999a6b5fa25d86, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42b7db672a004cf419747e6b47d45271, type: 3}

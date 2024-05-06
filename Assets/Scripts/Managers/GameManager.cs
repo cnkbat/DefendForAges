@@ -16,6 +16,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public List<CityManager> allCities;
     [SerializeField] private List<TowerBehaviour> towers;
 
+    [Header("Debugging")]
+    [SerializeField] private int targetFPS;
+
     [Header("Events")]
     public Action OnCheckPointReached;
 
@@ -25,6 +28,8 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnable()
     {
+        Time.timeScale = 1;
+        Application.targetFrameRate = targetFPS;
 
         for (int i = 0; i < allCities.Count; i++)
         {

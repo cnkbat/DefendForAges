@@ -6,6 +6,7 @@ using UnityEngine;
 public class SaveManager : Singleton<SaveManager>
 {
     public Action OnSaved;
+    public Action OnResetData;
 
     public void DataChanged()
     {

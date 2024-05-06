@@ -46,6 +46,7 @@ public class PlayerStats : Singleton<PlayerStats>
         LoadPlayerData();
     }
 
+    #region  OnEnable / OnDisable
     private void OnEnable()
     {
         saveManager = SaveManager.instance;
@@ -54,6 +55,7 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             saveManager.OnSaved += SavePlayerData;
             OnDataChanged += saveManager.DataChanged;
+            saveManager.OnResetData += ResetData;
         }
 
         OnKillEnemy += EarnBonusOnKill;
@@ -68,11 +70,14 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             saveManager.OnSaved -= SavePlayerData;
             OnDataChanged -= saveManager.DataChanged;
+            saveManager.OnResetData -= ResetData;
         }
 
         OnKillEnemy -= EarnBonusOnKill;
         OnRevive -= FillCurrentHealth;
     }
+
+    #endregion
 
     private void Start()
     {
@@ -179,6 +184,27 @@ public class PlayerStats : Singleton<PlayerStats>
         UpdateStats();
     }
 
+    private void ResetData()
+    {
+        PlayerData playerData = SaveSystem.LoadPlayerData();
+
+        if (playerData != null)
+        {
+            this.money = 0;
+            this.experiencePoint = 0;
+            this.cityIndex = 0;
+            this.waveIndex = 0;
+            this.damageIndex = 0;
+            this.attackSpeedIndex = 0;
+            this.movementSpeedIndex = 0;
+            this.powerupDurIndex = 0;
+            this.lifeStealIndex = 0;
+            this.maxHealthIndex = 0;
+            this.isDualWeaponActiveSavedValue = false;
+        }
+
+        SavePlayerData();
+    }
     private void UpdateStats()
     {
         damage = rPGSystemSO.damageValues[damageIndex];
@@ -193,10 +219,12 @@ public class PlayerStats : Singleton<PlayerStats>
 
     #endregion
 
+    #region  Health
     public void FillCurrentHealth()
     {
         deathHandler.SetCurrentHealth(maxHealth);
     }
+    #endregion
 
     #region  Getters & Setters
     public float GetAttackSpeed()
@@ -223,4 +251,5 @@ public class PlayerStats : Singleton<PlayerStats>
     }
 
     #endregion
+
 }

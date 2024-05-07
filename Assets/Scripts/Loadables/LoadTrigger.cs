@@ -6,22 +6,20 @@ public class LoadTrigger : MonoBehaviour, ILoadable
 {
     LoadableBase parentObj;
 
-    private void Start() 
+    private void Start()
     {
-        if(transform.parent.TryGetComponent(out LoadableBase loadableBase))
+        if (transform.parent.TryGetComponent(out LoadableBase loadableBase))
         {
             parentObj = loadableBase;
-        }    
+        }
     }
-    
+
     public void Load()
     {
+        if (parentObj == null) return;
         parentObj.Load();
     }
 
-    public void UnLoad()
-    {
-        parentObj.UnLoad();
-    }
+
 
 }

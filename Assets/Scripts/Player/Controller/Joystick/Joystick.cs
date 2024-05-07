@@ -10,6 +10,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     private RectTransform rect;
     private Canvas canvas;
+    public bool hasJoystickInput;
 
     private void Awake()
     {
@@ -38,10 +39,12 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         result = Vector2.ClampMagnitude(modDiff, 1f);
         modDiff = result * rect.sizeDelta * 0.3f;
         joystick.localPosition = modDiff;
+        hasJoystickInput = true;
     }
     public void ResetJoy()
     {
         result = Vector2.zero;
         joystick.localPosition = Vector2.zero;
+        hasJoystickInput = false;
     }
 }

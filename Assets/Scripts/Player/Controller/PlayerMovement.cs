@@ -12,20 +12,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
 
     private Vector3 direction;
-
     private float horizontal;
     private float vertical;
     private float targetAngle = 0;
 
+
     private void OnEnable()
     {
         playerStats = GetComponent<PlayerStats>();
-        playerStats.OnMovementChanged += UpdateMovementSpeed;
+        playerStats.OnMovementSpeedUpgraded += UpdateMovementSpeed;
     }
 
     private void OnDisable()
     {
-        playerStats.OnMovementChanged -= UpdateMovementSpeed;
+        playerStats.OnMovementSpeedUpgraded -= UpdateMovementSpeed;
     }
     private void Start()
     {
@@ -48,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
         horizontal = joystick.result.x;
         vertical = joystick.result.y;
         direction = new Vector3(horizontal, 0, vertical).normalized;
+
+        if(horizontal == 0 && vertical == 0)
+        {
+            
+        }
     }
 
     void ToMove()
@@ -66,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateMovementSpeed()
     {
         speed = playerStats.GetMovementSpeed();
+    }
+
+    public bool HasJoystickInput()
+    {
+        return joystick.hasJoystickInput;
     }
 }
 

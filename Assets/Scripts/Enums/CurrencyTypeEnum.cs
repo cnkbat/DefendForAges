@@ -1,7 +1,7 @@
 public enum CurrencyType
 {
     money,
-    experiencePoint,
+    meat,
     gem
 }
 

@@ -5,13 +5,12 @@ using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour, IPoolableObject
 {
+    GameManager gameManager;
     private float damage;
     [SerializeField] float moveSpeed;
     Transform target;
     Vector3 targetPos;
     Transform firedPoint;
-
-    [SerializeField] float fireRange = 150f;
 
     [Header("VFX")]
     [SerializeField] TrailRenderer trailFX;
@@ -19,10 +18,13 @@ public class Bullet : MonoBehaviour, IPoolableObject
     bool targetReached = false;
 
     #region IPoolableObject Functions
+
     public void OnObjectPooled()
     {
+        gameManager = GameManager.instance;
         ResetObjectData();
     }
+
     public void ResetObjectData()
     {
         targetReached = false;
@@ -34,6 +36,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
         transform.forward = aimDirection;
     }
+
     #endregion
 
     void Update()
@@ -52,7 +55,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
                 targetReached = true;
             }
         }
-        else if (fireRange < Vector3.Distance(transform.position, firedPoint.position))
+        else if (gameManager.bulletFireRange < Vector3.Distance(transform.position, firedPoint.position))
         {
             gameObject.SetActive(false);
         }
@@ -67,6 +70,10 @@ public class Bullet : MonoBehaviour, IPoolableObject
         if (other.TryGetComponent(out IDamagable damagable))
         {
             damagable.TakeDamage(damage);
+            gameObject.SetActive(false);
+        }
+        else if (other.TryGetComponent(out IEnvironment environment))
+        {
             gameObject.SetActive(false);
         }
     }

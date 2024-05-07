@@ -19,6 +19,9 @@ public class GameManager : Singleton<GameManager>
     [Header("Debugging")]
     [SerializeField] private int targetFPS;
 
+    [Header("Optimization")]
+    [SerializeField] public float bulletFireRange = 150f;
+
     [Header("Events")]
     public Action OnCheckPointReached;
 

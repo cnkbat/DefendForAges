@@ -15,6 +15,7 @@ public class UIManager : Singleton<UIManager>
     [Header("GameHud Texts")]
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text xpText;
+    [SerializeField] private TMP_Text meatText;
     [SerializeField] private TMP_Text waveIndexText;
 
     [Header("Wave Control")]
@@ -97,12 +98,12 @@ public class UIManager : Singleton<UIManager>
         cityManager.OnWaveCalled += ConnectToSpawner;
 
         // Text Updates
-        playerStats.OnXPChange += UpdateXPText;
+        playerStats.OnExperiencePointChange += UpdateXPText;
         playerStats.OnMoneyChange += UpdateMoneyText;
+        playerStats.OnMeatChange += UpdateMeatText;
 
 
-        // Upgrading
-        //    playerStats.OnUpgradeCompleted += UpdateUpgradeUI;
+        // Upgrading Button Events
 
         upgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
         exitUpgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
@@ -113,6 +114,15 @@ public class UIManager : Singleton<UIManager>
         upgradePowerupDurButton.onClick.AddListener(playerStats.AttemptUpgradePowerupDuration);
         upgradeMaxHealthButton.onClick.AddListener(playerStats.AttemptUpgradeMaxHealth);
         upgradeDualWeaponButton.onClick.AddListener(playerStats.AttemptUpgradeDualWeapon);
+
+        // Upgrade Done Events Assign
+        playerStats.OnAttackSpeedUpgraded += UpdateAttackSpeedTexts;
+        playerStats.OnDamageUpgraded += UpdateDamageTexts;
+        playerStats.OnLifeStealUpgraded += UpdateLifeStealTexts;
+        playerStats.OnMovementSpeedUpgraded += UpdateMovementSpeedTexts;
+        playerStats.OnPowerupDurUpgraded += UpdatePowerupDurTexts;
+        playerStats.OnMaxHealthUpgraded += UpdateMaxHealthTexts;
+        playerStats.OnDualWeaponUpgraded += UpdateDualWeaponTexts;
 
     }
 
@@ -125,12 +135,11 @@ public class UIManager : Singleton<UIManager>
 
 
         // Text Updates
-        playerStats.OnXPChange -= UpdateXPText;
+        playerStats.OnExperiencePointChange -= UpdateXPText;
         playerStats.OnMoneyChange -= UpdateMoneyText;
 
 
-        // Upgrading
-        //   playerStats.OnUpgradeCompleted -= UpdateUpgradeUI;
+        // Upgrading Button Events Clean Up
 
         upgradeHudButton.onClick.RemoveAllListeners();
         exitUpgradeHudButton.onClick.RemoveAllListeners();
@@ -141,6 +150,15 @@ public class UIManager : Singleton<UIManager>
         upgradePowerupDurButton.onClick.RemoveAllListeners();
         upgradeMaxHealthButton.onClick.RemoveAllListeners();
 
+
+        // Upgrade Done Events Clean Up
+        playerStats.OnAttackSpeedUpgraded -= UpdateAttackSpeedTexts;
+        playerStats.OnDamageUpgraded -= UpdateDamageTexts;
+        playerStats.OnLifeStealUpgraded -= UpdateLifeStealTexts;
+        playerStats.OnMovementSpeedUpgraded -= UpdateMovementSpeedTexts;
+        playerStats.OnPowerupDurUpgraded -= UpdatePowerupDurTexts;
+        playerStats.OnMaxHealthUpgraded -= UpdateMaxHealthTexts;
+        playerStats.OnDualWeaponUpgraded -= UpdateDualWeaponTexts;
 
     }
 
@@ -158,9 +176,10 @@ public class UIManager : Singleton<UIManager>
     }
     private void SetStartingUI()
     {
-        UpdateText(waveIndexText, playerStats.waveIndex, "Wave");
-        UpdateText(moneyText, playerStats.money, "Money");
-        UpdateText(xpText, playerStats.experiencePoint, "XP");
+        UpdateWaveIndexText();
+        UpdateMoneyText();
+        UpdateXPText();
+        UpdateMeatText();
 
         playerSO = playerStats.GetPlayerSO();
         UpdateUpgradeUI();
@@ -195,7 +214,6 @@ public class UIManager : Singleton<UIManager>
         UpdateMaxHealthTexts();
 
         // Dual Weapon 
-
         UpdateDualWeaponTexts();
 
     }
@@ -344,6 +362,10 @@ public class UIManager : Singleton<UIManager>
     private void UpdateMoneyText()
     {
         UpdateText(moneyText, playerStats.money, "Money");
+    }
+    private void UpdateMeatText()
+    {
+        UpdateText(meatText, playerStats.meat, "Meat");
     }
     private void UpdateWaveIndexText()
     {

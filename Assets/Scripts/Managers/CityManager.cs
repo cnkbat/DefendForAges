@@ -14,6 +14,14 @@ public class CityManager : MonoBehaviour
     [Header("Waves")]
     public List<EnemySpawner> waveList;
 
+    [Header("Buyable Areas")]
+    [SerializeField] private List<BuyableArea> areas;
+    [SerializeField] private List<int> costs;
+
+    [Header("Save & Load")]
+    private int buyedAreaIndex;
+    private int towerUpgradeIndex;
+
     [Header("Points")]
     [SerializeField] private Transform revivePoint;
     [SerializeField] private Transform startPoint;

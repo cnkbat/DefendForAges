@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DefencesBehaviourBase : EnemyTarget
 {
+    
     protected DefencesStatsBase defencesStatsBase;
     [SerializeField] protected GameObject asset;
     BoxCollider boxCollider;

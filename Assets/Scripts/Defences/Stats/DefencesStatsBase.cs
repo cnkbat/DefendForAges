@@ -7,11 +7,13 @@ public class DefencesStatsBase : MonoBehaviour
 {
     public StaticDefenceSO staticDefenceSO;
     [SerializeField] protected LoadableBase loadableBase;
-    [SerializeField] private int defencesID;
+
+    [Header("Save & Load")]
+    int upgradeIndex;
 
     [Header("Events")]
     public Action OnBuyDone;
-    
+
     protected virtual void OnEnable()
     {
         loadableBase.OnLoadableFilled += BuyDone;
@@ -23,7 +25,7 @@ public class DefencesStatsBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        // chlid atama
+        
     }
 
     public virtual void BuyDone()
@@ -36,10 +38,19 @@ public class DefencesStatsBase : MonoBehaviour
         loadableBase.gameObject.SetActive(isActive);
     }
 
+    #region Getters & Setters
     public float GetMaxHealth()
     {
-        return staticDefenceSO.maxHealth;
+        return staticDefenceSO.GetMaxHealthValues()[upgradeIndex];
     }
-
+    public int GetUpgradeIndex()
+    {
+        return upgradeIndex;
+    }
+    public void SetUpgradeIndex(int newUpgradeIndex)
+    {
+        upgradeIndex = newUpgradeIndex;
+    }
+    #endregion
 }
 

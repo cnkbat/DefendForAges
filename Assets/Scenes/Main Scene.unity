@@ -401,6 +401,8 @@ MonoBehaviour:
   waveList:
   - {fileID: 1436782353}
   - {fileID: 291071951}
+  areas: []
+  costs: 
   revivePoint: {fileID: 1491418678}
   startPoint: {fileID: 994581171}
   targetList: []
@@ -534,7 +536,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticDefenceSO: {fileID: 11400000, guid: d13294dcc6bacfa4494e2889d9c9c915, type: 2}
   loadableBase: {fileID: 1775308371}
-  defencesID: 0
   weapons: []
 --- !u!114 &144843955 stripped
 MonoBehaviour:

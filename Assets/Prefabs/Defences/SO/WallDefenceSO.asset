@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0396beeaf87f4b7419db08c5e4f1561c, type: 3}
   m_Name: WallDefenceSO
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealthValues:
+  - 15

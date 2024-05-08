@@ -28,6 +28,7 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.Start();
     }
+    
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);

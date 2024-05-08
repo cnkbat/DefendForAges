@@ -19,7 +19,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     }
     protected virtual void OnDisable()
     {
-
+        OnTargetDestroyed -= gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
     }
 
     protected virtual void Start()
@@ -45,7 +45,6 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     public virtual void TargetDestroyed()
     {
         OnTargetDestroyed?.Invoke();
-        OnTargetDestroyed -= gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
     }
     public Transform GetTarget()
     {

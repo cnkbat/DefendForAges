@@ -86,9 +86,16 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         if (isDead) return;
         if (!canMove) return;
         if (enemyTargeter.GetTarget() == null) return;
-        if (attackTimer < enemyStats.attackSpeed)
+        
+        // later will check if any target is in range
+        if (true)
         {
-            attackTimer += Time.deltaTime;
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0)
+            {
+                // Attack(targetable);
+                ResetAttackSpeed();
+            }
         }
         Move();
     }
@@ -142,7 +149,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         canMove = false;
         // play animation
         // deal damage
-        attackTimer = enemyStats.attackSpeed;
         target.TakeDamage(enemyStats.GetDamage());
         StartCoroutine(EnableMovement(enemyStats.attackDur));
 
@@ -160,6 +166,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
             Kill();
         }
 
+    }
+
+    private void ResetAttackSpeed()
+    {
+        attackTimer = playerStats.GetAttackSpeed();
     }
 
     public void Kill()

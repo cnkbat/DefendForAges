@@ -15,8 +15,8 @@ public class CityManager : MonoBehaviour
     public List<EnemySpawner> waveList;
 
     [Header("Buyable Areas")]
-    [SerializeField] private List<BuyableArea> areas;
-    [SerializeField] private List<int> costs;
+    [SerializeField] public List<BuyableArea> buyableAreas;
+    [SerializeField] public List<int> buyableAreaCosts;
 
     [Header("Save & Load")]
     private int buyedAreaIndex;
@@ -36,6 +36,7 @@ public class CityManager : MonoBehaviour
     public Action OnEnemySpawnPosesUpdated;
     public Action OnTargetListUpdated;
     public Action OnWaveCalled;
+
     private void OnEnable()
     {
         playerStats = PlayerStats.instance;
@@ -52,7 +53,7 @@ public class CityManager : MonoBehaviour
         for (int i = 0; i < waveList.Count; i++)
         {
             waveList[i].OnWaveCompleted -= StopWaves;
-            waveList[i].OnWaveCompleted += playerStats.WaveWon;
+            waveList[i].OnWaveCompleted -= playerStats.WaveWon;
         }
     }
 
@@ -63,6 +64,17 @@ public class CityManager : MonoBehaviour
         playerStats = PlayerStats.instance;
     }
 
+    public void AreaBuyed(List<Transform> addedPoses)
+    {
+        buyedAreaIndex += 1;
+
+        for (int i = 0; i < addedPoses.Count; i++)
+        {
+            AddEnemyPos(addedPoses[i]);
+        }
+    }
+
+    #region Enemy Related
     public void AddEnemyPos(Transform newTransform)
     {
         enemySpawnPoses.Add(newTransform);
@@ -74,7 +86,7 @@ public class CityManager : MonoBehaviour
     {
         targetList.Clear();
         List<EnemyTarget> tempList = FindObjectsOfType<EnemyTarget>().ToList();
-        
+
         for (int i = 0; i < tempList.Count; i++)
         {
             if (tempList[i].GetIsTargetable())
@@ -104,6 +116,7 @@ public class CityManager : MonoBehaviour
             waveList[i].gameObject.SetActive(false);
         }
     }
+    #endregion
 
     #region Getters & Setters
     public TowerBehaviour GetTower()

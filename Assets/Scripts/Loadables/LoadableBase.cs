@@ -23,7 +23,7 @@ public class LoadableBase : MonoBehaviour
     [Header("Events")]
     public Action OnLoadableFilled;
 
-    private void OnEnable() 
+    private void OnEnable()
     {
 
         saveManager = SaveManager.instance;
@@ -40,7 +40,7 @@ public class LoadableBase : MonoBehaviour
         UpdateCurrentCostLeft();
 
         // Data load Save
-        
+
         CheckIfFulled();
     }
 
@@ -73,13 +73,20 @@ public class LoadableBase : MonoBehaviour
     {
         // data save;
     }
+
     #region Getters & Setters
-    protected void SetCosts(List<int> newCosts)
+
+    public void SetCost(List<int> newCosts)
     {
         costs = newCosts;
     }
 
-    protected void SetCostIndex(int newCostIndex)
+    public void SetCost(int newCost)
+    {
+        costs[0] = newCost;
+    }
+
+    public void SetCostIndex(int newCostIndex)
     {
         costIndex = newCostIndex;
     }

@@ -5,9 +5,6 @@ using UnityEngine;
 public class TowerStats : DefencesStatsBase
 {
 
-    [Header("Save & Load")]
-    private float upgradeIndex;
-
     [Header("Ingame Values")]
     [SerializeField] List<GameObject> weapons;
     private float recovery;
@@ -17,7 +14,7 @@ public class TowerStats : DefencesStatsBase
 
     override protected void Start()
     {
-
+        base.Start();
     }
 
     private void OnUpgradeCompleted()

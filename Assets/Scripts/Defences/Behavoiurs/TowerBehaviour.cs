@@ -10,6 +10,7 @@ public class TowerBehaviour : DefencesBehaviourBase
 
     override protected void Start()
     {
+        base.Start();
         towerStats = GetComponent<TowerStats>();
         ResetHealthValue();
     }

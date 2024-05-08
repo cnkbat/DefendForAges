@@ -6,5 +6,7 @@ using UnityEngine;
 
 public class StaticDefenceSO : ScriptableObject
 {
-    public float maxHealth;
+    [SerializeField] protected List<float> maxHealthValues;
+
+    public List<float> GetMaxHealthValues() { return maxHealthValues; }
 }

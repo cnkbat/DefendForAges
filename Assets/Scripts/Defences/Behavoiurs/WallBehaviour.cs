@@ -28,18 +28,6 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.Start();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(1);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            DestroyDefence();
-        }
-    }
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);

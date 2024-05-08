@@ -89,7 +89,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out ITargetable targetable) && attackTimer >= enemyStats.attackSpeed;)
+        if (collision.gameObject.TryGetComponent(out ITargetable targetable) && attackTimer >= enemyStats.attackSpeed)
         {
             Attack(targetable);
         }

@@ -18,6 +18,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private Rigidbody rb;
     private float attackTimer;
 
+    private Animator anim;
+
     [Header("States")]
     public bool isDead;
     public bool canMove;
@@ -34,6 +36,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
 
     #region IPoolableObject Functions
+
+
     public void OnObjectPooled()
     {
 
@@ -43,6 +47,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
 
+        anim = this.GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
@@ -91,7 +96,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         if (collision.gameObject.TryGetComponent(out ITargetable targetable) && attackTimer >= enemyStats.attackSpeed)
         {
-            Attack(targetable);
+            anim.SetTrigger("Attack");
+            //Attack(targetable);
         }
     }
 
@@ -159,6 +165,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public void Kill()
     {
         isDead = true;
+        canMove = false;
 
         playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue(), enemyStats.GetPowerUpValue());
 
@@ -166,9 +173,12 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         gameManager.allSpawnedEnemies.Remove(gameObject);
         Debug.Log("killed");
 
-        gameObject.SetActive(false);
+        anim.SetTrigger("Kill");
 
-        ResetObjectData();
+
+        // bu ikisi ölüm animasyonundan sonra runlamalı
+        //gameObject.SetActive(false);
+        //ResetObjectData();
 
         // test için commentlendi, geri getirilicek
         // enemyStats.getHealthBar().gameObject.SetActive(false);

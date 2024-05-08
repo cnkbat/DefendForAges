@@ -11,6 +11,7 @@ public class TowerBehaviour : DefencesBehaviourBase
     override protected void Start()
     {
         towerStats = GetComponent<TowerStats>();
+        ResetHealthValue();
     }
 
     public override void TakeDamage(float dmg)
@@ -28,6 +29,8 @@ public class TowerBehaviour : DefencesBehaviourBase
         // ağır haptic oynat
         OnTowerDestroyed?.Invoke();
     }
+
+
 
 
 

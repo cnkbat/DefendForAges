@@ -14,14 +14,14 @@ public class WallBehaviour : DefencesBehaviourBase
         wallStats = GetComponent<WallStats>();
         cityManager = FindObjectOfType<CityManager>();
         cityManager.OnWaveCalled += ConnectToSpawner;
-        wallStats.OnBuyDone += RepairDefences;
+        wallStats.OnBuyDone += TargetRevived;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
         cityManager.OnWaveCalled -= ConnectToSpawner;
-        wallStats.OnBuyDone -= RepairDefences;
+        wallStats.OnBuyDone -= TargetRevived;
     }
 
     override protected void Start()
@@ -70,9 +70,9 @@ public class WallBehaviour : DefencesBehaviourBase
 
     #region Repair Related
 
-    protected override void RepairDefences()
+    public override void TargetRevived()
     {
-        base.RepairDefences();
+        base.TargetRevived();
 
         foreach (var wallPart in wallStats.wallParts)
         {

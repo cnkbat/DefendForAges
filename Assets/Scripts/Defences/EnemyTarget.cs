@@ -9,17 +9,25 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     private GameManager gameManager;
     protected PlayerStats playerStats;
     protected float currentHealth;
+
+    protected bool isTargetable;
+
+    [Header("Events")]
     public Action OnTargetDestroyed;
+    public Action OnTargetRevived;
 
     protected virtual void OnEnable()
     {
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
         OnTargetDestroyed += gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+        OnTargetRevived += gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+        isTargetable = true;
     }
     protected virtual void OnDisable()
     {
         OnTargetDestroyed -= gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+        OnTargetRevived -= gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
     }
 
     protected virtual void Start()
@@ -44,12 +52,26 @@ public class EnemyTarget : MonoBehaviour, ITargetable
 
     public virtual void TargetDestroyed()
     {
+        isTargetable = false;
         OnTargetDestroyed?.Invoke();
     }
+
+    public virtual void TargetRevived()
+    {
+        isTargetable = true;
+        OnTargetRevived?.Invoke();
+    }
+
+    #region Getters & Setters
     public Transform GetTarget()
     {
         return transform;
     }
 
+    public bool GetIsTargetable()
+    {
+        return isTargetable;
+    }
+    #endregion
 
 }

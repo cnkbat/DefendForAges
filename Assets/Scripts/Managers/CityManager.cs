@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CityManager : MonoBehaviour
@@ -18,7 +19,7 @@ public class CityManager : MonoBehaviour
     [SerializeField] private Transform startPoint;
 
     [Header("Targeting")]
-    [SerializeField] EnemyTarget[] targetList;
+    [SerializeField] List<EnemyTarget> targetList;
 
     [Header("Tower")]
     [SerializeField] private TowerBehaviour tower;
@@ -63,7 +64,17 @@ public class CityManager : MonoBehaviour
     // this function has to be called everytime when a new targetable is spawned or when a targetable is destroyed.
     public void UpdateTargetList()
     {
-        targetList = FindObjectsOfType<EnemyTarget>();
+        targetList.Clear();
+        List<EnemyTarget> tempList = FindObjectsOfType<EnemyTarget>().ToList();
+        
+        for (int i = 0; i < tempList.Count; i++)
+        {
+            if (tempList[i].GetIsTargetable())
+            {
+                targetList.Add(tempList[i]);
+            }
+        }
+
         OnTargetListUpdated?.Invoke();
     }
 
@@ -91,7 +102,7 @@ public class CityManager : MonoBehaviour
     {
         return tower;
     }
-    public EnemyTarget[] GetTargetList()
+    public List<EnemyTarget> GetTargetList()
     {
         return targetList;
     }

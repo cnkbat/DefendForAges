@@ -39,14 +39,17 @@ public class DefencesBehaviourBase : EnemyTarget
         base.TargetDestroyed();
         asset.SetActive(false);
         boxCollider.enabled = false;
+    
         // hapticler
     }
 
     #region Repair
-    protected virtual void RepairDefences()
+    public override void TargetRevived()
     {
 
         if (!isRepairable) return;
+
+        base.TargetRevived();
 
         asset.SetActive(true);
         boxCollider.enabled = true;
@@ -54,6 +57,7 @@ public class DefencesBehaviourBase : EnemyTarget
         ResetHealthValue();
         SetisRepairable(false);
         CheckForUpgradeable();
+
     }
 
     public void CheckForUpgradeable()

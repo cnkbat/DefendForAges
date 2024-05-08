@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     CityManager cityManager;
     private EnemySpawner assignedEnemySpawner;
     private Rigidbody rb;
+    private float attackTimer;
 
     [Header("States")]
     public bool isDead;
@@ -56,7 +57,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned?.Invoke();
 
         RefillHealth(enemyStats.GetMaxHealth());
-
+        attackTimer = enemyStats.attackSpeed;
 
     }
 
@@ -80,12 +81,15 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         if (isDead) return;
         if (!canMove) return;
         if (enemyTargeter.GetTarget() == null) return;
-
+        if (attackTimer < enemyStats.attackSpeed)
+        {
+            attackTimer += Time.deltaTime;
+        }
         Move();
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out ITargetable targetable))
+        if (collision.gameObject.TryGetComponent(out ITargetable targetable) && attackTimer >= enemyStats.attackSpeed;)
         {
             Attack(targetable);
         }
@@ -132,7 +136,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         canMove = false;
         // play animation
         // deal damage
-
+        attackTimer = enemyStats.attackSpeed;
         target.TakeDamage(enemyStats.GetDamage());
         StartCoroutine(EnableMovement(enemyStats.attackDur));
 

@@ -57,7 +57,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         RefillHealth(enemyStats.GetMaxHealth());
 
-        
+
     }
 
     public void ResetObjectData()
@@ -95,7 +95,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         assignedEnemySpawner = FindObjectOfType<EnemySpawner>();
         OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
-        
+
     }
 
     #region  Movement
@@ -156,7 +156,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         isDead = true;
 
-        playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetPowerUpValue());
+        playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue(), enemyStats.GetPowerUpValue());
 
         OnEnemyKilled?.Invoke();
         gameManager.allSpawnedEnemies.Remove(gameObject);

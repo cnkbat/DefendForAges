@@ -12,6 +12,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [Header("Saved Indexes")]
     public int money;
     public int experiencePoint;
+    public int meat;
     public int damageIndex;
     public int attackSpeedIndex;
     public int movementSpeedIndex;
@@ -32,10 +33,9 @@ public class PlayerStats : Singleton<PlayerStats>
     DeathHandler deathHandler;
 
     [Header("-------Stat Change Events ------")]
-    public Action<int, int, float> OnKillEnemy;
+    public Action<int, int, int, float> OnKillEnemy;
 
     [Header("Upgrade Events")]
-    public Action OnMovementChanged;
     public Action OnAttackSpeedUpgraded;
     public Action OnDamageUpgraded;
     public Action OnLifeStealUpgraded;
@@ -53,9 +53,9 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action OnWaveWon;
 
     [Header("UI Events")]
-    public Action OnXPChange;
+    public Action OnExperiencePointChange;
     public Action OnMoneyChange;
-
+    public Action OnMeatChange;
 
     protected override void Awake()
     {
@@ -111,7 +111,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         if (currencyType == CurrencyType.money)
         {
-            if (cost[indexToUpgrade] >= money)
+            if (cost[indexToUpgrade] <= money)
             {
                 UpgradeSuccesful(indexToUpgrade, upgradeType);
                 DecrementMoney(cost[indexToUpgrade]);
@@ -121,12 +121,15 @@ public class PlayerStats : Singleton<PlayerStats>
                 // pop up offer
             }
         }
-        else if (currencyType == CurrencyType.experiencePoint)
+        else if (currencyType == CurrencyType.meat)
         {
-            if (cost[indexToUpgrade] >= experiencePoint)
+            Debug.Log("exp");
+
+            if (cost[indexToUpgrade] <= experiencePoint)
             {
+                Debug.Log("if passed");
                 UpgradeSuccesful(indexToUpgrade, upgradeType);
-                DecrementXP(cost[indexToUpgrade]);
+                DecrementMeat(cost[indexToUpgrade]);
             }
             else
             {
@@ -138,14 +141,18 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void UpgradeSuccesful(int indexToUpgrade, RPGUpgradesType upgradesType)
     {
+
         indexToUpgrade++;
         UpdateStats();
+        Debug.Log("upgrade succes");
+
 
         if (upgradesType == RPGUpgradesType.empty) return;
 
         if (upgradesType == RPGUpgradesType.attackSpeed)
         {
             OnAttackSpeedUpgraded?.Invoke();
+            Debug.Log("attack speed invoke");
         }
         else if (upgradesType == RPGUpgradesType.damage)
         {
@@ -157,7 +164,7 @@ public class PlayerStats : Singleton<PlayerStats>
         }
         else if (upgradesType == RPGUpgradesType.movementSpeed)
         {
-            OnMovementChanged?.Invoke();
+            OnMovementSpeedUpgraded?.Invoke();
         }
         else if (upgradesType == RPGUpgradesType.powerupDur)
         {
@@ -175,37 +182,38 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void AttemptUpgradeAttackSpeed()
     {
-        AttemptUpgradeStat(attackSpeedIndex, rpgSystemSO.GetAttackSpeedCosts(), CurrencyType.experiencePoint);
+        Debug.Log("button click");
+        AttemptUpgradeStat(attackSpeedIndex, rpgSystemSO.GetAttackSpeedCosts(), CurrencyType.meat, RPGUpgradesType.attackSpeed);
     }
     public void AttemptUpgradeDamage()
     {
-        AttemptUpgradeStat(damageIndex, rpgSystemSO.GetDamageCosts(), CurrencyType.experiencePoint);
+        AttemptUpgradeStat(damageIndex, rpgSystemSO.GetDamageCosts(), CurrencyType.meat, RPGUpgradesType.damage);
     }
     public void AttemptUpgradeMovementSpeed()
     {
-        AttemptUpgradeStat(movementSpeedIndex, rpgSystemSO.GetMovementSpeedCosts(), CurrencyType.experiencePoint);
+        AttemptUpgradeStat(movementSpeedIndex, rpgSystemSO.GetMovementSpeedCosts(), CurrencyType.meat, RPGUpgradesType.movementSpeed);
     }
     public void AttemptUpgradeLifeSteal()
     {
-        AttemptUpgradeStat(lifeStealIndex, rpgSystemSO.GetLifeStealCosts(), CurrencyType.experiencePoint);
+        AttemptUpgradeStat(lifeStealIndex, rpgSystemSO.GetLifeStealCosts(), CurrencyType.meat, RPGUpgradesType.lifeSteal);
     }
     public void AttemptUpgradePowerupDuration()
     {
-        AttemptUpgradeStat(powerupDurIndex, rpgSystemSO.GetPowerupDurCosts(), CurrencyType.experiencePoint);
+        AttemptUpgradeStat(powerupDurIndex, rpgSystemSO.GetPowerupDurCosts(), CurrencyType.meat, RPGUpgradesType.powerupDur);
     }
     public void AttemptUpgradeMaxHealth()
     {
-        AttemptUpgradeStat(maxHealthIndex, rpgSystemSO.GetMaxHealthCosts(), CurrencyType.experiencePoint);
+        AttemptUpgradeStat(maxHealthIndex, rpgSystemSO.GetMaxHealthCosts(), CurrencyType.meat, RPGUpgradesType.maxHealth);
     }
 
     public void AttemptUpgradeDualWeapon()
     {
         if (isDualWeaponActive) return;
 
-        if (rpgSystemSO.GetDualWeaponCost() >= experiencePoint)
+        if (rpgSystemSO.GetDualWeaponCost() >= meat)
         {
             ActiveDualWeapon();
-            DecrementXP(rpgSystemSO.GetDualWeaponCost());
+            DecrementMeat(rpgSystemSO.GetDualWeaponCost());
         }
         else
         {
@@ -255,20 +263,32 @@ public class PlayerStats : Singleton<PlayerStats>
     #endregion
 
     #region  XP
-    public void IncrementExp(int value)
+    public void IncrementXP(int value)
     {
         experiencePoint += value;
         XPChange();
     }
-    public void DecrementXP(int value)
-    {
-        experiencePoint -= value;
-        XPChange();
-    }
-
     private void XPChange()
     {
-        OnXPChange?.Invoke();
+        OnExperiencePointChange?.Invoke();
+    }
+    #endregion
+
+    #region  Meat
+
+    public void IncrementMeat(int value)
+    {
+        meat += value;
+        MeatChange();
+    }
+    public void DecrementMeat(int value)
+    {
+        meat -= value;
+        MeatChange();
+    }
+    private void MeatChange()
+    {
+        OnMeatChange?.Invoke();
     }
     #endregion
 
@@ -278,10 +298,11 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         IncrementWaveIndex();
     }
-    public void EarnBonusOnKill(int moneyValue, int xpValue, float powerUpAddOnValue)
+    public void EarnBonusOnKill(int moneyValue, int xpValue, int meatValue, float powerUpAddOnValue)
     {
         IncrementMoney(moneyValue);
-        IncrementExp(xpValue);
+        IncrementXP(xpValue);
+        IncrementMeat(meatValue);
         // power up eklenmedi daha
     }
 
@@ -352,6 +373,7 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             this.money = 0;
             this.experiencePoint = 0;
+            this.meat = 0;
             this.cityIndex = 0;
             this.waveIndex = 0;
             this.damageIndex = 0;

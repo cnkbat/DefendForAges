@@ -27,8 +27,8 @@ public class EnemyStats : MonoBehaviour
     [Header("Earnings")]
     private int moneyValue;
     private int expValue;
+    private int meatValue;
     private float powerUpAddOnValue;
-
 
     [Header("Health Bar")]
     [SerializeField] Slider healthBar;
@@ -50,7 +50,9 @@ public class EnemyStats : MonoBehaviour
         currentDamage = enemySO.GetDamage();
         moneyValue = enemySO.GetMoneyValue();
         expValue = enemySO.GetExpValue();
+        meatValue = enemySO.GetMeatValue();
         maxHealth = enemySO.GetMaxHealth();
+
     }
 
     #region Health Related
@@ -93,6 +95,10 @@ public class EnemyStats : MonoBehaviour
     public int GetExpValue()
     {
         return expValue;
+    }
+    public int GetMeatValue()
+    {
+        return meatValue;
     }
     public float GetKnockbackDuration()
     {

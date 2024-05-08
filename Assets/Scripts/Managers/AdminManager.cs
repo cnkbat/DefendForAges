@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,14 @@ using UnityEngine.SceneManagement;
 public class AdminManager : MonoBehaviour
 {
     SaveManager saveManager;
-
+    PlayerStats playerStats;
     [SerializeField] bool isAdmin;
     [SerializeField] GameObject adminPanel;
 
     void Start()
     {
         saveManager = SaveManager.instance;
+        playerStats = PlayerStats.instance;
     }
 
     // Update is called once per frame
@@ -30,7 +32,17 @@ public class AdminManager : MonoBehaviour
         {
             ResetGameData();
         }
+        else if (Input.GetKeyDown(KeyCode.M))
+        {
+            GiveMoneyAndXP();
+        }
 
+    }
+
+    private void GiveMoneyAndXP()
+    {
+        playerStats.IncrementMoney(1000);
+        playerStats.IncrementXP(1000);
     }
 
     private void EnableDisableAdminPanel()

@@ -9,6 +9,8 @@ public class PlayerData
     public int currentTimelineIndex;
     public int money;
     public int experiencePoint;
+    public int meat;
+
     public int cityIndex;
     public int waveIndex;
 
@@ -27,6 +29,7 @@ public class PlayerData
 
         this.money = playerStats.money;
         this.experiencePoint = playerStats.experiencePoint;
+        this.meat = playerStats.meat;
         this.cityIndex = playerStats.cityIndex;
         this.waveIndex = playerStats.waveIndex;
         this.damageIndex = playerStats.damageIndex;

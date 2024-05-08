@@ -3,63 +3,87 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System;
 
 public class LoadableBase : MonoBehaviour
 {
+    SaveManager saveManager;
+    PlayerStats playerStats;
     protected ObjectPooler objectPooler;
+    [SerializeField] private Transform moneyMovePos;
 
-    [Header("Load Values & Needs")]
-    [SerializeField] protected float loadTimer;
-    [SerializeField] protected Image fillImage;
-    [SerializeField] protected GameObject fillTrigger;
-    [SerializeField] protected ParticleSystem openupVFX;
+    [Header("Costs")]
+    [SerializeField] protected List<int> costs;
+    protected int costIndex;
+    protected int currentCostLeftForUpgrade;
+
+    [Header("State")]
+    protected bool isFull;
+
+    [Header("Events")]
+    public Action OnLoadableFilled;
+
+    private void OnEnable() 
+    {
+
+        saveManager = SaveManager.instance;
+        saveManager.OnSaved += SaveData;
+
+    }
 
     protected virtual void Start()
     {
 
         objectPooler = ObjectPooler.instance;
+        playerStats = PlayerStats.instance;
+
+        UpdateCurrentCostLeft();
+
+        // Data load Save
+        
+        CheckIfFulled();
     }
 
     public virtual void Load()
     {
+        if (isFull) return;
 
+        currentCostLeftForUpgrade -= 1;
+        playerStats.DecrementMoney(1);
 
-        fillImage.fillAmount += Time.deltaTime / loadTimer;
+        CheckIfFulled();
+    }
 
-        if (fillImage.fillAmount >= 1)
+    protected void UpdateCurrentCostLeft()
+    {
+        currentCostLeftForUpgrade = costs[costIndex];
+    }
+
+    protected void CheckIfFulled()
+    {
+
+        if (currentCostLeftForUpgrade <= 0)
         {
-            OpenUp();
+            isFull = true;
+            OnLoadableFilled?.Invoke();
         }
     }
 
-    public virtual void UnLoad()
+    protected virtual void SaveData()
     {
-        if (fillImage.fillAmount > 0)
-        {
-
-            fillImage.fillAmount = 0;
-
-        }
+        // data save;
+    }
+    #region Getters & Setters
+    protected void SetCosts(List<int> newCosts)
+    {
+        costs = newCosts;
     }
 
-    protected virtual void OpenUp()
+    protected void SetCostIndex(int newCostIndex)
     {
-        if (openupVFX)
-        {
-            openupVFX.Play();
-        }
-
-
-        /// vfx çıkacak
-        /// vermesi gereken şeyleri verecek ama alt child behaviorda
+        costIndex = newCostIndex;
     }
+    #endregion
 
-    public virtual void ResetLoadable()
-    {
-        Debug.Log(gameObject.name);
-
-        fillImage.fillAmount = 0;
-
-    }
 }
 

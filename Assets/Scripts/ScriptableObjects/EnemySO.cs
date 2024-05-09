@@ -9,24 +9,25 @@ using UnityEngine;
 public class EnemySO : ScriptableObject
 {
     [Header("Health")]
-    [SerializeField] float maxHealth;
+    [SerializeField] private float maxHealth;
 
     [Header("Speed")]
-    [SerializeField] float moveSpeed;
+    [SerializeField] private float moveSpeed;
 
     [Header("Attacking")]
-    [SerializeField] float knockbackDur;
-    [SerializeField] float attackDur;
-    [SerializeField] float damage;
+    [SerializeField] private float knockbackDur;
+    [SerializeField] private float attackDur;
+    [SerializeField] private float damage;
+    [SerializeField] private float attackRange;
 
     [Header("Earnings")]
-    [SerializeField] int moneyValue;
-    [SerializeField] int expValue;
-    [SerializeField] int meatValue;
-    [SerializeField] float powerUpAddOnValue;
+    [SerializeField] private int moneyValue;
+    [SerializeField] private int expValue;
+    [SerializeField] private int meatValue;
+    [SerializeField] private float powerUpAddOnValue;
 
     public float GetPowerUpAddOnValue() { return powerUpAddOnValue; }
-    public float GetMoveSpeed() { return moveSpeed; }
+    public float GetMovementSpeed() { return moveSpeed; }
     public float GetMaxHealth() { return maxHealth; }
     public float GetDamage() { return damage; }
     public int GetMoneyValue() { return moneyValue; }
@@ -34,5 +35,5 @@ public class EnemySO : ScriptableObject
     public int GetMeatValue() { return meatValue; }
     public float GetKnockbackDur() { return knockbackDur; }
     public float GetAttackDur() { return attackDur; }
-
+    public float GetAttackRange() {return attackRange;}
 }

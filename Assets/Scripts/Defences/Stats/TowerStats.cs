@@ -12,6 +12,14 @@ public class TowerStats : DefencesStatsBase
     private float attackSpeed;
     private int weaponIndex;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+    }
     override protected void Start()
     {
         base.Start();

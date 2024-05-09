@@ -6,18 +6,21 @@ using UnityEngine;
 public class DefencesStatsBase : MonoBehaviour
 {
     SaveManager saveManager;
-
-    public StaticDefenceSO staticDefenceSO;
+    public StaticDefenceSO defenceSO;
     [SerializeField] protected LoadableBase loadableBase;
 
     [Header("Save & Load")]
-    int upgradeIndex;
+    protected int upgradeIndex;
+
+    [Header("Ingame Values")]
+    protected float maxHealth;
 
     [Header("Events")]
     public Action OnBuyDone;
 
     protected virtual void OnEnable()
     {
+        SetSOValues();
         saveManager = SaveManager.instance;
         loadableBase.OnLoadableFilled += BuyDone;
         saveManager.OnResetData += ResetData;
@@ -25,6 +28,7 @@ public class DefencesStatsBase : MonoBehaviour
     protected virtual void OnDisable()
     {
         loadableBase.OnLoadableFilled -= BuyDone;
+        saveManager.OnResetData -= ResetData;
     }
 
     protected virtual void Start()
@@ -37,22 +41,21 @@ public class DefencesStatsBase : MonoBehaviour
         OnBuyDone?.Invoke();
     }
 
-    public void SetLoadableBaseActivity(bool isActive)
-    {
-        loadableBase.gameObject.SetActive(isActive);
-    }
-
     protected void IncrementUpgradeIndex()
     {
         upgradeIndex++;
         saveManager.OnSaved?.Invoke();
     }
 
+    protected virtual void SetSOValues()
+    {
+        maxHealth = defenceSO.GetMaxHealthValues()[upgradeIndex];
+    }
 
     #region Getters & Setters
     public float GetMaxHealth()
     {
-        return staticDefenceSO.GetMaxHealthValues()[upgradeIndex];
+        return maxHealth;
     }
     public int GetUpgradeIndex()
     {
@@ -62,10 +65,15 @@ public class DefencesStatsBase : MonoBehaviour
     {
         upgradeIndex = newUpgradeIndex;
     }
+
+    public void SetLoadableBaseActivity(bool isActive)
+    {
+        loadableBase.gameObject.SetActive(isActive);
+    }
     #endregion
 
     #region !! ADMIN !!
-    protected void ResetData()
+    protected virtual void ResetData()
     {
         upgradeIndex = 0;
         saveManager.OnSaved?.Invoke();

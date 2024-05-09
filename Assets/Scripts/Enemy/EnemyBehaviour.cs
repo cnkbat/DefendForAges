@@ -98,7 +98,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         startPoint = transform.position;
         endPoint = new Vector3(startPoint.x + (transform.TransformDirection(Vector3.forward) * range).x, startPoint.y + (transform.TransformDirection(Vector3.forward) * range).y, startPoint.z + (transform.TransformDirection(Vector3.forward) * range).z);
-        if (Physics.Linecast(startPoint, endPoint))
+        if (Physics.Raycast(startPoint, transform.TransformDirection(Vector3.forward), out RaycastHit hit, range) && (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Defence")))
         {
             //anim.SetTrigger("Attack");
             attackTimer -= Time.deltaTime;

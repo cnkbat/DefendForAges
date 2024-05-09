@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4197459821979999219}
   - component: {fileID: 4197459821979999216}
   - component: {fileID: 4197459821979999221}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4197459822409055735}
   - component: {fileID: 4197459822409055732}
   - component: {fileID: 4197459822409055733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 4197459822926179249}
   - component: {fileID: 4197459822926179253}
   - component: {fileID: 4197459822926179250}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,3 +344,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af86f124526de0e4ea6cba199248f63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerTimer: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 827784686}
   - component: {fileID: 827784689}
   - component: {fileID: 827784688}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallAsset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 856594632}
   - component: {fileID: 856594631}
   - component: {fileID: 856594630}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1347468888}
   - component: {fileID: 1347468887}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Loadable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 2072606189158032501}
   - component: {fileID: 2072606189158032500}
   - component: {fileID: 2072606189158032503}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrier1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 2072606189640243511}
   - component: {fileID: 2072606189640243510}
   - component: {fileID: 2072606189640243497}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticDefenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
   loadableBase: {fileID: 1347468887}
-  defencesID: 0
   wallParts:
   - {fileID: 2072606189158032489}
   - {fileID: 2072606190182835718}
@@ -493,7 +492,7 @@ GameObject:
   - component: {fileID: 2072606189872944458}
   - component: {fileID: 2072606189872944461}
   - component: {fileID: 2072606189872944460}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrier4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +589,7 @@ GameObject:
   - component: {fileID: 2072606190119683051}
   - component: {fileID: 2072606190119683050}
   - component: {fileID: 2072606190119683053}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrier3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +686,7 @@ GameObject:
   - component: {fileID: 2072606190182835714}
   - component: {fileID: 2072606190182835717}
   - component: {fileID: 2072606190182835716}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrier2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -401,8 +401,8 @@ MonoBehaviour:
   waveList:
   - {fileID: 1436782353}
   - {fileID: 291071951}
-  areas: []
-  costs: 
+  buyableAreas: []
+  buyableAreaCosts: 
   revivePoint: {fileID: 1491418678}
   startPoint: {fileID: 994581171}
   targetList: []
@@ -1179,7 +1179,7 @@ MonoBehaviour:
     prefab: {fileID: 5463483835640132673, guid: c5481572d327fd943aef66c661c854fc, type: 3}
     size: 10
   - tag: Enemy
-    prefab: {fileID: 584572212228056345, guid: 0c5d46feccf4fdb48929631f123db1e1, type: 3}
+    prefab: {fileID: 1004563349763976636, guid: c2572731aa6e2224e9da27a7707622df, type: 3}
     size: 20
   isObjPoolingActive: 1
 --- !u!1 &693571007
@@ -1641,7 +1641,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.000000006584596, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.000000006584597, w: 0.92387956}
   m_LocalPosition: {x: -1.4376621, y: 25.859348, z: -33.185814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3026,7 +3026,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.000000006584596, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.000000006584597, w: 0.92387956}
   m_LocalPosition: {x: -1.4376621, y: 25.859348, z: -33.185814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3103,6 +3103,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1765314799}
     m_Modifications:
+    - target: {fileID: 4197459821979999214, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197459822409055731, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4197459822926179244, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
       propertyPath: joystick
       value: 
@@ -3110,6 +3118,10 @@ PrefabInstance:
     - target: {fileID: 4197459822926179245, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197459822926179245, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4197459822926179247, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
       propertyPath: m_RootOrder

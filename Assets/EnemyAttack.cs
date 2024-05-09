@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    EnemyBehaviour enemyBehaviour;
+
+    private void Start() 
+    {
+        enemyBehaviour =  this.transform.root.GetComponent<EnemyBehaviour>();
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out ITargetable targetable))
         {
-            this.transform.root.GetComponent<EnemyBehaviour>().Attack(targetable);
+           enemyBehaviour.Attack(targetable);
         }
     }
 }

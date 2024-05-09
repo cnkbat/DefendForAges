@@ -89,8 +89,13 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         if (isDead) return;
         if (!canMove) return;
         if (enemyTargeter.GetTarget() == null) return;
-        
 
+        Attacking();
+        Move();
+    }
+
+    private void Attacking()
+    {
         startPoint = transform.position;
         endPoint = new Vector3(startPoint.x + (transform.TransformDirection(Vector3.forward) * range).x, startPoint.y + (transform.TransformDirection(Vector3.forward) * range).y, startPoint.z + (transform.TransformDirection(Vector3.forward) * range).z);
         if (Physics.Linecast(startPoint, endPoint))
@@ -103,7 +108,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
                 ResetAttackSpeed();
             }
         }
-        Move();
     }
 
     public void ConnectToSpawner()

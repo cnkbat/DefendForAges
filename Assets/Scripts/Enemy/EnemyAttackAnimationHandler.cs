@@ -5,6 +5,11 @@ using UnityEngine;
 public class EnemyAttackAnimationHandler : MonoBehaviour
 {
     public BoxCollider rightHandCollider;
+    public EnemyBehaviour enemyBehaviour;
+    public void Start()
+    {
+        enemyBehaviour = transform.root.GetComponent<EnemyBehaviour>();
+    }
     public void EnableDamage()
     {
         rightHandCollider.enabled = true;

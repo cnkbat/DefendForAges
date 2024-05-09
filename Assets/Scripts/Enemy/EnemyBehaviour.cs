@@ -97,15 +97,17 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private void Attacking()
     {
         Vector3 startPoint = transform.position;
-        Vector3 endPoint = new Vector3(startPoint.x + (transform.TransformDirection(Vector3.forward) * range).x, startPoint.y + (transform.TransformDirection(Vector3.forward) * range).y, startPoint.z + (transform.TransformDirection(Vector3.forward) * range).z);
-        if (Physics.Raycast(startPoint, transform.TransformDirection(Vector3.forward), out RaycastHit hit, range) && (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Defence")))
+        
+        if (Physics.Raycast(startPoint, transform.TransformDirection(Vector3.forward), out RaycastHit hit, range))
         {
-            //anim.SetTrigger("Attack");
-            attackTimer -= Time.deltaTime;
-            if (attackTimer <= 0)
+            if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
-                anim.SetTrigger("Attack");
-                ResetAttackSpeed();
+                attackTimer -= Time.deltaTime;
+                if (attackTimer <= 0)
+                {
+                    anim.SetTrigger("Attack");
+                    ResetAttackSpeed();
+                }
             }
         }
     }
@@ -114,7 +116,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         assignedEnemySpawner = FindObjectOfType<EnemySpawner>();
         OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
-
     }
 
     #region  Movement

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DefencesStatsBase : MonoBehaviour
 {
+    SaveManager saveManager;
+
     public StaticDefenceSO staticDefenceSO;
     [SerializeField] protected LoadableBase loadableBase;
 
@@ -16,7 +18,9 @@ public class DefencesStatsBase : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        saveManager = SaveManager.instance;
         loadableBase.OnLoadableFilled += BuyDone;
+        saveManager.OnResetData += ResetData;
     }
     protected virtual void OnDisable()
     {
@@ -25,7 +29,7 @@ public class DefencesStatsBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        
+
     }
 
     public virtual void BuyDone()
@@ -37,6 +41,13 @@ public class DefencesStatsBase : MonoBehaviour
     {
         loadableBase.gameObject.SetActive(isActive);
     }
+
+    protected void IncrementUpgradeIndex()
+    {
+        upgradeIndex++;
+        saveManager.OnSaved?.Invoke();
+    }
+
 
     #region Getters & Setters
     public float GetMaxHealth()
@@ -52,5 +63,13 @@ public class DefencesStatsBase : MonoBehaviour
         upgradeIndex = newUpgradeIndex;
     }
     #endregion
+
+    #region !! ADMIN !!
+    protected void ResetData()
+    {
+        upgradeIndex = 0;
+        saveManager.OnSaved?.Invoke();
+    }
+    #endregion 
 }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 {
@@ -34,8 +35,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public Action OnEnemyKilled;
     public Action OnEnemySpawned;
 
-    public Vector3 startPoint;
-    public Vector3 endPoint;
+    private NavMeshAgent navMeshAgent;
 
     #region IPoolableObject Functions
 
@@ -45,7 +45,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         canMove = true;
         isDead = false;
-
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
 
@@ -63,6 +62,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         OnEnemySpawned?.Invoke();
 
+        navMeshAgent = GetComponent<NavMeshAgent>();
         RefillHealth(enemyStats.GetMaxHealth());
         ResetAttackSpeed();
         range = 5f;
@@ -96,9 +96,9 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     private void Attacking()
     {
-        startPoint = transform.position;
-        endPoint = new Vector3(startPoint.x + (transform.TransformDirection(Vector3.forward) * range).x, startPoint.y + (transform.TransformDirection(Vector3.forward) * range).y, startPoint.z + (transform.TransformDirection(Vector3.forward) * range).z);
-        if (Physics.Linecast(startPoint, endPoint))
+        Vector3 startPoint = transform.position;
+        Vector3 endPoint = new Vector3(startPoint.x + (transform.TransformDirection(Vector3.forward) * range).x, startPoint.y + (transform.TransformDirection(Vector3.forward) * range).y, startPoint.z + (transform.TransformDirection(Vector3.forward) * range).z);
+        if (Physics.Raycast(startPoint, transform.TransformDirection(Vector3.forward), out RaycastHit hit, range) && (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Defence")))
         {
             //anim.SetTrigger("Attack");
             attackTimer -= Time.deltaTime;
@@ -132,14 +132,16 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
         worldAimTarget.y = transform.position.y;
-        Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
-        transform.forward = aimDirection;
+        navMeshAgent.destination = worldAimTarget;
+        //Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
-        //Vector3 targetPosition = enemyTargeter.GetTarget().position;
-        // transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyStats.currentMoveSpeed * Time.deltaTime);
+        //transform.forward = aimDirection;
 
-        transform.position += transform.forward * enemyStats.currentMoveSpeed * Time.deltaTime;
+        ////Vector3 targetPosition = enemyTargeter.GetTarget().position;
+        //// transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyStats.currentMoveSpeed * Time.deltaTime);
+
+        //transform.position += transform.forward * enemyStats.currentMoveSpeed * Time.deltaTime;
     }
 
     #endregion

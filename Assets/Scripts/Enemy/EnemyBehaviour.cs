@@ -17,7 +17,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private EnemySpawner assignedEnemySpawner;
     private Rigidbody rb;
     private float attackTimer;
-
+    [SerializeField] float range;
     private Animator anim;
 
     [Header("States")]
@@ -34,6 +34,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public Action OnEnemyKilled;
     public Action OnEnemySpawned;
 
+    public Vector3 startPoint;
+    public Vector3 endPoint;
 
     #region IPoolableObject Functions
 
@@ -62,7 +64,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned?.Invoke();
 
         RefillHealth(enemyStats.GetMaxHealth());
-        attackTimer = enemyStats.attackSpeed;
+        ResetAttackSpeed();
+        range = 5f;
 
     }
 
@@ -87,25 +90,20 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         if (!canMove) return;
         if (enemyTargeter.GetTarget() == null) return;
         
-        // later will check if any target is in range
-        if (true)
+
+        startPoint = transform.position;
+        endPoint = new Vector3(startPoint.x + (transform.TransformDirection(Vector3.forward) * range).x, startPoint.y + (transform.TransformDirection(Vector3.forward) * range).y, startPoint.z + (transform.TransformDirection(Vector3.forward) * range).z);
+        if (Physics.Linecast(startPoint, endPoint))
         {
+            //anim.SetTrigger("Attack");
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
-                // Attack(targetable);
+                anim.SetTrigger("Attack");
                 ResetAttackSpeed();
             }
         }
         Move();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.TryGetComponent(out ITargetable targetable) && attackTimer >= enemyStats.attackSpeed)
-        {
-            anim.SetTrigger("Attack");
-            //Attack(targetable);
-        }
     }
 
     public void ConnectToSpawner()

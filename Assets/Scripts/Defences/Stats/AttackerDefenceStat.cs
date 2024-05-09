@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,19 +13,39 @@ public class AttackerDefenceStat : DefencesStatsBase
     private float damage;
     private float attackSpeed;
 
+    [Header("Events")]
+    public Action OnUpgraded;
+
     protected override void OnEnable()
     {
         base.OnEnable();
         defenceSO = attackerDefenceSO;
+
         loadableBase.SetCost(attackerDefenceSO.GetUpgradeCosts());
+        loadableBase.SetCostIndex(upgradeIndex);
+        
+        OnUpgraded += SetSOValues;
+        OnUpgraded += loadableBase.UpdateCurrentCostLeft;
     }
     protected override void OnDisable()
     {
         base.OnDisable();
+        OnUpgraded -= SetSOValues;
+        OnUpgraded -= loadableBase.UpdateCurrentCostLeft;
     }
+
     protected override void Start()
     {
         base.Start();
+    }
+
+    public override void BuyDone()
+    {
+        base.BuyDone();
+        IncrementUpgradeIndex();
+        Debug.Log("wtf");
+        loadableBase.SetCostIndex(upgradeIndex);
+        OnUpgraded?.Invoke();
     }
 
     protected override void SetSOValues()
@@ -35,6 +56,7 @@ public class AttackerDefenceStat : DefencesStatsBase
     }
 
 
+    #region Getters & Setters
     public float GetAttackSpeed()
     {
         return attackSpeed;
@@ -44,4 +66,6 @@ public class AttackerDefenceStat : DefencesStatsBase
     {
         return damage;
     }
+    #endregion
+
 }

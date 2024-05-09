@@ -123,11 +123,9 @@ public class PlayerStats : Singleton<PlayerStats>
         }
         else if (currencyType == CurrencyType.meat)
         {
-            Debug.Log("exp");
 
-            if (cost[indexToUpgrade] <= experiencePoint)
+            if (cost[indexToUpgrade] <= meat)
             {
-                Debug.Log("if passed");
                 UpgradeSuccesful(indexToUpgrade, upgradeType);
                 DecrementMeat(cost[indexToUpgrade]);
             }

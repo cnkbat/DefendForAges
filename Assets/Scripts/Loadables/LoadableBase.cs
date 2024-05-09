@@ -14,14 +14,15 @@ public class LoadableBase : MonoBehaviour
 
     [Header("Costs")]
     [SerializeField] protected List<int> costs;
-    protected int costIndex;
-    protected int currentCostLeftForUpgrade;
+    int costIndex;
+    public int currentCostLeftForUpgrade;
 
     [Header("State")]
     protected bool isFull;
 
     [Header("Events")]
     public Action OnLoadableFilled;
+    public Action OnLoadableTookMoney;
 
     private void OnEnable()
     {
@@ -36,8 +37,7 @@ public class LoadableBase : MonoBehaviour
 
         objectPooler = ObjectPooler.instance;
         playerStats = PlayerStats.instance;
-
-        UpdateCurrentCostLeft();
+        //  UpdateCurrentCostLeft();
 
         // Data load Save
 
@@ -51,10 +51,11 @@ public class LoadableBase : MonoBehaviour
         currentCostLeftForUpgrade -= 1;
         playerStats.DecrementMoney(1);
 
+        OnLoadableTookMoney?.Invoke();
         CheckIfFulled();
     }
 
-    protected void UpdateCurrentCostLeft()
+    public void UpdateCurrentCostLeft()
     {
         currentCostLeftForUpgrade = costs[costIndex];
     }
@@ -86,10 +87,11 @@ public class LoadableBase : MonoBehaviour
         costs[0] = newCost;
     }
 
-    public void SetCostIndex(int newCostIndex)
+    public void SetCostIndex(int index)
     {
-        costIndex = newCostIndex;
+        costIndex = index;
     }
+
     #endregion
 
 }

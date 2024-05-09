@@ -7,10 +7,11 @@ public class DefencesStatsBase : MonoBehaviour
 {
     SaveManager saveManager;
     public StaticDefenceSO defenceSO;
-    [SerializeField] protected LoadableBase loadableBase;
+    [SerializeField] public LoadableBase loadableBase;
 
     [Header("Save & Load")]
-    protected int upgradeIndex;
+    public int defenceID;
+    public int upgradeIndex;
 
     [Header("Ingame Values")]
     protected float maxHealth;
@@ -20,14 +21,21 @@ public class DefencesStatsBase : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        SetSOValues();
+        LoadDefenceData();
         saveManager = SaveManager.instance;
+
         loadableBase.OnLoadableFilled += BuyDone;
+        loadableBase.OnLoadableFilled += SaveDefenceData;
+
+        saveManager.OnSaved += SaveDefenceData;
         saveManager.OnResetData += ResetData;
     }
     protected virtual void OnDisable()
     {
         loadableBase.OnLoadableFilled -= BuyDone;
+        loadableBase.OnLoadableFilled -= SaveDefenceData;
+
+        saveManager.OnSaved -= SaveDefenceData;
         saveManager.OnResetData -= ResetData;
     }
 
@@ -52,6 +60,30 @@ public class DefencesStatsBase : MonoBehaviour
         maxHealth = defenceSO.GetMaxHealthValues()[upgradeIndex];
     }
 
+    #region Save & Load
+
+    private void SaveDefenceData()
+    {
+        SaveSystem.SaveDefencesData(this, defenceID);
+    }
+
+    private void LoadDefenceData()
+    {
+
+        // DefencesStatsBase defenceData = SaveSystem.LoadPlayerData();
+        DefencesData defencesData = SaveSystem.LoadDefenceData(defenceID);
+
+        if (defencesData != null)
+        {
+            this.upgradeIndex = defencesData.upgradeIndex;
+            this.loadableBase.currentCostLeftForUpgrade = defencesData.currentCostLeftForUpgrade;
+        }
+
+        SetSOValues();
+    }
+
+    #endregion
+
     #region Getters & Setters
     public float GetMaxHealth()
     {
@@ -64,6 +96,11 @@ public class DefencesStatsBase : MonoBehaviour
     public void SetUpgradeIndex(int newUpgradeIndex)
     {
         upgradeIndex = newUpgradeIndex;
+    }
+
+    public void SetLoadblesCurrentCost(int value)
+    {
+        loadableBase.currentCostLeftForUpgrade = value;
     }
 
     public void SetLoadableBaseActivity(bool isActive)

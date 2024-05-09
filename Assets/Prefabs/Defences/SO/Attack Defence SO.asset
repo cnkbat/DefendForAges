@@ -21,7 +21,7 @@ MonoBehaviour:
   - 4
   attackSpeedValues:
   - 4
-  - 4
-  - 4
-  - 4
-  upgradeCosts: 64000000
+  - 2
+  - 1
+  - 0.5
+  upgradeCosts: 05000000

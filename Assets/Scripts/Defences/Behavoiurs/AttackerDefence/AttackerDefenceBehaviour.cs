@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AttackerDefenceBehaviour : DefencesBehaviourBase
 {
-    protected GameManager gameManager;
+   
     protected AttackerDefenceStat attackerDefenceStat;
 
     [Header("Combat")]
@@ -14,7 +14,6 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
     protected override void OnEnable()
     {
         attackerDefenceStat = GetComponent<AttackerDefenceStat>();
-        gameManager = GameManager.instance;
 
         base.OnEnable();
         ResetAttackSpeed();

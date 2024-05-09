@@ -32,7 +32,6 @@ public class TrapBehaviour : AttackerDefenceBehaviour
 
         base.Attack();
 
-
         spikes.DOMoveY(strikePos.position.y, attackerDefenceStat.GetAttackSpeed() / 4).
             OnComplete(() =>
             {

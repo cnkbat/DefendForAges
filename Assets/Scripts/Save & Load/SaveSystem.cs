@@ -42,4 +42,41 @@ public static class SaveSystem
 
     }
 
+
+    public static void SaveDefencesData(DefencesStatsBase defencesStatsBase, int defencesID)
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/defencesStatsBase-" + defencesID + ".txt";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        DefencesData defencesData = new DefencesData(defencesStatsBase);
+        formatter.Serialize(stream, defencesData);
+        stream.Close();
+
+    }
+
+    public static DefencesData LoadDefenceData(int defencesID)
+    {
+
+        string path = Application.persistentDataPath + "/defencesStatsBase-" + defencesID + ".txt";
+
+        if (File.Exists(path))
+        {
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            DefencesData data = formatter.Deserialize(stream) as DefencesData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+
+            return null;
+        }
+
+    }
 }

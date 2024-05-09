@@ -538,6 +538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
   loadableBase: {fileID: 1775308371}
+  defenceID: 0
+  upgradeIndex: 0
   weapons: []
 --- !u!114 &144843955 stripped
 MonoBehaviour:
@@ -2470,7 +2472,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268343, y: -0.000000015896617, z: 0.000000006584594, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826834, y: 0.00000001589663, z: -0.000000006584598, w: 0.92387956}
   m_LocalPosition: {x: -19.717663, y: 25.859348, z: -37.905815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2683,6 +2685,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defenceSO: {fileID: 11400000, guid: d13294dcc6bacfa4494e2889d9c9c915, type: 2}
   loadableBase: {fileID: 2090915274}
+  defenceID: 0
+  upgradeIndex: 0
   attackerDefenceSO: {fileID: 11400000, guid: d13294dcc6bacfa4494e2889d9c9c915, type: 2}
 --- !u!4 &1097612849
 Transform:
@@ -2714,7 +2718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asset: {fileID: 212532570}
-  isRepairable: 0
+  isRepairable: 1
   spikesCollider: {fileID: 299527568}
   spikes: {fileID: 299527567}
   originalSpikePos: {fileID: 767055250}
@@ -4502,7 +4506,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.38268343, y: -0.000000015896617, z: 0.000000006584594, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826834, y: 0.00000001589663, z: -0.000000006584598, w: 0.92387956}
   m_LocalPosition: {x: -19.717663, y: 25.859348, z: -37.905815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

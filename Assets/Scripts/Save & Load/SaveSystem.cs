@@ -98,4 +98,97 @@ public static class SaveSystem
 
     #endregion
 
+    #region Buyable Area Saving
+    public static void SaveBuyableAreaData(BuyableArea buyableArea, int buyableAreaID)
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/buyableArea-" + buyableAreaID + ".txt";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        BuyableAreaData buyableAreaData = new BuyableAreaData(buyableArea);
+        formatter.Serialize(stream, buyableAreaData);
+        stream.Close();
+
+    }
+
+    public static BuyableAreaData LoadBuyableAreaData(int buyableAreaID)
+    {
+
+        string path = Application.persistentDataPath + "/buyableArea-" + buyableAreaID + ".txt";
+
+        if (File.Exists(path))
+        {
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            BuyableAreaData data = formatter.Deserialize(stream) as BuyableAreaData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+
+            return null;
+        }
+
+    }
+
+
+    public static void DeleteBuyableAreaData(int buyableAreaID)
+    {
+        string path = Application.persistentDataPath + "/buyableArea-" + buyableAreaID + ".txt";
+        File.Delete(path);
+    }
+
+    #endregion
+
+    #region City Manager Saving
+    public static void SaveCityManagerData(CityManager cityManager, string cityName)
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/city-" + cityName + ".txt";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        CityManagerData cityManagerData = new CityManagerData(cityManager);
+        formatter.Serialize(stream, cityManagerData);
+        stream.Close();
+
+    }
+
+    public static CityManagerData LoadCityManagerData(string cityName)
+    {
+
+        string path = Application.persistentDataPath + "/city-" + cityName + ".txt";
+
+
+        if (File.Exists(path))
+        {
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            CityManagerData data = formatter.Deserialize(stream) as CityManagerData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+
+            return null;
+        }
+
+    }
+
+
+    public static void DeleteCityManagerData(string cityName)
+    {
+        string path = Application.persistentDataPath + "/city-" + cityName + ".txt";
+        File.Delete(path);
+    }
+    #endregion
 }

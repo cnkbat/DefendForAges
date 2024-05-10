@@ -8,6 +8,7 @@ public class CityManager : MonoBehaviour
 {
     PlayerStats playerStats;
     GameManager gameManager;
+    SaveManager saveManager;
 
     [SerializeField] List<Transform> enemySpawnPoses;
 
@@ -18,9 +19,12 @@ public class CityManager : MonoBehaviour
     [SerializeField] public List<BuyableArea> buyableAreas;
     [SerializeField] public List<int> buyableAreaCosts;
 
+
     [Header("Save & Load")]
-    private int buyedAreaIndex;
-    private int towerUpgradeIndex;
+    public string cityName;
+    public int buyedAreaIndex;
+    public int towerUpgradeIndex;
+
 
     [Header("Points")]
     [SerializeField] private Transform revivePoint;
@@ -39,17 +43,26 @@ public class CityManager : MonoBehaviour
 
     private void OnEnable()
     {
+        saveManager = SaveManager.instance;
+        LoadCityManagerData();
+
+        saveManager.OnSaved += SaveCityManagerData;
+        saveManager.OnResetData += DeleteCityManagerData;
+
         playerStats = PlayerStats.instance;
         for (int i = 0; i < waveList.Count; i++)
         {
             waveList[i].OnWaveCompleted += StopWaves;
             waveList[i].OnWaveCompleted += playerStats.WaveWon;
         }
+
     }
 
     private void OnDisable()
     {
-        playerStats = PlayerStats.instance;
+        saveManager.OnSaved -= SaveCityManagerData;
+        saveManager.OnResetData -= DeleteCityManagerData;
+
         for (int i = 0; i < waveList.Count; i++)
         {
             waveList[i].OnWaveCompleted -= StopWaves;
@@ -62,17 +75,35 @@ public class CityManager : MonoBehaviour
         UpdateTargetList();
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
+
+
+
+        for (int i = 0; i < buyedAreaIndex; i++)
+        {
+            Debug.Log("fora girdi" + buyedAreaIndex);
+            buyableAreas[i].EnableArea();
+        }
+
     }
 
-    public void AreaBuyed(List<Transform> addedPoses)
+    #region Area Buying
+    public void AreaBuyed()
     {
+        Debug.Log("areabuyed");
+
         buyedAreaIndex += 1;
 
+        saveManager.OnSaved?.Invoke();
+    }
+
+    public void AreaEnabled(List<Transform> addedPoses)
+    {
         for (int i = 0; i < addedPoses.Count; i++)
         {
             AddEnemyPos(addedPoses[i]);
         }
     }
+    #endregion
 
     #region Enemy Related
     public void AddEnemyPos(Transform newTransform)
@@ -116,6 +147,31 @@ public class CityManager : MonoBehaviour
             waveList[i].gameObject.SetActive(false);
         }
     }
+    #endregion
+
+    #region Save & Load
+
+    public void SaveCityManagerData()
+    {
+        SaveSystem.SaveCityManagerData(this, cityName);
+    }
+
+    public void LoadCityManagerData()
+    {
+        CityManagerData cityManagerData = SaveSystem.LoadCityManagerData(cityName);
+
+        if (cityManagerData != null)
+        {
+            this.buyedAreaIndex = cityManagerData.buyedAreaIndex;
+            this.towerUpgradeIndex = cityManagerData.towerUpgradeIndex;
+        }
+    }
+
+    public void DeleteCityManagerData()
+    {
+        SaveSystem.DeleteCityManagerData(cityName);
+    }
+
     #endregion
 
     #region Getters & Setters

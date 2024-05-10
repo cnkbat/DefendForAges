@@ -56,7 +56,6 @@ public class AttackerDefenceStat : DefencesStatsBase
 
         if (defencesData == null)
         {
-            Debug.Log(attackerDefenceSO.GetUpgradeCosts()[upgradeIndex]);
             loadableBase.SetCurrentCostLeftForUpgrade(attackerDefenceSO.GetUpgradeCosts()[upgradeIndex]);
         }
 

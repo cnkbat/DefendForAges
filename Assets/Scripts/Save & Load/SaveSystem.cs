@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 public static class SaveSystem
 {
 
+    #region Player Saving
     public static void SavePlayerData(PlayerStats playerStats)
     {
 
@@ -43,6 +44,14 @@ public static class SaveSystem
     }
 
 
+    public static void DeletePlayerData()
+    {
+        string path = Application.persistentDataPath + "/defend-for-ages-player.txt";
+        File.Delete(path);
+    }
+    #endregion
+
+    #region Defences Saving
     public static void SaveDefencesData(DefencesStatsBase defencesStatsBase, int defencesID)
     {
 
@@ -79,4 +88,14 @@ public static class SaveSystem
         }
 
     }
+
+
+    public static void DeleteDefencesData(int defencesID)
+    {
+        string path = Application.persistentDataPath + "/defencesStatsBase-" + defencesID + ".txt";
+        File.Delete(path);
+    }
+
+    #endregion
+
 }

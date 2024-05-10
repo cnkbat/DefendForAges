@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class AttackerDefenceStat : DefencesStatsBase
 {
-    [Tooltip("Attak defansifler için sadece burası doldurulmalı.")]
+
+    [Tooltip("Attack defansifler için sadece burası doldurulmalı.")]
     [SerializeField] AttackerDefenceSO attackerDefenceSO;
 
     [Header("Ingame Values")]
@@ -20,18 +21,12 @@ public class AttackerDefenceStat : DefencesStatsBase
     {
         base.OnEnable();
         defenceSO = attackerDefenceSO;
-
-        loadableBase.SetCost(attackerDefenceSO.GetUpgradeCosts());
-        loadableBase.SetCostIndex(upgradeIndex);
-        
         OnUpgraded += SetSOValues;
-        OnUpgraded += loadableBase.UpdateCurrentCostLeft;
     }
     protected override void OnDisable()
     {
         base.OnDisable();
         OnUpgraded -= SetSOValues;
-        OnUpgraded -= loadableBase.UpdateCurrentCostLeft;
     }
 
     protected override void Start()
@@ -43,8 +38,6 @@ public class AttackerDefenceStat : DefencesStatsBase
     {
         base.BuyDone();
         IncrementUpgradeIndex();
-        Debug.Log("wtf");
-        loadableBase.SetCostIndex(upgradeIndex);
         OnUpgraded?.Invoke();
     }
 
@@ -55,6 +48,19 @@ public class AttackerDefenceStat : DefencesStatsBase
         attackSpeed = attackerDefenceSO.GetAttackSpeedValues()[upgradeIndex];
     }
 
+    protected override void LoadDefenceData()
+    {
+        base.LoadDefenceData();
+
+        DefencesData defencesData = SaveSystem.LoadDefenceData(defenceID);
+
+        if (defencesData == null)
+        {
+            Debug.Log(attackerDefenceSO.GetUpgradeCosts()[upgradeIndex]);
+            loadableBase.SetCurrentCostLeftForUpgrade(attackerDefenceSO.GetUpgradeCosts()[upgradeIndex]);
+        }
+
+    }
 
     #region Getters & Setters
     public float GetAttackSpeed()

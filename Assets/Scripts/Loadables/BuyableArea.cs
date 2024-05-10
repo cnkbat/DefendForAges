@@ -31,7 +31,8 @@ public class BuyableArea : MonoBehaviour
         cityManager = transform.parent.GetComponent<CityManager>();
         OnAreaBuyed = cityManager.AreaBuyed;
 
-        loadableBase.SetCost(cityManager.buyableAreaCosts[cityManager.buyableAreas.IndexOf(this)]);
+        // sonra bunu data saveye bağlicaz
+        loadableBase.SetCurrentCostLeftForUpgrade(cityManager.buyableAreaCosts[cityManager.buyableAreas.IndexOf(this)]);
     }
 
     private void OnDisable()

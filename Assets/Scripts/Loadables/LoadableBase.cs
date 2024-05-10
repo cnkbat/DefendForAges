@@ -11,10 +11,6 @@ public class LoadableBase : MonoBehaviour
     PlayerStats playerStats;
     protected ObjectPooler objectPooler;
     [SerializeField] private Transform moneyMovePos;
-
-    [Header("Costs")]
-    [SerializeField] protected List<int> costs;
-    int costIndex;
     public int currentCostLeftForUpgrade;
 
     [Header("State")]
@@ -22,26 +18,12 @@ public class LoadableBase : MonoBehaviour
 
     [Header("Events")]
     public Action OnLoadableFilled;
-    public Action OnLoadableTookMoney;
-
-    private void OnEnable()
-    {
-
-        saveManager = SaveManager.instance;
-        saveManager.OnSaved += SaveData;
-
-    }
 
     protected virtual void Start()
     {
-
         objectPooler = ObjectPooler.instance;
         playerStats = PlayerStats.instance;
-        //  UpdateCurrentCostLeft();
-
-        // Data load Save
-
-        CheckIfFulled();
+        saveManager = SaveManager.instance;
     }
 
     public virtual void Load()
@@ -51,13 +33,8 @@ public class LoadableBase : MonoBehaviour
         currentCostLeftForUpgrade -= 1;
         playerStats.DecrementMoney(1);
 
-        OnLoadableTookMoney?.Invoke();
+        saveManager.OnSaved?.Invoke();
         CheckIfFulled();
-    }
-
-    public void UpdateCurrentCostLeft()
-    {
-        currentCostLeftForUpgrade = costs[costIndex];
     }
 
     protected void CheckIfFulled()
@@ -70,28 +47,13 @@ public class LoadableBase : MonoBehaviour
         }
     }
 
-    protected virtual void SaveData()
-    {
-        // data save;
-    }
-
     #region Getters & Setters
 
-    public void SetCost(List<int> newCosts)
+    public void SetCurrentCostLeftForUpgrade(int value)
     {
-        costs = newCosts;
+        currentCostLeftForUpgrade = value;
     }
-
-    public void SetCost(int newCost)
-    {
-        costs[0] = newCost;
-    }
-
-    public void SetCostIndex(int index)
-    {
-        costIndex = index;
-    }
-
+    
     #endregion
 
 }

@@ -21,7 +21,6 @@ public class DefencesStatsBase : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        LoadDefenceData();
         saveManager = SaveManager.instance;
 
         loadableBase.OnLoadableFilled += BuyDone;
@@ -29,6 +28,8 @@ public class DefencesStatsBase : MonoBehaviour
 
         saveManager.OnSaved += SaveDefenceData;
         saveManager.OnResetData += ResetData;
+
+        LoadDefenceData();
     }
     protected virtual void OnDisable()
     {
@@ -60,17 +61,16 @@ public class DefencesStatsBase : MonoBehaviour
         maxHealth = defenceSO.GetMaxHealthValues()[upgradeIndex];
     }
 
+
     #region Save & Load
 
-    private void SaveDefenceData()
+    public void SaveDefenceData()
     {
         SaveSystem.SaveDefencesData(this, defenceID);
     }
 
-    private void LoadDefenceData()
+    protected virtual void LoadDefenceData()
     {
-
-        // DefencesStatsBase defenceData = SaveSystem.LoadPlayerData();
         DefencesData defencesData = SaveSystem.LoadDefenceData(defenceID);
 
         if (defencesData != null)
@@ -78,7 +78,6 @@ public class DefencesStatsBase : MonoBehaviour
             this.upgradeIndex = defencesData.upgradeIndex;
             this.loadableBase.currentCostLeftForUpgrade = defencesData.currentCostLeftForUpgrade;
         }
-
         SetSOValues();
     }
 
@@ -110,10 +109,9 @@ public class DefencesStatsBase : MonoBehaviour
     #endregion
 
     #region !! ADMIN !!
-    protected virtual void ResetData()
+    public virtual void ResetData()
     {
-        upgradeIndex = 0;
-        saveManager.OnSaved?.Invoke();
+        SaveSystem.DeleteDefencesData(defenceID);
     }
     #endregion 
 }

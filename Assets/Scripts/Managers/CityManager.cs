@@ -76,11 +76,8 @@ public class CityManager : MonoBehaviour
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
 
-
-
         for (int i = 0; i < buyedAreaIndex; i++)
         {
-            Debug.Log("fora girdi" + buyedAreaIndex);
             buyableAreas[i].EnableArea();
         }
 

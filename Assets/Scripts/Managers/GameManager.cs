@@ -12,6 +12,9 @@ public class GameManager : Singleton<GameManager>
     private EnemySpawner activeWave;
     public bool canSpawnEnemy;
 
+    [Header("Phases")]
+    public bool isAttackPhase;
+
     [Header("Cities")]
     [SerializeField] public List<CityManager> allCities;
     [SerializeField] private List<TowerBehaviour> towers;
@@ -131,6 +134,7 @@ public class GameManager : Singleton<GameManager>
     {
         allCities[playerStats.GetCityIndex()].WaveCalled();
         canSpawnEnemy = true;
+        isAttackPhase = true;
     }
     public void OnWaveFinished()
     {
@@ -143,6 +147,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
+        isAttackPhase = false;
         allSpawnedEnemies.Clear();
     }
 

@@ -12,6 +12,10 @@ public class WallStats : DefencesStatsBase
     {
         base.OnEnable();
     }
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+    }
     protected override void Start()
     {
         base.Start();

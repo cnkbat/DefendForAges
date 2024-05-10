@@ -123,11 +123,9 @@ public class PlayerStats : Singleton<PlayerStats>
         }
         else if (currencyType == CurrencyType.meat)
         {
-            Debug.Log("exp");
 
-            if (cost[indexToUpgrade] <= experiencePoint)
+            if (cost[indexToUpgrade] <= meat)
             {
-                Debug.Log("if passed");
                 UpgradeSuccesful(indexToUpgrade, upgradeType);
                 DecrementMeat(cost[indexToUpgrade]);
             }
@@ -367,25 +365,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void ResetData()
     {
-        PlayerData playerData = SaveSystem.LoadPlayerData();
-
-        if (playerData != null)
-        {
-            this.money = 0;
-            this.experiencePoint = 0;
-            this.meat = 0;
-            this.cityIndex = 0;
-            this.waveIndex = 0;
-            this.damageIndex = 0;
-            this.attackSpeedIndex = 0;
-            this.movementSpeedIndex = 0;
-            this.powerupDurIndex = 0;
-            this.lifeStealIndex = 0;
-            this.maxHealthIndex = 0;
-            this.isDualWeaponActive = false;
-        }
-
-        SavePlayerData();
+        SaveSystem.DeletePlayerData();
     }
 
     private void UpdateStats()

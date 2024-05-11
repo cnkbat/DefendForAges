@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cddc417d34878408f3cbe2d8c4828c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoppingDistance: 1
   isRepairable: 0
   asset: {fileID: 1438590771166995297}
   fireRange: 25

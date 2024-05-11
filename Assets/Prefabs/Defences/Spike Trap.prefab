@@ -764,8 +764,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e055c2a928ba1b45ac8bde854759b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 327884527585567895}
+  stoppingDistance: 1
   isRepairable: 1
+  asset: {fileID: 327884527585567895}
   spikes: {fileID: 327884527272014914}
   originalSpikePos: {fileID: 327884528138259551}
   strikePos: {fileID: 327884527277317120}

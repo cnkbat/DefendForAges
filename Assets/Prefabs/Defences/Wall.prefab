@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3dae73f6f275f459e2ad8fda5d5635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoppingDistance: 1
   isRepairable: 0
   asset: {fileID: 827784685}
 --- !u!114 &2072606189640243497

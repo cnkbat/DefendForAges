@@ -237,9 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea3edeb71238404cba14fbc9ba194ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalStoppingDistance: 1
   isDead: 0
   canMove: 0
-  deathAnimDur: 0
+  deathAnimDur: 1
 --- !u!114 &1496560965268379181
 MonoBehaviour:
   m_ObjectHideFlags: 0

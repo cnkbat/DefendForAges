@@ -24,6 +24,9 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private EnemyStats enemyStats;
     private NavMeshAgent navMeshAgent;
 
+    [Header("AI Management")]
+    [SerializeField] private float originalStoppingDistance;
+
     [Header("Combat")]
     private float attackTimer;
 
@@ -63,13 +66,14 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
 
-
         cityManager = FindObjectOfType<CityManager>();
         ConnectToSpawner();
 
         OnEnemySpawned?.Invoke();
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.stoppingDistance = originalStoppingDistance;
+
         RefillHealth(enemyStats.GetMaxHealth());
         ResetAttackSpeed();
 
@@ -108,6 +112,9 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         {
             if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
+
+                navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();
+
                 attackTimer -= Time.deltaTime;
                 if (attackTimer <= 0)
                 {
@@ -115,6 +122,15 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
                     ResetAttackSpeed();
                 }
             }
+            else
+            {
+                navMeshAgent.stoppingDistance = originalStoppingDistance;
+            }
+        }
+        else
+        {
+            navMeshAgent.stoppingDistance = originalStoppingDistance;
+
         }
     }
 
@@ -137,19 +153,21 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void Move()
     {
+
         Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
         worldAimTarget.y = transform.position.y;
 
+
         navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
+
     }
 
     #endregion
 
     #region Combat Related
-    public void Attack(ITargetable target)
+    public void DealDamage(ITargetable target)
     {
 
-        canMove = false;
         // play animation
         // deal damage
         target.TakeDamage(enemyStats.GetDamage());
@@ -185,14 +203,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         OnEnemyKilled?.Invoke();
         gameManager.allSpawnedEnemies.Remove(gameObject);
-        Debug.Log("killed");
-
         animator.SetTrigger("Kill");
 
-
-        // bu ikisi ölüm animasyonundan sonra runlamalı
-        //gameObject.SetActive(false);
-        //ResetObjectData();
+        DestroyObject();
+        ResetObjectData();
 
         // test için commentlendi, geri getirilicek
         // enemyStats.getHealthBar().gameObject.SetActive(false);

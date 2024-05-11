@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class RPGSystemSO : ScriptableObject
 {
+    [Header("Levelling")]
+    [SerializeField] private List<int> experiencePointToLevelUp;
 
     [Header("Attack Speed")]
-
     [SerializeField] private List<float> attackSpeedValues;
     [SerializeField] private List<int> attackSpeedCosts;
 
@@ -36,7 +37,7 @@ public class RPGSystemSO : ScriptableObject
     [SerializeField] private int dualWeaponCost;
 
     #region  Getters
-
+    public List<int> GetLevellingExperiencePoints() { return experiencePointToLevelUp; }
     public List<float> GetAttackSpeedValues() { return attackSpeedValues; }
     public List<int> GetAttackSpeedCosts() { return attackSpeedCosts; }
     public List<float> GetDamageValues() { return damageValues; }

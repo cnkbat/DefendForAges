@@ -6,10 +6,12 @@ using System;
 public class PlayerStats : Singleton<PlayerStats>
 {
     SaveManager saveManager;
+    LevelSystem levelSystem;
 
     [SerializeField] private RPGSystemSO rpgSystemSO;
 
     [Header("Saved Indexes")]
+    public int playerLevel;
     public int money;
     public int experiencePoint;
     public int meat;
@@ -60,6 +62,7 @@ public class PlayerStats : Singleton<PlayerStats>
     protected override void Awake()
     {
         LoadPlayerData();
+        levelSystem = GetComponent<LevelSystem>();
     }
 
     #region  OnEnable / OnDisable
@@ -76,6 +79,8 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy += EarnBonusOnKill;
         OnRevive += FillCurrentHealth;
+
+        levelSystem.OnLevelUp += ResetXP;
     }
 
     private void OnDisable()
@@ -261,6 +266,7 @@ public class PlayerStats : Singleton<PlayerStats>
     #endregion
 
     #region  XP
+
     public void IncrementXP(int value)
     {
         experiencePoint += value;
@@ -270,6 +276,14 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         OnExperiencePointChange?.Invoke();
     }
+
+    private void ResetXP()
+    {
+        experiencePoint = 0;
+        XPChange();
+        saveManager.OnSaved?.Invoke();
+    }
+
     #endregion
 
     #region  Meat
@@ -347,6 +361,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         if (playerData != null)
         {
+            this.playerLevel = playerData.playerLevel;
             this.money = playerData.money;
             this.experiencePoint = playerData.experiencePoint;
             this.cityIndex = playerData.cityIndex;

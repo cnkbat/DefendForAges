@@ -3,6 +3,8 @@ public class PlayerData
 {
     public int currentEraIndex;
     public int currentTimelineIndex;
+    public int playerLevel;
+
     public int money;
     public int experiencePoint;
     public int meat;
@@ -22,7 +24,7 @@ public class PlayerData
 
     public PlayerData(PlayerStats playerStats)
     {
-
+        this.playerLevel = playerStats.playerLevel;
         this.money = playerStats.money;
         this.experiencePoint = playerStats.experiencePoint;
         this.meat = playerStats.meat;

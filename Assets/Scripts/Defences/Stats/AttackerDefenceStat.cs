@@ -7,6 +7,7 @@ using UnityEngine;
 public class AttackerDefenceStat : DefencesStatsBase
 {
 
+    [Header("**Attacker SO**")]
     [Tooltip("Attack defansifler için sadece burası doldurulmalı.")]
     [SerializeField] AttackerDefenceSO attackerDefenceSO;
 

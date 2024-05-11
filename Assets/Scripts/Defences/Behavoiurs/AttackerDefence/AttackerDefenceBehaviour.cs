@@ -24,7 +24,7 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
         base.Start();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (!gameManager.isAttackPhase)
         {

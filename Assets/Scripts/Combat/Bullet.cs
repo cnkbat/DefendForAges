@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour, IPoolableObject
 {
+    PlayerStats playerStats;
     GameManager gameManager;
     private float damage;
     [SerializeField] float moveSpeed;
@@ -12,10 +14,25 @@ public class Bullet : MonoBehaviour, IPoolableObject
     Vector3 targetPos;
     Transform firedPoint;
 
+    [Header("Life Steal")]
+    bool isPlayersBullet;
+    public Action<float> OnDamageDealt;
+
     [Header("VFX")]
     [SerializeField] TrailRenderer trailFX;
 
     bool targetReached = false;
+
+    private void OnEnable()
+    {
+        playerStats = PlayerStats.instance;
+        OnDamageDealt += playerStats.IncrementHealth;
+    }
+
+    private void OnDisable()
+    {
+        OnDamageDealt -= playerStats.IncrementHealth;
+    }
 
     #region IPoolableObject Functions
 
@@ -70,6 +87,12 @@ public class Bullet : MonoBehaviour, IPoolableObject
         if (other.TryGetComponent(out IDamagable damagable))
         {
             damagable.TakeDamage(damage);
+
+            if (isPlayersBullet)
+            {
+                OnDamageDealt.Invoke(damage);
+            }
+
             gameObject.SetActive(false);
         }
         else if (other.TryGetComponent(out IEnvironment environment))
@@ -100,6 +123,11 @@ public class Bullet : MonoBehaviour, IPoolableObject
         trailFX.startColor = startColor;
         trailFX.endColor = endColor;
 
+    }
+
+    public void SetIsPlayerBullet(bool newBool)
+    {
+        isPlayersBullet = newBool;
     }
 
     #endregion

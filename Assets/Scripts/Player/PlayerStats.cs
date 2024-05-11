@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
     SaveManager saveManager;
+    LevelSystem levelSystem;
 
     [SerializeField] private RPGSystemSO rpgSystemSO;
 
     [Header("Saved Indexes")]
+    public int playerLevel;
     public int money;
     public int experiencePoint;
     public int meat;
@@ -32,6 +35,12 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float maxHealth;
     DeathHandler deathHandler;
 
+    [Header("Power Up")]
+    [SerializeField] private float maxPowerUpFillValue;
+    [SerializeField] private int powerUpUpgradeIndexValue;
+    private bool isPowerupEnabled;
+    private float currentPowerUpValue;
+
     [Header("-------Stat Change Events ------")]
     public Action<int, int, int, float> OnKillEnemy;
 
@@ -43,7 +52,6 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action OnPowerupDurUpgraded;
     public Action OnMaxHealthUpgraded;
     public Action OnDualWeaponUpgraded;
-
 
     [Header("Save Load Events")]
     public Action OnDataChanged;
@@ -60,6 +68,7 @@ public class PlayerStats : Singleton<PlayerStats>
     protected override void Awake()
     {
         LoadPlayerData();
+        levelSystem = GetComponent<LevelSystem>();
     }
 
     #region  OnEnable / OnDisable
@@ -76,6 +85,8 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy += EarnBonusOnKill;
         OnRevive += FillCurrentHealth;
+
+        levelSystem.OnLevelUp += ResetXP;
     }
 
     private void OnDisable()
@@ -261,6 +272,7 @@ public class PlayerStats : Singleton<PlayerStats>
     #endregion
 
     #region  XP
+
     public void IncrementXP(int value)
     {
         experiencePoint += value;
@@ -270,6 +282,14 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         OnExperiencePointChange?.Invoke();
     }
+
+    private void ResetXP()
+    {
+        experiencePoint = 0;
+        XPChange();
+        saveManager.OnSaved?.Invoke();
+    }
+
     #endregion
 
     #region  Meat
@@ -290,17 +310,74 @@ public class PlayerStats : Singleton<PlayerStats>
     }
     #endregion
 
+    #region  Health Related
+
+    public void FillCurrentHealth()
+    {
+        deathHandler.SetCurrentHealth(maxHealth);
+    }
+
+    public void IncrementHealth(float lifeStolen)
+    {
+        deathHandler.IncerementCurrentHealth(lifeStolen);
+    }
+
+    #endregion
+
+    #region PowerUp
+    private void IncrementPowerUp(float value)
+    {
+        if (isPowerupEnabled) return;
+
+        currentPowerUpValue += value;
+        // event for ui
+        if (currentPowerUpValue >= maxPowerUpFillValue)
+        {
+            EnablePowerUp();
+        }
+    }
+
+    private void EnablePowerUp()
+    {
+        isPowerupEnabled = true;
+        int tempMovementIndex = movementSpeedIndex + powerUpUpgradeIndexValue;
+        int tempMaxHealthIndex = maxHealthIndex + powerUpUpgradeIndexValue;
+        int tempAttackSpeedIndex = attackSpeedIndex + powerUpUpgradeIndexValue;
+        int tempDamageIndex = damageIndex + powerUpUpgradeIndexValue;
+        UpdateStatsForPowerUp(tempMovementIndex, tempMaxHealthIndex, tempAttackSpeedIndex, tempDamageIndex);
+    }
+
+    IEnumerator DisablePowerUp()
+    {
+        yield return new WaitForSeconds(powerupDur);
+
+        currentPowerUpValue = 0;
+        // event for ui
+        UpdateStats();
+    }
+
+    private void UpdateStatsForPowerUp(int movementSpeedIndex, int maxHealthIndex, int attackSpeedIndex, int damageIndex)
+    {
+        damage = rpgSystemSO.GetDamageValues()[damageIndex];
+        attackSpeed = rpgSystemSO.GetAttackSpeedValues()[attackSpeedIndex];
+        movementSpeed = rpgSystemSO.GetMovementSpeedValues()[movementSpeedIndex];
+        maxHealth = rpgSystemSO.GetMaxHealthValues()[maxHealthIndex];
+    }
+    #endregion
+
     #region Wave System
 
     public void WaveWon()
     {
         IncrementWaveIndex();
     }
+
     public void EarnBonusOnKill(int moneyValue, int xpValue, int meatValue, float powerUpAddOnValue)
     {
         IncrementMoney(moneyValue);
         IncrementXP(xpValue);
         IncrementMeat(meatValue);
+        IncrementPowerUp(powerUpAddOnValue);
         // power up eklenmedi daha
     }
 
@@ -347,6 +424,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         if (playerData != null)
         {
+            this.playerLevel = playerData.playerLevel;
             this.money = playerData.money;
             this.experiencePoint = playerData.experiencePoint;
             this.cityIndex = playerData.cityIndex;
@@ -379,14 +457,7 @@ public class PlayerStats : Singleton<PlayerStats>
     }
 
 
-    #endregion
-
-    #region  Health
-    public void FillCurrentHealth()
-    {
-        deathHandler.SetCurrentHealth(maxHealth);
-    }
-    #endregion
+    #endregion   
 
     #region  Getters & Setters
     public float GetAttackSpeed()
@@ -410,6 +481,11 @@ public class PlayerStats : Singleton<PlayerStats>
     public int GetCityIndex()
     {
         return cityIndex;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
     }
 
     public RPGSystemSO GetPlayerSO()

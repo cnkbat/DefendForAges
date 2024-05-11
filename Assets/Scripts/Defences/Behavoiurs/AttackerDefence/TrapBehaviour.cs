@@ -4,13 +4,15 @@ using DG.Tweening;
 public class TrapBehaviour : AttackerDefenceBehaviour
 {
 
-    [SerializeField] BoxCollider spikesCollider;
+    [Header("Spikes & Spike Poses")]
+    [SerializeField] private Transform spikes;
+    [SerializeField] private Transform originalSpikePos;
+    [SerializeField] private Transform strikePos;
 
-    [SerializeField] Transform spikes;
-    [SerializeField] Transform originalSpikePos;
-    [SerializeField] Transform strikePos;
-
-    bool isStriked;
+    [Header("Attacking")]
+    [Tooltip("Yukari ve aşaği olan hareket attackspeede göre hareket ediyor.\n"
+    + "Bundan dolayi buraya girilen değer attack speedi bölerek o sürede hareket ettiriyor.")]
+    [SerializeField] private float attackSpeedDividor;
 
     protected override void OnEnable()
     {
@@ -32,10 +34,10 @@ public class TrapBehaviour : AttackerDefenceBehaviour
 
         base.Attack();
 
-        spikes.DOMoveY(strikePos.position.y, attackerDefenceStat.GetAttackSpeed() / 4).
+        spikes.DOMoveY(strikePos.position.y, attackerDefenceStat.GetAttackSpeed() / attackSpeedDividor).
             OnComplete(() =>
             {
-                spikes.DOMoveY(originalSpikePos.position.y, attackerDefenceStat.GetAttackSpeed() / 4);
+                spikes.DOMoveY(originalSpikePos.position.y, attackerDefenceStat.GetAttackSpeed() / attackSpeedDividor);
             });
 
     }

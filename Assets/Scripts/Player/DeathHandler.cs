@@ -57,6 +57,16 @@ public class DeathHandler : EnemyTarget
         }
     }
 
+    public void IncerementCurrentHealth(float value)
+    {
+        currentHealth += value;
+
+        if (currentHealth > playerStats.GetMaxHealth())
+        {
+            playerStats.FillCurrentHealth();
+        }
+    }
+
 
     #region Getters & Setters
     public float GetCurrentHealth()

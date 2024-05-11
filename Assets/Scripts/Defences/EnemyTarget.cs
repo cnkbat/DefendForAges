@@ -9,8 +9,10 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     protected GameManager gameManager;
     protected PlayerStats playerStats;
     protected float currentHealth;
-
     protected bool isTargetable;
+
+    [Header("AI Manipulation")]
+    [SerializeField] private float stoppingDistance;
 
     [Header("Events")]
     public Action OnTargetDestroyed;
@@ -72,6 +74,12 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     {
         return isTargetable;
     }
+
+    public float GetStoppingDistance()
+    {
+        return stoppingDistance;
+    }
+    
     #endregion
 
 }

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class DefencesBehaviourBase : EnemyTarget
 {
-    
+
     protected DefencesStatsBase defencesStatsBase;
-    [SerializeField] protected GameObject asset;
+
     BoxCollider boxCollider;
     [SerializeField] protected bool isRepairable;
 
+    [Header("Visuals")]
+    [SerializeField] protected GameObject asset;
     override protected void Start()
     {
         defencesStatsBase = GetComponent<DefencesStatsBase>();
@@ -40,7 +42,7 @@ public class DefencesBehaviourBase : EnemyTarget
         base.TargetDestroyed();
         asset.SetActive(false);
         boxCollider.enabled = false;
-    
+
         // hapticler
     }
 

@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    NearestEnemyFinder nearestEnemyFinder;
+
     PlayerStats playerStats;
     GameManager gameManager;
-
-    [Header("Nearest Enemy Finding")]
-    private float nearestEnemyDistance;
-    float distance;
-    private Transform nearestEnemy;
 
     [Header("Fire Range")]
     public float fireRange;
@@ -26,17 +23,23 @@ public class PlayerAttack : MonoBehaviour
     {
         gameManager = GameManager.instance;
         playerStats = GetComponent<PlayerStats>();
+        nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
+
         ResetAttackSpeed();
+
+        nearestEnemyFinder.SetFireRange(fireRange);
     }
 
     private void Update()
     {
-        if (GetNearestEnemyToPlayer())
+        if (nearestEnemyFinder.GetNearestEnemy())
         {
+            LookAtNearstEnemy(nearestEnemyFinder.GetNearestEnemy());
+
             currentAttackSpeed -= Time.deltaTime;
             if (currentAttackSpeed <= 0)
             {
-                OnAttack?.Invoke(GetNearestEnemyToPlayer());
+                OnAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy());
                 ResetAttackSpeed();
             }
         }
@@ -48,7 +51,7 @@ public class PlayerAttack : MonoBehaviour
 
     #region  findingClosestEnemy
 
-    void LookAtNearstEnemy(Transform closestEnemy)
+    private void LookAtNearstEnemy(Transform closestEnemy)
     {
 
         if (closestEnemy != null)
@@ -69,39 +72,6 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    public Transform GetNearestEnemyToPlayer()
-    {
-
-        nearestEnemyDistance = 10000f;
-
-        if (gameManager.allSpawnedEnemies.Count > 0)
-        {
-
-            for (int i = 0; i < gameManager.allSpawnedEnemies.Count; i++)
-            {
-                distance = Vector3.Distance(transform.position, gameManager.allSpawnedEnemies[i].transform.position);
-
-                if (distance < nearestEnemyDistance)
-                {
-                    nearestEnemy = gameManager.allSpawnedEnemies[i].transform;
-
-                    nearestEnemyDistance = distance;
-                }
-            }
-
-
-            if (nearestEnemyDistance < fireRange)
-            {
-                LookAtNearstEnemy(nearestEnemy);
-                return nearestEnemy;
-            }
-            else return null;
-            
-        }
-
-        else return null;
-
-    }
 
     #endregion
 

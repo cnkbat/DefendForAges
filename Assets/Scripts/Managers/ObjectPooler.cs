@@ -114,7 +114,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return objectToSpawn;
     }
 
-    public GameObject SpawnBulletFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null, float damage = 0)
+    public GameObject SpawnBulletFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null, float damage = 0,bool isPlayersBullet = false)
     {
 
         if (!poolDictionary.ContainsKey(tag))
@@ -133,6 +133,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         {
             bullet.SetTarget(fireTarget);
             bullet.SetDamage(damage);
+            bullet.SetIsPlayerBullet(isPlayersBullet);
         }
 
         if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))

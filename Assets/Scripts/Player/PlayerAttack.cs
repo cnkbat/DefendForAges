@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
 {
     NearestEnemyFinder nearestEnemyFinder;
     [SerializeField] List<Weapon> weapons;
-
     PlayerStats playerStats;
     GameManager gameManager;
 
@@ -22,6 +21,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnEnable()
     {
+        playerStats = PlayerStats.instance;
+        playerStats.OnWeaponActivision += EnableWeapons;
+
         for (int i = 0; i < weapons.Count; i++)
         {
             OnAttack += weapons[i].Attack;
@@ -99,4 +101,18 @@ public class PlayerAttack : MonoBehaviour
     }
     #endregion
 
+    #region Dual Weaponing
+    public void EnableWeapons(int index)
+    {
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            weapons[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < index; i++)
+        {
+            weapons[i].gameObject.SetActive(true);
+        }
+    }
+    #endregion
 }

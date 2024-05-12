@@ -59,6 +59,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [Header("Action Events")]
     public Action OnRevive;
     public Action OnWaveWon;
+    public Action<int> OnWeaponActivision;
 
     [Header("UI Events")]
     public Action OnExperiencePointChange;
@@ -219,9 +220,9 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void AttemptUpgradeDualWeapon()
     {
-       
+
         if (isDualWeaponActive) return;
-        
+
         if (rpgSystemSO.GetDualWeaponCost() <= meat)
         {
             ActiveDualWeapon();
@@ -248,9 +249,11 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (isDualWeaponActive)
         {
-            // ikinci silahın aktivasyonu
-            // animasyonun dual weapon yapısına geçmesi
-            Debug.Log("dual weapon active");
+            OnWeaponActivision.Invoke(2);
+        }
+        else
+        {
+            OnWeaponActivision.Invoke(1);
         }
     }
     #endregion

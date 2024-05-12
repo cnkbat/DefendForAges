@@ -124,7 +124,7 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             if (cost[indexToUpgrade] <= money)
             {
-                UpgradeSuccesful(indexToUpgrade, upgradeType);
+                UpgradeSuccesful(upgradeType);
                 DecrementMoney(cost[indexToUpgrade]);
             }
             else
@@ -134,10 +134,9 @@ public class PlayerStats : Singleton<PlayerStats>
         }
         else if (currencyType == CurrencyType.meat)
         {
-
             if (cost[indexToUpgrade] <= meat)
             {
-                UpgradeSuccesful(indexToUpgrade, upgradeType);
+                UpgradeSuccesful(upgradeType);
                 DecrementMeat(cost[indexToUpgrade]);
             }
             else
@@ -148,48 +147,53 @@ public class PlayerStats : Singleton<PlayerStats>
 
     }
 
-    private void UpgradeSuccesful(int indexToUpgrade, RPGUpgradesType upgradesType)
+    private void UpgradeSuccesful(RPGUpgradesType upgradesType)
     {
-
-        indexToUpgrade++;
-        UpdateStats();
 
 
         if (upgradesType == RPGUpgradesType.empty) return;
 
         if (upgradesType == RPGUpgradesType.attackSpeed)
         {
+            attackSpeedIndex++;
             OnAttackSpeedUpgraded?.Invoke();
         }
         else if (upgradesType == RPGUpgradesType.damage)
         {
+            damageIndex++;
             OnDamageUpgraded?.Invoke();
         }
         else if (upgradesType == RPGUpgradesType.lifeSteal)
         {
+            lifeStealIndex++;
             OnLifeStealUpgraded?.Invoke();
         }
         else if (upgradesType == RPGUpgradesType.movementSpeed)
         {
+            movementSpeedIndex++;
             OnMovementSpeedUpgraded?.Invoke();
         }
         else if (upgradesType == RPGUpgradesType.powerupDur)
         {
+            powerupDurIndex++;
             OnPowerupDurUpgraded?.Invoke();
         }
         else if (upgradesType == RPGUpgradesType.maxHealth)
         {
+            maxHealthIndex++;
             OnMaxHealthUpgraded?.Invoke();
         }
         else if (upgradesType == RPGUpgradesType.dualWeapon)
         {
             OnDualWeaponUpgraded?.Invoke();
         }
+
+        UpdateStats();
+
     }
 
     public void AttemptUpgradeAttackSpeed()
     {
-        Debug.Log("button click");
         AttemptUpgradeStat(attackSpeedIndex, rpgSystemSO.GetAttackSpeedCosts(), CurrencyType.meat, RPGUpgradesType.attackSpeed);
     }
     public void AttemptUpgradeDamage()
@@ -215,9 +219,10 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void AttemptUpgradeDualWeapon()
     {
+       
         if (isDualWeaponActive) return;
-
-        if (rpgSystemSO.GetDualWeaponCost() >= meat)
+        
+        if (rpgSystemSO.GetDualWeaponCost() <= meat)
         {
             ActiveDualWeapon();
             DecrementMeat(rpgSystemSO.GetDualWeaponCost());
@@ -433,6 +438,7 @@ public class PlayerStats : Singleton<PlayerStats>
             this.playerLevel = playerData.playerLevel;
             this.money = playerData.money;
             this.experiencePoint = playerData.experiencePoint;
+            this.meat = playerData.meat;
             this.cityIndex = playerData.cityIndex;
             this.waveIndex = playerData.waveIndex;
             this.damageIndex = playerData.damageIndex;

@@ -34,15 +34,15 @@ public class AdminManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.M))
         {
-            GiveMoneyAndXP();
+            GiveMoneyAndMeat();
         }
 
     }
 
-    private void GiveMoneyAndXP()
+    private void GiveMoneyAndMeat()
     {
         playerStats.IncrementMoney(1000);
-        playerStats.IncrementXP(1000);
+        playerStats.IncrementMeat(1000);
     }
 
     private void EnableDisableAdminPanel()
@@ -55,6 +55,6 @@ public class AdminManager : MonoBehaviour
         Time.timeScale = 0;
 
         saveManager.OnResetData?.Invoke();
-      //  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

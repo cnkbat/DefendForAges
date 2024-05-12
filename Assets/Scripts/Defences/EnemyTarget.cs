@@ -10,6 +10,8 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     protected PlayerStats playerStats;
     protected float currentHealth;
     protected bool isTargetable;
+    protected bool isPlayer;
+
 
     [Header("AI Manipulation")]
     [SerializeField] private float stoppingDistance;
@@ -22,14 +24,32 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     {
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
-        OnTargetDestroyed += gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
-        OnTargetRevived += gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+
+        if (isPlayer)
+        {
+            OnTargetDestroyed += gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+            OnTargetRevived += gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+        }
+        else
+        {
+            OnTargetDestroyed += transform.root.GetComponent<CityManager>().UpdateTargetList;
+            OnTargetRevived += transform.root.GetComponent<CityManager>().UpdateTargetList;
+        }
+
         isTargetable = true;
     }
     protected virtual void OnDisable()
     {
-        OnTargetDestroyed -= gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
-        OnTargetRevived -= gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+        if (isPlayer)
+        {
+            OnTargetDestroyed -= gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+            OnTargetRevived -= gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;
+        }
+        else
+        {
+            OnTargetDestroyed -= transform.root.GetComponent<CityManager>().UpdateTargetList;
+            OnTargetRevived -= transform.root.GetComponent<CityManager>().UpdateTargetList;
+        }
     }
 
     protected virtual void Start()
@@ -79,7 +99,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     {
         return stoppingDistance;
     }
-    
+
     #endregion
 
 }

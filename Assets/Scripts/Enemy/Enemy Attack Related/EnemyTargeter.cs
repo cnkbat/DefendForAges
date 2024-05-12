@@ -12,24 +12,23 @@ public class EnemyTargeter : MonoBehaviour
     private float closestDistance;
 
     [Header("City Related")]
-    public CityManager cityManager;
+    private CityManager cityManager;
 
     public void EnemySpawned()
     {
         ResetTargetTimer();
         closestDistance = 999999;
-    }
 
-    private void OnEnable()
-    {
-        cityManager = FindObjectOfType<CityManager>();
-
+        cityManager = transform.root.GetComponent<CityManager>();
         cityManager.OnTargetListUpdated += ResetTargetTimer;
     }
 
     private void OnDisable()
     {
-        cityManager.OnTargetListUpdated -= ResetTargetTimer;
+        if (cityManager != null)
+        {
+            cityManager.OnTargetListUpdated -= ResetTargetTimer;
+        }
     }
 
     private void Update()
@@ -73,6 +72,11 @@ public class EnemyTargeter : MonoBehaviour
     public Transform GetTarget()
     {
         return target;
+    }
+
+    public CityManager GetCityManager()
+    {
+        return cityManager;
     }
 
     #endregion

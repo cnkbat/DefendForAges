@@ -79,7 +79,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return objectToSpawn;
     }
 
-    public GameObject SpawnEnemyFromPool(string tag, Vector3 spawnPos, EnemySpawner newEnemySpawner, CityManager newCityManager)
+    public GameObject SpawnEnemyFromPool(string tag, Vector3 spawnPos, EnemySpawner newEnemySpawner, Transform newParent)
     {
 
         if (!poolDictionary.ContainsKey(tag))
@@ -89,6 +89,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         }
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        objectToSpawn.transform.parent = newParent;
         objectToSpawn.SetActive(true);
 
         objectToSpawn.transform.position = spawnPos;
@@ -96,11 +97,6 @@ public class ObjectPooler : Singleton<ObjectPooler>
         if (objectToSpawn.TryGetComponent(out EnemyBehaviour enemyBehaviour))
         {
             enemyBehaviour.SetEnemySpawner(newEnemySpawner);
-        }
-
-        if (objectToSpawn.TryGetComponent(out EnemyTargeter enemyTargeter))
-        {
-            enemyTargeter.SetCityManager(gameManager.allCities[playerStats.GetCityIndex()]);
         }
 
         if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
@@ -114,7 +110,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return objectToSpawn;
     }
 
-    public GameObject SpawnBulletFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null, float damage = 0,bool isPlayersBullet = false)
+    public GameObject SpawnBulletFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null, float damage = 0, bool isPlayersBullet = false)
     {
 
         if (!poolDictionary.ContainsKey(tag))

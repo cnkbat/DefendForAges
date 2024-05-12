@@ -13,7 +13,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     #region City & Instances
     private GameManager gameManager;
     private PlayerStats playerStats;
-    private CityManager cityManager;
+
     private EnemySpawner assignedEnemySpawner;
 
     #endregion
@@ -66,7 +66,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
 
-        cityManager = FindObjectOfType<CityManager>();
         ConnectToSpawner();
 
         OnEnemySpawned?.Invoke();
@@ -81,14 +80,9 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void ResetObjectData()
     {
-
         OnEnemySpawned -= enemyTargeter.EnemySpawned;
         OnEnemySpawned -= enemyStats.EnemySpawned;
-
-        cityManager = FindObjectOfType<CityManager>();
-        cityManager.OnWaveCalled -= ConnectToSpawner;
         OnEnemyKilled -= assignedEnemySpawner.OnEnemyKilled;
-
     }
 
     #endregion
@@ -136,13 +130,13 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void ConnectToSpawner()
     {
-        assignedEnemySpawner = FindObjectOfType<EnemySpawner>();
         OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
     }
 
     #region  Movement
     IEnumerator EnableMovement(float duration)
     {
+        if (isDead) yield return null;
 
         yield return new WaitForSeconds(duration);
 
@@ -204,7 +198,12 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         gameManager.allSpawnedEnemies.Remove(gameObject);
         animator.SetTrigger("Kill");
 
-        DestroyObject();
+
+        // Bu satırdaki coroutine çalışmıyor
+        // çünkü obje başka yerden kapatılıyor (setactive.false)
+        // nedenini bulup fixler misin?. -cenk
+        StartCoroutine(KillEnemy());
+
         ResetObjectData();
 
         // test için commentlendi, geri getirilicek
@@ -224,7 +223,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     #endregion
 
-    IEnumerator DestroyObject()
+    private IEnumerator KillEnemy()
     {
         yield return new WaitForSeconds(deathAnimDur);
         gameObject.SetActive(false);

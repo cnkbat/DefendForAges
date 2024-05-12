@@ -8,7 +8,7 @@ public class EnemyAttackAnimationHandler : MonoBehaviour
     public EnemyBehaviour enemyBehaviour;
     public void Start()
     {
-        enemyBehaviour = transform.root.GetComponent<EnemyBehaviour>();
+      //  enemyBehaviour = transform.root.GetComponent<EnemyBehaviour>();
     }
     public void EnableDamage()
     {

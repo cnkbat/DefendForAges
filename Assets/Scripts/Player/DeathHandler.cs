@@ -9,6 +9,11 @@ public class DeathHandler : EnemyTarget
     CityManager cityManager;
     public Action OnPlayerKilled;
 
+    private void Awake()
+    {
+        isPlayer = true;
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();

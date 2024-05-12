@@ -67,7 +67,8 @@ public class EnemySpawner : MonoBehaviour
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
-        gameManager.allCities[playerStats.GetCityIndex()].OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
+
+        transform.root.GetComponent<CityManager>().OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
     }
 
     private void OnDisable()
@@ -75,7 +76,8 @@ public class EnemySpawner : MonoBehaviour
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
-        gameManager.allCities[playerStats.GetCityIndex()].OnEnemySpawnPosesUpdated -= OnAssignEnemySpawnPoints;
+
+        transform.root.GetComponent<CityManager>().OnEnemySpawnPosesUpdated -= OnAssignEnemySpawnPoints;
     }
 
     private void Start()
@@ -173,7 +175,7 @@ public class EnemySpawner : MonoBehaviour
                     }
 
                     GameObject spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
-                        enemySpawnPoints[spawnIndex].position, this, gameManager.allCities[playerStats.GetCityIndex()]);
+                        enemySpawnPoints[spawnIndex].position, this, this.transform);
 
                     spawnIndex++;
 
@@ -207,7 +209,7 @@ public class EnemySpawner : MonoBehaviour
 
         killedEnemies++;
 
-    
+
         if (killedEnemies >= totalNumOfEnemiesOfSpawner)
         {
             OnWaveCompleted?.Invoke();

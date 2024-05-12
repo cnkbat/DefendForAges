@@ -8,7 +8,9 @@ public class EnemyAttack : MonoBehaviour
 
     private void Start() 
     {
-        enemyBehaviour =  this.transform.root.GetComponent<EnemyBehaviour>();
+       // enemyBehaviour = transform.GetComponentInParent<EnemyBehaviour>();
+        
+        //enemyBehaviour =  this.transform.root.GetComponent<EnemyBehaviour>();
     }
     
     private void OnTriggerEnter(Collider other)

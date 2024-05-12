@@ -119,12 +119,12 @@ public class GameManager : Singleton<GameManager>
     public void CheckIfCheckPointReached()
     {
         if (isEraCompleted) return;
+        Debug.Log("city check");
 
         if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].waveList.Count)
         {
+            Debug.Log("city won");
             OnCheckPointReached?.Invoke();
-            // şehirdeki animasyonlar
-            // Fxler
         }
     }
 

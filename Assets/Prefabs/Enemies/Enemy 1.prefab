@@ -240,7 +240,7 @@ MonoBehaviour:
   originalStoppingDistance: 1
   isDead: 0
   canMove: 0
-  deathAnimDur: 1
+  deathAnimDur: 2
 --- !u!114 &1496560965268379181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +271,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   targetTimer: 3
-  cityManager: {fileID: 0}
 --- !u!195 &-2288645425906472984
 NavMeshAgent:
   m_ObjectHideFlags: 0

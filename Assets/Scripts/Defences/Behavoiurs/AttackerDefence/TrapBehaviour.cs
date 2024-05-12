@@ -27,6 +27,7 @@ public class TrapBehaviour : AttackerDefenceBehaviour
     protected override void Start()
     {
         base.Start();
+        base.isTargetable = false;
     }
 
     protected override void Attack()

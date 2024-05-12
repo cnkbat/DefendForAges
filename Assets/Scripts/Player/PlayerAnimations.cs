@@ -40,7 +40,7 @@ public class PlayerAnimations : MonoBehaviour
 
         vx = perpendicularVector.magnitude;
         vz = projectionVector.magnitude;
-        Debug.Log("Vz: " + vz + " Vx: " + vx);
+        //Debug.Log("Vz: " + vz + " Vx: " + vx);
         anim.SetFloat("Vx", vx);
         anim.SetFloat("Vz", vz);
         //anim.SetFloat("Vx", vx, 0.05f, Time.deltaTime);

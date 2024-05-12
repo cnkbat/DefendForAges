@@ -335,6 +335,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void IncrementPowerUp(float value)
     {
+        Debug.Log("Power Up Enabled");
         if (isPowerupEnabled) return;
 
         currentPowerUpValue += value;
@@ -355,7 +356,7 @@ public class PlayerStats : Singleton<PlayerStats>
         int tempDamageIndex = damageIndex + powerUpUpgradeIndexValue;
 
         UpdateStatsForPowerUp(tempMovementIndex, tempMaxHealthIndex, tempAttackSpeedIndex, tempDamageIndex);
-        Debug.Log("Power Up Enabled");
+        
         StartCoroutine(DisablePowerUp());
     }
 

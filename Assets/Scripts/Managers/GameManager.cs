@@ -51,11 +51,10 @@ public class GameManager : Singleton<GameManager>
 
         for (int i = 0; i < allCities.Count; i++)
         {
-            playerStats.OnWaveWon += CheckIfCheckPointReached;
-
             allWavesCount += allCities[i].waveList.Count;
         }
 
+        playerStats.OnWaveWon += CheckIfEraFinished;
 
         OnCheckPointReached += playerStats.CheckPointReached;
     }
@@ -71,16 +70,17 @@ public class GameManager : Singleton<GameManager>
 
         for (int i = 0; i < allCities.Count; i++)
         {
-            playerStats.OnWaveWon -= CheckIfCheckPointReached;
-
             allWavesCount -= allCities[i].waveList.Count;
         }
 
-        playerStats.OnWaveWon -= CheckIfCheckPointReached;
+        playerStats.OnWaveWon -= CheckIfEraFinished;
 
         OnCheckPointReached -= playerStats.CheckPointReached;
     }
-
+    private void Start()
+    {
+        CheckIfEraFinished();
+    }
     #region  Win & Lose Conditions
 
     public void LevelLost()
@@ -101,6 +101,7 @@ public class GameManager : Singleton<GameManager>
 
     public void CheckIfEraFinished()
     {
+        Debug.Log("era check");
         if (playerStats.GetWaveIndex() >= allWavesCount)
         {
             isEraCompleted = true;
@@ -121,11 +122,19 @@ public class GameManager : Singleton<GameManager>
         if (isEraCompleted) return;
         Debug.Log("city check");
 
+
         if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].waveList.Count)
         {
-            Debug.Log("city won");
             OnCheckPointReached?.Invoke();
         }
+
+        for (int i = 0; i < allCities.Count; i++)
+        {
+            allCities[i].gameObject.SetActive(false);
+        }
+
+
+        allCities[playerStats.GetCityIndex()].gameObject.SetActive(true);
     }
 
     #endregion

@@ -1,18 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEditor.EditorTools;
 using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
 
-    GameManager gameManager;
-    EnemyBehaviour enemyBehaviour;
     NavMeshAgent navMeshAgent;
 
     public EnemySO enemySO;
@@ -39,8 +31,6 @@ public class EnemyStats : MonoBehaviour
 
     public void EnemySpawned()
     {
-        gameManager = GameManager.instance;
-        enemyBehaviour = this.GetComponent<EnemyBehaviour>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         SetEnemySOValues();
     }

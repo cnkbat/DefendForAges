@@ -53,9 +53,6 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action OnMaxHealthUpgraded;
     public Action OnDualWeaponUpgraded;
 
-    [Header("Save Load Events")]
-    public Action OnDataChanged;
-
     [Header("Action Events")]
     public Action OnRevive;
     public Action OnWaveWon;
@@ -80,7 +77,7 @@ public class PlayerStats : Singleton<PlayerStats>
         if (saveManager != null)
         {
             saveManager.OnSaved += SavePlayerData;
-            OnDataChanged += saveManager.DataChanged;
+
             saveManager.OnResetData += ResetData;
         }
 
@@ -97,7 +94,7 @@ public class PlayerStats : Singleton<PlayerStats>
         if (saveManager != null)
         {
             saveManager.OnSaved -= SavePlayerData;
-            OnDataChanged -= saveManager.DataChanged;
+
             saveManager.OnResetData -= ResetData;
         }
 
@@ -397,7 +394,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         waveIndex++;
         OnWaveWon?.Invoke();
-        OnDataChanged?.Invoke();
+        saveManager.OnSaved?.Invoke();
     }
 
     #endregion
@@ -419,7 +416,7 @@ public class PlayerStats : Singleton<PlayerStats>
         // diğer şehre hareketi
         // kazanılan bonus
         // araya giren ads popupları   
-        OnDataChanged?.Invoke();
+        saveManager.OnSaved?.Invoke();
 
     }
     #endregion

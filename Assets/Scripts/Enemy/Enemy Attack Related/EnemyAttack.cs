@@ -6,18 +6,16 @@ public class EnemyAttack : MonoBehaviour
 {
     EnemyBehaviour enemyBehaviour;
 
-    private void Start() 
+    private void Start()
     {
-       // enemyBehaviour = transform.GetComponentInParent<EnemyBehaviour>();
-        
-        //enemyBehaviour =  this.transform.root.GetComponent<EnemyBehaviour>();
+        enemyBehaviour = transform.GetComponentInParent<EnemyBehaviour>();
     }
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out ITargetable targetable))
         {
-           enemyBehaviour.DealDamage(targetable);
+            enemyBehaviour.DealDamage(targetable);
         }
     }
 }

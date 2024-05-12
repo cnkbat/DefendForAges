@@ -8,13 +8,13 @@ public class EnemyAttackAnimationHandler : MonoBehaviour
     public EnemyBehaviour enemyBehaviour;
     public void Start()
     {
-      //  enemyBehaviour = transform.root.GetComponent<EnemyBehaviour>();
+        enemyBehaviour = transform.GetComponentInParent<EnemyBehaviour>();
     }
     public void EnableDamage()
     {
         rightHandCollider.enabled = true;
     }
-    public void DisableDamage() 
+    public void DisableDamage()
     {
         rightHandCollider.enabled = false;
     }

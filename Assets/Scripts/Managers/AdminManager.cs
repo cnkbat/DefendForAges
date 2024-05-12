@@ -55,6 +55,6 @@ public class AdminManager : MonoBehaviour
         Time.timeScale = 0;
 
         saveManager.OnResetData?.Invoke();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+      //  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

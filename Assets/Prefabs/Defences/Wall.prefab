@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyMovePos: {fileID: 0}
-  costs: 03000000
+  currentCostLeftForUpgrade: 0
 --- !u!1 &2072606189158032489
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,8 +350,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2072606189640243496}
-  - component: {fileID: 2072606189640243509}
-  - component: {fileID: 2072606189640243508}
   - component: {fileID: 2072606189640243511}
   - component: {fileID: 2072606189640243510}
   - component: {fileID: 2072606189640243497}
@@ -380,56 +378,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &2072606189640243509
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072606189640243499}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2072606189640243508
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072606189640243499}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 4d24056a693192f4a9c0ade1d46b599f, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2072606189640243511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -455,8 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3dae73f6f275f459e2ad8fda5d5635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 827784685}
+  stoppingDistance: 1
   isRepairable: 0
+  asset: {fileID: 827784685}
 --- !u!114 &2072606189640243497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,8 +418,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452f95acbc67c6d429aa2693991cac67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticDefenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
+  defenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
   loadableBase: {fileID: 1347468887}
+  defenceID: 0
+  upgradeIndex: 0
   wallParts:
   - {fileID: 2072606189158032489}
   - {fileID: 2072606190182835718}

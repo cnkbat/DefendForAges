@@ -9,36 +9,46 @@ using UnityEngine.AI;
 public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 {
     //  saldırı, yürüme , ölme
-    EnemyStats enemyStats;
-    GameManager gameManager;
-    EnemyTargeter enemyTargeter;
-    PlayerStats playerStats;
 
-    CityManager cityManager;
+    #region City & Instances
+    private GameManager gameManager;
+    private PlayerStats playerStats;
+    private CityManager cityManager;
     private EnemySpawner assignedEnemySpawner;
+
+    #endregion
+
+    [Header("Components on this")]
     private Rigidbody rb;
+    private EnemyTargeter enemyTargeter;
+    private EnemyStats enemyStats;
+    private NavMeshAgent navMeshAgent;
+
+    [Header("AI Management")]
+    [SerializeField] private float originalStoppingDistance;
+
+    [Header("Combat")]
     private float attackTimer;
-    [SerializeField] float range;
-    private Animator anim;
+
+    [Header("Animation")]
+    private Animator animator;
 
     [Header("States")]
     public bool isDead;
     public bool canMove;
-    Animator animator;
+
     [Header("Animation")]
-    [SerializeField] float deathAnimDur;
+    [SerializeField] private float deathAnimDur;
 
     [Header("Health")]
-    float currentHealth;
+    private float currentHealth;
 
     [Header("Events")]
     public Action OnEnemyKilled;
     public Action OnEnemySpawned;
 
-    private NavMeshAgent navMeshAgent;
 
     #region IPoolableObject Functions
-
 
     public void OnObjectPooled()
     {
@@ -48,7 +58,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
 
-        anim = this.GetComponentInChildren<Animator>();
+        animator = this.GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
@@ -56,16 +66,16 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
 
-
         cityManager = FindObjectOfType<CityManager>();
         ConnectToSpawner();
 
         OnEnemySpawned?.Invoke();
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.stoppingDistance = originalStoppingDistance;
+
         RefillHealth(enemyStats.GetMaxHealth());
         ResetAttackSpeed();
-        range = 5f;
 
     }
 
@@ -97,16 +107,30 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private void Attacking()
     {
         Vector3 startPoint = transform.position;
-        Vector3 endPoint = new Vector3(startPoint.x + (transform.TransformDirection(Vector3.forward) * range).x, startPoint.y + (transform.TransformDirection(Vector3.forward) * range).y, startPoint.z + (transform.TransformDirection(Vector3.forward) * range).z);
-        if (Physics.Raycast(startPoint, transform.TransformDirection(Vector3.forward), out RaycastHit hit, range) && (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Defence")))
+
+        if (Physics.Raycast(startPoint, transform.TransformDirection(Vector3.forward), out RaycastHit hit, enemyStats.GetRange()))
         {
-            //anim.SetTrigger("Attack");
-            attackTimer -= Time.deltaTime;
-            if (attackTimer <= 0)
+            if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
-                anim.SetTrigger("Attack");
-                ResetAttackSpeed();
+
+                navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();
+
+                attackTimer -= Time.deltaTime;
+                if (attackTimer <= 0)
+                {
+                    animator.SetTrigger("Attack");
+                    ResetAttackSpeed();
+                }
             }
+            else
+            {
+                navMeshAgent.stoppingDistance = originalStoppingDistance;
+            }
+        }
+        else
+        {
+            navMeshAgent.stoppingDistance = originalStoppingDistance;
+
         }
     }
 
@@ -114,7 +138,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         assignedEnemySpawner = FindObjectOfType<EnemySpawner>();
         OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
-
     }
 
     #region  Movement
@@ -130,31 +153,25 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void Move()
     {
+
         Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
         worldAimTarget.y = transform.position.y;
 
-        navMeshAgent.destination = worldAimTarget;
-        //Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
-        //transform.forward = aimDirection;
+        navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
 
-        ////Vector3 targetPosition = enemyTargeter.GetTarget().position;
-        //// transform.position = Vector3.MoveTowards(transform.position, targetPosition, enemyStats.currentMoveSpeed * Time.deltaTime);
-
-        //transform.position += transform.forward * enemyStats.currentMoveSpeed * Time.deltaTime;
     }
 
     #endregion
 
     #region Combat Related
-    public void Attack(ITargetable target)
+    public void DealDamage(ITargetable target)
     {
 
-        canMove = false;
         // play animation
         // deal damage
         target.TakeDamage(enemyStats.GetDamage());
-        StartCoroutine(EnableMovement(enemyStats.attackDur));
+        StartCoroutine(EnableMovement(enemyStats.GetAttackDur()));
 
     }
 
@@ -174,7 +191,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     private void ResetAttackSpeed()
     {
-        attackTimer = playerStats.GetAttackSpeed();
+        attackTimer = enemyStats.GetAttackSpeed();
     }
 
     public void Kill()
@@ -186,14 +203,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         OnEnemyKilled?.Invoke();
         gameManager.allSpawnedEnemies.Remove(gameObject);
-        Debug.Log("killed");
+        animator.SetTrigger("Kill");
 
-        anim.SetTrigger("Kill");
-
-
-        // bu ikisi ölüm animasyonundan sonra runlamalı
-        //gameObject.SetActive(false);
-        //ResetObjectData();
+        DestroyObject();
+        ResetObjectData();
 
         // test için commentlendi, geri getirilicek
         // enemyStats.getHealthBar().gameObject.SetActive(false);

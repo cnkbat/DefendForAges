@@ -14,6 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthValues:
   - 100
-  damageValues: []
-  fireRateValues: []
-  upgradeCosts: 64000000
+  - 100
+  - 100
+  damageValues:
+  - 4
+  - 4
+  - 4
+  - 4
+  attackSpeedValues:
+  - 4
+  - 2
+  - 1
+  - 0.5
+  upgradeCosts: 05000000

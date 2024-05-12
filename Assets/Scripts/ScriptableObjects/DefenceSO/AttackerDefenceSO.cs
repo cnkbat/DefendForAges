@@ -8,14 +8,14 @@ public class AttackerDefenceSO : StaticDefenceSO
 {
     [Header("Attacking")]
     [SerializeField] private List<float> damageValues;
-    [SerializeField] private List<float> fireRateValues;
+    [SerializeField] private List<float> attackSpeedValues;
 
     [Header("Costs")]
     [SerializeField] private List<int> upgradeCosts;
 
 
-    public List<float> GetDamageValues() { return maxHealthValues; }
-    public List<float> GetFireRateValues() { return maxHealthValues; }
-    public List<float> GetUpgradeCosts() { return maxHealthValues; }
+    public List<float> GetDamageValues() { return damageValues; }
+    public List<float> GetAttackSpeedValues() { return attackSpeedValues; }
+    public List<int> GetUpgradeCosts() { return upgradeCosts; }
 
 }

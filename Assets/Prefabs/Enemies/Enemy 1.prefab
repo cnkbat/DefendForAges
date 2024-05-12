@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 1004563349763976636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2195918381763406127}
@@ -207,8 +207,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.87066966, z: 1}
-  m_Center: {x: 0, y: 0.39815387, z: 0}
+  m_Size: {x: 0.61446244, y: 0.8854977, z: 0.55299723}
+  m_Center: {x: -0.0029696524, y: 0.42632717, z: -0.045564726}
 --- !u!54 &6599078230790358651
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -237,12 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea3edeb71238404cba14fbc9ba194ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
+  originalStoppingDistance: 1
   isDead: 0
   canMove: 0
-  deathAnimDur: 0
-  startPoint: {x: 0, y: 0, z: 0}
-  endPoint: {x: 0, y: 0, z: 0}
+  deathAnimDur: 1
 --- !u!114 &1496560965268379181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,12 +256,7 @@ MonoBehaviour:
   enemySO: {fileID: 11400000, guid: 1785fb1e899a0884184317e89773c19a, type: 2}
   currentMoveSpeed: 0
   maxHealth: 0
-  attackSpeed: 0
-  attackDur: 0
-  knockbackDur: 0
-  currentDamage: 0
   healthBar: {fileID: 0}
-  healthBarImages: []
 --- !u!114 &207494744143923496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,16 +281,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1004563349763976636}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.46
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 99
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 0.81
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -369,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rightHandCollider: {fileID: 535296350150285199}
+  enemyBehaviour: {fileID: 0}
 --- !u!1 &1648417453458913392
 GameObject:
   m_ObjectHideFlags: 0

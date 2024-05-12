@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962bd0fd1da81c348ba7df4b0b08b9d4, type: 3}
   m_Name: EnemyScriptableObject
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   maxHealth: 10
+  moveSpeed: 5
+  knockbackDur: 0.2
+  attackDur: 0
   damage: 2
+  attackRange: 1.25
   moneyValue: 10
   expValue: 10
+  meatValue: 0
   powerUpAddOnValue: 1
-  isBoss: 0
-  knockbackDur: 0.2

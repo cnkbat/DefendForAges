@@ -6,12 +6,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor.EditorTools;
+using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
 
     GameManager gameManager;
     EnemyBehaviour enemyBehaviour;
+    NavMeshAgent navMeshAgent;
 
     public EnemySO enemySO;
 
@@ -19,10 +21,12 @@ public class EnemyStats : MonoBehaviour
     [HideInInspector] public float maxHealth;
 
     [Tooltip("Attacking")]
-    public float attackSpeed;
-    public float attackDur;
-    public float knockbackDur;
-    public float currentDamage;
+    private float attackSpeed;
+    private float attackDur;
+    private float knockbackDur;
+    private float currentDamage;
+    private float attackRange;
+    private float movementSpeed;
 
     [Header("Earnings")]
     private int moneyValue;
@@ -32,26 +36,31 @@ public class EnemyStats : MonoBehaviour
 
     [Header("Health Bar")]
     [SerializeField] Slider healthBar;
-    [SerializeField] List<Image> healthBarImages;
 
     public void EnemySpawned()
     {
         gameManager = GameManager.instance;
         enemyBehaviour = this.GetComponent<EnemyBehaviour>();
-
+        navMeshAgent = GetComponent<NavMeshAgent>();
         SetEnemySOValues();
     }
 
     private void SetEnemySOValues()
     {
+
         powerUpAddOnValue = enemySO.GetPowerUpAddOnValue();
         knockbackDur = enemySO.GetKnockbackDur();
-        currentMoveSpeed = enemySO.GetMoveSpeed();
+        currentMoveSpeed = enemySO.GetMovementSpeed();
         currentDamage = enemySO.GetDamage();
         moneyValue = enemySO.GetMoneyValue();
         expValue = enemySO.GetExpValue();
         meatValue = enemySO.GetMeatValue();
         maxHealth = enemySO.GetMaxHealth();
+        movementSpeed = enemySO.GetMovementSpeed();
+        attackDur = enemySO.GetAttackDur();
+        attackRange = enemySO.GetAttackRange();
+
+        navMeshAgent.speed = movementSpeed;
 
     }
 
@@ -84,10 +93,34 @@ public class EnemyStats : MonoBehaviour
     #endregion
 
     #region Getters & Setters
+
+    #region Combats
     public float GetDamage()
     {
         return currentDamage;
     }
+    public float GetAttackSpeed()
+    {
+        return attackSpeed;
+    }
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public float GetAttackDur()
+    {
+        return attackDur;
+    }
+
+    public float GetRange()
+    {
+        return attackRange;
+    }
+
+    #endregion
+
+    #region Earnings
     public int GetMoneyValue()
     {
         return moneyValue;
@@ -100,23 +133,20 @@ public class EnemyStats : MonoBehaviour
     {
         return meatValue;
     }
-    public float GetKnockbackDuration()
-    {
-        return knockbackDur;
-    }
-    public Slider GetHealthBar()
-    {
-        return healthBar;
-    }
     public float GetPowerUpValue()
     {
         return powerUpAddOnValue;
     }
+    #endregion 
 
-    public float GetMaxHealth()
+    #region Movement
+    public float GetKnockbackDuration()
     {
-        return maxHealth;
+        return knockbackDur;
     }
+    #endregion
+
+
     #endregion
 
 }

@@ -153,13 +153,12 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void Move()
     {
+        navMeshAgent.isStopped = !canMove;
 
         Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
         worldAimTarget.y = transform.position.y;
 
-
         navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
-
     }
 
     #endregion

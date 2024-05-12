@@ -4426,6 +4426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   result: {x: 0, y: 0}
+  hasJoystickInput: 0
 --- !u!1 &3699046735950493041
 GameObject:
   m_ObjectHideFlags: 0

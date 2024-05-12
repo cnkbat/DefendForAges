@@ -153,7 +153,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
         indexToUpgrade++;
         UpdateStats();
-        Debug.Log("upgrade succes");
 
 
         if (upgradesType == RPGUpgradesType.empty) return;
@@ -161,7 +160,6 @@ public class PlayerStats : Singleton<PlayerStats>
         if (upgradesType == RPGUpgradesType.attackSpeed)
         {
             OnAttackSpeedUpgraded?.Invoke();
-            Debug.Log("attack speed invoke");
         }
         else if (upgradesType == RPGUpgradesType.damage)
         {
@@ -236,6 +234,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private void ActiveDualWeapon()
     {
         isDualWeaponActive = true;
+        LookForDualWeapon();
 
         OnDualWeaponUpgraded?.Invoke();
     }
@@ -268,6 +267,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private void MoneyChange()
     {
         OnMoneyChange?.Invoke();
+        saveManager.OnSaved?.Invoke();
     }
     #endregion
 
@@ -281,13 +281,13 @@ public class PlayerStats : Singleton<PlayerStats>
     private void XPChange()
     {
         OnExperiencePointChange?.Invoke();
+        saveManager.OnSaved?.Invoke();
     }
 
     private void ResetXP()
     {
         experiencePoint = 0;
         XPChange();
-        saveManager.OnSaved?.Invoke();
     }
 
     #endregion
@@ -307,6 +307,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private void MeatChange()
     {
         OnMeatChange?.Invoke();
+        saveManager.OnSaved?.Invoke();
     }
     #endregion
 
@@ -325,6 +326,7 @@ public class PlayerStats : Singleton<PlayerStats>
     #endregion
 
     #region PowerUp
+
     private void IncrementPowerUp(float value)
     {
         if (isPowerupEnabled) return;
@@ -340,11 +342,15 @@ public class PlayerStats : Singleton<PlayerStats>
     private void EnablePowerUp()
     {
         isPowerupEnabled = true;
+
         int tempMovementIndex = movementSpeedIndex + powerUpUpgradeIndexValue;
         int tempMaxHealthIndex = maxHealthIndex + powerUpUpgradeIndexValue;
         int tempAttackSpeedIndex = attackSpeedIndex + powerUpUpgradeIndexValue;
         int tempDamageIndex = damageIndex + powerUpUpgradeIndexValue;
+
         UpdateStatsForPowerUp(tempMovementIndex, tempMaxHealthIndex, tempAttackSpeedIndex, tempDamageIndex);
+
+        StartCoroutine(DisablePowerUp());
     }
 
     IEnumerator DisablePowerUp()
@@ -378,7 +384,6 @@ public class PlayerStats : Singleton<PlayerStats>
         IncrementXP(xpValue);
         IncrementMeat(meatValue);
         IncrementPowerUp(powerUpAddOnValue);
-        // power up eklenmedi daha
     }
 
     private void IncrementWaveIndex()

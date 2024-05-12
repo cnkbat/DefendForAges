@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerStats : DefencesStatsBase
+public class TowerStats : AttackerDefenceStat
 {
+    [Header("Tower SO")]
+    [SerializeField] TowerSO towerSO;
 
     [Header("Ingame Values")]
-    [SerializeField] List<GameObject> weapons;
+    [SerializeField] List<Weapon> weapons;
     private float recovery;
-    private float damage;
-    private float attackSpeed;
-    private int weaponIndex;
 
     protected override void OnEnable()
     {
         base.OnEnable();
+        attackerDefenceSO = towerSO;
     }
     protected override void OnDisable()
     {
@@ -25,8 +25,30 @@ public class TowerStats : DefencesStatsBase
         base.Start();
     }
 
-    private void OnUpgradeCompleted()
+    protected override void SetSOValues()
     {
+        base.SetSOValues();
+        recovery = towerSO.GetRecoveries()[upgradeIndex];
 
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            if (towerSO.GetWeaponSpawnIndexes()[i] <= upgradeIndex)
+            {
+                weapons[i].gameObject.SetActive(true);
+            }
+        }
     }
+
+
+    #region Getters & Setters
+    public float GetRecovery()
+    {
+        return recovery;
+    }
+
+    public List<Weapon> GetWeapons()
+    {
+        return weapons;
+    }
+    #endregion
 }

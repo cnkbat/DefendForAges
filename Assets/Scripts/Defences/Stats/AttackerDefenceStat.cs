@@ -7,13 +7,13 @@ using UnityEngine;
 public class AttackerDefenceStat : DefencesStatsBase
 {
 
-    [Header("**Attacker SO**")]
+    [Header("Attacker SO")]
     [Tooltip("Attack defansifler için sadece burası doldurulmalı.")]
-    [SerializeField] AttackerDefenceSO attackerDefenceSO;
+    [SerializeField] protected AttackerDefenceSO attackerDefenceSO;
 
     [Header("Ingame Values")]
-    private float damage;
-    private float attackSpeed;
+    protected float damage;
+    protected float attackSpeed;
 
     [Header("Events")]
     public Action OnUpgraded;

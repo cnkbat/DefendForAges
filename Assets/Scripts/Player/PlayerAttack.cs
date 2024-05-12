@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     NearestEnemyFinder nearestEnemyFinder;
+    [SerializeField] List<Weapon> weapons;
 
     PlayerStats playerStats;
     GameManager gameManager;
@@ -17,7 +18,23 @@ public class PlayerAttack : MonoBehaviour
     float currentAttackSpeed;
 
     [Tooltip("Events")]
-    public Action<Transform> OnAttack;
+    public Action<Transform, float> OnAttack;
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            OnAttack += weapons[i].Attack;
+        }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            OnAttack -= weapons[i].Attack;
+        }
+    }
 
     private void Start()
     {
@@ -26,7 +43,6 @@ public class PlayerAttack : MonoBehaviour
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
 
         ResetAttackSpeed();
-
         nearestEnemyFinder.SetFireRange(fireRange);
     }
 
@@ -39,8 +55,9 @@ public class PlayerAttack : MonoBehaviour
             currentAttackSpeed -= Time.deltaTime;
             if (currentAttackSpeed <= 0)
             {
-                OnAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy());
+                OnAttack.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage());
                 ResetAttackSpeed();
+                Debug.Log("attackinvooke");
             }
         }
         else

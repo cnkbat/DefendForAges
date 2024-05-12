@@ -113,10 +113,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52413677b4ffe9b458e97445034b4054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
+  defenceSO: {fileID: 11400000, guid: c175d6b72115bf74299559ebb7d064df, type: 2}
   loadableBase: {fileID: 6784274250246445363}
   defenceID: 0
   upgradeIndex: 0
+  attackerDefenceSO: {fileID: 0}
+  towerSO: {fileID: 0}
   weapons: []
 --- !u!114 &4472078763875740995
 MonoBehaviour:

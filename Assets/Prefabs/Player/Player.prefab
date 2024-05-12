@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 5697107205073931344}
   - component: {fileID: 4197459822926179250}
   - component: {fileID: 4197459822926179253}
+  - component: {fileID: 882205085}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -292,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rpgSystemSO: {fileID: 11400000, guid: 963bf65ddef16cb4a9999a6b5fa25d86, type: 2}
+  playerLevel: 0
   money: 0
   experiencePoint: 0
   meat: 0
@@ -310,6 +312,8 @@ MonoBehaviour:
   powerupDur: 0
   lifeSteal: 0
   maxHealth: 0
+  maxPowerUpFillValue: 0
+  powerUpUpgradeIndexValue: 0
 --- !u!114 &4197459822926179244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,5 +377,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 873758cfecefbec4da3944f018a02fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoppingDistance: 0
+--- !u!114 &882205085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197459822926179245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364871a5a8cbbd040abfe0c46e21a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -117,8 +117,8 @@ MonoBehaviour:
   loadableBase: {fileID: 6784274250246445363}
   defenceID: 0
   upgradeIndex: 0
-  attackerDefenceSO: {fileID: 0}
-  towerSO: {fileID: 0}
+  attackerDefenceSO: {fileID: 11400000, guid: c175d6b72115bf74299559ebb7d064df, type: 2}
+  towerSO: {fileID: 11400000, guid: c175d6b72115bf74299559ebb7d064df, type: 2}
   weapons: []
 --- !u!114 &4472078763875740995
 MonoBehaviour:

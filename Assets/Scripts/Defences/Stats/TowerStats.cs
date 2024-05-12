@@ -7,8 +7,6 @@ public class TowerStats : AttackerDefenceStat
     [Header("Tower SO")]
     [SerializeField] TowerSO towerSO;
 
-    [Header("Ingame Values")]
-    [SerializeField] List<Weapon> weapons;
     private float recovery;
 
     protected override void OnEnable()
@@ -29,14 +27,6 @@ public class TowerStats : AttackerDefenceStat
     {
         base.SetSOValues();
         recovery = towerSO.GetRecoveries()[upgradeIndex];
-
-        for (int i = 0; i < weapons.Count; i++)
-        {
-            if (towerSO.GetWeaponSpawnIndexes()[i] <= upgradeIndex)
-            {
-                weapons[i].gameObject.SetActive(true);
-            }
-        }
     }
 
 
@@ -44,11 +34,6 @@ public class TowerStats : AttackerDefenceStat
     public float GetRecovery()
     {
         return recovery;
-    }
-
-    public List<Weapon> GetWeapons()
-    {
-        return weapons;
     }
     #endregion
 }

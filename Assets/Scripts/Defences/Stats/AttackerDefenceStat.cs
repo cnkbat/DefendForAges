@@ -8,12 +8,14 @@ public class AttackerDefenceStat : DefencesStatsBase
 {
 
     [Header("Attacker SO")]
-    [Tooltip("Attack defansifler için sadece burası doldurulmalı.")]
     [SerializeField] protected AttackerDefenceSO attackerDefenceSO;
 
     [Header("Ingame Values")]
     protected float damage;
     protected float attackSpeed;
+
+    [Header("Ingame Values")]
+    [SerializeField] List<Weapon> weapons;
 
     [Header("Events")]
     public Action OnUpgraded;
@@ -45,6 +47,15 @@ public class AttackerDefenceStat : DefencesStatsBase
     protected override void SetSOValues()
     {
         base.SetSOValues();
+
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            if (attackerDefenceSO.GetWeaponSpawnIndexes()[i] <= upgradeIndex)
+            {
+                weapons[i].gameObject.SetActive(true);
+            }
+        }
+
         damage = attackerDefenceSO.GetDamageValues()[upgradeIndex];
         attackSpeed = attackerDefenceSO.GetAttackSpeedValues()[upgradeIndex];
     }
@@ -71,6 +82,11 @@ public class AttackerDefenceStat : DefencesStatsBase
     public float GetDamage()
     {
         return damage;
+    }
+
+    public List<Weapon> GetWeapons()
+    {
+        return weapons;
     }
     #endregion
 

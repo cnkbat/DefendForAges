@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class AttackerDefenceBehaviour : DefencesBehaviourBase
 {
-   
+
     protected AttackerDefenceStat attackerDefenceStat;
 
     [Header("Combat")]
     protected float currentAttackSpeed;
 
+    [Header("Ranged Event")]
+    public Action<Transform, float> OnRangedAttack;
     protected override void OnEnable()
     {
         attackerDefenceStat = GetComponent<AttackerDefenceStat>();

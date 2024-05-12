@@ -9,15 +9,34 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     TowerStats towerStats;
     public Action OnTowerDestroyed;
 
-    public Action<Transform, float> OnAttack;
+    override protected void OnEnable()
+    {
+        base.OnEnable();
+        towerStats = GetComponent<TowerStats>();
+
+        for (int i = 0; i < towerStats.GetWeapons().Count; i++)
+        {
+            OnRangedAttack += towerStats.GetWeapons()[i].Attack;
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        for (int i = 0; i < towerStats.GetWeapons().Count; i++)
+        {
+            OnRangedAttack -= towerStats.GetWeapons()[i].Attack;
+        }
+    }
 
     override protected void Start()
     {
         base.Start();
-        
+
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
-        towerStats = GetComponent<TowerStats>();
         ResetHealthValue();
+
     }
 
     protected override void Update()
@@ -42,7 +61,7 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
 
-        OnAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), towerStats.GetDamage());
+        OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), towerStats.GetDamage());
     }
     protected override void DestroyDefence()
     {

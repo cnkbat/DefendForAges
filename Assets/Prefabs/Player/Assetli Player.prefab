@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4197459822409055730
 Transform:
   m_ObjectHideFlags: 0
@@ -448,6 +448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Temp Player Model
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c433a8393d976ef48bae464512493e5b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 707bee3519c0cde42a8aa2aa013b1606, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c433a8393d976ef48bae464512493e5b, type: 3}
 --- !u!4 &4279439427439142436 stripped

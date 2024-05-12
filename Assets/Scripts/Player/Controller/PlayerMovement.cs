@@ -48,11 +48,6 @@ public class PlayerMovement : MonoBehaviour
         horizontal = joystick.result.x;
         vertical = joystick.result.y;
         direction = new Vector3(horizontal, 0, vertical).normalized;
-
-        if(horizontal == 0 && vertical == 0)
-        {
-            
-        }
     }
 
     void ToMove()
@@ -76,6 +71,10 @@ public class PlayerMovement : MonoBehaviour
     public bool HasJoystickInput()
     {
         return joystick.hasJoystickInput;
+    }
+    public Vector3 GetDirection()
+    {
+        return direction;
     }
 }
 

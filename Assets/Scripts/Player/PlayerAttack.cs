@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     float currentAttackSpeed;
 
     [Tooltip("Events")]
-    public Action<Transform, float> OnAttack;
+    public Action<Transform, float,bool> OnAttack;
 
     private void OnEnable()
     {
@@ -57,9 +57,8 @@ public class PlayerAttack : MonoBehaviour
             currentAttackSpeed -= Time.deltaTime;
             if (currentAttackSpeed <= 0)
             {
-                OnAttack.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage());
+                OnAttack.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage(),true);
                 ResetAttackSpeed();
-                Debug.Log("attackinvooke");
             }
         }
         else

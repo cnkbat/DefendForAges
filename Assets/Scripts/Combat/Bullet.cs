@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
     [SerializeField] float moveSpeed;
     Transform target;
     Vector3 targetPos;
-    Transform firedPoint;
+    Vector3 firedPoint;
 
     [Header("Life Steal")]
     bool isPlayersBullet;
@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
     {
         playerStats = PlayerStats.instance;
         OnDamageDealt += playerStats.IncrementHealth;
+        gameManager = GameManager.instance;
     }
 
     private void OnDisable()
@@ -38,7 +39,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
     public void OnObjectPooled()
     {
-        gameManager = GameManager.instance;
         ResetObjectData();
     }
 
@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
     {
         targetReached = false;
         targetPos = target.transform.position;
-
+        firedPoint = transform.position;
         Vector3 worldAimTarget = targetPos;
         worldAimTarget.y = transform.position.y;
         Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
@@ -72,14 +72,16 @@ public class Bullet : MonoBehaviour, IPoolableObject
                 targetReached = true;
             }
         }
-        else if (gameManager.bulletFireRange < Vector3.Distance(transform.position, firedPoint.position))
-        {
-            gameObject.SetActive(false);
-        }
         else
         {
             gameObject.SetActive(false);
         }
+
+        if (gameManager.bulletFireRange < Vector3.Distance(transform.position, firedPoint))
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,10 +114,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
         target = newTarget;
     }
 
-    public void SetFiredPoint(Transform newTransform)
-    {
-        firedPoint = newTransform;
-    }
 
     public void SetTrailColor(Color startColor, Color endColor)
     {

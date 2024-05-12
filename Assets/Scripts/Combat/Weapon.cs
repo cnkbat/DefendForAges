@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    
+
     PlayerAttack playerAttack;
     ObjectPooler objectPooler;
 
@@ -18,9 +18,9 @@ public class Weapon : MonoBehaviour
         objectPooler = ObjectPooler.instance;
     }
 
-    public void Attack(Transform bulletTarget,float damage)
+    public void Attack(Transform bulletTarget, float damage, bool isPlayersBullet = false)
     {
-        objectPooler.SpawnBulletFromPool(bulletTag, tipOfWeapon.position, bulletTarget, damage);
+        objectPooler.SpawnBulletFromPool(bulletTag, tipOfWeapon.position, bulletTarget, damage, isPlayersBullet);
     }
 
 

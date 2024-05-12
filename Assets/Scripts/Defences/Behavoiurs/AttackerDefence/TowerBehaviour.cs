@@ -61,7 +61,7 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
 
-        OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), towerStats.GetDamage());
+        OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), towerStats.GetDamage(),false);
     }
     protected override void DestroyDefence()
     {

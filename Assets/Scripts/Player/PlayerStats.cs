@@ -329,7 +329,6 @@ public class PlayerStats : Singleton<PlayerStats>
     public void IncrementHealth(float lifeStolen)
     {
         deathHandler.IncerementCurrentHealth(lifeStolen);
-        Debug.Log("Life stolen");
     }
 
     #endregion
@@ -358,7 +357,6 @@ public class PlayerStats : Singleton<PlayerStats>
         int tempDamageIndex = damageIndex + powerUpUpgradeIndexValue;
 
         UpdateStatsForPowerUp(tempMovementIndex, tempMaxHealthIndex, tempAttackSpeedIndex, tempDamageIndex);
-        Debug.Log("Power Up Enabled");
         StartCoroutine(DisablePowerUp());
     }
 

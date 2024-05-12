@@ -59,4 +59,5 @@ public class NearestEnemyFinder : MonoBehaviour
         fireRange = value;
     }
     #endregion
+
 }

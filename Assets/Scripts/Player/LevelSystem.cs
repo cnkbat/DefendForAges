@@ -22,16 +22,9 @@ public class LevelSystem : MonoBehaviour
 
     private void OnDisable()
     {
-        playerStats.OnExperiencePointChange += CheckLevelling;
+        playerStats.OnExperiencePointChange -= CheckLevelling;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            LevelUp();
-        }
-    }
     public void CheckLevelling()
     {
         if (playerStats.experiencePoint >= playerSO.GetLevellingExperiencePoints()[playerStats.playerLevel])

@@ -23,9 +23,9 @@ public class PlayerAngleCalculator : MonoBehaviour
     {
         float currentPlayerAngle = transform.eulerAngles.y;
 
-        Vector2 angleToVec = new Vector2(Mathf.Cos(currentPlayerAngle * Mathf.Deg2Rad), Mathf.Sin(currentPlayerAngle * Mathf.Deg2Rad));
+        float inputAngle = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;
 
-        float diff = Vector2.SignedAngle(input, angleToVec);
+        float diff = inputAngle - currentPlayerAngle;
 
         Vector2 returnValue = new Vector2(Mathf.Sin(diff * Mathf.Deg2Rad), Mathf.Cos(diff * Mathf.Deg2Rad));
 

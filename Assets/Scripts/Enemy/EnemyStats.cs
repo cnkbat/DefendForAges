@@ -49,6 +49,7 @@ public class EnemyStats : MonoBehaviour
         movementSpeed = enemySO.GetMovementSpeed();
         attackDur = enemySO.GetAttackDur();
         attackRange = enemySO.GetAttackRange();
+        attackSpeed = enemySO.GetAttackSpeed();
 
         navMeshAgent.speed = movementSpeed;
 

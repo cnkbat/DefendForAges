@@ -15,7 +15,8 @@ MonoBehaviour:
   maxHealth: 10
   moveSpeed: 5
   knockbackDur: 0.2
-  attackDur: 0
+  attackSpeed: 1
+  attackDur: 1
   damage: 2
   attackRange: 1.25
   moneyValue: 10

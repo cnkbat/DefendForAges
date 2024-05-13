@@ -4,7 +4,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 public static class SaveSystem
 {
-
     #region Player Saving
     public static void SavePlayerData(PlayerStats playerStats)
     {
@@ -148,7 +147,6 @@ public static class SaveSystem
     #region City Manager Saving
     public static void SaveCityManagerData(CityManager cityManager, string cityName)
     {
-
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/city-" + cityName + ".txt";
         FileStream stream = new FileStream(path, FileMode.Create);
@@ -156,7 +154,6 @@ public static class SaveSystem
         CityManagerData cityManagerData = new CityManagerData(cityManager);
         formatter.Serialize(stream, cityManagerData);
         stream.Close();
-
     }
 
     public static CityManagerData LoadCityManagerData(string cityName)
@@ -183,7 +180,6 @@ public static class SaveSystem
         }
 
     }
-
 
     public static void DeleteCityManagerData(string cityName)
     {

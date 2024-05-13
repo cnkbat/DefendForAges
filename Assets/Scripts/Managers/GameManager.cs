@@ -101,7 +101,7 @@ public class GameManager : Singleton<GameManager>
 
     public void CheckIfEraFinished()
     {
-        Debug.Log("era check");
+
         if (playerStats.GetWaveIndex() >= allWavesCount)
         {
             isEraCompleted = true;
@@ -120,13 +120,15 @@ public class GameManager : Singleton<GameManager>
     public void CheckIfCheckPointReached()
     {
         if (isEraCompleted) return;
-        Debug.Log("city check");
+
 
 
         if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].waveList.Count)
         {
             OnCheckPointReached?.Invoke();
         }
+
+        Debug.Log("city index " + playerStats.GetCityIndex());
 
         for (int i = 0; i < allCities.Count; i++)
         {
@@ -145,6 +147,7 @@ public class GameManager : Singleton<GameManager>
         canSpawnEnemy = true;
         isAttackPhase = true;
     }
+
     public void OnWaveFinished()
     {
 

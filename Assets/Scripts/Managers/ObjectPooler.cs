@@ -79,7 +79,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return objectToSpawn;
     }
 
-    public GameObject SpawnEnemyFromPool(string tag, Vector3 spawnPos, EnemySpawner newEnemySpawner, Transform newParent)
+    public GameObject SpawnEnemyFromPool(string tag, Vector3 spawnPos, Transform newParent)
     {
 
         if (!poolDictionary.ContainsKey(tag))
@@ -93,11 +93,6 @@ public class ObjectPooler : Singleton<ObjectPooler>
         objectToSpawn.SetActive(true);
 
         objectToSpawn.transform.position = spawnPos;
-
-        if (objectToSpawn.TryGetComponent(out EnemyBehaviour enemyBehaviour))
-        {
-            enemyBehaviour.SetEnemySpawner(newEnemySpawner);
-        }
 
         if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
         {

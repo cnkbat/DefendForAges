@@ -14,6 +14,7 @@ public class CityManager : MonoBehaviour
 
     [Header("Waves")]
     public List<EnemySpawner> waveList;
+    private EnemySpawner currentWave;
 
     [Header("Buyable Areas")]
     [SerializeField] public List<BuyableArea> buyableAreas;
@@ -24,7 +25,6 @@ public class CityManager : MonoBehaviour
     public string cityName;
     public int buyedAreaIndex;
     public int towerUpgradeIndex;
-
 
     [Header("Points")]
     [SerializeField] private Transform revivePoint;
@@ -50,6 +50,7 @@ public class CityManager : MonoBehaviour
         saveManager.OnResetData += DeleteCityManagerData;
 
         playerStats = PlayerStats.instance;
+
         for (int i = 0; i < waveList.Count; i++)
         {
             waveList[i].OnWaveCompleted += StopWaves;
@@ -86,7 +87,6 @@ public class CityManager : MonoBehaviour
     #region Area Buying
     public void AreaBuyed()
     {
-        Debug.Log("areabuyed");
 
         buyedAreaIndex += 1;
 
@@ -128,10 +128,9 @@ public class CityManager : MonoBehaviour
 
     public void WaveCalled()
     {
-
         StopWaves();
 
-        EnemySpawner currentWave = waveList[playerStats.GetWaveIndex()];
+        currentWave = waveList[playerStats.GetWaveIndex()];
         currentWave.gameObject.SetActive(true);
         gameManager.SetActiveWave(currentWave);
         OnWaveCalled?.Invoke();
@@ -193,6 +192,11 @@ public class CityManager : MonoBehaviour
     public Transform GetStartPoint()
     {
         return startPoint;
+    }
+
+    public EnemySpawner GetCurrentWave()
+    {
+        return currentWave;
     }
 
     #endregion

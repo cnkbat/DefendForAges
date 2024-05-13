@@ -13,8 +13,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     #region City & Instances
     private GameManager gameManager;
     private PlayerStats playerStats;
-
     private EnemySpawner assignedEnemySpawner;
+    private CityManager currentCityManager;
 
     #endregion
 
@@ -50,11 +50,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     #region IPoolableObject Functions
 
-    public void OnObjectPooled()
+    private void SetComponents()
     {
-
-        canMove = true;
-        isDead = false;
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
 
@@ -62,15 +59,26 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         rb = this.GetComponent<Rigidbody>();
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    public void OnObjectPooled()
+    {
+        SetComponents();
+
+        canMove = true;
+        isDead = false;
 
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
-
-        ConnectToSpawner();
-
         OnEnemySpawned?.Invoke();
 
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        currentCityManager = enemyTargeter.GetCityManager();
+        assignedEnemySpawner = currentCityManager.GetCurrentWave();
+
+        OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
+
+
         navMeshAgent.stoppingDistance = originalStoppingDistance;
 
         RefillHealth(enemyStats.GetMaxHealth());
@@ -83,6 +91,13 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned -= enemyTargeter.EnemySpawned;
         OnEnemySpawned -= enemyStats.EnemySpawned;
         OnEnemyKilled -= assignedEnemySpawner.OnEnemyKilled;
+
+
+        navMeshAgent.isStopped = false;
+
+        animator.SetBool("Kill", false);
+        animator.SetBool("Attack", false);
+
     }
 
     #endregion
@@ -90,34 +105,43 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public void Update()
     {
         rb.velocity = Vector3.zero;
+
         if (isDead) return;
-        if (!canMove) return;
+
         if (enemyTargeter.GetTarget() == null) return;
 
+        LookAtTarget();
         Attacking();
+
+        if (!canMove) return;
         Move();
+    }
+
+    private void LookAtTarget()
+    {
+        Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
+        worldAimTarget.y = transform.position.y;
     }
 
     private void Attacking()
     {
         Vector3 startPoint = transform.position;
-
         if (Physics.Raycast(startPoint, transform.TransformDirection(Vector3.forward), out RaycastHit hit, enemyStats.GetRange()))
         {
             if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
-
                 navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();
-
                 attackTimer -= Time.deltaTime;
+
                 if (attackTimer <= 0)
                 {
-                    animator.SetTrigger("Attack");
+                    animator.SetTrigger("Attacking");
                     ResetAttackSpeed();
                 }
             }
             else
             {
+                animator.SetBool("Attack", false);
                 navMeshAgent.stoppingDistance = originalStoppingDistance;
             }
         }
@@ -128,10 +152,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         }
     }
 
-    public void ConnectToSpawner()
-    {
-        OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
-    }
+
 
     #region  Movement
     IEnumerator EnableMovement(float duration)
@@ -148,10 +169,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public void Move()
     {
         navMeshAgent.isStopped = !canMove;
-
-        Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
-        worldAimTarget.y = transform.position.y;
-
         navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
     }
 
@@ -170,15 +187,18 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void TakeDamage(float dmg)
     {
+
         currentHealth -= dmg;
 
         canMove = false;
+
         if (currentHealth <= 0)
         {
+            if (isDead) return;
             Kill();
         }
-        StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
 
+        StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
     }
 
     private void ResetAttackSpeed()
@@ -194,15 +214,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue(), enemyStats.GetPowerUpValue());
 
         gameManager.allSpawnedEnemies.Remove(gameObject);
-        animator.SetTrigger("Kill");
 
+        animator.SetBool("Kill", true);
 
-        // Bu satırdaki coroutine çalışmıyor
-        // çünkü obje başka yerden kapatılıyor (setactive.false)
-        // nedenini bulup fixler misin?. -cenk
+        OnEnemyKilled?.Invoke();
         StartCoroutine(KillEnemy());
-
-        ResetObjectData();
 
         // test için commentlendi, geri getirilicek
         // enemyStats.getHealthBar().gameObject.SetActive(false);
@@ -224,15 +240,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private IEnumerator KillEnemy()
     {
         yield return new WaitForSeconds(deathAnimDur);
+        ResetObjectData();
         gameObject.SetActive(false);
-        OnEnemyKilled?.Invoke();
     }
-
 
     #region  Getters & Setters
-    public void SetEnemySpawner(EnemySpawner newEnemySpawner)
-    {
-        assignedEnemySpawner = newEnemySpawner;
-    }
     #endregion
 }

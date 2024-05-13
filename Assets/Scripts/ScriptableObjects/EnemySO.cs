@@ -16,6 +16,7 @@ public class EnemySO : ScriptableObject
 
     [Header("Attacking")]
     [SerializeField] private float knockbackDur;
+    [SerializeField] private float attackSpeed;
     [SerializeField] private float attackDur;
     [SerializeField] private float damage;
     [SerializeField] private float attackRange;
@@ -35,5 +36,6 @@ public class EnemySO : ScriptableObject
     public int GetMeatValue() { return meatValue; }
     public float GetKnockbackDur() { return knockbackDur; }
     public float GetAttackDur() { return attackDur; }
-    public float GetAttackRange() {return attackRange;}
+    public float GetAttackRange() { return attackRange; }
+    public float GetAttackSpeed() { return attackSpeed; }
 }

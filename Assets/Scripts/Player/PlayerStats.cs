@@ -117,7 +117,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void AttemptUpgradeStat(int indexToUpgrade, List<int> cost, CurrencyType currencyType, RPGUpgradesType upgradeType = RPGUpgradesType.empty)
     {
-
         if (currencyType == CurrencyType.money)
         {
             if (cost[indexToUpgrade] <= money)
@@ -393,6 +392,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private void IncrementWaveIndex()
     {
         waveIndex++;
+        Debug.Log("Wave Index = " + waveIndex);
         OnWaveWon?.Invoke();
         saveManager.OnSaved?.Invoke();
     }

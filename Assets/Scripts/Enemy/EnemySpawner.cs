@@ -36,6 +36,8 @@ public class EnemySpawner : MonoBehaviour
         public int spawnedEnemyCounter; //the number of enemies already enemies spawned in this wave
     }
 
+    CityManager cityManager;
+
     [SerializeField] private List<Wave> waves; // a list of all the waves in the game
     [SerializeField] private int currentWaveCount; //the index of current Wave [Remember, a list starts from  0]
 
@@ -67,28 +69,20 @@ public class EnemySpawner : MonoBehaviour
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
+        cityManager = transform.root.GetComponent<CityManager>();
 
-        transform.root.GetComponent<CityManager>().OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
+        cityManager.OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
     }
 
     private void OnDisable()
     {
-        objectPooler = ObjectPooler.instance;
-        gameManager = GameManager.instance;
-        playerStats = PlayerStats.instance;
-
-        transform.root.GetComponent<CityManager>().OnEnemySpawnPosesUpdated -= OnAssignEnemySpawnPoints;
+        cityManager.OnEnemySpawnPosesUpdated -= OnAssignEnemySpawnPoints;
     }
 
     private void Start()
     {
         totalNumOfEnemiesOfSpawner = 0;
         killedEnemies = 0;
-
-        objectPooler = ObjectPooler.instance;
-        gameManager = GameManager.instance;
-        playerStats = PlayerStats.instance;
-
 
         for (int i = 0; i < waves.Count; i++)
         {
@@ -175,7 +169,7 @@ public class EnemySpawner : MonoBehaviour
                     }
 
                     GameObject spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
-                        enemySpawnPoints[spawnIndex].position, this, this.transform);
+                        enemySpawnPoints[spawnIndex].position, cityManager.transform);
 
                     spawnIndex++;
 

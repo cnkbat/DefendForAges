@@ -28,26 +28,17 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.Start();
     }
-    
+
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
 
-        if (currentHealth < wallStats.healthParts[0])
+        for (int i = 0; i < wallStats.healthParts.Count; i++)
         {
-            if (currentHealth < wallStats.healthParts[1])
+            if (currentHealth < wallStats.healthParts[i])
             {
-                if (currentHealth < wallStats.healthParts[2])
-                {
-                    if (currentHealth < wallStats.healthParts[3])
-                    {
-                        wallStats.wallParts[0].SetActive(false);
-                    }
-                    wallStats.wallParts[1].SetActive(false);
-                }
-                wallStats.wallParts[2].SetActive(false);
+                wallStats.wallParts[i].SetActive(false);
             }
-            wallStats.wallParts[3].SetActive(false);
         }
     }
 

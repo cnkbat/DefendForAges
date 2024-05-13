@@ -17,8 +17,8 @@ MonoBehaviour:
   knockbackDur: 0.2
   attackSpeed: 1
   attackDur: 1
-  damage: 2
-  attackRange: 1.25
+  damage: 10
+  attackRange: 2
   moneyValue: 10
   expValue: 10
   meatValue: 0

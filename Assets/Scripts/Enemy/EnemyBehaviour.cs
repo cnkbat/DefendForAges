@@ -35,17 +35,20 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     [Header("States")]
     public bool isDead;
-    public bool canMove;
+    private bool canMove;
 
     [Header("Animation")]
     [SerializeField] private float deathAnimDur;
 
     [Header("Health")]
+    private GameObject hitTarget;
+    [SerializeField] Transform rayStartPos;
     private float currentHealth;
 
     [Header("Events")]
     public Action OnEnemyKilled;
     public Action OnEnemySpawned;
+
 
 
     #region IPoolableObject Functions
@@ -97,7 +100,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         navMeshAgent.isStopped = false;
 
         animator.SetBool("isKill", false);
-        animator.SetBool("isAttack", false);
+        animator.SetBool("isAttacking", false);
         animator.SetBool("isWalking", false);
 
     }
@@ -126,8 +129,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     private void Attacking()
     {
-        Vector3 startPoint = transform.position;
-        if (Physics.Raycast(startPoint, transform.TransformDirection(Vector3.forward), out RaycastHit hit, enemyStats.GetRange()))
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, enemyStats.GetRange()))
         {
             if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
@@ -150,9 +153,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         }
         else
         {
+            animator.SetBool("isAttacking", false);
+            canMove = true;
             navMeshAgent.stoppingDistance = originalStoppingDistance;
-
         }
+
     }
 
 
@@ -186,8 +191,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         // play animation
         // deal damage
         target.TakeDamage(enemyStats.GetDamage());
-        StartCoroutine(EnableMovement(enemyStats.GetAttackDur()));
-
     }
 
     public void TakeDamage(float dmg)
@@ -250,5 +253,15 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     }
 
     #region  Getters & Setters
+
+    public bool GetCanMove()
+    {
+        return canMove;
+    }
+
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
+    }
     #endregion
 }

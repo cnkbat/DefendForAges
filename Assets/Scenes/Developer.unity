@@ -395,10 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a278d8f4699b9fe40bd4669e4f20a2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoses:
-  - {fileID: 53573941}
-  - {fileID: 1278645134}
-  - {fileID: 693571008}
+  checkpointReachedIndexer: 0
   waveList:
   - {fileID: 1436782353}
   - {fileID: 291071951}
@@ -410,6 +407,10 @@ MonoBehaviour:
   towerUpgradeIndex: 0
   revivePoint: {fileID: 1491418678}
   startPoint: {fileID: 994581171}
+  enemySpawnPoses:
+  - {fileID: 53573941}
+  - {fileID: 1278645134}
+  - {fileID: 693571008}
   targetList: []
   tower: {fileID: 99403587}
 --- !u!4 &99403583 stripped

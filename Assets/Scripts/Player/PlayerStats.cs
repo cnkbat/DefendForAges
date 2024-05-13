@@ -24,7 +24,10 @@ public class PlayerStats : Singleton<PlayerStats>
     public int maxHealthIndex;
     public bool isDualWeaponActive;
     public int waveIndex;
+
+    [Header("City & Era Saves")]
     public int cityIndex;
+    public int eraIndex;
 
     [Header("Ingame Values")]
     [SerializeField] private float damage;
@@ -421,6 +424,14 @@ public class PlayerStats : Singleton<PlayerStats>
     }
     #endregion
 
+    #region  Era Related
+    public void IncrementEraIndex()
+    {
+        eraIndex++;
+        saveManager.OnSaved?.Invoke();
+    }
+    #endregion
+    
     #region Save & Load
     private void SavePlayerData()
     {

@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Events")]
     public Action OnCheckPointReached;
+    public Action OnEraChanged;
 
     //******///
     bool isEraCompleted = false;
@@ -55,6 +56,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         playerStats.OnWaveWon += CheckIfEraFinished;
+        OnEraChanged += playerStats.IncrementEraIndex;
 
         OnCheckPointReached += playerStats.CheckPointReached;
     }
@@ -98,7 +100,6 @@ public class GameManager : Singleton<GameManager>
         // polish kısmında tekrardan düzenlecek.
     }
 
-
     public void CheckIfEraFinished()
     {
 
@@ -108,6 +109,7 @@ public class GameManager : Singleton<GameManager>
             // animasyon oynaması
             // ui update
             // era bitişiyle ilgili durumlar
+            OnEraChanged?.Invoke();
 
             LevelWon();
         }
@@ -121,9 +123,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (isEraCompleted) return;
 
-
-
-        if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].waveList.Count)
+        if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].checkpointReachedIndexer)
         {
             OnCheckPointReached?.Invoke();
         }

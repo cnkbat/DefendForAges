@@ -573,12 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a278d8f4699b9fe40bd4669e4f20a2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoses:
-  - {fileID: 53573941}
-  - {fileID: 1278645134}
-  - {fileID: 693571008}
-  - {fileID: 2078581057}
-  - {fileID: 1325556540}
+  checkpointReachedIndexer: 5
   waveList:
   - {fileID: 1436782353}
   - {fileID: 291071951}
@@ -590,6 +585,12 @@ MonoBehaviour:
   towerUpgradeIndex: 0
   revivePoint: {fileID: 1491418678}
   startPoint: {fileID: 994581171}
+  enemySpawnPoses:
+  - {fileID: 53573941}
+  - {fileID: 1278645134}
+  - {fileID: 693571008}
+  - {fileID: 2078581057}
+  - {fileID: 1325556540}
   targetList: []
   tower: {fileID: 99403587}
 --- !u!4 &99403583 stripped
@@ -2231,10 +2232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a278d8f4699b9fe40bd4669e4f20a2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoses:
-  - {fileID: 1733048561}
-  - {fileID: 1225476177}
-  - {fileID: 1492789196}
+  checkpointReachedIndexer: 15
   waveList:
   - {fileID: 1338626358}
   - {fileID: 1655277570}
@@ -2247,6 +2245,10 @@ MonoBehaviour:
   towerUpgradeIndex: 0
   revivePoint: {fileID: 31083662}
   startPoint: {fileID: 603620974}
+  enemySpawnPoses:
+  - {fileID: 1733048561}
+  - {fileID: 1225476177}
+  - {fileID: 1492789196}
   targetList: []
   tower: {fileID: 1124860429}
 --- !u!4 &737571468
@@ -2743,7 +2745,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3826834, y: 0.00000001589663, z: -0.000000006584598, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: -0.000000015896617, z: 0.000000006584594, w: 0.92387956}
   m_LocalPosition: {x: -19.717663, y: 25.859348, z: -37.905815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5463,7 +5465,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.3826834, y: 0.00000001589663, z: -0.000000006584598, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: -0.000000015896617, z: 0.000000006584594, w: 0.92387956}
   m_LocalPosition: {x: -19.717663, y: 25.859348, z: -37.905815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

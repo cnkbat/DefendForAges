@@ -10,7 +10,8 @@ public class CityManager : MonoBehaviour
     GameManager gameManager;
     SaveManager saveManager;
 
-    [SerializeField] List<Transform> enemySpawnPoses;
+    [Header("Checkpoint")]
+    public int checkpointReachedIndexer;
 
     [Header("Waves")]
     public List<EnemySpawner> waveList;
@@ -20,7 +21,6 @@ public class CityManager : MonoBehaviour
     [SerializeField] public List<BuyableArea> buyableAreas;
     [SerializeField] public List<int> buyableAreaCosts;
 
-
     [Header("Save & Load")]
     public string cityName;
     public int buyedAreaIndex;
@@ -29,6 +29,7 @@ public class CityManager : MonoBehaviour
     [Header("Points")]
     [SerializeField] private Transform revivePoint;
     [SerializeField] private Transform startPoint;
+    [SerializeField] List<Transform> enemySpawnPoses;
 
     [Header("Targeting")]
     [SerializeField] List<EnemyTarget> targetList;

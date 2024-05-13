@@ -42,6 +42,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     [Header("Health")]
     private GameObject hitTarget;
+    [SerializeField] Transform rayStartPos;
     private float currentHealth;
 
     [Header("Events")]
@@ -128,44 +129,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     private void Attacking()
     {
-        if (Physics.SphereCast(transform.position, 0.75f, transform.forward, out RaycastHit hit, enemyStats.GetRange()))
-        {
-            if(hit.transform.gameObject != null)
-            {
-                hitTarget = hit.transform.gameObject;
-            }
-            
-            if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
-            {
-                navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();
-                attackTimer -= Time.deltaTime;
-                canMove = false;
 
-                Debug.Log("attacks");
-                if (attackTimer <= 0)
-                {
-                    animator.SetTrigger("Attacking");
-                    ResetAttackSpeed();
-                }
-            }
-            else if (hit.transform.TryGetComponent(out EnemyBehaviour enemyBehaviour))
-            {
-                SetCanMove(enemyBehaviour.GetCanMove());
-            }
-            else
-            {
-                animator.SetBool("isAttacking", false);
-                canMove = true;
-                navMeshAgent.stoppingDistance = originalStoppingDistance;
-            }
-        }
-        /*if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, enemyStats.GetRange()))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, enemyStats.GetRange()))
         {
-            if (hit.transform.TryGetComponent(out EnemyBehaviour enemyBehaviour))
-            {
-                SetCanMove(enemyBehaviour.GetCanMove());
-            }
-            else if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
+            if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
                 navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();
                 attackTimer -= Time.deltaTime;
@@ -186,8 +153,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         }
         else
         {
+            animator.SetBool("isAttacking", false);
+            canMove = true;
             navMeshAgent.stoppingDistance = originalStoppingDistance;
-        } */
+        }
 
     }
 

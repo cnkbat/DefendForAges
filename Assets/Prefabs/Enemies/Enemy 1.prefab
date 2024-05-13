@@ -240,7 +240,7 @@ MonoBehaviour:
   originalStoppingDistance: 1
   isDead: 0
   canMove: 0
-  deathAnimDur: 2
+  deathAnimDur: 8
 --- !u!114 &1496560965268379181
 MonoBehaviour:
   m_ObjectHideFlags: 0

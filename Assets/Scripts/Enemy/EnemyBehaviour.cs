@@ -173,12 +173,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         currentHealth -= dmg;
 
         canMove = false;
-        StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
-
         if (currentHealth <= 0)
         {
             Kill();
         }
+        StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
 
     }
 
@@ -194,7 +193,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue(), enemyStats.GetPowerUpValue());
 
-        OnEnemyKilled?.Invoke();
         gameManager.allSpawnedEnemies.Remove(gameObject);
         animator.SetTrigger("Kill");
 
@@ -227,6 +225,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         yield return new WaitForSeconds(deathAnimDur);
         gameObject.SetActive(false);
+        OnEnemyKilled?.Invoke();
     }
 
 

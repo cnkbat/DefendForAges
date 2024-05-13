@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerStats playerStats;
+    private Rigidbody rb;
     [SerializeField] private Joystick joystick;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float speed = 5f;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         joystick = FindObjectOfType<Joystick>();
         UpdateMovementSpeed();
     }
@@ -36,11 +38,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         ToInputAxis();
-
     }
     private void Update()
     {
         ToMove();
+        rb.velocity = Vector3.zero;
     }
 
     void ToInputAxis()

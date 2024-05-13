@@ -68,6 +68,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         canMove = true;
         isDead = false;
+        animator.SetBool("isWalking", true);
 
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
@@ -95,8 +96,9 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         navMeshAgent.isStopped = false;
 
-        animator.SetBool("Kill", false);
-        animator.SetBool("Attack", false);
+        animator.SetBool("isKill", false);
+        animator.SetBool("isAttack", false);
+        animator.SetBool("isWalking", false);
 
     }
 
@@ -113,7 +115,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         LookAtTarget();
         Attacking();
 
-        if (!canMove) return;
         Move();
     }
 
@@ -132,6 +133,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
             {
                 navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();
                 attackTimer -= Time.deltaTime;
+                canMove = false;
 
                 if (attackTimer <= 0)
                 {
@@ -141,7 +143,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
             }
             else
             {
-                animator.SetBool("Attack", false);
+                animator.SetBool("isAttacking", false);
+                canMove = true;
                 navMeshAgent.stoppingDistance = originalStoppingDistance;
             }
         }
@@ -169,6 +172,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public void Move()
     {
         navMeshAgent.isStopped = !canMove;
+        animator.SetBool("isWalking", canMove);
+
         navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
     }
 

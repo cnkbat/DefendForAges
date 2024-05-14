@@ -23,6 +23,7 @@ MonoBehaviour:
   - 10
   - 10
   - 10
+  upgradeEnablingIndexes: 000000000000000000000000
   damageValues:
   - 1
   - 1
@@ -35,6 +36,7 @@ MonoBehaviour:
   - 2
   - 2
   - 2
+  weaponSpawnIndexes: 0000000000000000000000000000000000000000
   upgradeCosts: 0000000000000000000000000000000000000000
   recoveries:
   - 0.1
@@ -42,4 +44,3 @@ MonoBehaviour:
   - 0.1
   - 0.1
   - 0.1
-  weaponSpawnIndexes: 0000000000000000000000000000000000000000

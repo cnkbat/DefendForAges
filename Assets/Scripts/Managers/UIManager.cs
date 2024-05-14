@@ -30,7 +30,7 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Upgrade Buttons")]
     [SerializeField] private GameObject upgradePanel;
-    [SerializeField] private Button upgradeHudButton;
+    [SerializeField] private Button enableUpgradeHudButton;
     [SerializeField] private Button exitUpgradeHudButton;
     [SerializeField] private Button upgradeAttackSpeedButton;
     [SerializeField] private Button upgradeDamageButton;
@@ -39,6 +39,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button upgradePowerupDurButton;
     [SerializeField] private Button upgradeMaxHealthButton;
     [SerializeField] private Button upgradeDualWeaponButton;
+
+    #region Upgrading Texts
 
     [Header("!--Upgrade Texts--!")]
 
@@ -83,6 +85,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private List<float> lifeStealVisualValues;
     [SerializeField] private List<float> movementSpeedVisualValues;
 
+    #endregion
+
     #region  On Enable - On Disable
 
     private void OnEnable()
@@ -91,11 +95,12 @@ public class UIManager : Singleton<UIManager>
         playerStats = PlayerStats.instance;
 
         cityManager = FindObjectOfType<CityManager>();
+        cityManager.OnWaveCalled += ConnectToSpawner;
 
         // Revive & Wave Control
         reviveButton.onClick.AddListener(OnReviveButtonPressed);
         waveCallButton.onClick.AddListener(OnWaveCallClicked);
-        cityManager.OnWaveCalled += ConnectToSpawner;
+
 
         // Text Updates
         playerStats.OnExperiencePointChange += UpdateXPText;
@@ -104,8 +109,7 @@ public class UIManager : Singleton<UIManager>
 
 
         // Upgrading Button Events
-
-        upgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
+        enableUpgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
         exitUpgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
         upgradeAttackSpeedButton.onClick.AddListener(playerStats.AttemptUpgradeAttackSpeed);
         upgradeDamageButton.onClick.AddListener(playerStats.AttemptUpgradeDamage);
@@ -140,8 +144,7 @@ public class UIManager : Singleton<UIManager>
 
 
         // Upgrading Button Events Clean Up
-
-        upgradeHudButton.onClick.RemoveAllListeners();
+        enableUpgradeHudButton.onClick.RemoveAllListeners();
         exitUpgradeHudButton.onClick.RemoveAllListeners();
         upgradeAttackSpeedButton.onClick.RemoveAllListeners();
         upgradeDamageButton.onClick.RemoveAllListeners();
@@ -169,9 +172,11 @@ public class UIManager : Singleton<UIManager>
     {
         cityManager = FindObjectOfType<CityManager>();
         cityManager.OnWaveCalled += ConnectToSpawner;
+
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
-
+        
+        DisableUpgradingButton();
         SetStartingUI();
     }
     private void SetStartingUI()
@@ -375,6 +380,20 @@ public class UIManager : Singleton<UIManager>
     {
         UpdateText(xpText, playerStats.experiencePoint, "XP");
     }
-    #endregion  
+    #endregion
+
+
+    #region Upgrading Button
+
+    public void EnableUpgradingButton()
+    {
+        enableUpgradeHudButton.gameObject.SetActive(true);
+    }
+    public void DisableUpgradingButton()
+    {
+        enableUpgradeHudButton.gameObject.SetActive(false);
+    }
+
+    #endregion
 
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class AttackerDefenceStat : DefencesStatsBase
 {
+    PlayerStats playerStats;
 
     [Header("Attacker SO")]
     [SerializeField] protected AttackerDefenceSO attackerDefenceSO;
@@ -16,6 +17,7 @@ public class AttackerDefenceStat : DefencesStatsBase
 
     [Header("Ingame Values")]
     [SerializeField] List<Weapon> weapons;
+    private List<int> upgradeEnablingIndexes;
 
     [Header("Events")]
     public Action OnUpgraded;
@@ -23,19 +25,32 @@ public class AttackerDefenceStat : DefencesStatsBase
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        playerStats = PlayerStats.instance;
+        playerStats.OnWaveWon += HandleLoableState;
+
         defenceSO = attackerDefenceSO;
         OnUpgraded += SetSOValues;
+        OnUpgraded += HandleLoableState;
     }
+
     protected override void OnDisable()
     {
         base.OnDisable();
+
+        playerStats.OnWaveWon -= HandleLoableState;
+
         OnUpgraded -= SetSOValues;
+        OnUpgraded -= HandleLoableState;
     }
 
     protected override void Start()
     {
         base.Start();
+        HandleLoableState();
     }
+
+    #region Buying
 
     public override void BuyDone()
     {
@@ -44,10 +59,27 @@ public class AttackerDefenceStat : DefencesStatsBase
         OnUpgraded?.Invoke();
     }
 
+    public void HandleLoableState()
+    {
+
+        if (playerStats.GetPlayerLevel() >= upgradeEnablingIndexes[upgradeIndex])
+        {
+            loadableBase.gameObject.SetActive(true);
+        }
+        else
+        {
+            loadableBase.gameObject.SetActive(false);
+        }
+
+    }
+
+    #endregion
+
+    #region Data Transfer
+
     protected override void SetSOValues()
     {
         base.SetSOValues();
-
         for (int i = 0; i < weapons.Count; i++)
         {
             if (attackerDefenceSO.GetWeaponSpawnIndexes()[i] <= upgradeIndex)
@@ -58,6 +90,7 @@ public class AttackerDefenceStat : DefencesStatsBase
 
         damage = attackerDefenceSO.GetDamageValues()[upgradeIndex];
         attackSpeed = attackerDefenceSO.GetAttackSpeedValues()[upgradeIndex];
+        upgradeEnablingIndexes = attackerDefenceSO.GetUpgradeEnablingIndexes();
     }
 
     protected override void LoadDefenceData()
@@ -70,8 +103,9 @@ public class AttackerDefenceStat : DefencesStatsBase
         {
             loadableBase.SetCurrentCostLeftForUpgrade(attackerDefenceSO.GetUpgradeCosts()[upgradeIndex]);
         }
-
     }
+
+    #endregion
 
     #region Getters & Setters
     public float GetAttackSpeed()

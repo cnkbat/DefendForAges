@@ -1,10 +1,8 @@
 [System.Serializable]
 public class PlayerData
 {
-    public int currentEraIndex;
-    public int currentTimelineIndex;
-    public int playerLevel;
 
+    public int playerLevel;
     public int money;
     public int experiencePoint;
     public int meat;

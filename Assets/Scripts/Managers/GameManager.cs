@@ -56,7 +56,6 @@ public class GameManager : Singleton<GameManager>
         }
 
         playerStats.OnWaveWon += CheckIfEraFinished;
-        OnEraChanged += playerStats.IncrementEraIndex;
 
         OnCheckPointReached += playerStats.CheckPointReached;
     }

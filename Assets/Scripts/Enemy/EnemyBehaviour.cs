@@ -223,7 +223,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         gameManager.allSpawnedEnemies.Remove(gameObject);
 
-        animator.SetBool("Kill", true);
+        animator.SetBool("isKill", true);
 
         OnEnemyKilled?.Invoke();
         StartCoroutine(KillEnemy());

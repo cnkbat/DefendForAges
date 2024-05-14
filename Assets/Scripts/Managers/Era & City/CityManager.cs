@@ -19,6 +19,7 @@ public class CityManager : MonoBehaviour
 
     [Header("Buyable Areas")]
     [SerializeField] public List<BuyableArea> buyableAreas;
+    [SerializeField] List<int> buyableAreaEnablingIndexes;
     [SerializeField] public List<int> buyableAreaCosts;
 
     [Header("Save & Load")]
@@ -42,6 +43,7 @@ public class CityManager : MonoBehaviour
     public Action OnTargetListUpdated;
     public Action OnWaveCalled;
 
+    #region OnEnable & OnDisable & Start
     private void OnEnable()
     {
         saveManager = SaveManager.instance;
@@ -75,20 +77,41 @@ public class CityManager : MonoBehaviour
     public void Start()
     {
         UpdateTargetList();
+        HandleAreaBuyingState();
+
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
+
+    }
+
+    #endregion
+
+    #region Area Buying
+
+    public void HandleAreaBuyingState()
+    {
+
+        for (int i = 0; i < buyableAreas.Count; i++)
+        {
+            buyableAreas[i].DisableBuying();
+        }
+
+        for (int i = 0; i < buyableAreas.Count; i++)
+        {
+            if (playerStats.GetPlayerLevel() >= buyableAreaEnablingIndexes[i])
+            {
+                buyableAreas[i].EnableBuying();
+            }
+        }
 
         for (int i = 0; i < buyedAreaIndex; i++)
         {
             buyableAreas[i].EnableArea();
         }
-
     }
 
-    #region Area Buying
     public void AreaBuyed()
     {
-
         buyedAreaIndex += 1;
 
         saveManager.OnSaved?.Invoke();

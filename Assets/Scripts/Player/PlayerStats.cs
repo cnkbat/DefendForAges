@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class PlayerStats : Singleton<PlayerStats>
 {
     SaveManager saveManager;
-    LevelSystem levelSystem;
+
 
     [SerializeField] private RPGSystemSO rpgSystemSO;
 
@@ -68,7 +68,6 @@ public class PlayerStats : Singleton<PlayerStats>
     protected override void Awake()
     {
         LoadPlayerData();
-        levelSystem = GetComponent<LevelSystem>();
     }
 
     #region  OnEnable / OnDisable
@@ -85,8 +84,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy += EarnBonusOnKill;
         OnRevive += FillCurrentHealth;
-
-        levelSystem.OnLevelUp += ResetXP;
     }
 
     private void OnDisable()
@@ -297,6 +294,15 @@ public class PlayerStats : Singleton<PlayerStats>
 
     #endregion
 
+    #region  Levelling
+    public void LevelUpPlayer()
+    {
+        playerLevel++;
+        ResetXP();
+    }
+
+    #endregion
+
     #region  Meat
 
     public void IncrementMeat(int value)
@@ -422,7 +428,7 @@ public class PlayerStats : Singleton<PlayerStats>
     }
     #endregion
 
-    
+
     #region Save & Load
     private void SavePlayerData()
     {
@@ -503,6 +509,11 @@ public class PlayerStats : Singleton<PlayerStats>
     public RPGSystemSO GetPlayerSO()
     {
         return rpgSystemSO;
+    }
+
+    public int GetPlayerLevel()
+    {
+        return playerLevel;
     }
 
     #endregion

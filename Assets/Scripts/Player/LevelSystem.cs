@@ -18,16 +18,18 @@ public class LevelSystem : MonoBehaviour
     private void OnEnable()
     {
         playerStats.OnExperiencePointChange += CheckLevelling;
+        OnLevelUp += playerStats.LevelUpPlayer;
     }
 
     private void OnDisable()
     {
         playerStats.OnExperiencePointChange -= CheckLevelling;
+        OnLevelUp -= playerStats.LevelUpPlayer;
     }
 
     public void CheckLevelling()
     {
-        if (playerStats.experiencePoint >= playerSO.GetLevellingExperiencePoints()[playerStats.playerLevel])
+        if (playerStats.experiencePoint >= playerSO.GetLevellingExperiencePoints()[playerStats.GetPlayerLevel()])
         {
             LevelUp();
         }
@@ -35,7 +37,6 @@ public class LevelSystem : MonoBehaviour
 
     public void LevelUp()
     {
-        playerStats.playerLevel++;
         // ui update alttaki invoke a bağlanacak.
         OnLevelUp?.Invoke();
     }

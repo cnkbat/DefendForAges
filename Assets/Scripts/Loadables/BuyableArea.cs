@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class BuyableArea : MonoBehaviour
 {
     SaveManager saveManager;
     CityManager cityManager;
+    NavMeshManager navMeshManager;
     bool isBuyed;
+
+    [Header("Tighted Buyable Area")]
+    [SerializeField] BuyableArea tightedBuyableArea;
 
     [Header("Save & Load")]
     [SerializeField] public int buyableAreaID;
@@ -28,11 +33,13 @@ public class BuyableArea : MonoBehaviour
     [Header("Events")]
     public Action OnAreaBuyed;
     public Action<List<Transform>> OnAreaEnabled;
-
+    public Action OnNavMeshUpdated;
 
     #region OnEnable / OnDisable
     private void OnEnable()
     {
+        navMeshManager = NavMeshManager.instance;
+
         cityManager = transform.parent.GetComponent<CityManager>();
         LoadBuyableAreaData();
 
@@ -47,6 +54,9 @@ public class BuyableArea : MonoBehaviour
 
         OnAreaBuyed += cityManager.AreaBuyed;
         OnAreaEnabled += cityManager.AreaEnabled;
+
+        OnNavMeshUpdated += navMeshManager.BakeNavMesh;
+
     }
 
     private void OnDisable()
@@ -59,6 +69,7 @@ public class BuyableArea : MonoBehaviour
         OnAreaBuyed -= cityManager.AreaBuyed;
         OnAreaEnabled -= cityManager.AreaEnabled;
 
+        OnNavMeshUpdated -= navMeshManager.BakeNavMesh;
     }
     #endregion
 
@@ -67,6 +78,7 @@ public class BuyableArea : MonoBehaviour
         CheckForAssetsState();
     }
 
+    #region Buying Area
     public void AreaBuyed()
     {
         EnableArea();
@@ -77,8 +89,34 @@ public class BuyableArea : MonoBehaviour
     {
         SetIsBuyed(true);
         CheckForAssetsState();
-        OnAreaEnabled?.Invoke(enemySpawnAreas);
     }
+
+    public void EnableBuying()
+    {
+        if (tightedBuyableArea != null)
+        {
+            if (tightedBuyableArea.GetIsBuyed())
+            {
+                gameObject.SetActive(true);
+                loadableBase.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            loadableBase.gameObject.SetActive(true);
+        }
+
+    }
+
+    public void DisableBuying()
+    {
+        if (isBuyed) return;
+
+        gameObject.SetActive(false);
+        loadableBase.gameObject.SetActive(true);
+    }
+    #endregion
 
     private void CheckForAssetsState()
     {
@@ -97,6 +135,9 @@ public class BuyableArea : MonoBehaviour
                 // play activation animation
             }
         }
+
+        OnAreaEnabled?.Invoke(enemySpawnAreas);
+        OnNavMeshUpdated?.Invoke();
     }
 
     #region Save & Load
@@ -128,9 +169,16 @@ public class BuyableArea : MonoBehaviour
     #endregion
 
     #region  Getters & Setters
+
     public void SetIsBuyed(bool newIsBuyed)
     {
         isBuyed = newIsBuyed;
     }
+
+    public bool GetIsBuyed()
+    {
+        return isBuyed;
+    }
+
     #endregion
 }

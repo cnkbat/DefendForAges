@@ -1468,6 +1468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 481533433}
   - component: {fileID: 481533434}
+  - component: {fileID: 481533435}
   m_Layer: 0
   m_Name: Buyable Area 1
   m_TagString: Untagged
@@ -1513,6 +1514,27 @@ MonoBehaviour:
   - {fileID: 1816825466}
   objectsToDisableOnBuy:
   - {fileID: 2086194212}
+--- !u!114 &481533435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481533432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!1 &511793760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4197459822926179245, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
+  m_PrefabInstance: {fileID: 4197459823805614625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &536128694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2473,6 +2495,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4197459822926179247, guid: 42b7db672a004cf419747e6b47d45271, type: 3}
   m_PrefabInstance: {fileID: 4197459823805614625}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &882205080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511793760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &890809659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4105,6 +4143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1726584754}
   - component: {fileID: 1726584753}
+  - component: {fileID: 1726584755}
   m_Layer: 0
   m_Name: NavMesh Surface
   m_TagString: Untagged
@@ -4131,7 +4170,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -4157,6 +4196,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726584755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726584752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab99f15f5c417f4a8fd56294f607847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1733048560
 GameObject:
   m_ObjectHideFlags: 0
@@ -4675,10 +4726,6 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2072606189640243496, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2072606189640243496, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.631243
       objectReference: {fileID: 0}
@@ -4721,10 +4768,6 @@ PrefabInstance:
     - target: {fileID: 2072606189640243499, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_Name
       value: Wall 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2072606189640243510, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
-      propertyPath: stoppingDistance
-      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}

@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class AttackerDefenceSO : StaticDefenceSO
 {
+    [Header("Upgrade Enabling Indexes")]
+    [SerializeField] private List<int> upgradeEnablingIndexes;
+
     [Header("Attacking")]
     [SerializeField] private List<float> damageValues;
     [SerializeField] private List<float> attackSpeedValues;
@@ -19,5 +22,6 @@ public class AttackerDefenceSO : StaticDefenceSO
     public List<float> GetDamageValues() { return damageValues; }
     public List<float> GetAttackSpeedValues() { return attackSpeedValues; }
     public List<int> GetUpgradeCosts() { return upgradeCosts; }
+    public List<int> GetUpgradeEnablingIndexes() { return upgradeEnablingIndexes; }
 
 }

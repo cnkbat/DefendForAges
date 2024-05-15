@@ -5,10 +5,8 @@ using System;
 
 public class EnemyAnimationHandler : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
-    [SerializeField] private EnemyBehaviour enemyBehaviour;
-
-
+    private Animator animator;
+    private EnemyBehaviour enemyBehaviour;
 
     private void OnEnable()
     {

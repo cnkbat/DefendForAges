@@ -4,9 +4,11 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using System;
+using UnityEditor.Experimental;
 
 public class LoadableBase : MonoBehaviour
 {
+    GameManager gameManager;
     SaveManager saveManager;
     PlayerStats playerStats;
     protected ObjectPooler objectPooler;
@@ -18,7 +20,18 @@ public class LoadableBase : MonoBehaviour
 
     [Header("Events")]
     public Action OnLoadableFilled;
+    private void OnEnable()
+    {
+        gameManager = GameManager.instance;
 
+        gameManager.OnWaveStarted += DisableObject;
+    }
+
+    private void OnDisable()
+    {
+        gameManager.OnWaveStarted -= DisableObject;
+    }
+    
     protected virtual void Start()
     {
         objectPooler = ObjectPooler.instance;
@@ -50,6 +63,11 @@ public class LoadableBase : MonoBehaviour
             isFull = true;
             OnLoadableFilled?.Invoke();
         }
+    }
+
+    public void DisableObject()
+    {
+        gameObject.SetActive(false);
     }
 
     #region Getters & Setters

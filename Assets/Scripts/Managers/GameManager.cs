@@ -27,7 +27,8 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Events")]
     public Action OnCheckPointReached;
-    public Action OnEraChanged;
+    public Action OnEraChanged; 
+    public Action OnWaveStarted;
 
     //******///
     bool isEraCompleted = false;
@@ -143,6 +144,7 @@ public class GameManager : Singleton<GameManager>
         allCities[playerStats.GetCityIndex()].WaveCalled();
         canSpawnEnemy = true;
         isAttackPhase = true;
+        OnWaveStarted?.Invoke();
     }
 
     public void OnWaveFinished()

@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class PlayerAngleCalculator : MonoBehaviour
 {
-    public static PlayerAngleCalculator instance;
-
-    [SerializeField] private Joystick joystick;
-    [SerializeField] private Animator animator;
+    private Joystick joystick;
+    private Animator animator;
     private void Awake()
     {
-        instance = this;
         joystick = FindObjectOfType<Joystick>();
         animator = GetComponentInChildren<Animator>();
     }
@@ -41,8 +38,6 @@ public class PlayerAngleCalculator : MonoBehaviour
             returnValue = new Vector2(0, 0);
         }
 
-        print(String.Format("Diff : {0}, Return : {1}, Input : {2}", diff, returnValue, input));
-        
         return returnValue;
     }
 }

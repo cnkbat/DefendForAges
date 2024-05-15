@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class BuyableArea : MonoBehaviour
 {
+  
     SaveManager saveManager;
     CityManager cityManager;
     NavMeshManager navMeshManager;
@@ -39,7 +40,6 @@ public class BuyableArea : MonoBehaviour
     private void OnEnable()
     {
         navMeshManager = NavMeshManager.instance;
-
         cityManager = transform.parent.GetComponent<CityManager>();
         LoadBuyableAreaData();
 
@@ -56,7 +56,6 @@ public class BuyableArea : MonoBehaviour
         OnAreaEnabled += cityManager.AreaEnabled;
 
         OnNavMeshUpdated += navMeshManager.BakeNavMesh;
-
     }
 
     private void OnDisable()
@@ -116,6 +115,7 @@ public class BuyableArea : MonoBehaviour
         gameObject.SetActive(false);
         loadableBase.gameObject.SetActive(true);
     }
+
     #endregion
 
     private void CheckForAssetsState()

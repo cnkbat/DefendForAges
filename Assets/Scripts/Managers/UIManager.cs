@@ -11,8 +11,8 @@ public class UIManager : Singleton<UIManager>
     GameManager gameManager;
     EnemySpawner enemySpawner;
 
-
     [Header("GameHud Texts")]
+    [SerializeField] private GameObject gameHud;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text xpText;
     [SerializeField] private TMP_Text meatText;
@@ -20,11 +20,15 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Wave Control")]
     [SerializeField] private Button waveCallButton;
-    [SerializeField] private GameObject gameHud;
+    [SerializeField] private GameObject allWavesProgressBar;
+    [SerializeField] private List<GameObject> allWavesProgressBarImages;
+    [SerializeField] Slider inwaveProgressBar;
 
     [Header("Revive")]
     [SerializeField] private Button reviveButton;
     [SerializeField] private GameObject reviveUI;
+
+    #region Upgrading Variables
 
     [Header("---- Upgrading ----")]
 
@@ -39,8 +43,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button upgradePowerupDurButton;
     [SerializeField] private Button upgradeMaxHealthButton;
     [SerializeField] private Button upgradeDualWeaponButton;
+    #endregion
 
-    #region Upgrading Texts
+    #region Upgrading Texts Variables
 
     [Header("!--Upgrade Texts--!")]
 
@@ -94,8 +99,6 @@ public class UIManager : Singleton<UIManager>
 
         playerStats = PlayerStats.instance;
 
-
-
         playerStats.OnWaveWon += WaveCompleted;
 
         // Revive & Wave Control
@@ -109,7 +112,9 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnMeatChange += UpdateMeatText;
 
 
-        // Upgrading Button Events
+        #region  Upgrading
+        //upgrade button events
+
         enableUpgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
         exitUpgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
         upgradeAttackSpeedButton.onClick.AddListener(playerStats.AttemptUpgradeAttackSpeed);
@@ -129,6 +134,8 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnMaxHealthUpgraded += UpdateMaxHealthTexts;
         playerStats.OnDualWeaponUpgraded += UpdateDualWeaponTexts;
 
+        #endregion
+
     }
 
     private void OnDisable()
@@ -142,6 +149,8 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnExperiencePointChange -= UpdateXPText;
         playerStats.OnMoneyChange -= UpdateMoneyText;
 
+
+        #region  Upgrading
 
         // Upgrading Button Events Clean Up
         enableUpgradeHudButton.onClick.RemoveAllListeners();
@@ -162,6 +171,8 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnPowerupDurUpgraded -= UpdatePowerupDurTexts;
         playerStats.OnMaxHealthUpgraded -= UpdateMaxHealthTexts;
         playerStats.OnDualWeaponUpgraded -= UpdateDualWeaponTexts;
+
+        #endregion
 
     }
 
@@ -185,6 +196,8 @@ public class UIManager : Singleton<UIManager>
 
         playerSO = playerStats.GetPlayerSO();
         UpdateUpgradeUI();
+
+        UpdateAllWavesProgressBar();
     }
 
     #endregion
@@ -328,11 +341,39 @@ public class UIManager : Singleton<UIManager>
     {
         gameManager.OnWaveCalled();
         waveCallButton.gameObject.SetActive(false);
+
+        allWavesProgressBar.SetActive(false);
+
+        inwaveProgressBar.gameObject.SetActive(true);
+
     }
+    public void UpdateInWaveProgressBarValue(float value)
+    {
+        inwaveProgressBar.value = value;
+    }
+
     private void WaveCompleted()
     {
         waveCallButton.gameObject.SetActive(true);
         UpdateText(waveIndexText, playerStats.waveIndex, "Wave");
+
+        inwaveProgressBar.gameObject.SetActive(false);
+        UpdateAllWavesProgressBar();
+    }
+
+    private void UpdateAllWavesProgressBar()
+    {
+        allWavesProgressBar.SetActive(true);
+
+        for (int i = 0; i < allWavesProgressBarImages.Count; i++)
+        {
+            allWavesProgressBarImages[i].SetActive(false);
+        }
+
+        for (int i = 0; i < playerStats.GetWaveIndex(); i++)
+        {
+            allWavesProgressBarImages[i].SetActive(true);
+        }
     }
 
     #endregion
@@ -374,7 +415,6 @@ public class UIManager : Singleton<UIManager>
         UpdateText(xpText, playerStats.experiencePoint, "XP");
     }
     #endregion
-
 
     #region Upgrading Button
 

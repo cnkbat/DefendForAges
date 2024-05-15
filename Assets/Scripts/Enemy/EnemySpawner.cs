@@ -37,6 +37,8 @@ public class EnemySpawner : MonoBehaviour
     }
 
     CityManager cityManager;
+    UIManager uiManager;
+
 
     [SerializeField] private List<Wave> waves; // a list of all the waves in the game
     [SerializeField] private int currentWaveCount; //the index of current Wave [Remember, a list starts from  0]
@@ -63,20 +65,24 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Events")]
     public Action OnWaveCompleted;
-
+    public Action<float> OnWaveProgressed;
     private void OnEnable()
     {
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
-        cityManager = transform.root.GetComponent<CityManager>();
 
+        uiManager = UIManager.instance;
+        OnWaveProgressed += uiManager.UpdateInWaveProgressBarValue;
+
+        cityManager = transform.root.GetComponent<CityManager>();
         cityManager.OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
     }
 
     private void OnDisable()
     {
         cityManager.OnEnemySpawnPosesUpdated -= OnAssignEnemySpawnPoints;
+        OnWaveProgressed -= uiManager.UpdateInWaveProgressBarValue;
     }
 
     private void Start()
@@ -92,6 +98,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
+        OnWaveProgressed?.Invoke(0f);
 
         CalculateEnemyQuota();
         spawnIndex = 0;
@@ -202,8 +209,8 @@ public class EnemySpawner : MonoBehaviour
         enemiesAlive--;
 
         killedEnemies++;
-
-
+        
+        OnWaveProgressed?.Invoke((float)killedEnemies / (float)totalNumOfEnemiesOfSpawner);
         if (killedEnemies >= totalNumOfEnemiesOfSpawner)
         {
             OnWaveCompleted?.Invoke();

@@ -30,8 +30,16 @@ public class PlayerAngleCalculator : MonoBehaviour
         float inputAngle = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;
 
         float diff = inputAngle - currentPlayerAngle;
+        Vector2 returnValue;
 
-        Vector2 returnValue = new Vector2(Mathf.Sin(diff * Mathf.Deg2Rad), Mathf.Cos(diff * Mathf.Deg2Rad));
+        if (joystick.hasJoystickInput)
+        {
+            returnValue = new Vector2(Mathf.Sin(diff * Mathf.Deg2Rad), Mathf.Cos(diff * Mathf.Deg2Rad));
+        }
+        else
+        {
+            returnValue = new Vector2(0, 0);
+        }
 
         print(String.Format("Diff : {0}, Return : {1}, Input : {2}", diff, returnValue, input));
         

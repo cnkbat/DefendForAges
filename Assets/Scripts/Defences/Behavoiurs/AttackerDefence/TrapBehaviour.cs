@@ -27,7 +27,15 @@ public class TrapBehaviour : AttackerDefenceBehaviour
     protected override void Start()
     {
         base.Start();
-        base.isTargetable = false;
+        isTargetable = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (isTargetable)
+        {
+            isTargetable = false;
+        }
     }
 
     protected override void Attack()
@@ -43,4 +51,9 @@ public class TrapBehaviour : AttackerDefenceBehaviour
 
     }
 
+    public override void TargetRevived()
+    {
+        base.TargetRevived();
+        isTargetable = false;
+    }
 }

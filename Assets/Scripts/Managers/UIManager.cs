@@ -10,7 +10,7 @@ public class UIManager : Singleton<UIManager>
     PlayerStats playerStats;
     GameManager gameManager;
     EnemySpawner enemySpawner;
-    CityManager cityManager;
+
 
     [Header("GameHud Texts")]
     [SerializeField] private TMP_Text moneyText;
@@ -94,8 +94,9 @@ public class UIManager : Singleton<UIManager>
 
         playerStats = PlayerStats.instance;
 
-        cityManager = FindObjectOfType<CityManager>();
-        cityManager.OnWaveCalled += ConnectToSpawner;
+
+
+        playerStats.OnWaveWon += WaveCompleted;
 
         // Revive & Wave Control
         reviveButton.onClick.AddListener(OnReviveButtonPressed);
@@ -135,8 +136,7 @@ public class UIManager : Singleton<UIManager>
         // Revive & Wave Control
         reviveButton.onClick.RemoveAllListeners();
         waveCallButton.onClick.RemoveAllListeners();
-        cityManager.OnWaveCalled -= ConnectToSpawner;
-
+        playerStats.OnWaveWon -= WaveCompleted;
 
         // Text Updates
         playerStats.OnExperiencePointChange -= UpdateXPText;
@@ -170,12 +170,9 @@ public class UIManager : Singleton<UIManager>
     #region  Start
     private void Start()
     {
-        cityManager = FindObjectOfType<CityManager>();
-        cityManager.OnWaveCalled += ConnectToSpawner;
-
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
-        
+
         DisableUpgradingButton();
         SetStartingUI();
     }
@@ -337,11 +334,7 @@ public class UIManager : Singleton<UIManager>
         waveCallButton.gameObject.SetActive(true);
         UpdateText(waveIndexText, playerStats.waveIndex, "Wave");
     }
-    private void ConnectToSpawner()
-    {
-        enemySpawner = FindObjectOfType<EnemySpawner>();
-        enemySpawner.OnWaveCompleted += WaveCompleted;
-    }
+
     #endregion
 
     #region  Update Texts - Text Related

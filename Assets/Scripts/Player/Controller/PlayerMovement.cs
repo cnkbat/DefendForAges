@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
+    NearestEnemyFinder nearestEnemyFinder;
+
     private PlayerStats playerStats;
     private Rigidbody rb;
     [SerializeField] private Joystick joystick;
@@ -32,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         joystick = FindObjectOfType<Joystick>();
+        nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
+
         UpdateMovementSpeed();
     }
 
@@ -60,7 +64,10 @@ public class PlayerMovement : MonoBehaviour
 
             transform.position = new Vector3(transform.position.x + horizontal * speed * Time.deltaTime, transform.position.y, transform.position.z + vertical * speed * Time.deltaTime);
 
-            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), rotationSpeed * Time.deltaTime);
+            if (nearestEnemyFinder.GetNearestEnemy() == null)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), rotationSpeed * Time.deltaTime);
+            }
         }
     }
 

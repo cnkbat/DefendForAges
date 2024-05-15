@@ -12,6 +12,7 @@ public class DefencesBehaviourBase : EnemyTarget
 
     [Header("Visuals")]
     [SerializeField] protected GameObject asset;
+    
     override protected void Start()
     {
         defencesStatsBase = GetComponent<DefencesStatsBase>();

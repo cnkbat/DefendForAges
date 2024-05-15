@@ -13,6 +13,7 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
 
     [Header("Ranged Event")]
     public Action<Transform, float,bool> OnRangedAttack;
+    
     protected override void OnEnable()
     {
         attackerDefenceStat = GetComponent<AttackerDefenceStat>();

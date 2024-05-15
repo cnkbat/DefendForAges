@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 1
   isDead: 0
-  deathAnimDur: 8
+  deathAnimDur: 4
   rayStartPos: {fileID: 1733340711322599426}
 --- !u!114 &1496560965268379181
 MonoBehaviour:

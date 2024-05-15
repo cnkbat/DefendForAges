@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3767772739588026162}
-  m_Layer: 0
+  - component: {fileID: 3130608422025978572}
+  m_Layer: 12
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3130608422025978572
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460477325727333660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3366172, y: 1.851513, z: 2.2075996}
+  m_Center: {x: -0.0438658, y: -0.023223102, z: 0.005161047}
 --- !u!1 &3605954975595975090
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +57,7 @@ GameObject:
   - component: {fileID: 4125645105635986184}
   - component: {fileID: 1076052207852061869}
   - component: {fileID: 2957194254828236903}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 3605954975595975090}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4740759, y: 1.4740759, z: 1.4740759}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3767772739588026162}

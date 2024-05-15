@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6932894209063566701}
   - component: {fileID: 6932894209063566690}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LoadableBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyMovePos: {fileID: 0}
-  costs: 03000000
+  currentCostLeftForUpgrade: 0
 --- !u!1 &6932894210727517168
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 6932894210727517170}
   - component: {fileID: 6932894210727517171}
   - component: {fileID: 172400634816717164}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

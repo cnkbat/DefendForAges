@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 606127175}
   - component: {fileID: 606127174}
   - component: {fileID: 606127172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 784525341}
   - component: {fileID: 784525340}
   - component: {fileID: 784525342}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Upgrade UI Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3123,7 +3123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4151084821248037227}
   - component: {fileID: 3833833991998600803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower Asset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3586,7 +3586,7 @@ GameObject:
   - component: {fileID: 4472078763875740996}
   - component: {fileID: 4472078763875740995}
   - component: {fileID: 1124860432}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

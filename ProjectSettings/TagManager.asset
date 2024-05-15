@@ -13,12 +13,12 @@ TagManager:
   - UI
   - Player
   - Defence
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Bullet
+  - OnlyPlayer
+  - IgnorePlayer
+  - Envoriment
+  - Environmental Details
   - 
   - 
   - 

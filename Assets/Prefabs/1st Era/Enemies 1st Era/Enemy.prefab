@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 584572212228056358}
   - component: {fileID: 584572212228056352}
   - component: {fileID: 584572212228056353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,12 +133,7 @@ MonoBehaviour:
   enemySO: {fileID: 11400000, guid: 1785fb1e899a0884184317e89773c19a, type: 2}
   currentMoveSpeed: 0
   maxHealth: 0
-  attackSpeed: 0
-  attackDur: 0
-  knockbackDur: 0
-  currentDamage: 0
   healthBar: {fileID: 0}
-  healthBarImages: []
 --- !u!114 &584572212228056352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   targetTimer: 3
-  cityManager: {fileID: 0}
 --- !u!114 &584572212228056353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea3edeb71238404cba14fbc9ba194ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalStoppingDistance: 0
   isDead: 0
-  canMove: 0
   deathAnimDur: 0
+  rayStartPos: {fileID: 0}

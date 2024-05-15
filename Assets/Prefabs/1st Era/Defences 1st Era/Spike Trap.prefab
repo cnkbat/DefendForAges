@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 327884527277317120}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StrikePos
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 327884528138259551}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OriginalPos
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 327884528621414396}
   - component: {fileID: 327884528621414397}
   - component: {fileID: 327884528621414399}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spike Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 722660540990882667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TrapAsset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 7410463808139954115}
   - component: {fileID: 4698299891531838217}
   - component: {fileID: 1241349497271419921}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "Tuzak \xDCst"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 8853597582148633885}
   - component: {fileID: 5580408001953860280}
   - component: {fileID: 7680151164950019698}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tuzak Alt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadableBase
       objectReference: {fileID: 0}
+    - target: {fileID: 6932894209063566691, guid: aa17ef2a9d2dd554a8963526b51f88f5, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6932894209063566701, guid: aa17ef2a9d2dd554a8963526b51f88f5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -403,6 +407,10 @@ PrefabInstance:
     - target: {fileID: 6932894209063566701, guid: aa17ef2a9d2dd554a8963526b51f88f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932894210727517168, guid: aa17ef2a9d2dd554a8963526b51f88f5, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa17ef2a9d2dd554a8963526b51f88f5, type: 3}

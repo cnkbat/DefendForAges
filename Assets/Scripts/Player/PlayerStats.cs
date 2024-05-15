@@ -117,10 +117,9 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (currencyType == CurrencyType.money)
         {
-            if (cost[indexToUpgrade] <= money)
+            if (DecrementMoney(cost[indexToUpgrade]))
             {
                 UpgradeSuccesful(upgradeType);
-                DecrementMoney(cost[indexToUpgrade]);
             }
             else
             {
@@ -129,10 +128,9 @@ public class PlayerStats : Singleton<PlayerStats>
         }
         else if (currencyType == CurrencyType.meat)
         {
-            if (cost[indexToUpgrade] <= meat)
+            if (DecrementMeat(cost[indexToUpgrade]))
             {
                 UpgradeSuccesful(upgradeType);
-                DecrementMeat(cost[indexToUpgrade]);
             }
             else
             {
@@ -215,10 +213,9 @@ public class PlayerStats : Singleton<PlayerStats>
 
         if (isDualWeaponActive) return;
 
-        if (rpgSystemSO.GetDualWeaponCost() <= meat)
+        if (DecrementMeat(rpgSystemSO.GetDualWeaponCost()))
         {
             ActiveDualWeapon();
-            DecrementMeat(rpgSystemSO.GetDualWeaponCost());
         }
         else
         {
@@ -258,10 +255,18 @@ public class PlayerStats : Singleton<PlayerStats>
         MoneyChange();
     }
 
-    public void DecrementMoney(int value)
+    public bool DecrementMoney(int value)
     {
-        money -= value;
-        MoneyChange();
+        if (money >= value)
+        {
+            money -= value;
+            MoneyChange();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void MoneyChange()
@@ -308,12 +313,18 @@ public class PlayerStats : Singleton<PlayerStats>
         meat += value;
         MeatChange();
     }
-    public void DecrementMeat(int value)
+    public bool DecrementMeat(int value)
     {
-        Debug.Log("meat azaltım");
-
-        meat -= value;
-        MeatChange();
+        if (meat >= value)
+        {
+            meat -= value;
+            MeatChange();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     private void MeatChange()
     {

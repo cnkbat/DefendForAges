@@ -28,14 +28,16 @@ public class LoadableBase : MonoBehaviour
 
     public virtual void Load()
     {
-        
+
         if (isFull) return;
 
         if (currentCostLeftForUpgrade > 0)
         {
-            currentCostLeftForUpgrade -= 1;
-            playerStats.DecrementMoney(1);
-            saveManager.OnSaved?.Invoke();
+            if (playerStats.DecrementMoney(1))
+            {
+                currentCostLeftForUpgrade -= 1;
+                saveManager.OnSaved?.Invoke();
+            }
         }
 
         CheckIfFulled();

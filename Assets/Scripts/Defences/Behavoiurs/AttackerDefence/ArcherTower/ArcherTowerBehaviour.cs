@@ -12,7 +12,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
     [SerializeField] private string bulletTag;
 
     [Header("! -- Archer Visuals -- !")]
-    [SerializeField] private ArcherStickman archerStickman; // stickman on top
+    [SerializeField] private List<ArcherStickman> archerStickmans; // stickman on top
 
     protected override void OnEnable()
     {
@@ -55,12 +55,12 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
 
-        OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), attackerDefenceStat.GetDamage(), false);
+        OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), attackerDefenceStat.GetDamage(), false, archerStickmans[0].GetAnimDur());
     }
 
     private void LookAtNearstEnemy(Transform closestEnemy)
     {
-        if (!archerStickman) return;
+        if (archerStickmans.Count <= 0) return;
 
         if (closestEnemy != null)
         {
@@ -70,14 +70,15 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
             //headAimObject.transform.localPosition = Vector3.zero;
 
 
-            Vector3 worldAimTarget = closestEnemy.transform.position;
-            worldAimTarget.y = archerStickman.transform.position.y;
-            Vector3 aimDirection = (worldAimTarget - archerStickman.transform.position).normalized;
-
-            for (int i = 0; i < attackerDefenceStat.GetWeapons().Count; i++)
+            for (int i = 0; i < archerStickmans.Count; i++)
             {
-                attackerDefenceStat.GetWeapons()[i].transform.forward = aimDirection;
+                Vector3 worldAimTarget = closestEnemy.transform.position;
+                worldAimTarget.y = archerStickmans[i].transform.position.y;
+                Vector3 aimDirection = (worldAimTarget - archerStickmans[i].transform.position).normalized;
+
+                archerStickmans[i].transform.forward = aimDirection;
             }
+
 
         }
 

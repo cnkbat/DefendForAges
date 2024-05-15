@@ -11,13 +11,16 @@ public class PlayerAttack : MonoBehaviour
     GameManager gameManager;
 
     [Header("Fire Range")]
-    public float fireRange;
+    [SerializeField] private float fireRange;
+
+    [Header("Anim")]
+    [SerializeField] private float strikingAnimDur;
 
     [Tooltip("Attack Speed")]
     float currentAttackSpeed;
 
     [Tooltip("Events")]
-    public Action<Transform, float,bool> OnAttack;
+    public Action<Transform, float, bool, float> OnAttack;
 
     private void OnEnable()
     {
@@ -57,7 +60,7 @@ public class PlayerAttack : MonoBehaviour
             currentAttackSpeed -= Time.deltaTime;
             if (currentAttackSpeed <= 0)
             {
-                OnAttack.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage(),true);
+                OnAttack.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage(), true, strikingAnimDur);
                 ResetAttackSpeed();
             }
         }

@@ -7,6 +7,9 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 {
     NearestEnemyFinder nearestEnemyFinder;
     TowerStats towerStats;
+    [SerializeField] float towerAttackingAnimDur;
+
+    [Header("Events")]
     public Action OnTowerDestroyed;
 
     override protected void OnEnable()
@@ -61,8 +64,9 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
 
-        OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), towerStats.GetDamage(),false);
+        OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), towerStats.GetDamage(), false, towerAttackingAnimDur);
     }
+
     protected override void DestroyDefence()
     {
         base.DestroyDefence();

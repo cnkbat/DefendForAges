@@ -19,7 +19,6 @@ public class UpgradeUIHandler : MonoBehaviour
 
         if (other.TryGetComponent(out PlayerCollisionHandler playerCollisionHandler))
         {
-            Debug.Log("trigger");
             EnableUpgradeUI();
         }
     }

@@ -23,6 +23,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private EnemyTargeter enemyTargeter;
     private EnemyStats enemyStats;
     private NavMeshAgent navMeshAgent;
+    private EnemyAnimationHandler enemyAnimationHandler;
 
     [Header("AI Management")]
     [SerializeField] private float originalStoppingDistance;
@@ -63,6 +64,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        enemyAnimationHandler = GetComponent<EnemyAnimationHandler>();
     }
 
     public void OnObjectPooled()
@@ -140,20 +142,24 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
                 if (attackTimer <= 0)
                 {
-                    animator.SetTrigger("Attacking");
+                    // Invoke attacking
+                    enemyAnimationHandler.OnAttacking?.Invoke();
+                    //animator.SetTrigger("Attacking");
                     ResetAttackSpeed();
                 }
             }
             else
             {
-                animator.SetBool("isAttacking", false);
+                enemyAnimationHandler.OnTargetNotReached?.Invoke();
+                //animator.SetBool("isAttacking", false);
                 canMove = true;
                 navMeshAgent.stoppingDistance = originalStoppingDistance;
             }
         }
         else
         {
-            animator.SetBool("isAttacking", false);
+            enemyAnimationHandler.OnTargetNotReached?.Invoke();
+            //animator.SetBool("isAttacking", false);
             canMove = true;
             navMeshAgent.stoppingDistance = originalStoppingDistance;
         }
@@ -177,7 +183,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public void Move()
     {
         navMeshAgent.isStopped = !canMove;
-        animator.SetBool("isWalking", canMove);
+        enemyAnimationHandler.OnMove?.Invoke();
+        //animator.SetBool("isWalking", canMove);
 
         navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
     }
@@ -209,7 +216,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
     }
 
-    private void ResetAttackSpeed()
+    public void ResetAttackSpeed()
     {
         attackTimer = enemyStats.GetAttackSpeed();
     }
@@ -223,7 +230,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         gameManager.allSpawnedEnemies.Remove(gameObject);
 
-        animator.SetBool("isKill", true);
+        enemyAnimationHandler.OnDeath?.Invoke();
+        //animator.SetBool("isKill", true);
 
         OnEnemyKilled?.Invoke();
         StartCoroutine(KillEnemy());

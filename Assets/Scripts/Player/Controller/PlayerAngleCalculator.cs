@@ -8,15 +8,19 @@ public class PlayerAngleCalculator : MonoBehaviour
     public static PlayerAngleCalculator instance;
 
     [SerializeField] private Joystick joystick;
-
+    [SerializeField] private Animator animator;
     private void Awake()
     {
         instance = this;
+        joystick = FindObjectOfType<Joystick>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
-        CalculateThePlayerRotationAngle(joystick.result);
+        Vector2 vectors = CalculateThePlayerRotationAngle(joystick.result);
+        animator.SetFloat("Vx", vectors.x);
+        animator.SetFloat("Vy", vectors.y);
     }
 
     private Vector2 CalculateThePlayerRotationAngle(Vector2 input)

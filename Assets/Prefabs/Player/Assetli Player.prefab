@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 4197459822926179250}
   - component: {fileID: 4197459822926179253}
   - component: {fileID: 882205085}
+  - component: {fileID: 4690233955732441678}
   m_Layer: 6
   m_Name: Assetli Player
   m_TagString: Untagged
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dfc121ca858d8409e646979d3005ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons: []
   fireRange: 10
 --- !u!114 &5697107205073931344
 MonoBehaviour:
@@ -393,6 +395,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364871a5a8cbbd040abfe0c46e21a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4690233955732441678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197459822926179245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9426a6067afaa4a96baab89614f16315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1001 &4389081098138862031
 PrefabInstance:
   m_ObjectHideFlags: 0

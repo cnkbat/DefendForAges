@@ -753,6 +753,7 @@ MonoBehaviour:
   defenceID: 10001
   upgradeIndex: 0
   attackerDefenceSO: {fileID: 11400000, guid: d13294dcc6bacfa4494e2889d9c9c915, type: 2}
+  weapons: []
 --- !u!114 &327884528621414399
 MonoBehaviour:
   m_ObjectHideFlags: 0

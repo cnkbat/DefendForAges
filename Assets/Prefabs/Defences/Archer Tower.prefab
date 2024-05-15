@@ -53,6 +53,7 @@ MonoBehaviour:
   defenceID: 250
   upgradeIndex: 0
   attackerDefenceSO: {fileID: 11400000, guid: d13294dcc6bacfa4494e2889d9c9c915, type: 2}
+  weapons: []
 --- !u!114 &1438590771072916487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,3 +555,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6346752913408768424, guid: d12743b8cf32b644e85d3b1c2ebc5bb1, type: 3}
   m_PrefabInstance: {fileID: 6877679152505767460}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7412807901508691054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4156252071816143434, guid: d12743b8cf32b644e85d3b1c2ebc5bb1, type: 3}
+  m_PrefabInstance: {fileID: 6877679152505767460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5826492668875735278
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412807901508691054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.341526, y: 9.917809, z: 6.3697033}
+  m_Center: {x: 0.14925914, y: 3.6914895, z: 0.0036725658}

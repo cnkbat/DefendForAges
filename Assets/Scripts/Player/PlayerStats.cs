@@ -144,8 +144,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void UpgradeSuccesful(RPGUpgradesType upgradesType)
     {
-
-
         if (upgradesType == RPGUpgradesType.empty) return;
 
         if (upgradesType == RPGUpgradesType.attackSpeed)
@@ -312,6 +310,8 @@ public class PlayerStats : Singleton<PlayerStats>
     }
     public void DecrementMeat(int value)
     {
+        Debug.Log("meat azaltım");
+
         meat -= value;
         MeatChange();
     }

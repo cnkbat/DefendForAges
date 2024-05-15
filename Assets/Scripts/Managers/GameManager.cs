@@ -127,8 +127,6 @@ public class GameManager : Singleton<GameManager>
             OnCheckPointReached?.Invoke();
         }
 
-        Debug.Log("city index " + playerStats.GetCityIndex());
-
         for (int i = 0; i < allCities.Count; i++)
         {
             allCities[i].gameObject.SetActive(false);

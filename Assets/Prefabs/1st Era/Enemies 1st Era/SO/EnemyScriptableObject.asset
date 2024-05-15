@@ -21,5 +21,5 @@ MonoBehaviour:
   attackRange: 2
   moneyValue: 10
   expValue: 10
-  meatValue: 0
+  meatValue: 10
   powerUpAddOnValue: 1

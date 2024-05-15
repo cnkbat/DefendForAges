@@ -8,27 +8,23 @@ public class EnemyAnimationHandler : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private EnemyBehaviour enemyBehaviour;
 
-    [Header("Events")]
-    public Action OnAttacking;
-    public Action OnTargetNotReached;
-    public Action OnDeath;
-    public Action OnMove;
+
 
     private void OnEnable()
     {
         enemyBehaviour = GetComponent<EnemyBehaviour>();
-        OnAttacking += Attack;
-        OnTargetNotReached += StopAttack;
-        OnMove += MoveAnimation;
-        OnDeath += Death;
+        enemyBehaviour.OnAttacking += Attack;
+        enemyBehaviour.OnTargetNotReached += StopAttack;
+        enemyBehaviour.OnMove += MoveAnimation;
+        enemyBehaviour.OnDeath += Death;
     }
 
     private void OnDisable()
     {
-        OnAttacking -= Attack;
-        OnTargetNotReached -= StopAttack;
-        OnMove -= MoveAnimation;
-        OnDeath -= Death;
+        enemyBehaviour.OnAttacking -= Attack;
+        enemyBehaviour.OnTargetNotReached -= StopAttack;
+        enemyBehaviour.OnMove -= MoveAnimation;
+        enemyBehaviour.OnDeath -= Death;
     }
 
     public void Start()

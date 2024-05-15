@@ -49,6 +49,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     [Header("Events")]
     public Action OnEnemyKilled;
     public Action OnEnemySpawned;
+    public Action OnAttacking;
+    public Action OnTargetNotReached;
+    public Action OnDeath;
+    public Action OnMove;
 
 
 
@@ -143,14 +147,14 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
                 if (attackTimer <= 0)
                 {
                     // Invoke attacking
-                    enemyAnimationHandler.OnAttacking?.Invoke();
+                    OnAttacking?.Invoke();
                     //animator.SetTrigger("Attacking");
                     ResetAttackSpeed();
                 }
             }
             else
             {
-                enemyAnimationHandler.OnTargetNotReached?.Invoke();
+                OnTargetNotReached?.Invoke();
                 //animator.SetBool("isAttacking", false);
                 canMove = true;
                 navMeshAgent.stoppingDistance = originalStoppingDistance;
@@ -158,7 +162,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         }
         else
         {
-            enemyAnimationHandler.OnTargetNotReached?.Invoke();
+            OnTargetNotReached?.Invoke();
             //animator.SetBool("isAttacking", false);
             canMove = true;
             navMeshAgent.stoppingDistance = originalStoppingDistance;
@@ -183,7 +187,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public void Move()
     {
         navMeshAgent.isStopped = !canMove;
-        enemyAnimationHandler.OnMove?.Invoke();
+        OnMove?.Invoke();
         //animator.SetBool("isWalking", canMove);
 
         navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
@@ -230,7 +234,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         gameManager.allSpawnedEnemies.Remove(gameObject);
 
-        enemyAnimationHandler.OnDeath?.Invoke();
+        OnDeath?.Invoke();
         //animator.SetBool("isKill", true);
 
         OnEnemyKilled?.Invoke();

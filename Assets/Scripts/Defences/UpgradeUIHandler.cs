@@ -5,14 +5,18 @@ using UnityEngine;
 public class UpgradeUIHandler : MonoBehaviour
 {
     UIManager uiManager;
+    GameManager gameManager;
 
     void Start()
     {
         uiManager = UIManager.instance;
+        gameManager = GameManager.instance;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (gameManager.isAttackPhase) return;
+
         if (other.TryGetComponent(out PlayerCollisionHandler playerCollisionHandler))
         {
             Debug.Log("trigger");

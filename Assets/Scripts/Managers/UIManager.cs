@@ -115,8 +115,8 @@ public class UIManager : Singleton<UIManager>
         #region  Upgrading
         //upgrade button events
 
-        enableUpgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
-        exitUpgradeHudButton.onClick.AddListener(EnableDisableUpgradeHud);
+        enableUpgradeHudButton.onClick.AddListener(EnableUpgradeHud);
+        exitUpgradeHudButton.onClick.AddListener(DisableUpgradeHud);
         upgradeAttackSpeedButton.onClick.AddListener(playerStats.AttemptUpgradeAttackSpeed);
         upgradeDamageButton.onClick.AddListener(playerStats.AttemptUpgradeDamage);
         upgradeLifeStealButton.onClick.AddListener(playerStats.AttemptUpgradeLifeSteal);
@@ -203,9 +203,15 @@ public class UIManager : Singleton<UIManager>
     #endregion
 
     #region Upgrade
-    private void EnableDisableUpgradeHud()
+
+    private void EnableUpgradeHud()
     {
-        upgradePanel.SetActive(!upgradePanel.activeSelf);
+        upgradePanel.SetActive(true);
+    }
+
+    private void DisableUpgradeHud()
+    {
+        upgradePanel.SetActive(false);
     }
 
     private void UpdateUpgradeUI()
@@ -340,6 +346,9 @@ public class UIManager : Singleton<UIManager>
     private void OnWaveCallClicked()
     {
         gameManager.OnWaveCalled();
+        DisableUpgradingButton();
+        DisableUpgradeHud();
+
         waveCallButton.gameObject.SetActive(false);
 
         allWavesProgressBar.SetActive(false);

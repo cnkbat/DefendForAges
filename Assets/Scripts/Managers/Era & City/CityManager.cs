@@ -12,6 +12,7 @@ public class CityManager : MonoBehaviour
 
     [Header("Checkpoint")]
     public int checkpointReachedIndexer;
+    [SerializeField] private int currentCheckpointIndex;
 
     [Header("Waves")]
     public List<EnemySpawner> waveList;
@@ -222,6 +223,11 @@ public class CityManager : MonoBehaviour
     public EnemySpawner GetCurrentWave()
     {
         return currentWave;
+    }
+
+    public int GetCurrentCheckpointIndex()
+    {
+        return currentCheckpointIndex;
     }
 
     #endregion

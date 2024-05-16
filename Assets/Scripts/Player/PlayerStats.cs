@@ -427,8 +427,7 @@ public class PlayerStats : Singleton<PlayerStats>
         // kaybettiğimizde devreye girecek
         // wave indexin en son checkpoint değerine atanması
         // save edilmesi
-        //waveIndex = GameManager.instance.allCities[cityIndex]
-        waveIndex = 0;
+        waveIndex = GameManager.instance.allCities[cityIndex].GetCurrentCheckpointIndex();
         saveManager.OnSaved?.Invoke(); // save çalışmıyor
     }
 

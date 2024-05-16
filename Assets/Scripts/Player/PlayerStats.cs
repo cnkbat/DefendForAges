@@ -88,6 +88,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy += EarnBonusOnKill;
         OnRevive += FillCurrentHealth;
+        OnLateReviveButtonClicked += SetWaveSystemBackToCheckpoint;
     }
 
     private void OnDisable()
@@ -103,6 +104,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy -= EarnBonusOnKill;
         OnRevive -= FillCurrentHealth;
+        OnLateReviveButtonClicked -= SetWaveSystemBackToCheckpoint;
     }
 
     #endregion

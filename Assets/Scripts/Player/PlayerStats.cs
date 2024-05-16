@@ -64,6 +64,8 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action OnExperiencePointChange;
     public Action OnMoneyChange;
     public Action OnMeatChange;
+    public Action OnReviveButtonClicked;
+    public Action OnLateReviveButtonClicked;
 
     protected override void Awake()
     {
@@ -84,6 +86,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy += EarnBonusOnKill;
         OnRevive += FillCurrentHealth;
+        //OnLateReviveButtonClicked += SetWaveSystemBackToCheckpoint;
     }
 
     private void OnDisable()
@@ -99,6 +102,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy -= EarnBonusOnKill;
         OnRevive -= FillCurrentHealth;
+        //OnLateReviveButtonClicked -= SetWaveSystemBackToCheckpoint;
     }
 
     #endregion
@@ -421,9 +425,11 @@ public class PlayerStats : Singleton<PlayerStats>
     public void SetWaveSystemBackToCheckpoint()
     {
         // kaybettiğimizde devreye girecek
-        // gamemanagerdan eventle ulaşılması
         // wave indexin en son checkpoint değerine atanması
         // save edilmesi
+        //waveIndex = GameManager.instance.allCities[cityIndex]
+        waveIndex = 0;
+        saveManager.OnSaved?.Invoke(); // save çalışmıyor
     }
 
     public void CheckPointReached()

@@ -25,6 +25,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] Slider inwaveProgressBar;
 
     [Header("Revive")]
+    [SerializeField] private Button lateReviveButton;
     [SerializeField] private Button reviveButton;
     [SerializeField] private GameObject reviveUI;
 
@@ -102,6 +103,7 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnWaveWon += WaveCompleted;
 
         // Revive & Wave Control
+        lateReviveButton.onClick.AddListener(OnLateReviveButtonPressed);
         reviveButton.onClick.AddListener(OnReviveButtonPressed);
         waveCallButton.onClick.AddListener(OnWaveCallClicked);
 
@@ -335,8 +337,14 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
+    private void OnLateReviveButtonPressed()
+    {
+        playerStats.OnLateReviveButtonClicked?.Invoke();
+        playerStats.OnRevive?.Invoke();
+    }
     private void OnReviveButtonPressed()
     {
+        playerStats.OnReviveButtonClicked?.Invoke();
         playerStats.OnRevive?.Invoke();
     }
 

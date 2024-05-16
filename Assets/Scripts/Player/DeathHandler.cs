@@ -17,13 +17,18 @@ public class DeathHandler : EnemyTarget
     protected override void OnEnable()
     {
         base.OnEnable();
-        playerStats.OnRevive += Revive;
+        if (playerStats.OnReviveButtonClicked != null && playerStats.OnLateReviveButtonClicked != null)
+        {
+            playerStats.OnReviveButtonClicked -= ReviveInstant;
+            playerStats.OnLateReviveButtonClicked -= LateRevive;
+        }
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        playerStats.OnRevive -= Revive;
+        playerStats.OnReviveButtonClicked += ReviveInstant;
+        playerStats.OnLateReviveButtonClicked += LateRevive;
     }
 
     override protected void Start()
@@ -44,9 +49,18 @@ public class DeathHandler : EnemyTarget
     }
 
     // will be connected to revive button
-    public void Revive()
+    public void LateRevive()
     {
         transform.position = cityManager.GetRevivePoint().position;
+        // put a timer here maybe?
+        gameObject.SetActive(true);
+
+        uiManager.HandleReviveUI();
+        Time.timeScale = 1;
+    }
+    // for the situation that player watches ads or something
+    public void ReviveInstant()
+    {
         gameObject.SetActive(true);
 
         uiManager.HandleReviveUI();

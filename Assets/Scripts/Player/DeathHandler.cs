@@ -17,18 +17,16 @@ public class DeathHandler : EnemyTarget
     protected override void OnEnable()
     {
         base.OnEnable();
-        if (playerStats.OnReviveButtonClicked != null && playerStats.OnLateReviveButtonClicked != null)
-        {
-            playerStats.OnReviveButtonClicked -= ReviveInstant;
-            playerStats.OnLateReviveButtonClicked -= LateRevive;
-        }
+
+        playerStats.OnReviveButtonClicked += ReviveInstant;
+        playerStats.OnLateReviveButtonClicked += LateRevive;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        playerStats.OnReviveButtonClicked += ReviveInstant;
-        playerStats.OnLateReviveButtonClicked += LateRevive;
+        playerStats.OnReviveButtonClicked -= ReviveInstant;
+        playerStats.OnLateReviveButtonClicked -= LateRevive;
     }
 
     override protected void Start()
@@ -41,7 +39,6 @@ public class DeathHandler : EnemyTarget
 
     public void Kill()
     {
-        gameObject.SetActive(false);
         Time.timeScale = 0.5f; // sonra balancelicaz
 
         OnTargetDestroyed?.Invoke();
@@ -53,7 +50,6 @@ public class DeathHandler : EnemyTarget
     {
         transform.position = cityManager.GetRevivePoint().position;
         // put a timer here maybe?
-        gameObject.SetActive(true);
 
         uiManager.HandleReviveUI();
         Time.timeScale = 1;
@@ -61,7 +57,6 @@ public class DeathHandler : EnemyTarget
     // for the situation that player watches ads or something
     public void ReviveInstant()
     {
-        gameObject.SetActive(true);
 
         uiManager.HandleReviveUI();
         Time.timeScale = 1;

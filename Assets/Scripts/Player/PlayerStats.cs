@@ -35,7 +35,10 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float powerupDur;
     [SerializeField] private float lifeSteal;
     [SerializeField] private float maxHealth;
+
+    [Header("Death")]
     DeathHandler deathHandler;
+    private bool isDead;
 
     [Header("Power Up")]
     [SerializeField] private float maxPowerUpFillValue;
@@ -80,13 +83,11 @@ public class PlayerStats : Singleton<PlayerStats>
         if (saveManager != null)
         {
             saveManager.OnSaved += SavePlayerData;
-
             saveManager.OnResetData += ResetData;
         }
 
         OnKillEnemy += EarnBonusOnKill;
         OnRevive += FillCurrentHealth;
-        //OnLateReviveButtonClicked += SetWaveSystemBackToCheckpoint;
     }
 
     private void OnDisable()
@@ -102,7 +103,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy -= EarnBonusOnKill;
         OnRevive -= FillCurrentHealth;
-        //OnLateReviveButtonClicked -= SetWaveSystemBackToCheckpoint;
     }
 
     #endregion
@@ -506,7 +506,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         return movementSpeed;
     }
-
+    
     public int GetWaveIndex()
     {
         return waveIndex;
@@ -530,6 +530,14 @@ public class PlayerStats : Singleton<PlayerStats>
     public int GetPlayerLevel()
     {
         return playerLevel;
+    }
+    public bool GetIsDead()
+    {
+        return isDead;
+    }
+    public void SetIsDead(bool dead)
+    {
+        isDead = dead;
     }
 
     #endregion

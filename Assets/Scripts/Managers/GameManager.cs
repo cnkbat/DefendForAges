@@ -91,6 +91,7 @@ public class GameManager : Singleton<GameManager>
         // #if gem <0 gem offer
         // revive option
         // yoksa her şey level bitti.
+        playerStats.SetWaveSystemBackToCheckpoint();
     }
 
     public void LevelWon()

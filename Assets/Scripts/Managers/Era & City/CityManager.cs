@@ -60,6 +60,9 @@ public class CityManager : MonoBehaviour
             waveList[i].OnWaveCompleted += StopWaves;
             waveList[i].OnWaveCompleted += playerStats.WaveWon;
         }
+
+        playerStats.OnPlayerKilled += UpdateTargetList;
+        playerStats.OnPlayerRevived += UpdateTargetList;
     }
 
     private void OnDisable()
@@ -72,6 +75,9 @@ public class CityManager : MonoBehaviour
             waveList[i].OnWaveCompleted -= StopWaves;
             waveList[i].OnWaveCompleted -= playerStats.WaveWon;
         }
+
+        playerStats.OnPlayerKilled -= UpdateTargetList;
+        playerStats.OnPlayerRevived -= UpdateTargetList;
     }
 
     public void Start()

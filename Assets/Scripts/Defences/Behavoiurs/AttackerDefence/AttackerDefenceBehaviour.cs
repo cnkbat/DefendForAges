@@ -12,8 +12,8 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
     protected float currentAttackSpeed;
 
     [Header("Ranged Event")]
-    public Action<Transform, float,bool,float> OnRangedAttack;
-    
+    public Action<Transform, float, bool, float> OnRangedAttack;
+
     protected override void OnEnable()
     {
         attackerDefenceStat = GetComponent<AttackerDefenceStat>();
@@ -29,6 +29,8 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
 
     protected virtual void Update()
     {
+        if (isDestroyed) return;
+
         if (!gameManager.isAttackPhase)
         {
             ResetAttackSpeed();

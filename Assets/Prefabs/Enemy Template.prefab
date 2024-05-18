@@ -162,5 +162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 0
   isDead: 0
+  aliveLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  deadLayer:
+    serializedVersion: 2
+    m_Bits: 16384
   deathAnimDur: 0
-  rayStartPos: {fileID: 0}

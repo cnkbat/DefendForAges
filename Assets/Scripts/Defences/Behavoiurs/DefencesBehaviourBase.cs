@@ -12,7 +12,7 @@ public class DefencesBehaviourBase : EnemyTarget
 
     [Header("Visuals")]
     [SerializeField] protected GameObject asset;
-    
+
     override protected void Start()
     {
         defencesStatsBase = GetComponent<DefencesStatsBase>();
@@ -23,6 +23,7 @@ public class DefencesBehaviourBase : EnemyTarget
 
     public override void TakeDamage(float dmg)
     {
+        base.TakeDamage(dmg);
         currentHealth -= dmg;
 
         SetisRepairable(true);
@@ -51,9 +52,8 @@ public class DefencesBehaviourBase : EnemyTarget
     public override void TargetRevived()
     {
 
-        if (!isRepairable) return;
-
         base.TargetRevived();
+        if (!isRepairable) return;
 
         asset.SetActive(true);
         boxCollider.enabled = true;

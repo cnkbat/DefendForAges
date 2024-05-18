@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class EnemyTargeter : MonoBehaviour
 {
+    PlayerStats playerStats;
+
     [SerializeField] private Transform target;
     [SerializeField] private float targetTimer = 3;
     private float currentTargetTimer;
@@ -21,6 +19,13 @@ public class EnemyTargeter : MonoBehaviour
 
         cityManager = transform.root.GetComponent<CityManager>();
         cityManager.OnTargetListUpdated += ResetTargetTimer;
+
+        playerStats = PlayerStats.instance;
+
+        if (playerStats != null)
+        {
+            playerStats.OnPlayerKilled += ResetTargetTimer;
+        }
     }
 
     private void OnDisable()
@@ -29,11 +34,17 @@ public class EnemyTargeter : MonoBehaviour
         {
             cityManager.OnTargetListUpdated -= ResetTargetTimer;
         }
+
+        if (playerStats != null)
+        {
+            playerStats.OnPlayerKilled -= ResetTargetTimer;
+        }
     }
 
     private void Update()
     {
         currentTargetTimer -= Time.deltaTime;
+
         if (currentTargetTimer < 0)
         {
             closestDistance = 999999;

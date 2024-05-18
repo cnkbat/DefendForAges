@@ -241,8 +241,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 1
   isDead: 0
+  aliveLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  deadLayer:
+    serializedVersion: 2
+    m_Bits: 16384
   deathAnimDur: 4
-  rayStartPos: {fileID: 1733340711322599426}
 --- !u!114 &1496560965268379181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,8 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2d00efd5a6af8448abcc2a945b9d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  enemyBehaviour: {fileID: 0}
 --- !u!1 &1527468554263360405
 GameObject:
   m_ObjectHideFlags: 0

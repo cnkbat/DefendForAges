@@ -38,12 +38,14 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public bool isDead;
     private bool canMove;
 
+    [Header("Layers")]
+    [SerializeField] private LayerMask aliveLayer;
+    [SerializeField] private LayerMask deadLayer;
+
     [Header("Animation")]
     [SerializeField] private float deathAnimDur;
 
     [Header("Health")]
-    private GameObject hitTarget;
-    [SerializeField] Transform rayStartPos;
     private float currentHealth;
 
     [Header("Events")]
@@ -79,6 +81,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         isDead = false;
         animator.SetBool("isWalking", true);
 
+        SetObjectLayer(aliveLayer);
+
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
         OnEnemySpawned?.Invoke();
@@ -88,13 +92,13 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
 
-
         navMeshAgent.stoppingDistance = originalStoppingDistance;
 
         RefillHealth(enemyStats.GetMaxHealth());
         ResetAttackSpeed();
-
     }
+
+
 
     public void ResetObjectData()
     {
@@ -235,7 +239,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         gameManager.allSpawnedEnemies.Remove(gameObject);
 
         OnDeath?.Invoke();
-        //animator.SetBool("isKill", true);
+        SetObjectLayer(deadLayer);
 
         OnEnemyKilled?.Invoke();
         StartCoroutine(KillEnemy());
@@ -270,10 +274,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         return canMove;
     }
-
-    public void SetCanMove(bool value)
+    private void SetObjectLayer(LayerMask newLayer)
     {
-        canMove = value;
+        gameObject.layer = newLayer;
     }
+
     #endregion
 }

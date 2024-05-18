@@ -9,7 +9,6 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] RPGSystemSO playerSO;
     PlayerStats playerStats;
     GameManager gameManager;
-    EnemySpawner enemySpawner;
 
     [Header("GameHud Texts")]
     [SerializeField] private GameObject gameHud;
@@ -107,6 +106,8 @@ public class UIManager : Singleton<UIManager>
         reviveButton.onClick.AddListener(OnReviveButtonPressed);
         waveCallButton.onClick.AddListener(OnWaveCallClicked);
 
+        playerStats.OnPlayerRevived += DisableReviveUI;
+        playerStats.OnPlayerKilled += EnableReviveUI;
 
         // Text Updates
         playerStats.OnExperiencePointChange += UpdateXPText;
@@ -325,27 +326,24 @@ public class UIManager : Singleton<UIManager>
 
     #region Revive
 
-    public void HandleReviveUI()
+
+    public void EnableReviveUI()
     {
-        if (reviveUI.activeSelf)
-        {
-            reviveUI.SetActive(false);
-        }
-        else
-        {
-            reviveUI.SetActive(true);
-        }
+        reviveUI.SetActive(true);
+    }
+    public void DisableReviveUI()
+    {
+        reviveUI.SetActive(false);
     }
 
     private void OnLateReviveButtonPressed()
     {
         playerStats.OnLateReviveButtonClicked?.Invoke();
-        playerStats.OnRevive?.Invoke();
+        playerStats.OnPlayerRevived?.Invoke();
     }
     private void OnReviveButtonPressed()
     {
         playerStats.OnReviveButtonClicked?.Invoke();
-        playerStats.OnRevive?.Invoke();
     }
 
     #endregion

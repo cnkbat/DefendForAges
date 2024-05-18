@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class DeathHandler : EnemyTarget
 {
-    UIManager uiManager;
-    CityManager cityManager;
-    public Action OnPlayerKilled;
-
     private void Awake()
     {
         isPlayer = true;
@@ -32,46 +28,63 @@ public class DeathHandler : EnemyTarget
     override protected void Start()
     {
         base.Start();
-
-        uiManager = UIManager.instance;
-        cityManager = FindObjectOfType<CityManager>();
     }
 
     public void Kill()
     {
+        if (isDestroyed) return;
+        if (playerStats.GetIsDead()) return;
+
         Time.timeScale = 0.5f; // sonra balancelicaz
 
+        playerStats.SetIsDead(true);
+        isDestroyed = true;
+        isTargetable = true;
+
+        playerStats.OnPlayerKilled?.Invoke();
         OnTargetDestroyed?.Invoke();
-        uiManager.HandleReviveUI();
     }
 
     // will be connected to revive button
-    public void LateRevive()
+    private void LateRevive()
     {
-        transform.position = cityManager.GetRevivePoint().position;
+        RevivePlayer();
+
+        transform.position = gameManager.allCities[playerStats.GetCityIndex()].GetRevivePoint().position;
         // put a timer here maybe?
-
-        uiManager.HandleReviveUI();
-        Time.timeScale = 1;
     }
+
     // for the situation that player watches ads or something
-    public void ReviveInstant()
+    private void ReviveInstant()
     {
-
-        uiManager.HandleReviveUI();
-        Time.timeScale = 1;
+        RevivePlayer();
     }
+
+    private void RevivePlayer()
+    {
+        playerStats.SetIsDead(false);
+        isDestroyed = true;
+        isTargetable = true;
+        Time.timeScale = 1;
+
+        playerStats?.OnPlayerRevived.Invoke();
+    }
+
     public override void TakeDamage(float dmg)
     {
+        if (playerStats.GetIsDead()) return;
+
+        base.TakeDamage(dmg);
 
         currentHealth -= dmg;
+
         if (currentHealth <= 0)
         {
             Kill();
         }
     }
 
-    public void IncerementCurrentHealth(float value)
+    public void IncrementCurrentHealth(float value)
     {
         currentHealth += value;
 
@@ -80,7 +93,6 @@ public class DeathHandler : EnemyTarget
             playerStats.FillCurrentHealth();
         }
     }
-
 
     #region Getters & Setters
     public float GetCurrentHealth()

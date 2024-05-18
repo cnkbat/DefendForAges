@@ -7,10 +7,14 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 {
     NearestEnemyFinder nearestEnemyFinder;
     TowerStats towerStats;
-    [SerializeField] float towerAttackingAnimDur;
+    [SerializeField] private float towerAttackingAnimDur;
 
     [Header("Events")]
     public Action OnTowerDestroyed;
+
+    [Header("Recovery")]
+    [SerializeField] private float recoveryTimer;
+    private float currentRecoveryTimer;
 
     override protected void OnEnable()
     {
@@ -21,6 +25,8 @@ public class TowerBehaviour : AttackerDefenceBehaviour
         {
             OnRangedAttack += towerStats.GetWeapons()[i].Attack;
         }
+
+        ResetRecoveryTimer();
     }
 
     protected override void OnDisable()
@@ -39,25 +45,37 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
         ResetHealthValue();
-
     }
 
     protected override void Update()
     {
-        if (currentHealth <= towerStats.GetMaxHealth())
-        {
-            currentHealth += towerStats.GetRecovery();
-        }
         base.Update();
+
+
+        if (currentRecoveryTimer <= 0)
+        {
+            if (currentHealth <= towerStats.GetMaxHealth())
+            {
+                currentHealth += towerStats.GetRecovery();
+            }
+        }
+
     }
+
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
 
-
+        ResetRecoveryTimer();
         // haptic oynat
         // feeli ver.
     }
+
+    private void ResetRecoveryTimer()
+    {
+        currentRecoveryTimer = recoveryTimer;
+    }
+
     protected override void Attack()
     {
         base.Attack();

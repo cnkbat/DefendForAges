@@ -44,6 +44,8 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
     protected override void Update()
     {
+        if (isDestroyed) return;
+
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
         base.Update();
         LookAtNearstEnemy(nearestEnemyFinder.GetNearestEnemy());

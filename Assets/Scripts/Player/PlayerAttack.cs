@@ -53,6 +53,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (playerStats.GetIsDead()) return;
+
         if (nearestEnemyFinder.GetNearestEnemy())
         {
             LookAtNearstEnemy(nearestEnemyFinder.GetNearestEnemy());
@@ -70,7 +72,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    #region  findingClosestEnemy
+    #region  Finding Closest Enemy
 
     private void LookAtNearstEnemy(Transform closestEnemy)
     {

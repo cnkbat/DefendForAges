@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCollisionHandler : MonoBehaviour
 {
     PlayerMovement playerMovement;
+    PlayerStats playerStats;
 
     [SerializeField] private float triggerTimer;
     private float currentTriggerTimer;
@@ -12,11 +13,14 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerStats = GetComponent<PlayerStats>();
         ResetTriggerTimer();
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        if (playerStats.GetIsDead()) return;
+
         if (other.gameObject.TryGetComponent(out ICollectable collectable))
         {
             collectable.Collect();
@@ -25,6 +29,8 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (playerStats.GetIsDead()) return;
+
         if (other.gameObject.TryGetComponent(out ILoadable loadable))
         {
             if (!playerMovement.HasJoystickInput())

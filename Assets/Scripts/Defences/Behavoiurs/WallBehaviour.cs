@@ -1,27 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class WallBehaviour : DefencesBehaviourBase
 {
+
     WallStats wallStats;
-    CityManager cityManager;
-    EnemySpawner enemySpawner;
+    NavMeshManager navMeshManager;
+    [SerializeField] private List<GameObject> nearbyEnvironment;
 
     protected override void OnEnable()
     {
         base.OnEnable();
         wallStats = GetComponent<WallStats>();
-        cityManager = FindObjectOfType<CityManager>();
-        cityManager.OnWaveCalled += ConnectToSpawner;
+
+        navMeshManager = NavMeshManager.instance;
+
         wallStats.OnBuyDone += TargetRevived;
+
+        playerStats.OnWaveWon += CheckForUpgradeable;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        cityManager.OnWaveCalled -= ConnectToSpawner;
+
         wallStats.OnBuyDone -= TargetRevived;
+
+        playerStats.OnWaveWon -= CheckForUpgradeable;
     }
 
     override protected void Start()
@@ -42,12 +47,6 @@ public class WallBehaviour : DefencesBehaviourBase
         }
     }
 
-    public void ConnectToSpawner()
-    {
-        enemySpawner = FindObjectOfType<EnemySpawner>();
-        enemySpawner.OnWaveCompleted += CheckForUpgradeable;
-    }
-
     #region Repair Related
 
     public override void TargetRevived()
@@ -59,7 +58,24 @@ public class WallBehaviour : DefencesBehaviourBase
             wallPart.SetActive(true);
         }
 
+        for (int i = 0; i < nearbyEnvironment.Count; i++)
+        {
+            nearbyEnvironment[i].SetActive(true);
+        }
 
+        navMeshManager.BakeNavMesh();
+    }
+
+    protected override void DestroyDefence()
+    {
+        base.DestroyDefence();
+
+        for (int i = 0; i < nearbyEnvironment.Count; i++)
+        {
+            nearbyEnvironment[i].SetActive(false);
+        }
+
+        navMeshManager.BakeNavMesh();
     }
     #endregion
 

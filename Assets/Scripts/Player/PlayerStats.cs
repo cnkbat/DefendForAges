@@ -59,8 +59,9 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action OnDualWeaponUpgraded;
 
     [Header("Action Events")]
-    public Action OnRevive;
+    public Action OnPlayerRevived;
     public Action OnWaveWon;
+    public Action OnPlayerKilled;
     public Action<int> OnWeaponActivision;
 
     [Header("UI Events")]
@@ -87,7 +88,7 @@ public class PlayerStats : Singleton<PlayerStats>
         }
 
         OnKillEnemy += EarnBonusOnKill;
-        OnRevive += FillCurrentHealth;
+        OnPlayerRevived += FillCurrentHealth;
         OnLateReviveButtonClicked += SetWaveSystemBackToCheckpoint;
     }
 
@@ -103,7 +104,7 @@ public class PlayerStats : Singleton<PlayerStats>
         }
 
         OnKillEnemy -= EarnBonusOnKill;
-        OnRevive -= FillCurrentHealth;
+        OnPlayerRevived -= FillCurrentHealth;
         OnLateReviveButtonClicked -= SetWaveSystemBackToCheckpoint;
     }
 
@@ -348,7 +349,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void IncrementHealth(float lifeStolen)
     {
-        deathHandler.IncerementCurrentHealth(lifeStolen);
+        deathHandler.IncrementCurrentHealth(lifeStolen);
     }
 
     #endregion
@@ -446,7 +447,6 @@ public class PlayerStats : Singleton<PlayerStats>
     }
     #endregion
 
-
     #region Save & Load
     private void SavePlayerData()
     {
@@ -508,7 +508,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         return movementSpeed;
     }
-    
+
     public int GetWaveIndex()
     {
         return waveIndex;

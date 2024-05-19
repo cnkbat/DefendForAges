@@ -63,8 +63,6 @@ public class AttackerDefenceStat : DefencesStatsBase
         // if isRepair sonrasında buraya return sonra bi daha check
         // tabi para da 0 lanacak 
 
-        Debug.Log(upgradeEnablingIndexes[upgradeIndex]);
-
         if (playerStats.GetPlayerLevel() >= upgradeEnablingIndexes[upgradeIndex])
         {
             loadableBase.gameObject.SetActive(true);

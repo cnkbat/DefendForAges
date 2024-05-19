@@ -51,6 +51,7 @@ public class EnemyStats : MonoBehaviour
         attackRange = enemySO.GetAttackRange();
         attackSpeed = enemySO.GetAttackSpeed();
 
+        navMeshAgent.speed = movementSpeed;
     }
 
     #region Health Related

@@ -92,8 +92,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         SetObjectLayer(aliveLayerName);
 
-        navMeshAgent.speed = enemyStats.GetMovementSpeed();
-
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
         OnEnemySpawned?.Invoke();
@@ -108,7 +106,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         RefillHealth(enemyStats.GetMaxHealth());
         ResetAttackSpeed();
-
 
     }
 
@@ -233,6 +230,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void TakeDamage(float dmg)
     {
+        
 
         currentHealth -= dmg;
 
@@ -250,6 +248,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         if (currentHealth <= 0)
         {
             Kill();
+        }
+        else
+        {
+            animator.SetTrigger("TakeHit");
         }
 
         StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));

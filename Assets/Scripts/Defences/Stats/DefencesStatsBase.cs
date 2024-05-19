@@ -76,9 +76,13 @@ public class DefencesStatsBase : MonoBehaviour
         if (defencesData != null)
         {
             this.upgradeIndex = defencesData.upgradeIndex;
-            this.loadableBase.currentCostLeftForUpgrade = defencesData.currentCostLeftForUpgrade;
+            SetSOValues();
+            this.loadableBase.SetCurrentCostLeftForUpgrade(defencesData.currentCostLeftForUpgrade);
         }
-        SetSOValues();
+        else
+        {
+            SetSOValues();
+        }
     }
 
     #endregion
@@ -95,11 +99,6 @@ public class DefencesStatsBase : MonoBehaviour
     public void SetUpgradeIndex(int newUpgradeIndex)
     {
         upgradeIndex = newUpgradeIndex;
-    }
-
-    public void SetLoadblesCurrentCost(int value)
-    {
-        loadableBase.currentCostLeftForUpgrade = value;
     }
 
     public void SetLoadableBaseActivity(bool isActive)

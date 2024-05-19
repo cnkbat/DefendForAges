@@ -30,7 +30,6 @@ public class AttackerDefenceStat : DefencesStatsBase
         playerStats.OnWaveWon += HandleLoableState;
 
         defenceSO = attackerDefenceSO;
-        OnUpgraded += SetSOValues;
         OnUpgraded += HandleLoableState;
     }
 
@@ -39,8 +38,6 @@ public class AttackerDefenceStat : DefencesStatsBase
         base.OnDisable();
 
         playerStats.OnWaveWon -= HandleLoableState;
-
-        OnUpgraded -= SetSOValues;
         OnUpgraded -= HandleLoableState;
     }
 
@@ -55,12 +52,18 @@ public class AttackerDefenceStat : DefencesStatsBase
     public override void BuyDone()
     {
         base.BuyDone();
+
         IncrementUpgradeIndex();
         OnUpgraded?.Invoke();
+        SetSOValues();
     }
 
     public void HandleLoableState()
     {
+        // if isRepair sonrasında buraya return sonra bi daha check
+        // tabi para da 0 lanacak 
+
+        Debug.Log(upgradeEnablingIndexes[upgradeIndex]);
 
         if (playerStats.GetPlayerLevel() >= upgradeEnablingIndexes[upgradeIndex])
         {
@@ -80,6 +83,7 @@ public class AttackerDefenceStat : DefencesStatsBase
     protected override void SetSOValues()
     {
         base.SetSOValues();
+
         for (int i = 0; i < weapons.Count; i++)
         {
             if (attackerDefenceSO.GetWeaponSpawnIndexes()[i] <= upgradeIndex)
@@ -91,6 +95,8 @@ public class AttackerDefenceStat : DefencesStatsBase
         damage = attackerDefenceSO.GetDamageValues()[upgradeIndex];
         attackSpeed = attackerDefenceSO.GetAttackSpeedValues()[upgradeIndex];
         upgradeEnablingIndexes = attackerDefenceSO.GetUpgradeEnablingIndexes();
+
+        loadableBase.SetCurrentCostLeftForUpgrade(attackerDefenceSO.GetUpgradeCosts()[upgradeIndex]);
     }
 
     protected override void LoadDefenceData()
@@ -102,6 +108,10 @@ public class AttackerDefenceStat : DefencesStatsBase
         if (defencesData == null)
         {
             loadableBase.SetCurrentCostLeftForUpgrade(attackerDefenceSO.GetUpgradeCosts()[upgradeIndex]);
+        }
+        else
+        {
+            loadableBase.SetCurrentCostLeftForUpgrade(defencesData.currentCostLeftForUpgrade);
         }
     }
 

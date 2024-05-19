@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using System;
 using UnityEditor.Experimental;
+using TMPro;
 
 public class LoadableBase : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class LoadableBase : MonoBehaviour
 
     [Header("State")]
     protected bool isFull;
+
+    [Header("Texts")]
+    [SerializeField] private TMP_Text currentCostLeftForUpgradeText;
+    [SerializeField] private TMP_Text repairText;
 
     [Header("Events")]
     public Action OnLoadableFilled;
@@ -31,7 +36,7 @@ public class LoadableBase : MonoBehaviour
     {
         gameManager.OnWaveStarted -= DisableObject;
     }
-    
+
     protected virtual void Start()
     {
         objectPooler = ObjectPooler.instance;
@@ -49,6 +54,7 @@ public class LoadableBase : MonoBehaviour
             if (playerStats.DecrementMoney(1))
             {
                 currentCostLeftForUpgrade -= 1;
+                UpdateCurrentMoneyText(currentCostLeftForUpgrade.ToString());
                 saveManager.OnSaved?.Invoke();
             }
         }
@@ -70,11 +76,29 @@ public class LoadableBase : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+
+    private void UpdateCurrentMoneyText(string text)
+    {
+        currentCostLeftForUpgradeText.text = text;
+    }
+
     #region Getters & Setters
 
     public void SetCurrentCostLeftForUpgrade(int value)
     {
+
         currentCostLeftForUpgrade = value;
+        UpdateCurrentMoneyText(currentCostLeftForUpgrade.ToString());
+
+        if (currentCostLeftForUpgrade > 0)
+        {
+            isFull = false;
+        }
+        else
+        {
+            isFull = true;
+        }
+
     }
 
     #endregion

@@ -77,6 +77,7 @@ public class WallBehaviour : DefencesBehaviourBase
 
         navMeshManager.BakeNavMesh();
     }
+    
     #endregion
 
 }

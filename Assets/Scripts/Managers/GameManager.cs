@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("*-Design & Balance -*")]
     [SerializeField] public float repairTimer;
+    [SerializeField] public float enemySlowedSpeed;
     
     [Header("Events")]
     public Action OnCheckPointReached;

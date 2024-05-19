@@ -111,10 +111,10 @@ GameObject:
   - component: {fileID: 584572212228056357}
   - component: {fileID: 2071645799790924442}
   - component: {fileID: 584572212228056359}
+  - component: {fileID: 4350234263661863583}
   - component: {fileID: 584572212228056358}
   - component: {fileID: 584572212228056352}
   - component: {fileID: 584572212228056353}
-  - component: {fileID: 4350234263661863583}
   - component: {fileID: 5705028372069394303}
   m_Layer: 8
   m_Name: Big Enemy
@@ -169,6 +169,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!195 &4350234263661863583
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584572212228056345}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.52
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 0
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 1.78
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &584572212228056358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,31 +235,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 0
   isDead: 0
+  canMove: 0
   aliveLayerName: Enemy
   deadLayerName: DeadEnemy
-  deathAnimDur: 0
---- !u!195 &4350234263661863583
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584572212228056345}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.52
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 0
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 1.78
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  deathAnimDur: 3
+  boundRenderer: {fileID: 2472537921761582045}
+  materialIndex: 0
+  originalMat: {fileID: 7933299137048178034, guid: a9f670f4eae962b4683c35ae3d1db878, type: 3}
+  deadMat: {fileID: -196146090775662410, guid: a9f670f4eae962b4683c35ae3d1db878, type: 3}
 --- !u!114 &5705028372069394303
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,12 +6,14 @@ using UnityEngine;
 using System;
 using UnityEngine.AI;
 using MoreMountains.Feedbacks;
+using System.Linq;
 
 public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 {
     //  saldırı, yürüme , ölme
 
     #region City & Instances
+
     private GameManager gameManager;
     private PlayerStats playerStats;
     private EnemySpawner assignedEnemySpawner;
@@ -24,8 +26,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private EnemyTargeter enemyTargeter;
     private EnemyStats enemyStats;
     private NavMeshAgent navMeshAgent;
-    private EnemyAnimationHandler enemyAnimationHandler;
-
     private MMFeedbacks feelFeedBacks;
 
     [Header("AI Management")]
@@ -39,17 +39,25 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     [Header("States")]
     public bool isDead;
-    private bool canMove;
+    [SerializeField] private bool canMove;
 
     [Header("Layers")]
     [SerializeField] private string aliveLayerName;
     [SerializeField] private string deadLayerName;
 
+    [Header("Health")]
+    private float currentHealth;
+
+    [Header("*--- Visuals ---*")]
+
     [Header("Animation")]
     [SerializeField] private float deathAnimDur;
 
-    [Header("Health")]
-    private float currentHealth;
+    [Header("Color Change On Death")]
+    [SerializeField] private Renderer boundRenderer;
+    [SerializeField] private int materialIndex = 0;
+    [SerializeField] private Material originalMat;
+    [SerializeField] private Material deadMat;
 
     [Header("Events")]
     public Action OnEnemyKilled;
@@ -58,8 +66,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public Action OnTargetNotReached;
     public Action OnDeath;
     public Action OnMove;
-
-
 
     #region IPoolableObject Functions
 
@@ -73,7 +79,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        enemyAnimationHandler = GetComponent<EnemyAnimationHandler>();
         feelFeedBacks = GetComponentInChildren<MMFeedbacks>();
     }
 
@@ -87,6 +92,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         SetObjectLayer(aliveLayerName);
 
+        navMeshAgent.speed = enemyStats.GetMovementSpeed();
+
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
         OnEnemySpawned?.Invoke();
@@ -97,14 +104,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
 
         navMeshAgent.stoppingDistance = originalStoppingDistance;
+        boundRenderer.material = originalMat;
 
         RefillHealth(enemyStats.GetMaxHealth());
         ResetAttackSpeed();
 
-        if (feelFeedBacks.IsPlaying)
-        {
-            feelFeedBacks?.StopFeedbacks();
-        }
 
     }
 
@@ -211,7 +215,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         if (isDead) yield return null;
 
-        canMove = true;
+        navMeshAgent.speed = enemyStats.GetMovementSpeed();
     }
 
     public void Move()
@@ -232,7 +236,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         currentHealth -= dmg;
 
-        canMove = false;
+        navMeshAgent.speed = gameManager.enemySlowedSpeed;
 
         if (isDead)
         {
@@ -256,14 +260,13 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         isDead = true;
         canMove = false;
+        navMeshAgent.speed = 0;
 
-        if (feelFeedBacks.IsPlaying)
+        for (int i = 0; i < materialIndex; i++)
         {
-            feelFeedBacks?.StopFeedbacks();
+            boundRenderer.materials[materialIndex] = deadMat;
         }
 
-        // materyalin değişimi ve tekrardan atanması
-        
         playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue(), enemyStats.GetPowerUpValue());
 
         gameManager.allSpawnedEnemies.Remove(gameObject);

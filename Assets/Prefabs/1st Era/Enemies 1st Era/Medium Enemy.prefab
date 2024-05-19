@@ -240,7 +240,11 @@ MonoBehaviour:
   isDead: 0
   aliveLayerName: Enemy
   deadLayerName: DeadEnemy
-  deathAnimDur: 0
+  deathAnimDur: 3
+  boundRenderer: {fileID: 361699563623279125}
+  materialIndex: 0
+  originalMat: {fileID: 7933299137048178034, guid: a9f670f4eae962b4683c35ae3d1db878, type: 3}
+  deadMat: {fileID: -196146090775662410, guid: a9f670f4eae962b4683c35ae3d1db878, type: 3}
 --- !u!195 &4350234263661863583
 NavMeshAgent:
   m_ObjectHideFlags: 0

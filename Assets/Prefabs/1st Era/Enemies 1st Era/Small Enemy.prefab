@@ -234,8 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 0
   isDead: 0
-  aliveLayerName: 
-  deadLayerName: 
+  aliveLayerName: Enemy
+  deadLayerName: DeadEnemy
   deathAnimDur: 0
 --- !u!195 &4350234263661863583
 NavMeshAgent:

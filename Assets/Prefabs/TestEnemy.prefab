@@ -240,8 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 1
   isDead: 0
-  aliveLayerName: 
-  deadLayerName: 
+  aliveLayerName: Enemy
+  deadLayerName: DeadEnemy
   deathAnimDur: 4
 --- !u!114 &1496560965268379181
 MonoBehaviour:

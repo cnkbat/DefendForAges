@@ -287,8 +287,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyMovePos: {fileID: 0}
   currentCostLeftForUpgrade: 0
+  isRepairNeeded: 0
   currentCostLeftForUpgradeText: {fileID: 7118561911136137037}
-  repairText: {fileID: 0}
+  repairText: {fileID: 4771755790598358573}
 --- !u!1 &6932894210727517168
 GameObject:
   m_ObjectHideFlags: 0

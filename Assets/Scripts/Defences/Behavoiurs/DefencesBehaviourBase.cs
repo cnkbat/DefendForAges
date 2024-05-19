@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class DefencesBehaviourBase : EnemyTarget
@@ -9,6 +8,9 @@ public class DefencesBehaviourBase : EnemyTarget
 
     BoxCollider boxCollider;
     [SerializeField] protected bool isRepairable;
+
+    [Header("Events")]
+    public Action<bool> OnRepairStateChange;
 
     [Header("Visuals")]
     [SerializeField] protected GameObject asset;
@@ -73,6 +75,8 @@ public class DefencesBehaviourBase : EnemyTarget
     #region  Getters & Setters
     private void SetisRepairable(bool newBool)
     {
+        OnRepairStateChange.Invoke(newBool);
+
         isRepairable = newBool;
     }
     #endregion

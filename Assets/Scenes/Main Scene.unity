@@ -5562,6 +5562,7 @@ MonoBehaviour:
   towers: []
   targetFPS: 60
   bulletFireRange: 1000
+  repairTimer: 0
 --- !u!4 &1818629410
 Transform:
   m_ObjectHideFlags: 0

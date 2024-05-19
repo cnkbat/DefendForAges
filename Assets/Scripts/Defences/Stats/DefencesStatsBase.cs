@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class DefencesStatsBase : MonoBehaviour
 {
+    [Header("Instances")]
     SaveManager saveManager;
+
+    [Header("Components On This")]
+
+    private DefencesBehaviourBase defencesBehaviourBase;
     public StaticDefenceSO defenceSO;
     [SerializeField] public LoadableBase loadableBase;
 
@@ -22,6 +27,10 @@ public class DefencesStatsBase : MonoBehaviour
     protected virtual void OnEnable()
     {
         saveManager = SaveManager.instance;
+        defencesBehaviourBase = GetComponent<DefencesBehaviourBase>();
+
+        defencesBehaviourBase.OnRepairStateChange += loadableBase.SetIsRepairNeeded;
+        loadableBase.OnRepairDone += defencesBehaviourBase.TargetRevived;
 
         loadableBase.OnLoadableFilled += BuyDone;
         loadableBase.OnLoadableFilled += SaveDefenceData;
@@ -33,6 +42,10 @@ public class DefencesStatsBase : MonoBehaviour
     }
     protected virtual void OnDisable()
     {
+        
+        defencesBehaviourBase.OnRepairStateChange -= loadableBase.SetIsRepairNeeded;
+        loadableBase.OnRepairDone -= defencesBehaviourBase.TargetRevived;
+
         loadableBase.OnLoadableFilled -= BuyDone;
         loadableBase.OnLoadableFilled -= SaveDefenceData;
 

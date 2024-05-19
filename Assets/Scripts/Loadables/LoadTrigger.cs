@@ -20,6 +20,11 @@ public class LoadTrigger : MonoBehaviour, ILoadable
         parentObj.Load();
     }
 
-
-
+    public void Unload()
+    {
+        if(parentObj.GetIsRepairNeeded())
+        {
+            parentObj.ResetRepairTimer();
+        }
+    }
 }

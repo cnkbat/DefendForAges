@@ -50,6 +50,14 @@ public class PlayerCollisionHandler : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out ILoadable loadable))
+        {
+            loadable.Unload();
+        }
+    }
+
     private void ResetTriggerTimer()
     {
         currentTriggerTimer = triggerTimer;

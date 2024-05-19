@@ -19,15 +19,20 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public List<CityManager> allCities;
     [SerializeField] private List<TowerBehaviour> towers;
 
+    [Header("**------ SETTINGS ------**")]
+
     [Header("Debugging")]
     [SerializeField] private int targetFPS;
 
     [Header("Optimization")]
     [SerializeField] public float bulletFireRange = 150f;
 
+    [Header("*-Design & Balance -*")]
+    [SerializeField] public float repairTimer;
+    
     [Header("Events")]
     public Action OnCheckPointReached;
-    public Action OnEraChanged; 
+    public Action OnEraChanged;
     public Action OnWaveStarted;
 
     //******///

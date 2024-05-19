@@ -18,6 +18,11 @@ public class LoadableBase : MonoBehaviour
 
     [Header("State")]
     protected bool isFull;
+    [SerializeField] private bool isRepairNeeded;
+
+    [Header("Timers")]
+    private float maxRepairTimer;
+    private float currentRepairTimer;
 
     [Header("Texts")]
     [SerializeField] private TMP_Text currentCostLeftForUpgradeText;
@@ -25,6 +30,9 @@ public class LoadableBase : MonoBehaviour
 
     [Header("Events")]
     public Action OnLoadableFilled;
+    public Action OnRepairDone;
+
+
     private void OnEnable()
     {
         gameManager = GameManager.instance;
@@ -37,17 +45,32 @@ public class LoadableBase : MonoBehaviour
         gameManager.OnWaveStarted -= DisableObject;
     }
 
-    protected virtual void Start()
+    protected void Start()
     {
         objectPooler = ObjectPooler.instance;
         playerStats = PlayerStats.instance;
         saveManager = SaveManager.instance;
+
+        maxRepairTimer = gameManager.repairTimer;
     }
 
-    public virtual void Load()
+    public void Load()
     {
 
         if (isFull) return;
+
+        if (isRepairNeeded)
+        {
+            currentRepairTimer -= Time.deltaTime;
+
+            if (currentRepairTimer <= 0)
+            {
+                Repair();
+            }
+
+            return;
+        }
+
 
         if (currentCostLeftForUpgrade > 0)
         {
@@ -61,6 +84,24 @@ public class LoadableBase : MonoBehaviour
 
         CheckIfFulled();
     }
+
+    #region Repair Related
+    private void Repair()
+    {
+        Debug.Log("repair");
+
+        OnRepairDone?.Invoke();
+        // dur simdi bakcaz 
+    }
+
+    public void ResetRepairTimer()
+    {
+        currentRepairTimer = maxRepairTimer;
+    }
+
+    #endregion
+
+    #region State Related
 
     protected void CheckIfFulled()
     {
@@ -76,11 +117,16 @@ public class LoadableBase : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    #endregion
+
+    #region Visuals
 
     private void UpdateCurrentMoneyText(string text)
     {
         currentCostLeftForUpgradeText.text = text;
     }
+
+    #endregion
 
     #region Getters & Setters
 
@@ -97,6 +143,24 @@ public class LoadableBase : MonoBehaviour
         else
         {
             isFull = true;
+        }
+
+    }
+
+
+    public bool GetIsRepairNeeded()
+    {
+        return isRepairNeeded;
+    }
+
+    public void SetIsRepairNeeded(bool newBool)
+    {
+        currentCostLeftForUpgradeText.gameObject.SetActive(!newBool);
+        repairText.gameObject.SetActive(newBool);
+
+        if (newBool)
+        {
+            isRepairNeeded = newBool;
         }
 
     }

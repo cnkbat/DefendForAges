@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System;
 using UnityEngine.AI;
+using MoreMountains.Feedbacks;
 
 public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 {
@@ -24,6 +25,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private EnemyStats enemyStats;
     private NavMeshAgent navMeshAgent;
     private EnemyAnimationHandler enemyAnimationHandler;
+
+    private MMFeedbacks feelFeedBacks;
 
     [Header("AI Management")]
     [SerializeField] private float originalStoppingDistance;
@@ -71,6 +74,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         enemyStats = this.GetComponent<EnemyStats>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyAnimationHandler = GetComponent<EnemyAnimationHandler>();
+        feelFeedBacks = GetComponentInChildren<MMFeedbacks>();
     }
 
     public void OnObjectPooled()
@@ -96,6 +100,12 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         RefillHealth(enemyStats.GetMaxHealth());
         ResetAttackSpeed();
+
+        if (feelFeedBacks.IsPlaying)
+        {
+            feelFeedBacks?.StopFeedbacks();
+        }
+
     }
 
 
@@ -130,6 +140,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         Move();
     }
+
+    #region Attacking
 
     private void LookAtTarget()
     {
@@ -174,6 +186,20 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     }
 
+    public void DealDamage(ITargetable target)
+    {
+
+        // play animation
+        // deal damage
+        target.TakeDamage(enemyStats.GetDamage());
+    }
+
+    public void ResetAttackSpeed()
+    {
+        attackTimer = enemyStats.GetAttackSpeed();
+    }
+
+    #endregion
 
 
     #region  Movement
@@ -199,14 +225,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     #endregion
 
-    #region Combat Related
-    public void DealDamage(ITargetable target)
-    {
-
-        // play animation
-        // deal damage
-        target.TakeDamage(enemyStats.GetDamage());
-    }
+    #region Kill & Take Damage
 
     public void TakeDamage(float dmg)
     {
@@ -215,18 +234,22 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         canMove = false;
 
+        if (isDead)
+        {
+            return;
+        }
+        else
+        {
+            feelFeedBacks?.PlayFeedbacks();
+        }
+
         if (currentHealth <= 0)
         {
-            if (isDead) return;
             Kill();
         }
 
         StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
-    }
 
-    public void ResetAttackSpeed()
-    {
-        attackTimer = enemyStats.GetAttackSpeed();
     }
 
     public void Kill()
@@ -234,6 +257,13 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         isDead = true;
         canMove = false;
 
+        if (feelFeedBacks.IsPlaying)
+        {
+            feelFeedBacks?.StopFeedbacks();
+        }
+
+        // materyalin değişimi ve tekrardan atanması
+        
         playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue(), enemyStats.GetPowerUpValue());
 
         gameManager.allSpawnedEnemies.Remove(gameObject);

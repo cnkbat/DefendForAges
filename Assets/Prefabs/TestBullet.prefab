@@ -110,5 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51244aeb6a01be44a9b845da7131e945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  travelSpeed: 15
   trailFX: {fileID: 0}

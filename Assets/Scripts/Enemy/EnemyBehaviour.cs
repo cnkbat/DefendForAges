@@ -39,8 +39,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private bool canMove;
 
     [Header("Layers")]
-    [SerializeField] private LayerMask aliveLayer;
-    [SerializeField] private LayerMask deadLayer;
+    [SerializeField] private string aliveLayerName;
+    [SerializeField] private string deadLayerName;
 
     [Header("Animation")]
     [SerializeField] private float deathAnimDur;
@@ -81,7 +81,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         isDead = false;
         animator.SetBool("isWalking", true);
 
-        SetObjectLayer(aliveLayer);
+        SetObjectLayer(aliveLayerName);
 
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
@@ -239,7 +239,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         gameManager.allSpawnedEnemies.Remove(gameObject);
 
         OnDeath?.Invoke();
-        SetObjectLayer(deadLayer);
+        SetObjectLayer(deadLayerName);
 
         OnEnemyKilled?.Invoke();
         StartCoroutine(KillEnemy());
@@ -274,9 +274,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         return canMove;
     }
-    private void SetObjectLayer(LayerMask newLayer)
+
+    private void SetObjectLayer(string newLayerName)
     {
-        gameObject.layer = newLayer;
+        gameObject.layer = LayerMask.NameToLayer(newLayerName);
     }
 
     #endregion

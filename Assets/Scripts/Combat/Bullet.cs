@@ -8,10 +8,17 @@ public class Bullet : MonoBehaviour, IPoolableObject
 {
     PlayerStats playerStats;
     GameManager gameManager;
-    private float damage;
-    [SerializeField] float moveSpeed;
+
+    [Header("Travel Speed")]
+    [SerializeField] float travelSpeed;
+
+    [Header("Targeting")]
     Transform target;
     Vector3 targetPos;
+
+    [Header("Damage")]
+    bool hasHit;
+    private float damage;
     Vector3 firedPoint;
 
     [Header("Life Steal")]
@@ -52,6 +59,8 @@ public class Bullet : MonoBehaviour, IPoolableObject
         Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
         transform.forward = aimDirection;
+
+        hasHit = false;
     }
 
     #endregion
@@ -61,11 +70,11 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
         if (target != null && (!target.gameObject.activeSelf || targetReached))
         {
-            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+            transform.position += transform.forward * travelSpeed * Time.deltaTime;
         }
         else if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, travelSpeed * Time.deltaTime);
 
             if (transform.position == targetPos)
             {
@@ -86,8 +95,12 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
     private void OnTriggerEnter(Collider other)
     {
+        if (hasHit) return;
+
         if (other.TryGetComponent(out IDamagable damagable))
         {
+            hasHit = true;
+
             damagable.TakeDamage(damage);
 
             if (isPlayersBullet)

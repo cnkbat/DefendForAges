@@ -8,7 +8,6 @@ public class PlayerAttack : MonoBehaviour
     NearestEnemyFinder nearestEnemyFinder;
     [SerializeField] List<Weapon> weapons;
     PlayerStats playerStats;
-    GameManager gameManager;
 
     [Header("Fire Range")]
     [SerializeField] private float fireRange;
@@ -43,7 +42,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
         playerStats = GetComponent<PlayerStats>();
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
 

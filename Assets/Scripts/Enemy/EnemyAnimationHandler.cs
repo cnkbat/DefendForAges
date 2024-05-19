@@ -15,6 +15,7 @@ public class EnemyAnimationHandler : MonoBehaviour
         enemyBehaviour.OnTargetNotReached += StopAttack;
         enemyBehaviour.OnMove += MoveAnimation;
         enemyBehaviour.OnDeath += Death;
+        enemyBehaviour.OnMovementSpeedChanged += ChangeWalkAnimationSpeed;
     }
 
     private void OnDisable()
@@ -45,5 +46,10 @@ public class EnemyAnimationHandler : MonoBehaviour
     public void Death()
     {
         animator.SetBool("isKill", true);
+    }
+
+    public void ChangeWalkAnimationSpeed(float newSpeed)
+    {
+        animator.SetFloat("WalkSpeed", newSpeed);
     }
 }

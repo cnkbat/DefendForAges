@@ -8,7 +8,6 @@ public class PlayerStats : Singleton<PlayerStats>
 {
     SaveManager saveManager;
 
-
     [SerializeField] private RPGSystemSO rpgSystemSO;
 
     [Header("Saved Indexes")]

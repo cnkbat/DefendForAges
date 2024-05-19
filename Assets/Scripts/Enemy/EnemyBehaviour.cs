@@ -66,6 +66,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public Action OnTargetNotReached;
     public Action OnDeath;
     public Action OnMove;
+    public Action<float> OnMovementSpeedChanged;
 
     #region IPoolableObject Functions
 
@@ -219,6 +220,9 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         navMeshAgent.isStopped = !canMove;
         OnMove?.Invoke();
+
+        OnMovementSpeedChanged?.Invoke(navMeshAgent.speed);
+
         //animator.SetBool("isWalking", canMove);
 
         navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
@@ -230,7 +234,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     public void TakeDamage(float dmg)
     {
-        
+
 
         currentHealth -= dmg;
 
@@ -263,6 +267,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         isDead = true;
         canMove = false;
         navMeshAgent.speed = 0;
+        OnMovementSpeedChanged.Invoke(0);
 
         for (int i = 0; i < materialIndex; i++)
         {

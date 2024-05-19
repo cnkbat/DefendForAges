@@ -11,11 +11,11 @@ public class EnemySO : ScriptableObject
     [Header("Health")]
     [SerializeField] private float maxHealth;
 
-    [Header("Speed")]
+    [Header("Movement")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float knockbackDur;
 
     [Header("Attacking")]
-    [SerializeField] private float knockbackDur;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float attackDur;
     [SerializeField] private float damage;

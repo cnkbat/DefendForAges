@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     NearestEnemyFinder nearestEnemyFinder;
+    Animator animator;
 
     private PlayerStats playerStats;
     private Rigidbody rb;
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         playerStats = GetComponent<PlayerStats>();
+        animator = GetComponentInChildren<Animator>();
+
         playerStats.OnMovementSpeedUpgraded += UpdateMovementSpeed;
     }
 
@@ -75,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateMovementSpeed()
     {
         speed = playerStats.GetMovementSpeed();
+
+        animator.SetFloat("WalkSpeed", speed);
     }
 
     public bool HasJoystickInput()

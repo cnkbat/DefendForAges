@@ -32,7 +32,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float attackSpeed;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float powerupDur;
-    [SerializeField] private float lifeSteal;
+    [SerializeField] private float lifeStealRate;
     [SerializeField] private float maxHealth;
 
     [Header("Death")]
@@ -348,7 +348,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void IncrementHealth(float lifeStolen)
     {
-        deathHandler.IncrementCurrentHealth(lifeStolen);
+        deathHandler.IncrementCurrentHealth(lifeStolen * lifeStealRate);
     }
 
     #endregion
@@ -487,7 +487,7 @@ public class PlayerStats : Singleton<PlayerStats>
         attackSpeed = rpgSystemSO.GetAttackSpeedValues()[attackSpeedIndex];
         movementSpeed = rpgSystemSO.GetMovementSpeedValues()[movementSpeedIndex];
         powerupDur = rpgSystemSO.GetPowerupDurValues()[powerupDurIndex];
-        lifeSteal = rpgSystemSO.GetLifeStealValues()[lifeStealIndex];
+        lifeStealRate = rpgSystemSO.GetLifeStealValues()[lifeStealIndex];
         maxHealth = rpgSystemSO.GetMaxHealthValues()[maxHealthIndex];
     }
 

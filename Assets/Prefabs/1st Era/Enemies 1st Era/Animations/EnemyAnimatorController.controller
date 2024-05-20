@@ -44,7 +44,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Zombie Attack
+  m_Name: Enemy Attack
   m_Speed: 2.5
   m_CycleOffset: 0
   m_Transitions:
@@ -73,7 +73,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ZombieTakeHit
+  m_Name: Enemy Take Hit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -174,7 +174,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 240, y: -90, z: 0}
-  m_EntryPosition: {x: 90, y: 40, z: 0}
+  m_EntryPosition: {x: 250, y: 20, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1459171335657622785}
@@ -299,7 +299,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Standing React Death Backward
+  m_Name: 'Enemy Death '
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -326,7 +326,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Walking
+  m_Name: Enemy Walking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -355,7 +355,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyIdle
+  m_Name: Enemy Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

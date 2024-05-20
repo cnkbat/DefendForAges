@@ -106,8 +106,8 @@ public class PlayerStats : Singleton<PlayerStats>
         OnPlayerRevived -= FillCurrentHealth;
         OnLateReviveButtonClicked -= SetWaveSystemBackToCheckpoint;
     }
-
     #endregion
+
     private void Start()
     {
         saveManager = SaveManager.instance;

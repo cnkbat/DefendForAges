@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,9 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
     [Header("! -- Archer Visuals -- !")]
     [SerializeField] private List<ArcherStickman> archerStickmans; // stickman on top
 
+    [Header("Actions")]
+    public Action OnStickmanAnimationPlayNeeded;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -22,6 +26,12 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         {
             OnRangedAttack += attackerDefenceStat.GetWeapons()[i].Attack;
         }
+
+        for (int i = 0; i < archerStickmans.Count; i++)
+        {
+            OnStickmanAnimationPlayNeeded += archerStickmans[i].PlayAttackAnimation;
+        }
+        
     }
 
     protected override void OnDisable()
@@ -31,6 +41,11 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         for (int i = 0; i < attackerDefenceStat.GetWeapons().Count; i++)
         {
             OnRangedAttack -= attackerDefenceStat.GetWeapons()[i].Attack;
+        }
+
+        for (int i = 0; i < archerStickmans.Count; i++)
+        {
+            OnStickmanAnimationPlayNeeded -= archerStickmans[i].PlayAttackAnimation;
         }
     }
 
@@ -58,6 +73,8 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
 
         OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), attackerDefenceStat.GetDamage(), false, archerStickmans[0].GetAnimDur());
+        OnStickmanAnimationPlayNeeded?.Invoke();
+
     }
 
     private void LookAtNearstEnemy(Transform closestEnemy)

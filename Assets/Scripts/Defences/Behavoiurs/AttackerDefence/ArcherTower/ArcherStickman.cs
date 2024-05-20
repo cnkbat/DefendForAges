@@ -5,24 +5,21 @@ using UnityEngine;
 public class ArcherStickman : MonoBehaviour
 {
     private Animator animator;
-    [SerializeField] private Transform tipOfWeapon;
     [SerializeField] private float animDur;
 
-    public Transform GetTipOfWeapon()
+    private void Awake()
     {
-        return tipOfWeapon;
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void PlayAttackAnimation()
     {
-        if (animator != null)
-        {
-            animator.SetTrigger("Attack");
-        }
+        animator.SetTrigger("Attack");
     }
 
     public float GetAnimDur()
     {
         return animDur;
     }
+
 }

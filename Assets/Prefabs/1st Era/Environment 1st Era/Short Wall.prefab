@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 436031135532255185}
   - component: {fileID: 5021642568070775148}
   - component: {fileID: 5837631381913671170}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.123
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1942351640006130125}
   - component: {fileID: 1008531827583622208}
   - component: {fileID: 4203567281420140703}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.129
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7574627557494297000}
-  m_Layer: 0
+  - component: {fileID: 8793974598251879759}
+  m_Layer: 12
   m_Name: Short Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,6 +199,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8793974598251879759
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7087615918147309203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2534997, y: 1.6009333, z: 1.0237211}
+  m_Center: {x: -0.003953576, y: 0.04744208, z: -0.11465174}
 --- !u!1 &7194273468440640886
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +223,7 @@ GameObject:
   - component: {fileID: 2411196825771562326}
   - component: {fileID: 2284318982250807914}
   - component: {fileID: 6497104655593497498}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.111
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +306,7 @@ GameObject:
   - component: {fileID: 2840330160149780352}
   - component: {fileID: 5686826165694558923}
   - component: {fileID: 4791291637144906631}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.124
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8570990012455687734}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Asset
   m_TagString: Untagged
   m_Icon: {fileID: 0}

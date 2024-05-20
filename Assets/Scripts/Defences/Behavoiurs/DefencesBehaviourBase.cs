@@ -1,4 +1,5 @@
 using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class DefencesBehaviourBase : EnemyTarget
@@ -14,11 +15,16 @@ public class DefencesBehaviourBase : EnemyTarget
 
     [Header("Visuals")]
     [SerializeField] protected GameObject asset;
+    [SerializeField] protected MMFeedbacks feelFeedBacks;
 
     override protected void Start()
     {
         defencesStatsBase = GetComponent<DefencesStatsBase>();
         boxCollider = GetComponent<BoxCollider>();
+
+
+
+
         ResetHealthValue();
         CheckForUpgradeable();
     }
@@ -26,6 +32,13 @@ public class DefencesBehaviourBase : EnemyTarget
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
+
+        // emir modelleri güncellediğinde aktif edilecek
+        if (feelFeedBacks != null)
+        {
+            // feelFeedBacks?.PlayFeedbacks();
+        }
+
         currentHealth -= dmg;
 
         SetisRepairable(true);

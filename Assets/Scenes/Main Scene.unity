@@ -1686,6 +1686,7 @@ Transform:
   - {fileID: 1063876105}
   - {fileID: 2063285141}
   - {fileID: 1713951129}
+  - {fileID: 1286553519}
   m_Father: {fileID: 2112083883}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 89.474, z: 0}
@@ -3233,7 +3234,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.000000006584597, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.000000006584596, w: 0.92387956}
   m_LocalPosition: {x: -6.1176624, y: 25.00002, z: -37.635815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4036,6 +4037,60 @@ MonoBehaviour:
   - 12
   - 13
   - 14
+--- !u!1 &1286553518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1286553519}
+  - component: {fileID: 1286553520}
+  m_Layer: 0
+  m_Name: SpawnAnimator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1286553519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286553518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 535680109}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1286553520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286553518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbfefca139515a0418c442b7e30c9356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationType: 0
+  objectsToAnimateOnSpawn:
+  - {fileID: 2063285141}
+  objectsToAnimateOnDespawn:
+  - {fileID: 1713951129}
+  flyUpValue: 100
+  dropDownAnimationTime: 2
+  dropDownEaseType: 1
+  smallToBigAnimationTime: 0
+  smallToBigEaseType: 1
 --- !u!1001 &1289181391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6762,7 +6817,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.000000006584597, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.000000006584596, w: 0.92387956}
   m_LocalPosition: {x: -6.1176624, y: 25.00002, z: -37.635815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BuyableArea : MonoBehaviour
 {
-  
+
     SaveManager saveManager;
     CityManager cityManager;
     NavMeshManager navMeshManager;
@@ -31,6 +31,8 @@ public class BuyableArea : MonoBehaviour
     [SerializeField] List<GameObject> assets;
     [SerializeField] List<GameObject> objectsToDisableOnBuy;
 
+    private SpawnAnimationHandler spawnAnimationHandler;
+
     [Header("Events")]
     public Action OnAreaBuyed;
     public Action<List<Transform>> OnAreaEnabled;
@@ -41,8 +43,10 @@ public class BuyableArea : MonoBehaviour
     {
         navMeshManager = NavMeshManager.instance;
         cityManager = transform.parent.GetComponent<CityManager>();
-        LoadBuyableAreaData();
 
+        spawnAnimationHandler = GetComponentInChildren<SpawnAnimationHandler>();
+
+        LoadBuyableAreaData();
 
         saveManager = SaveManager.instance;
         saveManager.OnSaved += SaveBuyableAreaData;
@@ -72,10 +76,6 @@ public class BuyableArea : MonoBehaviour
     }
     #endregion
 
-    private void Start()
-    {
-        CheckForAssetsState();
-    }
 
     #region Buying Area
     public void AreaBuyed()
@@ -122,11 +122,6 @@ public class BuyableArea : MonoBehaviour
     {
         loadableBase.gameObject.SetActive(!isBuyed);
 
-        for (int i = 0; i < objectsToDisableOnBuy.Count; i++)
-        {
-            objectsToDisableOnBuy[i].SetActive(!isBuyed);
-        }
-
         for (int i = 0; i < assets.Count; i++)
         {
             if (assets[i].activeSelf != isBuyed)
@@ -136,11 +131,14 @@ public class BuyableArea : MonoBehaviour
             }
         }
 
+        spawnAnimationHandler?.OnAnimPlay?.Invoke();
+
         OnAreaEnabled?.Invoke(enemySpawnAreas);
-        OnNavMeshUpdated?.Invoke();
+      //  OnNavMeshUpdated?.Invoke();
     }
 
     #region Save & Load
+
     public void SaveBuyableAreaData()
     {
         SaveSystem.SaveBuyableAreaData(this, buyableAreaID);

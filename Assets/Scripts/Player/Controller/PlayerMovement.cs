@@ -7,13 +7,17 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     NearestEnemyFinder nearestEnemyFinder;
-    Animator animator;
+
 
     private PlayerStats playerStats;
     private Rigidbody rb;
     [SerializeField] private Joystick joystick;
+
+    [Header("Walk")]
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float speed = 5f;
+
+
 
     private Vector3 direction;
     private float horizontal;
@@ -24,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         playerStats = GetComponent<PlayerStats>();
-        animator = GetComponentInChildren<Animator>();
-
         playerStats.OnMovementSpeedUpgraded += UpdateMovementSpeed;
     }
 
@@ -78,8 +80,6 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateMovementSpeed()
     {
         speed = playerStats.GetMovementSpeed();
-
-        animator.SetFloat("WalkSpeed", speed);
     }
 
     public bool HasJoystickInput()

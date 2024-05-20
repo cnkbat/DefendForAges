@@ -5,21 +5,25 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [Header("Components")]
+    PlayerStats playerStats;
     NearestEnemyFinder nearestEnemyFinder;
     [SerializeField] List<Weapon> weapons;
-    PlayerStats playerStats;
+
 
     [Header("Fire Range")]
     [SerializeField] private float fireRange;
 
     [Header("Anim")]
     [SerializeField] private float strikingAnimDur;
+    private float currentStrikingAnimDur;
 
     [Tooltip("Attack Speed")]
     float currentAttackSpeed;
 
     [Tooltip("Events")]
     public Action<Transform, float, bool, float> OnAttack;
+    public Action OnAttackAnimPlayNeeded;
 
     private void OnEnable()
     {
@@ -60,7 +64,8 @@ public class PlayerAttack : MonoBehaviour
             currentAttackSpeed -= Time.deltaTime;
             if (currentAttackSpeed <= 0)
             {
-                OnAttack.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage(), true, strikingAnimDur);
+                OnAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage(), true, currentStrikingAnimDur);
+                OnAttackAnimPlayNeeded?.Invoke();
                 ResetAttackSpeed();
             }
         }
@@ -97,10 +102,17 @@ public class PlayerAttack : MonoBehaviour
     #endregion
 
     #region Firing
+
     private void ResetAttackSpeed()
     {
         currentAttackSpeed = playerStats.GetAttackSpeed();
     }
+
+    public void SetAttackingDelay(float delayMultiplier)
+    {
+        currentStrikingAnimDur = strikingAnimDur * delayMultiplier;
+    }
+
     #endregion
 
     #region Dual Weaponing

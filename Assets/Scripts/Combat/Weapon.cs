@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-
-    PlayerAttack playerAttack;
     ObjectPooler objectPooler;
 
     [Header("Firing")]
     [SerializeField] private String bulletTag;
     [SerializeField] private Transform tipOfWeapon;
 
-    private void OnEnable()
+    private void Start()
     {
         objectPooler = ObjectPooler.instance;
     }

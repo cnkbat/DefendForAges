@@ -34,9 +34,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     [Header("Combat")]
     private float attackTimer;
 
-    [Header("Animation")]
-    private Animator animator;
-
     [Header("States")]
     public bool isDead;
     [SerializeField] private bool canMove;
@@ -51,6 +48,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     [Header("*--- Visuals ---*")]
 
     [Header("Animation")]
+    private Animator animator;
     [SerializeField] private float deathAnimDur;
 
     [Header("Color Change On Death")]
@@ -67,6 +65,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public Action OnDeath;
     public Action OnMove;
     public Action<float> OnMovementSpeedChanged;
+    public Action<float> OnAttackSpeedChanged;
 
     #region IPoolableObject Functions
 
@@ -199,6 +198,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     public void ResetAttackSpeed()
     {
         attackTimer = enemyStats.GetAttackSpeed();
+        OnAttackSpeedChanged?.Invoke(enemyStats.GetAttackSpeed());
     }
 
     #endregion
@@ -222,9 +222,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnMove?.Invoke();
 
         OnMovementSpeedChanged?.Invoke(navMeshAgent.speed);
-
-        //animator.SetBool("isWalking", canMove);
-
         navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
     }
 

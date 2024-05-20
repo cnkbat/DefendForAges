@@ -1,23 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerAngleCalculator : MonoBehaviour
 {
     private Joystick joystick;
-    private Animator animator;
+    private NearestEnemyFinder nearestEnemyFinder;
+    public Action<float, float> OnPlayerMoved;
+
     private void Awake()
     {
         joystick = FindObjectOfType<Joystick>();
-        animator = GetComponentInChildren<Animator>();
+        nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
     }
 
     private void Update()
     {
         Vector2 vectors = CalculateThePlayerRotationAngle(joystick.result);
-        animator.SetFloat("Vx", vectors.x);
-        animator.SetFloat("Vy", vectors.y);
+
+        OnPlayerMoved?.Invoke(vectors.x, vectors.y);
     }
 
     private Vector2 CalculateThePlayerRotationAngle(Vector2 input)

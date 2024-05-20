@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 4197459822926179253}
   - component: {fileID: 882205085}
   m_Layer: 6
-  m_Name: Player
+  m_Name: '[White Box ]Player'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

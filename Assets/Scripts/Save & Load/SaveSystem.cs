@@ -51,7 +51,7 @@ public static class SaveSystem
     #endregion
 
     #region Defences Saving
-    public static void SaveDefencesData(DefencesStatsBase defencesStatsBase, int defencesID)
+    public static void SaveDefencesData(DefencesStatsBase defencesStatsBase, string defencesID)
     {
 
         BinaryFormatter formatter = new BinaryFormatter();
@@ -64,7 +64,7 @@ public static class SaveSystem
 
     }
 
-    public static DefencesData LoadDefenceData(int defencesID)
+    public static DefencesData LoadDefenceData(string defencesID)
     {
 
         string path = Application.persistentDataPath + "/defencesStatsBase-" + defencesID + ".txt";
@@ -89,7 +89,7 @@ public static class SaveSystem
     }
 
 
-    public static void DeleteDefencesData(int defencesID)
+    public static void DeleteDefencesData(string defencesID)
     {
         string path = Application.persistentDataPath + "/defencesStatsBase-" + defencesID + ".txt";
         File.Delete(path);
@@ -98,7 +98,7 @@ public static class SaveSystem
     #endregion
 
     #region Buyable Area Saving
-    public static void SaveBuyableAreaData(BuyableArea buyableArea, int buyableAreaID)
+    public static void SaveBuyableAreaData(BuyableArea buyableArea, string buyableAreaID)
     {
 
         BinaryFormatter formatter = new BinaryFormatter();
@@ -111,7 +111,7 @@ public static class SaveSystem
 
     }
 
-    public static BuyableAreaData LoadBuyableAreaData(int buyableAreaID)
+    public static BuyableAreaData LoadBuyableAreaData(string buyableAreaID)
     {
 
         string path = Application.persistentDataPath + "/buyableArea-" + buyableAreaID + ".txt";
@@ -136,7 +136,7 @@ public static class SaveSystem
     }
 
 
-    public static void DeleteBuyableAreaData(int buyableAreaID)
+    public static void DeleteBuyableAreaData(string buyableAreaID)
     {
         string path = Application.persistentDataPath + "/buyableArea-" + buyableAreaID + ".txt";
         File.Delete(path);

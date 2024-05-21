@@ -15,8 +15,8 @@ public class DefencesStatsBase : MonoBehaviour
     [SerializeField] public LoadableBase loadableBase;
 
     [Header("Save & Load")]
-    public int defenceID;
-    public int upgradeIndex;
+    [Tooltip("Sadece save load için her bir obje için ayrı isimlendirme.")] public string defenceID;
+    [Tooltip("Sadece save load için görünüyor")] public int upgradeIndex;
 
     [Header("Ingame Values")]
     protected float maxHealth;
@@ -42,7 +42,7 @@ public class DefencesStatsBase : MonoBehaviour
     }
     protected virtual void OnDisable()
     {
-        
+
         defencesBehaviourBase.OnRepairStateChange -= loadableBase.SetIsRepairNeeded;
         loadableBase.OnRepairDone -= defencesBehaviourBase.TargetRevived;
 

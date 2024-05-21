@@ -16,13 +16,10 @@ public class BuyableArea : MonoBehaviour
     [SerializeField] BuyableArea tightedBuyableArea;
 
     [Header("Save & Load")]
-    [SerializeField] public int buyableAreaID;
+    [Tooltip("Sadece save load için her bir obje için ayrı isimlendirme.")] [SerializeField] public string buyableAreaID;
 
     [Header("Loadable")]
     [SerializeField] public LoadableBase loadableBase;
-
-    [Header("Defences")]
-    [SerializeField] List<DefencesStatsBase> defences;
 
     [Header("Enemy Spawns")]
     [SerializeField] List<Transform> enemySpawnAreas;
@@ -134,7 +131,7 @@ public class BuyableArea : MonoBehaviour
         spawnAnimationHandler?.OnAnimPlay?.Invoke();
 
         OnAreaEnabled?.Invoke(enemySpawnAreas);
-      //  OnNavMeshUpdated?.Invoke();
+        //  OnNavMeshUpdated?.Invoke();
     }
 
     #region Save & Load

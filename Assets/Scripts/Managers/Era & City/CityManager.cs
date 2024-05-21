@@ -11,8 +11,9 @@ public class CityManager : MonoBehaviour
     SaveManager saveManager;
 
     [Header("Checkpoint")]
-    public int checkpointReachedIndexer;
-    [SerializeField] private int currentCheckpointIndex;
+    [Tooltip("Şehir Değiştirme Wave Indexi")][SerializeField] private int cityChangingIndex;
+    [Tooltip("Kaybedince geri gittiğimiz wave indexi")][SerializeField] private int firstCheckpointIndex;
+    [Tooltip("Şehirde Checkpoint Wave Indexi")][SerializeField] private int secondCheckpointIndex;
 
     [Header("Waves")]
     public List<EnemySpawner> waveList;
@@ -25,8 +26,8 @@ public class CityManager : MonoBehaviour
 
     [Header("Save & Load")]
     public string cityName;
-    public int buyedAreaIndex;
-    public int towerUpgradeIndex;
+    [HideInInspector] public int buyedAreaIndex;
+    [HideInInspector] public int towerUpgradeIndex;
 
     [Header("Points")]
     [SerializeField] private Transform revivePoint;
@@ -63,6 +64,10 @@ public class CityManager : MonoBehaviour
 
         playerStats.OnPlayerKilled += UpdateTargetList;
         playerStats.OnPlayerRevived += UpdateTargetList;
+
+
+        gameManager.OnCityDidnotChanged += CheckForSecondCheckpointReached;
+
     }
 
     private void OnDisable()
@@ -78,6 +83,9 @@ public class CityManager : MonoBehaviour
 
         playerStats.OnPlayerKilled -= UpdateTargetList;
         playerStats.OnPlayerRevived -= UpdateTargetList;
+
+
+        gameManager.OnCityDidnotChanged -= CheckForSecondCheckpointReached;
     }
 
     public void Start()
@@ -175,6 +183,19 @@ public class CityManager : MonoBehaviour
     }
     #endregion
 
+
+    public void CheckForSecondCheckpointReached()
+    {
+        if (this == gameManager.allCities[playerStats.GetCityIndex()])
+        {
+            if (playerStats.GetWaveIndex() >= secondCheckpointIndex)
+            {
+                firstCheckpointIndex = secondCheckpointIndex;
+            }
+        }
+    }
+
+
     #region Save & Load
 
     public void SaveCityManagerData()
@@ -201,6 +222,7 @@ public class CityManager : MonoBehaviour
     #endregion
 
     #region Getters & Setters
+
     public TowerBehaviour GetTower()
     {
         return tower;
@@ -231,7 +253,12 @@ public class CityManager : MonoBehaviour
 
     public int GetCurrentCheckpointIndex()
     {
-        return currentCheckpointIndex;
+        return firstCheckpointIndex;
+    }
+
+    public int GetCityChangingIndex()
+    {
+        return cityChangingIndex;
     }
 
     #endregion

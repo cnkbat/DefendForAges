@@ -1719,9 +1719,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 0}
-  buyableAreaID: 0
+  buyableAreaID: 
   loadableBase: {fileID: 1063876106}
-  defences: []
   enemySpawnAreas: []
   assets:
   - {fileID: 2063285140}

@@ -30,11 +30,12 @@ public class GameManager : Singleton<GameManager>
     [Header("*-Design & Balance -*")]
     [SerializeField] public float repairTimer;
     [SerializeField] public float enemySlowedSpeed;
-    
+
     [Header("Events")]
     public Action OnCheckPointReached;
     public Action OnEraChanged;
     public Action OnWaveStarted;
+    public Action OnCityDidnotChanged;
 
     //******///
     bool isEraCompleted = false;
@@ -63,7 +64,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         playerStats.OnWaveWon += CheckIfEraFinished;
-        OnCheckPointReached += playerStats.CheckPointReached;
+        OnCheckPointReached += playerStats.CityChangerReached;
     }
 
     private void OnDisable()
@@ -81,7 +82,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         playerStats.OnWaveWon -= CheckIfEraFinished;
-        OnCheckPointReached -= playerStats.CheckPointReached;
+        OnCheckPointReached -= playerStats.CityChangerReached;
     }
     private void Start()
     {
@@ -128,18 +129,25 @@ public class GameManager : Singleton<GameManager>
     {
         if (isEraCompleted) return;
 
-        if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].checkpointReachedIndexer)
+
+        if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].GetCityChangingIndex())
         {
             OnCheckPointReached?.Invoke();
-        }
 
-        for (int i = 0; i < allCities.Count; i++)
+            for (int i = 0; i < allCities.Count; i++)
+            {
+                allCities[i].gameObject.SetActive(false);
+            }
+
+
+            allCities[playerStats.GetCityIndex()].gameObject.SetActive(true);
+
+            return;
+        }
+        else
         {
-            allCities[i].gameObject.SetActive(false);
+            OnCityDidnotChanged?.Invoke();
         }
-
-
-        allCities[playerStats.GetCityIndex()].gameObject.SetActive(true);
     }
 
     #endregion

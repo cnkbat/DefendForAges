@@ -433,7 +433,7 @@ public class PlayerStats : Singleton<PlayerStats>
         saveManager.OnSaved?.Invoke(); // save çalışmıyor
     }
 
-    public void CheckPointReached()
+    public void CityChangerReached()
     {
 
         cityIndex++;

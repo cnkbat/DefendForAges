@@ -49,6 +49,8 @@ public class CityManager : MonoBehaviour
     private void OnEnable()
     {
         saveManager = SaveManager.instance;
+        gameManager = GameManager.instance;
+
         LoadCityManagerData();
 
         saveManager.OnSaved += SaveCityManagerData;
@@ -92,10 +94,6 @@ public class CityManager : MonoBehaviour
     {
         UpdateTargetList();
         HandleAreaBuyingState();
-
-        gameManager = GameManager.instance;
-        playerStats = PlayerStats.instance;
-
     }
 
     #endregion

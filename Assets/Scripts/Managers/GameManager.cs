@@ -27,9 +27,17 @@ public class GameManager : Singleton<GameManager>
     [Header("Optimization")]
     [SerializeField] public float bulletFireRange = 150f;
 
-    [Header("*-Design & Balance -*")]
+    [Header("*---Design & Balance ---*")]
+
+    [Header("Defence Related")]
     [SerializeField] public float repairTimer;
+
+    [Header("Enemy Related")]
     [SerializeField] public float enemySlowedSpeed;
+
+    [Header("Flaoting Text Related")]
+    [Tooltip("Hasara göre çarpan olarak çalışıyor.")][SerializeField] public float fontSizeOnEnemyHit = 1;
+    [Tooltip("Heale göre çarpan olarak çalışıyor.")][SerializeField] public float fontSizeOnPlayerHeal = 1;
 
     [Header("Events")]
     public Action OnCheckPointReached;

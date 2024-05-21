@@ -12,9 +12,11 @@ public class ArcherStickman : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
-    public void PlayAttackAnimation()
+    public void PlayAttackAnimation(float animSpeed)
     {
         animator.SetTrigger("Attack");
+
+        animator.SetFloat("AttackAnimSpeed", animSpeed);
     }
 
     public float GetAnimDur()

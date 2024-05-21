@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
 {
     PlayerStats playerStats;
     GameManager gameManager;
+    ObjectPooler objectPooler;
 
     [Header("Travel Speed")]
     [SerializeField] float travelSpeed;
@@ -35,6 +36,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
         playerStats = PlayerStats.instance;
         OnDamageDealt += playerStats.IncrementHealth;
         gameManager = GameManager.instance;
+        objectPooler = ObjectPooler.instance;
     }
 
     private void OnDisable()
@@ -107,6 +109,8 @@ public class Bullet : MonoBehaviour, IPoolableObject
             {
                 OnDamageDealt.Invoke(damage);
             }
+
+            objectPooler.SpawnFloatingTextFromPool("FloatingText", targetPos, damage, damage * gameManager.fontSizeOnEnemyHit, Color.red);
 
             gameObject.SetActive(false);
         }

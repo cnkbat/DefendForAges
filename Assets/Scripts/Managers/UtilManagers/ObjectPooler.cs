@@ -137,4 +137,37 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
         return objectToSpawn;
     }
+
+
+    public GameObject SpawnFloatingTextFromPool(string tag, Vector3 spawnPos, float damageValue, float fontSize,Color textColor)
+    {
+
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.Log("object spawn error with " + tag);
+            return null;
+        }
+
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        objectToSpawn.SetActive(true);
+
+        objectToSpawn.transform.position = spawnPos;
+
+        if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
+        {
+            pooled.OnObjectPooled();
+        }
+
+        if (objectToSpawn.TryGetComponent(out FloatingTextAnimation floatingText))
+        {
+            floatingText.SetText(damageValue.ToString());
+            floatingText.SetTextColor(textColor);
+        }
+
+
+        poolDictionary[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
+    }
+
 }

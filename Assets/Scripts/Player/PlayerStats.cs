@@ -7,25 +7,28 @@ using Unity.VisualScripting;
 public class PlayerStats : Singleton<PlayerStats>
 {
     SaveManager saveManager;
+    ObjectPooler objectPooler;
+    GameManager gameManager;
 
+    [Header("Scriptable Object")]
     [SerializeField] private RPGSystemSO rpgSystemSO;
 
     [Header("Saved Indexes")]
-    public int playerLevel;
-    public int money;
-    public int experiencePoint;
-    public int meat;
-    public int damageIndex;
-    public int attackSpeedIndex;
-    public int movementSpeedIndex;
-    public int powerupDurIndex;
-    public int lifeStealIndex;
-    public int maxHealthIndex;
-    public bool isDualWeaponActive;
-    public int waveIndex;
+    [HideInInspector] public int playerLevel;
+    [HideInInspector] public int money;
+    [HideInInspector] public int experiencePoint;
+    [HideInInspector] public int meat;
+    [HideInInspector] public int damageIndex;
+    [HideInInspector] public int attackSpeedIndex;
+    [HideInInspector] public int movementSpeedIndex;
+    [HideInInspector] public int powerupDurIndex;
+    [HideInInspector] public int lifeStealIndex;
+    [HideInInspector] public int maxHealthIndex;
+    [HideInInspector] public bool isDualWeaponActive;
+    [HideInInspector] public int waveIndex;
 
     [Header("City & Era Saves")]
-    public int cityIndex;
+    [HideInInspector] public int cityIndex;
 
     [Header("Ingame Values")]
     [SerializeField] private float damage;
@@ -111,7 +114,11 @@ public class PlayerStats : Singleton<PlayerStats>
     private void Start()
     {
         saveManager = SaveManager.instance;
+        objectPooler = ObjectPooler.instance;
+        gameManager = GameManager.instance;
+
         deathHandler = GetComponent<DeathHandler>();
+
 
         FillCurrentHealth();
         LookForDualWeapon();
@@ -348,7 +355,11 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void IncrementHealth(float lifeStolen)
     {
-        deathHandler.IncrementCurrentHealth(lifeStolen * lifeStealRate);
+        float healValue = lifeStolen * lifeStealRate;
+        deathHandler.IncrementCurrentHealth(healValue);
+
+        objectPooler.SpawnFloatingTextFromPool("FloatingText", transform.position, healValue, healValue * gameManager.fontSizeOnPlayerHeal,
+            Color.green);
     }
 
     #endregion

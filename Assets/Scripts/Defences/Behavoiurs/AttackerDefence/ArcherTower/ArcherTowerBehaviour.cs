@@ -14,9 +14,10 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
     [Header("! -- Archer Visuals -- !")]
     [SerializeField] private List<ArcherStickman> archerStickmans; // stickman on top
+    [SerializeField] private float attackAnimMultiplier;
 
     [Header("Actions")]
-    public Action OnStickmanAnimationPlayNeeded;
+    public Action<float> OnStickmanAnimationPlayNeeded;
 
     protected override void OnEnable()
     {
@@ -31,7 +32,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         {
             OnStickmanAnimationPlayNeeded += archerStickmans[i].PlayAttackAnimation;
         }
-        
+
     }
 
     protected override void OnDisable()
@@ -73,7 +74,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
 
         OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), attackerDefenceStat.GetDamage(), false, archerStickmans[0].GetAnimDur());
-        OnStickmanAnimationPlayNeeded?.Invoke();
+        OnStickmanAnimationPlayNeeded?.Invoke(attackerDefenceStat.GetAttackSpeed() * attackAnimMultiplier);
 
     }
 

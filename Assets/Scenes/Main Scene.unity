@@ -6732,8 +6732,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a278d8f4699b9fe40bd4669e4f20a2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointReachedIndexer: 5
-  currentCheckpointIndex: 0
+  cityChangingIndex: 15
+  firstCheckpointIndex: 15
+  secondCheckpointIndex: 0
   waveList:
   - {fileID: 873225594}
   - {fileID: 956606818}

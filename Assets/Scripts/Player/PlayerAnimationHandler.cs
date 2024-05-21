@@ -59,6 +59,8 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         animator.SetFloat("Vx", vectorX);
         animator.SetFloat("Vy", vectorY);
+
+        Debug.Log("Vx = " + vectorX + " Vy = " + vectorY);
     }
 
     #endregion

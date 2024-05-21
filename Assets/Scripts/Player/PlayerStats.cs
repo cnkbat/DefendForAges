@@ -49,7 +49,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private float currentPowerUpValue;
 
     [Header("-------Stat Change Events ------")]
-    public Action<int, int, int, float> OnKillEnemy;
+    public Action<float> OnKillEnemy;
 
     [Header("Upgrade Events")]
     public Action OnAttackSpeedUpgraded;
@@ -409,21 +409,27 @@ public class PlayerStats : Singleton<PlayerStats>
     }
     #endregion
 
+    #region Earnings
+
+    public void EarnBonusOnKill(float powerUpAddOnValue)
+    {
+        IncrementPowerUp(powerUpAddOnValue);
+    }
+
+    public void EarnBonusAtWaveEnd(int moneyValue, int xpValue, int meatValue)
+    {
+        IncrementMeat(meatValue);
+        IncrementMoney(moneyValue);
+        IncrementXP(xpValue);
+    }
+
+    #endregion
     #region Wave System
 
     public void WaveWon()
     {
         IncrementWaveIndex();
     }
-
-    public void EarnBonusOnKill(int moneyValue, int xpValue, int meatValue, float powerUpAddOnValue)
-    {
-        IncrementMoney(moneyValue);
-        IncrementXP(xpValue);
-        IncrementMeat(meatValue);
-        IncrementPowerUp(powerUpAddOnValue);
-    }
-
     private void IncrementWaveIndex()
     {
         waveIndex++;

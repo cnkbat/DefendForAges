@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     private GameManager gameManager;
     private PlayerStats playerStats;
+    private EarningsHolder earningsHolder;
     private EnemySpawner assignedEnemySpawner;
     private CityManager currentCityManager;
 
@@ -72,6 +73,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     private void SetComponents()
     {
         playerStats = PlayerStats.instance;
+        earningsHolder = EarningsHolder.instance;
         gameManager = GameManager.instance;
 
         animator = this.GetComponentInChildren<Animator>();
@@ -271,7 +273,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
             boundRenderer.materials[materialIndex] = deadMat;
         }
 
-        playerStats.OnKillEnemy.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue(), enemyStats.GetPowerUpValue());
+        playerStats.OnKillEnemy?.Invoke(enemyStats.GetPowerUpValue());
+        earningsHolder.OnTempEarningsUpdated?.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue());
 
         gameManager.allSpawnedEnemies.Remove(gameObject);
 

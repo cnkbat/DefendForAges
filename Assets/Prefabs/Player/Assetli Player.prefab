@@ -299,7 +299,7 @@ MonoBehaviour:
   attackSpeed: 0
   movementSpeed: 0
   powerupDur: 0
-  lifeSteal: 0
+  lifeStealRate: 0
   maxHealth: 0
   maxPowerUpFillValue: 0
   powerUpUpgradeIndexValue: 0
@@ -503,6 +503,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -7289589445363170720, guid: c433a8393d976ef48bae464512493e5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c715628808713dd4195cb5ceb53da0e1, type: 2}
     - target: {fileID: -7288076867153339578, guid: c433a8393d976ef48bae464512493e5b, type: 3}
       propertyPath: m_Layer
       value: 6

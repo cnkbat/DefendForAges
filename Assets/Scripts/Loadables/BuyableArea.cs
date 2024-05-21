@@ -16,7 +16,7 @@ public class BuyableArea : MonoBehaviour
     [SerializeField] BuyableArea tightedBuyableArea;
 
     [Header("Save & Load")]
-    [Tooltip("Sadece save load için her bir obje için ayrı isimlendirme.")] [SerializeField] public string buyableAreaID;
+    [Tooltip("Sadece save load için her bir obje için ayrı isimlendirme.")][SerializeField] public string buyableAreaID;
 
     [Header("Loadable")]
     [SerializeField] public LoadableBase loadableBase;
@@ -25,8 +25,11 @@ public class BuyableArea : MonoBehaviour
     [SerializeField] List<Transform> enemySpawnAreas;
 
     [Header("Visuals")]
+    // animatore set  edielecek
     [SerializeField] List<GameObject> assets;
+    // animatore set  edielecek
     [SerializeField] List<GameObject> objectsToDisableOnBuy;
+    [SerializeField] List<GameObject> ghostedAssets;
 
     private SpawnAnimationHandler spawnAnimationHandler;
 
@@ -95,12 +98,22 @@ public class BuyableArea : MonoBehaviour
             {
                 gameObject.SetActive(true);
                 loadableBase.gameObject.SetActive(true);
+
+                for (int i = 0; i < ghostedAssets.Count; i++)
+                {
+                    ghostedAssets[i].SetActive(true);
+                }
             }
         }
         else
         {
             gameObject.SetActive(true);
             loadableBase.gameObject.SetActive(true);
+
+            for (int i = 0; i < ghostedAssets.Count; i++)
+            {
+                ghostedAssets[i].SetActive(true);
+            }
         }
 
     }
@@ -127,6 +140,12 @@ public class BuyableArea : MonoBehaviour
                 // play activation animation
             }
         }
+
+        for (int i = 0; i < ghostedAssets.Count; i++)
+        {
+            ghostedAssets[i].SetActive(!isBuyed);
+        }
+
 
         spawnAnimationHandler?.OnAnimPlay?.Invoke();
 

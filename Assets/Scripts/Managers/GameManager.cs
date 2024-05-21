@@ -63,7 +63,6 @@ public class GameManager : Singleton<GameManager>
         }
 
         playerStats.OnWaveWon += CheckIfEraFinished;
-
         OnCheckPointReached += playerStats.CheckPointReached;
     }
 
@@ -82,7 +81,6 @@ public class GameManager : Singleton<GameManager>
         }
 
         playerStats.OnWaveWon -= CheckIfEraFinished;
-
         OnCheckPointReached -= playerStats.CheckPointReached;
     }
     private void Start()

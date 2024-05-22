@@ -8,9 +8,9 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
     ObjectPooler objectPooler;
     NearestEnemyFinder nearestEnemyFinder;
 
-    [Header("Combat")]
+    [Header("Aim")]
     [SerializeField] private float fireRange;
-    [SerializeField] private string bulletTag;
+    [SerializeField] private float lookAtSense;
 
     [Header("! -- Archer Visuals -- !")]
     [SerializeField] private List<ArcherStickman> archerStickmans; // stickman on top
@@ -96,7 +96,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
                 worldAimTarget.y = archerStickmans[i].transform.position.y;
                 Vector3 aimDirection = (worldAimTarget - archerStickmans[i].transform.position).normalized;
 
-                archerStickmans[i].transform.forward = aimDirection;
+                archerStickmans[i].transform.forward = Vector3.Lerp(archerStickmans[i].transform.forward, aimDirection, lookAtSense * Time.deltaTime);
             }
 
 

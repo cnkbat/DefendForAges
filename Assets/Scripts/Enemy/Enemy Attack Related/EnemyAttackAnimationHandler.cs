@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class EnemyAttackAnimationHandler : MonoBehaviour
 {
-    public BoxCollider rightHandCollider;
-    public EnemyBehaviour enemyBehaviour;
+    EnemyAttack enemyAttack;
+    private BoxCollider rightHandCollider;
+    private EnemyBehaviour enemyBehaviour;
+
     public void Start()
     {
         enemyBehaviour = transform.GetComponentInParent<EnemyBehaviour>();
+        enemyAttack = GetComponentInChildren<EnemyAttack>();
+        rightHandCollider = enemyAttack.GetComponent<BoxCollider>();
     }
     public void EnableDamage()
     {

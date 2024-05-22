@@ -11,12 +11,15 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] List<Weapon> weapons;
 
 
-    [Header("Fire Range")]
+    [Header("Aim")]
     [SerializeField] private float fireRange;
+    [SerializeField] private float lookAtSense = 20;
 
     [Header("Anim")]
     [SerializeField] private float strikingAnimDur;
     private float currentStrikingAnimDur;
+    Transform playerAsset;
+    private Vector3 playerAssetLocalPos;
 
     [Tooltip("Attack Speed")]
     float currentAttackSpeed;
@@ -49,6 +52,9 @@ public class PlayerAttack : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
 
+        playerAsset = GameObject.Find("playerAsset").transform;
+        playerAssetLocalPos = playerAsset.localPosition;
+        
         ResetAttackSpeed();
         nearestEnemyFinder.SetFireRange(fireRange);
     }
@@ -56,6 +62,8 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         if (playerStats.GetIsDead()) return;
+
+        playerAsset.localPosition = playerAssetLocalPos;
 
         if (nearestEnemyFinder.GetNearestEnemy())
         {
@@ -82,17 +90,13 @@ public class PlayerAttack : MonoBehaviour
 
         if (closestEnemy != null)
         {
-            //[SerializeField] Transform headAimObject;
-            // ! anim rigging yapcaz ? belki
-            //  headAimObject.transform.parent = closestEnemy;
-            //headAimObject.transform.localPosition = Vector3.zero;
-
 
             Vector3 worldAimTarget = closestEnemy.transform.position;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
-            transform.forward = aimDirection;
+            transform.forward = Vector3.Lerp(transform.forward, aimDirection, lookAtSense * Time.deltaTime);
+            playerAsset.forward = aimDirection;
 
         }
 

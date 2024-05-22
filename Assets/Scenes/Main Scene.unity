@@ -775,6 +775,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer Tower (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1438590771072916487, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
+      propertyPath: attackAnimMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
 --- !u!4 &265767219 stripped

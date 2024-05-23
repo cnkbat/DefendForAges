@@ -37,6 +37,10 @@ public class Bullet : MonoBehaviour, IPoolableObject
         OnDamageDealt += playerStats.IncrementHealth;
         gameManager = GameManager.instance;
         objectPooler = ObjectPooler.instance;
+        //if(target != null)
+        //{
+        //    this.GetComponent<AxeSpin>().destination = target;
+        //}
     }
 
     private void OnDisable()
@@ -73,10 +77,12 @@ public class Bullet : MonoBehaviour, IPoolableObject
         if (target != null && (!target.gameObject.activeSelf || targetReached))
         {
             transform.position += transform.forward * travelSpeed * Time.deltaTime;
+            
         }
         else if (target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, travelSpeed * Time.deltaTime);
+            this.GetComponent<AxeSpin>().destination = target;
 
             if (transform.position == targetPos)
             {

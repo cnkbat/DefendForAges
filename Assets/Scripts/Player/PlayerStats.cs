@@ -118,8 +118,6 @@ public class PlayerStats : Singleton<PlayerStats>
         gameManager = GameManager.instance;
 
         deathHandler = GetComponent<DeathHandler>();
-
-
         FillCurrentHealth();
         LookForDualWeapon();
     }

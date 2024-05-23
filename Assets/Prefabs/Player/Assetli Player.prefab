@@ -334,6 +334,7 @@ MonoBehaviour:
   - {fileID: 4197459821979999221}
   - {fileID: 2112397819}
   fireRange: 10
+  lookAtSense: 20
   strikingAnimDur: 0
 --- !u!114 &5697107205073931344
 MonoBehaviour:
@@ -409,8 +410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f82b42194dba3478afd4dc5f67adc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkASMultiplier: 1
-  attackASMultiplier: 1
+  walkASMultiplier: 0.08
+  attackASMultiplier: 5.5
 --- !u!1 &6318144728198949873
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private float vertical;
     private float targetAngle = 0;
-
+    private Transform playerAsset;
 
     private void OnEnable()
     {
@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         joystick = FindObjectOfType<Joystick>();
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
+        playerAsset = GameObject.Find("playerAsset").transform;
 
         UpdateMovementSpeed();
     }
@@ -72,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
             if (nearestEnemyFinder.GetNearestEnemy() == null)
             {
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), rotationSpeed * Time.deltaTime);
+                playerAsset.rotation = transform.rotation;
             }
         }
     }

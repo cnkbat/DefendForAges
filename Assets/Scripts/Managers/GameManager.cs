@@ -51,7 +51,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnEnable()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         Application.targetFrameRate = targetFPS;
 
         for (int i = 0; i < allCities.Count; i++)

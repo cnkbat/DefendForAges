@@ -67,12 +67,12 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     public void ChangeWalkAnimationSpeed(float newSpeed)
     {
-        animator.SetFloat("WalkASMultiplier", newSpeed / walkAnimMultiplier);
+        animator.SetFloat("WalkASMultiplier", newSpeed * walkAnimMultiplier);
     }
 
     public void ChangeAttackAnimationSpeed(float newSpeed)
     {
-        animator.SetFloat("AttackASMultiplier", newSpeed / attackSpeedMultiplier);
+        animator.SetFloat("AttackASMultiplier", newSpeed * attackSpeedMultiplier);
     }
 
     #endregion

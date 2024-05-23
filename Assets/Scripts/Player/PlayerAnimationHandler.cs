@@ -25,6 +25,8 @@ public class PlayerAnimationHandler : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerAngleCalculator = GetComponent<PlayerAngleCalculator>();
         playerAttack = GetComponent<PlayerAttack>();
+
+        
     }
 
     private void OnEnable()
@@ -36,6 +38,9 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         OnAttackAnimSpeedSet += playerAttack.SetAttackingDelay;
         playerAttack.OnAttackAnimPlayNeeded += SetAttackTrigger;
+        // TO TEST OUT WALK ANIMATION SPEED
+        ChangeWalkAS();
+        ChangeAttackAS();
     }
 
     private void OnDisable()

@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2d00efd5a6af8448abcc2a945b9d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkAnimMultiplier: 1
+  walkAnimMultiplier: 0.5
   attackSpeedMultiplier: 1
 --- !u!1 &1449618433515435389
 GameObject:
@@ -910,8 +910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cfce9e0b768714582ac4472060fd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandCollider: {fileID: 0}
-  enemyBehaviour: {fileID: 0}
 --- !u!1 &6670007777550811206
 GameObject:
   m_ObjectHideFlags: 0

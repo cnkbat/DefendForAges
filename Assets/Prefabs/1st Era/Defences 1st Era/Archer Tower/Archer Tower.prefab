@@ -536,10 +536,10 @@ MonoBehaviour:
   asset: {fileID: 1438590771166995297}
   feelFeedBacks: {fileID: 0}
   fireRange: 25
-  bulletTag: TestBullet
+  lookAtSense: 0
   archerStickmans:
   - {fileID: 1865217926251752409}
-  attackAnimMultiplier: 0
+  attackAnimMultiplier: 0.1
 --- !u!114 &1438590771072916486
 MonoBehaviour:
   m_ObjectHideFlags: 0

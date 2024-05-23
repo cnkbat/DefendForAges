@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7574627557494297000}
   - component: {fileID: 8793974598251879759}
+  - component: {fileID: 9014200760840382828}
   m_Layer: 12
   m_Name: Short Wall
   m_TagString: Untagged
@@ -192,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 7087615918147309203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6999997, y: 1, z: 1.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8570990012455687734}
@@ -212,6 +213,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.2534997, y: 1.6009333, z: 1.0237211}
   m_Center: {x: -0.003953576, y: 0.04744208, z: -0.11465174}
+--- !u!114 &9014200760840382828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7087615918147309203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac3c9c9c495ecc4ca4866636b14aa6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  YAxisPos: 0.75
 --- !u!1 &7194273468440640886
 GameObject:
   m_ObjectHideFlags: 0

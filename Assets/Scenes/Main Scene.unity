@@ -3212,17 +3212,6 @@ MonoBehaviour:
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
---- !u!114 &957588906 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 957588906, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
-  m_PrefabInstance: {fileID: 310772934}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,9 +4024,9 @@ MonoBehaviour:
   gameHud: {fileID: 878446402}
   moneyText: {fileID: 2042565498}
   xpText: {fileID: 285684186}
-  meatText: {fileID: 2069853331}
+  meatText: {fileID: 0}
   waveIndexText: {fileID: 1897685005}
-  waveCallButton: {fileID: 957588906}
+  waveCallButton: {fileID: 0}
   allWavesProgressBar: {fileID: 2010899020}
   allWavesProgressBarImages:
   - {fileID: 1565668708}
@@ -6648,17 +6637,6 @@ Transform:
   m_Father: {fileID: 2112083883}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2069853331 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2069853331, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
-  m_PrefabInstance: {fileID: 310772934}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2079557015
 GameObject:
   m_ObjectHideFlags: 0

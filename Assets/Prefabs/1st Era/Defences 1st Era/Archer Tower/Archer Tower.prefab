@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 1438590771072916481}
   - component: {fileID: 1438590771072916487}
   - component: {fileID: 1438590771072916486}
+  - component: {fileID: 8887452045686719988}
   m_Layer: 7
   m_Name: Archer Tower
   m_TagString: Untagged
@@ -552,6 +553,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ceef43dafcdde84f8adc733f42101d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &8887452045686719988
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438590771072916482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5665889, y: 0.79455435, z: 0.5051623}
+  m_Center: {x: 0.034437835, y: 0.29259834, z: -0.0084975995}
 --- !u!1 &1438590771166995297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2616,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 533217621891415948}
-  - component: {fileID: 5826492668875735278}
   m_Layer: 7
   m_Name: Archer Tower Asset
   m_TagString: Untagged
@@ -2626,19 +2639,6 @@ Transform:
   m_Father: {fileID: 1438590771166995296}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5826492668875735278
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7412807901508691054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.341526, y: 9.917809, z: 6.3697033}
-  m_Center: {x: 0.14925914, y: 3.6914895, z: 0.0036725658}
 --- !u!1 &7482925931570612033
 GameObject:
   m_ObjectHideFlags: 0

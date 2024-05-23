@@ -157,7 +157,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, enemyStats.GetRange()))
         {
-            // enemies cant find enemytarget in both towers
             if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
                 navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();

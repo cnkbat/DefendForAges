@@ -10,6 +10,7 @@ public class NavMeshManager : Singleton<NavMeshManager>
     {
         base.Awake();
         navMeshSurface = GetComponent<NavMeshSurface>();
+        BakeNavMesh();
     }
 
     public void BakeNavMesh()

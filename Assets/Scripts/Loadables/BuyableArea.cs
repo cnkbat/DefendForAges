@@ -150,7 +150,7 @@ public class BuyableArea : MonoBehaviour
         spawnAnimationHandler?.OnAnimPlay?.Invoke();
 
         OnAreaEnabled?.Invoke(enemySpawnAreas);
-        //  OnNavMeshUpdated?.Invoke();
+        //OnNavMeshUpdated?.Invoke();
     }
 
     #region Save & Load

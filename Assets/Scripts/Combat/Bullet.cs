@@ -82,7 +82,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
         else if (target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, travelSpeed * Time.deltaTime);
-            this.GetComponent<AxeSpin>().destination = target;
 
             if (transform.position == targetPos)
             {

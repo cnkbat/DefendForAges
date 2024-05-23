@@ -6,12 +6,12 @@ public class AxeSpin : MonoBehaviour
     public Transform destination;
     // Speed at which the object rotates
     [SerializeField]private float rotationSpeed;
-    private Vector3 direction;
 
     void Update()
     {
         if (isActiveAndEnabled)
         {
+            // right now destination is not set anywhere
             if(destination != null)
             {
                 LookAtTarget();

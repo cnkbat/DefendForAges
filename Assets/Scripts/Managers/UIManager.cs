@@ -18,9 +18,9 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Wave Control")]
     [SerializeField] private Button waveCallButton;
-    [SerializeField] private GameObject allWavesProgressBar;
     [SerializeField] private List<GameObject> allWavesProgressBarImages;
-    [SerializeField] Slider inwaveProgressBar;
+    [SerializeField] private Slider totalWaveProgressBar;
+    [SerializeField] private Slider inwaveProgressBar;
 
     [Header("Revive")]
     [SerializeField] private Button lateReviveButton;
@@ -47,7 +47,6 @@ public class UIManager : Singleton<UIManager>
     [Header("Levelling UI")]
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text xpText;
-
     [SerializeField] Slider levelSlider;
 
     #region Upgrading Texts Variables
@@ -359,7 +358,7 @@ public class UIManager : Singleton<UIManager>
 
         waveCallButton.gameObject.SetActive(false);
 
-        allWavesProgressBar.SetActive(false);
+        totalWaveProgressBar.gameObject.SetActive(false);
 
         inwaveProgressBar.gameObject.SetActive(true);
 
@@ -372,7 +371,7 @@ public class UIManager : Singleton<UIManager>
     private void WaveCompleted()
     {
         waveCallButton.gameObject.SetActive(true);
-        UpdateText(waveIndexText, playerStats.waveIndex, "Wave");
+        UpdateText(waveIndexText, playerStats.GetWaveIndex(), "Wave");
 
         inwaveProgressBar.gameObject.SetActive(false);
         UpdateAllWavesProgressBar();
@@ -380,7 +379,8 @@ public class UIManager : Singleton<UIManager>
 
     private void UpdateAllWavesProgressBar()
     {
-        allWavesProgressBar.SetActive(true);
+        totalWaveProgressBar.gameObject.SetActive(true);
+        totalWaveProgressBar.value = (float)playerStats.GetWaveIndex() / (float)gameManager.totalWaveCount;
 
         for (int i = 0; i < allWavesProgressBarImages.Count; i++)
         {

@@ -26,7 +26,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         playerAngleCalculator = GetComponent<PlayerAngleCalculator>();
         playerAttack = GetComponent<PlayerAttack>();
 
-        
+
     }
 
     private void OnEnable()
@@ -60,12 +60,11 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         animator.SetFloat("WalkSpeed", playerStats.GetMovementSpeed() * walkASMultiplier);
     }
+
     private void SetWalkAnimationValues(float vectorX, float vectorY)
     {
         animator.SetFloat("Vx", vectorX);
         animator.SetFloat("Vy", vectorY);
-
-        Debug.Log("Vx = " + vectorX + " Vy = " + vectorY);
     }
 
     #endregion

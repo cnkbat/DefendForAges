@@ -6,16 +6,15 @@ public class NavMeshManager : Singleton<NavMeshManager>
 {
     NavMeshSurface navMeshSurface;
 
-    private void Start()
-    {
-        BakeNavMesh();
-    }
     protected override void Awake()
     {
         base.Awake();
         navMeshSurface = GetComponent<NavMeshSurface>();
     }
-
+    private void Start()
+    {
+        BakeNavMesh();
+    }
     public void BakeNavMesh()
     {
         navMeshSurface.BuildNavMesh();

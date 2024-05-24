@@ -27,12 +27,21 @@ public class LevelSystem : MonoBehaviour
         OnLevelUp -= playerStats.LevelUpPlayer;
     }
 
+    private void Start()
+    {
+        CheckLevelling();
+    }
+
     public void CheckLevelling()
     {
         if (playerStats.experiencePoint >= playerSO.GetLevellingExperiencePoints()[playerStats.GetPlayerLevel()])
         {
             LevelUp();
         }
+
+        float sliderValue = (float)playerStats.experiencePoint / (float)playerSO.GetLevellingExperiencePoints()[playerStats.GetPlayerLevel()];
+
+        playerStats.OnExperienceGain?.Invoke(playerStats.GetPlayerLevel(), sliderValue, playerStats.experiencePoint, playerSO.GetLevellingExperiencePoints()[playerStats.GetPlayerLevel()]);
     }
 
     public void LevelUp()

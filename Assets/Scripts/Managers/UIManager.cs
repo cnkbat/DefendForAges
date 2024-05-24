@@ -13,15 +13,14 @@ public class UIManager : Singleton<UIManager>
     [Header("GameHud Texts")]
     [SerializeField] private GameObject gameHud;
     [SerializeField] private TMP_Text moneyText;
-    [SerializeField] private TMP_Text xpText;
     [SerializeField] private TMP_Text meatText;
     [SerializeField] private TMP_Text waveIndexText;
 
     [Header("Wave Control")]
     [SerializeField] private Button waveCallButton;
-    [SerializeField] private GameObject allWavesProgressBar;
     [SerializeField] private List<GameObject> allWavesProgressBarImages;
-    [SerializeField] Slider inwaveProgressBar;
+    [SerializeField] private Slider totalWaveProgressBar;
+    [SerializeField] private Slider inwaveProgressBar;
 
     [Header("Revive")]
     [SerializeField] private Button lateReviveButton;
@@ -45,6 +44,11 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button upgradeDualWeaponButton;
     #endregion
 
+    [Header("Levelling UI")]
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text xpText;
+    [SerializeField] Slider levelSlider;
+
     #region Upgrading Texts Variables
 
     [Header("!--Upgrade Texts--!")]
@@ -60,11 +64,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TMP_Text damageCostText;
 
     [Header("Life Steal Texts")]
-
     [SerializeField] private TMP_Text lifeStealCurrentText;
     [SerializeField] private TMP_Text lifeStealNextText;
     [SerializeField] private TMP_Text lifeStealCostText;
-
 
     [Header("Movement Speed Texts")]
     [SerializeField] private TMP_Text movementSpeedCurrentText;
@@ -110,9 +112,9 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnPlayerKilled += EnableReviveUI;
 
         // Text Updates
-        playerStats.OnExperiencePointChange += UpdateXPText;
         playerStats.OnMoneyChange += UpdateMoneyText;
         playerStats.OnMeatChange += UpdateMeatText;
+        playerStats.OnExperienceGain += UpdateLevelBar;
 
 
         #region  Upgrading
@@ -149,8 +151,8 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnWaveWon -= WaveCompleted;
 
         // Text Updates
-        playerStats.OnExperiencePointChange -= UpdateXPText;
         playerStats.OnMoneyChange -= UpdateMoneyText;
+        playerStats.OnExperienceGain -= UpdateLevelBar;
 
 
         #region  Upgrading
@@ -194,7 +196,6 @@ public class UIManager : Singleton<UIManager>
     {
         UpdateWaveIndexText();
         UpdateMoneyText();
-        UpdateXPText();
         UpdateMeatText();
 
         playerSO = playerStats.GetPlayerSO();
@@ -357,7 +358,7 @@ public class UIManager : Singleton<UIManager>
 
         waveCallButton.gameObject.SetActive(false);
 
-        allWavesProgressBar.SetActive(false);
+        totalWaveProgressBar.gameObject.SetActive(false);
 
         inwaveProgressBar.gameObject.SetActive(true);
 
@@ -370,7 +371,7 @@ public class UIManager : Singleton<UIManager>
     private void WaveCompleted()
     {
         waveCallButton.gameObject.SetActive(true);
-        UpdateText(waveIndexText, playerStats.waveIndex, "Wave");
+        UpdateText(waveIndexText, playerStats.GetWaveIndex(), "Wave");
 
         inwaveProgressBar.gameObject.SetActive(false);
         UpdateAllWavesProgressBar();
@@ -378,7 +379,8 @@ public class UIManager : Singleton<UIManager>
 
     private void UpdateAllWavesProgressBar()
     {
-        allWavesProgressBar.SetActive(true);
+        totalWaveProgressBar.gameObject.SetActive(true);
+        totalWaveProgressBar.value = (float)playerStats.GetWaveIndex() / (float)gameManager.totalWaveCount;
 
         for (int i = 0; i < allWavesProgressBarImages.Count; i++)
         {
@@ -391,6 +393,15 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
+    #endregion
+
+    #region LevelBar
+    public void UpdateLevelBar(int playerLevel, float sliderLevel, int currentXP, int nextXP)
+    {
+        levelSlider.value = sliderLevel;
+        UpdateText(levelText, playerLevel);
+        xpText.text = currentXP.ToString() + " / " + nextXP.ToString();
+    }
     #endregion
 
     #region  Update Texts - Text Related
@@ -415,19 +426,15 @@ public class UIManager : Singleton<UIManager>
 
     private void UpdateMoneyText()
     {
-        UpdateText(moneyText, playerStats.money, "Money");
+        UpdateText(moneyText, playerStats.money);
     }
     private void UpdateMeatText()
     {
-        UpdateText(meatText, playerStats.meat, "Meat");
+        UpdateText(meatText, playerStats.meat);
     }
     private void UpdateWaveIndexText()
     {
-        UpdateText(waveIndexText, playerStats.waveIndex, "Wave");
-    }
-    private void UpdateXPText()
-    {
-        UpdateText(xpText, playerStats.experiencePoint, "XP");
+        UpdateText(waveIndexText, playerStats.waveIndex);
     }
     #endregion
 

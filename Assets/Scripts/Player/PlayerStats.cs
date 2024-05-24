@@ -68,6 +68,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     [Header("UI Events")]
     public Action OnExperiencePointChange;
+    public Action<int,float,int ,int> OnExperienceGain;
     public Action OnMoneyChange;
     public Action OnMeatChange;
     public Action OnReviveButtonClicked;

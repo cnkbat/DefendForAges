@@ -52,7 +52,7 @@ public class GameManager : Singleton<GameManager>
 
     //******///
     bool isEraCompleted = false;
-    int allWavesCount;
+    public int totalWaveCount;
 
     private void OnEnable()
     {
@@ -73,7 +73,7 @@ public class GameManager : Singleton<GameManager>
 
         for (int i = 0; i < allCities.Count; i++)
         {
-            allWavesCount += allCities[i].waveList.Count;
+            totalWaveCount += allCities[i].waveList.Count;
         }
 
         playerStats.OnWaveWon += CheckIfEraFinished;
@@ -91,7 +91,7 @@ public class GameManager : Singleton<GameManager>
 
         for (int i = 0; i < allCities.Count; i++)
         {
-            allWavesCount -= allCities[i].waveList.Count;
+            totalWaveCount -= allCities[i].waveList.Count;
         }
 
         playerStats.OnWaveWon -= CheckIfEraFinished;
@@ -122,7 +122,7 @@ public class GameManager : Singleton<GameManager>
     public void CheckIfEraFinished()
     {
 
-        if (playerStats.GetWaveIndex() >= allWavesCount)
+        if (playerStats.GetWaveIndex() >= totalWaveCount)
         {
             isEraCompleted = true;
             // animasyon oynaması

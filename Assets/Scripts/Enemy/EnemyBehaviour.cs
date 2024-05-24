@@ -170,11 +170,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, enemyStats.GetRange(), layerMask))
         {
-            Debug.Log(hit.collider.name);
-            
             if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
-                Debug.Log("enemy target found");
                 navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();
                 attackTimer -= Time.deltaTime;
                 canMove = false;

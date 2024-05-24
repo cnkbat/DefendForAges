@@ -14,6 +14,9 @@ public class BuyableArea : MonoBehaviour
 
     [Header("Tighted Buyable Area")]
     [SerializeField] BuyableArea tightedBuyableArea;
+    
+    [Header("AI Related")]
+    [SerializeField] private int surfaceAreaIndex;
 
     [Header("Save & Load")]
     [Tooltip("Sadece save load için her bir obje için ayrı isimlendirme.")][SerializeField] public string buyableAreaID;
@@ -35,7 +38,7 @@ public class BuyableArea : MonoBehaviour
 
     [Header("Events")]
     public Action OnAreaBuyed;
-    public Action<List<Transform>> OnAreaEnabled;
+    public Action<List<Transform>, int> OnAreaEnabled;
     public Action OnNavMeshUpdated;
 
     #region OnEnable / OnDisable
@@ -149,7 +152,7 @@ public class BuyableArea : MonoBehaviour
 
         spawnAnimationHandler?.OnAnimPlay?.Invoke();
 
-        OnAreaEnabled?.Invoke(enemySpawnAreas);
+        OnAreaEnabled?.Invoke(enemySpawnAreas, surfaceAreaIndex);
         //OnNavMeshUpdated?.Invoke();
     }
 

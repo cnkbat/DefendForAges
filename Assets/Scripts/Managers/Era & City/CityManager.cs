@@ -129,12 +129,14 @@ public class CityManager : MonoBehaviour
         saveManager.OnSaved?.Invoke();
     }
 
-    public void AreaEnabled(List<Transform> addedPoses)
+    public void AreaEnabled(List<Transform> addedPoses, int newSurfaceAreaIndex)
     {
         for (int i = 0; i < addedPoses.Count; i++)
         {
             AddEnemyPos(addedPoses[i]);
         }
+
+        gameManager.surfaceAreaIndex = newSurfaceAreaIndex;
     }
     #endregion
 

@@ -49,8 +49,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     [Header("*--- Visuals ---*")]
 
     [Header("Animation")]
-    private Animator animator;
+
     [SerializeField] private float deathAnimDur;
+    private Animator animator;
+    [SerializeField] private Transform enemyAsset;
+    [SerializeField] private float aimSpeed = 20f;
 
     [Header("Color Change On Death")]
     [SerializeField] private Renderer boundRenderer;
@@ -82,6 +85,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         enemyStats = this.GetComponent<EnemyStats>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         feelFeedBacks = GetComponentInChildren<MMFeedbacks>();
+        enemyAsset = transform.Find("enemyAsset");
     }
 
     public void OnObjectPooled()
@@ -150,15 +154,27 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
         worldAimTarget.y = transform.position.y;
+        Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+
+        transform.forward = Vector3.Lerp(transform.forward, aimDirection, aimSpeed * Time.deltaTime);
+
+        enemyAsset.forward = transform.forward;
+
+        enemyAsset.localPosition = Vector3.zero;
     }
 
     private void Attacking()
     {
+        RaycastHit hit;
+        int layerMask = ~LayerMask.GetMask("OnlyPlayer");
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, enemyStats.GetRange()))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, enemyStats.GetRange(), layerMask))
         {
+            Debug.Log(hit.collider.name);
+            
             if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
+                Debug.Log("enemy target found");
                 navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();
                 attackTimer -= Time.deltaTime;
                 canMove = false;

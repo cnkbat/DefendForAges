@@ -16,7 +16,7 @@ public class AxeSpin : MonoBehaviour
     }
     public void Spin()
     {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.right, rotationSpeed);
     }
 
 }

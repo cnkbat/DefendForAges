@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -18,7 +20,10 @@ public class GameManager : Singleton<GameManager>
     [Header("Cities")]
     [SerializeField] public List<CityManager> allCities;
     [SerializeField] private List<TowerBehaviour> towers;
-
+    
+    [Header("AI Manipulation")]
+    [SerializeField] public int surfaceAreaIndex;
+     
     [Header("**------ SETTINGS ------**")]
 
     [Header("Debugging")]
@@ -160,6 +165,8 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
+    #region Wave Control
+
     public void OnWaveCalled()
     {
         allCities[playerStats.GetCityIndex()].WaveCalled();
@@ -182,6 +189,8 @@ public class GameManager : Singleton<GameManager>
         isAttackPhase = false;
         allSpawnedEnemies.Clear();
     }
+    #endregion
+
 
     #region  Getters & Setters
     public void SetActiveWave(EnemySpawner newActiveWave)

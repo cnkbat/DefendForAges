@@ -239,6 +239,8 @@ MonoBehaviour:
   aliveLayerName: Enemy
   deadLayerName: DeadEnemy
   deathAnimDur: 3
+  enemyAsset: {fileID: 0}
+  aimSpeed: 5
   boundRenderer: {fileID: 2472537921761582045}
   materialIndex: 0
   originalMat: {fileID: 2100000, guid: 0d30ff597a57d5348a7e83f345306add, type: 2}
@@ -526,7 +528,7 @@ GameObject:
   - component: {fileID: 8186571523057820490}
   - component: {fileID: 2083120479207209814}
   m_Layer: 0
-  m_Name: Asset
+  m_Name: enemyAsset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

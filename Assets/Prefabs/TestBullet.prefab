@@ -111,4 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   travelSpeed: 15
+  disappearTime: 5
+  gravity: 0
   trailFX: {fileID: 0}

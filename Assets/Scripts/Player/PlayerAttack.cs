@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
 
         playerAsset = GameObject.Find("playerAsset").transform;
         playerAssetLocalPos = playerAsset.localPosition;
-        
+
         ResetAttackSpeed();
         nearestEnemyFinder.SetFireRange(fireRange);
     }

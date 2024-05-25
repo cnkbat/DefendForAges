@@ -606,12 +606,12 @@ MonoBehaviour:
     TargetBPM: 120
   DebugActive: 0
   BoundRenderer: {fileID: 870501816417566129}
-  Mode: 0
-  PropertyName: _Tint
+  Mode: 1
+  PropertyName: _BaseColor
   FlickerDuration: 0.2
   FlickerOctave: 0.04
   FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-  MaterialIndexes: 
+  MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!1 &5719219395755179665
 GameObject:

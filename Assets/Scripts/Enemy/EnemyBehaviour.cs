@@ -86,6 +86,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         navMeshAgent = GetComponent<NavMeshAgent>();
         feelFeedBacks = GetComponentInChildren<MMFeedbacks>();
         enemyAsset = transform.Find("enemyAsset");
+
+        if(feelFeedBacks !=null)
+        {
+            feelFeedBacks.Initialization();
+        }
     }
 
     public void OnObjectPooled()

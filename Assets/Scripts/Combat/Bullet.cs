@@ -6,30 +6,33 @@ using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour, IPoolableObject
 {
-    PlayerStats playerStats;
-    GameManager gameManager;
-    ObjectPooler objectPooler;
+    private PlayerStats playerStats;
+    private GameManager gameManager;
+    private ObjectPooler objectPooler;
 
-    [Header("Travel Speed")]
-    [SerializeField] float travelSpeed;
+    [Header("Travelling")]
+    [SerializeField] private float travelSpeed;
+    [Tooltip("Boşlukta kalınca buga giriyor süresi bundan dolayı var.")][SerializeField] private float disappearTime;
+    private float currentDisappearTime;
+    [Tooltip("Yere düşüş için")][SerializeField] private float gravity;
 
     [Header("Targeting")]
-    Transform target;
-    Vector3 targetPos;
+    private Transform target;
+    private Vector3 targetPos;
 
     [Header("Damage")]
-    bool hasHit;
+    private bool hasHit;
     private float damage;
-    Vector3 firedPoint;
+    private Vector3 firedPoint;
 
     [Header("Life Steal")]
-    bool isPlayersBullet;
+    private bool isPlayersBullet;
     public Action<float> OnDamageDealt;
 
     [Header("VFX")]
-    [SerializeField] TrailRenderer trailFX;
+    [SerializeField] private TrailRenderer trailFX;
 
-    bool targetReached = false;
+    private bool targetReached = false;
 
     private void OnEnable()
     {
@@ -37,10 +40,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
         OnDamageDealt += playerStats.IncrementHealth;
         gameManager = GameManager.instance;
         objectPooler = ObjectPooler.instance;
-        //if(target != null)
-        //{
-        //    this.GetComponent<AxeSpin>().destination = target;
-        //}
     }
 
     private void OnDisable()
@@ -60,11 +59,13 @@ public class Bullet : MonoBehaviour, IPoolableObject
         targetReached = false;
         targetPos = target.transform.position;
         firedPoint = transform.position;
+
         Vector3 worldAimTarget = targetPos;
         worldAimTarget.y = transform.position.y;
         Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
-
         transform.forward = aimDirection;
+
+        currentDisappearTime = disappearTime;
 
         hasHit = false;
     }
@@ -73,11 +74,18 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
     void Update()
     {
+        currentDisappearTime -= Time.deltaTime;
+        if (currentDisappearTime < 0)
+        {
+            gameObject.SetActive(false);
+        }
+
+        transform.position += Vector3.up * gravity;
 
         if (target != null && (!target.gameObject.activeSelf || targetReached))
         {
             transform.position += transform.forward * travelSpeed * Time.deltaTime;
-            
+
         }
         else if (target != null)
         {

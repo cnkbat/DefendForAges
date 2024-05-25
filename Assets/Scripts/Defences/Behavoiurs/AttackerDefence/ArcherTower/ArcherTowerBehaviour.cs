@@ -73,6 +73,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
 
+      //  Debug.Log("attack "+name);
         OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), attackerDefenceStat.GetDamage(), false, archerStickmans[0].GetAnimDur());
         OnStickmanAnimationPlayNeeded?.Invoke(attackerDefenceStat.GetAttackSpeed() * attackAnimMultiplier);
 

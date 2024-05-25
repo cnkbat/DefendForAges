@@ -14,11 +14,12 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject gameHud;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text meatText;
-    [SerializeField] private TMP_Text waveIndexText;
+    [SerializeField] private TMP_Text currentWaveIndexText;
+    [SerializeField] private TMP_Text nextWaveIndexText;
 
     [Header("Wave Control")]
     [SerializeField] private Button waveCallButton;
-    [SerializeField] private List<GameObject> allWavesProgressBarImages;
+    [SerializeField] private List<GameObject> totalProgressBarImages;
     [SerializeField] private Slider totalWaveProgressBar;
     [SerializeField] private Slider inwaveProgressBar;
 
@@ -194,7 +195,6 @@ public class UIManager : Singleton<UIManager>
     }
     private void SetStartingUI()
     {
-        UpdateWaveIndexText();
         UpdateMoneyText();
         UpdateMeatText();
 
@@ -358,39 +358,47 @@ public class UIManager : Singleton<UIManager>
 
         waveCallButton.gameObject.SetActive(false);
 
-        totalWaveProgressBar.gameObject.SetActive(false);
+        totalWaveProgressBar.transform.parent.gameObject.SetActive(false);
 
-        inwaveProgressBar.gameObject.SetActive(true);
+        inwaveProgressBar.transform.parent.gameObject.SetActive(true);
 
+        UpdateInWaveProgressBarTexts();
     }
+
     public void UpdateInWaveProgressBarValue(float value)
     {
         inwaveProgressBar.value = value;
     }
 
+    public void UpdateInWaveProgressBarTexts()
+    {
+        UpdateText(currentWaveIndexText, playerStats.GetWaveIndex());
+        UpdateText(nextWaveIndexText, playerStats.GetWaveIndex() + 1);
+    }
+
     private void WaveCompleted()
     {
         waveCallButton.gameObject.SetActive(true);
-        UpdateText(waveIndexText, playerStats.GetWaveIndex(), "Wave");
 
-        inwaveProgressBar.gameObject.SetActive(false);
+
+        inwaveProgressBar.transform.parent.gameObject.SetActive(false);
         UpdateAllWavesProgressBar();
     }
 
     private void UpdateAllWavesProgressBar()
     {
-        totalWaveProgressBar.gameObject.SetActive(true);
+
+        totalWaveProgressBar.transform.parent.gameObject.SetActive(true);
         totalWaveProgressBar.value = (float)playerStats.GetWaveIndex() / (float)gameManager.totalWaveCount;
 
-        for (int i = 0; i < allWavesProgressBarImages.Count; i++)
+        for (int i = 0; i < totalProgressBarImages.Count; i++)
         {
-            allWavesProgressBarImages[i].SetActive(false);
+            totalProgressBarImages[i].SetActive(false);
         }
 
-        for (int i = 0; i < playerStats.GetWaveIndex(); i++)
-        {
-            allWavesProgressBarImages[i].SetActive(true);
-        }
+        totalProgressBarImages[playerStats.GetCityIndex()].SetActive(true);
+        UpdateInWaveProgressBarTexts();
+
     }
 
     #endregion
@@ -432,10 +440,7 @@ public class UIManager : Singleton<UIManager>
     {
         UpdateText(meatText, playerStats.meat);
     }
-    private void UpdateWaveIndexText()
-    {
-        UpdateText(waveIndexText, playerStats.waveIndex);
-    }
+
     #endregion
 
     #region Upgrading Button

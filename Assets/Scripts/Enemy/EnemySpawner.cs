@@ -98,6 +98,8 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
+        Debug.Log(totalNumOfEnemiesOfSpawner);
+        
         OnWaveProgressed?.Invoke(0f);
 
         CalculateEnemyQuota();
@@ -209,8 +211,10 @@ public class EnemySpawner : MonoBehaviour
         enemiesAlive--;
 
         killedEnemies++;
-        
+
         OnWaveProgressed?.Invoke((float)killedEnemies / (float)totalNumOfEnemiesOfSpawner);
+        Debug.Log("killed enemy  = " + (float)killedEnemies / (float)totalNumOfEnemiesOfSpawner);
+
         if (killedEnemies >= totalNumOfEnemiesOfSpawner)
         {
             OnWaveCompleted?.Invoke();

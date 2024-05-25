@@ -96,7 +96,7 @@ namespace MoreMountains.Feedbacks
 
 			if (BoundRenderer == null)
 			{
-				Debug.LogWarning("[MMFeedbackFlicker] The flicker feedback on "+this.name+" doesn't have a bound renderer, it won't work. You need to specify a renderer to flicker in its inspector.");    
+				Debug.LogWarning("[MMFeedbackFlicker] The flicker feedback on "+this.transform.parent.name+" doesn't have a bound renderer, it won't work. You need to specify a renderer to flicker in its inspector.");    
 			}
 
 			if (Active)

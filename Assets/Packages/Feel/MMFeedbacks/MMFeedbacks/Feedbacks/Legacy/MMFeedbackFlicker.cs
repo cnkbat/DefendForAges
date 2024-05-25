@@ -15,9 +15,9 @@ namespace MoreMountains.Feedbacks
 		/// a static bool used to disable all feedbacks of this type at once
 		public static bool FeedbackTypeAuthorized = true;
 		/// sets the inspector color for this feedback
-		#if UNITY_EDITOR
+#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.RendererColor; } }
-		#endif
+#endif
 
 		/// the possible modes
 		/// Color : will control material.color
@@ -49,14 +49,14 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("the list of material indexes we want to flicker on the target renderer. If left empty, will only target the material at index 0")]
 		public int[] MaterialIndexes;
 		/// if this is true, this component will use material property blocks instead of working on an instance of the material.
-		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
+		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")]
 		public bool UseMaterialPropertyBlocks = false;
 
 		/// the duration of this feedback is the duration of the flicker
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(FlickerDuration); } set { FlickerDuration = value; } }
 
 		protected const string _colorPropertyName = "_Color";
-        
+
 		protected Color[] _initialFlickerColors;
 		protected int[] _propertyIDs;
 		protected bool[] _propertiesFound;
@@ -81,7 +81,7 @@ namespace MoreMountains.Feedbacks
 			_propertyIDs = new int[MaterialIndexes.Length];
 			_propertiesFound = new bool[MaterialIndexes.Length];
 			_propertyBlock = new MaterialPropertyBlock();
-            
+
 			if (Active && (BoundRenderer == null) && (owner != null))
 			{
 				if (owner.MMFGetComponentNoAlloc<Renderer>() != null)
@@ -96,16 +96,20 @@ namespace MoreMountains.Feedbacks
 
 			if (BoundRenderer == null)
 			{
-				Debug.LogWarning("[MMFeedbackFlicker] The flicker feedback on "+this.transform.parent.name+" doesn't have a bound renderer, it won't work. You need to specify a renderer to flicker in its inspector.");    
+				Debug.LogWarning("[MMFeedbackFlicker] The flicker feedback on " + this.transform.parent.name + " doesn't have a bound renderer, it won't work. You need to specify a renderer to flicker in its inspector.");
+			}
+			else
+			{
+				//Debug.Log(BoundRenderer.name + " "+ this.transform.parent.name);
 			}
 
 			if (Active)
 			{
 				if (BoundRenderer != null)
 				{
-					BoundRenderer.GetPropertyBlock(_propertyBlock);    
+					BoundRenderer.GetPropertyBlock(_propertyBlock);
 				}
-			}            
+			}
 
 			for (int i = 0; i < MaterialIndexes.Length; i++)
 			{
@@ -123,7 +127,7 @@ namespace MoreMountains.Feedbacks
 					}
 					else
 					{
-						_propertiesFound[i] = UseMaterialPropertyBlocks ? BoundRenderer.sharedMaterials[i].HasProperty(PropertyName) : BoundRenderer.materials[i].HasProperty(PropertyName); 
+						_propertiesFound[i] = UseMaterialPropertyBlocks ? BoundRenderer.sharedMaterials[i].HasProperty(PropertyName) : BoundRenderer.materials[i].HasProperty(PropertyName);
 						if (_propertiesFound[i])
 						{
 							_propertyIDs[i] = Shader.PropertyToID(PropertyName);
@@ -191,7 +195,7 @@ namespace MoreMountains.Feedbacks
 
 			float flickerStop = FeedbackTime + flickerDuration;
 			IsPlaying = true;
-            
+
 			while (FeedbackTime < flickerStop)
 			{
 				SetColor(materialIndex, flickerColor);
@@ -224,7 +228,7 @@ namespace MoreMountains.Feedbacks
 			{
 				return;
 			}
-            
+
 			if (Mode == Modes.Color)
 			{
 				if (UseMaterialPropertyBlocks)
@@ -250,9 +254,9 @@ namespace MoreMountains.Feedbacks
 				{
 					BoundRenderer.materials[materialIndex].SetColor(_propertyIDs[materialIndex], color);
 				}
-			}            
+			}
 		}
-        
+
 		/// <summary>
 		/// Stops this feedback
 		/// </summary>
@@ -265,15 +269,15 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
 			base.CustomStopFeedback(position, feedbacksIntensity);
-            
+
 			IsPlaying = false;
 			for (int i = 0; i < _coroutines.Length; i++)
 			{
 				if (_coroutines[i] != null)
 				{
-					StopCoroutine(_coroutines[i]);    
+					StopCoroutine(_coroutines[i]);
 				}
-				_coroutines[i] = null;    
+				_coroutines[i] = null;
 			}
 		}
 	}

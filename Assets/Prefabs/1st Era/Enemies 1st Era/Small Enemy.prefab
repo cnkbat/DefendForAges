@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkAnimMultiplier: 0.8
-  attackSpeedMultiplier: 1
+  attackSpeedMultiplier: 0.5
 --- !u!1 &1475669769635073523
 GameObject:
   m_ObjectHideFlags: 0

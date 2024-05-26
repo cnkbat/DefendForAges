@@ -381,6 +381,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
+--- !u!114 &210927446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6808353459823653961, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+  m_PrefabInstance: {fileID: 310772934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &224812888 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7512285399178677746, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
@@ -580,7 +591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636070929, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1990511611, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_IsActive
@@ -3118,6 +3129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAdmin: 1
   adminPanel: {fileID: 1636070929}
+  playerKillTestButton: {fileID: 210927446}
 --- !u!4 &1165537892
 Transform:
   m_ObjectHideFlags: 0

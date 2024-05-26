@@ -23,9 +23,9 @@ MonoBehaviour:
   - 4
   - 4
   attackSpeedValues:
-  - 4
+  - 5
+  - 3
   - 2
   - 1
-  - 0.5
   weaponSpawnIndexes: 00000000000000000000000000000000
   upgradeCosts: 050000000500000005000000

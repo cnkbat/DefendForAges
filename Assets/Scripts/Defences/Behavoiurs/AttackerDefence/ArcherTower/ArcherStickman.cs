@@ -23,5 +23,4 @@ public class ArcherStickman : MonoBehaviour
     {
         return animDur;
     }
-
 }

@@ -696,7 +696,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5234010820299648183}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2

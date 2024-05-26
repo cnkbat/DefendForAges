@@ -29716,7 +29716,7 @@ MonoBehaviour:
   - {fileID: 418421868}
   - {fileID: 1368501773}
   - {fileID: 1728663757}
-  buyableAreaEnablingIndexes: 000000000000000000000000
+  buyableAreaEnablingIndexes: 070000000800000009000000
   buyableAreaCosts: f401000058020000bc020000
   cityName: Era1_City3
   buyedAreaIndex: 0

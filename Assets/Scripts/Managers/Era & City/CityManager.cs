@@ -155,9 +155,12 @@ public class CityManager : MonoBehaviour
 
         for (int i = 0; i < tempList.Count; i++)
         {
-            if (tempList[i].GetIsTargetable())
+            if (tempList[i].gameObject.activeSelf)
             {
-                targetList.Add(tempList[i]);
+                if (tempList[i].GetIsTargetable())
+                {
+                    targetList.Add(tempList[i]);
+                }
             }
         }
 
@@ -241,9 +244,9 @@ public class CityManager : MonoBehaviour
         return revivePoint;
     }
 
-    public Transform GetStartPoint()
+    public Vector3 GetStartPoint()
     {
-        return startPoint;
+        return startPoint.position;
     }
 
     public EnemySpawner GetCurrentWave()

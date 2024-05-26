@@ -30,7 +30,6 @@ public class EnemySpawner : MonoBehaviour
     [System.Serializable]
     public class EnemyGroup
     {
-        [Tooltip("No Need To Fill")] public string enemyName = "Enemy Name";
         public GameObject enemyPrefab;
         public int enemyCount; // the total number of eneies to spawn in this wave
         public int spawnedEnemyCounter; //the number of enemies already enemies spawned in this wave

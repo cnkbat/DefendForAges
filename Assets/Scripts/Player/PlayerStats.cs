@@ -121,6 +121,8 @@ public class PlayerStats : Singleton<PlayerStats>
         deathHandler = GetComponent<DeathHandler>();
         FillCurrentHealth();
         LookForDualWeapon();
+
+        transform.position = gameManager.allCities[cityIndex].GetStartPoint();
     }
 
     #region Upgrading

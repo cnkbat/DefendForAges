@@ -33,10 +33,9 @@ public class DefencesBehaviourBase : EnemyTarget
     {
         base.TakeDamage(dmg);
 
-        // emir modelleri güncellediğinde aktif edilecek
         if (feelFeedBacks != null)
         {
-            // feelFeedBacks?.PlayFeedbacks();
+            feelFeedBacks?.PlayFeedbacks();
         }
 
         currentHealth -= dmg;

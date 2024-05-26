@@ -25,7 +25,7 @@ public class PlayerAngleCalculator : MonoBehaviour
 
     private Vector2 CalculateThePlayerRotationAngle(Vector2 input)
     {
-        float currentPlayerAngle = transform.eulerAngles.y;
+        float currentPlayerAngle = transform.localEulerAngles.y;
 
         float inputAngle = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;
 

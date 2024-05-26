@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 4197459822926179250}
   - component: {fileID: 882205085}
   - component: {fileID: 4690233955732441678}
-  - component: {fileID: 5950507846176422148}
   m_Layer: 6
   m_Name: Assetli Player
   m_TagString: Untagged
@@ -54,8 +53,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.9876388, z: 1}
-  m_Center: {x: 0, y: 0.9893645, z: 0}
+  m_Size: {x: 1, y: 1.886002, z: 1}
+  m_Center: {x: 0, y: 0.9342261, z: 0}
 --- !u!54 &882205077
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -138,7 +137,7 @@ MonoBehaviour:
   - {fileID: 6641785180708078803}
   - {fileID: 2414384501172692176}
   fireRange: 10
-  lookAtSense: 20
+  lookAtSense: 100
   strikingAnimDur: 0
 --- !u!114 &5697107205073931344
 MonoBehaviour:
@@ -177,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af86f124526de0e4ea6cba199248f63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerTimer: 2
+  triggerTimer: 0.5
 --- !u!114 &882205085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,20 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9426a6067afaa4a96baab89614f16315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5950507846176422148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4197459822926179245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1f82b42194dba3478afd4dc5f67adc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkASMultiplier: 0.08
-  attackASMultiplier: 5.5
 --- !u!1001 &656085342659700212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,6 +276,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2300758545313718248, guid: 9785ebf4b46b1744c88d04c11e41baf2, type: 3}
   m_PrefabInstance: {fileID: 656085342659700212}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2142830776691744934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1487946100914390354, guid: 9785ebf4b46b1744c88d04c11e41baf2, type: 3}
+  m_PrefabInstance: {fileID: 656085342659700212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1707460730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142830776691744934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f82b42194dba3478afd4dc5f67adc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkASMultiplier: 0.08
+  attackASMultiplier: 5.5
 --- !u!4 &7920892696539832169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7275085623154473629, guid: 9785ebf4b46b1744c88d04c11e41baf2, type: 3}
@@ -370,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa9bab87c77abd458b2a1dad1b68c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTag: TestBullet
+  bulletTag: AxeThrow
   tipOfWeapon: {fileID: 5333783688353532237}
 --- !u!4 &5333783688353532237 stripped
 Transform:
@@ -451,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa9bab87c77abd458b2a1dad1b68c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTag: TestBullet
+  bulletTag: AxeThrow
   tipOfWeapon: {fileID: 7945711764281286363}
 --- !u!4 &7945711764281286363 stripped
 Transform:

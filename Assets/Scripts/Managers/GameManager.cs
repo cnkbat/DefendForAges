@@ -20,10 +20,10 @@ public class GameManager : Singleton<GameManager>
     [Header("Cities")]
     [SerializeField] public List<CityManager> allCities;
     [SerializeField] private List<TowerBehaviour> towers;
-    
+
     [Header("AI Manipulation")]
     [SerializeField] public int surfaceAreaIndex;
-     
+
     [Header("**------ SETTINGS ------**")]
 
     [Header("Debugging")]
@@ -141,7 +141,6 @@ public class GameManager : Singleton<GameManager>
     public void CheckIfCheckPointReached()
     {
         if (isEraCompleted) return;
-
 
         if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].GetCityChangingIndex())
         {

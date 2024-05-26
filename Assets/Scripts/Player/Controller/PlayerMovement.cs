@@ -72,8 +72,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (nearestEnemyFinder.GetNearestEnemy() == null)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), rotationSpeed * Time.deltaTime);
-                playerAsset.rotation = transform.rotation;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, targetAngle, transform.rotation.z),
+                     rotationSpeed * Time.deltaTime);
+                playerAsset.forward = transform.forward;
             }
         }
     }

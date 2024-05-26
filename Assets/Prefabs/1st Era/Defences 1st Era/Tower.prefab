@@ -449,8 +449,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6374925, y: 1.4479102, z: 0.72386354}
-  m_Center: {x: 0.005536801, y: -0.07630976, z: 0.08913006}
+  m_Size: {x: 0.8498481, y: 1.4479111, z: 0.8396936}
+  m_Center: {x: 0.002319395, y: -0.07630976, z: -0.007394465}
 --- !u!114 &4472078763875740996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,7 +487,6 @@ MonoBehaviour:
   isRepairable: 0
   asset: {fileID: 3815310486027179043}
   feelFeedBacks: {fileID: 0}
-  towerAttackingAnimDur: 0
   recoveryTimer: 0
 --- !u!114 &1124860432
 MonoBehaviour:
@@ -730,8 +729,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6614912930709999286}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: -0.158, z: 0}
-  m_LocalScale: {x: 62.541523, y: 62.541523, z: 32.983906}
+  m_LocalPosition: {x: 0, y: -0.359, z: 0}
+  m_LocalScale: {x: 47.06312, y: 47.06312, z: 24.820719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4151084821248037227}

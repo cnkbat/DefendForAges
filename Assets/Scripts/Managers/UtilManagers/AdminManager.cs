@@ -3,17 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class AdminManager : MonoBehaviour
 {
     SaveManager saveManager;
     PlayerStats playerStats;
     [SerializeField] bool isAdmin;
     [SerializeField] GameObject adminPanel;
+    [SerializeField] Button playerKillTestButton;
 
     void Start()
     {
         saveManager = SaveManager.instance;
         playerStats = PlayerStats.instance;
+        playerKillTestButton.onClick.AddListener(() => playerStats.deathHandler.Kill());
     }
 
     // Update is called once per frame

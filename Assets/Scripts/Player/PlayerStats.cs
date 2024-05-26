@@ -39,7 +39,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float maxHealth;
 
     [Header("Death")]
-    DeathHandler deathHandler;
+    public DeathHandler deathHandler;
     private bool isDead;
 
     [Header("Power Up")]

@@ -16,17 +16,15 @@ public class PlayerAnimationHandler : MonoBehaviour
     [SerializeField] private float attackASMultiplier;
 
     [Header("Actions")]
-    public Action<float> OnAttackAnimSpeedSet;
+    public Action OnAnimEventFired;
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
 
-        playerStats = GetComponent<PlayerStats>();
-        playerAngleCalculator = GetComponent<PlayerAngleCalculator>();
-        playerAttack = GetComponent<PlayerAttack>();
-
-
+        playerStats = transform.parent.GetComponent<PlayerStats>();
+        playerAngleCalculator = transform.parent.GetComponent<PlayerAngleCalculator>();
+        playerAttack = transform.parent.GetComponent<PlayerAttack>();
     }
 
     private void OnEnable()
@@ -36,8 +34,10 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         playerAngleCalculator.OnPlayerMoved += SetWalkAnimationValues;
 
-        OnAttackAnimSpeedSet += playerAttack.SetAttackingDelay;
         playerAttack.OnAttackAnimPlayNeeded += SetAttackTrigger;
+
+        OnAnimEventFired += playerAttack.Attack;
+
         // TO TEST OUT WALK ANIMATION SPEED
         ChangeWalkAS();
         ChangeAttackAS();
@@ -49,9 +49,11 @@ public class PlayerAnimationHandler : MonoBehaviour
         playerStats.OnMovementSpeedUpgraded -= ChangeWalkAS;
         playerStats.OnAttackSpeedUpgraded -= ChangeAttackAS;
 
+        playerAttack.OnAttackAnimPlayNeeded -= SetAttackTrigger;
         playerAngleCalculator.OnPlayerMoved -= SetWalkAnimationValues;
 
-        OnAttackAnimSpeedSet -= playerAttack.SetAttackingDelay;
+        OnAnimEventFired -= playerAttack.Attack;
+
     }
 
     #region Walking
@@ -76,12 +78,15 @@ public class PlayerAnimationHandler : MonoBehaviour
         animator.SetTrigger("Attack");
     }
 
+    public void AttackAtEnemy()
+    {
+        OnAnimEventFired?.Invoke();
+    }
+
     private void ChangeAttackAS()
     {
         // might need to add a check for getAttackSpeed() == 0
-        animator.SetFloat("AttackAnimationSpeed", attackASMultiplier/playerStats.GetAttackSpeed());
-
-        OnAttackAnimSpeedSet?.Invoke(attackASMultiplier);
+        animator.SetFloat("AttackAnimationSpeed", attackASMultiplier / playerStats.GetAttackSpeed());
     }
 
     #endregion

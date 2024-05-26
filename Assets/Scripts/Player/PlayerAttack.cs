@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Anim")]
     [SerializeField] private float strikingAnimDur;
-    private float currentStrikingAnimDur;
+
     Transform playerAsset;
     private Vector3 playerAssetLocalPos;
 
@@ -25,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
     float currentAttackSpeed;
 
     [Tooltip("Events")]
-    public Action<Transform, float, bool, float> OnAttack;
+    public Action<Transform, float, bool> OnAttack;
     public Action OnAttackAnimPlayNeeded;
 
     private void OnEnable()
@@ -72,15 +72,19 @@ public class PlayerAttack : MonoBehaviour
             currentAttackSpeed -= Time.deltaTime;
             if (currentAttackSpeed <= 0)
             {
-                OnAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage(), true, currentStrikingAnimDur);
                 OnAttackAnimPlayNeeded?.Invoke();
-                ResetAttackSpeed();
             }
         }
         else
         {
             ResetAttackSpeed();
         }
+    }
+
+    public void Attack()
+    {
+        OnAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage(), true);
+        ResetAttackSpeed();
     }
 
     #region  Finding Closest Enemy
@@ -112,10 +116,6 @@ public class PlayerAttack : MonoBehaviour
         currentAttackSpeed = playerStats.GetAttackSpeed();
     }
 
-    public void SetAttackingDelay(float delayMultiplier)
-    {
-        currentStrikingAnimDur = strikingAnimDur * delayMultiplier;
-    }
 
     #endregion
 

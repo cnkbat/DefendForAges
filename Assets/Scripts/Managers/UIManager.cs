@@ -396,7 +396,7 @@ public class UIManager : Singleton<UIManager>
             totalProgressBarImages[i].SetActive(false);
         }
 
-        Debug.Log(playerStats.GetCityIndex());
+        Debug.Log("city Index =" + playerStats.GetCityIndex());
         totalProgressBarImages[playerStats.GetCityIndex()].SetActive(true);
         UpdateInWaveProgressBarTexts();
 

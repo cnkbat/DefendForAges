@@ -1780,6 +1780,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 247157026965709851, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.078016184
+      objectReference: {fileID: 0}
+    - target: {fileID: 247157026965709851, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.008215599
+      objectReference: {fileID: 0}
     - target: {fileID: 2414384501172692176, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
       propertyPath: bulletTag
       value: AxeThrow
@@ -1787,6 +1795,10 @@ PrefabInstance:
     - target: {fileID: 3470111270965869726, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
       propertyPath: m_Name
       value: playerAsset
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470111270965869726, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4197459821979999214, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
       propertyPath: m_IsActive
@@ -1876,9 +1888,25 @@ PrefabInstance:
       propertyPath: attackASMultiplier
       value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6256383065292026529, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0780162
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256383065292026529, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.008215637
+      objectReference: {fileID: 0}
     - target: {fileID: 6641785180708078803, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
       propertyPath: bulletTag
       value: AxeThrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726128290731997213, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0488168
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726128290731997213, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.052048832
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
@@ -2619,7 +2647,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.000000006584597, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.000000006584596, w: 0.92387956}
   m_LocalPosition: {x: -6.1176624, y: 25.00002, z: -37.635815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5669,6 +5697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
 --- !u!1 &2112083882
@@ -5808,7 +5840,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.000000006584597, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.000000006584596, w: 0.92387956}
   m_LocalPosition: {x: -6.1176624, y: 25.00002, z: -37.635815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

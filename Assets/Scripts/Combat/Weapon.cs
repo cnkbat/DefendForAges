@@ -16,19 +16,13 @@ public class Weapon : MonoBehaviour
         objectPooler = ObjectPooler.instance;
     }
 
-    public void Attack(Transform bulletTarget, float damage, bool isPlayersBullet = false, float delay = 0)
+    public void Attack(Transform bulletTarget, float damage, bool isPlayersBullet = false)
     {
         if (!gameObject.activeSelf) return;
-
-        StartCoroutine(DelayedAttack(bulletTarget, damage, isPlayersBullet, delay));
-    }
-
-    IEnumerator DelayedAttack(Transform bulletTarget, float damage, bool isPlayersBullet = false, float delay = 0)
-    {
-        yield return new WaitForSeconds(delay);
-
         objectPooler.SpawnBulletFromPool(bulletTag, tipOfWeapon.position, bulletTarget, damage, isPlayersBullet);
     }
+
+
 
 
 }

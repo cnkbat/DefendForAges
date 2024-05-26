@@ -77,7 +77,7 @@ MonoBehaviour:
   lookAtSense: 100
   archerStickmans:
   - {fileID: 5909695023744888027}
-  attackAnimMultiplier: 0.1
+  attackAnimMultiplier: 10
 --- !u!114 &1438590771072916486
 MonoBehaviour:
   m_ObjectHideFlags: 0

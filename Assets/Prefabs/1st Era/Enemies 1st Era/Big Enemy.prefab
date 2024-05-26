@@ -240,7 +240,7 @@ MonoBehaviour:
   deadLayerName: DeadEnemy
   deathAnimDur: 3
   enemyAsset: {fileID: 0}
-  aimSpeed: 5
+  aimSpeed: 100
   boundRenderer: {fileID: 2472537921761582045}
   materialIndex: 0
   originalMat: {fileID: 2100000, guid: 0d30ff597a57d5348a7e83f345306add, type: 2}
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkAnimMultiplier: 0.5
-  attackSpeedMultiplier: 1
+  attackSpeedMultiplier: 0.4
 --- !u!1 &745898582760723051
 GameObject:
   m_ObjectHideFlags: 0

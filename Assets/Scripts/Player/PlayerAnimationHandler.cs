@@ -78,7 +78,8 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private void ChangeAttackAS()
     {
-        animator.SetFloat("AttackAnimationSpeed", playerStats.GetAttackSpeed() * attackASMultiplier);
+        // might need to add a check for getAttackSpeed() == 0
+        animator.SetFloat("AttackAnimationSpeed", attackASMultiplier/playerStats.GetAttackSpeed());
 
         OnAttackAnimSpeedSet?.Invoke(attackASMultiplier);
     }

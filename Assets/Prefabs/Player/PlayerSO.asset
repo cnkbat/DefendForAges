@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   experiencePointToLevelUp: 102700000f0000001400000014000000140000001400000014000000140000001400000014000000
   attackSpeedValues:
-  - 0.5
-  - 2
-  - 2
-  - 2
+  - 1
+  - 0.9
+  - 0.8
+  - 0.7
   attackSpeedCosts: 6e0000007d00000096000000c8000000fa000000
   damageValues:
   - 10

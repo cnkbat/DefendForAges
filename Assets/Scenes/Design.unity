@@ -868,9 +868,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 21410987}
-  - component: {fileID: 21410988}
   m_Layer: 0
-  m_Name: Wave 8
+  m_Name: EnemySpawnPos16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,26 +890,6 @@ Transform:
   m_Father: {fileID: 1683396110}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &21410988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21410986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &22667048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1049,9 +1028,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 23389425}
-  - component: {fileID: 23389426}
   m_Layer: 0
-  m_Name: Wave 24
+  m_Name: EnemySpawnPos24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,26 +1050,6 @@ Transform:
   m_Father: {fileID: 550103043}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &23389426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23389424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &28453238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,9 +1059,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 28453239}
-  - component: {fileID: 28453240}
   m_Layer: 0
-  m_Name: Wave 17
+  m_Name: EnemySpawnPos17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1124,26 +1081,6 @@ Transform:
   m_Father: {fileID: 946408474}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &28453240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 28453238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &29485604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1277,9 +1214,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 30115580}
-  - component: {fileID: 30115581}
   m_Layer: 0
-  m_Name: Wave 4
+  m_Name: EnemySpawnPos4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1300,26 +1236,6 @@ Transform:
   m_Father: {fileID: 457374371}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &30115581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30115579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &30181997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1582,9 +1498,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 53432339}
-  - component: {fileID: 53432340}
   m_Layer: 0
-  m_Name: Wave 8
+  m_Name: EnemySpawnPos8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1605,26 +1520,6 @@ Transform:
   m_Father: {fileID: 864115026}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &53432340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53432338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &54670863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1696,9 +1591,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 56615833}
-  - component: {fileID: 56615834}
   m_Layer: 0
-  m_Name: Wave 19
+  m_Name: EnemySpawnPos19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1719,26 +1613,6 @@ Transform:
   m_Father: {fileID: 946408474}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &56615834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 56615832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &57274211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1817,7 +1691,7 @@ GameObject:
   - component: {fileID: 57987753}
   - component: {fileID: 57987754}
   m_Layer: 0
-  m_Name: Wave 9
+  m_Name: EnemySpawnPos10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2058,9 +1932,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 66911625}
-  - component: {fileID: 66911626}
   m_Layer: 0
-  m_Name: Wave 32
+  m_Name: EnemySpawnPos32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2081,26 +1954,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &66911626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66911624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &68510050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2992,9 +2845,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 97406165}
-  - component: {fileID: 97406166}
   m_Layer: 0
-  m_Name: Wave 21
+  m_Name: EnemySpawnPos21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3015,26 +2867,6 @@ Transform:
   m_Father: {fileID: 946408474}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &97406166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 97406164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &99161349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3106,9 +2938,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 99284367}
-  - component: {fileID: 99284368}
   m_Layer: 0
-  m_Name: Wave 13
+  m_Name: EnemySpawnPos11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3129,26 +2960,6 @@ Transform:
   m_Father: {fileID: 990738409}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &99284368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99284366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &102359467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3284,7 +3095,7 @@ GameObject:
   - component: {fileID: 107280351}
   - component: {fileID: 107280352}
   m_Layer: 0
-  m_Name: Wave 41
+  m_Name: EnemySpawnPos42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3334,9 +3145,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 111775480}
-  - component: {fileID: 111775481}
   m_Layer: 0
-  m_Name: Wave 9
+  m_Name: EnemySpawnPos9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3357,26 +3167,6 @@ Transform:
   m_Father: {fileID: 1664369657}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &111775481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111775479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &120274882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3769,7 +3559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 131512503}
   m_Layer: 0
-  m_Name: Start Waves
+  m_Name: StartPoses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3782,14 +3572,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131512502}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 457374371}
-  m_Father: {fileID: 1846424574}
-  m_RootOrder: 0
+  m_Father: {fileID: 1206260715}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &133923138
 PrefabInstance:
@@ -3934,9 +3724,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 142963853}
-  - component: {fileID: 142963854}
   m_Layer: 0
-  m_Name: Wave 27
+  m_Name: EnemySpawnPos27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3957,26 +3746,6 @@ Transform:
   m_Father: {fileID: 1647406833}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &142963854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142963852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &143438361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4495,9 +4264,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 162081468}
-  - component: {fileID: 162081469}
   m_Layer: 0
-  m_Name: Wave 11
+  m_Name: EnemySpawnPos9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4518,26 +4286,6 @@ Transform:
   m_Father: {fileID: 990738409}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &162081469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162081467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &163985161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4988,7 +4736,7 @@ GameObject:
   - component: {fileID: 179289450}
   - component: {fileID: 179289451}
   m_Layer: 0
-  m_Name: Wave 40
+  m_Name: EnemySpawnPos41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5229,9 +4977,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 184181608}
-  - component: {fileID: 184181609}
   m_Layer: 0
-  m_Name: Wave 4
+  m_Name: EnemySpawnPos4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5252,26 +4999,6 @@ Transform:
   m_Father: {fileID: 841488934}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &184181609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184181607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &184985935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5782,9 +5509,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 200154133}
-  - component: {fileID: 200154134}
   m_Layer: 0
-  m_Name: Wave 2
+  m_Name: EnemySpawnPos2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5805,26 +5531,6 @@ Transform:
   m_Father: {fileID: 1296938424}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &200154134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200154132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &204147109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6520,6 +6226,64 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3767772739588026162, guid: fc35c67fb2f5c804c84a8a9d2d649d72, type: 3}
   m_PrefabInstance: {fileID: 230054041}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &235321906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 235321907}
+  - component: {fileID: 235321908}
+  m_Layer: 0
+  m_Name: Wave 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &235321907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235321906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 505200771}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &235321908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235321906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves: []
+  currentWaveCount: 0
+  enemiesAlive: 0
+  maxEnemiesAllowed: 0
+  maxEnemiesReached: 0
+  waveGap: 0
+  enemySpawnPoints:
+  - {fileID: 1038927815}
+  - {fileID: 2062748606}
+  - {fileID: 798180490}
+  - {fileID: 184181608}
+  - {fileID: 244961140}
+  - {fileID: 1645781300}
+  totalHealthValue: 0
 --- !u!1001 &236208157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6839,9 +6603,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244961140}
-  - component: {fileID: 244961141}
   m_Layer: 0
-  m_Name: Wave 5
+  m_Name: EnemySpawnPos5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6862,26 +6625,6 @@ Transform:
   m_Father: {fileID: 841488934}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &244961141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244961139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &246806571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7333,9 +7076,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264829916}
-  - component: {fileID: 264829917}
   m_Layer: 0
-  m_Name: Wave 33
+  m_Name: EnemySpawnPos33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7356,26 +7098,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &264829917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264829915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &266144697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7824,9 +7546,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 279217258}
-  - component: {fileID: 279217259}
   m_Layer: 0
-  m_Name: Wave 26
+  m_Name: EnemySpawnPos26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7847,26 +7568,6 @@ Transform:
   m_Father: {fileID: 1647406833}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &279217259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279217257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &280794388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10023,7 +9724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 356144216}
   m_Layer: 0
-  m_Name: Upgrade Zone 2 Waves
+  m_Name: Upgrade Zone 2 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10036,7 +9737,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356144215}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10047,8 +9748,8 @@ Transform:
   - {fileID: 1238565398}
   - {fileID: 1505393102}
   - {fileID: 1154902960}
-  m_Father: {fileID: 505200771}
-  m_RootOrder: 2
+  m_Father: {fileID: 1401004476}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &357140593
 PrefabInstance:
@@ -10751,9 +10452,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 379611181}
-  - component: {fileID: 379611182}
   m_Layer: 0
-  m_Name: Wave 15
+  m_Name: EnemySpawnPos13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10774,26 +10474,6 @@ Transform:
   m_Father: {fileID: 990738409}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &379611182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379611180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &380071002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11192,7 +10872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &418421867
 Transform:
   m_ObjectHideFlags: 0
@@ -11251,7 +10931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418890281}
   m_Layer: 0
-  m_Name: Upgrade Zone 3 Waves
+  m_Name: Upgrade Zone 3 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11264,7 +10944,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418890280}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11285,8 +10965,8 @@ Transform:
   - {fileID: 505099404}
   - {fileID: 179289450}
   - {fileID: 107280351}
-  m_Father: {fileID: 1202568368}
-  m_RootOrder: 3
+  m_Father: {fileID: 1023089744}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &420233191
 GameObject:
@@ -11331,7 +11011,7 @@ GameObject:
   - component: {fileID: 421152241}
   - component: {fileID: 421152242}
   m_Layer: 0
-  m_Name: Wave 29
+  m_Name: EnemySpawnPos30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12721,7 +12401,7 @@ GameObject:
   - component: {fileID: 459053159}
   - component: {fileID: 459053160}
   m_Layer: 0
-  m_Name: Wave 14
+  m_Name: EnemySpawnPos15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12773,7 +12453,7 @@ GameObject:
   - component: {fileID: 461356261}
   - component: {fileID: 461356262}
   m_Layer: 0
-  m_Name: Wave 32
+  m_Name: EnemySpawnPos33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13200,9 +12880,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 472618133}
-  - component: {fileID: 472618134}
   m_Layer: 0
-  m_Name: Wave 29
+  m_Name: EnemySpawnPos29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13223,26 +12902,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &472618134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472618132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &473727925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13314,9 +12973,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 475910165}
-  - component: {fileID: 475910166}
   m_Layer: 0
-  m_Name: Wave 12
+  m_Name: EnemySpawnPos10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13337,26 +12995,6 @@ Transform:
   m_Father: {fileID: 990738409}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &475910166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475910164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &480239117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14059,7 +13697,7 @@ GameObject:
   - component: {fileID: 505099404}
   - component: {fileID: 505099405}
   m_Layer: 0
-  m_Name: Wave 39
+  m_Name: EnemySpawnPos40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14128,10 +13766,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 856440466}
-  - {fileID: 864115026}
-  - {fileID: 356144216}
-  - {fileID: 946408474}
+  - {fileID: 235321907}
   m_Father: {fileID: 1401004476}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14341,7 +13976,7 @@ GameObject:
   - component: {fileID: 513045280}
   - component: {fileID: 513045281}
   m_Layer: 0
-  m_Name: Wave 36
+  m_Name: EnemySpawnPos37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14768,9 +14403,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 520020368}
-  - component: {fileID: 520020369}
   m_Layer: 0
-  m_Name: Wave 1
+  m_Name: EnemySpawnPos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14791,26 +14425,6 @@ Transform:
   m_Father: {fileID: 457374371}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &520020369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520020367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &520748898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15317,7 +14931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 550103043}
   m_Layer: 0
-  m_Name: Upgrade Zone 2 Waves
+  m_Name: Upgrade Zone 2 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15330,7 +14944,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550103042}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15343,8 +14957,8 @@ Transform:
   - {fileID: 23389425}
   - {fileID: 577164581}
   - {fileID: 1647406833}
-  m_Father: {fileID: 1846424574}
-  m_RootOrder: 2
+  m_Father: {fileID: 1206260715}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &554930373
 PrefabInstance:
@@ -15851,9 +15465,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 565223541}
-  - component: {fileID: 565223542}
   m_Layer: 0
-  m_Name: Wave 5
+  m_Name: EnemySpawnPos5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15874,26 +15487,6 @@ Transform:
   m_Father: {fileID: 1012402573}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &565223542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565223540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &566448590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16155,9 +15748,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 575189113}
-  - component: {fileID: 575189114}
   m_Layer: 0
-  m_Name: Wave 7
+  m_Name: EnemySpawnPos7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16178,26 +15770,6 @@ Transform:
   m_Father: {fileID: 864115026}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &575189114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575189112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &577164580
 GameObject:
   m_ObjectHideFlags: 0
@@ -16207,9 +15779,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 577164581}
-  - component: {fileID: 577164582}
   m_Layer: 0
-  m_Name: Wave 25
+  m_Name: EnemySpawnPos25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16230,26 +15801,6 @@ Transform:
   m_Father: {fileID: 550103043}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &577164582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577164580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &578251564
 GameObject:
   m_ObjectHideFlags: 0
@@ -16259,9 +15810,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578251565}
-  - component: {fileID: 578251566}
   m_Layer: 0
-  m_Name: Wave 16
+  m_Name: EnemySpawnPos14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16282,26 +15832,6 @@ Transform:
   m_Father: {fileID: 990738409}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &578251566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578251564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &579164383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16818,9 +16348,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 589710020}
-  - component: {fileID: 589710021}
   m_Layer: 0
-  m_Name: Wave 34
+  m_Name: EnemySpawnPos34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16841,26 +16370,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &589710021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589710019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &591345075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18585,7 +18094,7 @@ GameObject:
   - component: {fileID: 642662330}
   - component: {fileID: 642662331}
   m_Layer: 0
-  m_Name: Wave 33
+  m_Name: EnemySpawnPos34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18697,9 +18206,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 649756600}
-  - component: {fileID: 649756601}
   m_Layer: 0
-  m_Name: Wave 22
+  m_Name: EnemySpawnPos22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18720,26 +18228,6 @@ Transform:
   m_Father: {fileID: 946408474}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &649756601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649756599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &650957774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18935,9 +18423,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 657119700}
-  - component: {fileID: 657119701}
   m_Layer: 0
-  m_Name: Wave 3
+  m_Name: EnemySpawnPos3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18958,26 +18445,6 @@ Transform:
   m_Father: {fileID: 1296938424}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &657119701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657119699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &657893698
 GameObject:
   m_ObjectHideFlags: 0
@@ -18989,7 +18456,7 @@ GameObject:
   - component: {fileID: 657893699}
   - component: {fileID: 657893700}
   m_Layer: 0
-  m_Name: Wave 31
+  m_Name: EnemySpawnPos32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21148,9 +20615,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 736157980}
-  - component: {fileID: 736157981}
   m_Layer: 0
-  m_Name: Wave 6
+  m_Name: EnemySpawnPos6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21171,26 +20637,6 @@ Transform:
   m_Father: {fileID: 1012402573}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &736157981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736157979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &738089927
 GameObject:
   m_ObjectHideFlags: 0
@@ -21200,9 +20646,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 738089928}
-  - component: {fileID: 738089929}
   m_Layer: 0
-  m_Name: Wave 17
+  m_Name: EnemySpawnPos17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21223,26 +20668,6 @@ Transform:
   m_Father: {fileID: 1972796990}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &738089929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738089927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &738461573
 GameObject:
   m_ObjectHideFlags: 0
@@ -21252,9 +20677,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 738461574}
-  - component: {fileID: 738461575}
   m_Layer: 0
-  m_Name: Wave 36
+  m_Name: EnemySpawnPos36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21275,26 +20699,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &738461575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738461573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &740996954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5033717770325617373, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
@@ -21502,7 +20906,7 @@ GameObject:
   - component: {fileID: 747240019}
   - component: {fileID: 747240020}
   m_Layer: 0
-  m_Name: Wave 16
+  m_Name: EnemySpawnPos16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22106,6 +21510,65 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3767772739588026162, guid: fc35c67fb2f5c804c84a8a9d2d649d72, type: 3}
   m_PrefabInstance: {fileID: 769240735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &772590271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772590272}
+  - component: {fileID: 772590273}
+  m_Layer: 0
+  m_Name: Wave 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &772590272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772590271}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1202568368}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &772590273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772590271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves: []
+  currentWaveCount: 0
+  enemiesAlive: 0
+  maxEnemiesAllowed: 0
+  maxEnemiesReached: 0
+  waveGap: 0
+  enemySpawnPoints:
+  - {fileID: 796507678}
+  - {fileID: 200154133}
+  - {fileID: 657119700}
+  - {fileID: 1398153230}
+  - {fileID: 565223541}
+  - {fileID: 736157980}
+  - {fileID: 1687294816}
+  totalHealthValue: 0
 --- !u!1001 &775825584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22483,6 +21946,64 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7512285399178677746, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
   m_PrefabInstance: {fileID: 780987159}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &788434711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788434712}
+  - component: {fileID: 788434713}
+  m_Layer: 0
+  m_Name: Wave 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788434712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788434711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1846424574}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &788434713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788434711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves: []
+  currentWaveCount: 0
+  enemiesAlive: 0
+  maxEnemiesAllowed: 0
+  maxEnemiesReached: 0
+  waveGap: 0
+  enemySpawnPoints:
+  - {fileID: 520020368}
+  - {fileID: 1138707282}
+  - {fileID: 1118134924}
+  - {fileID: 30115580}
+  - {fileID: 1856895701}
+  - {fileID: 1501121736}
+  totalHealthValue: 0
 --- !u!1001 &791231549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22621,9 +22142,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 792537709}
-  - component: {fileID: 792537710}
   m_Layer: 0
-  m_Name: Wave 35
+  m_Name: EnemySpawnPos35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22644,26 +22164,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &792537710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792537708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &794673464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22875,9 +22375,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 796507678}
-  - component: {fileID: 796507679}
   m_Layer: 0
-  m_Name: Wave 1
+  m_Name: EnemySpawnPos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22898,26 +22397,6 @@ Transform:
   m_Father: {fileID: 1296938424}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &796507679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796507677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &797068598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22989,9 +22468,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 798180490}
-  - component: {fileID: 798180491}
   m_Layer: 0
-  m_Name: Wave 3
+  m_Name: EnemySpawnPos3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23012,26 +22490,6 @@ Transform:
   m_Father: {fileID: 856440466}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &798180491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798180489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &800090530
 GameObject:
   m_ObjectHideFlags: 0
@@ -23382,7 +22840,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 303077651966057050, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2367628
+      value: -1.2368956
       objectReference: {fileID: 0}
     - target: {fileID: 303077651966057050, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23446,7 +22904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2824230678767430376, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2142626
+      value: 1.2143954
       objectReference: {fileID: 0}
     - target: {fileID: 2824230678767430376, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24688,7 +24146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 856440466}
   m_Layer: 0
-  m_Name: Start Waves
+  m_Name: Start Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24701,7 +24159,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856440465}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24710,8 +24168,8 @@ Transform:
   - {fileID: 2062748606}
   - {fileID: 798180490}
   - {fileID: 841488934}
-  m_Father: {fileID: 505200771}
-  m_RootOrder: 0
+  m_Father: {fileID: 1401004476}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &857167351
 PrefabInstance:
@@ -24944,7 +24402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 864115026}
   m_Layer: 0
-  m_Name: Upgrade Zone 1 Waves
+  m_Name: Upgrade Zone 1 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24957,7 +24415,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864115025}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24965,8 +24423,8 @@ Transform:
   - {fileID: 575189113}
   - {fileID: 53432339}
   - {fileID: 1664369657}
-  m_Father: {fileID: 505200771}
-  m_RootOrder: 1
+  m_Father: {fileID: 1401004476}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &864397018
 PrefabInstance:
@@ -25814,9 +25272,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 894939002}
-  - component: {fileID: 894939003}
   m_Layer: 0
-  m_Name: Wave 23
+  m_Name: EnemySpawnPos23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25837,26 +25294,6 @@ Transform:
   m_Father: {fileID: 550103043}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &894939003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894939001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &894947926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26115,7 +25552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 898649699}
   m_Layer: 0
-  m_Name: Upgrade Zone 3 Waves
+  m_Name: Upgrade Zone 3 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26128,7 +25565,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898649698}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26144,8 +25581,8 @@ Transform:
   - {fileID: 738461574}
   - {fileID: 1535043460}
   - {fileID: 1368531108}
-  m_Father: {fileID: 1846424574}
-  m_RootOrder: 3
+  m_Father: {fileID: 1206260715}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &902218150
 PrefabInstance:
@@ -27211,7 +26648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946408474}
   m_Layer: 0
-  m_Name: Upgrade Zone 3 Waves
+  m_Name: Upgrade Zone 3 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27224,7 +26661,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946408473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27235,8 +26672,8 @@ Transform:
   - {fileID: 1214134175}
   - {fileID: 97406165}
   - {fileID: 649756600}
-  m_Father: {fileID: 505200771}
-  m_RootOrder: 3
+  m_Father: {fileID: 1401004476}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946615539
 GameObject:
@@ -27899,7 +27336,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.0000000065845973, w: 0.92387956}
   m_LocalPosition: {x: -31.737444, y: 24.97092, z: -53.956017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -28278,9 +27715,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967493363}
-  - component: {fileID: 967493364}
   m_Layer: 0
-  m_Name: Wave 13
+  m_Name: EnemySpawnPos13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28301,26 +27737,6 @@ Transform:
   m_Father: {fileID: 356144216}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &967493364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967493362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &970894136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28456,7 +27872,7 @@ GameObject:
   - component: {fileID: 974105513}
   - component: {fileID: 974105514}
   m_Layer: 0
-  m_Name: Wave 12
+  m_Name: EnemySpawnPos13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28870,7 +28286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 990738409}
   m_Layer: 0
-  m_Name: Upgrade Zone 1 Waves
+  m_Name: Upgrade Zone 1 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28898,8 +28314,8 @@ Transform:
   - {fileID: 578251565}
   - {fileID: 1683396110}
   - {fileID: 1972796990}
-  m_Father: {fileID: 1846424574}
-  m_RootOrder: 1
+  m_Father: {fileID: 1206260715}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &991268828
 PrefabInstance:
@@ -29228,9 +28644,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1006214800}
-  - component: {fileID: 1006214801}
   m_Layer: 0
-  m_Name: Wave 10
+  m_Name: EnemySpawnPos8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29251,26 +28666,6 @@ Transform:
   m_Father: {fileID: 990738409}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1006214801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006214799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &1012402572
 GameObject:
   m_ObjectHideFlags: 0
@@ -29281,7 +28676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012402573}
   m_Layer: 0
-  m_Name: Start Waves
+  m_Name: StartPoses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29294,7 +28689,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012402572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29304,8 +28699,8 @@ Transform:
   - {fileID: 565223541}
   - {fileID: 736157980}
   - {fileID: 1687294816}
-  m_Father: {fileID: 1202568368}
-  m_RootOrder: 0
+  m_Father: {fileID: 1023089744}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1014101740
 PrefabInstance:
@@ -29633,7 +29028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1023089744
 Transform:
   m_ObjectHideFlags: 0
@@ -29654,6 +29049,10 @@ Transform:
   - {fileID: 418421867}
   - {fileID: 1368501772}
   - {fileID: 1728663756}
+  - {fileID: 1012402573}
+  - {fileID: 1096185936}
+  - {fileID: 2112707599}
+  - {fileID: 418890281}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29672,46 +29071,7 @@ MonoBehaviour:
   cityChangingIndex: 0
   firstCheckpointIndex: 0
   secondCheckpointIndex: 0
-  waveList:
-  - {fileID: 796507679}
-  - {fileID: 200154134}
-  - {fileID: 657119701}
-  - {fileID: 1398153231}
-  - {fileID: 565223542}
-  - {fileID: 736157981}
-  - {fileID: 1687294817}
-  - {fileID: 2104424079}
-  - {fileID: 1147239303}
-  - {fileID: 57987754}
-  - {fileID: 1714111996}
-  - {fileID: 1173330729}
-  - {fileID: 974105514}
-  - {fileID: 1133692620}
-  - {fileID: 1330578850}
-  - {fileID: 1654027391}
-  - {fileID: 1771764583}
-  - {fileID: 1107938058}
-  - {fileID: 1287399704}
-  - {fileID: 1479173568}
-  - {fileID: 1077768382}
-  - {fileID: 2083325418}
-  - {fileID: 1163639433}
-  - {fileID: 1393113214}
-  - {fileID: 1829411006}
-  - {fileID: 2137277101}
-  - {fileID: 421152242}
-  - {fileID: 1325271139}
-  - {fileID: 657893700}
-  - {fileID: 461356262}
-  - {fileID: 642662331}
-  - {fileID: 1908612179}
-  - {fileID: 1500295980}
-  - {fileID: 513045281}
-  - {fileID: 1772609465}
-  - {fileID: 1213995879}
-  - {fileID: 505099405}
-  - {fileID: 179289451}
-  - {fileID: 107280352}
+  waveList: []
   buyableAreas:
   - {fileID: 418421868}
   - {fileID: 1368501773}
@@ -30112,9 +29472,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1034928669}
-  - component: {fileID: 1034928670}
   m_Layer: 0
-  m_Name: Wave 9
+  m_Name: EnemySpawnPos15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30135,26 +29494,6 @@ Transform:
   m_Father: {fileID: 1683396110}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1034928670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034928668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1037467007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30226,34 +29565,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1038927815}
-  - component: {fileID: 1038927814}
   m_Layer: 0
-  m_Name: Wave 1
+  m_Name: EnemySpawnPos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1038927814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1038927813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!4 &1038927815
 Transform:
   m_ObjectHideFlags: 0
@@ -31101,7 +30419,7 @@ GameObject:
   - component: {fileID: 1077768381}
   - component: {fileID: 1077768382}
   m_Layer: 0
-  m_Name: Wave 25
+  m_Name: EnemySpawnPos26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31558,7 +30876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1096185936}
   m_Layer: 0
-  m_Name: Upgrade Zone 1 Waves
+  m_Name: Upgrade Zone 1 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31571,7 +30889,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096185935}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31583,8 +30901,8 @@ Transform:
   - {fileID: 1173330728}
   - {fileID: 974105513}
   - {fileID: 1496814007}
-  m_Father: {fileID: 1202568368}
-  m_RootOrder: 1
+  m_Father: {fileID: 1023089744}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1096319709
 PrefabInstance:
@@ -31845,7 +31163,7 @@ GameObject:
   - component: {fileID: 1107938057}
   - component: {fileID: 1107938058}
   m_Layer: 0
-  m_Name: Wave 22
+  m_Name: EnemySpawnPos23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32215,9 +31533,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1118134924}
-  - component: {fileID: 1118134925}
   m_Layer: 0
-  m_Name: Wave 3
+  m_Name: EnemySpawnPos3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32238,26 +31555,6 @@ Transform:
   m_Father: {fileID: 457374371}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1118134925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1118134923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1122378004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32455,7 +31752,7 @@ GameObject:
   - component: {fileID: 1133692619}
   - component: {fileID: 1133692620}
   m_Layer: 0
-  m_Name: Wave 18
+  m_Name: EnemySpawnPos19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32634,9 +31931,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1138707282}
-  - component: {fileID: 1138707283}
   m_Layer: 0
-  m_Name: Wave 2
+  m_Name: EnemySpawnPos2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32657,26 +31953,6 @@ Transform:
   m_Father: {fileID: 457374371}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1138707283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138707281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &1143485805
 GameObject:
   m_ObjectHideFlags: 0
@@ -32686,9 +31962,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1143485806}
-  - component: {fileID: 1143485807}
   m_Layer: 0
-  m_Name: Wave 11
+  m_Name: EnemySpawnPos11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32709,26 +31984,6 @@ Transform:
   m_Father: {fileID: 356144216}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1143485807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1143485805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1143569516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32864,7 +32119,7 @@ GameObject:
   - component: {fileID: 1147239302}
   - component: {fileID: 1147239303}
   m_Layer: 0
-  m_Name: Wave 8
+  m_Name: EnemySpawnPos9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32976,9 +32231,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1154902960}
-  - component: {fileID: 1154902961}
   m_Layer: 0
-  m_Name: Wave 16
+  m_Name: EnemySpawnPos16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32999,26 +32253,6 @@ Transform:
   m_Father: {fileID: 356144216}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1154902961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154902959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &1155730944
 GameObject:
   m_ObjectHideFlags: 0
@@ -33415,7 +32649,7 @@ GameObject:
   - component: {fileID: 1163639432}
   - component: {fileID: 1163639433}
   m_Layer: 0
-  m_Name: Wave 17
+  m_Name: EnemySpawnPos18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33703,9 +32937,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1171573202}
-  - component: {fileID: 1171573203}
   m_Layer: 0
-  m_Name: Wave 31
+  m_Name: EnemySpawnPos31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33726,26 +32959,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1171573203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171573201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &1173330727
 GameObject:
   m_ObjectHideFlags: 0
@@ -33757,7 +32970,7 @@ GameObject:
   - component: {fileID: 1173330728}
   - component: {fileID: 1173330729}
   m_Layer: 0
-  m_Name: Wave 11
+  m_Name: EnemySpawnPos12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33931,7 +33144,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 303077651966057050, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2367626
+      value: -1.2368954
       objectReference: {fileID: 0}
     - target: {fileID: 303077651966057050, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33995,7 +33208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2824230678767430376, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2142625
+      value: 1.2143953
       objectReference: {fileID: 0}
     - target: {fileID: 2824230678767430376, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34107,10 +33320,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1012402573}
-  - {fileID: 1096185936}
-  - {fileID: 2112707599}
-  - {fileID: 418890281}
+  - {fileID: 772590272}
   m_Father: {fileID: 1023089744}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34151,6 +33361,10 @@ Transform:
   - {fileID: 964512152}
   - {fileID: 1560254209}
   - {fileID: 946615541}
+  - {fileID: 131512503}
+  - {fileID: 990738409}
+  - {fileID: 550103043}
+  - {fileID: 898649699}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34169,45 +33383,7 @@ MonoBehaviour:
   cityChangingIndex: 0
   firstCheckpointIndex: 0
   secondCheckpointIndex: 0
-  waveList:
-  - {fileID: 520020369}
-  - {fileID: 1138707283}
-  - {fileID: 1118134925}
-  - {fileID: 30115581}
-  - {fileID: 1856895702}
-  - {fileID: 1501121737}
-  - {fileID: 1777158909}
-  - {fileID: 1006214801}
-  - {fileID: 162081469}
-  - {fileID: 475910166}
-  - {fileID: 99284368}
-  - {fileID: 1440544712}
-  - {fileID: 379611182}
-  - {fileID: 578251566}
-  - {fileID: 1034928670}
-  - {fileID: 21410988}
-  - {fileID: 738089929}
-  - {fileID: 2047396799}
-  - {fileID: 1726109911}
-  - {fileID: 1858473493}
-  - {fileID: 1218654357}
-  - {fileID: 1551372751}
-  - {fileID: 894939003}
-  - {fileID: 23389426}
-  - {fileID: 577164582}
-  - {fileID: 279217259}
-  - {fileID: 142963854}
-  - {fileID: 2019506726}
-  - {fileID: 472618134}
-  - {fileID: 1425390580}
-  - {fileID: 1171573203}
-  - {fileID: 66911626}
-  - {fileID: 264829917}
-  - {fileID: 589710021}
-  - {fileID: 792537710}
-  - {fileID: 738461575}
-  - {fileID: 1535043461}
-  - {fileID: 1368531107}
+  waveList: []
   buyableAreas:
   - {fileID: 964512153}
   - {fileID: 1560254208}
@@ -34233,7 +33409,7 @@ GameObject:
   - component: {fileID: 1213995878}
   - component: {fileID: 1213995879}
   m_Layer: 0
-  m_Name: Wave 38
+  m_Name: EnemySpawnPos39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34283,9 +33459,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214134175}
-  - component: {fileID: 1214134176}
   m_Layer: 0
-  m_Name: Wave 20
+  m_Name: EnemySpawnPos20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34306,26 +33481,6 @@ Transform:
   m_Father: {fileID: 946408474}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1214134176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214134174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1216956222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34464,9 +33619,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1218654356}
-  - component: {fileID: 1218654357}
   m_Layer: 0
-  m_Name: Wave 21
+  m_Name: EnemySpawnPos21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34487,26 +33641,6 @@ Transform:
   m_Father: {fileID: 550103043}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1218654357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218654355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1219668584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34772,9 +33906,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1238565398}
-  - component: {fileID: 1238565399}
   m_Layer: 0
-  m_Name: Wave 14
+  m_Name: EnemySpawnPos14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34795,26 +33928,6 @@ Transform:
   m_Father: {fileID: 356144216}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1238565399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238565397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1239960408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35941,7 +35054,7 @@ GameObject:
   - component: {fileID: 1287399703}
   - component: {fileID: 1287399704}
   m_Layer: 0
-  m_Name: Wave 23
+  m_Name: EnemySpawnPos24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36302,7 +35415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1296938424}
   m_Layer: 0
-  m_Name: UpgradeZone1DeletedWaves
+  m_Name: UpgradeZone1DeletedPoses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36315,7 +35428,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296938423}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36724,7 +35837,7 @@ GameObject:
   - component: {fileID: 1311619410}
   - component: {fileID: 1311619411}
   m_Layer: 0
-  m_Name: Wave 13
+  m_Name: EnemySpawnPos14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36898,9 +36011,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1314281852}
-  - component: {fileID: 1314281853}
   m_Layer: 0
-  m_Name: Wave 12
+  m_Name: EnemySpawnPos12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36921,26 +36033,6 @@ Transform:
   m_Father: {fileID: 356144216}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1314281853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314281851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1315185504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37232,7 +36324,7 @@ GameObject:
   - component: {fileID: 1325271138}
   - component: {fileID: 1325271139}
   m_Layer: 0
-  m_Name: Wave 30
+  m_Name: EnemySpawnPos31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37346,7 +36438,7 @@ GameObject:
   - component: {fileID: 1330578849}
   - component: {fileID: 1330578850}
   m_Layer: 0
-  m_Name: Wave 19
+  m_Name: EnemySpawnPos20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38309,7 +37401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1368501772
 Transform:
   m_ObjectHideFlags: 0
@@ -38367,34 +37459,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1368531108}
-  - component: {fileID: 1368531107}
   m_Layer: 0
-  m_Name: Wave 38
+  m_Name: EnemySpawnPos38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1368531107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368531106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!4 &1368531108
 Transform:
   m_ObjectHideFlags: 0
@@ -38804,7 +37875,7 @@ GameObject:
   - component: {fileID: 1393113213}
   - component: {fileID: 1393113214}
   m_Layer: 0
-  m_Name: Wave 26
+  m_Name: EnemySpawnPos27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39040,9 +38111,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398153230}
-  - component: {fileID: 1398153231}
   m_Layer: 0
-  m_Name: Wave 4
+  m_Name: EnemySpawnPos4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39063,26 +38133,6 @@ Transform:
   m_Father: {fileID: 1012402573}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1398153231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398153229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &1401004475
 GameObject:
   m_ObjectHideFlags: 0
@@ -39099,7 +38149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1401004476
 Transform:
   m_ObjectHideFlags: 0
@@ -39120,6 +38170,10 @@ Transform:
   - {fileID: 93447717}
   - {fileID: 1404663313}
   - {fileID: 984706042}
+  - {fileID: 856440466}
+  - {fileID: 864115026}
+  - {fileID: 356144216}
+  - {fileID: 946408474}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39138,29 +38192,7 @@ MonoBehaviour:
   cityChangingIndex: 0
   firstCheckpointIndex: 0
   secondCheckpointIndex: 0
-  waveList:
-  - {fileID: 1038927814}
-  - {fileID: 2062748607}
-  - {fileID: 798180491}
-  - {fileID: 184181609}
-  - {fileID: 244961141}
-  - {fileID: 1645781301}
-  - {fileID: 575189114}
-  - {fileID: 53432340}
-  - {fileID: 111775481}
-  - {fileID: 2059963734}
-  - {fileID: 1143485807}
-  - {fileID: 1314281853}
-  - {fileID: 967493364}
-  - {fileID: 1238565399}
-  - {fileID: 1505393103}
-  - {fileID: 1154902961}
-  - {fileID: 28453240}
-  - {fileID: 1986880389}
-  - {fileID: 56615834}
-  - {fileID: 1214134176}
-  - {fileID: 97406166}
-  - {fileID: 649756601}
+  waveList: []
   buyableAreas:
   - {fileID: 93447718}
   - {fileID: 1404663312}
@@ -40058,9 +39090,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425390579}
-  - component: {fileID: 1425390580}
   m_Layer: 0
-  m_Name: Wave 30
+  m_Name: EnemySpawnPos30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40081,26 +39112,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1425390580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425390578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1425567579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40503,9 +39514,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1440544711}
-  - component: {fileID: 1440544712}
   m_Layer: 0
-  m_Name: Wave 14
+  m_Name: EnemySpawnPos12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40526,26 +39536,6 @@ Transform:
   m_Father: {fileID: 990738409}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1440544712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440544710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1441739477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41663,7 +40653,7 @@ GameObject:
   - component: {fileID: 1479173567}
   - component: {fileID: 1479173568}
   m_Layer: 0
-  m_Name: Wave 24
+  m_Name: EnemySpawnPos25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42261,7 +41251,7 @@ GameObject:
   - component: {fileID: 1500295979}
   - component: {fileID: 1500295980}
   m_Layer: 0
-  m_Name: Wave 35
+  m_Name: EnemySpawnPos36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42311,9 +41301,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1501121736}
-  - component: {fileID: 1501121737}
   m_Layer: 0
-  m_Name: Wave 6
+  m_Name: EnemySpawnPos6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42334,26 +41323,6 @@ Transform:
   m_Father: {fileID: 457374371}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1501121737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501121735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1504401950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42487,9 +41456,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1505393102}
-  - component: {fileID: 1505393103}
   m_Layer: 0
-  m_Name: Wave 15
+  m_Name: EnemySpawnPos15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42510,26 +41478,6 @@ Transform:
   m_Father: {fileID: 356144216}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1505393103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1505393101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1505604841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43545,9 +42493,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1535043460}
-  - component: {fileID: 1535043461}
   m_Layer: 0
-  m_Name: Wave 37
+  m_Name: EnemySpawnPos37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43568,26 +42515,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1535043461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535043459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1536080134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44041,9 +42968,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1551372750}
-  - component: {fileID: 1551372751}
   m_Layer: 0
-  m_Name: Wave 22
+  m_Name: EnemySpawnPos22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44064,26 +42990,6 @@ Transform:
   m_Father: {fileID: 550103043}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1551372751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551372749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1552363524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46017,9 +44923,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1645781300}
-  - component: {fileID: 1645781301}
   m_Layer: 0
-  m_Name: Wave 6
+  m_Name: EnemySpawnPos6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46040,26 +44945,6 @@ Transform:
   m_Father: {fileID: 841488934}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1645781301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645781299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &1647406832
 GameObject:
   m_ObjectHideFlags: 0
@@ -46166,7 +45051,7 @@ GameObject:
   - component: {fileID: 1654027390}
   - component: {fileID: 1654027391}
   m_Layer: 0
-  m_Name: Wave 20
+  m_Name: EnemySpawnPos21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46826,9 +45711,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1687294816}
-  - component: {fileID: 1687294817}
   m_Layer: 0
-  m_Name: Wave 7
+  m_Name: EnemySpawnPos7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46849,26 +45733,6 @@ Transform:
   m_Father: {fileID: 1012402573}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1687294817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687294815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1688927943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47519,7 +46383,7 @@ GameObject:
   - component: {fileID: 1714111995}
   - component: {fileID: 1714111996}
   m_Layer: 0
-  m_Name: Wave 10
+  m_Name: EnemySpawnPos11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47900,9 +46764,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1726109910}
-  - component: {fileID: 1726109911}
   m_Layer: 0
-  m_Name: Wave 19
+  m_Name: EnemySpawnPos19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47923,26 +46786,6 @@ Transform:
   m_Father: {fileID: 550103043}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1726109911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726109909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &1726584752
 GameObject:
   m_ObjectHideFlags: 0
@@ -48129,7 +46972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1728663756
 Transform:
   m_ObjectHideFlags: 0
@@ -49086,7 +47929,7 @@ GameObject:
   - component: {fileID: 1771764582}
   - component: {fileID: 1771764583}
   m_Layer: 0
-  m_Name: Wave 21
+  m_Name: EnemySpawnPos22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49138,7 +47981,7 @@ GameObject:
   - component: {fileID: 1772609464}
   - component: {fileID: 1772609465}
   m_Layer: 0
-  m_Name: Wave 37
+  m_Name: EnemySpawnPos38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49250,9 +48093,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777158908}
-  - component: {fileID: 1777158909}
   m_Layer: 0
-  m_Name: Wave 7
+  m_Name: EnemySpawnPos7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49273,26 +48115,6 @@ Transform:
   m_Father: {fileID: 990738409}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1777158909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777158907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1780710215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50721,7 +49543,7 @@ GameObject:
   - component: {fileID: 1829411005}
   - component: {fileID: 1829411006}
   m_Layer: 0
-  m_Name: Wave 27
+  m_Name: EnemySpawnPos28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51477,10 +50299,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 131512503}
-  - {fileID: 990738409}
-  - {fileID: 550103043}
-  - {fileID: 898649699}
+  - {fileID: 788434712}
   m_Father: {fileID: 1206260715}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51493,9 +50312,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1856895701}
-  - component: {fileID: 1856895702}
   m_Layer: 0
-  m_Name: Wave 5
+  m_Name: EnemySpawnPos5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51516,26 +50334,6 @@ Transform:
   m_Father: {fileID: 457374371}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1856895702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856895700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1857870011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51607,9 +50405,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858473492}
-  - component: {fileID: 1858473493}
   m_Layer: 0
-  m_Name: Wave 20
+  m_Name: EnemySpawnPos20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51630,26 +50427,6 @@ Transform:
   m_Father: {fileID: 550103043}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1858473493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858473491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1861239746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52739,7 +51516,7 @@ GameObject:
   - component: {fileID: 1908612178}
   - component: {fileID: 1908612179}
   m_Layer: 0
-  m_Name: Wave 34
+  m_Name: EnemySpawnPos35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54899,9 +53676,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1986880388}
-  - component: {fileID: 1986880389}
   m_Layer: 0
-  m_Name: Wave 18
+  m_Name: EnemySpawnPos18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54922,26 +53698,6 @@ Transform:
   m_Father: {fileID: 946408474}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1986880389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986880387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &1988409120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55863,9 +54619,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2019506725}
-  - component: {fileID: 2019506726}
   m_Layer: 0
-  m_Name: Wave 28
+  m_Name: EnemySpawnPos28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55886,26 +54641,6 @@ Transform:
   m_Father: {fileID: 898649699}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2019506726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019506724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &2021632143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56685,9 +55420,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2047396798}
-  - component: {fileID: 2047396799}
   m_Layer: 0
-  m_Name: Wave 18
+  m_Name: EnemySpawnPos18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56708,26 +55442,6 @@ Transform:
   m_Father: {fileID: 1972796990}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2047396799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047396797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &2055310383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56943,9 +55657,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2059963733}
-  - component: {fileID: 2059963734}
   m_Layer: 0
-  m_Name: Wave 10
+  m_Name: EnemySpawnPos10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56966,26 +55679,6 @@ Transform:
   m_Father: {fileID: 1664369657}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2059963734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059963732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1 &2062748605
 GameObject:
   m_ObjectHideFlags: 0
@@ -56995,9 +55688,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2062748606}
-  - component: {fileID: 2062748607}
   m_Layer: 0
-  m_Name: Wave 2
+  m_Name: EnemySpawnPos2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57018,26 +55710,6 @@ Transform:
   m_Father: {fileID: 856440466}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2062748607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062748605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1406144e18187ee4ea8de3a79a144292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  currentWaveCount: 0
-  enemiesAlive: 0
-  maxEnemiesAllowed: 0
-  maxEnemiesReached: 0
-  waveGap: 0
-  enemySpawnPoints: []
-  totalHealthValue: 0
 --- !u!1001 &2064841006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57570,7 +56242,7 @@ GameObject:
   - component: {fileID: 2083325417}
   - component: {fileID: 2083325418}
   m_Layer: 0
-  m_Name: Wave 16
+  m_Name: EnemySpawnPos17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58005,7 +56677,7 @@ GameObject:
   - component: {fileID: 2104424078}
   - component: {fileID: 2104424079}
   m_Layer: 0
-  m_Name: Wave 7
+  m_Name: EnemySpawnPos8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58129,7 +56801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2112707599}
   m_Layer: 0
-  m_Name: Upgrade Zone 2 Waves
+  m_Name: Upgrade Zone 2 Poses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58156,8 +56828,8 @@ Transform:
   - {fileID: 1479173567}
   - {fileID: 1077768381}
   - {fileID: 1727858890}
-  m_Father: {fileID: 1202568368}
-  m_RootOrder: 2
+  m_Father: {fileID: 1023089744}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2112842229
 GameObject:
@@ -58221,7 +56893,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.3826835, y: 0.000000015896621, z: -0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: -0.000000015896624, z: 0.0000000065845973, w: 0.92387956}
   m_LocalPosition: {x: -31.737444, y: 24.97092, z: -53.956017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -58927,7 +57599,7 @@ GameObject:
   - component: {fileID: 2137277100}
   - component: {fileID: 2137277101}
   m_Layer: 0
-  m_Name: Wave 28
+  m_Name: EnemySpawnPos29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

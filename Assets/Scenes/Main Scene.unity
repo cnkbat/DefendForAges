@@ -2239,16 +2239,16 @@ MonoBehaviour:
   waves:
   - waveName: Test Wave
     enemyGroups:
+    - enemyName: Medium Enemy
+      enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
+      enemyCount: 1
+      spawnedEnemyCounter: 0
     - enemyName: Small Enemy
       enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
       enemyCount: 1
       spawnedEnemyCounter: 0
     - enemyName: Big Enemy
       enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
-      enemyCount: 1
-      spawnedEnemyCounter: 0
-    - enemyName: Medium Enemy
-      enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
       enemyCount: 1
       spawnedEnemyCounter: 0
     enemyQuota: 10
@@ -3110,6 +3110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAdmin: 1
   adminPanel: {fileID: 1636070929}
+  playerKillTestButton: {fileID: 1743794552}
 --- !u!4 &1165537892
 Transform:
   m_ObjectHideFlags: 0
@@ -4521,6 +4522,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7512285399178677746, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
   m_PrefabInstance: {fileID: 1817415255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1743794552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6808353459823653961, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+  m_PrefabInstance: {fileID: 310772934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1765314798
 GameObject:
   m_ObjectHideFlags: 0

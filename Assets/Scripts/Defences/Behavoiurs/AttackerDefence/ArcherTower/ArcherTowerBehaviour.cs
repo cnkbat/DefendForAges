@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 {
-    ObjectPooler objectPooler;
+
     NearestEnemyFinder nearestEnemyFinder;
 
     [Header("Aim")]
@@ -53,7 +53,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
     protected override void Start()
     {
         base.Start();
-        objectPooler = ObjectPooler.instance;
+
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
         nearestEnemyFinder.SetFireRange(fireRange);
     }
@@ -73,7 +73,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
         if (!nearestEnemyFinder.GetNearestEnemy()) return;
 
-      //  Debug.Log("attack "+name);
+        //  Debug.Log("attack "+name);
         OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), attackerDefenceStat.GetDamage(), false, archerStickmans[0].GetAnimDur());
         // might need to add a check for newspeed == 0
         OnStickmanAnimationPlayNeeded?.Invoke(attackAnimMultiplier/attackerDefenceStat.GetAttackSpeed());

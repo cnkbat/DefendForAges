@@ -4873,6 +4873,7 @@ MonoBehaviour:
   repairTimer: 2
   enemySlowedSpeed: 2
   dropTypeCount: 3
+  enemyHealthBarDisappearTimer: 1
   fontSizeOnEnemyHit: 1
   fontSizeOnPlayerHeal: 1
   totalWaveCount: 0

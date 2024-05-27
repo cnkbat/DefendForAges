@@ -45,6 +45,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Enemy Related")]
     [SerializeField] public float enemySlowedSpeed;
     [SerializeField] public int dropTypeCount = 3;
+    [SerializeField] public float enemyHealthBarDisappearTimer = 1;
 
     [Header("Flaoting Text Related")]
     [Tooltip("Hasara göre çarpan olarak çalışıyor.")][SerializeField] public float fontSizeOnEnemyHit = 1;
@@ -57,9 +58,9 @@ public class GameManager : Singleton<GameManager>
     public Action OnCityDidnotChanged;
     public Action OnApplyEarnings;
 
-    //******///
+    //****** Code Cleaners *****///
     bool isEraCompleted = false;
-    public int totalWaveCount;
+    [HideInInspector] public int totalWaveCount;
 
     private void OnEnable()
     {

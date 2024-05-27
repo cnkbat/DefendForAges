@@ -365,6 +365,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         gameObject.layer = LayerMask.NameToLayer(newLayerName);
     }
 
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
     #endregion
 
 }

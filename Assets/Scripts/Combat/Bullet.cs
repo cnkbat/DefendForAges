@@ -57,7 +57,12 @@ public class Bullet : MonoBehaviour, IPoolableObject
     public void ResetObjectData()
     {
         targetReached = false;
-        targetPos = target.transform.position;
+
+        if (target != null)
+        {
+            targetPos = target.transform.position;
+        }
+
         firedPoint = transform.position;
 
         Vector3 worldAimTarget = targetPos;
@@ -85,7 +90,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
         if (target != null && (!target.gameObject.activeSelf || targetReached))
         {
             transform.position += transform.forward * travelSpeed * Time.deltaTime;
-
         }
         else if (target != null)
         {

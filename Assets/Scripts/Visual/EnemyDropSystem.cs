@@ -26,18 +26,34 @@ public class EnemyDropSystem : MonoBehaviour
     {
         if (dropTypeIndex == (int)DropTypes.coin)
         {
+
             GameObject spawnedObject = objectPooler.SpawnFromPool("Coin", enemyBehaviour.transform.position);
-            gameManager.droppedCurrencies.Add(spawnedObject.transform);
+
+            CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
+            currencyAnimationHandler.PlayDropAnim();
+            gameManager.droppedCurrencies.Add(currencyAnimationHandler);
+
         }
         else if (dropTypeIndex == (int)DropTypes.meat)
         {
+
             GameObject spawnedObject = objectPooler.SpawnFromPool("Meat", enemyBehaviour.transform.position);
-            gameManager.droppedCurrencies.Add(spawnedObject.transform);
+
+            CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
+            currencyAnimationHandler.PlayDropAnim();
+            gameManager.droppedCurrencies.Add(currencyAnimationHandler);
+
+
         }
         else if (dropTypeIndex == (int)DropTypes.experiencePoint)
         {
+
             GameObject spawnedObject = objectPooler.SpawnFromPool("XP", enemyBehaviour.transform.position);
-            gameManager.droppedCurrencies.Add(spawnedObject.transform);
+
+            CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
+            currencyAnimationHandler.PlayDropAnim();
+            gameManager.droppedCurrencies.Add(currencyAnimationHandler);
+
         }
     }
 

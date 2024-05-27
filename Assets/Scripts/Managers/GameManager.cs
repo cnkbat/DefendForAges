@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     public bool canSpawnEnemy;
 
     [Header("Drops")]
-    [SerializeField] public List<Transform> droppedCurrencies = new List<Transform>();
+    [SerializeField] public List<CurrencyAnimationHandler> droppedCurrencies = new List<CurrencyAnimationHandler>();
     [SerializeField] private float droppedCollectionAnimDur;
 
     [Header("Phases")]
@@ -208,9 +208,13 @@ public class GameManager : Singleton<GameManager>
     {
         for (int i = 0; i < droppedCurrencies.Count; i++)
         {
-            float animDur = Vector3.Distance(droppedCurrencies[i].position, playerStats.transform.position) / droppedCollectionAnimDur;
-            droppedCurrencies[i].transform.DOMove(playerStats.transform.position, animDur);
+            float animDur = Vector3.Distance(droppedCurrencies[i].transform.position, playerStats.transform.position) / droppedCollectionAnimDur;
+
+            droppedCurrencies[i].PlayCollectionAnim();
+            droppedCurrencies[i].transform.DOMove(playerStats.transform.position, animDur).OnComplete(() => droppedCurrencies[i].gameObject.SetActive(false));
         }
+
+        droppedCurrencies.Clear();
     }
 
     #endregion

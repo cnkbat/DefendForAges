@@ -6,66 +6,69 @@ using System;
 
 public class SpawnAnimationHandler : MonoBehaviour
 {
+    private BuyableArea buyableArea;
     [Header("Animation Type")]
-    [SerializeField] AnimationTypes animationType = AnimationTypes.dropDown;
+    [SerializeField] private AnimationTypes animationType = AnimationTypes.dropDown;
 
     [Header("Basics")]
-    [Tooltip("Eklenecek olan objeler")][SerializeField] List<Transform> objectsToAnimateOnSpawn;
-    [Tooltip("Kaldırılacak olan objeler")][SerializeField] List<Transform> objectsToAnimateOnDespawn;
+
 
     [Header("-----------------")]
 
     [Header("Drop Down Settings")]
     [SerializeField] private float flyUpValue;
     [SerializeField] private float dropDownAnimationTime;
-    [SerializeField] Ease dropDownEaseType = Ease.Linear;
-
+    [SerializeField] private Ease dropDownEaseType = Ease.Linear;
 
     [Header("-----------------")]
 
     [Header("Small To Big Settings")]
     [SerializeField] private float smallToBigAnimationTime;
-    [SerializeField] Ease smallToBigEaseType = Ease.Linear;
+    [SerializeField] private Ease smallToBigEaseType = Ease.Linear;
 
-    [Header("Events")]
-    public Action OnAnimPlay;
+
 
     private void OnEnable()
     {
-        OnAnimPlay += PlaySpawningAnimation;
+        buyableArea = transform.parent.GetComponent<BuyableArea>();
+        buyableArea.OnAnimPlayNeeded += PlaySpawningAnimation;
     }
 
     private void OnDisable()
     {
-        OnAnimPlay -= PlaySpawningAnimation;
+        buyableArea.OnAnimPlayNeeded -= PlaySpawningAnimation;
     }
 
-    public void PlaySpawningAnimation()
+    public void PlaySpawningAnimation(List<Transform> objectsToEnable, List<Transform> objectsToDisable, List<Transform> spawnPosesToDisable)
     {
-        Debug.Log("play anim");
+        for (int i = 0; i < spawnPosesToDisable.Count; i++)
+        {
+            spawnPosesToDisable[i].gameObject.SetActive(false);
+        }
+
         if (animationType == AnimationTypes.dropDown)
         {
-            for (int i = 0; i < objectsToAnimateOnSpawn.Count; i++)
+            for (int i = 0; i < objectsToEnable.Count; i++)
             {
-                PlayDropDownAnimation(objectsToAnimateOnSpawn[i]);
+                PlayDropDownAnimation(objectsToEnable[i]);
             }
 
-            for (int i = 0; i < objectsToAnimateOnDespawn.Count; i++)
+            for (int i = 0; i < objectsToDisable.Count; i++)
             {
-                PlayDropDownDespawnAnimation(objectsToAnimateOnDespawn[i]);
+                PlayDropDownDespawnAnimation(objectsToDisable[i]);
             }
 
         }
         else if (animationType == AnimationTypes.smallToBig)
         {
-            for (int i = 0; i < objectsToAnimateOnSpawn.Count; i++)
+            for (int i = 0; i < objectsToEnable.Count; i++)
             {
-                PlaySmallToBigAnimation(objectsToAnimateOnSpawn[i]);
+                PlaySmallToBigAnimation(objectsToEnable[i]);
             }
 
-            for (int i = 0; i < objectsToAnimateOnDespawn.Count; i++)
+            for (int i = 0; i < objectsToDisable.Count; i++)
             {
-                PlaySmallToBigDeSpawnAnimation(objectsToAnimateOnDespawn[i]);
+                PlaySmallToBigDeSpawnAnimation(objectsToDisable[i]);
             }
 
         }
@@ -90,6 +93,8 @@ public class SpawnAnimationHandler : MonoBehaviour
 
     private void PlayDropDownAnimation(Transform animatedObject)
     {
+        animatedObject.gameObject.SetActive(true);
+
         Vector3 localPos = animatedObject.localPosition;
         Vector3 localScale = animatedObject.localScale;
 

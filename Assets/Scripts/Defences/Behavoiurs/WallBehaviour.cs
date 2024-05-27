@@ -6,7 +6,7 @@ public class WallBehaviour : DefencesBehaviourBase
 
     WallStats wallStats;
     NavMeshManager navMeshManager;
-    [SerializeField] private List<GameObject> nearbyEnvironment;
+    [SerializeField] private List<Animator> nearbyEnvironment;
 
     protected override void OnEnable()
     {
@@ -60,7 +60,8 @@ public class WallBehaviour : DefencesBehaviourBase
 
         for (int i = 0; i < nearbyEnvironment.Count; i++)
         {
-            nearbyEnvironment[i].SetActive(true);
+            nearbyEnvironment[i].SetTrigger("Revive");
+            nearbyEnvironment[i].GetComponent<BoxCollider>().enabled = true;
         }
 
         navMeshManager.BakeNavMesh();
@@ -72,12 +73,13 @@ public class WallBehaviour : DefencesBehaviourBase
 
         for (int i = 0; i < nearbyEnvironment.Count; i++)
         {
-            nearbyEnvironment[i].SetActive(false);
+            nearbyEnvironment[i].SetTrigger("Break");
+            nearbyEnvironment[i].GetComponent<BoxCollider>().enabled = false;
         }
 
         navMeshManager.BakeNavMesh();
     }
-    
+
     #endregion
 
 }

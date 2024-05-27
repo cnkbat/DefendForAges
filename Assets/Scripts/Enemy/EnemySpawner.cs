@@ -75,12 +75,10 @@ public class EnemySpawner : MonoBehaviour
         OnWaveProgressed += uiManager.UpdateInWaveProgressBarValue;
 
         cityManager = transform.root.GetComponent<CityManager>();
-        cityManager.OnEnemySpawnPosesUpdated += OnAssignEnemySpawnPoints;
     }
 
     private void OnDisable()
     {
-        cityManager.OnEnemySpawnPosesUpdated -= OnAssignEnemySpawnPoints;
         OnWaveProgressed -= uiManager.UpdateInWaveProgressBarValue;
     }
 
@@ -210,7 +208,7 @@ public class EnemySpawner : MonoBehaviour
         killedEnemies++;
 
         OnWaveProgressed?.Invoke((float)killedEnemies / (float)totalNumOfEnemiesOfSpawner);
-        
+
         if (killedEnemies >= totalNumOfEnemiesOfSpawner)
         {
             OnWaveCompleted?.Invoke();
@@ -219,7 +217,17 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnAssignEnemySpawnPoints()
     {
-        enemySpawnPoints = gameManager.allCities[playerStats.GetCityIndex()].GetEnemySpawnPoses();
+        List<Transform> tempList = gameManager.allCities[playerStats.GetCityIndex()].GetEnemySpawnPoses();
+
+        for (int i = 0; i < tempList.Count; i++)
+        {
+            if (tempList[i].gameObject.activeSelf)
+            {
+                enemySpawnPoints.Add(tempList[i]);
+            }
+        }
+
+        tempList.Clear();
     }
 
     // Total health calculator

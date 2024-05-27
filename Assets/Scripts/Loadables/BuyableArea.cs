@@ -14,7 +14,7 @@ public class BuyableArea : MonoBehaviour
 
     [Header("Tighted Buyable Area")]
     [SerializeField] BuyableArea tightedBuyableArea;
-    
+
     [Header("AI Related")]
     [SerializeField] private int surfaceAreaIndex;
 
@@ -24,30 +24,26 @@ public class BuyableArea : MonoBehaviour
     [Header("Loadable")]
     [SerializeField] public LoadableBase loadableBase;
 
-    [Header("Enemy Spawns")]
-    [SerializeField] List<Transform> enemySpawnAreas;
+    [Header("Spawn Poses")]
+    [SerializeField] private List<Transform> spawnPosesToDisable;
 
     [Header("Visuals")]
-    // animatore set  edielecek
-    [SerializeField] List<GameObject> assets;
-    // animatore set  edielecek
-    [SerializeField] List<GameObject> objectsToDisableOnBuy;
-    [SerializeField] List<GameObject> ghostedAssets;
+    [SerializeField] private List<Transform> objectsToEnableOnBuy;
+    [SerializeField] private List<Transform> objectsToDisableOnBuy;
+    [SerializeField] private List<Transform> ghostedAssets;
 
-    private SpawnAnimationHandler spawnAnimationHandler;
 
     [Header("Events")]
     public Action OnAreaBuyed;
-    public Action<List<Transform>, int> OnAreaEnabled;
+    public Action<int> OnAreaEnabled;
     public Action OnNavMeshUpdated;
+    public Action<List<Transform>, List<Transform>, List<Transform>> OnAnimPlayNeeded;
 
     #region OnEnable / OnDisable
     private void OnEnable()
     {
         navMeshManager = NavMeshManager.instance;
         cityManager = transform.parent.GetComponent<CityManager>();
-
-        spawnAnimationHandler = GetComponentInChildren<SpawnAnimationHandler>();
 
         LoadBuyableAreaData();
 
@@ -104,7 +100,7 @@ public class BuyableArea : MonoBehaviour
 
                 for (int i = 0; i < ghostedAssets.Count; i++)
                 {
-                    ghostedAssets[i].SetActive(true);
+                    ghostedAssets[i].gameObject.SetActive(true);
                 }
             }
         }
@@ -115,7 +111,7 @@ public class BuyableArea : MonoBehaviour
 
             for (int i = 0; i < ghostedAssets.Count; i++)
             {
-                ghostedAssets[i].SetActive(true);
+                ghostedAssets[i].gameObject.SetActive(true);
             }
         }
 
@@ -135,24 +131,21 @@ public class BuyableArea : MonoBehaviour
     {
         loadableBase.gameObject.SetActive(!isBuyed);
 
-        for (int i = 0; i < assets.Count; i++)
+        for (int i = 0; i < objectsToEnableOnBuy.Count; i++)
         {
-            if (assets[i].activeSelf != isBuyed)
+            if (objectsToEnableOnBuy[i].gameObject.activeSelf != isBuyed)
             {
-                assets[i].SetActive(isBuyed);
-                // play activation animation
+                OnAnimPlayNeeded?.Invoke(objectsToEnableOnBuy, objectsToDisableOnBuy,spawnPosesToDisable);
             }
         }
 
         for (int i = 0; i < ghostedAssets.Count; i++)
         {
-            ghostedAssets[i].SetActive(!isBuyed);
+            ghostedAssets[i].gameObject.SetActive(!isBuyed);
         }
 
 
-        spawnAnimationHandler?.OnAnimPlay?.Invoke();
-
-        OnAreaEnabled?.Invoke(enemySpawnAreas, surfaceAreaIndex);
+        OnAreaEnabled?.Invoke(surfaceAreaIndex);
         //OnNavMeshUpdated?.Invoke();
     }
 

@@ -22,9 +22,6 @@ public class DefencesBehaviourBase : EnemyTarget
         defencesStatsBase = GetComponent<DefencesStatsBase>();
         boxCollider = GetComponent<BoxCollider>();
 
-
-
-
         ResetHealthValue();
         CheckForUpgradeable();
     }
@@ -56,7 +53,7 @@ public class DefencesBehaviourBase : EnemyTarget
     protected virtual void DestroyDefence()
     {
         base.TargetDestroyed();
-        asset.SetActive(false);
+        //asset.SetActive(false);
         boxCollider.enabled = false;
 
         // hapticler

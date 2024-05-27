@@ -41,7 +41,6 @@ public class CityManager : MonoBehaviour
     [SerializeField] private TowerBehaviour tower;
 
     [Header("Events")]
-    public Action OnEnemySpawnPosesUpdated;
     public Action OnTargetListUpdated;
     public Action OnWaveCalled;
 
@@ -129,23 +128,14 @@ public class CityManager : MonoBehaviour
         saveManager.OnSaved?.Invoke();
     }
 
-    public void AreaEnabled(List<Transform> addedPoses, int newSurfaceAreaIndex)
+    public void AreaEnabled(int newSurfaceAreaIndex)
     {
-        for (int i = 0; i < addedPoses.Count; i++)
-        {
-            AddEnemyPos(addedPoses[i]);
-        }
-
         gameManager.surfaceAreaIndex = newSurfaceAreaIndex;
     }
+    
     #endregion
 
     #region Enemy Related
-    public void AddEnemyPos(Transform newTransform)
-    {
-        enemySpawnPoses.Add(newTransform);
-        OnEnemySpawnPosesUpdated?.Invoke();
-    }
 
     // this function has to be called everytime when a new targetable is spawned or when a targetable is destroyed.
     public void UpdateTargetList()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -23,6 +24,14 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private List<GameObject> totalProgressBarImages;
     [SerializeField] private Slider totalWaveProgressBar;
     [SerializeField] private Slider inwaveProgressBar;
+
+    [Header("ProgressBar Animation")]
+    [SerializeField] private RectTransform progressBarHideTransform;
+    [SerializeField] private RectTransform totalWaveProgressBarOriginalTransform;
+    [SerializeField] private RectTransform inwaveProgressBarOriginalTransform;
+    [SerializeField] private float progressBarAnimDur;
+    [SerializeField] private Ease progressBarEaseType;
+
 
     [Header("Revive")]
     [SerializeField] private Button lateReviveButton;
@@ -399,9 +408,15 @@ public class UIManager : Singleton<UIManager>
 
         waveCallButton.gameObject.SetActive(false);
 
-        totalWaveProgressBar.transform.parent.gameObject.SetActive(false);
+        totalWaveProgressBar.transform.parent.DOLocalMoveY(progressBarHideTransform.anchoredPosition.y, progressBarAnimDur).
+            SetEase(progressBarEaseType).
+                OnComplete(() => totalWaveProgressBar.transform.parent.gameObject.SetActive(false));
+
 
         inwaveProgressBar.transform.parent.gameObject.SetActive(true);
+
+        inwaveProgressBar.transform.parent.DOLocalMoveY(inwaveProgressBarOriginalTransform.anchoredPosition.y, progressBarAnimDur)
+            .SetEase(progressBarEaseType);
 
         UpdateInWaveProgressBarTexts();
     }
@@ -411,25 +426,23 @@ public class UIManager : Singleton<UIManager>
         inwaveProgressBar.value = value;
     }
 
-    public void UpdateInWaveProgressBarTexts()
-    {
-        UpdateText(currentWaveIndexText, playerStats.GetWaveIndex());
-        UpdateText(nextWaveIndexText, playerStats.GetWaveIndex() + 1);
-    }
 
     private void WaveCompleted()
     {
+        Debug.Log("work");
         waveCallButton.gameObject.SetActive(true);
-
-
-        inwaveProgressBar.transform.parent.gameObject.SetActive(false);
         UpdateAllWavesProgressBar();
     }
 
     private void UpdateAllWavesProgressBar()
     {
+        inwaveProgressBar.transform.parent.DOLocalMoveY(progressBarHideTransform.anchoredPosition.y, progressBarAnimDur).
+           SetEase(progressBarEaseType).
+               OnComplete(() => inwaveProgressBar.transform.parent.gameObject.SetActive(false));
 
         totalWaveProgressBar.transform.parent.gameObject.SetActive(true);
+        totalWaveProgressBar.transform.parent.DOLocalMoveY(totalWaveProgressBarOriginalTransform.anchoredPosition.y, progressBarAnimDur)
+            .SetEase(progressBarEaseType);
         totalWaveProgressBar.value = (float)playerStats.GetWaveIndex() / (float)gameManager.totalWaveCount;
 
         for (int i = 0; i < totalProgressBarImages.Count; i++)
@@ -438,9 +451,16 @@ public class UIManager : Singleton<UIManager>
         }
 
         Debug.Log("city Index =" + playerStats.GetCityIndex());
+
         totalProgressBarImages[playerStats.GetCityIndex()].SetActive(true);
         UpdateInWaveProgressBarTexts();
 
+    }
+
+    public void UpdateInWaveProgressBarTexts()
+    {
+        UpdateText(currentWaveIndexText, playerStats.GetWaveIndex());
+        UpdateText(nextWaveIndexText, playerStats.GetWaveIndex() + 1);
     }
 
     #endregion

@@ -568,6 +568,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1278363551, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+      propertyPath: progressBarEaseType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1412592178, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0

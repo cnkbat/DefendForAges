@@ -203,6 +203,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
             animator.SetTrigger("Drop");
         }
 
+        gameManager.droppedCurrencies.Add(objectToSpawn.transform);
 
         poolDictionary[tag].Enqueue(objectToSpawn);
 

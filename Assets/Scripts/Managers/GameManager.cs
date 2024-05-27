@@ -14,6 +14,9 @@ public class GameManager : Singleton<GameManager>
     private EnemySpawner activeWave;
     public bool canSpawnEnemy;
 
+    [Header("Drops")]
+    [SerializeField] public List<Transform> droppedCurrencies = new List<Transform>();
+
     [Header("Phases")]
     public bool isAttackPhase;
 

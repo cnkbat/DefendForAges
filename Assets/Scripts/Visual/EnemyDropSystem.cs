@@ -19,7 +19,6 @@ public class EnemyDropSystem : MonoBehaviour
         enemyBehaviour.OnDropAnimNeeded -= PlayDropAnim;
     }
 
-
     public void PlayDropAnim(int dropTypeIndex)
     {
         if (dropTypeIndex == (int)DropTypes.coin)

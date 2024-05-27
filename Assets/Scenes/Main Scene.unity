@@ -1192,9 +1192,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: 
   loadableBase: {fileID: 1063876106}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 2063285140}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 1713951128}
   ghostedAssets: []
@@ -3315,10 +3314,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationType: 1
-  objectsToAnimateOnSpawn:
-  - {fileID: 2063285141}
-  objectsToAnimateOnDespawn:
-  - {fileID: 1713951129}
   flyUpValue: 100
   dropDownAnimationTime: 2
   dropDownEaseType: 1
@@ -3459,6 +3454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1349913517}
+  - component: {fileID: 1349913518}
   m_Layer: 0
   m_Name: StartPoint
   m_TagString: Untagged
@@ -3482,6 +3478,24 @@ Transform:
   m_Father: {fileID: 2112083883}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1349913518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349913516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbfefca139515a0418c442b7e30c9356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationType: 0
+  flyUpValue: 0
+  dropDownAnimationTime: 0
+  dropDownEaseType: 1
+  smallToBigAnimationTime: 0
+  smallToBigEaseType: 1
 --- !u!4 &1362287740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7512285399178677746, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
@@ -4875,6 +4889,7 @@ MonoBehaviour:
   bulletFireRange: 1000
   repairTimer: 2
   enemySlowedSpeed: 2
+  dropTypeCount: 3
   fontSizeOnEnemyHit: 1
   fontSizeOnPlayerHeal: 1
   totalWaveCount: 0

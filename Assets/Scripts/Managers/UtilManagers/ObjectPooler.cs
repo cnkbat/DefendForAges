@@ -79,6 +79,8 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return objectToSpawn;
     }
 
+    #region Enemy
+
     public GameObject SpawnEnemyFromPool(string tag, Vector3 spawnPos, Transform newParent)
     {
 
@@ -104,6 +106,10 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
         return objectToSpawn;
     }
+
+    #endregion
+
+    #region Bullet
 
     public GameObject SpawnBulletFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null, float damage = 0, bool isPlayersBullet = false)
     {
@@ -138,8 +144,11 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return objectToSpawn;
     }
 
+    #endregion
 
-    public GameObject SpawnFloatingTextFromPool(string tag, Vector3 spawnPos, float damageValue, float fontSize,Color textColor)
+    #region Visuals
+
+    public GameObject SpawnFloatingTextFromPool(string tag, Vector3 spawnPos, float damageValue, float fontSize, Color textColor)
     {
 
         if (!poolDictionary.ContainsKey(tag))
@@ -170,4 +179,34 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return objectToSpawn;
     }
 
+    public GameObject SpawnDropTypeFromPool(string tag, Vector3 spawnPos)
+    {
+
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.Log("object spawn error with " + tag);
+            return null;
+        }
+
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        objectToSpawn.SetActive(true);
+
+        objectToSpawn.transform.position = spawnPos;
+
+        if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
+        {
+            pooled.OnObjectPooled();
+        }
+
+        if (objectToSpawn.TryGetComponent(out Animator animator))
+        {
+            animator.SetTrigger("Drop");
+        }
+
+
+        poolDictionary[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
+    }
+    #endregion
 }

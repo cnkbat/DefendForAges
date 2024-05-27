@@ -19,11 +19,13 @@ public class EnemyAnimationHandler : MonoBehaviour
     }
     private void OnEnable()
     {
+        ResetAnimator();
 
         enemyBehaviour.OnAttacking += Attack;
         enemyBehaviour.OnTargetNotReached += StopAttack;
         enemyBehaviour.OnMove += MoveAnimation;
         enemyBehaviour.OnDeath += Death;
+        enemyBehaviour.OnDamageTaken += () => animator.SetTrigger("TakeHit");
 
         // Anim speed change
         enemyBehaviour.OnMovementSpeedChanged += ChangeWalkAnimationSpeed;
@@ -36,6 +38,7 @@ public class EnemyAnimationHandler : MonoBehaviour
         enemyBehaviour.OnTargetNotReached -= StopAttack;
         enemyBehaviour.OnMove -= MoveAnimation;
         enemyBehaviour.OnDeath -= Death;
+        enemyBehaviour.OnDamageTaken -= () => animator.SetTrigger("TakeHit");
 
 
         // Anim speed change
@@ -43,6 +46,12 @@ public class EnemyAnimationHandler : MonoBehaviour
         enemyBehaviour.OnAttackSpeedChanged -= ChangeAttackAnimationSpeed;
     }
 
+    private void ResetAnimator()
+    {
+        animator.SetBool("isKill", false);
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("isWalking", false);
+    }
 
     public void Attack()
     {
@@ -73,7 +82,7 @@ public class EnemyAnimationHandler : MonoBehaviour
     public void ChangeAttackAnimationSpeed(float newSpeed)
     {
         // might need to add a check for newspeed == 0
-        animator.SetFloat("AttackASMultiplier", attackSpeedMultiplier/newSpeed);
+        animator.SetFloat("AttackASMultiplier", attackSpeedMultiplier / newSpeed);
     }
 
     #endregion

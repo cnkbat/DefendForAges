@@ -39,6 +39,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Enemy Related")]
     [SerializeField] public float enemySlowedSpeed;
+    [SerializeField] public int dropTypeCount = 3;
 
     [Header("Flaoting Text Related")]
     [Tooltip("Hasara göre çarpan olarak çalışıyor.")][SerializeField] public float fontSizeOnEnemyHit = 1;

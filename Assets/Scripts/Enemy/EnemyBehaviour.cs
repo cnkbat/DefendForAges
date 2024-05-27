@@ -1,12 +1,10 @@
-﻿using DG.Tweening.Core.Easing;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using System;
 using UnityEngine.AI;
 using MoreMountains.Feedbacks;
-using System.Linq;
+using Random = UnityEngine.Random;
 
 public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 {
@@ -46,30 +44,46 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     [Header("Health")]
     private float currentHealth;
 
+    #region Visuals
+
     [Header("*--- Visuals ---*")]
 
     [Header("Animation")]
 
     [SerializeField] private float deathAnimDur;
-    private Animator animator;
     [SerializeField] private Transform enemyAsset;
     [SerializeField] private float aimSpeed = 20f;
 
     [Header("Color Change On Death")]
     [SerializeField] private Renderer boundRenderer;
-    [SerializeField] private int materialIndex = 0;
+    [SerializeField] private List<int> materialIndexes = new List<int>();
     [SerializeField] private Material originalMat;
     [SerializeField] private Material deadMat;
 
-    [Header("Events")]
-    public Action OnEnemyKilled;
+    #endregion
+
+    #region Events
+
+    [Header("State Events")]
     public Action OnEnemySpawned;
-    public Action OnAttacking;
-    public Action OnTargetNotReached;
     public Action OnDeath;
+
+    [Header("Combat Related Events")]
+    public Action OnAttacking;
+    public Action OnDamageTaken;
+
+    [Header("Movement Related Events")]
+    public Action OnTargetNotReached;
     public Action OnMove;
+
+    [Header("Stat Change Related Events")]
     public Action<float> OnMovementSpeedChanged;
     public Action<float> OnAttackSpeedChanged;
+
+    [Header("Visual Events")]
+    public Action<int> OnDropAnimNeeded;
+
+    #endregion
 
     #region IPoolableObject Functions
 
@@ -79,7 +93,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         earningsHolder = EarningsHolder.instance;
         gameManager = GameManager.instance;
 
-        animator = this.GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
         enemyTargeter = this.GetComponent<EnemyTargeter>();
         enemyStats = this.GetComponent<EnemyStats>();
@@ -87,7 +100,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         feelFeedBacks = GetComponentInChildren<MMFeedbacks>();
         enemyAsset = transform.Find("enemyAsset");
 
-        if(feelFeedBacks !=null)
+        if (feelFeedBacks != null)
         {
             feelFeedBacks.Initialization();
         }
@@ -99,7 +112,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         canMove = true;
         isDead = false;
-        animator.SetBool("isWalking", true);
+
+        OnMove?.Invoke();
 
         SetObjectLayer(aliveLayerName);
 
@@ -110,10 +124,11 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         currentCityManager = enemyTargeter.GetCityManager();
         assignedEnemySpawner = currentCityManager.GetCurrentWave();
 
-        OnEnemyKilled += assignedEnemySpawner.OnEnemyKilled;
+        OnDeath += assignedEnemySpawner.OnEnemyKilled;
 
         navMeshAgent.stoppingDistance = originalStoppingDistance;
-        boundRenderer.material = originalMat;
+
+        ChangeEnemyMat(originalMat);
 
         RefillHealth(enemyStats.GetMaxHealth());
         ResetAttackSpeed();
@@ -126,14 +141,10 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     {
         OnEnemySpawned -= enemyTargeter.EnemySpawned;
         OnEnemySpawned -= enemyStats.EnemySpawned;
-        OnEnemyKilled -= assignedEnemySpawner.OnEnemyKilled;
+        OnDeath -= assignedEnemySpawner.OnEnemyKilled;
 
 
         navMeshAgent.isStopped = false;
-
-        animator.SetBool("isKill", false);
-        animator.SetBool("isAttacking", false);
-        animator.SetBool("isWalking", false);
 
     }
 
@@ -183,16 +194,13 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
                 if (attackTimer <= 0)
                 {
-                    // Invoke attacking
                     OnAttacking?.Invoke();
-                    //animator.SetTrigger("Attacking");
                     ResetAttackSpeed();
                 }
             }
             else
             {
                 OnTargetNotReached?.Invoke();
-                //animator.SetBool("isAttacking", false);
                 canMove = true;
                 navMeshAgent.stoppingDistance = originalStoppingDistance;
             }
@@ -200,7 +208,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         else
         {
             OnTargetNotReached?.Invoke();
-            //animator.SetBool("isAttacking", false);
             canMove = true;
             navMeshAgent.stoppingDistance = originalStoppingDistance;
         }
@@ -222,7 +229,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     }
 
     #endregion
-
 
     #region  Movement
     IEnumerator EnableMovement(float duration)
@@ -272,7 +278,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         }
         else
         {
-            animator.SetTrigger("TakeHit");
+            OnDamageTaken?.Invoke();
         }
 
         StartCoroutine(EnableMovement(enemyStats.GetKnockbackDuration()));
@@ -286,20 +292,17 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         navMeshAgent.speed = 0;
         OnMovementSpeedChanged.Invoke(0);
 
-        for (int i = 0; i < materialIndex; i++)
-        {
-            boundRenderer.materials[materialIndex] = deadMat;
-        }
+        ChangeEnemyMat(deadMat);
 
-        playerStats.OnKillEnemy?.Invoke(enemyStats.GetPowerUpValue());
-        earningsHolder.OnTempEarningsUpdated?.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue());
+        ApplyPlayerEarnings();
 
         gameManager.allSpawnedEnemies.Remove(gameObject);
+
+        PlayDropSystemAnimation();
 
         OnDeath?.Invoke();
         SetObjectLayer(deadLayerName);
 
-        OnEnemyKilled?.Invoke();
         StartCoroutine(KillEnemy());
 
         // test için commentlendi, geri getirilicek
@@ -311,6 +314,18 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         //gameObject.layer = LayerMask.NameToLayer("DeadZombie");
     }
 
+    private void ApplyPlayerEarnings()
+    {
+        playerStats.OnKillEnemy?.Invoke(enemyStats.GetPowerUpValue());
+        earningsHolder.OnTempEarningsUpdated?.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue());
+    }
+
+    private IEnumerator KillEnemy()
+    {
+        yield return new WaitForSeconds(deathAnimDur);
+        ResetObjectData();
+        gameObject.SetActive(false);
+    }
 
     public void RefillHealth(float newCurrentHealth)
     {
@@ -319,12 +334,24 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     #endregion
 
-    private IEnumerator KillEnemy()
+    #region Visual Functions
+
+    private void ChangeEnemyMat(Material newMat)
     {
-        yield return new WaitForSeconds(deathAnimDur);
-        ResetObjectData();
-        gameObject.SetActive(false);
+        for (int i = 0; i < materialIndexes.Count; i++)
+        {
+            boundRenderer.materials[materialIndexes[i]] = newMat;
+        }
     }
+
+    
+    private void PlayDropSystemAnimation()
+    {
+        int dropRand = Random.Range(0, gameManager.dropTypeCount);
+        OnDropAnimNeeded?.Invoke(dropRand);
+    }
+
+    #endregion
 
     #region  Getters & Setters
 
@@ -339,4 +366,5 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     }
 
     #endregion
+
 }

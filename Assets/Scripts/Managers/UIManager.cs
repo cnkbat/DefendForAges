@@ -29,6 +29,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button reviveButton;
     [SerializeField] private GameObject reviveUI;
 
+    [Header("Power Up Slider")]
+    [SerializeField] private Image powerUpFill;
+    [SerializeField] private ParticleSystem powerUpVFX;
+
     [Header("Earnings")]
     [SerializeField] private Button normalApplyEarningsButton;
 
@@ -115,7 +119,7 @@ public class UIManager : Singleton<UIManager>
         // onwavewondan kaldirip button aksiyonuna taşınacak ve wavewon ekranında
         // wavewon paneli açılacak
         // şuanda wave kazanılınca direkt olarak playera atıyor
-        
+
         playerStats.OnWaveWon += OnApplyEarningToPlayerButtonClicked;
 
         // Revive & Wave Control
@@ -124,7 +128,12 @@ public class UIManager : Singleton<UIManager>
         waveCallButton.onClick.AddListener(OnWaveCallClicked);
         normalApplyEarningsButton.onClick.AddListener(OnApplyEarningToPlayerButtonClicked);
 
+        // Power UP
+        playerStats.OnPowerUpValueChanged += UpdatePowerUpSliderValue;
+        playerStats.OnPowerUpEnabled += EnablePowerupUIAnimation;
+        playerStats.OnPowerUpDisabled += DisablePowerupUIAnimation;
 
+        // Death & Revive
         playerStats.OnPlayerRevived += DisableReviveUI;
         playerStats.OnPlayerKilled += EnableReviveUI;
 
@@ -160,15 +169,30 @@ public class UIManager : Singleton<UIManager>
 
     }
 
+
     private void OnDisable()
     {
-        // Revive & Wave Control
+        // Revive & Wave Control Buttons
+        lateReviveButton.onClick.RemoveAllListeners();
         reviveButton.onClick.RemoveAllListeners();
         waveCallButton.onClick.RemoveAllListeners();
-        playerStats.OnWaveWon -= WaveCompleted;
+        normalApplyEarningsButton.onClick.RemoveAllListeners();
 
-        // Text Updates
+        playerStats.OnWaveWon -= WaveCompleted;
+        playerStats.OnWaveWon -= OnApplyEarningToPlayerButtonClicked;
+
+        // Power UP
+        playerStats.OnPowerUpValueChanged += UpdatePowerUpSliderValue;
+        playerStats.OnPowerUpEnabled += EnablePowerupUIAnimation;
+        playerStats.OnPowerUpDisabled += DisablePowerupUIAnimation;
+
+        // Death & Revive
+        playerStats.OnPlayerRevived -= DisableReviveUI;
+        playerStats.OnPlayerKilled -= EnableReviveUI;
+
+        // Text Updates 
         playerStats.OnMoneyChange -= UpdateMoneyText;
+        playerStats.OnMeatChange -= UpdateMeatText;
         playerStats.OnExperienceGain -= UpdateLevelBar;
 
 
@@ -211,6 +235,7 @@ public class UIManager : Singleton<UIManager>
     }
     private void SetStartingUI()
     {
+        UpdatePowerUpSliderValue(0);
         UpdateMoneyText();
         UpdateMeatText();
 
@@ -418,6 +443,25 @@ public class UIManager : Singleton<UIManager>
 
     }
 
+    #endregion
+
+    #region Power Up
+    public void UpdatePowerUpSliderValue(float newValue)
+    {
+        powerUpFill.fillAmount = newValue;
+    }
+
+    public void EnablePowerupUIAnimation()
+    {
+        powerUpFill.fillAmount = 1;
+        powerUpVFX.Play();
+    }
+
+    public void DisablePowerupUIAnimation()
+    {
+        powerUpFill.fillAmount = 0;
+        powerUpVFX.Stop();
+    }
     #endregion
 
     #region Earnings

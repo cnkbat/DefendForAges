@@ -44,7 +44,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     [Header("Power Up")]
     [SerializeField] private float maxPowerUpFillValue;
-    [SerializeField] private int powerUpUpgradeIndexValue;
+    [Tooltip("Kaç sonraki geliştirme gücünde olmasini istiyorsak o değer girilecek.")][SerializeField] private int powerUpUpgradeIndexValue;
     private bool isPowerupEnabled;
     private float currentPowerUpValue;
 
@@ -68,11 +68,16 @@ public class PlayerStats : Singleton<PlayerStats>
 
     [Header("UI Events")]
     public Action OnExperiencePointChange;
-    public Action<int,float,int ,int> OnExperienceGain;
+    public Action<int, float, int, int> OnExperienceGain;
     public Action OnMoneyChange;
     public Action OnMeatChange;
     public Action OnReviveButtonClicked;
     public Action OnLateReviveButtonClicked;
+
+    [Header("UI Power Up")]
+    public Action<float> OnPowerUpValueChanged;
+    public Action OnPowerUpEnabled;
+    public Action OnPowerUpDisabled;
 
     protected override void Awake()
     {
@@ -371,6 +376,8 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         if (isPowerupEnabled) return;
 
+        OnPowerUpValueChanged?.Invoke(currentPowerUpValue / maxPowerUpFillValue);
+
         currentPowerUpValue += value;
         // event for ui
         if (currentPowerUpValue >= maxPowerUpFillValue)
@@ -382,6 +389,8 @@ public class PlayerStats : Singleton<PlayerStats>
     private void EnablePowerUp()
     {
         isPowerupEnabled = true;
+
+        OnPowerUpEnabled?.Invoke();
 
         int tempMovementIndex = movementSpeedIndex + powerUpUpgradeIndexValue;
         int tempMaxHealthIndex = maxHealthIndex + powerUpUpgradeIndexValue;
@@ -395,6 +404,8 @@ public class PlayerStats : Singleton<PlayerStats>
     IEnumerator DisablePowerUp()
     {
         yield return new WaitForSeconds(powerupDur);
+
+        OnPowerUpDisabled?.Invoke();
 
         currentPowerUpValue = 0;
         // event for ui

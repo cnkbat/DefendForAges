@@ -179,35 +179,5 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return objectToSpawn;
     }
 
-    public GameObject SpawnDropTypeFromPool(string tag, Vector3 spawnPos)
-    {
-
-        if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.Log("object spawn error with " + tag);
-            return null;
-        }
-
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        objectToSpawn.SetActive(true);
-
-        objectToSpawn.transform.position = spawnPos;
-
-        if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
-        {
-            pooled.OnObjectPooled();
-        }
-
-        if (objectToSpawn.TryGetComponent(out Animator animator))
-        {
-            animator.SetTrigger("Drop");
-        }
-
-        gameManager.droppedCurrencies.Add(objectToSpawn.transform);
-
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
-        return objectToSpawn;
-    }
     #endregion
 }

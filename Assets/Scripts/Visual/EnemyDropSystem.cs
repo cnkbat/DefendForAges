@@ -4,11 +4,14 @@ using UnityEngine;
 public class EnemyDropSystem : MonoBehaviour
 {
     ObjectPooler objectPooler;
+    GameManager gameManager;
     private EnemyBehaviour enemyBehaviour;
 
     private void OnEnable()
     {
         objectPooler = ObjectPooler.instance;
+        gameManager = GameManager.instance;
+
         enemyBehaviour = transform.parent.GetComponent<EnemyBehaviour>();
 
         enemyBehaviour.OnDropAnimNeeded += PlayDropAnim;
@@ -23,15 +26,18 @@ public class EnemyDropSystem : MonoBehaviour
     {
         if (dropTypeIndex == (int)DropTypes.coin)
         {
-            objectPooler.SpawnDropTypeFromPool("Dropped Coin", enemyBehaviour.transform.position);
+            GameObject spawnedObject = objectPooler.SpawnFromPool("Coin", enemyBehaviour.transform.position);
+            gameManager.droppedCurrencies.Add(spawnedObject.transform);
         }
         else if (dropTypeIndex == (int)DropTypes.meat)
         {
-            objectPooler.SpawnDropTypeFromPool("Dropped Meat", enemyBehaviour.transform.position);
+            GameObject spawnedObject = objectPooler.SpawnFromPool("Meat", enemyBehaviour.transform.position);
+            gameManager.droppedCurrencies.Add(spawnedObject.transform);
         }
         else if (dropTypeIndex == (int)DropTypes.experiencePoint)
         {
-            objectPooler.SpawnDropTypeFromPool("Dropped XP", enemyBehaviour.transform.position);
+            GameObject spawnedObject = objectPooler.SpawnFromPool("XP", enemyBehaviour.transform.position);
+            gameManager.droppedCurrencies.Add(spawnedObject.transform);
         }
     }
 

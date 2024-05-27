@@ -13,7 +13,7 @@ public class LoadableBase : MonoBehaviour
     SaveManager saveManager;
     PlayerStats playerStats;
     protected ObjectPooler objectPooler;
-    [SerializeField] private Transform moneyMovePos;
+    [SerializeField] private Transform coinMovePos;
     public int currentCostLeftForUpgrade;
 
     [Header("State")]
@@ -77,12 +77,23 @@ public class LoadableBase : MonoBehaviour
             if (playerStats.DecrementMoney(1))
             {
                 currentCostLeftForUpgrade -= 1;
+
+                PlayCoinSpentAnim();
+
                 UpdateCurrentMoneyText(currentCostLeftForUpgrade.ToString());
                 saveManager.OnSaved?.Invoke();
             }
         }
 
         CheckIfFulled();
+    }
+
+    private void PlayCoinSpentAnim()
+    {
+        GameObject spawnedObject = objectPooler.SpawnFromPool("Coin", playerStats.transform.position);
+
+        spawnedObject.GetComponent<Animator>().SetTrigger("Spend");
+        spawnedObject.transform.DOMove(coinMovePos.position, 0.5f).OnComplete(() => spawnedObject.SetActive(false));
     }
 
     #region Repair Related

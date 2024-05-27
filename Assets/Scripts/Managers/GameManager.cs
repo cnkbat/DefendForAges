@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +17,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Drops")]
     [SerializeField] public List<Transform> droppedCurrencies = new List<Transform>();
+    [SerializeField] private float droppedCollectionAnimDur;
 
     [Header("Phases")]
     public bool isAttackPhase;
@@ -53,6 +55,7 @@ public class GameManager : Singleton<GameManager>
     public Action OnEraChanged;
     public Action OnWaveStarted;
     public Action OnCityDidnotChanged;
+    public Action OnApplyEarnings;
 
     //******///
     bool isEraCompleted = false;
@@ -82,6 +85,8 @@ public class GameManager : Singleton<GameManager>
 
         playerStats.OnWaveWon += CheckIfEraFinished;
         OnCheckPointReached += playerStats.CityChangerReached;
+
+        OnApplyEarnings += PlayDroppedEarningsCollectionAnim;
     }
 
     private void OnDisable()
@@ -100,11 +105,15 @@ public class GameManager : Singleton<GameManager>
 
         playerStats.OnWaveWon -= CheckIfEraFinished;
         OnCheckPointReached -= playerStats.CityChangerReached;
+
+        OnApplyEarnings -= PlayDroppedEarningsCollectionAnim;
+
     }
     private void Start()
     {
         CheckIfEraFinished();
     }
+
     #region  Win & Lose Conditions
 
     public void LevelLost()
@@ -194,6 +203,17 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
+    #region Earnings
+    public void PlayDroppedEarningsCollectionAnim()
+    {
+        for (int i = 0; i < droppedCurrencies.Count; i++)
+        {
+            float animDur = Vector3.Distance(droppedCurrencies[i].position, playerStats.transform.position) / droppedCollectionAnimDur;
+            droppedCurrencies[i].transform.DOMove(playerStats.transform.position, animDur);
+        }
+    }
+
+    #endregion
 
     #region  Getters & Setters
     public void SetActiveWave(EnemySpawner newActiveWave)

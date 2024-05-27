@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    [SerializeField] RPGSystemSO playerSO;
-    PlayerStats playerStats;
-    GameManager gameManager;
+    [SerializeField] private RPGSystemSO playerSO;
+    private PlayerStats playerStats;
+    private GameManager gameManager;
+    private EarningsHolder earningsHolder;
 
     [Header("GameHud Texts")]
     [SerializeField] private GameObject gameHud;
@@ -27,6 +28,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Button lateReviveButton;
     [SerializeField] private Button reviveButton;
     [SerializeField] private GameObject reviveUI;
+
+    [Header("Earnings")]
+    [SerializeField] private Button normalApplyEarningsButton;
+
 
     #region Upgrading Variables
 
@@ -101,13 +106,24 @@ public class UIManager : Singleton<UIManager>
     {
 
         playerStats = PlayerStats.instance;
+        earningsHolder = EarningsHolder.instance;
 
         playerStats.OnWaveWon += WaveCompleted;
 
+
+        // Geçici olarak böyle yapildi (MVP'ye reklam entegrasyonu yetişirse)
+        // onwavewondan kaldirip button aksiyonuna taşınacak ve wavewon ekranında
+        // wavewon paneli açılacak
+        // şuanda wave kazanılınca direkt olarak playera atıyor
+        
+        playerStats.OnWaveWon += OnApplyEarningToPlayerButtonClicked;
+
         // Revive & Wave Control
-        lateReviveButton.onClick.AddListener(OnLateReviveButtonPressed);
-        reviveButton.onClick.AddListener(OnReviveButtonPressed);
+        lateReviveButton.onClick.AddListener(OnLateReviveButtonClicked);
+        reviveButton.onClick.AddListener(OnReviveButtonClicked);
         waveCallButton.onClick.AddListener(OnWaveCallClicked);
+        normalApplyEarningsButton.onClick.AddListener(OnApplyEarningToPlayerButtonClicked);
+
 
         playerStats.OnPlayerRevived += DisableReviveUI;
         playerStats.OnPlayerKilled += EnableReviveUI;
@@ -337,12 +353,12 @@ public class UIManager : Singleton<UIManager>
         reviveUI.SetActive(false);
     }
 
-    private void OnLateReviveButtonPressed()
+    private void OnLateReviveButtonClicked()
     {
         playerStats.OnLateReviveButtonClicked?.Invoke();
         playerStats.OnPlayerRevived?.Invoke();
     }
-    private void OnReviveButtonPressed()
+    private void OnReviveButtonClicked()
     {
         playerStats.OnReviveButtonClicked?.Invoke();
     }
@@ -402,6 +418,14 @@ public class UIManager : Singleton<UIManager>
 
     }
 
+    #endregion
+
+    #region Earnings
+    public void OnApplyEarningToPlayerButtonClicked()
+    {
+        earningsHolder.OnBonusMultiplierApplied?.Invoke(1);
+        gameManager.OnApplyEarnings?.Invoke();
+    }
     #endregion
 
     #region LevelBar

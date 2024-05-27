@@ -30,6 +30,7 @@ public class EarningsHolder : Singleton<EarningsHolder>
 
     private void OnDisable()
     {
+        
         OnEarningsApply -= playerStats.EarnBonusAtWaveEnd;
 
         OnTempEarningsUpdated -= EarnOnKill;
@@ -71,7 +72,6 @@ public class EarningsHolder : Singleton<EarningsHolder>
     public void ApplyEarningToPlayer(float multiplier)
     {
         OnEarningsApply?.Invoke(earnedMeat * (int)multiplier, earnedMoney * (int)multiplier, earnedXP * (int)multiplier);
-
         ResetEarnings();
     }
 

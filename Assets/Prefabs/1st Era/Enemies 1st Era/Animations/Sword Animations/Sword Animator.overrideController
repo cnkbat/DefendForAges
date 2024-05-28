@@ -9,8 +9,6 @@ AnimatorOverrideController:
   m_Name: Sword Animator
   m_Controller: {fileID: 9100000, guid: 25196b16b71fdf4418e503a72f37f69e, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: ebd3dd7ea8eea304e9e6678970038d3f, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 156610ed0a928154a936fe5e39c42660, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 44827a489a17f3b4da7266ac5fedcb3e, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: f3227cee2a11a374da9bee9d7d1f8871, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 2357ea29c5b856840a405840580e7079, type: 2}

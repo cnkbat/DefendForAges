@@ -1451,11 +1451,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 46355002}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &46355004 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 46355002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &53432338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,13 +2720,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ1
   loadableBase: {fileID: 724272928}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 357140595}
-  - {fileID: 409669562}
-  - {fileID: 1181577822}
-  - {fileID: 617439319}
-  - {fileID: 1470017509}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 2068988741}
   - {fileID: 1681802480}
@@ -7248,11 +7238,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 268680204}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &268680206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 268680204}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &269966159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8576,6 +8561,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2301798665122684573, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371039179239031525, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2397894794842266420, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -8591,6 +8584,10 @@ PrefabInstance:
     - target: {fileID: 2397894794842266420, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121184273416825962, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3699046735950493041, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_Name
@@ -8750,7 +8747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5234331776463582009, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5546738047623023669, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8896,6 +8893,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -65.64
       objectReference: {fileID: 0}
+    - target: {fileID: 7993495389417026164, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8376521066997467641, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -8918,7 +8919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8735972381210663671, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9184030701331412617, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_IsActive
@@ -10629,11 +10630,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 402564597}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &402564599 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 402564597}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &403934901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10877,11 +10873,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ1
   loadableBase: {fileID: 2034837522}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 603035553}
-  - {fileID: 1041676572}
-  - {fileID: 1476580463}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 1112190402}
   - {fileID: 673122586}
@@ -11881,11 +11874,6 @@ PrefabInstance:
 --- !u!4 &441081259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 327884528621414396, guid: dbc4af8d8a1b6ee48934a36a71307eca, type: 3}
-  m_PrefabInstance: {fileID: 441081258}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &441081260 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 327884528621414370, guid: dbc4af8d8a1b6ee48934a36a71307eca, type: 3}
   m_PrefabInstance: {fileID: 441081258}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &445517974
@@ -17052,11 +17040,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 617439317}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &617439319 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 617439317}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &619366946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17364,6 +17347,10 @@ PrefabInstance:
     - target: {fileID: 9013736830700547598, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
       propertyPath: m_Name
       value: Wall (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013736830700547598, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
@@ -22083,11 +22070,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 794673464}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &794673466 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 794673464}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &795509920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24879,11 +24861,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 888191253}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &888191255 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 888191253}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &888552893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26531,12 +26508,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ3
   loadableBase: {fileID: 1893711448}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 1895234772}
-  - {fileID: 1073979614}
-  - {fileID: 1822370932}
-  - {fileID: 1825195095}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 1333852134}
   - {fileID: 359516244}
@@ -27159,7 +27132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268346, y: -1e-45, z: 1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 3e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: -9.137662, y: 24.97092, z: -29.245815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27255,13 +27228,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ1
   loadableBase: {fileID: 796112405}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 1408337402}
-  - {fileID: 1114023893}
-  - {fileID: 1950029418}
-  - {fileID: 1756354197}
-  - {fileID: 888191255}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 1462289376}
   - {fileID: 843722315}
@@ -27960,8 +27928,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ3
   loadableBase: {fileID: 1570811695}
-  enemySpawnAreas: []
-  assets: []
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 430291235}
   - {fileID: 357140595}
@@ -29473,11 +29441,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1041676570}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1041676572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1041676570}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1045747063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30163,11 +30126,6 @@ PrefabInstance:
 --- !u!4 &1073979613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1073979612}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1073979614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1073979612}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1077086574
@@ -31281,11 +31239,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 327884528621414396, guid: dbc4af8d8a1b6ee48934a36a71307eca, type: 3}
   m_PrefabInstance: {fileID: 1114023891}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1114023893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 327884528621414370, guid: dbc4af8d8a1b6ee48934a36a71307eca, type: 3}
-  m_PrefabInstance: {fileID: 1114023891}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1114270570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31677,11 +31630,6 @@ PrefabInstance:
 --- !u!4 &1134758452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 327884528621414396, guid: dbc4af8d8a1b6ee48934a36a71307eca, type: 3}
-  m_PrefabInstance: {fileID: 1134758451}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1134758453 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 327884528621414370, guid: dbc4af8d8a1b6ee48934a36a71307eca, type: 3}
   m_PrefabInstance: {fileID: 1134758451}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1137842169
@@ -37010,11 +36958,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ2
   loadableBase: {fileID: 965795388}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 639371539}
-  - {fileID: 1919251324}
-  - {fileID: 46355004}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 1405357663}
   - {fileID: 149847957}
@@ -37879,9 +37824,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ2
   loadableBase: {fileID: 1708230760}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 617439319}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 516754437}
   - {fileID: 1300823699}
@@ -39423,11 +39367,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 327884528621414396, guid: dbc4af8d8a1b6ee48934a36a71307eca, type: 3}
   m_PrefabInstance: {fileID: 1454581920}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1454581922 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 327884528621414370, guid: dbc4af8d8a1b6ee48934a36a71307eca, type: 3}
-  m_PrefabInstance: {fileID: 1454581920}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1457367228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40212,11 +40151,6 @@ PrefabInstance:
 --- !u!4 &1476580462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1476580461}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1476580463 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1476580461}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1479173566
@@ -42848,12 +42782,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ2
   loadableBase: {fileID: 1668282883}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 800090530}
-  - {fileID: 1454581922}
-  - {fileID: 402564599}
-  - {fileID: 1800357907}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 1283752392}
   - {fileID: 1560724410}
@@ -44031,11 +43961,6 @@ PrefabInstance:
 --- !u!4 &1630718211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1630718210}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1630718212 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1630718210}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1630942164
@@ -46588,14 +46513,8 @@ MonoBehaviour:
   surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ3
   loadableBase: {fileID: 14520488}
-  enemySpawnAreas: []
-  assets:
-  - {fileID: 1785164375}
-  - {fileID: 1134758453}
-  - {fileID: 441081260}
-  - {fileID: 1630718212}
-  - {fileID: 794673466}
-  - {fileID: 268680206}
+  spawnPosesToDisable: []
+  objectsToEnableOnBuy: []
   objectsToDisableOnBuy:
   - {fileID: 693541192}
   - {fileID: 9724947}
@@ -47254,11 +47173,6 @@ PrefabInstance:
 --- !u!4 &1756354196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1756354195}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1756354197 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1756354195}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1757391774
@@ -48237,11 +48151,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1800357905}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1800357907 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1800357905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1800472639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48778,17 +48687,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSpawnedEnemies: []
   canSpawnEnemy: 0
+  droppedCurrencies: []
+  droppedCollectionAnimDur: 0
   isAttackPhase: 0
   allCities:
   - {fileID: 1401004477}
   - {fileID: 1206260716}
   - {fileID: 1023089745}
-  towers: []
   surfaceAreaIndex: 0
   targetFPS: 60
   bulletFireRange: 150
   repairTimer: 2
   enemySlowedSpeed: 0.5
+  dropTypeCount: 3
+  enemyHealthBarDisappearTimer: 1
   fontSizeOnEnemyHit: 1
   fontSizeOnPlayerHeal: 1
   totalWaveCount: 0
@@ -48964,11 +48876,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1822370930}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1822370932 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1822370930}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1825195094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49026,11 +48933,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
---- !u!1 &1825195095 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1825195094}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1825195096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
@@ -51619,11 +51521,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1919251322}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1919251324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1919251322}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1927530368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52051,6 +51948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 9013736830700547598, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
 --- !u!4 &1941889295 stripped
@@ -52242,11 +52143,6 @@ PrefabInstance:
 --- !u!4 &1950029417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438590771072916480, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
-  m_PrefabInstance: {fileID: 1950029416}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1950029418 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
   m_PrefabInstance: {fileID: 1950029416}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1950085265
@@ -55382,7 +55278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072606189640243496, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6229696
+      value: -1.7665272
       objectReference: {fileID: 0}
     - target: {fileID: 2072606189640243496, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -55390,7 +55286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072606189640243496, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.716381
+      value: -30.75119
       objectReference: {fileID: 0}
     - target: {fileID: 2072606189640243496, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -56365,7 +56261,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.38268346, y: -1e-45, z: 1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 3e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: -9.137662, y: 24.97092, z: -29.245815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

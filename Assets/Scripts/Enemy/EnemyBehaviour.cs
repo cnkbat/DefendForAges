@@ -44,6 +44,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     [Header("Health")]
     private float currentHealth;
 
+    [SerializeField] private Transform spineBone;
+
     #region Visuals
 
     [Header("*--- Visuals ---*")]
@@ -177,6 +179,8 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         enemyAsset.forward = transform.forward;
 
         enemyAsset.localPosition = Vector3.zero;
+        if(spineBone != null)
+            spineBone.forward = transform.forward;
     }
 
     private void Attacking()

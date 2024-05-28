@@ -12,7 +12,7 @@ public class PlayerAngleCalculator : MonoBehaviour
 
     private void Awake()
     {
-        joystick = FindObjectOfType<Joystick>();
+        joystick = FindObjectOfType<Joystick>(true);
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
     }
 

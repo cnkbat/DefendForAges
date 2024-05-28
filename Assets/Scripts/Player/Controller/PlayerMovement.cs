@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        joystick = FindObjectOfType<Joystick>();
+        joystick = FindObjectOfType<Joystick>(true);
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
         playerAsset = GameObject.Find("playerAsset").transform;
 

@@ -14,7 +14,6 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
     [Header("! -- Archer Visuals -- !")]
     [SerializeField] private List<ArcherStickman> archerStickmans; // stickman on top
-    [SerializeField] private float attackAnimMultiplier;
 
     [Header("Actions")]
     public Action<float> OnStickmanAnimationPlayNeeded;

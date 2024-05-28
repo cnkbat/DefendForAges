@@ -12,8 +12,8 @@ public class CityManager : MonoBehaviour
 
     [Header("Checkpoint")]
     [Tooltip("Şehir Değiştirme Wave Indexi")][SerializeField] private int cityChangingIndex;
-    [Tooltip("Kaybedince geri gittiğimiz wave indexi")][SerializeField] private int firstCheckpointIndex;
-    [Tooltip("Şehirde Checkpoint Wave Indexi")][SerializeField] private int secondCheckpointIndex;
+    [Tooltip("Azalandan Artana siralanmali.")][SerializeField] private List<int> checkpointIndexes;
+    private int currentCheckpointIndex;
 
     [Header("Waves")]
     public List<EnemySpawner> waveList;
@@ -132,7 +132,7 @@ public class CityManager : MonoBehaviour
     {
         gameManager.surfaceAreaIndex = newSurfaceAreaIndex;
     }
-    
+
     #endregion
 
     #region Enemy Related
@@ -181,9 +181,16 @@ public class CityManager : MonoBehaviour
     {
         if (this == gameManager.allCities[playerStats.GetCityIndex()])
         {
-            if (playerStats.GetWaveIndex() >= secondCheckpointIndex)
+            for (int i = 0; i < checkpointIndexes.Count; i++)
             {
-                firstCheckpointIndex = secondCheckpointIndex;
+                if (playerStats.GetWaveIndex() >= checkpointIndexes[i])
+                {
+                    currentCheckpointIndex = checkpointIndexes[i];
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }
@@ -246,7 +253,7 @@ public class CityManager : MonoBehaviour
 
     public int GetCurrentCheckpointIndex()
     {
-        return firstCheckpointIndex;
+        return currentCheckpointIndex;
     }
 
     public int GetCityChangingIndex()

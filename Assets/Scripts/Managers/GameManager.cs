@@ -5,10 +5,12 @@ using DG.Tweening;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     PlayerStats playerStats;
+    AsyncLoader asyncLoader;
 
     [Header("Enemies")]
     public List<GameObject> allSpawnedEnemies;
@@ -48,7 +50,9 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Flaoting Text Related")]
     [Tooltip("Hasara göre çarpan olarak çalışıyor.")][SerializeField] public float fontSizeOnEnemyHit = 1;
-    [Tooltip("Heale göre çarpan olarak çalışıyor.")][SerializeField] public float fontSizeOnPlayerHeal = 1;
+
+    [Header("Game End Related")]
+    [SerializeField] private float gameLoseDelayAfterButtonPressed = 3;
 
     [Header("Events")]
     public Action OnCheckPointReached;
@@ -96,6 +100,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         CheckIfEraFinished();
+        asyncLoader = AsyncLoader.instance;
     }
 
     #region  Win & Lose Conditions
@@ -105,8 +110,15 @@ public class GameManager : Singleton<GameManager>
         playerStats.SetWaveSystemBackToCheckpoint();
 
         // oynanacak vfxler animasyonlar vs vs.
-    }
 
+        StartCoroutine(LevelLostDelayFunc());
+    }
+    IEnumerator LevelLostDelayFunc()
+    {
+        yield return new WaitForSeconds(gameLoseDelayAfterButtonPressed);
+
+        asyncLoader.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void CheckIfEraFinished()
     {
 

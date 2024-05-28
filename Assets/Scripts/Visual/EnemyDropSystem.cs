@@ -26,36 +26,61 @@ public class EnemyDropSystem : MonoBehaviour
     // REFACTOR
     public void PlayDropAnim(int dropTypeIndex)
     {
-        if (dropTypeIndex == (int)DropTypes.coin)
+        string dropTag = GetDropTag(dropTypeIndex);
+        if(dropTag.Equals(null))
         {
-
-            GameObject spawnedObject = objectPooler.SpawnFromPool("Coin", enemyBehaviour.transform.position);
-
-            CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
-            currencyAnimationHandler.PlayDropAnim();
-            gameManager.droppedCurrencies.Add(currencyAnimationHandler);
-
+            Debug.Log("No Tag");
+            return;
         }
-        else if (dropTypeIndex == (int)DropTypes.meat)
+        GameObject spawnedObject = objectPooler.SpawnFromPool(dropTag, enemyBehaviour.transform.position);
+        CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
+        currencyAnimationHandler.PlayDropAnim();
+        gameManager.droppedCurrencies.Add(currencyAnimationHandler);
+
+        //if (dropTypeIndex == (int)DropTypes.coin)
+        //{
+
+        //    GameObject spawnedObject = objectPooler.SpawnFromPool("Coin", enemyBehaviour.transform.position);
+
+        //    CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
+        //    currencyAnimationHandler.PlayDropAnim();
+        //    gameManager.droppedCurrencies.Add(currencyAnimationHandler);
+
+        //}
+        //else if (dropTypeIndex == (int)DropTypes.meat)
+        //{
+
+        //    GameObject spawnedObject = objectPooler.SpawnFromPool("Meat", enemyBehaviour.transform.position);
+
+        //    CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
+        //    currencyAnimationHandler.PlayDropAnim();
+        //    gameManager.droppedCurrencies.Add(currencyAnimationHandler);
+
+
+        //}
+        //else if (dropTypeIndex == (int)DropTypes.experiencePoint)
+        //{
+
+        //    GameObject spawnedObject = objectPooler.SpawnFromPool("XP", enemyBehaviour.transform.position);
+
+        //    CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
+        //    currencyAnimationHandler.PlayDropAnim();
+        //    gameManager.droppedCurrencies.Add(currencyAnimationHandler);
+
+        //}
+    }
+    private string GetDropTag(int dropTypeIndex)
+    {
+        switch (dropTypeIndex)
         {
-
-            GameObject spawnedObject = objectPooler.SpawnFromPool("Meat", enemyBehaviour.transform.position);
-
-            CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
-            currencyAnimationHandler.PlayDropAnim();
-            gameManager.droppedCurrencies.Add(currencyAnimationHandler);
-
-
-        }
-        else if (dropTypeIndex == (int)DropTypes.experiencePoint)
-        {
-
-            GameObject spawnedObject = objectPooler.SpawnFromPool("XP", enemyBehaviour.transform.position);
-
-            CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
-            currencyAnimationHandler.PlayDropAnim();
-            gameManager.droppedCurrencies.Add(currencyAnimationHandler);
-
+            case (int)DropTypes.coin:
+                return "Coin";
+            case (int)DropTypes.meat:
+                return "Meat";
+            case (int)DropTypes.experiencePoint:
+                return "XP";
+            default:
+                return null;
         }
     }
 

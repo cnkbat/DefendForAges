@@ -2913,8 +2913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cityChangingIndex: 15
-  firstCheckpointIndex: 15
-  secondCheckpointIndex: 0
+  checkpointIndexes: 
   waveList:
   - {fileID: 167393223}
   - {fileID: 196892117}
@@ -10875,7 +10874,7 @@ MonoBehaviour:
   dropTypeCount: 3
   healthBarDisappearTimer: 1
   fontSizeOnEnemyHit: 1
-  fontSizeOnPlayerHeal: 1
+  gameLoseDelayAfterButtonPressed: 3
   totalWaveCount: 0
 --- !u!4 &1818629410
 Transform:
@@ -12335,8 +12334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cityChangingIndex: 15
-  firstCheckpointIndex: 15
-  secondCheckpointIndex: 0
+  checkpointIndexes: 050000000a0000000c000000
   waveList:
   - {fileID: 873225594}
   - {fileID: 956606818}

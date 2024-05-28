@@ -47,12 +47,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public float enemySlowedSpeed;
     [SerializeField] public int dropTypeCount = 3;
     [SerializeField] public float healthBarDisappearTimer = 1;
+    [SerializeField] public float bossVFXDisappearTimer = 3;
+
 
     [Header("Flaoting Text Related")]
     [Tooltip("Hasara göre çarpan olarak çalışıyor.")][SerializeField] public float fontSizeOnEnemyHit = 1;
 
     [Header("Game End Related")]
     [SerializeField] private float gameLoseDelayAfterButtonPressed = 3;
+    
 
     [Header("Events")]
     public Action OnCheckPointReached;

@@ -130,6 +130,7 @@ public class UIManager : Singleton<UIManager>
 
         playerStats = PlayerStats.instance;
         earningsHolder = EarningsHolder.instance;
+        gameManager = GameManager.instance;
 
         playerStats.OnWaveWon += WaveCompleted;
 
@@ -264,9 +265,6 @@ public class UIManager : Singleton<UIManager>
     #region  Start
     private void Start()
     {
-        playerStats = PlayerStats.instance;
-        gameManager = GameManager.instance;
-
         DisableUpgradingButton();
         SetStartingUI();
     }
@@ -521,7 +519,7 @@ public class UIManager : Singleton<UIManager>
     {
         for (int i = 0; i < allPanels.Count; i++)
         {
-            allPanels[i].SetActive(true);
+            allPanels[i].SetActive(false);
         }
     }
 

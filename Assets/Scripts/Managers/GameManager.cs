@@ -24,7 +24,6 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Cities")]
     [SerializeField] public List<CityManager> allCities;
-    [SerializeField] private List<TowerBehaviour> towers;
 
     [Header("AI Manipulation")]
     [SerializeField] public int surfaceAreaIndex;
@@ -67,17 +66,7 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1f;
         Application.targetFrameRate = targetFPS;
 
-        for (int i = 0; i < allCities.Count; i++)
-        {
-            towers.Add(allCities[i].GetTower());
-        }
-
         playerStats = PlayerStats.instance;
-
-        for (int i = 0; i < towers.Count; i++)
-        {
-            towers[i].OnTowerDestroyed += LevelLost;
-        }
 
         for (int i = 0; i < allCities.Count; i++)
         {
@@ -92,12 +81,6 @@ public class GameManager : Singleton<GameManager>
 
     private void OnDisable()
     {
-        for (int i = 0; i < towers.Count; i++)
-        {
-            towers[i].OnTowerDestroyed -= LevelLost;
-        }
-
-        towers.Clear();
 
         for (int i = 0; i < allCities.Count; i++)
         {
@@ -119,18 +102,9 @@ public class GameManager : Singleton<GameManager>
 
     public void LevelLost()
     {
-        // use gem to recover
-        // #if gem <0 gem offer
-        // revive option
-        // yoksa her şey level bitti.
         playerStats.SetWaveSystemBackToCheckpoint();
-    }
 
-    public void LevelWon()
-    {
-        // earnings vs buraya koyulacak
-        // fonksiyonun olması şart değil 
-        // polish kısmında tekrardan düzenlecek.
+        // oynanacak vfxler animasyonlar vs vs.
     }
 
     public void CheckIfEraFinished()
@@ -143,8 +117,6 @@ public class GameManager : Singleton<GameManager>
             // ui update
             // era bitişiyle ilgili durumlar
             OnEraChanged?.Invoke();
-
-            LevelWon();
         }
         else
         {

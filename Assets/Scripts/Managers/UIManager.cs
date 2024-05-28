@@ -12,8 +12,16 @@ public class UIManager : Singleton<UIManager>
     private GameManager gameManager;
     private EarningsHolder earningsHolder;
 
+    [Header("Panels")]
+    [SerializeField] private List<GameObject> allPanels;
+    [SerializeField] private GameObject joystickPanel;
+    [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject deathPanel;
+    [SerializeField] private GameObject upgradePanel;
+    [SerializeField] private GameObject waveWonPanel;
+    [SerializeField] private GameObject gameLostPanel;
+
     [Header("GameHud Texts")]
-    [SerializeField] private GameObject gameHud;
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text meatText;
     [SerializeField] private TMP_Text currentWaveIndexText;
@@ -32,11 +40,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private float progressBarAnimDur;
     [SerializeField] private Ease progressBarEaseType;
 
-
     [Header("Revive")]
+    [SerializeField] TMP_Text playerKilledCountDownText;
     [SerializeField] private Button lateReviveButton;
     [SerializeField] private Button reviveButton;
-    [SerializeField] private GameObject reviveUI;
 
     [Header("Power Up Slider")]
     [SerializeField] private Image powerUpFill;
@@ -45,13 +52,16 @@ public class UIManager : Singleton<UIManager>
     [Header("Earnings")]
     [SerializeField] private Button normalApplyEarningsButton;
 
+    [Header("Game Lost Sequence")]
+    [SerializeField] TMP_Text towerDestroyedCountDownText;
+    [SerializeField] private Button loseGameButton;
+    [SerializeField] private Button useGemToReviveTowerButton;
 
     #region Upgrading Variables
 
     [Header("---- Upgrading ----")]
 
     [Header("Upgrade Buttons")]
-    [SerializeField] private GameObject upgradePanel;
     [SerializeField] private Button enableUpgradeHudButton;
     [SerializeField] private Button exitUpgradeHudButton;
     [SerializeField] private Button upgradeAttackSpeedButton;
@@ -143,13 +153,22 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnPowerUpDisabled += DisablePowerupUIAnimation;
 
         // Death & Revive
-        playerStats.OnPlayerRevived += DisableReviveUI;
-        playerStats.OnPlayerKilled += EnableReviveUI;
+        playerStats.OnPlayerRevived += DeathReviveSequenceEnd;
+        playerStats.OnPlayerKilled += DeathReviveSequence;
 
         // Text Updates
         playerStats.OnMoneyChange += UpdateMoneyText;
         playerStats.OnMeatChange += UpdateMeatText;
         playerStats.OnExperienceGain += UpdateLevelBar;
+
+
+        // Lose Game
+        for (int i = 0; i < gameManager.allCities.Count; i++)
+        {
+            gameManager.allCities[i].GetTower().OnTargetDestroyed += GameLostPanelSequence;
+        }
+
+        loseGameButton.onClick.AddListener(gameManager.LevelLost);
 
 
         #region  Upgrading
@@ -196,13 +215,22 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnPowerUpDisabled += DisablePowerupUIAnimation;
 
         // Death & Revive
-        playerStats.OnPlayerRevived -= DisableReviveUI;
-        playerStats.OnPlayerKilled -= EnableReviveUI;
+        playerStats.OnPlayerRevived -= DeathReviveSequenceEnd;
+        playerStats.OnPlayerKilled -= DeathReviveSequence;
 
         // Text Updates 
         playerStats.OnMoneyChange -= UpdateMoneyText;
         playerStats.OnMeatChange -= UpdateMeatText;
         playerStats.OnExperienceGain -= UpdateLevelBar;
+
+
+        // Lose Game
+        for (int i = 0; i < gameManager.allCities.Count; i++)
+        {
+            gameManager.allCities[i].GetTower().OnTargetDestroyed -= GameLostPanelSequence;
+        }
+
+        loseGameButton.onClick.RemoveAllListeners();
 
 
         #region  Upgrading
@@ -244,6 +272,8 @@ public class UIManager : Singleton<UIManager>
     }
     private void SetStartingUI()
     {
+        GetBackToGamePanel();
+
         UpdatePowerUpSliderValue(0);
         UpdateMoneyText();
         UpdateMeatText();
@@ -258,15 +288,6 @@ public class UIManager : Singleton<UIManager>
 
     #region Upgrade
 
-    private void EnableUpgradeHud()
-    {
-        upgradePanel.SetActive(true);
-    }
-
-    private void DisableUpgradeHud()
-    {
-        upgradePanel.SetActive(false);
-    }
 
     private void UpdateUpgradeUI()
     {
@@ -376,16 +397,6 @@ public class UIManager : Singleton<UIManager>
     #endregion
 
     #region Revive
-
-
-    public void EnableReviveUI()
-    {
-        reviveUI.SetActive(true);
-    }
-    public void DisableReviveUI()
-    {
-        reviveUI.SetActive(false);
-    }
 
     private void OnLateReviveButtonClicked()
     {
@@ -500,6 +511,151 @@ public class UIManager : Singleton<UIManager>
     }
     #endregion
 
+    #region Game Lose
+
+    #endregion
+
+    #region Panel Management
+
+    public void DeactivateAllPanels()
+    {
+        for (int i = 0; i < allPanels.Count; i++)
+        {
+            allPanels[i].SetActive(true);
+        }
+    }
+
+    public void ActivatePanel(GameObject panelToActive, GameObject panelToActive2 = null)
+    {
+        if (panelToActive != null)
+        {
+            panelToActive.SetActive(true);
+        }
+        if (panelToActive2 != null)
+        {
+            panelToActive2.SetActive(true);
+        }
+    }
+
+    public void DeactivatePanel(GameObject panelToDeactive)
+    {
+        if (panelToDeactive != null)
+        {
+            panelToDeactive.SetActive(false);
+        }
+    }
+    private void GetBackToGamePanel()
+    {
+        DeactivateAllPanels();
+
+        ActivatePanel(gamePanel, joystickPanel);
+    }
+
+    #region Upgrade Panel Management
+
+    private void EnableUpgradeHud()
+    {
+        ActivatePanel(upgradePanel);
+    }
+
+    private void DisableUpgradeHud()
+    {
+        DeactivatePanel(upgradePanel);
+    }
+
+    #endregion
+
+    #region  Death Panel Management
+    private void DeathReviveSequence()
+    {
+        DeactivateAllPanels();
+        ActivatePanel(deathPanel);
+
+        lateReviveButton.gameObject.SetActive(false);
+
+        StartCoroutine(PlayerDeathCountDown());
+    }
+    IEnumerator PlayerDeathCountDown()
+    {
+        if (!deathPanel.activeSelf) yield return null;
+
+        playerKilledCountDownText.text = "5";
+        yield return new WaitForSeconds(1);
+
+        if (!deathPanel.activeSelf) yield return null;
+
+        playerKilledCountDownText.text = "4";
+        yield return new WaitForSeconds(1);
+
+        if (!deathPanel.activeSelf) yield return null;
+
+        playerKilledCountDownText.text = "3";
+        yield return new WaitForSeconds(1);
+
+        if (!deathPanel.activeSelf) yield return null;
+
+        playerKilledCountDownText.text = "2";
+        yield return new WaitForSeconds(1);
+
+        if (!deathPanel.activeSelf) yield return null;
+
+        playerKilledCountDownText.text = "1";
+        yield return new WaitForSeconds(1);
+
+        if (!deathPanel.activeSelf) yield return null;
+
+        lateReviveButton.gameObject.SetActive(true);
+        playerKilledCountDownText.gameObject.SetActive(false);
+    }
+    private void DeathReviveSequenceEnd()
+    {
+        GetBackToGamePanel();
+    }
+
+    #endregion
+
+    #region  Lose Panel Management
+    private void GameLostPanelSequence()
+    {
+        DeactivateAllPanels();
+        ActivatePanel(gameLostPanel);
+
+        loseGameButton.gameObject.SetActive(false);
+
+        StartCoroutine(TowerDeathCountDown());
+    }
+
+    IEnumerator TowerDeathCountDown()
+    {
+        if (!deathPanel.activeSelf) yield return null;
+
+        towerDestroyedCountDownText.text = "3";
+        yield return new WaitForSeconds(1);
+
+        if (!deathPanel.activeSelf) yield return null;
+
+        towerDestroyedCountDownText.text = "2";
+        yield return new WaitForSeconds(1);
+
+        if (!deathPanel.activeSelf) yield return null;
+
+        towerDestroyedCountDownText.text = "1";
+        yield return new WaitForSeconds(1);
+
+        if (!deathPanel.activeSelf) yield return null;
+
+        loseGameButton.gameObject.SetActive(true);
+        towerDestroyedCountDownText.gameObject.SetActive(false);
+    }
+
+    private void GameLostPanelSequenceEnd()
+    {
+        GetBackToGamePanel();
+    }
+
+
+    #endregion
+    #endregion
     #region  Update Texts - Text Related
 
     private void UpdateText(TMP_Text textToUpdate, int value, string newString = null)

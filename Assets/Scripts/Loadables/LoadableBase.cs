@@ -93,7 +93,8 @@ public class LoadableBase : MonoBehaviour
         GameObject spawnedObject = objectPooler.SpawnFromPool("Coin", playerStats.transform.position);
 
         spawnedObject.GetComponent<CurrencyAnimationHandler>().PlaySpendAnim();
-        spawnedObject.transform.DOMove(coinMovePos.position, 0.5f).OnComplete(() => spawnedObject.SetActive(false));
+        spawnedObject.transform.DOJump(coinMovePos.position, 3,1,1f)
+            .OnComplete(() => spawnedObject.SetActive(false));
     }
 
     #region Repair Related

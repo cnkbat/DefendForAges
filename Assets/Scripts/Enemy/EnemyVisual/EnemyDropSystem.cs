@@ -12,7 +12,7 @@ public class EnemyDropSystem : MonoBehaviour
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
 
-        enemyBehaviour = transform.parent.GetComponent<EnemyBehaviour>();
+        enemyBehaviour = transform.GetComponent<EnemyBehaviour>();
 
         enemyBehaviour.OnDropAnimNeeded += PlayDropAnim;
     }

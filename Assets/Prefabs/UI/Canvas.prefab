@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110414812}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
@@ -1543,7 +1543,7 @@ GameObject:
   - component: {fileID: 1412592180}
   - component: {fileID: 1412592179}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Scroll Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8084,6 +8084,7 @@ MonoBehaviour:
   gamePanel: {fileID: 1056741044626757792}
   deathPanel: {fileID: 5033717770325617373}
   upgradePanel: {fileID: 179206538}
+  scrollPanel: {fileID: 1412592177}
   waveWonPanel: {fileID: 7974713070702253417}
   gameLostPanel: {fileID: 5147416489957131645}
   moneyText: {fileID: 8202747446275803444}
@@ -8126,21 +8127,27 @@ MonoBehaviour:
   attackSpeedCurrentText: {fileID: 4697375198221282599}
   attackSpeedNextText: {fileID: 4992567372718822998}
   attackSpeedCostText: {fileID: 8844227862332956948}
+  attackSpeedLevelText: {fileID: 3628551664155812341}
   damageCurrentText: {fileID: 483628849630216239}
   damageNextText: {fileID: 4778037908557522080}
   damageCostText: {fileID: 7235409270326883212}
+  damageLevelText: {fileID: 7160821762966236465}
   lifeStealCurrentText: {fileID: 5087283606057226692}
   lifeStealNextText: {fileID: 7328114688376519645}
   lifeStealCostText: {fileID: 1200636179062511309}
+  lifeStealLevelText: {fileID: 8910052437151348715}
   movementSpeedCurrentText: {fileID: 2792240119489297166}
   movementSpeedNextText: {fileID: 8467283069228124239}
   movementSpeedCostText: {fileID: 8056968496108181034}
+  movementSpeedLevelText: {fileID: 1726039981832703518}
   powerupDurCurrentText: {fileID: 4959016673648845744}
   powerupDurNextText: {fileID: 2549116044217035083}
   powerupDurCostText: {fileID: 3452091272498540207}
+  powerupDurLevelText: {fileID: 1469941190799594334}
   maxHealthCurrentText: {fileID: 1511443363135473600}
   maxHealthNextText: {fileID: 4534705446320931973}
   maxHealthCostText: {fileID: 2935170458859733730}
+  maxHealthLevelText: {fileID: 4012257236513452992}
   dualWeaponCostText: {fileID: 135899125067818089}
   attackSpeedVisualValues:
   - 10

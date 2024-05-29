@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 4350234263661863583}
   - component: {fileID: 5705028372069394303}
   - component: {fileID: 7696893531541523020}
+  - component: {fileID: -8930580800112434323}
   m_Layer: 8
   m_Name: Medium Enemy
   m_TagString: Untagged
@@ -300,6 +301,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5770601705379435046}
+--- !u!114 &-8930580800112434323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584572212228056345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab27196aed1d524f9e1a336f1e905ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449618433515435389
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,7 +60,8 @@ public class UIManager : Singleton<UIManager>
     #region Upgrading Variables
 
     [Header("---- Upgrading ----")]
-
+    [SerializeField] private GameObject scrollPanel;
+    
     [Header("Upgrade Buttons")]
     [SerializeField] private Button enableUpgradeHudButton;
     [SerializeField] private Button exitUpgradeHudButton;
@@ -86,31 +87,40 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TMP_Text attackSpeedCurrentText;
     [SerializeField] private TMP_Text attackSpeedNextText;
     [SerializeField] private TMP_Text attackSpeedCostText;
+    [SerializeField] private TMP_Text attackSpeedLevelText;
 
     [Header("Damage Texts")]
     [SerializeField] private TMP_Text damageCurrentText;
     [SerializeField] private TMP_Text damageNextText;
     [SerializeField] private TMP_Text damageCostText;
+    [SerializeField] private TMP_Text damageLevelText;
 
     [Header("Life Steal Texts")]
     [SerializeField] private TMP_Text lifeStealCurrentText;
     [SerializeField] private TMP_Text lifeStealNextText;
     [SerializeField] private TMP_Text lifeStealCostText;
+    [SerializeField] private TMP_Text lifeStealLevelText;
+
 
     [Header("Movement Speed Texts")]
     [SerializeField] private TMP_Text movementSpeedCurrentText;
     [SerializeField] private TMP_Text movementSpeedNextText;
     [SerializeField] private TMP_Text movementSpeedCostText;
+    [SerializeField] private TMP_Text movementSpeedLevelText;
 
     [Header("Powerup Dur Texts")]
     [SerializeField] private TMP_Text powerupDurCurrentText;
     [SerializeField] private TMP_Text powerupDurNextText;
     [SerializeField] private TMP_Text powerupDurCostText;
+    [SerializeField] private TMP_Text powerupDurLevelText;
+
 
     [Header("Max Health Texts")]
     [SerializeField] private TMP_Text maxHealthCurrentText;
     [SerializeField] private TMP_Text maxHealthNextText;
     [SerializeField] private TMP_Text maxHealthCostText;
+    [SerializeField] private TMP_Text maxHealthLevelText;
+
 
     [Header("Dual Weapon Texts")]
     [SerializeField] private TMP_Text dualWeaponCostText;
@@ -349,6 +359,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(maxHealthCurrentText, playerSO.GetMaxHealthValues()[playerStats.maxHealthIndex]);
         UpdateUpgradeText(maxHealthNextText, playerSO.GetMaxHealthValues()[playerStats.maxHealthIndex + 1]);
         UpdateUpgradeText(maxHealthCostText, playerSO.GetMaxHealthCosts()[playerStats.maxHealthIndex]);
+        UpdateUpgradeText(maxHealthLevelText, playerStats.maxHealthIndex);
     }
 
     //POWER UP DUR
@@ -357,6 +368,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(powerupDurCurrentText, playerSO.GetPowerupDurValues()[playerStats.powerupDurIndex]);
         UpdateUpgradeText(powerupDurNextText, playerSO.GetPowerupDurValues()[playerStats.powerupDurIndex + 1]);
         UpdateUpgradeText(powerupDurCostText, playerSO.GetPowerupDurCosts()[playerStats.powerupDurIndex]);
+        UpdateUpgradeText(powerupDurLevelText, playerStats.powerupDurIndex);
     }
 
     // MOVEMENT SPEED
@@ -365,6 +377,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(movementSpeedCurrentText, movementSpeedVisualValues[playerStats.movementSpeedIndex]);
         UpdateUpgradeText(movementSpeedNextText, movementSpeedVisualValues[playerStats.movementSpeedIndex + 1]);
         UpdateUpgradeText(movementSpeedCostText, playerSO.GetMovementSpeedCosts()[playerStats.movementSpeedIndex]);
+        UpdateUpgradeText(movementSpeedLevelText, playerStats.movementSpeedIndex);
     }
 
     //  LIFE STEAL
@@ -373,6 +386,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(lifeStealCurrentText, lifeStealVisualValues[playerStats.lifeStealIndex]);
         UpdateUpgradeText(lifeStealNextText, lifeStealVisualValues[playerStats.lifeStealIndex + 1]);
         UpdateUpgradeText(lifeStealCostText, playerSO.GetLifeStealCosts()[playerStats.lifeStealIndex]);
+        UpdateUpgradeText(lifeStealLevelText, playerStats.lifeStealIndex);
     }
 
     // DAMAGE
@@ -381,6 +395,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(damageCurrentText, damageVisualValues[playerStats.damageIndex]);
         UpdateUpgradeText(damageNextText, damageVisualValues[playerStats.damageIndex + 1]);
         UpdateUpgradeText(damageCostText, playerSO.GetDamageCosts()[playerStats.damageIndex]);
+        UpdateUpgradeText(damageLevelText, playerStats.damageIndex);
     }
 
     // ATTACK SPEED
@@ -389,6 +404,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(attackSpeedCurrentText, attackSpeedVisualValues[playerStats.attackSpeedIndex]);
         UpdateUpgradeText(attackSpeedNextText, attackSpeedVisualValues[playerStats.attackSpeedIndex + 1]);
         UpdateUpgradeText(attackSpeedCostText, playerSO.GetAttackSpeedCosts()[playerStats.attackSpeedIndex]);
+        UpdateUpgradeText(attackSpeedLevelText, playerStats.attackSpeedIndex);
     }
 
 
@@ -559,6 +575,7 @@ public class UIManager : Singleton<UIManager>
     private void DisableUpgradeHud()
     {
         DeactivatePanel(upgradePanel);
+        scrollPanel.transform.localPosition = Vector3.zero;
     }
 
     #endregion

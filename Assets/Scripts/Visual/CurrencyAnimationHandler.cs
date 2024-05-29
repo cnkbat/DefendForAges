@@ -14,13 +14,11 @@ public class CurrencyAnimationHandler : MonoBehaviour, IPoolableObject
     public void OnObjectPooled()
     {
         // data resetlemek gerekirse
-        throw new System.NotImplementedException();
     }
 
     public void ResetObjectData()
     {
         // data resetlemek gerekirse
-        throw new System.NotImplementedException();
     }
 
     public void PlayDropAnim()
@@ -30,8 +28,7 @@ public class CurrencyAnimationHandler : MonoBehaviour, IPoolableObject
 
     public void PlayCollectionAnim()
     {
-        animator.SetTrigger("DropAnim");
-
+        animator.SetTrigger("CollectAnim");
     }
 
     public void PlaySpendAnim()

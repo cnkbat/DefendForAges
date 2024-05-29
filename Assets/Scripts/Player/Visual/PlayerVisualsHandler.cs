@@ -20,6 +20,7 @@ public class PlayerVisualsHandler : MonoBehaviour
     private ParticleSystem playerDeathParticle;
     private ParticleSystem levelUpParticle;
     private ParticleSystem lifeStealParticle;
+    private ParticleSystem powerupParticle;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class PlayerVisualsHandler : MonoBehaviour
         playerDeathParticle = GameObject.Find("PlayerDeathParticle").GetComponent<ParticleSystem>();
         levelUpParticle = GameObject.Find("LevelUpParticle").GetComponent<ParticleSystem>();
         lifeStealParticle = GameObject.Find("LifeStealParticle").GetComponent<ParticleSystem>();
-
+        powerupParticle = GameObject.Find("PowerupParticle").GetComponent<ParticleSystem>();
 
         // Health Bar
         deathHandler.OnDamageTaken += UpdateHealthBarValue;
@@ -45,6 +46,9 @@ public class PlayerVisualsHandler : MonoBehaviour
         playerStats.OnPlayerKilled += PlayDeathParticle;
         levelSystem.OnLevelUp += PlayLevelupParticle;
         playerStats.OnLifeStolen += PlayLifeStealParticle;
+        playerStats.OnPowerUpEnabled += PlayPowerupParticle;
+        playerStats.OnPowerUpDisabled += StopPowerupParticle;
+
 
 
         ResetDisappearTimer();
@@ -61,6 +65,8 @@ public class PlayerVisualsHandler : MonoBehaviour
         playerStats.OnPlayerKilled -= PlayDeathParticle;
         levelSystem.OnLevelUp -= PlayLevelupParticle;
         playerStats.OnLifeStolen -= PlayLifeStealParticle;
+         playerStats.OnPowerUpEnabled -= PlayPowerupParticle;
+        playerStats.OnPowerUpDisabled -= StopPowerupParticle;
     }
 
 
@@ -111,10 +117,25 @@ public class PlayerVisualsHandler : MonoBehaviour
     {
         PlayParticle(levelUpParticle);
     }
+
     public void PlayLifeStealParticle()
     {
         PlayParticle(lifeStealParticle);
     }
+
+    #region Powerup
+
+    public void PlayPowerupParticle()
+    {
+        PlayParticle(powerupParticle);
+    }
+
+    public void StopPowerupParticle()
+    {
+        powerupParticle.Stop();
+    }
+
+    #endregion
 
     public void PlayParticle(ParticleSystem particleToPlay)
     {

@@ -6,17 +6,16 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    NearestEnemyFinder nearestEnemyFinder;
-
-
+    private GameManager gameManager;
+    private NearestEnemyFinder nearestEnemyFinder;
     private PlayerStats playerStats;
     private Rigidbody rb;
+
     [SerializeField] private Joystick joystick;
 
     [Header("Walk")]
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float speed = 5f;
-
 
 
     private Vector3 direction;
@@ -28,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         playerStats = GetComponent<PlayerStats>();
+        gameManager = GameManager.instance;
+
         playerStats.OnMovementSpeedUpgraded += UpdateMovementSpeed;
     }
 
@@ -51,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (gameManager.isPlayerFreezed) return;
+
         ToMove();
         rb.velocity = Vector3.zero;
     }

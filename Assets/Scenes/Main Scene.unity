@@ -2894,7 +2894,7 @@ GameObject:
   - component: {fileID: 465109266}
   - component: {fileID: 465109265}
   m_Layer: 0
-  m_Name: City1 (1)
+  m_Name: City2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2912,7 +2912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a278d8f4699b9fe40bd4669e4f20a2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cityChangingIndex: 15
+  cityChangingIndex: 25
   checkpointIndexes: 
   waveList:
   - {fileID: 167393223}
@@ -3988,6 +3988,9 @@ MonoBehaviour:
   - tag: Big Enemy
     prefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
     size: 25
+  - tag: Boss Enemy
+    prefab: {fileID: 584572212228056345, guid: ffc1ffa7e6b0e1040aa4e5d0b2ce8175, type: 3}
+    size: 1
   - tag: FloatingText
     prefab: {fileID: 3870968168857410143, guid: d52fb45050d314749a0b39cb7c348749, type: 3}
     size: 100
@@ -5114,8 +5117,8 @@ MonoBehaviour:
   waves:
   - waveName: Test Wave
     enemyGroups:
-    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc1ffa7e6b0e1040aa4e5d0b2ce8175, type: 3}
+      enemyCount: 1
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
       enemyCount: 1
@@ -5870,7 +5873,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -0, w: 0.92387956}
   m_LocalPosition: {x: -6.1176624, y: 25.00002, z: -40.415813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10863,9 +10866,12 @@ MonoBehaviour:
   isAttackPhase: 0
   allCities:
   - {fileID: 2112083884}
+  - {fileID: 465109265}
   surfaceAreaIndex: 0
   targetFPS: 60
   bulletFireRange: 1000
+  isPlayerFreezed: 0
+  panCamBackToPlayerDelay: 2
   repairTimer: 2
   enemySlowedSpeed: 2
   dropTypeCount: 3
@@ -12412,7 +12418,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -0, w: 0.92387956}
   m_LocalPosition: {x: -6.1176624, y: 25.00002, z: -40.415813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

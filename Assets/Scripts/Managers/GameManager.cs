@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using DG.Tweening;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -39,6 +40,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public float bulletFireRange = 150f;
 
     [Header("*---Design & Balance ---*")]
+    [Header("Game Management")]
+    [SerializeField] public bool isPlayerFreezed;
+
+    [Header("Cam Management")]
+    private CinemachineVirtualCamera gameCam;
+    [SerializeField] public float panCamBackToPlayerDelay = 2;
 
     [Header("Defence Related")]
     [SerializeField] public float repairTimer;
@@ -55,7 +62,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Game End Related")]
     [SerializeField] private float gameLoseDelayAfterButtonPressed = 3;
-    
+
 
     [Header("Events")]
     public Action OnCheckPointReached;
@@ -63,6 +70,7 @@ public class GameManager : Singleton<GameManager>
     public Action OnWaveStarted;
     public Action OnCityDidnotChanged;
     public Action OnApplyEarnings;
+    public Action<CinemachineVirtualCamera> OnCameraPan;
 
     //****** Code Cleaners *****///
     bool isEraCompleted = false;
@@ -84,6 +92,8 @@ public class GameManager : Singleton<GameManager>
         OnCheckPointReached += playerStats.CityChangerReached;
 
         OnApplyEarnings += PlayDroppedEarningsCollectionAnim;
+
+        OnCameraPan += PanCamToObject;
     }
 
     private void OnDisable()
@@ -99,10 +109,13 @@ public class GameManager : Singleton<GameManager>
 
         OnApplyEarnings -= PlayDroppedEarningsCollectionAnim;
 
+        OnCameraPan -= PanCamToObject;
     }
+
     private void Start()
     {
         CheckIfEraFinished();
+        gameCam = FindObjectOfType<CinemachineVirtualCamera>();
         asyncLoader = AsyncLoader.instance;
     }
 
@@ -207,6 +220,27 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
+    #region Camera Management
+
+    public void PanCamToObject(CinemachineVirtualCamera newCam)
+    {
+        newCam.m_Priority = 20;
+
+        isPlayerFreezed = true;
+
+        StartCoroutine(PanCamBackToPlayer(newCam));
+    }
+
+    IEnumerator PanCamBackToPlayer(CinemachineVirtualCamera newCam)
+    {
+        yield return new WaitForSeconds(panCamBackToPlayerDelay);
+
+        newCam.m_Priority = 0;
+
+        isPlayerFreezed = false;
+    }
+
+    #endregion
     #region  Getters & Setters
     public void SetActiveWave(EnemySpawner newActiveWave)
     {

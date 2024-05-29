@@ -51,6 +51,14 @@ public class TrapBehaviour : AttackerDefenceBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out IDamagable damagable))
+        {
+            damagable.TakeDamage(attackerDefenceStat.GetDamage());
+        }
+    }
+
     public override void TargetRevived()
     {
         base.TargetRevived();

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private NearestEnemyFinder nearestEnemyFinder;
     private PlayerStats playerStats;
     private Rigidbody rb;
+    private Animator anim;
 
     [SerializeField] private Joystick joystick;
 
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         joystick = FindObjectOfType<Joystick>(true);
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
         playerAsset = GameObject.Find("playerAsset").transform;
+        anim = GetComponentInChildren<Animator>();
 
         UpdateMovementSpeed();
     }
@@ -63,6 +65,10 @@ public class PlayerMovement : MonoBehaviour
         horizontal = joystick.result.x;
         vertical = joystick.result.y;
         direction = new Vector3(horizontal, 0, vertical).normalized;
+        if (direction != Vector3.zero)
+            anim.SetBool("isWalking", true);
+        else
+            anim.SetBool("isWalking", false);
     }
 
     void ToMove()

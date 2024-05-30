@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa9bab87c77abd458b2a1dad1b68c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTag: TestBullet
+  bulletTag: Arrow
   tipOfWeapon: {fileID: 6596739294169508677}
 --- !u!1 &1199294365042929592
 GameObject:
@@ -816,7 +816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcd12befaf1c7e4eade46beebfc23d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animDur: 1
 --- !u!1 &6929623791448136160
 GameObject:
   m_ObjectHideFlags: 0

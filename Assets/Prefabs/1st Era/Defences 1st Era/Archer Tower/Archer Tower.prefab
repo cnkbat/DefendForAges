@@ -741,7 +741,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3559439368447433809, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
       propertyPath: bulletTag
-      value: TestArrow
+      value: Arrow
       objectReference: {fileID: 0}
     - target: {fileID: 5835395294901155196, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
       propertyPath: m_RootOrder

@@ -20,6 +20,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [HideInInspector] public int meat;
     [HideInInspector] public int damageIndex;
     [HideInInspector] public int attackSpeedIndex;
+    [HideInInspector] public int rangeIndex;
     [HideInInspector] public int movementSpeedIndex;
     [HideInInspector] public int powerupDurIndex;
     [HideInInspector] public int lifeStealIndex;
@@ -34,6 +35,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float damage;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float movementSpeed;
+    [SerializeField] private float range;
     [SerializeField] private float powerupDur;
     [SerializeField] private float lifeStealRate;
     [SerializeField] private float maxHealth;
@@ -54,6 +56,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [Header("Upgrade Events")]
     public Action OnAttackSpeedUpgraded;
     public Action OnDamageUpgraded;
+    public Action OnRangeUpgraded;
     public Action OnLifeStealUpgraded;
     public Action OnMovementSpeedUpgraded;
     public Action OnPowerupDurUpgraded;
@@ -66,6 +69,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action OnPlayerKilled;
     public Action<int> OnWeaponActivision;
     public Action OnLifeStolen;
+    public Action OnRangeSet;
 
     [Header("UI Events")]
     public Action OnExperiencePointChange;
@@ -79,7 +83,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action<float> OnPowerUpValueChanged;
     public Action OnPowerUpEnabled;
     public Action OnPowerUpDisabled;
-    
+
     protected override void Awake()
     {
         LoadPlayerData();
@@ -174,6 +178,11 @@ public class PlayerStats : Singleton<PlayerStats>
             damageIndex++;
             OnDamageUpgraded?.Invoke();
         }
+        else if (upgradesType == RPGUpgradesType.range)
+        {
+            rangeIndex++;
+            OnRangeUpgraded?.Invoke();
+        }
         else if (upgradesType == RPGUpgradesType.lifeSteal)
         {
             lifeStealIndex++;
@@ -210,6 +219,10 @@ public class PlayerStats : Singleton<PlayerStats>
     public void AttemptUpgradeDamage()
     {
         AttemptUpgradeStat(damageIndex, rpgSystemSO.GetDamageCosts(), CurrencyType.meat, RPGUpgradesType.damage);
+    }
+    public void AttemptUpgradeRange()
+    {
+        AttemptUpgradeStat(rangeIndex, rpgSystemSO.GetRangeCosts(), CurrencyType.meat, RPGUpgradesType.range);
     }
     public void AttemptUpgradeMovementSpeed()
     {
@@ -398,8 +411,9 @@ public class PlayerStats : Singleton<PlayerStats>
         int tempMaxHealthIndex = maxHealthIndex + powerUpUpgradeIndexValue;
         int tempAttackSpeedIndex = attackSpeedIndex + powerUpUpgradeIndexValue;
         int tempDamageIndex = damageIndex + powerUpUpgradeIndexValue;
+        int tempRangeIndex = rangeIndex + powerUpUpgradeIndexValue;
 
-        UpdateStatsForPowerUp(tempMovementIndex, tempMaxHealthIndex, tempAttackSpeedIndex, tempDamageIndex);
+        UpdateStatsForPowerUp(tempMovementIndex, tempMaxHealthIndex, tempAttackSpeedIndex, tempDamageIndex, tempRangeIndex);
         StartCoroutine(DisablePowerUp());
     }
 
@@ -414,12 +428,14 @@ public class PlayerStats : Singleton<PlayerStats>
         UpdateStats();
     }
 
-    private void UpdateStatsForPowerUp(int movementSpeedIndex, int maxHealthIndex, int attackSpeedIndex, int damageIndex)
+    private void UpdateStatsForPowerUp(int newMovementSpeedIndex, int newMaxHealthIndex, int newAttackSpeedIndex, int newDamageIndex, int newRangeIndex)
     {
-        damage = rpgSystemSO.GetDamageValues()[damageIndex];
-        attackSpeed = rpgSystemSO.GetAttackSpeedValues()[attackSpeedIndex];
-        movementSpeed = rpgSystemSO.GetMovementSpeedValues()[movementSpeedIndex];
-        maxHealth = rpgSystemSO.GetMaxHealthValues()[maxHealthIndex];
+        damage = rpgSystemSO.GetDamageValues()[newDamageIndex];
+        attackSpeed = rpgSystemSO.GetAttackSpeedValues()[newAttackSpeedIndex];
+        movementSpeed = rpgSystemSO.GetMovementSpeedValues()[newMovementSpeedIndex];
+        maxHealth = rpgSystemSO.GetMaxHealthValues()[newMaxHealthIndex];
+        range = rpgSystemSO.GetRangeValues()[newRangeIndex];
+        OnRangeSet?.Invoke();
     }
     #endregion
 
@@ -438,6 +454,7 @@ public class PlayerStats : Singleton<PlayerStats>
     }
 
     #endregion
+
     #region Wave System
 
     public void WaveWon()
@@ -496,6 +513,7 @@ public class PlayerStats : Singleton<PlayerStats>
             this.cityIndex = playerData.cityIndex;
             this.waveIndex = playerData.waveIndex;
             this.damageIndex = playerData.damageIndex;
+            this.rangeIndex = playerData.rangeIndex;
             this.attackSpeedIndex = playerData.attackSpeedIndex;
             this.movementSpeedIndex = playerData.movementSpeedIndex;
             this.powerupDurIndex = playerData.powerupDurIndex;
@@ -520,6 +538,9 @@ public class PlayerStats : Singleton<PlayerStats>
         powerupDur = rpgSystemSO.GetPowerupDurValues()[powerupDurIndex];
         lifeStealRate = rpgSystemSO.GetLifeStealValues()[lifeStealIndex];
         maxHealth = rpgSystemSO.GetMaxHealthValues()[maxHealthIndex];
+        range = rpgSystemSO.GetRangeValues()[rangeIndex];
+
+        OnRangeSet?.Invoke();
     }
 
 
@@ -571,6 +592,12 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         isDead = dead;
     }
+
+    public float GetRange()
+    {
+        return range;
+    }
+
 
     #endregion
 

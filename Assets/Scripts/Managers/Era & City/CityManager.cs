@@ -68,7 +68,7 @@ public class CityManager : MonoBehaviour
 
 
         gameManager.OnCityDidnotChanged += CheckForSecondCheckpointReached;
-
+    
     }
 
     private void OnDisable()

@@ -25,6 +25,12 @@ MonoBehaviour:
   - 3
   - 3.5
   damageCosts: 140000007d00000096000000c8000000fa000000
+  rangeValues:
+  - 2
+  - 2.5
+  - 3
+  - 3.5
+  rangeCosts: 140000007d00000096000000c8000000fa000000
   movementSpeedValues:
   - 8
   - 8.5

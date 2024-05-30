@@ -61,12 +61,13 @@ public class UIManager : Singleton<UIManager>
 
     [Header("---- Upgrading ----")]
     [SerializeField] private GameObject scrollPanel;
-    
+
     [Header("Upgrade Buttons")]
     [SerializeField] private Button enableUpgradeHudButton;
     [SerializeField] private Button exitUpgradeHudButton;
     [SerializeField] private Button upgradeAttackSpeedButton;
     [SerializeField] private Button upgradeDamageButton;
+    [SerializeField] private Button upgradeRangeButton;
     [SerializeField] private Button upgradeLifeStealButton;
     [SerializeField] private Button upgradeMovementSpeedButton;
     [SerializeField] private Button upgradePowerupDurButton;
@@ -94,6 +95,12 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TMP_Text damageNextText;
     [SerializeField] private TMP_Text damageCostText;
     [SerializeField] private TMP_Text damageLevelText;
+
+    [Header("Range")]
+    [SerializeField] private TMP_Text rangeCurrentText;
+    [SerializeField] private TMP_Text rangeNextText;
+    [SerializeField] private TMP_Text rangeCostText;
+    [SerializeField] private TMP_Text rangeLevelText;
 
     [Header("Life Steal Texts")]
     [SerializeField] private TMP_Text lifeStealCurrentText;
@@ -128,6 +135,7 @@ public class UIManager : Singleton<UIManager>
     [Header("!--- Upgrade Text Visuals ---!")]
     [SerializeField] private List<float> attackSpeedVisualValues;
     [SerializeField] private List<float> damageVisualValues;
+    [SerializeField] private List<float> rangeVisualValues;
     [SerializeField] private List<float> lifeStealVisualValues;
     [SerializeField] private List<float> movementSpeedVisualValues;
 
@@ -189,6 +197,7 @@ public class UIManager : Singleton<UIManager>
         exitUpgradeHudButton.onClick.AddListener(DisableUpgradeHud);
         upgradeAttackSpeedButton.onClick.AddListener(playerStats.AttemptUpgradeAttackSpeed);
         upgradeDamageButton.onClick.AddListener(playerStats.AttemptUpgradeDamage);
+        upgradeRangeButton.onClick.AddListener(playerStats.AttemptUpgradeRange);
         upgradeLifeStealButton.onClick.AddListener(playerStats.AttemptUpgradeLifeSteal);
         upgradeMovementSpeedButton.onClick.AddListener(playerStats.AttemptUpgradeMovementSpeed);
         upgradePowerupDurButton.onClick.AddListener(playerStats.AttemptUpgradePowerupDuration);
@@ -198,6 +207,7 @@ public class UIManager : Singleton<UIManager>
         // Upgrade Done Events Assign
         playerStats.OnAttackSpeedUpgraded += UpdateAttackSpeedTexts;
         playerStats.OnDamageUpgraded += UpdateDamageTexts;
+        playerStats.OnRangeUpgraded += UpdateRangeTexts;
         playerStats.OnLifeStealUpgraded += UpdateLifeStealTexts;
         playerStats.OnMovementSpeedUpgraded += UpdateMovementSpeedTexts;
         playerStats.OnPowerupDurUpgraded += UpdatePowerupDurTexts;
@@ -251,6 +261,7 @@ public class UIManager : Singleton<UIManager>
         exitUpgradeHudButton.onClick.RemoveAllListeners();
         upgradeAttackSpeedButton.onClick.RemoveAllListeners();
         upgradeDamageButton.onClick.RemoveAllListeners();
+        upgradeRangeButton.onClick.RemoveAllListeners();
         upgradeLifeStealButton.onClick.RemoveAllListeners();
         upgradeMovementSpeedButton.onClick.RemoveAllListeners();
         upgradePowerupDurButton.onClick.RemoveAllListeners();
@@ -260,6 +271,8 @@ public class UIManager : Singleton<UIManager>
         // Upgrade Done Events Clean Up
         playerStats.OnAttackSpeedUpgraded -= UpdateAttackSpeedTexts;
         playerStats.OnDamageUpgraded -= UpdateDamageTexts;
+        playerStats.OnRangeUpgraded -= UpdateRangeTexts;
+
         playerStats.OnLifeStealUpgraded -= UpdateLifeStealTexts;
         playerStats.OnMovementSpeedUpgraded -= UpdateMovementSpeedTexts;
         playerStats.OnPowerupDurUpgraded -= UpdatePowerupDurTexts;
@@ -396,6 +409,13 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(damageNextText, damageVisualValues[playerStats.damageIndex + 1]);
         UpdateUpgradeText(damageCostText, playerSO.GetDamageCosts()[playerStats.damageIndex]);
         UpdateUpgradeText(damageLevelText, playerStats.damageIndex);
+    }
+    private void UpdateRangeTexts()
+    {
+        UpdateUpgradeText(rangeCurrentText, rangeVisualValues[playerStats.rangeIndex]);
+        UpdateUpgradeText(rangeNextText, rangeVisualValues[playerStats.rangeIndex + 1]);
+        UpdateUpgradeText(rangeCostText, playerSO.GetRangeCosts()[playerStats.rangeIndex]);
+        UpdateUpgradeText(rangeLevelText, playerStats.rangeIndex);
     }
 
     // ATTACK SPEED

@@ -12,12 +12,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     [Header("Aim")]
-    [SerializeField] private float fireRange;
     [SerializeField] private float lookAtSense = 20;
-
-    [Header("Anim")]
-    [SerializeField] private float strikingAnimDur;
-
     Transform playerAsset;
     private Vector3 playerAssetLocalPos;
 
@@ -32,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
     {
         playerStats = PlayerStats.instance;
         playerStats.OnWeaponActivision += EnableWeapons;
+        playerStats.OnRangeSet += UpdateFireRange;
 
         for (int i = 0; i < weapons.Count; i++)
         {
@@ -41,6 +37,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnDisable()
     {
+        playerStats.OnWeaponActivision -= EnableWeapons;
+        playerStats.OnRangeSet -= UpdateFireRange;
+
         for (int i = 0; i < weapons.Count; i++)
         {
             OnAttack -= weapons[i].Attack;
@@ -56,7 +55,12 @@ public class PlayerAttack : MonoBehaviour
         playerAssetLocalPos = playerAsset.localPosition;
 
         ResetAttackSpeed();
-        nearestEnemyFinder.SetFireRange(fireRange);
+        UpdateFireRange();
+    }
+
+    private void UpdateFireRange()
+    {
+        nearestEnemyFinder.SetFireRange(playerStats.GetRange());
     }
 
     private void Update()

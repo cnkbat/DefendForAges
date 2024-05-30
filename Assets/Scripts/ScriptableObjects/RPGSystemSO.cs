@@ -17,6 +17,10 @@ public class RPGSystemSO : ScriptableObject
     [SerializeField] private List<float> damageValues;
     [SerializeField] private List<int> damageCosts;
 
+    [Header("Range")]
+    [SerializeField] private List<float> rangeValues;
+    [SerializeField] private List<int> rangeCosts;
+
     [Header("Movement Speed")]
     [SerializeField] private List<float> movementSpeedValues;
     [SerializeField] private List<int> movementSpeedCosts;
@@ -38,18 +42,28 @@ public class RPGSystemSO : ScriptableObject
 
     #region  Getters
     public List<int> GetLevellingExperiencePoints() { return experiencePointToLevelUp; }
+
     public List<float> GetAttackSpeedValues() { return attackSpeedValues; }
     public List<int> GetAttackSpeedCosts() { return attackSpeedCosts; }
+
     public List<float> GetDamageValues() { return damageValues; }
     public List<int> GetDamageCosts() { return damageCosts; }
+
+    public List<float> GetRangeValues() { return rangeValues; }
+    public List<int> GetRangeCosts() { return rangeCosts; }
+
     public List<float> GetMovementSpeedValues() { return movementSpeedValues; }
     public List<int> GetMovementSpeedCosts() { return movementSpeedCosts; }
+
     public List<float> GetLifeStealValues() { return lifeStealValues; }
     public List<int> GetLifeStealCosts() { return lifeStealCosts; }
+
     public List<float> GetPowerupDurValues() { return powerupDurValues; }
     public List<int> GetPowerupDurCosts() { return powerupDurCosts; }
+
     public List<float> GetMaxHealthValues() { return maxHealthValues; }
     public List<int> GetMaxHealthCosts() { return maxHealthCosts; }
+
     public int GetDualWeaponCost() { return dualWeaponCost; }
 
     #endregion

@@ -7,7 +7,10 @@ using UnityEngine;
 public class EnemyTarget : MonoBehaviour, ITargetable
 {
     protected GameManager gameManager;
+    protected CityManager cityManager;
+
     protected PlayerStats playerStats;
+
     protected float currentHealth;
     protected bool isTargetable;
     protected bool isPlayer;
@@ -33,8 +36,11 @@ public class EnemyTarget : MonoBehaviour, ITargetable
         }
         else
         {
-            OnTargetDestroyed += transform.root.GetComponent<CityManager>().UpdateTargetList;
-            OnTargetRevived += transform.root.GetComponent<CityManager>().UpdateTargetList;
+            cityManager = transform.root.GetComponent<CityManager>();
+            OnTargetDestroyed += cityManager.UpdateTargetList;
+            OnTargetRevived += cityManager.UpdateTargetList;
+
+            cityManager.UpdateTargetList();
         }
 
         isTargetable = true;

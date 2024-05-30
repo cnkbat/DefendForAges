@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
 
@@ -25,7 +26,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         GameObject go = new GameObject(typeof(T).ToString());
                         _instance = go.AddComponent<T>();
 
-                        DontDestroyOnLoad(_instance.gameObject);
+                        //DontDestroyOnLoad(_instance.gameObject);
                     }
                 }
 

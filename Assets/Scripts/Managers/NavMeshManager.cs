@@ -5,7 +5,6 @@ using UnityEngine;
 public class NavMeshManager : Singleton<NavMeshManager>
 {
     NavMeshSurface navMeshSurface;
-
     protected override void Awake()
     {
         base.Awake();

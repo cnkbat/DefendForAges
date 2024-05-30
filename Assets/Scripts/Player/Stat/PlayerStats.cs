@@ -79,7 +79,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action<float> OnPowerUpValueChanged;
     public Action OnPowerUpEnabled;
     public Action OnPowerUpDisabled;
-
+    
     protected override void Awake()
     {
         LoadPlayerData();

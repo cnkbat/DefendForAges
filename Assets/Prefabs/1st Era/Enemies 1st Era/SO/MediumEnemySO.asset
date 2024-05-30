@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 962bd0fd1da81c348ba7df4b0b08b9d4, type: 3}
-  m_Name: EnemyScriptableObject
+  m_Name: MediumEnemySO
   m_EditorClassIdentifier: 
-  maxHealth: 150
-  moveSpeed: 3.2
-  knockbackDur: 1
-  attackSpeed: 1
+  maxHealth: 7
+  moveSpeed: 4.7
+  knockbackDur: 0.65
+  attackSpeed: 1.2
   attackDur: 1
-  damage: 10
+  damage: 2
   attackRange: 2
-  moneyValue: 10
-  expValue: 10
-  meatValue: 10
+  moneyValue: 7
+  expValue: 4
+  meatValue: 2
   powerUpAddOnValue: 1

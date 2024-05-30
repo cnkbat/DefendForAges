@@ -18,14 +18,14 @@ MonoBehaviour:
   - 100
   upgradeEnablingIndexes: 000000000000000014000000
   damageValues:
-  - 4
-  - 4
-  - 4
-  - 4
+  - 5
+  - 7
+  - 9
+  - 10
   attackSpeedValues:
   - 4
-  - 2
-  - 1
-  - 0.5
+  - 3.5
+  - 3.4
+  - 3.2
   weaponSpawnIndexes: 0000000000000000000000000000000000000000
-  upgradeCosts: 050000000500000005000000
+  upgradeCosts: 0f0000001e000000370000004b000000

@@ -12,42 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ce422f9307c0f4daf5dbf3c67ae01d, type: 3}
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
-  experiencePointToLevelUp: 102700000f0000001400000014000000140000001400000014000000140000001400000014000000
+  experiencePointToLevelUp: c8000000900100005802000020030000e8030000b0040000780500004006000008070000d0070000
   attackSpeedValues:
-  - 1
-  - 0.85
-  - 0.7
-  - 0.55
-  attackSpeedCosts: 6e0000007d00000096000000c8000000fa000000
+  - 1.5
+  - 1.45
+  - 1.4
+  - 1.35
+  attackSpeedCosts: 640000007d00000096000000c8000000
   damageValues:
-  - 10
   - 2
-  - 2
-  - 2
-  damageCosts: 6e0000007d00000096000000c8000000fa000000
+  - 2.5
+  - 3
+  - 3.5
+  damageCosts: 140000007d00000096000000c8000000fa000000
   movementSpeedValues:
+  - 8
+  - 8.5
+  - 9
+  - 9.5
   - 10
-  - 11
-  - 12
-  - 13
-  - 14
   movementSpeedCosts: 6e0000007d00000096000000c8000000fa000000
   lifeStealValues:
   - 0.5
-  - 2
-  - 2
+  - 1
+  - 1.5
   - 2
   lifeStealCosts: 6e0000007d00000096000000c8000000fa000000
   powerupDurValues:
-  - 0.5
-  - 2
-  - 2
-  - 2
-  powerupDurCosts: 6e0000007d00000096000000c8000000fa000000
+  - 7
+  - 8
+  - 9
+  - 10
+  powerupDurCosts: 6400000096000000c8000000fa000000
   maxHealthValues:
-  - 0.5
-  - 2
-  - 2
-  - 2
-  maxHealthCosts: 6e0000007d00000096000000c8000000fa000000
-  dualWeaponCost: 100
+  - 10
+  - 15
+  - 20
+  - 25
+  maxHealthCosts: 6e0000007d00000096000000c8000000
+  dualWeaponCost: 500

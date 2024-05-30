@@ -14,33 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthValues:
   - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  upgradeEnablingIndexes: 000000000000000000000000
+  - 20
+  - 30
+  - 40
+  - 50
+  upgradeEnablingIndexes: 0000000000000000000000000000000000000000
   damageValues:
   - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
   attackSpeedValues:
   - 2
   - 2
   - 2
   - 2
   - 2
-  weaponSpawnIndexes: 0000000000000000000000000000000000000000
-  upgradeCosts: 0000000000000000000000000000000000000000
+  weaponSpawnIndexes: 0000000001000000010000000200000002000000
+  upgradeCosts: 320000006400000096000000fa00000090010000
   recoveries:
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3

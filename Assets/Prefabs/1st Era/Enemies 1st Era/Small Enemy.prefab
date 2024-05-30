@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa902748e341b24e99cf2389fd4353e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySO: {fileID: 11400000, guid: 1785fb1e899a0884184317e89773c19a, type: 2}
+  enemySO: {fileID: 11400000, guid: e11c208bcfd37d443b21139c288dee03, type: 2}
   currentMoveSpeed: 0
   maxHealth: 0
   healthBar: {fileID: 0}
@@ -183,7 +183,7 @@ MonoBehaviour:
   aliveLayerName: Enemy
   deadLayerName: DeadEnemy
   spineBone: {fileID: 0}
-  deathAnimDur: 3
+  deathAnimDur: 1
   enemyAsset: {fileID: 0}
   aimSpeed: 100
   boundRenderer: {fileID: 870501816417566129}

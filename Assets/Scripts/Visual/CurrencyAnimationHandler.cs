@@ -8,7 +8,7 @@ public class CurrencyAnimationHandler : MonoBehaviour, IPoolableObject
 
     private void OnEnable()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void OnObjectPooled()

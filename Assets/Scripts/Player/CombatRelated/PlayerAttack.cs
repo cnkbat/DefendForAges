@@ -73,6 +73,7 @@ public class PlayerAttack : MonoBehaviour
             if (currentAttackSpeed <= 0)
             {
                 OnAttackAnimPlayNeeded?.Invoke();
+                ResetAttackSpeed();
             }
         }
         else
@@ -84,7 +85,6 @@ public class PlayerAttack : MonoBehaviour
     public void Attack()
     {
         OnAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), playerStats.GetDamage(), true);
-        ResetAttackSpeed();
     }
 
     #region  Finding Closest Enemy

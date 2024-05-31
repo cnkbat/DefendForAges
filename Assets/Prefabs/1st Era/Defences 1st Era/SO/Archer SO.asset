@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Archer SO
   m_EditorClassIdentifier: 
   maxHealthValues:
-  - 10
+  - 5
   - 15
-  - 20
-  upgradeEnablingIndexes: 000000000000000014000000
+  - 25
+  - 35
+  upgradeEnablingIndexes: 000000000100000003000000
   damageValues:
   - 2
   - 2.5
@@ -28,4 +29,4 @@ MonoBehaviour:
   - 2.6
   - 2.3
   weaponSpawnIndexes: 00000000000000000000000000000000
-  upgradeCosts: 19000000320000004b00000064000000
+  upgradeCosts: 190000004b0000007d000000c8000000

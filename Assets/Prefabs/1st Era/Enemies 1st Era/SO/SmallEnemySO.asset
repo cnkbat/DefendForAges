@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   moveSpeed: 3.4
-  knockbackDur: 0.6
+  knockbackDur: 0.3
   attackSpeed: 1
   attackDur: 1
   damage: 1
-  attackRange: 1.5
+  attackRange: 2.2
   moneyValue: 4
   expValue: 2
   meatValue: 1

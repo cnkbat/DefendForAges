@@ -1264,6 +1264,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d6131b1e84d675e44908732e5cf48584, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c69c82cc72e44414499f333ee7aa7985, type: 2}
+    - target: {fileID: -7511558181221131132, guid: d6131b1e84d675e44908732e5cf48584, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d749fb53e8ee5548b0d4bc1e9c62e16, type: 2}
+    - target: {fileID: -7511558181221131132, guid: d6131b1e84d675e44908732e5cf48584, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 688e3946180c13648a4ae6505ff2ee88, type: 2}
+    - target: {fileID: -7511558181221131132, guid: d6131b1e84d675e44908732e5cf48584, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 853e0083aa2161545972980fcc5a0503, type: 2}
     - target: {fileID: 919132149155446097, guid: d6131b1e84d675e44908732e5cf48584, type: 3}
       propertyPath: m_Name
       value: Bow

@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Tower SO
   m_EditorClassIdentifier: 
   maxHealthValues:
-  - 10
-  - 20
-  - 30
-  - 40
-  - 50
+  - 5
   upgradeEnablingIndexes: 0000000000000000000000000000000000000000
   damageValues:
   - 1
@@ -34,8 +30,4 @@ MonoBehaviour:
   weaponSpawnIndexes: 0000000001000000010000000200000002000000
   upgradeCosts: 320000006400000096000000fa00000090010000
   recoveries:
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
+  - 1

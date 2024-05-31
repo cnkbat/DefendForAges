@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 2921619127957824338}
   - component: {fileID: 9109517378413426984}
   m_Layer: 0
-  m_Name: Body Type 27
+  m_Name: Boss 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

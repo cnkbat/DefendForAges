@@ -37,9 +37,10 @@ public class Bullet : MonoBehaviour, IPoolableObject
     private void OnEnable()
     {
         playerStats = PlayerStats.instance;
-        OnDamageDealt += playerStats.IncrementHealth;
         gameManager = GameManager.instance;
         objectPooler = ObjectPooler.instance;
+
+        OnDamageDealt += playerStats.IncrementHealth;
     }
 
     private void OnDisable()
@@ -123,7 +124,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
         {
             trailFX.Stop();
         }
-        
+
         gameObject.SetActive(false);
     }
 

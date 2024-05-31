@@ -31,7 +31,6 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         {
             OnStickmanAnimationPlayNeeded += archerStickmans[i].PlayAttackAnimation;
         }
-
     }
 
     protected override void OnDisable()
@@ -55,6 +54,11 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
         nearestEnemyFinder.SetFireRange(fireRange);
+
+        for (int i = 0; i < archerStickmans.Count; i++)
+        {
+            OnStickmanAnimationPlayNeeded += archerStickmans[i].PlayAttackAnimation;
+        }
     }
 
     protected override void Update()

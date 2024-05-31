@@ -30,7 +30,7 @@ public class SpawnAnimationHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        buyableArea = transform.parent.GetComponent<BuyableArea>();
+        buyableArea = transform.GetComponent<BuyableArea>();
         buyableArea.OnAnimPlayNeeded += PlaySpawningAnimation;
     }
 
@@ -50,7 +50,7 @@ public class SpawnAnimationHandler : MonoBehaviour
         {
             for (int i = 0; i < objectsToEnable.Count; i++)
             {
-                PlayDropDownAnimation(objectsToEnable[i]);
+                PlayDropDownAnimation(objectsToEnable[i],i);
             }
 
             for (int i = 0; i < objectsToDisable.Count; i++)
@@ -63,7 +63,7 @@ public class SpawnAnimationHandler : MonoBehaviour
         {
             for (int i = 0; i < objectsToEnable.Count; i++)
             {
-                PlaySmallToBigAnimation(objectsToEnable[i]);
+                PlaySmallToBigAnimation(objectsToEnable[i], i);
             }
 
             for (int i = 0; i < objectsToDisable.Count; i++)
@@ -75,14 +75,19 @@ public class SpawnAnimationHandler : MonoBehaviour
     }
 
     #region Small to Big
-    private void PlaySmallToBigAnimation(Transform animatedObject)
+    private void PlaySmallToBigAnimation(Transform animatedObject, float index)
     {
         Vector3 localScale = animatedObject.localScale;
         animatedObject.localScale = Vector3.zero;
 
-        animatedObject.DOScale(localScale, smallToBigAnimationTime).SetEase(smallToBigEaseType);
+        StartCoroutine(DelaySmallToBigAnimation(animatedObject,localScale,(index + 1) / 10));
     }
 
+    IEnumerator DelaySmallToBigAnimation(Transform animatedObject,Vector3 localScale,float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        animatedObject.DOScale(localScale, smallToBigAnimationTime).SetEase(smallToBigEaseType);
+    }
     private void PlaySmallToBigDeSpawnAnimation(Transform removedObject)
     {
         removedObject.DOScale(0, smallToBigAnimationTime).SetEase(smallToBigEaseType).OnComplete(() => removedObject.gameObject.SetActive(false));
@@ -91,7 +96,7 @@ public class SpawnAnimationHandler : MonoBehaviour
 
     #region Drop Down
 
-    private void PlayDropDownAnimation(Transform animatedObject)
+    private void PlayDropDownAnimation(Transform animatedObject, float index)
     {
         animatedObject.gameObject.SetActive(true);
 
@@ -101,8 +106,16 @@ public class SpawnAnimationHandler : MonoBehaviour
         animatedObject.localPosition += animatedObject.up * flyUpValue;
         animatedObject.localScale = Vector3.zero;
 
+        StartCoroutine(DelayDropDownAnimation(animatedObject,localPos,localScale, (index + 1) / (10+index)));
+    }   
+
+    IEnumerator DelayDropDownAnimation(Transform animatedObject,Vector3 localPos,Vector3 localScale,float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         animatedObject.DOLocalMove(localPos, dropDownAnimationTime).SetEase(dropDownEaseType).
             OnStart(() => animatedObject.DOScale(localScale, dropDownAnimationTime));
+        
     }
 
     private void PlayDropDownDespawnAnimation(Transform removedObject)

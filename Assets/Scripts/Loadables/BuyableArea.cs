@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 
+[RequireComponent(typeof(SpawnAnimationHandler))]
 public class BuyableArea : MonoBehaviour
 {
 
@@ -31,7 +32,6 @@ public class BuyableArea : MonoBehaviour
     [SerializeField] private List<Transform> objectsToEnableOnBuy;
     [SerializeField] private List<Transform> objectsToDisableOnBuy;
     [SerializeField] private List<Transform> ghostedAssets;
-
 
     [Header("Events")]
     public Action OnAreaBuyed;
@@ -79,6 +79,7 @@ public class BuyableArea : MonoBehaviour
     #region Buying Area
     public void AreaBuyed()
     {
+        Debug.Log("area buyed");
         EnableArea();
         OnAreaBuyed?.Invoke();
     }
@@ -91,11 +92,15 @@ public class BuyableArea : MonoBehaviour
 
     public void EnableBuying()
     {
+        if (isBuyed) return;
+
         if (tightedBuyableArea != null)
         {
             if (tightedBuyableArea.GetIsBuyed())
             {
                 gameObject.SetActive(true);
+
+
                 loadableBase.gameObject.SetActive(true);
 
                 for (int i = 0; i < ghostedAssets.Count; i++)
@@ -106,8 +111,14 @@ public class BuyableArea : MonoBehaviour
         }
         else
         {
+
             gameObject.SetActive(true);
-            loadableBase.gameObject.SetActive(true);
+
+            if (isBuyed == false)
+            {
+                loadableBase.gameObject.SetActive(true);
+            }
+
 
             for (int i = 0; i < ghostedAssets.Count; i++)
             {
@@ -122,7 +133,7 @@ public class BuyableArea : MonoBehaviour
         if (isBuyed) return;
 
         gameObject.SetActive(false);
-        loadableBase.gameObject.SetActive(true);
+        loadableBase.gameObject.SetActive(false);
     }
 
     #endregion
@@ -135,7 +146,7 @@ public class BuyableArea : MonoBehaviour
         {
             if (objectsToEnableOnBuy[i].gameObject.activeSelf != isBuyed)
             {
-                OnAnimPlayNeeded?.Invoke(objectsToEnableOnBuy, objectsToDisableOnBuy,spawnPosesToDisable);
+                OnAnimPlayNeeded?.Invoke(objectsToEnableOnBuy, objectsToDisableOnBuy, spawnPosesToDisable);
             }
         }
 

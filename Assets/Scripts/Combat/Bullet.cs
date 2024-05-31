@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
     public Action<float> OnDamageDealt;
 
     [Header("VFX")]
-    [SerializeField] private TrailRenderer trailFX;
+    [SerializeField] private ParticleSystem trailFX;
 
     private bool targetReached = false;
 
@@ -63,6 +63,11 @@ public class Bullet : MonoBehaviour, IPoolableObject
             targetPos = target.transform.position;
         }
 
+        if(trailFX != null)
+        {
+            trailFX.Play();
+        }
+
         firedPoint = transform.position;
 
         Vector3 worldAimTarget = targetPos;
@@ -82,7 +87,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
         currentDisappearTime -= Time.deltaTime;
         if (currentDisappearTime < 0)
         {
-            gameObject.SetActive(false);
+            DisableBullet();
         }
 
         transform.position += Vector3.up * gravity;
@@ -102,14 +107,24 @@ public class Bullet : MonoBehaviour, IPoolableObject
         }
         else
         {
-            gameObject.SetActive(false);
+            DisableBullet();
         }
 
         if (gameManager.bulletFireRange < Vector3.Distance(transform.position, firedPoint))
         {
-            gameObject.SetActive(false);
+           DisableBullet();
         }
 
+    }
+
+    private void DisableBullet()
+    {
+        if(trailFX != null)
+        {
+            trailFX.Stop();
+        }
+        
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,11 +144,11 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
             objectPooler.SpawnFloatingTextFromPool("FloatingText", targetPos, damage, damage * gameManager.fontSizeOnEnemyHit, Color.red);
 
-            gameObject.SetActive(false);
+            DisableBullet();
         }
         else if (other.TryGetComponent(out IEnvironment environment))
         {
-            gameObject.SetActive(false);
+            DisableBullet();
         }
     }
 
@@ -146,15 +161,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
-    }
-
-
-    public void SetTrailColor(Color startColor, Color endColor)
-    {
-
-        trailFX.startColor = startColor;
-        trailFX.endColor = endColor;
-
     }
 
     public void SetIsPlayerBullet(bool newBool)

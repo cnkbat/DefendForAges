@@ -562,10 +562,10 @@ GameObject:
   - component: {fileID: 4129987592659609999}
   - component: {fileID: 4129987592659610000}
   - component: {fileID: 7417895134854560910}
-  - component: {fileID: 4129987592659610001}
   - component: {fileID: 4129987592659609998}
-  - component: {fileID: 2758189654444478126}
+  - component: {fileID: 4129987592659610001}
   - component: {fileID: 5992078364483981907}
+  - component: {fileID: 2758189654444478126}
   m_Layer: 7
   m_Name: Breakable Wall Small
   m_TagString: Untagged
@@ -621,6 +621,39 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &4129987592659609998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4129987592659609996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452f95acbc67c6d429aa2693991cac67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
+  loadableBase: {fileID: 4483969574501170686}
+  defenceID: 17
+  upgradeIndex: 0
+  wallHolderParts:
+  - {fileID: 5323087502550827550}
+  - {fileID: 2785115244948961410}
+  wallParts:
+  - {fileID: 5089725211011924738}
+  - {fileID: 4365983663819543381}
+  - {fileID: 7509089408865278799}
+  - {fileID: 7693246453943027534}
+  - {fileID: 8375346670122719931}
+  - {fileID: 5487284634353441925}
+  healthParts:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &4129987592659610001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,51 +671,8 @@ MonoBehaviour:
   asset: {fileID: 5562385836538647307}
   feelFeedBacks: {fileID: 1195539613358557312}
   nearbyEnvironment:
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &4129987592659609998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4129987592659609996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 452f95acbc67c6d429aa2693991cac67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
-  loadableBase: {fileID: 4483969574501170686}
-  defenceID: 17
-  upgradeIndex: 0
-  wallParts:
-  - {fileID: 5089725211011924738}
-  - {fileID: 4365983663819543381}
-  - {fileID: 7509089408865278799}
-  - {fileID: 7693246453943027534}
-  - {fileID: 8375346670122719931}
-  - {fileID: 5487284634353441925}
-  healthParts:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
---- !u!114 &2758189654444478126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4129987592659609996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ac3c9c9c495ecc4ca4866636b14aa6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  YAxisPos: 2.16
+  - {fileID: 2681308560680952399}
+  - {fileID: 4527207755060325099}
 --- !u!114 &5992078364483981907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,6 +689,19 @@ MonoBehaviour:
   - {fileID: 4457177274236015194}
   - {fileID: 8722467731606846271}
   - {fileID: 6283092340607811357}
+--- !u!114 &2758189654444478126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4129987592659609996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac3c9c9c495ecc4ca4866636b14aa6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  YAxisPos: 2.16
 --- !u!1 &4365983663819543381
 GameObject:
   m_ObjectHideFlags: 0

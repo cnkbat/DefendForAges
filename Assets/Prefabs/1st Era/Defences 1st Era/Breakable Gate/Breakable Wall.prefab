@@ -1160,8 +1160,8 @@ GameObject:
   - component: {fileID: 2072606189640243496}
   - component: {fileID: 2072606189640243511}
   - component: {fileID: 4855550956951948329}
-  - component: {fileID: 2072606189640243510}
   - component: {fileID: 2072606189640243497}
+  - component: {fileID: 2072606189640243510}
   - component: {fileID: 9125059046068646988}
   - component: {fileID: 276064747196349961}
   m_Layer: 7
@@ -1219,6 +1219,39 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &2072606189640243497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072606189640243499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452f95acbc67c6d429aa2693991cac67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
+  loadableBase: {fileID: 1993277272936303961}
+  defenceID: 17
+  upgradeIndex: 0
+  wallHolderParts:
+  - {fileID: 7803804038141211321}
+  - {fileID: 231229509213505573}
+  wallParts:
+  - {fileID: 7147669527411569573}
+  - {fileID: 1802810456464172018}
+  - {fileID: 5595278901344955368}
+  - {fileID: 5715120085203007465}
+  - {fileID: 5884230953514904092}
+  - {fileID: 7617005069366455330}
+  healthParts:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &2072606189640243510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1238,36 +1271,6 @@ MonoBehaviour:
   nearbyEnvironment:
   - {fileID: 8108501755211125782}
   - {fileID: 4120017618283745318}
---- !u!114 &2072606189640243497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072606189640243499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 452f95acbc67c6d429aa2693991cac67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defenceSO: {fileID: 11400000, guid: c560b489b53c79346a8715026ca1b34d, type: 2}
-  loadableBase: {fileID: 1993277272936303961}
-  defenceID: 17
-  upgradeIndex: 0
-  wallParts:
-  - {fileID: 7147669527411569573}
-  - {fileID: 1802810456464172018}
-  - {fileID: 5595278901344955368}
-  - {fileID: 5715120085203007465}
-  - {fileID: 5884230953514904092}
-  - {fileID: 7617005069366455330}
-  healthParts:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
 --- !u!114 &9125059046068646988
 MonoBehaviour:
   m_ObjectHideFlags: 0

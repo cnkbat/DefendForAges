@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class WallStats : DefencesStatsBase
 {
-    public List<GameObject> wallParts;
-    public List<float> healthParts;
+    [Tooltip("Köşeler")] public List<GameObject> wallHolderParts;
+    [Tooltip("Ortadaki parçalar")] public List<GameObject> wallParts;
+    [HideInInspector] public List<float> healthParts;
 
     protected override void OnEnable()
     {

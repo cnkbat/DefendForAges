@@ -36,10 +36,12 @@ public class DeathHandler : EnemyTarget
     {
         if (isDestroyed) return;
         if (playerStats.GetIsDead()) return;
-
+        
+        playerStats.SetIsDead(true);
+        
         Time.timeScale = 0.5f; // sonra balancelicaz
 
-        playerStats.SetIsDead(true);
+        
         isDestroyed = true;
         isTargetable = true;
 

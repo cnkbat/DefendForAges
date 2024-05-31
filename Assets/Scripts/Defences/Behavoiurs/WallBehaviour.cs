@@ -6,6 +6,7 @@ public class WallBehaviour : DefencesBehaviourBase
 
     WallStats wallStats;
     NavMeshManager navMeshManager;
+
     [SerializeField] private List<Animator> nearbyEnvironment;
 
     protected override void OnEnable()
@@ -45,6 +46,11 @@ public class WallBehaviour : DefencesBehaviourBase
                 wallStats.wallParts[i].SetActive(false);
             }
         }
+
+        for (int i = 0; i < wallStats.wallHolderParts.Count; i++)
+        {
+            wallStats.wallHolderParts[i].SetActive(false);
+        }
     }
 
     #region Repair Related
@@ -56,6 +62,11 @@ public class WallBehaviour : DefencesBehaviourBase
         foreach (var wallPart in wallStats.wallParts)
         {
             wallPart.SetActive(true);
+        }
+
+        for (int i = 0; i < wallStats.wallHolderParts.Count; i++)
+        {
+            wallStats.wallHolderParts[i].SetActive(true);
         }
 
         for (int i = 0; i < nearbyEnvironment.Count; i++)

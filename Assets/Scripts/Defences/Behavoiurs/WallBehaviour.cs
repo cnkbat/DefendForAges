@@ -34,7 +34,11 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.Start();
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        { DestroyDefence(); }
+    }
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
@@ -45,11 +49,6 @@ public class WallBehaviour : DefencesBehaviourBase
             {
                 wallStats.wallParts[i].SetActive(false);
             }
-        }
-
-        for (int i = 0; i < wallStats.wallHolderParts.Count; i++)
-        {
-            wallStats.wallHolderParts[i].SetActive(false);
         }
     }
 
@@ -80,12 +79,18 @@ public class WallBehaviour : DefencesBehaviourBase
 
     protected override void DestroyDefence()
     {
+        if(isDestroyed) return;
         base.DestroyDefence();
 
         for (int i = 0; i < nearbyEnvironment.Count; i++)
         {
             nearbyEnvironment[i].SetTrigger("Break");
             nearbyEnvironment[i].GetComponent<BoxCollider>().enabled = false;
+        }
+
+        for (int i = 0; i < wallStats.wallHolderParts.Count; i++)
+        {
+            wallStats.wallHolderParts[i].SetActive(false);
         }
 
         navMeshManager.BakeNavMesh();

@@ -86,6 +86,8 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     protected override void DestroyDefence()
     {
+        if(isDestroyed) return;
+        
         base.DestroyDefence();
         // ağır haptic oynat
         OnTowerDestroyed?.Invoke();

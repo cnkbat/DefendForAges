@@ -28,6 +28,8 @@ public class DefencesBehaviourBase : EnemyTarget
 
     public override void TakeDamage(float dmg)
     {
+
+
         base.TakeDamage(dmg);
 
         if (feelFeedBacks != null)
@@ -39,7 +41,7 @@ public class DefencesBehaviourBase : EnemyTarget
 
         SetisRepairable(true);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDestroyed)
         {
             DestroyDefence();
         }
@@ -52,7 +54,11 @@ public class DefencesBehaviourBase : EnemyTarget
 
     protected virtual void DestroyDefence()
     {
+        if(isDestroyed) return;
+
         base.TargetDestroyed();
+
+        // animasyon gelince ayarlanacak.
         //asset.SetActive(false);
         boxCollider.enabled = false;
 

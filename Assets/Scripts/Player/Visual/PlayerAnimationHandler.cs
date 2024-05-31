@@ -75,11 +75,13 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     public void SetAttackTrigger()
     {
+        if (playerStats.GetIsDead()) return;
         animator.SetTrigger("Attack");
     }
 
     public void AttackAtEnemy()
     {
+        if (playerStats.GetIsDead()) return;
         OnAnimEventFired?.Invoke();
     }
 

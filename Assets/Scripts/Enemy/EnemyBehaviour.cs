@@ -179,7 +179,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         enemyAsset.forward = transform.forward;
 
         enemyAsset.localPosition = Vector3.zero;
-        if(spineBone != null)
+        if (spineBone != null)
             spineBone.forward = transform.forward;
     }
 
@@ -252,7 +252,18 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnMove?.Invoke();
 
         OnMovementSpeedChanged?.Invoke(navMeshAgent.speed);
-        navMeshAgent.destination = enemyTargeter.GetTarget().transform.position;
+        //Vector3 tempPos = enemyTargeter.GetTarget().transform.position;
+        navMeshAgent.destination = GetRandomPosition();
+    }
+
+    Vector3 GetRandomPosition()
+    {
+        // target updateinde yeni yer seçilecek.
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * 3;
+        randomDirection += enemyTargeter.GetTarget().transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, 3, 1);
+        return hit.position;
     }
 
     #endregion
@@ -348,7 +359,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         }
     }
 
-    
+
     private void PlayDropSystemAnimation()
     {
         int dropRand = Random.Range(0, gameManager.dropTypeCount);

@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3124276680908032126}
   - component: {fileID: 6934288632474978714}
   m_Layer: 9
-  m_Name: TestAxeThrowable
+  m_Name: AxeThrowable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

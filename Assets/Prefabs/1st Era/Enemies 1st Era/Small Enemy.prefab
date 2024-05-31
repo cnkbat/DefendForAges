@@ -1918,6 +1918,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knife 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7704259577004920586, guid: 778f5508276021d4ea1e1f340c3ffbe1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4006293
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704259577004920586, guid: 778f5508276021d4ea1e1f340c3ffbe1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.74555475
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704259577004920586, guid: 778f5508276021d4ea1e1f340c3ffbe1, type: 3}
+      propertyPath: m_Size.z
+      value: 0.6116529
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704259577004920586, guid: 778f5508276021d4ea1e1f340c3ffbe1, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0116694365
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704259577004920586, guid: 778f5508276021d4ea1e1f340c3ffbe1, type: 3}
+      propertyPath: m_Center.y
+      value: 0.09759627
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704259577004920586, guid: 778f5508276021d4ea1e1f340c3ffbe1, type: 3}
+      propertyPath: m_Center.z
+      value: 0.009298821
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 778f5508276021d4ea1e1f340c3ffbe1, type: 3}
 --- !u!4 &5551517412774761774 stripped

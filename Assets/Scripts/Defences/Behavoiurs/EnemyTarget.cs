@@ -82,6 +82,8 @@ public class EnemyTarget : MonoBehaviour, ITargetable
 
     public virtual void TargetDestroyed()
     {
+        if(isDestroyed) return;
+        
         isDestroyed = true;
         isTargetable = false;
 

@@ -63,9 +63,10 @@ public class DefencesStatsBase : MonoBehaviour
         OnBuyDone?.Invoke();
     }
 
-    protected void IncrementUpgradeIndex()
+    protected virtual void IncrementUpgradeIndex()
     {
         upgradeIndex++;
+        SetSOValues();
         saveManager.OnSaved?.Invoke();
     }
 
@@ -103,7 +104,7 @@ public class DefencesStatsBase : MonoBehaviour
     #region Getters & Setters
     public float GetMaxHealth()
     {
-        return maxHealth;
+        return defenceSO.GetMaxHealthValues()[upgradeIndex];
     }
     public int GetUpgradeIndex()
     {

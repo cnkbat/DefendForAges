@@ -61,6 +61,7 @@ public class CityManager : MonoBehaviour
         {
             waveList[i].OnWaveCompleted += StopWaves;
             waveList[i].OnWaveCompleted += playerStats.WaveWon;
+            waveList[i].OnWaveCompleted += HandleAreaBuyingState;
         }
 
         playerStats.OnPlayerKilled += UpdateTargetList;
@@ -80,6 +81,7 @@ public class CityManager : MonoBehaviour
         {
             waveList[i].OnWaveCompleted -= StopWaves;
             waveList[i].OnWaveCompleted -= playerStats.WaveWon;
+            waveList[i].OnWaveCompleted -= HandleAreaBuyingState;
         }
 
         playerStats.OnPlayerKilled -= UpdateTargetList;

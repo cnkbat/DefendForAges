@@ -29,6 +29,11 @@ public class TowerStats : AttackerDefenceStat
         recovery = towerSO.GetRecoveries()[upgradeIndex];
     }
 
+    protected override void IncrementUpgradeIndex()
+    {
+        base.IncrementUpgradeIndex();
+        SetSOValues();
+    }
 
     #region Getters & Setters
     public float GetRecovery()

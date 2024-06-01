@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DeathHandler : EnemyTarget
 {
-    public Action OnDamageTaken;
 
     private void Awake()
     {
@@ -80,8 +79,6 @@ public class DeathHandler : EnemyTarget
 
         base.TakeDamage(dmg);
 
-        OnDamageTaken?.Invoke();
-
         currentHealth -= dmg;
 
         if (currentHealth <= 0)
@@ -111,11 +108,6 @@ public class DeathHandler : EnemyTarget
     }
 
     #region Getters & Setters
-    public float GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-
     public void SetCurrentHealth(float newHealth)
     {
         currentHealth = newHealth;

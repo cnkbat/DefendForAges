@@ -17,6 +17,8 @@ public class EnemyTarget : MonoBehaviour, ITargetable
 
     protected bool isDestroyed;
 
+    public Action OnDamageTaken;
+
     [Header("AI Manipulation")]
     [SerializeField] private float stoppingDistance;
 
@@ -71,7 +73,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     public virtual void TakeDamage(float dmg)
     {
         if (isDestroyed) return;
-
+        OnDamageTaken?.Invoke();
         // chlidlara atamak için
     }
 
@@ -82,8 +84,8 @@ public class EnemyTarget : MonoBehaviour, ITargetable
 
     public virtual void TargetDestroyed()
     {
-        if(isDestroyed) return;
-        
+        if (isDestroyed) return;
+
         isDestroyed = true;
         isTargetable = false;
 
@@ -114,6 +116,15 @@ public class EnemyTarget : MonoBehaviour, ITargetable
         return stoppingDistance;
     }
 
+    public bool GetIsDestroyed()
+    {
+        return isDestroyed;
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
     #endregion
 
 }

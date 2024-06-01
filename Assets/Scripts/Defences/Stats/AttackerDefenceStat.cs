@@ -25,7 +25,6 @@ public class AttackerDefenceStat : DefencesStatsBase
     protected override void OnEnable()
     {
         base.OnEnable();
-
         playerStats = PlayerStats.instance;
         playerStats.OnWaveWon += HandleLoableState;
 

@@ -167,49 +167,50 @@ public class PlayerStats : Singleton<PlayerStats>
     private void UpgradeSuccesful(RPGUpgradesType upgradesType)
     {
         if (upgradesType == RPGUpgradesType.empty) return;
-
-        if (upgradesType == RPGUpgradesType.attackSpeed)
-        {
-            attackSpeedIndex++;
-            OnAttackSpeedUpgraded?.Invoke();
-        }
-        else if (upgradesType == RPGUpgradesType.damage)
-        {
-            damageIndex++;
-            OnDamageUpgraded?.Invoke();
-        }
-        else if (upgradesType == RPGUpgradesType.range)
-        {
-            rangeIndex++;
-            OnRangeUpgraded?.Invoke();
-        }
-        else if (upgradesType == RPGUpgradesType.lifeSteal)
-        {
-            lifeStealIndex++;
-            OnLifeStealUpgraded?.Invoke();
-        }
-        else if (upgradesType == RPGUpgradesType.movementSpeed)
-        {
-            movementSpeedIndex++;
-            OnMovementSpeedUpgraded?.Invoke();
-        }
-        else if (upgradesType == RPGUpgradesType.powerupDur)
-        {
-            powerupDurIndex++;
-            OnPowerupDurUpgraded?.Invoke();
-        }
-        else if (upgradesType == RPGUpgradesType.maxHealth)
-        {
-            maxHealthIndex++;
-            OnMaxHealthUpgraded?.Invoke();
-        }
-        else if (upgradesType == RPGUpgradesType.dualWeapon)
-        {
-            OnDualWeaponUpgraded?.Invoke();
-        }
-
+        HandleUpgrade(upgradesType);
         UpdateStats();
+    }
 
+    private void HandleUpgrade(RPGUpgradesType upgradesType)
+    {
+        switch (upgradesType)
+        {
+            case RPGUpgradesType.attackSpeed:
+                attackSpeedIndex++;
+                OnAttackSpeedUpgraded?.Invoke();
+                break;
+            case RPGUpgradesType.damage:
+                damageIndex++;
+                OnDamageUpgraded?.Invoke();
+                break;
+            case RPGUpgradesType.range:
+                rangeIndex++;
+                OnRangeUpgraded?.Invoke();
+                break;
+            case RPGUpgradesType.lifeSteal:
+                lifeStealIndex++;
+                OnLifeStealUpgraded?.Invoke();
+                break;
+            case RPGUpgradesType.movementSpeed:
+                movementSpeedIndex++;
+                OnMovementSpeedUpgraded?.Invoke();
+                break;
+            case RPGUpgradesType.powerupDur:
+                powerupDurIndex++;
+                OnPowerupDurUpgraded?.Invoke();
+                break;
+            case RPGUpgradesType.maxHealth:
+                maxHealthIndex++;
+                OnMaxHealthUpgraded?.Invoke();
+                break;
+            case RPGUpgradesType.dualWeapon:
+                OnDualWeaponUpgraded?.Invoke();
+                break;
+            default:
+                Debug.LogError("Upgrade Type is not defined");
+                break;
+        }
+        UpdateStats();
     }
 
     public void AttemptUpgradeAttackSpeed()

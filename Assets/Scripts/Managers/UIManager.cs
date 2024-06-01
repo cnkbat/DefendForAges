@@ -372,7 +372,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(maxHealthCurrentText, playerSO.GetMaxHealthValues()[playerStats.maxHealthIndex]);
         UpdateUpgradeText(maxHealthNextText, playerSO.GetMaxHealthValues()[playerStats.maxHealthIndex + 1]);
         UpdateUpgradeText(maxHealthCostText, playerSO.GetMaxHealthCosts()[playerStats.maxHealthIndex]);
-        UpdateUpgradeText(maxHealthLevelText, playerStats.maxHealthIndex);
+        UpdateUpgradeText(maxHealthLevelText, playerStats.maxHealthIndex + 1);
     }
 
     //POWER UP DUR
@@ -381,7 +381,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(powerupDurCurrentText, playerSO.GetPowerupDurValues()[playerStats.powerupDurIndex]);
         UpdateUpgradeText(powerupDurNextText, playerSO.GetPowerupDurValues()[playerStats.powerupDurIndex + 1]);
         UpdateUpgradeText(powerupDurCostText, playerSO.GetPowerupDurCosts()[playerStats.powerupDurIndex]);
-        UpdateUpgradeText(powerupDurLevelText, playerStats.powerupDurIndex);
+        UpdateUpgradeText(powerupDurLevelText, playerStats.powerupDurIndex + 1);
     }
 
     // MOVEMENT SPEED
@@ -390,7 +390,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(movementSpeedCurrentText, movementSpeedVisualValues[playerStats.movementSpeedIndex]);
         UpdateUpgradeText(movementSpeedNextText, movementSpeedVisualValues[playerStats.movementSpeedIndex + 1]);
         UpdateUpgradeText(movementSpeedCostText, playerSO.GetMovementSpeedCosts()[playerStats.movementSpeedIndex]);
-        UpdateUpgradeText(movementSpeedLevelText, playerStats.movementSpeedIndex);
+        UpdateUpgradeText(movementSpeedLevelText, playerStats.movementSpeedIndex + 1);
     }
 
     //  LIFE STEAL
@@ -399,7 +399,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(lifeStealCurrentText, lifeStealVisualValues[playerStats.lifeStealIndex]);
         UpdateUpgradeText(lifeStealNextText, lifeStealVisualValues[playerStats.lifeStealIndex + 1]);
         UpdateUpgradeText(lifeStealCostText, playerSO.GetLifeStealCosts()[playerStats.lifeStealIndex]);
-        UpdateUpgradeText(lifeStealLevelText, playerStats.lifeStealIndex);
+        UpdateUpgradeText(lifeStealLevelText, playerStats.lifeStealIndex + 1);
     }
 
     // DAMAGE
@@ -408,14 +408,14 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(damageCurrentText, damageVisualValues[playerStats.damageIndex]);
         UpdateUpgradeText(damageNextText, damageVisualValues[playerStats.damageIndex + 1]);
         UpdateUpgradeText(damageCostText, playerSO.GetDamageCosts()[playerStats.damageIndex]);
-        UpdateUpgradeText(damageLevelText, playerStats.damageIndex);
+        UpdateUpgradeText(damageLevelText, playerStats.damageIndex + 1);
     }
     private void UpdateRangeTexts()
     {
         UpdateUpgradeText(rangeCurrentText, rangeVisualValues[playerStats.rangeIndex]);
         UpdateUpgradeText(rangeNextText, rangeVisualValues[playerStats.rangeIndex + 1]);
         UpdateUpgradeText(rangeCostText, playerSO.GetRangeCosts()[playerStats.rangeIndex]);
-        UpdateUpgradeText(rangeLevelText, playerStats.rangeIndex);
+        UpdateUpgradeText(rangeLevelText, playerStats.rangeIndex + 1);
     }
 
     // ATTACK SPEED
@@ -424,7 +424,7 @@ public class UIManager : Singleton<UIManager>
         UpdateUpgradeText(attackSpeedCurrentText, attackSpeedVisualValues[playerStats.attackSpeedIndex]);
         UpdateUpgradeText(attackSpeedNextText, attackSpeedVisualValues[playerStats.attackSpeedIndex + 1]);
         UpdateUpgradeText(attackSpeedCostText, playerSO.GetAttackSpeedCosts()[playerStats.attackSpeedIndex]);
-        UpdateUpgradeText(attackSpeedLevelText, playerStats.attackSpeedIndex);
+        UpdateUpgradeText(attackSpeedLevelText, playerStats.attackSpeedIndex + 1);
     }
 
 

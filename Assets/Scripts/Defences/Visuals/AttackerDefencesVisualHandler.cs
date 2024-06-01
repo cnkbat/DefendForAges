@@ -1,44 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DefencesVisualHandler : MonoBehaviour
+public class AttackerDefencesVisualHandler : DefencesVisualHandler
 {
-    GameManager gameManager;
-    AttackerDefenceBehaviour attackerDefenceBehaviour;
-    AttackerDefenceStat attackerDefenceStat;
+
+    private AttackerDefenceBehaviour attackerDefenceBehaviour;
+    private AttackerDefenceStat attackerDefenceStat;
 
     [Header("Health Bar")]
     [SerializeField] private Slider healthBar;
     private float currentHealthBarDisappearTimer;
 
-    [Header("VFX")]
-    [SerializeField] private List<ParticleSystem> destroyParticles = new List<ParticleSystem>();
-
-    private void Awake()
+    protected override void Awake()
     {
-        attackerDefenceBehaviour = GetComponent<TowerBehaviour>();
+        base.Awake();
+        attackerDefenceBehaviour = GetComponent<AttackerDefenceBehaviour>();
         attackerDefenceStat = GetComponent<AttackerDefenceStat>();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        gameManager = GameManager.instance;
-
-        attackerDefenceBehaviour.OnTargetDestroyed += PlayDestroyParticles;
+        base.OnEnable();
         attackerDefenceBehaviour.OnDamageTaken += UpdateHealthBarValue;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        attackerDefenceBehaviour.OnTargetDestroyed -= PlayDestroyParticles;
+        base.OnDisable();
         attackerDefenceBehaviour.OnDamageTaken -= UpdateHealthBarValue;
     }
 
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!healthBar.gameObject.activeSelf) return;
 
@@ -49,6 +44,7 @@ public class DefencesVisualHandler : MonoBehaviour
             DisableHealthBar();
         }
     }
+
 
     #region Health Bar
 
@@ -70,28 +66,6 @@ public class DefencesVisualHandler : MonoBehaviour
     public void DisableHealthBar()
     {
         healthBar.gameObject.SetActive(false);
-    }
-
-    #endregion
-
-    #region VFX
-    public void PlayParticles(List<ParticleSystem> particles)
-    {
-        if (particles.Count == 0)
-        {
-            Debug.LogWarning(name + " Particles null");
-            return;
-        }
-
-        for (int i = 0; i < particles.Count; i++)
-        {
-            particles[i].Play();
-        }
-    }
-
-    public void PlayDestroyParticles()
-    {
-        PlayParticles(destroyParticles);
     }
 
     #endregion

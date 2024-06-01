@@ -9319,6 +9319,7 @@ MonoBehaviour:
   powerUpFill: {fileID: 2635072563502676795}
   powerUpVFX: {fileID: 9191554900082949534}
   normalApplyEarningsButton: {fileID: 331603633866559663}
+  rewardedApplyEarningsButton: {fileID: 7655229162552742363}
   towerDestroyedCountDownText: {fileID: 3684175358390298005}
   loseGameButton: {fileID: 539489126579864201}
   useGemToReviveTowerButton: {fileID: 2141745609335566084}
@@ -16260,7 +16261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 398}
+  m_AnchoredPosition: {x: 0, y: 232}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2189564953245811456

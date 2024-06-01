@@ -182,9 +182,9 @@ public class GameManager : Singleton<GameManager>
 
     public void OnWaveCalled()
     {
+        isAttackPhase = true;
         allCities[playerStats.GetCityIndex()].WaveCalled();
         canSpawnEnemy = true;
-        isAttackPhase = true;
         OnWaveStarted?.Invoke();
     }
 

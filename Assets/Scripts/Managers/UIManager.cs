@@ -51,6 +51,7 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Earnings")]
     [SerializeField] private Button normalApplyEarningsButton;
+    [SerializeField] private Button rewardedApplyEarningsButton;
 
     [Header("Game Lost Sequence")]
     [SerializeField] TMP_Text towerDestroyedCountDownText;
@@ -151,20 +152,22 @@ public class UIManager : Singleton<UIManager>
         gameManager = GameManager.instance;
 
         playerStats.OnWaveWon += WaveCompleted;
-
+        playerStats.OnWaveWon += EnableWaveWonUI;
 
         // Geçici olarak böyle yapildi (MVP'ye reklam entegrasyonu yetişirse)
         // onwavewondan kaldirip button aksiyonuna taşınacak ve wavewon ekranında
         // wavewon paneli açılacak
         // şuanda wave kazanılınca direkt olarak playera atıyor
 
-        playerStats.OnWaveWon += OnApplyEarningToPlayerButtonClicked;
 
         // Revive & Wave Control
         lateReviveButton.onClick.AddListener(OnLateReviveButtonClicked);
         reviveButton.onClick.AddListener(OnReviveButtonClicked);
         waveCallButton.onClick.AddListener(OnWaveCallClicked);
-        normalApplyEarningsButton.onClick.AddListener(OnApplyEarningToPlayerButtonClicked);
+        normalApplyEarningsButton.onClick.AddListener(DisableWaveWonUI);
+        rewardedApplyEarningsButton.onClick.AddListener(RewardedDisableWaveWonUI);
+
+
 
         // Power UP
         playerStats.OnPowerUpValueChanged += UpdatePowerUpSliderValue;
@@ -227,8 +230,9 @@ public class UIManager : Singleton<UIManager>
         waveCallButton.onClick.RemoveAllListeners();
         normalApplyEarningsButton.onClick.RemoveAllListeners();
 
+        playerStats.OnWaveWon -= EnableWaveWonUI;
         playerStats.OnWaveWon -= WaveCompleted;
-        playerStats.OnWaveWon -= OnApplyEarningToPlayerButtonClicked;
+
 
         // Power UP
         playerStats.OnPowerUpValueChanged += UpdatePowerUpSliderValue;
@@ -447,6 +451,8 @@ public class UIManager : Singleton<UIManager>
     #region  Wave Related
     private void OnWaveCallClicked()
     {
+        if (gameManager.isAttackPhase) return;
+
         gameManager.OnWaveCalled();
         DisableUpgradingButton();
         DisableUpgradeHud();
@@ -529,9 +535,9 @@ public class UIManager : Singleton<UIManager>
     #endregion
 
     #region Earnings
-    public void OnApplyEarningToPlayerButtonClicked()
+    public void OnApplyEarningToPlayerButtonClicked(float newMultipiler)
     {
-        earningsHolder.OnBonusMultiplierApplied?.Invoke(1);
+        earningsHolder.OnBonusMultiplierApplied?.Invoke(newMultipiler);
         gameManager.OnApplyEarnings?.Invoke();
     }
     #endregion
@@ -545,9 +551,6 @@ public class UIManager : Singleton<UIManager>
     }
     #endregion
 
-    #region Game Lose
-
-    #endregion
 
     #region Panel Management
 
@@ -688,8 +691,29 @@ public class UIManager : Singleton<UIManager>
         GetBackToGamePanel();
     }
 
-
     #endregion
+
+    #region Wave Won Management
+
+    public void EnableWaveWonUI()
+    {
+        ActivatePanel(waveWonPanel);
+    }
+
+    public void RewardedDisableWaveWonUI()
+    {
+        OnApplyEarningToPlayerButtonClicked(2);
+
+        GetBackToGamePanel();
+    }
+    public void DisableWaveWonUI()
+    {
+        OnApplyEarningToPlayerButtonClicked(1);
+
+        GetBackToGamePanel();
+    }
+    #endregion
+
     #endregion
     #region  Update Texts - Text Related
 

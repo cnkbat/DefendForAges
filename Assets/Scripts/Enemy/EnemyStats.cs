@@ -1,14 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using System;
 
-public class EnemyStats : MonoBehaviour
+public class EnemyStats : MonoBehaviour, IPoolableObject
 {
-
-    NavMeshAgent navMeshAgent;
 
     public EnemySO enemySO;
 
+    [Header("Components On This")]
+    private EnemyAttack enemyAttack;
+    private EnemyTargeter enemyTargeter;
+    private EnemyDeathHandler enemyDeathHandler;
+    private EnemyMovement enemyMovement;
+    private NavMeshAgent navMeshAgent;
+
+    [Header("Cities & Instances")]
+    private CityManager currentCityManager;
+    [HideInInspector] public EnemySpawner assignedEnemySpawner;
+
+
+    [Header("Values")]
     [HideInInspector] public float currentMoveSpeed;
     [HideInInspector] public float maxHealth;
 
@@ -26,13 +38,51 @@ public class EnemyStats : MonoBehaviour
     private int meatValue;
     private float powerUpAddOnValue;
 
-    [Header("Health Bar")]
-    [SerializeField] Slider healthBar;
+    [Header("Events")]
+    public Action OnEnemySpawned;
 
-    public void EnemySpawned()
+    public Action OnDataReset;
+
+    private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        enemyTargeter = this.GetComponent<EnemyTargeter>();
+        enemyMovement = this.GetComponent<EnemyMovement>();
+        navMeshAgent = this.GetComponent<NavMeshAgent>();
+        enemyDeathHandler = this.GetComponent<EnemyDeathHandler>();
+        enemyAttack = this.GetComponent<EnemyAttack>();
+    }
+    public void OnObjectPooled()
+    {
         SetEnemySOValues();
+        
+        OnEnemySpawned += enemyTargeter.EnemySpawned;
+        OnEnemySpawned += enemyMovement.EnemySpawned;
+        OnEnemySpawned += enemyAttack.EnemySpawned;
+
+
+        OnEnemySpawned?.Invoke();
+
+        currentCityManager = enemyTargeter.GetCityManager();
+        Debug.Log(currentCityManager.name);
+        assignedEnemySpawner = currentCityManager.GetCurrentWave();
+
+        enemyDeathHandler.EnemySpawned();
+        OnDataReset += enemyDeathHandler.ResetData;
+
+
+    }
+
+    public void ResetObjectData()
+    {
+        OnEnemySpawned -= enemyTargeter.EnemySpawned;
+        OnEnemySpawned -= enemyMovement.EnemySpawned;
+        OnEnemySpawned -= enemyAttack.EnemySpawned;
+
+        OnDataReset?.Invoke();
+        OnDataReset -= enemyDeathHandler.ResetData;
+
+        navMeshAgent.isStopped = false;
+
     }
 
     private void SetEnemySOValues()
@@ -140,6 +190,10 @@ public class EnemyStats : MonoBehaviour
     }
     #endregion
 
+    public EnemySpawner GetAssignedEnemySpawner()
+    {
+        return assignedEnemySpawner;
+    }
 
     #endregion
 

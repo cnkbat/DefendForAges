@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BossSpecifierHandler : MonoBehaviour
 {
-    EnemyBehaviour enemyBehaviour;
+    EnemyStats enemyStats;
 
     GameManager gameManager;
     [SerializeField] private CinemachineVirtualCamera pannedCam;
@@ -15,26 +15,25 @@ public class BossSpecifierHandler : MonoBehaviour
 
     private void Awake()
     {
-        enemyBehaviour = GetComponent<EnemyBehaviour>();
+        enemyStats = GetComponent<EnemyStats>();
     }
 
     private void OnEnable()
     {
         gameManager = GameManager.instance;
-        enemyBehaviour.OnEnemySpawned += SpawnSequence;
+        enemyStats.OnEnemySpawned += SpawnSequence;
     }
 
     private void OnDisable()
     {
-        enemyBehaviour.OnEnemySpawned -= SpawnSequence;
+        enemyStats.OnEnemySpawned -= SpawnSequence;
     }
 
     public void SpawnSequence()
     {
-        // kamera muhabbeti
         // signifer çalıştırma
-        
-        spawnParticle.Play();   
+
+        spawnParticle.Play();
         gameManager.OnCameraPan?.Invoke(pannedCam);
 
         StartCoroutine(StopSpawnParticle());
@@ -42,7 +41,7 @@ public class BossSpecifierHandler : MonoBehaviour
 
     IEnumerator StopSpawnParticle()
     {
-        if(!gameObject.activeSelf) yield return null;
+        if (!gameObject.activeSelf) yield return null;
 
         yield return new WaitForSeconds(gameManager.bossVFXDisappearTimer);
 

@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyTargeter : MonoBehaviour
@@ -22,9 +23,10 @@ public class EnemyTargeter : MonoBehaviour
         ResetTargetTimer();
         closestDistance = 999999;
 
+        Debug.Log("enemySpawned");
         cityManager = transform.root.GetComponent<CityManager>();
         cityManager.OnTargetListUpdated += ResetTargetTimer;
-
+        
         playerStats = PlayerStats.instance;
 
         if (playerStats != null)
@@ -48,6 +50,12 @@ public class EnemyTargeter : MonoBehaviour
 
     private void Update()
     {
+        if (cityManager == null)
+        {
+            Debug.LogWarning("city manager null");
+            return;
+        }
+
         currentTargetTimer -= Time.deltaTime;
 
         if (currentTargetTimer < 0)
@@ -95,10 +103,6 @@ public class EnemyTargeter : MonoBehaviour
     }
 
     #region  Getters & Setters
-    public void SetCityManager(CityManager newCityManager)
-    {
-        cityManager = newCityManager;
-    }
 
     public void SetTarget(Transform newTarget, EnemyTarget newEnemyTarget)
     {
@@ -117,7 +121,7 @@ public class EnemyTargeter : MonoBehaviour
     {
         return targetedObject;
     }
-    
+
     public CityManager GetCityManager()
     {
         return cityManager;

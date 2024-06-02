@@ -6,7 +6,9 @@ using System;
 public class EnemyAnimationHandler : MonoBehaviour
 {
     private Animator animator;
-    private EnemyBehaviour enemyBehaviour;
+    private EnemyDeathHandler enemyDeathHandler;
+    private EnemyAttack enemyAttack;
+    private EnemyMovement enemyMovement;
 
     [Header("Animation Speed")]
     [Tooltip("Çarpan olarak çalışıyor direkt 0.5 yazarsan ikiye bölünür.")][SerializeField] private float walkAnimMultiplier = 1;
@@ -14,36 +16,39 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
-        enemyBehaviour = GetComponent<EnemyBehaviour>();
+        animator = GetComponent<Animator>();
+        enemyDeathHandler = GetComponent<EnemyDeathHandler>();
+        enemyAttack = GetComponent<EnemyAttack>();
+        enemyMovement = GetComponent<EnemyMovement>();
     }
+
     private void OnEnable()
     {
         ResetAnimator();
 
-        enemyBehaviour.OnAttacking += Attack;
-        enemyBehaviour.OnTargetNotReached += StopAttack;
-        enemyBehaviour.OnMove += MoveAnimation;
-        enemyBehaviour.OnDeath += Death;
-        enemyBehaviour.OnDamageTaken += () => animator.SetTrigger("TakeHit");
+        enemyAttack.OnAttacking += Attack;
+        enemyAttack.OnTargetNotReached += StopAttack;
+        enemyMovement.OnMove += MoveAnimation;
+        enemyDeathHandler.OnDeath += Death;
+        enemyDeathHandler.OnDamageTaken += () => animator.SetTrigger("TakeHit");
 
         // Anim speed change
-        enemyBehaviour.OnMovementSpeedChanged += ChangeWalkAnimationSpeed;
-        enemyBehaviour.OnAttackSpeedChanged += ChangeAttackAnimationSpeed;
+        enemyMovement.OnMovementSpeedChanged += ChangeWalkAnimationSpeed;
+        enemyAttack.OnAttackSpeedChanged += ChangeAttackAnimationSpeed;
     }
 
     private void OnDisable()
     {
-        enemyBehaviour.OnAttacking -= Attack;
-        enemyBehaviour.OnTargetNotReached -= StopAttack;
-        enemyBehaviour.OnMove -= MoveAnimation;
-        enemyBehaviour.OnDeath -= Death;
-        enemyBehaviour.OnDamageTaken -= () => animator.SetTrigger("TakeHit");
+        enemyAttack.OnAttacking -= Attack;
+        enemyAttack.OnTargetNotReached -= StopAttack;
+        enemyMovement.OnMove -= MoveAnimation;
+        enemyDeathHandler.OnDeath -= Death;
+        enemyDeathHandler.OnDamageTaken -= () => animator.SetTrigger("TakeHit");
 
 
         // Anim speed change
-        enemyBehaviour.OnMovementSpeedChanged -= ChangeWalkAnimationSpeed;
-        enemyBehaviour.OnAttackSpeedChanged -= ChangeAttackAnimationSpeed;
+        enemyMovement.OnMovementSpeedChanged -= ChangeWalkAnimationSpeed;
+        enemyAttack.OnAttackSpeedChanged -= ChangeAttackAnimationSpeed;
     }
 
     private void ResetAnimator()
@@ -64,7 +69,7 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     public void MoveAnimation()
     {
-        animator.SetBool("isWalking", enemyBehaviour.GetCanMove());
+        animator.SetBool("isWalking", enemyMovement.GetCanMove());
     }
     public void Death()
     {

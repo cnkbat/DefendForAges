@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class EnemyVisualsHandler : MonoBehaviour
 {
-    EnemyBehaviour enemyBehaviour;
-    EnemyStats enemyStats;
-    GameManager gameManager;
+    private EnemyDeathHandler enemyDeathHandler;
+    private EnemyStats enemyStats;
+    private GameManager gameManager;
 
     [Header("Health Bar")]
     [SerializeField] private Slider healthBar;
@@ -19,15 +19,15 @@ public class EnemyVisualsHandler : MonoBehaviour
     private void OnEnable()
     {
         gameManager = GameManager.instance;
-        
-        enemyBehaviour = GetComponent<EnemyBehaviour>();
+
+        enemyDeathHandler = GetComponent<EnemyDeathHandler>();
         enemyStats = GetComponent<EnemyStats>();
         damageTakenParticle = GameObject.Find("DamageTakenParticle").GetComponent<ParticleSystem>();
 
-        enemyBehaviour.OnDamageTaken += UpdateHealthBarValue;
-        enemyBehaviour.OnDamageTaken += PlayDamageTakenVFX;
+        enemyDeathHandler.OnDamageTaken += UpdateHealthBarValue;
+        enemyDeathHandler.OnDamageTaken += PlayDamageTakenVFX;
 
-        enemyBehaviour.OnDeath += DisableHealthBar;
+        enemyDeathHandler.OnDeath += DisableHealthBar;
 
 
         StopAllVFXs();
@@ -38,10 +38,10 @@ public class EnemyVisualsHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        enemyBehaviour.OnDamageTaken -= UpdateHealthBarValue;
-        enemyBehaviour.OnDamageTaken -= PlayDamageTakenVFX;
+        enemyDeathHandler.OnDamageTaken -= UpdateHealthBarValue;
+        enemyDeathHandler.OnDamageTaken -= PlayDamageTakenVFX;
 
-        enemyBehaviour.OnDeath -= DisableHealthBar;
+        enemyDeathHandler.OnDeath -= DisableHealthBar;
     }
 
     private void Update()
@@ -59,10 +59,10 @@ public class EnemyVisualsHandler : MonoBehaviour
     #region Health Bar
     public void UpdateHealthBarValue()
     {
-        if (enemyBehaviour.isDead) return;
+        if (enemyDeathHandler.GetIsDead()) return;
 
         healthBar.gameObject.SetActive(true);
-        healthBar.value = enemyBehaviour.GetCurrentHealth() / enemyStats.GetMaxHealth();
+        healthBar.value = enemyDeathHandler.GetCurrentHealth() / enemyStats.GetMaxHealth();
 
         ResetDisappearTimer();
     }

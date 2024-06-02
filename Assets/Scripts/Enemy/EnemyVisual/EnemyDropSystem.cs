@@ -5,21 +5,21 @@ public class EnemyDropSystem : MonoBehaviour
 {
     ObjectPooler objectPooler;
     GameManager gameManager;
-    private EnemyBehaviour enemyBehaviour;
+    private EnemyDeathHandler enemyDeathHandler;
 
     private void OnEnable()
     {
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
 
-        enemyBehaviour = transform.GetComponent<EnemyBehaviour>();
+        enemyDeathHandler = transform.GetComponent<EnemyDeathHandler>();
 
-        enemyBehaviour.OnDropAnimNeeded += PlayDropAnim;
+        enemyDeathHandler.OnDropAnimNeeded += PlayDropAnim;
     }
 
     private void OnDisable()
     {
-        enemyBehaviour.OnDropAnimNeeded -= PlayDropAnim;
+        enemyDeathHandler.OnDropAnimNeeded -= PlayDropAnim;
     }
 
 
@@ -27,12 +27,12 @@ public class EnemyDropSystem : MonoBehaviour
     public void PlayDropAnim(int dropTypeIndex)
     {
         string dropTag = GetDropTag(dropTypeIndex);
-        if(dropTag.Equals(null))
+        if (dropTag.Equals(null))
         {
             Debug.Log("No Tag");
             return;
         }
-        GameObject spawnedObject = objectPooler.SpawnFromPool(dropTag, enemyBehaviour.transform.position);
+        GameObject spawnedObject = objectPooler.SpawnFromPool(dropTag, enemyDeathHandler.transform.position);
         CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
         currencyAnimationHandler.PlayDropAnim();
         gameManager.droppedCurrencies.Add(currencyAnimationHandler);

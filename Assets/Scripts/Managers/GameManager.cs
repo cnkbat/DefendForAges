@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using DG.Tweening;
-using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
@@ -30,6 +28,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("AI Manipulation")]
     [SerializeField] public int surfaceAreaIndex;
+    [SerializeField] public float samplePositionRadius;
 
     [Header("**------ SETTINGS ------**")]
 
@@ -209,10 +208,12 @@ public class GameManager : Singleton<GameManager>
     {
         for (int i = 0; i < droppedCurrencies.Count; i++)
         {
-            float animDur = Vector3.Distance(droppedCurrencies[i].transform.position, playerStats.transform.position) / droppedCollectionAnimDur;
-
+            GameObject animatedObject = droppedCurrencies[i].gameObject;
+            float animDur = Vector3.Distance(animatedObject.transform.position, playerStats.transform.position) / droppedCollectionAnimDur;
             droppedCurrencies[i].PlayCollectionAnim();
-            droppedCurrencies[i].transform.DOMove(playerStats.transform.position, animDur).OnComplete(() => droppedCurrencies[i].gameObject.SetActive(false));
+
+            animatedObject.transform.DOMove(playerStats.transform.position, animDur).
+                OnComplete(() => animatedObject.SetActive(false));
         }
 
         droppedCurrencies.Clear();

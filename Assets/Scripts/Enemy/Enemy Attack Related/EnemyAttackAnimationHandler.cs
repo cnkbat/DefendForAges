@@ -6,20 +6,23 @@ public class EnemyAttackAnimationHandler : MonoBehaviour
 {
     EnemyAttack enemyAttack;
     private BoxCollider rightHandCollider;
-    private EnemyBehaviour enemyBehaviour;
+    private EnemyTargeter enemyTargeter;
+    private EnemyStats enemyStats;
 
     public void Start()
     {
-        enemyBehaviour = transform.GetComponentInParent<EnemyBehaviour>();
+        enemyStats = transform.GetComponentInParent<EnemyStats>();
+        enemyTargeter = transform.GetComponentInParent<EnemyTargeter>();
+
         enemyAttack = GetComponentInChildren<EnemyAttack>();
         rightHandCollider = enemyAttack.GetComponent<BoxCollider>();
     }
     public void EnableDamage()
     {
-        rightHandCollider.enabled = true;
+        enemyTargeter.GetTargetedObject().TakeDamage(enemyStats.GetDamage());
     }
     public void DisableDamage()
     {
-        rightHandCollider.enabled = false;
+      //  rightHandCollider.enabled = false;
     }
 }

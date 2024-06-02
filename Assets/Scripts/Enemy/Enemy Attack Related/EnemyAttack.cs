@@ -15,7 +15,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out ITargetable targetable))
         {
-            enemyBehaviour.DealDamage(targetable);
+           // enemyBehaviour.DealDamage(targetable);
         }
     }
 }

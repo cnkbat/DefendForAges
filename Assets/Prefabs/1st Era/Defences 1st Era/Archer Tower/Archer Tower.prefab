@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stoppingDistance: 1
+  targetPoints:
+  - {fileID: 1438590771072916480}
   isRepairable: 0
   asset: {fileID: 1438590771166995297}
   feelFeedBacks: {fileID: 7314013324746027801}
@@ -92,8 +94,6 @@ MonoBehaviour:
   lookAtSense: 100
   archerStickmans:
   - {fileID: 5909695023744888027}
-  archerStickmanLocalPoses:
-  - {x: 0.13000001, y: 0.36269996, z: 0.008999905}
 --- !u!114 &1438590771072916486
 MonoBehaviour:
   m_ObjectHideFlags: 0

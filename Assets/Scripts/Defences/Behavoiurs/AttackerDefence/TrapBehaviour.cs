@@ -13,15 +13,29 @@ public class TrapBehaviour : AttackerDefenceBehaviour
     [Tooltip("Yukari ve aşaği olan hareket attackspeede göre hareket ediyor.\n"
     + "Bundan dolayi buraya girilen değer attack speedi bölerek o sürede hareket ettiriyor.")]
     [SerializeField] private float attackSpeedDividor;
-
+    private void Awake()
+    {
+        if (isTargetable)
+        {
+            isTargetable = false;
+        }
+    }
     protected override void OnEnable()
     {
         base.OnEnable();
+        if (isTargetable)
+        {
+            isTargetable = false;
+        }
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
+        if (isTargetable)
+        {
+            isTargetable = false;
+        }
     }
 
     protected override void Start()
@@ -53,7 +67,7 @@ public class TrapBehaviour : AttackerDefenceBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out IDamagable damagable))
+        if (other.TryGetComponent(out IDamagable damagable))
         {
             damagable.TakeDamage(attackerDefenceStat.GetDamage());
         }

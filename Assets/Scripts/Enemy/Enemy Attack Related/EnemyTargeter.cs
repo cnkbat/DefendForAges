@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyTargeter : MonoBehaviour
@@ -5,12 +6,16 @@ public class EnemyTargeter : MonoBehaviour
     PlayerStats playerStats;
 
     [SerializeField] private Transform target;
+    private EnemyTarget targetedObject;
+
     [SerializeField] private float targetTimer = 3;
     private float currentTargetTimer;
     private float closestDistance;
 
     [Header("City Related")]
     private CityManager cityManager;
+
+    public Action<Transform> OnTargetChanged;
 
     public void EnemySpawned()
     {
@@ -47,16 +52,35 @@ public class EnemyTargeter : MonoBehaviour
 
         if (currentTargetTimer < 0)
         {
+            Transform tempTargetTransform = transform;
+            EnemyTarget tempEnemyTarget = null;
+
             closestDistance = 999999;
+
             foreach (var targetable in cityManager.GetTargetList())
             {
                 if (closestDistance > Vector3.Distance(transform.position, targetable.GetTarget().position))
                 {
-                    closestDistance = Vector3.Distance(transform.position, targetable.GetTarget().position);
-                    SetTarget(targetable.GetTarget());
+
+                    tempEnemyTarget = targetable;
+                    Transform targetableTransform = tempEnemyTarget.GetTarget();
+
+                    closestDistance = Vector3.Distance(transform.position, targetableTransform.position);
+                    tempTargetTransform = targetableTransform;
+
                     UpdateTargetTimer();
                 }
             }
+
+            if (targetedObject == null || targetedObject != tempEnemyTarget)
+            {
+                SetTarget(tempTargetTransform, tempEnemyTarget);
+            }
+            else
+            {
+                return;
+            }
+
         }
     }
 
@@ -75,16 +99,25 @@ public class EnemyTargeter : MonoBehaviour
     {
         cityManager = newCityManager;
     }
-    public void SetTarget(Transform newTarget)
+
+    public void SetTarget(Transform newTarget, EnemyTarget newEnemyTarget)
     {
+        targetedObject = newEnemyTarget;
         target = newTarget;
+
+        OnTargetChanged?.Invoke(target);
     }
 
-    public Transform GetTarget()
+    public Transform GetTargetTransform()
     {
         return target;
     }
 
+    public EnemyTarget GetTargetedObject()
+    {
+        return targetedObject;
+    }
+    
     public CityManager GetCityManager()
     {
         return cityManager;

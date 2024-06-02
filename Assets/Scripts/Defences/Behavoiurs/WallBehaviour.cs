@@ -71,7 +71,6 @@ public class WallBehaviour : DefencesBehaviourBase
         for (int i = 0; i < nearbyEnvironment.Count; i++)
         {
             nearbyEnvironment[i].SetTrigger("Revive");
-            nearbyEnvironment[i].GetComponent<BoxCollider>().enabled = true;
         }
 
         navMeshManager.BakeNavMesh();
@@ -85,7 +84,6 @@ public class WallBehaviour : DefencesBehaviourBase
         for (int i = 0; i < nearbyEnvironment.Count; i++)
         {
             nearbyEnvironment[i].SetTrigger("Break");
-            nearbyEnvironment[i].GetComponent<BoxCollider>().enabled = false;
         }
 
         for (int i = 0; i < wallStats.wallHolderParts.Count; i++)

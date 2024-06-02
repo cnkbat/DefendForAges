@@ -16,7 +16,6 @@ public class NavMeshManager : Singleton<NavMeshManager>
     }
     public void BakeNavMesh()
     {
-        return;
         navMeshSurface.BuildNavMesh();
     }
 

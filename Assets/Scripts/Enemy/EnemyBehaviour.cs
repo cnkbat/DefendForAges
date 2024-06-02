@@ -29,6 +29,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     [Header("AI Management")]
     [SerializeField] private float originalStoppingDistance;
+    [SerializeField] private Vector3 target;
 
     [Header("Combat")]
     private float attackTimer;
@@ -43,8 +44,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     [Header("Health")]
     private float currentHealth;
-
-    [SerializeField] private Transform spineBone;
 
     #region Visuals
 
@@ -121,6 +120,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         OnEnemySpawned += enemyTargeter.EnemySpawned;
         OnEnemySpawned += enemyStats.EnemySpawned;
+
         OnEnemySpawned?.Invoke();
 
         currentCityManager = enemyTargeter.GetCityManager();
@@ -129,6 +129,9 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnDeath += assignedEnemySpawner.OnEnemyKilled;
 
         navMeshAgent.stoppingDistance = originalStoppingDistance;
+
+
+
 
         ChangeEnemyMat(originalMat);
 
@@ -145,7 +148,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnEnemySpawned -= enemyStats.EnemySpawned;
         OnDeath -= assignedEnemySpawner.OnEnemyKilled;
 
-
         navMeshAgent.isStopped = false;
 
     }
@@ -158,7 +160,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         if (isDead) return;
 
-        if (enemyTargeter.GetTarget() == null) return;
+        if (enemyTargeter.GetTargetTransform() == null) return;
 
         LookAtTarget();
         Attacking();
@@ -170,7 +172,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
     private void LookAtTarget()
     {
-        Vector3 worldAimTarget = enemyTargeter.GetTarget().transform.position;
+        Vector3 worldAimTarget = enemyTargeter.GetTargetTransform().transform.position;
         worldAimTarget.y = transform.position.y;
         Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
 
@@ -179,8 +181,6 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         enemyAsset.forward = transform.forward;
 
         enemyAsset.localPosition = Vector3.zero;
-        if (spineBone != null)
-            spineBone.forward = transform.forward;
     }
 
     private void Attacking()
@@ -223,7 +223,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
 
         // play animation
         // deal damage
-        target.TakeDamage(enemyStats.GetDamage());
+       // target.TakeDamage(enemyStats.GetDamage());
     }
 
     public void ResetAttackSpeed()
@@ -235,6 +235,7 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
     #endregion
 
     #region  Movement
+
     IEnumerator EnableMovement(float duration)
     {
         if (isDead) yield return null;
@@ -252,19 +253,32 @@ public class EnemyBehaviour : MonoBehaviour, IPoolableObject, IDamagable
         OnMove?.Invoke();
 
         OnMovementSpeedChanged?.Invoke(navMeshAgent.speed);
-        //Vector3 tempPos = enemyTargeter.GetTarget().transform.position;
-        navMeshAgent.destination = GetRandomPosition();
+
+        if (target != null)
+        {
+            navMeshAgent.destination = enemyTargeter.GetTargetTransform().position;
+        }
     }
 
-    Vector3 GetRandomPosition()
-    {
-        // target updateinde yeni yer seçilecek.
-        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * 3;
-        randomDirection += enemyTargeter.GetTarget().transform.position;
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, 3, 1);
-        return hit.position;
-    }
+
+    //// Oyun hissiyatı izlenecek ve duruma göre geri getirelecek.
+
+    /*  public void GetRandomPosition(Transform newTarget)
+      {
+
+          Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * gameManager.samplePositionRadius;
+          randomDirection += newTarget.transform.position;
+          NavMeshHit hit;
+
+          NavMesh.SamplePosition(randomDirection, out hit, gameManager.samplePositionRadius, gameManager.surfaceAreaIndex);
+          target = hit.position;
+
+          if (target.x == Mathf.Infinity)
+          {
+              GetRandomPosition(newTarget);
+          }
+
+      } */
 
     #endregion
 

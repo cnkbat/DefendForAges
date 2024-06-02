@@ -3,24 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyTarget : MonoBehaviour, ITargetable
 {
     protected GameManager gameManager;
     protected CityManager cityManager;
-
     protected PlayerStats playerStats;
 
     protected float currentHealth;
     protected bool isTargetable;
     protected bool isPlayer;
-
     protected bool isDestroyed;
-
     public Action OnDamageTaken;
 
     [Header("AI Manipulation")]
     [SerializeField] private float stoppingDistance;
+    [SerializeField] private List<Transform> targetPoints;
 
     [Header("Events")]
     public Action OnTargetDestroyed;
@@ -103,7 +102,10 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     #region Getters & Setters
     public Transform GetTarget()
     {
-        return transform;
+        if (!isTargetable) return null;
+
+        int randIndex = Random.Range(0, targetPoints.Count);
+        return targetPoints[randIndex];
     }
 
     public bool GetIsTargetable()

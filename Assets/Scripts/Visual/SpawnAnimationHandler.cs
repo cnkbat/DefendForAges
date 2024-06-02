@@ -50,7 +50,7 @@ public class SpawnAnimationHandler : MonoBehaviour
         {
             for (int i = 0; i < objectsToEnable.Count; i++)
             {
-                PlayDropDownAnimation(objectsToEnable[i],i);
+                PlayDropDownAnimation(objectsToEnable[i], i);
             }
 
             for (int i = 0; i < objectsToDisable.Count; i++)
@@ -77,13 +77,16 @@ public class SpawnAnimationHandler : MonoBehaviour
     #region Small to Big
     private void PlaySmallToBigAnimation(Transform animatedObject, float index)
     {
+        animatedObject.gameObject.SetActive(true);
+
+
         Vector3 localScale = animatedObject.localScale;
         animatedObject.localScale = Vector3.zero;
 
-        StartCoroutine(DelaySmallToBigAnimation(animatedObject,localScale,(index + 1) / 10));
+        StartCoroutine(DelaySmallToBigAnimation(animatedObject, localScale, (index + 1) / (10 + index)));
     }
 
-    IEnumerator DelaySmallToBigAnimation(Transform animatedObject,Vector3 localScale,float delay)
+    IEnumerator DelaySmallToBigAnimation(Transform animatedObject, Vector3 localScale, float delay)
     {
         yield return new WaitForSeconds(delay);
         animatedObject.DOScale(localScale, smallToBigAnimationTime).SetEase(smallToBigEaseType);
@@ -106,16 +109,16 @@ public class SpawnAnimationHandler : MonoBehaviour
         animatedObject.localPosition += animatedObject.up * flyUpValue;
         animatedObject.localScale = Vector3.zero;
 
-        StartCoroutine(DelayDropDownAnimation(animatedObject,localPos,localScale, (index + 1) / (10+index)));
-    }   
+        StartCoroutine(DelayDropDownAnimation(animatedObject, localPos, localScale, (index + 1) / (10 + index)));
+    }
 
-    IEnumerator DelayDropDownAnimation(Transform animatedObject,Vector3 localPos,Vector3 localScale,float delay)
+    IEnumerator DelayDropDownAnimation(Transform animatedObject, Vector3 localPos, Vector3 localScale, float delay)
     {
         yield return new WaitForSeconds(delay);
 
         animatedObject.DOLocalMove(localPos, dropDownAnimationTime).SetEase(dropDownEaseType).
             OnStart(() => animatedObject.DOScale(localScale, dropDownAnimationTime));
-        
+
     }
 
     private void PlayDropDownDespawnAnimation(Transform removedObject)

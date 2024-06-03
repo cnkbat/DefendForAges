@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d633f8b9b9c4454aa362850656b6409, type: 3}
-  m_Name: Archer SO
+  m_Name: Archer SO Era1_City1_1 4
   m_EditorClassIdentifier: 
   maxHealthValues:
   - 5
   - 15
   - 25
   - 35
-  upgradeEnablingIndexes: 000000000100000003000000
+  upgradeEnablingIndexes: 00000000010000000300000005000000
   damageValues:
-  - 2
-  - 2.5
+  - 1
   - 3
   - 4
+  - 5
   attackSpeedValues:
-  - 3
-  - 2.8
-  - 2.6
-  - 2.3
-  weaponSpawnIndexes: 00000000000000000000000000000000
-  upgradeCosts: 190000004b0000007d000000c8000000
+  - 2
+  - 1.7
+  - 1.5
+  - 1.3
+  weaponSpawnIndexes: 00000000010000000400000006000000
+  upgradeCosts: 78000000d700000040010000c2010000

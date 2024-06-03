@@ -3698,6 +3698,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438590771072916481, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
+      propertyPath: defenceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: cc573933b0c6f8d409dd500c38ff698b, type: 2}
     - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
       propertyPath: m_Name
       value: Archer Tower (1)
@@ -8025,25 +8029,31 @@ MonoBehaviour:
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 10
+      enemyCount: 35
       spawnedEnemyCounter: 0
-    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 15
+    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
+      enemyCount: 35
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 20
       spawnedEnemyCounter: 0
     enemyQuota: 7
-    spawnGap: 0.6
+    spawnGap: 1
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 12
+      enemyCount: 35
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 30
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 15
       spawnedEnemyCounter: 0
     enemyQuota: 0
-    spawnGap: 1.2
+    spawnGap: 1.25
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
@@ -8609,11 +8619,11 @@ MonoBehaviour:
   waves:
   - waveName: 
     enemyGroups:
-    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 10
+    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
+      enemyCount: 20
       spawnedEnemyCounter: 0
-    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 15
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 45
       spawnedEnemyCounter: 0
     enemyQuota: 7
     spawnGap: 0.6
@@ -8621,14 +8631,14 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   - waveName: 
     enemyGroups:
-    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 12
-      spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 20
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 80
       spawnedEnemyCounter: 0
     enemyQuota: 0
-    spawnGap: 1.2
+    spawnGap: 1
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
@@ -9531,7 +9541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1056741044626757792, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2074090463836007972, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9671,11 +9681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204948924759909721, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5147416489957131645, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5239909828010401904, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -12224,6 +12234,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438590771072916481, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
+      propertyPath: defenceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 7562a7534298d024f9277695e385e6b3, type: 2}
     - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
       propertyPath: m_Name
       value: Archer Tower (2)
@@ -21304,7 +21318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4472078763875740995, guid: feaffec643aeb4149b329c7df35be71c, type: 3}
       propertyPath: recoveryTimer
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7670766520569855876, guid: feaffec643aeb4149b329c7df35be71c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -22976,25 +22990,31 @@ MonoBehaviour:
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 10
+      enemyCount: 25
       spawnedEnemyCounter: 0
-    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 15
+    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
+      enemyCount: 35
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 30
       spawnedEnemyCounter: 0
     enemyQuota: 7
-    spawnGap: 0.6
+    spawnGap: 1
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 12
+      enemyCount: 35
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 30
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 30
       spawnedEnemyCounter: 0
     enemyQuota: 0
-    spawnGap: 1.2
+    spawnGap: 1
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
@@ -25019,6 +25039,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438590771072916481, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
+      propertyPath: defenceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 7562a7534298d024f9277695e385e6b3, type: 2}
     - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
       propertyPath: m_Name
       value: Archer Tower (1)
@@ -26875,22 +26899,28 @@ MonoBehaviour:
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 10
+      enemyCount: 25
       spawnedEnemyCounter: 0
-    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
+    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
+      enemyCount: 35
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 15
       spawnedEnemyCounter: 0
     enemyQuota: 7
-    spawnGap: 0.6
+    spawnGap: 1
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 12
+      enemyCount: 35
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 30
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 35
       spawnedEnemyCounter: 0
     enemyQuota: 0
     spawnGap: 1.2
@@ -27025,25 +27055,31 @@ MonoBehaviour:
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
+      enemyCount: 37
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
+      enemyCount: 20
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 10
       spawnedEnemyCounter: 0
-    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 15
-      spawnedEnemyCounter: 0
     enemyQuota: 7
-    spawnGap: 0.6
+    spawnGap: 1.2
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 12
+      enemyCount: 38
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 40
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 10
       spawnedEnemyCounter: 0
     enemyQuota: 0
-    spawnGap: 1.2
+    spawnGap: 1
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
@@ -33997,6 +34033,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438590771072916481, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
+      propertyPath: defenceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 097966677dc19204baf13a47d377811b, type: 2}
     - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
       propertyPath: m_Name
       value: Archer Tower (1)
@@ -35180,6 +35220,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438590771072916481, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
+      propertyPath: defenceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 29b47159673d9774c985c672a0f031f7, type: 2}
     - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
       propertyPath: m_Name
       value: Archer Tower
@@ -42358,7 +42402,7 @@ MonoBehaviour:
   - {fileID: 93447718}
   - {fileID: 1404663312}
   - {fileID: 984706041}
-  buyableAreaEnablingIndexes: 000000000100000002000000
+  buyableAreaEnablingIndexes: 000000000300000007000000
   buyableAreaCosts: 050000007d000000fa000000
   cityName: Era1_City1
   buyedAreaIndex: 0
@@ -44489,25 +44533,31 @@ MonoBehaviour:
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 30
+      enemyCount: 35
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 24
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 3
       spawnedEnemyCounter: 0
     enemyQuota: 7
-    spawnGap: 1
+    spawnGap: 1.25
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
     enemyGroups:
-    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 5
+    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
+      enemyCount: 30
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 10
+      enemyCount: 15
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 4
       spawnedEnemyCounter: 0
     enemyQuota: 0
-    spawnGap: 2
+    spawnGap: 1.5
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
@@ -44910,8 +44960,14 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
       enemyCount: 25
       spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
+      enemyCount: 20
+      spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 5
+      enemyCount: 15
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 3
       spawnedEnemyCounter: 0
     enemyQuota: 7
     spawnGap: 1
@@ -44919,11 +44975,14 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   - waveName: 
     enemyGroups:
-    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 4
+    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
+      enemyCount: 15
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 8
+      enemyCount: 15
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 2
       spawnedEnemyCounter: 0
     enemyQuota: 0
     spawnGap: 2
@@ -48192,6 +48251,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438590771072916481, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
+      propertyPath: defenceSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 591efa22de6f6bb4296c68e7642dc550, type: 2}
     - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
       propertyPath: m_Name
       value: Archer Tower
@@ -50262,7 +50325,7 @@ MonoBehaviour:
       enemyCount: 20
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 10
       spawnedEnemyCounter: 0
     enemyQuota: 0
     spawnGap: 1.5
@@ -51375,10 +51438,13 @@ MonoBehaviour:
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 30
+      enemyCount: 25
       spawnedEnemyCounter: 0
-    - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 10
+    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
+      enemyCount: 24
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 6
       spawnedEnemyCounter: 0
     enemyQuota: 7
     spawnGap: 1
@@ -51387,10 +51453,13 @@ MonoBehaviour:
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 6
+      enemyCount: 25
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 12
+      enemyCount: 21
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+      enemyCount: 9
       spawnedEnemyCounter: 0
     enemyQuota: 0
     spawnGap: 1.8
@@ -54943,11 +55012,13 @@ MonoBehaviour:
   droppedCurrencies: []
   droppedCollectionAnimDur: 0
   isAttackPhase: 0
+  isGameFreezed: 0
   allCities:
   - {fileID: 1401004477}
   - {fileID: 1206260716}
   - {fileID: 1023089745}
   surfaceAreaIndex: 0
+  samplePositionRadius: 0
   targetFPS: 60
   bulletFireRange: 250
   isPlayerFreezed: 0
@@ -56716,6 +56787,9 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
       enemyCount: 25
       spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
+      enemyCount: 9
+      spawnedEnemyCounter: 0
     enemyQuota: 7
     spawnGap: 1
     spawnCount: 0
@@ -56723,7 +56797,7 @@ MonoBehaviour:
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 12
+      enemyCount: 20
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
       enemyCount: 8
@@ -61625,25 +61699,28 @@ MonoBehaviour:
       enemyCount: 35
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
+      enemyCount: 20
+      spawnedEnemyCounter: 0
+    - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 10
       spawnedEnemyCounter: 0
     enemyQuota: 7
-    spawnGap: 0.6
+    spawnGap: 1
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
     enemyGroups:
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 12
+      enemyCount: 25
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 30
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
-      enemyCount: 7
+      enemyCount: 10
       spawnedEnemyCounter: 0
     enemyQuota: 0
-    spawnGap: 1.2
+    spawnGap: 1.5
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0

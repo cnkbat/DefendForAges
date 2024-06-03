@@ -156,7 +156,7 @@ MonoBehaviour:
   isRepairable: 0
   asset: {fileID: 1438590771166995297}
   feelFeedBacks: {fileID: 7314013324746027801}
-  fireRange: 25
+  fireRange: 15
   lookAtSense: 100
   archerStickmans:
   - {fileID: 5909695023744888027}

@@ -9,29 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e992ab4c5be224445886eeeec7297e27, type: 3}
-  m_Name: Tower SO
+  m_Script: {fileID: 11500000, guid: 8d633f8b9b9c4454aa362850656b6409, type: 3}
+  m_Name: Archer SO Era1_City1_1 1
   m_EditorClassIdentifier: 
   maxHealthValues:
   - 5
-  - 8
-  - 12
-  - 18
+  - 15
   - 25
-  upgradeEnablingIndexes: 0000000000000000000000000000000000000000
+  - 35
+  upgradeEnablingIndexes: 00000000010000000300000005000000
   damageValues:
   - 1
-  - 1.2
-  - 1.4
-  - 1.6
-  - 1.8
+  - 3
+  - 4
+  - 5
   attackSpeedValues:
   - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  weaponSpawnIndexes: 000000000200000004000000
-  upgradeCosts: 320000006400000096000000fa00000090010000
-  recoveries:
-  - 1
+  - 1.7
+  - 1.5
+  - 1.3
+  weaponSpawnIndexes: 00000000010000000400000006000000
+  upgradeCosts: 5a00000096000000130100007c010000

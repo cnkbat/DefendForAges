@@ -190,7 +190,7 @@ public class UIManager : Singleton<UIManager>
             gameManager.allCities[i].GetTower().OnTargetDestroyed += GameLostPanelSequence;
         }
 
-        loseGameButton.onClick.AddListener(gameManager.LevelLost);
+        loseGameButton.onClick.AddListener(GameLostPanelSequenceEnd);
 
 
         #region  Upgrading
@@ -688,7 +688,9 @@ public class UIManager : Singleton<UIManager>
 
     private void GameLostPanelSequenceEnd()
     {
+        OnApplyEarningToPlayerButtonClicked(1);
         GetBackToGamePanel();
+        gameManager.LevelLost();
     }
 
     #endregion

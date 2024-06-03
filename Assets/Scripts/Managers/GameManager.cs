@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Phases")]
     public bool isAttackPhase;
+    public bool isGameFreezed;
 
     [Header("Cities")]
     [SerializeField] public List<CityManager> allCities;
@@ -43,7 +44,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public bool isPlayerFreezed;
 
     [Header("Cam Management")]
-    private CinemachineVirtualCamera gameCam;
     [SerializeField] public float panCamBackToPlayerDelay = 2;
 
     [Header("Defence Related")]
@@ -97,7 +97,6 @@ public class GameManager : Singleton<GameManager>
 
     private void OnDisable()
     {
-
         for (int i = 0; i < allCities.Count; i++)
         {
             totalWaveCount -= allCities[i].waveList.Count;
@@ -114,7 +113,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         CheckIfEraFinished();
-        gameCam = FindObjectOfType<CinemachineVirtualCamera>();
+     
         asyncLoader = AsyncLoader.instance;
     }
 

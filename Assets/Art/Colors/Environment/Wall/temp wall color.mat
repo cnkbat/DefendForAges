@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wall
+  m_Name: temp wall color
   m_Shader: {fileID: -6465566751694194690, guid: edd7abf643fa4bc4e8561d4c280c97cf, type: 3}
   m_ValidKeywords:
   - TCP2_MOBILE
@@ -128,8 +128,8 @@ Material:
     - _RampBandsSmoothing: 0.1
     - _RampOffset: 0
     - _RampScale: 1
-    - _RampSmoothing: 0.776
-    - _RampThreshold: 0.742
+    - _RampSmoothing: 1
+    - _RampThreshold: 1
     - _RampType: 0
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
@@ -143,8 +143,8 @@ Material:
     - _SpecularHighlights: 1
     - _SpecularMapType: 0
     - _SpecularRoughness: 0.626
-    - _SpecularToonSize: 0.35
-    - _SpecularToonSmoothness: 0.937
+    - _SpecularToonSize: 1
+    - _SpecularToonSmoothness: 0.083
     - _SpecularType: 1
     - _SrcBlend: 1
     - _UVSec: 0
@@ -164,7 +164,7 @@ Material:
     - _UseSpecular: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.40566033, g: 0.2651145, b: 0.18178171, a: 1}
+    - _BaseColor: {r: 0.40566018, g: 0.26511437, b: 0.18178159, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
@@ -173,5 +173,5 @@ Material:
     - _ReflectionColor: {r: 0.1981132, g: 0.13709405, b: 0.07756318, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 0.5}
     - _SColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 0.12156863, g: 0.028097592, b: 0.0039215647, a: 1}
+    - _SpecularColor: {r: 0.1792453, g: 0.12039873, b: 0.10568708, a: 1}
   m_BuildTextureStacks: []

@@ -34,8 +34,8 @@ public class EnemyStats : MonoBehaviour, IPoolableObject
 
     [Header("Earnings")]
     private int moneyValue;
-    private int expValue;
-    private int meatValue;
+    private float expValue;
+    private float meatValue;
     private float powerUpAddOnValue;
 
     [Header("Events")]
@@ -170,11 +170,11 @@ public class EnemyStats : MonoBehaviour, IPoolableObject
     {
         return moneyValue;
     }
-    public int GetExpValue()
+    public float GetExpValue()
     {
         return expValue;
     }
-    public int GetMeatValue()
+    public float GetMeatValue()
     {
         return meatValue;
     }

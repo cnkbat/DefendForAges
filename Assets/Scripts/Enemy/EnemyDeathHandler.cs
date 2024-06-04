@@ -134,7 +134,8 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
     private void ApplyPlayerEarnings()
     {
         playerStats.OnKillEnemy?.Invoke(enemyStats.GetPowerUpValue());
-        earningsHolder.OnTempEarningsUpdated?.Invoke(enemyStats.GetMoneyValue(), enemyStats.GetExpValue(), enemyStats.GetMeatValue());
+        earningsHolder.OnTempEarningsUpdated?.Invoke(enemyStats.GetMoneyValue(),
+            Mathf.RoundToInt(enemyStats.GetExpValue()), Mathf.RoundToInt(enemyStats.GetMeatValue()));
     }
 
     private IEnumerator KillEnemy()

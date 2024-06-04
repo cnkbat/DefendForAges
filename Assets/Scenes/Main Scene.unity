@@ -14417,7 +14417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
       propertyPath: m_Name
-      value: rrcher Tower
+      value: Archer Tower
       objectReference: {fileID: 0}
     - target: {fileID: 1438590771072916482, guid: 7a5672e23ba03a34a8ca0f7678082f0f, type: 3}
       propertyPath: m_IsActive

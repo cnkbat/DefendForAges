@@ -56,6 +56,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public float bossVFXDisappearTimer = 3;
 
     [Header("Fading")]
+    [SerializeField] public float maxTransparentTimer = 1.25f;
     [SerializeField] public float fadedObjectAlphaValue = 0.2f;
     [SerializeField] public float fadingSpeed = 5f;
 

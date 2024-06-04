@@ -17,14 +17,16 @@ Material:
   - TCP2_SHADOW_LIGHT_COLOR
   - TCP2_SPECULAR
   - TCP2_SPECULAR_STYLIZED
+  - _ALPHAPREMULTIPLY_ON
   m_InvalidKeywords:
   - TCP2_DISABLE_WRAPPED_LIGHT
   - TCP2_UV_NORMALS_FULL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -100,7 +102,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DirectIntensityOutline: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _EmissionChannel: 4
     - _EnableOutline: 0
     - _FresnelMax: 1.5
@@ -139,7 +141,7 @@ Material:
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
     - _ReflectionSmoothness: 0.5
-    - _RenderingMode: 0
+    - _RenderingMode: 2
     - _RimMax: 2
     - _RimMin: 0
     - _RimStrength: 0.5
@@ -174,7 +176,7 @@ Material:
     - _UseRimLightMask: 1
     - _UseShadowTexture: 0
     - _UseSpecular: 1
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

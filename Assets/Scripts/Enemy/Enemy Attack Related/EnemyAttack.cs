@@ -9,6 +9,7 @@ public class EnemyAttack : MonoBehaviour
     protected EnemyTargeter enemyTargeter;
     protected EnemyStats enemyStats;
     protected EnemyMovement enemyMovement;
+    protected EnemyDeathHandler enemyDeathHandler;
     private NavMeshAgent navMeshAgent;
 
     [Header("AI")]
@@ -32,9 +33,10 @@ public class EnemyAttack : MonoBehaviour
     {
         enemyAsset = transform.Find("enemyAsset");
         navMeshAgent = this.GetComponent<NavMeshAgent>();
-        enemyStats = transform.GetComponent<EnemyStats>();
-        enemyTargeter = transform.GetComponent<EnemyTargeter>();
-        enemyMovement = transform.GetComponent<EnemyMovement>();
+        enemyStats = this.GetComponent<EnemyStats>();
+        enemyTargeter = this.GetComponent<EnemyTargeter>();
+        enemyMovement = this.GetComponent<EnemyMovement>();
+        enemyDeathHandler = this.GetComponent<EnemyDeathHandler>();
     }
 
     public void EnemySpawned()
@@ -47,9 +49,13 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        // if (isDead) return;
+        if (enemyDeathHandler.GetIsDead()) return;
 
-        if (enemyTargeter.GetTargetTransform() == null) return;
+        if (enemyTargeter.GetTargetTransform() == null)
+        {
+            Debug.Log("target null");
+            return;
+        }
 
         LookAtTarget();
         Attacking();
@@ -76,8 +82,10 @@ public class EnemyAttack : MonoBehaviour
         RaycastHit hit;
         int layerMask = ~LayerMask.GetMask("OnlyPlayer");
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, enemyStats.GetRange(), layerMask))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, enemyStats.GetRange(), layerMask))
         {
+            Debug.DrawRay(transform.position, transform.forward, Color.green, 0.5f);
+
             if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {
                 navMeshAgent.stoppingDistance = enemyTarget.GetStoppingDistance();

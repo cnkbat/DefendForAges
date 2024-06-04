@@ -12,11 +12,11 @@ enum RenderType
 public class ObjectFader : MonoBehaviour, IFadeable
 {
     GameManager gameManager;
-    private Renderer[] renderers;
+    private MeshRenderer[] renderers;
     public List<Material> materials;
 
     [Header("Render Types")]
-    [SerializeField] private RenderType fadedRenderType = RenderType.Fade;
+    [SerializeField] private RenderType fadedRenderType = RenderType.Transparent;
     [SerializeField] private RenderType originalRenderType = RenderType.Opaque;
     bool isFade;
 
@@ -27,7 +27,7 @@ public class ObjectFader : MonoBehaviour, IFadeable
     {
         gameManager = GameManager.instance;
 
-        renderers = gameObject.GetComponentsInChildren<Renderer>();
+        renderers = gameObject.GetComponentsInChildren<MeshRenderer>();
 
         foreach (var renderer in renderers)
         {
@@ -69,11 +69,16 @@ public class ObjectFader : MonoBehaviour, IFadeable
             Material currentMat = materials[i];
 
             currentMat.SetFloat("_RenderingMode", (int)fadedRenderType);
+            currentMat.SetFloat("_ZWrite", 0);
+
+            float currentAlphaValue = Mathf.Lerp(currentMat.GetColor("_BaseColor").a, gameManager.fadedObjectAlphaValue,
+                                     gameManager.fadingSpeed * Time.deltaTime);
 
             currentMat.SetColor("_BaseColor", new Color(currentMat.GetColor("_BaseColor").r,
-                                currentMat.GetColor("_BaseColor").g, currentMat.GetColor("_BaseColor").b,
-                                    Mathf.Lerp(currentMat.GetColor("_BaseColor").a, gameManager.fadedObjectAlphaValue,
-                                        gameManager.fadingSpeed * Time.deltaTime)));
+                currentMat.GetColor("_BaseColor").g, currentMat.GetColor("_BaseColor").b,
+                    currentAlphaValue));
+
+            currentMat.SetFloat("_Alpha", currentAlphaValue);
         }
     }
 
@@ -83,10 +88,17 @@ public class ObjectFader : MonoBehaviour, IFadeable
         {
             Material currentMat = materials[i];
 
+            currentMat.SetFloat("_ZWrite", 1);
             currentMat.SetFloat("_RenderingMode", (int)originalRenderType);
+
+            float currentAlphaValue = Mathf.Lerp(currentMat.GetColor("_BaseColor").a, 1,
+                                    gameManager.fadingSpeed * Time.deltaTime);
+
             currentMat.SetColor("_BaseColor", new Color(currentMat.GetColor("_BaseColor").r,
-                  currentMat.GetColor("_BaseColor").g, currentMat.GetColor("_BaseColor").b,
-                  Mathf.Lerp(currentMat.GetColor("_BaseColor").a, 1, gameManager.fadingSpeed * Time.deltaTime)));
+                currentMat.GetColor("_BaseColor").g, currentMat.GetColor("_BaseColor").b,
+                    currentAlphaValue));
+
+            currentMat.SetFloat("_Alpha", currentAlphaValue);
 
         }
     }

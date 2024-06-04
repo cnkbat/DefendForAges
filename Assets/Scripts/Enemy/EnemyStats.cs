@@ -101,6 +101,7 @@ public class EnemyStats : MonoBehaviour, IPoolableObject
         attackRange = enemySO.GetAttackRange();
         attackSpeed = enemySO.GetAttackSpeed();
 
+        Debug.Log("enemy range = " + attackRange);
         navMeshAgent.speed = movementSpeed;
     }
 

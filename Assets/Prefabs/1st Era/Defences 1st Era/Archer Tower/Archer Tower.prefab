@@ -904,6 +904,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1438590771166995296}
     m_Modifications:
+    - target: {fileID: 940288336207726337, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7136086
+      objectReference: {fileID: 0}
+    - target: {fileID: 940288336207726337, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7136086
+      objectReference: {fileID: 0}
+    - target: {fileID: 940288336207726337, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7136086
+      objectReference: {fileID: 0}
     - target: {fileID: 3559439368447433809, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
       propertyPath: bulletTag
       value: Arrow
@@ -914,15 +926,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5835395294901155196, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25906733
+      value: 0.35808218
       objectReference: {fileID: 0}
     - target: {fileID: 5835395294901155196, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.105012216
+      value: 0.1451476
       objectReference: {fileID: 0}
     - target: {fileID: 5835395294901155196, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.26133543
+      value: 0.36121714
       objectReference: {fileID: 0}
     - target: {fileID: 5835395294901155196, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
       propertyPath: m_LocalPosition.x

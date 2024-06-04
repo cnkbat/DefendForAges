@@ -19,7 +19,7 @@ MonoBehaviour:
   attackDur: 1
   damage: 3
   attackRange: 2.4
-  moneyValue: 10
-  expValue: 6
-  meatValue: 3
+  coinValue: 3
+  expValue: 0.6
+  meatValue: 1
   powerUpAddOnValue: 1

@@ -68,7 +68,7 @@ public class CityManager : MonoBehaviour
         playerStats.OnPlayerRevived += UpdateTargetList;
 
 
-        gameManager.OnCityDidnotChanged += CheckForSecondCheckpointReached;
+        gameManager.OnCityDidnotChanged += CheckForCheckpointsReached;
     
     }
 
@@ -88,7 +88,7 @@ public class CityManager : MonoBehaviour
         playerStats.OnPlayerRevived -= UpdateTargetList;
 
 
-        gameManager.OnCityDidnotChanged -= CheckForSecondCheckpointReached;
+        gameManager.OnCityDidnotChanged -= CheckForCheckpointsReached;
     }
 
     public void Start()
@@ -179,7 +179,7 @@ public class CityManager : MonoBehaviour
     #endregion
 
 
-    public void CheckForSecondCheckpointReached()
+    public void CheckForCheckpointsReached()
     {
         if (this == gameManager.allCities[playerStats.GetCityIndex()])
         {

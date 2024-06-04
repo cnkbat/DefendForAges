@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayerAngleCalculator : MonoBehaviour
 {
     GameManager gameManager;
-    PlayerStats playerStats;
 
+    PlayerDeathHandler playerDeathHandler;
     private Joystick joystick;
     private NearestEnemyFinder nearestEnemyFinder;
     public Action<float, float> OnPlayerMoved;
@@ -17,17 +17,17 @@ public class PlayerAngleCalculator : MonoBehaviour
     {
         joystick = FindObjectOfType<Joystick>(true);
         nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
+        playerDeathHandler = GetComponent<PlayerDeathHandler>();
     }
-    private void OnEnable() 
+    private void OnEnable()
     {
-        playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
     }
 
     private void Update()
     {
         if (gameManager.isPlayerFreezed) return;
-        if (playerStats.GetIsDead()) return;
+        if (playerDeathHandler.GetIsDead()) return;
 
         Vector2 vectors = CalculateThePlayerRotationAngle(joystick.result);
 

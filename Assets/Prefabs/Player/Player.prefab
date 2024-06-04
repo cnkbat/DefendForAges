@@ -470,8 +470,8 @@ GameObject:
   - component: {fileID: 4197459822926179244}
   - component: {fileID: 4197459822926179246}
   - component: {fileID: 5697107205073931344}
-  - component: {fileID: 4197459822926179253}
   - component: {fileID: 4197459822926179250}
+  - component: {fileID: 5663665469081288338}
   - component: {fileID: 882205085}
   - component: {fileID: 4690233955732441678}
   - component: {fileID: 1028169000244057475}
@@ -564,7 +564,7 @@ MonoBehaviour:
   powerupDur: 0
   lifeStealRate: 0
   maxHealth: 0
-  deathHandler: {fileID: 0}
+  playerDeathHandler: {fileID: 0}
   maxPowerUpFillValue: 5
   powerUpUpgradeIndexValue: 0
 --- !u!114 &4197459822926179244
@@ -610,21 +610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ceef43dafcdde84f8adc733f42101d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4197459822926179253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4197459822926179245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873758cfecefbec4da3944f018a02fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stoppingDistance: 0
-  targetPoints:
-  - {fileID: 4197459822926179247}
 --- !u!114 &4197459822926179250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,6 +623,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTimer: 0.5
+--- !u!114 &5663665469081288338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197459822926179245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ee3879b2b44054b9007861a13b1791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoppingDistance: 0.5
+  targetPoints:
+  - {fileID: 4197459822926179247}
 --- !u!114 &882205085
 MonoBehaviour:
   m_ObjectHideFlags: 0

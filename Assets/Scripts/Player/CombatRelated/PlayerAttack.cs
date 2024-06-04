@@ -6,14 +6,15 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Components")]
-    PlayerStats playerStats;
-    NearestEnemyFinder nearestEnemyFinder;
-    [SerializeField] List<Weapon> weapons;
+    private PlayerStats playerStats;
+    private PlayerDeathHandler playerDeathHandler;
+    private NearestEnemyFinder nearestEnemyFinder;
+    [SerializeField] private List<Weapon> weapons;
 
 
     [Header("Aim")]
     [SerializeField] private float lookAtSense = 20;
-    Transform playerAsset;
+    private Transform playerAsset;
     private Vector3 playerAssetLocalPos;
 
     [Tooltip("Attack Speed")]
@@ -22,6 +23,15 @@ public class PlayerAttack : MonoBehaviour
     [Tooltip("Events")]
     public Action<Transform, float, bool> OnAttack;
     public Action OnAttackAnimPlayNeeded;
+    private void Awake()
+    {
+        playerDeathHandler = GetComponent<PlayerDeathHandler>();
+        playerStats = GetComponent<PlayerStats>();
+        nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
+
+        playerAsset = GameObject.Find("playerAsset").transform;
+        playerAssetLocalPos = playerAsset.localPosition;
+    }
 
     private void OnEnable()
     {
@@ -48,11 +58,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        playerStats = GetComponent<PlayerStats>();
-        nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
-
-        playerAsset = GameObject.Find("playerAsset").transform;
-        playerAssetLocalPos = playerAsset.localPosition;
 
         ResetAttackSpeed();
         UpdateFireRange();
@@ -65,7 +70,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (playerStats.GetIsDead()) return;
+        if (playerDeathHandler.GetIsDead()) return;
 
         playerAsset.localPosition = playerAssetLocalPos;
 

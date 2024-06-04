@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 9c24ede06eac2444daf8cbb4ce415ea4, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -3317,7 +3317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &465109265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7655,7 +7655,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268346, y: -3e-45, z: 1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: -6.1176624, y: 25.00002, z: -40.415813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11229,11 +11229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670766520569855876, guid: feaffec643aeb4149b329c7df35be71c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.481
       objectReference: {fileID: 0}
     - target: {fileID: 7670766520569855876, guid: feaffec643aeb4149b329c7df35be71c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feaffec643aeb4149b329c7df35be71c, type: 3}
@@ -14935,7 +14935,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.38268346, y: -3e-45, z: 1e-45, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 1e-45, z: -1e-45, w: 0.92387956}
   m_LocalPosition: {x: -6.1176624, y: 25.00002, z: -40.415813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

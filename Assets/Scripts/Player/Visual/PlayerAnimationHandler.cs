@@ -10,7 +10,8 @@ public class PlayerAnimationHandler : MonoBehaviour
     private PlayerStats playerStats;
     private PlayerAngleCalculator playerAngleCalculator;
     private PlayerAttack playerAttack;
-
+    private PlayerDeathHandler playerDeathHandler;
+    
     [Header("Animation Speed Changers")]
     [SerializeField] private float walkASMultiplier;
     [SerializeField] private float attackASMultiplier;
@@ -25,6 +26,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         playerStats = transform.parent.GetComponent<PlayerStats>();
         playerAngleCalculator = transform.parent.GetComponent<PlayerAngleCalculator>();
         playerAttack = transform.parent.GetComponent<PlayerAttack>();
+        playerDeathHandler = transform.parent.GetComponent<PlayerDeathHandler>();
     }
 
     private void OnEnable()
@@ -75,13 +77,13 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     public void SetAttackTrigger()
     {
-        if (playerStats.GetIsDead()) return;
+        if (playerDeathHandler.GetIsDead()) return;
         animator.SetTrigger("Attack");
     }
 
     public void AttackAtEnemy()
     {
-        if (playerStats.GetIsDead()) return;
+        if (playerDeathHandler.GetIsDead()) return;
         OnAnimEventFired?.Invoke();
     }
 

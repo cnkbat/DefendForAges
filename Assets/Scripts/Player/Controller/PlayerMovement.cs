@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private GameManager gameManager;
     private NearestEnemyFinder nearestEnemyFinder;
     private PlayerStats playerStats;
+    private PlayerDeathHandler playerDeathHandler;
     private Rigidbody rb;
     private Animator anim;
 
@@ -24,10 +25,19 @@ public class PlayerMovement : MonoBehaviour
     private float vertical;
     private float targetAngle = 0;
     private Transform playerAsset;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        joystick = FindObjectOfType<Joystick>(true);
+        nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
+        playerAsset = GameObject.Find("playerAsset").transform;
+        anim = GetComponentInChildren<Animator>(); playerStats = GetComponent<PlayerStats>();
+        playerDeathHandler = GetComponent<PlayerDeathHandler>();
+    }
 
     private void OnEnable()
     {
-        playerStats = GetComponent<PlayerStats>();
+
         gameManager = GameManager.instance;
 
         playerStats.OnMovementSpeedUpgraded += UpdateMovementSpeed;
@@ -39,12 +49,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        joystick = FindObjectOfType<Joystick>(true);
-        nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
-        playerAsset = GameObject.Find("playerAsset").transform;
-        anim = GetComponentInChildren<Animator>();
-
         UpdateMovementSpeed();
     }
 
@@ -55,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         if (gameManager.isPlayerFreezed) return;
-        if (playerStats.GetIsDead()) return;
+        if (playerDeathHandler.GetIsDead()) return;
 
         ToMove();
         rb.velocity = Vector3.zero;

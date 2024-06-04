@@ -41,7 +41,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float maxHealth;
 
     [Header("Death")]
-    public DeathHandler deathHandler;
+    public PlayerDeathHandler playerDeathHandler;
     private bool isDead;
 
     [Header("Power Up")]
@@ -128,7 +128,7 @@ public class PlayerStats : Singleton<PlayerStats>
         objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
 
-        deathHandler = GetComponent<DeathHandler>();
+        playerDeathHandler = GetComponent<PlayerDeathHandler>();
         FillCurrentHealth();
         LookForDualWeapon();
 
@@ -371,14 +371,14 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void FillCurrentHealth()
     {
-        deathHandler.SetCurrentHealth(maxHealth);
+        playerDeathHandler.SetCurrentHealth(maxHealth);
     }
 
     public void IncrementHealth(float lifeStolen)
     {
         float healValue = lifeStolen * lifeStealRate;
 
-        if (deathHandler.IncrementCurrentHealth(healValue))
+        if (playerDeathHandler.IncrementCurrentHealth(healValue))
         {
             OnLifeStolen?.Invoke();
         }
@@ -585,15 +585,6 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         return playerLevel;
     }
-    public bool GetIsDead()
-    {
-        return isDead;
-    }
-    public void SetIsDead(bool dead)
-    {
-        isDead = dead;
-    }
-
     public float GetRange()
     {
         return range;

@@ -9,7 +9,7 @@ public class PlayerVisualsHandler : MonoBehaviour
     GameManager gameManager;
     LevelSystem levelSystem;
     PlayerStats playerStats;
-    DeathHandler deathHandler;
+    PlayerDeathHandler playerDeathHandler;
 
 
     [Header("Health Bar")]
@@ -25,7 +25,7 @@ public class PlayerVisualsHandler : MonoBehaviour
     private void Awake()
     {
         playerStats = GetComponent<PlayerStats>();
-        deathHandler = GetComponent<DeathHandler>();
+        playerDeathHandler = GetComponent<PlayerDeathHandler>();
         levelSystem = GetComponent<LevelSystem>();
     }
 
@@ -39,7 +39,7 @@ public class PlayerVisualsHandler : MonoBehaviour
         powerupParticle = GameObject.Find("PowerupParticle").GetComponent<ParticleSystem>();
 
         // Health Bar
-        deathHandler.OnDamageTaken += UpdateHealthBarValue;
+        playerDeathHandler.OnDamageTaken += UpdateHealthBarValue;
         playerStats.OnLifeStolen += UpdateHealthBarValue;
 
         // VFX
@@ -58,7 +58,7 @@ public class PlayerVisualsHandler : MonoBehaviour
     private void OnDisable()
     {
         // Health Bar
-        deathHandler.OnDamageTaken -= UpdateHealthBarValue;
+        playerDeathHandler.OnDamageTaken -= UpdateHealthBarValue;
         playerStats.OnLifeStolen -= UpdateHealthBarValue;
 
         // VFX
@@ -86,10 +86,10 @@ public class PlayerVisualsHandler : MonoBehaviour
 
     public void UpdateHealthBarValue()
     {
-        if (playerStats.GetIsDead()) return;
+        if (playerDeathHandler.GetIsDead()) return;
 
         healthBar.gameObject.SetActive(true);
-        healthBar.value = deathHandler.GetCurrentHealth() / playerStats.GetMaxHealth();
+        healthBar.value = playerDeathHandler.GetCurrentHealth() / playerStats.GetMaxHealth();
 
         ResetDisappearTimer();
     }

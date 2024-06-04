@@ -17,7 +17,7 @@ public class AdminManager : MonoBehaviour
     {
         saveManager = SaveManager.instance;
         playerStats = PlayerStats.instance;
-        playerKillTestButton.onClick.AddListener(() => playerStats.deathHandler.Kill());
+        playerKillTestButton.onClick.AddListener(() => playerStats.playerDeathHandler.Kill());
     }
 
     // Update is called once per frame

@@ -1,10 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathHandler : EnemyTarget
+public class PlayerDeathHandler : EnemyTarget
 {
+    private bool isDead;
 
     private void Awake()
     {
@@ -34,9 +34,9 @@ public class DeathHandler : EnemyTarget
     public void Kill()
     {
         if (isDestroyed) return;
-        if (playerStats.GetIsDead()) return;
+        if (isDead) return;
         
-        playerStats.SetIsDead(true);
+        SetIsDead(true);
         
         Time.timeScale = 0.5f; // sonra balancelicaz
 
@@ -65,7 +65,7 @@ public class DeathHandler : EnemyTarget
 
     private void RevivePlayer()
     {
-        playerStats.SetIsDead(false);
+        SetIsDead(false);
         isDestroyed = true;
         isTargetable = true;
         Time.timeScale = 1;
@@ -75,7 +75,7 @@ public class DeathHandler : EnemyTarget
 
     public override void TakeDamage(float dmg)
     {
-        if (playerStats.GetIsDead()) return;
+        if (isDead) return;
 
         base.TakeDamage(dmg);
 
@@ -112,6 +112,16 @@ public class DeathHandler : EnemyTarget
     {
         currentHealth = newHealth;
     }
+
+    public bool GetIsDead()
+    {
+        return isDead;
+    }
+    public void SetIsDead(bool dead)
+    {
+        isDead = dead;
+    }
+
     #endregion
 
 }

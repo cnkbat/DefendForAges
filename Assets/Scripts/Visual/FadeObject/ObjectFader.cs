@@ -20,7 +20,6 @@ public class ObjectFader : MonoBehaviour, IFadeable
     [SerializeField] private RenderType originalRenderType = RenderType.Opaque;
     bool isFade;
 
-    private float maxTimer = 2;
     private float currentTimer = 0;
 
     void Start()
@@ -105,7 +104,7 @@ public class ObjectFader : MonoBehaviour, IFadeable
 
     private void ResetTimer()
     {
-        currentTimer = maxTimer;
+        currentTimer = gameManager.maxTransparentTimer;
     }
 
 

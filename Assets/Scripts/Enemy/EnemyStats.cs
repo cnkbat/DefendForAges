@@ -33,7 +33,7 @@ public class EnemyStats : MonoBehaviour, IPoolableObject
     private float movementSpeed;
 
     [Header("Earnings")]
-    private int moneyValue;
+    private float coinValue;
     private float expValue;
     private float meatValue;
     private float powerUpAddOnValue;
@@ -92,7 +92,7 @@ public class EnemyStats : MonoBehaviour, IPoolableObject
         knockbackDur = enemySO.GetKnockbackDur();
         currentMoveSpeed = enemySO.GetMovementSpeed();
         currentDamage = enemySO.GetDamage();
-        moneyValue = enemySO.GetMoneyValue();
+        coinValue = enemySO.GetMoneyValue();
         expValue = enemySO.GetExpValue();
         meatValue = enemySO.GetMeatValue();
         maxHealth = enemySO.GetMaxHealth();
@@ -166,9 +166,9 @@ public class EnemyStats : MonoBehaviour, IPoolableObject
     #endregion
 
     #region Earnings
-    public int GetMoneyValue()
+    public float GetMoneyValue()
     {
-        return moneyValue;
+        return coinValue;
     }
     public float GetExpValue()
     {

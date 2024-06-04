@@ -22,7 +22,7 @@ public class EnemySO : ScriptableObject
     [SerializeField] private float attackRange;
 
     [Header("Earnings")]
-    [SerializeField] private int moneyValue;
+    [SerializeField] private float coinValue;
     [SerializeField] private float expValue;
     [SerializeField] private float meatValue;
     [SerializeField] private float powerUpAddOnValue;
@@ -31,7 +31,7 @@ public class EnemySO : ScriptableObject
     public float GetMovementSpeed() { return moveSpeed; }
     public float GetMaxHealth() { return maxHealth; }
     public float GetDamage() { return damage; }
-    public int GetMoneyValue() { return moneyValue; }
+    public float GetMoneyValue() { return coinValue; }
     public float GetExpValue() { return expValue; }
     public float GetMeatValue() { return meatValue; }
     public float GetKnockbackDur() { return knockbackDur; }

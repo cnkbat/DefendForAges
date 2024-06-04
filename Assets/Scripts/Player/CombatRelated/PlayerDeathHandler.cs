@@ -35,12 +35,12 @@ public class PlayerDeathHandler : EnemyTarget
     {
         if (isDestroyed) return;
         if (isDead) return;
-        
+
         SetIsDead(true);
-        
+
         Time.timeScale = 0.5f; // sonra balancelicaz
 
-        
+
         isDestroyed = true;
         isTargetable = true;
 
@@ -75,6 +75,8 @@ public class PlayerDeathHandler : EnemyTarget
 
     public override void TakeDamage(float dmg)
     {
+        if (gameManager.isGameFreezed) return;
+
         if (isDead) return;
 
         base.TakeDamage(dmg);

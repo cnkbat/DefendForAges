@@ -9,7 +9,7 @@ public class EarningsHolder : Singleton<EarningsHolder>
 
     private int earnedMeat;
     private int earnedXP;
-    private int earnedMoney;
+    private int earnedCoin;
 
     public Action<int, int, int> OnTempEarningsUpdated;
     public Action<float> OnBonusMultiplierApplied;
@@ -24,7 +24,6 @@ public class EarningsHolder : Singleton<EarningsHolder>
 
         OnTempEarningsUpdated += EarnOnKill;
 
-        // rewarded ad ile ui managera bağlanacak
         OnBonusMultiplierApplied += ApplyEarningToPlayer;
     }
 
@@ -61,7 +60,7 @@ public class EarningsHolder : Singleton<EarningsHolder>
     }
     public void IncrementMoney(int value)
     {
-        earnedMoney += value;
+        earnedCoin += value;
     }
     public void IncrementXP(int value)
     {
@@ -71,14 +70,15 @@ public class EarningsHolder : Singleton<EarningsHolder>
 
     public void ApplyEarningToPlayer(float multiplier)
     {
-        OnEarningsApply?.Invoke(earnedMeat * (int)multiplier, earnedMoney * (int)multiplier, earnedXP * (int)multiplier);
+        OnEarningsApply?.Invoke(earnedMeat * (int)multiplier, earnedCoin * (int)multiplier, earnedXP * (int)multiplier);
         ResetEarnings();
     }
 
     public void ResetEarnings()
     {
         earnedMeat = 0;
-        earnedMoney = 0;
+        earnedCoin = 0;
         earnedXP = 0;
     }
+
 }

@@ -26,6 +26,7 @@ public class PlayerAngleCalculator : MonoBehaviour
 
     private void Update()
     {
+        if (gameManager.isGameFreezed) return;
         if (gameManager.isPlayerFreezed) return;
         if (playerDeathHandler.GetIsDead()) return;
 

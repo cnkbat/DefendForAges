@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Components")]
+    private GameManager gameManager;
     private PlayerStats playerStats;
     private PlayerDeathHandler playerDeathHandler;
     private NearestEnemyFinder nearestEnemyFinder;
@@ -36,6 +37,8 @@ public class PlayerAttack : MonoBehaviour
     private void OnEnable()
     {
         playerStats = PlayerStats.instance;
+        gameManager = GameManager.instance;
+        
         playerStats.OnWeaponActivision += EnableWeapons;
         playerStats.OnRangeSet += UpdateFireRange;
 
@@ -70,6 +73,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (gameManager.isGameFreezed) return;
+
         if (playerDeathHandler.GetIsDead()) return;
 
         playerAsset.localPosition = playerAssetLocalPos;

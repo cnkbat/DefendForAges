@@ -60,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (gameManager.isPlayerFreezed) return;
         if (playerDeathHandler.GetIsDead()) return;
+        if (gameManager.isGameFreezed) return;
+
 
         ToMove();
         rb.velocity = Vector3.zero;

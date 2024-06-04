@@ -2264,7 +2264,7 @@ GameObject:
   - component: {fileID: 932846032521089180}
   - component: {fileID: 7165593443968346700}
   m_Layer: 5
-  m_Name: CollectedMeatText
+  m_Name: Wave Won CollectedMeatText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3393,7 +3393,7 @@ GameObject:
   - component: {fileID: 5242084728778238609}
   - component: {fileID: 6219423264375672117}
   m_Layer: 5
-  m_Name: CollectedXPText
+  m_Name: TD CollectedXPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4291,12 +4291,12 @@ GameObject:
   - component: {fileID: 6793985182572785030}
   - component: {fileID: 8321016733438307155}
   m_Layer: 5
-  m_Name: CollectedXPText
+  m_Name: Wave WonCollectedXPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4343978775521321372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7785,12 +7785,12 @@ GameObject:
   - component: {fileID: 3554788237679962575}
   - component: {fileID: 7244157326191840627}
   m_Layer: 5
-  m_Name: CollectedCoinText
+  m_Name: Wave Won CollectedCoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1779558219372781128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9923,12 +9923,22 @@ MonoBehaviour:
   progressBarAnimDur: 1
   progressBarEaseType: 1
   playerKilledCountDownText: {fileID: 2794787059010472220}
-  lateReviveButton: {fileID: 4581551497415672987}
-  reviveButton: {fileID: 1934017933}
+  lateReviveButton: {fileID: 1934017933}
+  rewardedReviveButton: {fileID: 4581551497415672987}
   powerUpFill: {fileID: 2635072563502676795}
   powerUpVFX: {fileID: 9191554900082949534}
   normalApplyEarningsButton: {fileID: 331603633866559663}
   rewardedApplyEarningsButton: {fileID: 7655229162552742363}
+  waveWonOpenedChestIcon: {fileID: 5120825718845626812}
+  waveWonClosedChestIcon: {fileID: 8966749174010788131}
+  waveWoncollectedXPText: {fileID: 8321016733438307155}
+  waveWoncollectedCoinText: {fileID: 7244157326191840627}
+  waveWoncollectedMeatText: {fileID: 7165593443968346700}
+  gameLostOpenedChestIcon: {fileID: 5946364799816005959}
+  gameLostClosedChestIcon: {fileID: 6123229298608431696}
+  gameLostCollectedXPText: {fileID: 6219423264375672117}
+  gameLostCollectedMeatText: {fileID: 7165593443968346700}
+  gameLostCollectedCoinText: {fileID: 1025370641574938010}
   towerDestroyedCountDownText: {fileID: 3429544931104203458}
   loseGameButton: {fileID: 539489126579864201}
   useGemToReviveTowerButton: {fileID: 0}
@@ -10720,7 +10730,7 @@ GameObject:
   - component: {fileID: 7137415448852200601}
   - component: {fileID: 1025370641574938010}
   m_Layer: 5
-  m_Name: CollectedMeatText
+  m_Name: TD CollectedMeatText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12440,7 +12450,7 @@ GameObject:
   - component: {fileID: 4633475095015223040}
   - component: {fileID: 5478321596080130536}
   m_Layer: 5
-  m_Name: OpenChestIcon (1)
+  m_Name: 'Wave WonOpenChestIcon '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15043,7 +15053,7 @@ GameObject:
   - component: {fileID: 4956017867855247200}
   - component: {fileID: 7295534834804072338}
   m_Layer: 5
-  m_Name: OpenChestIcon
+  m_Name: TD OpenChestIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15368,7 +15378,7 @@ GameObject:
   - component: {fileID: 6418820897285443977}
   - component: {fileID: 180217236478592379}
   m_Layer: 5
-  m_Name: CloseChestIcon
+  m_Name: TD CloseChestIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17827,7 +17837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1736603090390462442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18500,7 +18510,7 @@ GameObject:
   - component: {fileID: 1868579876633841102}
   - component: {fileID: 9091204006413095651}
   m_Layer: 5
-  m_Name: CollectedCoinText
+  m_Name: TD CollectedCoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19435,7 +19445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8189562802011389096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19793,7 +19803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9205507269746755022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21766,7 +21776,7 @@ GameObject:
   - component: {fileID: 3272747120188043013}
   - component: {fileID: 9007802065004449271}
   m_Layer: 5
-  m_Name: CloseChestIcon (1)
+  m_Name: Wave Won CloseChestIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

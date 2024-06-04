@@ -106,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
     {
 
         if (!gameManager.canSpawnEnemy) return;
-
+        
         if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == waves[currentWaveCount].enemyQuota) // check if the wave end and is there more?
         {
             StartCoroutine(BeginNextWave());

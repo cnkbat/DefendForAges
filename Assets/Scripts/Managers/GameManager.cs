@@ -20,10 +20,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public List<CurrencyAnimationHandler> droppedCurrencies = new List<CurrencyAnimationHandler>();
     [SerializeField] private float droppedCollectionAnimDur;
 
-    [Header("Phases")]
-    public bool isAttackPhase;
-    public bool isGameFreezed;
-
     [Header("Cities")]
     [SerializeField] public List<CityManager> allCities;
 
@@ -42,6 +38,8 @@ public class GameManager : Singleton<GameManager>
     [Header("*---Design & Balance ---*")]
     [Header("Game Management")]
     [SerializeField] public bool isPlayerFreezed;
+    public bool isAttackPhase;
+    public bool isGameFreezed;
 
     [Header("Cam Management")]
     [SerializeField] public float panCamBackToPlayerDelay = 2;
@@ -231,6 +229,7 @@ public class GameManager : Singleton<GameManager>
         newCam.m_Priority = 20;
 
         isPlayerFreezed = true;
+        isGameFreezed = true;
 
         StartCoroutine(PanCamBackToPlayer(newCam));
     }
@@ -242,9 +241,11 @@ public class GameManager : Singleton<GameManager>
         newCam.m_Priority = 0;
 
         isPlayerFreezed = false;
+        isGameFreezed = false;
     }
 
     #endregion
+
     #region  Getters & Setters
     public void SetActiveWave(EnemySpawner newActiveWave)
     {

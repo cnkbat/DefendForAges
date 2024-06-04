@@ -43,7 +43,7 @@ public class UIManager : Singleton<UIManager>
     [Header("Revive")]
     [SerializeField] TMP_Text playerKilledCountDownText;
     [SerializeField] private Button lateReviveButton;
-    [SerializeField] private Button reviveButton;
+    [SerializeField] private Button rewardedReviveButton;
 
     [Header("Power Up Slider")]
     [SerializeField] private Image powerUpFill;
@@ -52,9 +52,19 @@ public class UIManager : Singleton<UIManager>
     [Header("Earnings")]
     [SerializeField] private Button normalApplyEarningsButton;
     [SerializeField] private Button rewardedApplyEarningsButton;
+    [SerializeField] private GameObject waveWonOpenedChestIcon;
+    [SerializeField] private GameObject waveWonClosedChestIcon;
+    [SerializeField] private TMP_Text waveWoncollectedXPText;
+    [SerializeField] private TMP_Text waveWoncollectedCoinText;
+    [SerializeField] private TMP_Text waveWoncollectedMeatText;
 
     [Header("Game Lost Sequence")]
-    [SerializeField] TMP_Text towerDestroyedCountDownText;
+    [SerializeField] private GameObject gameLostOpenedChestIcon;
+    [SerializeField] private GameObject gameLostClosedChestIcon;
+    [SerializeField] private TMP_Text gameLostCollectedXPText;
+    [SerializeField] private TMP_Text gameLostCollectedMeatText;
+    [SerializeField] private TMP_Text gameLostCollectedCoinText;
+    [SerializeField] private TMP_Text towerDestroyedCountDownText;
     [SerializeField] private Button loseGameButton;
     [SerializeField] private Button useGemToReviveTowerButton;
 
@@ -162,9 +172,9 @@ public class UIManager : Singleton<UIManager>
 
         // Revive & Wave Control
         lateReviveButton.onClick.AddListener(OnLateReviveButtonClicked);
-        reviveButton.onClick.AddListener(OnReviveButtonClicked);
+        rewardedReviveButton.onClick.AddListener(OnReviveButtonClicked);
         waveCallButton.onClick.AddListener(OnWaveCallClicked);
-        normalApplyEarningsButton.onClick.AddListener(DisableWaveWonUI);
+        normalApplyEarningsButton.onClick.AddListener(RegularDisableWaveWonUI);
         rewardedApplyEarningsButton.onClick.AddListener(RewardedDisableWaveWonUI);
 
 
@@ -182,7 +192,8 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnMoneyChange += UpdateMoneyText;
         playerStats.OnMeatChange += UpdateMeatText;
         playerStats.OnExperienceGain += UpdateLevelBar;
-
+        earningsHolder.OnEarningsApply += ActivateAndUpdateWaveWonEarningsTexts;
+        earningsHolder.OnEarningsApply += ActivateAndUpdateTowerDeathEarningsTexts;
 
         // Lose Game
         for (int i = 0; i < gameManager.allCities.Count; i++)
@@ -226,7 +237,7 @@ public class UIManager : Singleton<UIManager>
     {
         // Revive & Wave Control Buttons
         lateReviveButton.onClick.RemoveAllListeners();
-        reviveButton.onClick.RemoveAllListeners();
+        rewardedReviveButton.onClick.RemoveAllListeners();
         waveCallButton.onClick.RemoveAllListeners();
         normalApplyEarningsButton.onClick.RemoveAllListeners();
 
@@ -247,7 +258,8 @@ public class UIManager : Singleton<UIManager>
         playerStats.OnMoneyChange -= UpdateMoneyText;
         playerStats.OnMeatChange -= UpdateMeatText;
         playerStats.OnExperienceGain -= UpdateLevelBar;
-
+        earningsHolder.OnEarningsApply -= ActivateAndUpdateWaveWonEarningsTexts;
+        earningsHolder.OnEarningsApply -= ActivateAndUpdateTowerDeathEarningsTexts;
 
         // Lose Game
         for (int i = 0; i < gameManager.allCities.Count; i++)
@@ -538,7 +550,6 @@ public class UIManager : Singleton<UIManager>
     public void OnApplyEarningToPlayerButtonClicked(float newMultipiler)
     {
         earningsHolder.OnBonusMultiplierApplied?.Invoke(newMultipiler);
-        gameManager.OnApplyEarnings?.Invoke();
     }
     #endregion
 
@@ -650,6 +661,8 @@ public class UIManager : Singleton<UIManager>
         GetBackToGamePanel();
     }
 
+
+
     #endregion
 
     #region  Lose Panel Management
@@ -658,7 +671,17 @@ public class UIManager : Singleton<UIManager>
         DeactivateAllPanels();
         ActivatePanel(gameLostPanel);
 
+        gameManager.isGameFreezed = true;
+
         loseGameButton.gameObject.SetActive(false);
+
+        gameLostOpenedChestIcon.SetActive(false);
+        gameLostClosedChestIcon.SetActive(true);
+
+        gameLostCollectedXPText.gameObject.SetActive(false);
+        gameLostCollectedCoinText.gameObject.SetActive(false);
+        gameLostCollectedMeatText.gameObject.SetActive(false);
+
 
         StartCoroutine(TowerDeathCountDown());
     }
@@ -688,9 +711,33 @@ public class UIManager : Singleton<UIManager>
 
     private void GameLostPanelSequenceEnd()
     {
-        OnApplyEarningToPlayerButtonClicked(1);
+        StartCoroutine(DisableGameLostUI());
+    }
+
+    IEnumerator DisableGameLostUI()
+    {
+        yield return new WaitForSeconds(2);
+
         GetBackToGamePanel();
+        OnApplyEarningToPlayerButtonClicked(1);
         gameManager.LevelLost();
+    }
+
+    private void ActivateAndUpdateTowerDeathEarningsTexts(int meatValue, int coinValue, int xpValue)
+    {
+        
+        gameLostOpenedChestIcon.SetActive(true);
+        gameLostClosedChestIcon.SetActive(false);
+    
+
+        gameLostCollectedXPText.transform.parent.gameObject.SetActive(true);
+        gameLostCollectedCoinText.transform.parent.gameObject.SetActive(true);
+        gameLostCollectedMeatText.transform.parent.gameObject.SetActive(true);
+
+        gameLostCollectedXPText.text = xpValue.ToString();
+        gameLostCollectedCoinText.text = coinValue.ToString();
+        gameLostCollectedMeatText.text = meatValue.ToString();
+
     }
 
     #endregion
@@ -700,23 +747,56 @@ public class UIManager : Singleton<UIManager>
     public void EnableWaveWonUI()
     {
         ActivatePanel(waveWonPanel);
+
+        waveWonOpenedChestIcon.SetActive(false);
+        waveWonClosedChestIcon.SetActive(true);
+
+        waveWoncollectedXPText.gameObject.SetActive(false);
+        waveWoncollectedCoinText.gameObject.SetActive(false);
+        waveWoncollectedMeatText.gameObject.SetActive(false);
+
+    }
+    IEnumerator DisableWaveWonUI()
+    {
+        yield return new WaitForSeconds(2);
+        GetBackToGamePanel();
+        gameManager.OnApplyEarnings?.Invoke();
+    }
+
+    private void ActivateAndUpdateWaveWonEarningsTexts(int meatValue, int coinValue, int xpValue)
+    {
+        waveWonOpenedChestIcon.SetActive(true);
+        waveWonClosedChestIcon.SetActive(false);
+
+        waveWoncollectedXPText.transform.parent.gameObject.SetActive(true);
+        waveWoncollectedCoinText.transform.parent.gameObject.SetActive(true);
+        waveWoncollectedMeatText.transform.parent.gameObject.SetActive(true);
+
+        waveWoncollectedXPText.text = xpValue.ToString();
+        waveWoncollectedCoinText.text = coinValue.ToString();
+        waveWoncollectedMeatText.text = meatValue.ToString();
+
     }
 
     public void RewardedDisableWaveWonUI()
     {
         OnApplyEarningToPlayerButtonClicked(2);
 
-        GetBackToGamePanel();
+        StartCoroutine(DisableWaveWonUI());
     }
-    public void DisableWaveWonUI()
+    public void RegularDisableWaveWonUI()
     {
         OnApplyEarningToPlayerButtonClicked(1);
 
-        GetBackToGamePanel();
+        StartCoroutine(DisableWaveWonUI());
     }
+
+
+
     #endregion
 
     #endregion
+
     #region  Update Texts - Text Related
 
     private void UpdateText(TMP_Text textToUpdate, int value, string newString = null)

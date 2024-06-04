@@ -30,6 +30,7 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
     protected virtual void Update()
     {
         if (isDestroyed) return;
+        if (gameManager.isGameFreezed) return;
 
         if (!gameManager.isAttackPhase)
         {

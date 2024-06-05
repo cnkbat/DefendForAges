@@ -778,7 +778,7 @@ MonoBehaviour:
   isRepairable: 0
   asset: {fileID: 3815310486027179043}
   feelFeedBacks: {fileID: 8522963525274409092}
-  recoveryTimer: 0
+  recoveryTimer: 3
 --- !u!114 &1124860432
 MonoBehaviour:
   m_ObjectHideFlags: 0

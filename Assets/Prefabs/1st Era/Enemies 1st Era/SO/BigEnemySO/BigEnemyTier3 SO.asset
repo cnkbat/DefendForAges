@@ -9,8 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0396beeaf87f4b7419db08c5e4f1561c, type: 3}
-  m_Name: WallDefenceSO
+  m_Script: {fileID: 11500000, guid: 962bd0fd1da81c348ba7df4b0b08b9d4, type: 3}
+  m_Name: BigEnemyTier3 SO
   m_EditorClassIdentifier: 
-  maxHealthValues:
-  - 15
+  maxHealth: 48
+  moveSpeed: 3
+  knockbackDur: 0.3
+  attackSpeed: 1.4
+  attackDur: 1
+  damage: 12
+  attackRange: 3.5
+  coinValue: 12
+  expValue: 2.4
+  meatValue: 4
+  powerUpAddOnValue: 1

@@ -333,8 +333,8 @@ MonoBehaviour:
   deadLayerName: DeadEnemy
   deathAnimDur: 1
   materialIndexes: 00000000
-  originalMat: {fileID: 0}
-  deadMat: {fileID: 0}
+  originalMat: {fileID: 2100000, guid: 0a1324c37fc10874aa18c7b28450df1a, type: 2}
+  deadMat: {fileID: 2100000, guid: ccf02bd5c27099644b2bb0a4657de22f, type: 2}
 --- !u!1 &745898582760723051
 GameObject:
   m_ObjectHideFlags: 0

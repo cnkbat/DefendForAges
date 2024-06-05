@@ -15,6 +15,8 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     [SerializeField] private float recoveryTimer;
     private float currentRecoveryTimer;
 
+    bool isRecoveryActive;
+
     override protected void OnEnable()
     {
         base.OnEnable();
@@ -51,11 +53,20 @@ public class TowerBehaviour : AttackerDefenceBehaviour
         base.Update();
 
 
-        if (currentRecoveryTimer <= 0)
+        if (isRecoveryActive)
         {
             if (currentHealth <= towerStats.GetMaxHealth())
             {
                 currentHealth += towerStats.GetRecovery();
+            }
+        }
+        else
+        {
+            currentRecoveryTimer -= Time.deltaTime;
+
+            if(currentRecoveryTimer <= 0)
+            {
+                isRecoveryActive = true;
             }
         }
 
@@ -64,7 +75,7 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
- 
+
         ResetRecoveryTimer();
         // haptic oynat
         // feeli ver.
@@ -72,6 +83,7 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     private void ResetRecoveryTimer()
     {
+        isRecoveryActive = false;
         currentRecoveryTimer = recoveryTimer;
     }
 
@@ -86,8 +98,8 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     protected override void DestroyDefence()
     {
-        if(isDestroyed) return;
-        
+        if (isDestroyed) return;
+
         base.DestroyDefence();
         // ağır haptic oynat
         OnTowerDestroyed?.Invoke();

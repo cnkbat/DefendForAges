@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class PlayerStats : Singleton<PlayerStats>
 {
     SaveManager saveManager;
-    ObjectPooler objectPooler;
+
     GameManager gameManager;
 
     [Header("Scriptable Object")]
@@ -125,7 +125,6 @@ public class PlayerStats : Singleton<PlayerStats>
     private void Start()
     {
         saveManager = SaveManager.instance;
-        objectPooler = ObjectPooler.instance;
         gameManager = GameManager.instance;
 
         playerDeathHandler = GetComponent<PlayerDeathHandler>();
@@ -377,6 +376,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public void IncrementHealth(float lifeStolen)
     {
         float healValue = lifeStolen * lifeStealRate;
+        if (healValue <= 0) return;
 
         if (playerDeathHandler.IncrementCurrentHealth(healValue))
         {
@@ -590,6 +590,10 @@ public class PlayerStats : Singleton<PlayerStats>
         return range;
     }
 
+    public bool GetIsPowerupEnabled()
+    {
+        return isPowerupEnabled;
+    }
 
     #endregion
 

@@ -144,6 +144,7 @@ Transform:
   - {fileID: 2845333479972763952}
   - {fileID: 8321622984516191343}
   - {fileID: 5873530899348311096}
+  - {fileID: 3342591130310627179}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySO: {fileID: 11400000, guid: 0eabe7f5e42be254593040cf5607d78e, type: 2}
+  assignedEnemySpawner: {fileID: 0}
   currentMoveSpeed: 0
   maxHealth: 0
 --- !u!114 &584572212228056352
@@ -300,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 2
   aimSpeed: 20
+  raycastPos: {fileID: 3342591130310627179}
   enemyAsset: {fileID: 0}
 --- !u!114 &3063027529056802795
 MonoBehaviour:
@@ -329,7 +332,6 @@ MonoBehaviour:
   aliveLayerName: Enemy
   deadLayerName: DeadEnemy
   deathAnimDur: 1
-  boundRenderer: {fileID: 0}
   materialIndexes: 00000000
   originalMat: {fileID: 0}
   deadMat: {fileID: 0}
@@ -459,6 +461,37 @@ Transform:
   - {fileID: 6220075921269075628}
   m_Father: {fileID: 2845333479972763952}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1357627884478969314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3342591130310627179}
+  m_Layer: 0
+  m_Name: RayCastPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3342591130310627179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357627884478969314}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.14, z: -0.1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 584572212228056357}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1405714192501870840
 GameObject:
@@ -1303,6 +1336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 0
   aimSpeed: 20
+  raycastPos: {fileID: 0}
   enemyAsset: {fileID: 0}
 --- !u!1 &5305407710706617693
 GameObject:

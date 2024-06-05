@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
     [Header("VFX")]
     [SerializeField] private ParticleSystem trailFX;
-
+    [SerializeField] private ParticleSystem powerupedVFX;
     private bool targetReached = false;
 
     private void OnEnable()
@@ -64,9 +64,22 @@ public class Bullet : MonoBehaviour, IPoolableObject
             targetPos = target.transform.position;
         }
 
-        if(trailFX != null)
+        if (trailFX != null)
         {
+            if (powerupedVFX != null)
+            {
+                powerupedVFX.Stop();
+            }
             trailFX.Play();
+        }
+
+        if (isPlayersBullet)
+        {
+            if (playerStats.GetIsPowerupEnabled() && powerupedVFX != null)
+            {
+                powerupedVFX.Play();
+                trailFX.Stop();
+            }
         }
 
         firedPoint = transform.position;
@@ -113,14 +126,14 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
         if (gameManager.bulletFireRange < Vector3.Distance(transform.position, firedPoint))
         {
-           DisableBullet();
+            DisableBullet();
         }
 
     }
 
     private void DisableBullet()
     {
-        if(trailFX != null)
+        if (trailFX != null)
         {
             trailFX.Stop();
         }

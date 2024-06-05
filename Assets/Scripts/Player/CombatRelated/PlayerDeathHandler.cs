@@ -66,8 +66,11 @@ public class PlayerDeathHandler : EnemyTarget
     private void RevivePlayer()
     {
         SetIsDead(false);
-        isDestroyed = true;
+
+        isDestroyed = false;
         isTargetable = true;
+        isDead = false;
+
         Time.timeScale = 1;
 
         playerStats?.OnPlayerRevived.Invoke();
@@ -76,11 +79,13 @@ public class PlayerDeathHandler : EnemyTarget
     public override void TakeDamage(float dmg)
     {
         if (gameManager.isGameFreezed) return;
+        if (isDestroyed) return;
 
         if (isDead) return;
 
         base.TakeDamage(dmg);
 
+        Debug.Log("damage taken");
         currentHealth -= dmg;
 
         if (currentHealth <= 0)
@@ -91,6 +96,7 @@ public class PlayerDeathHandler : EnemyTarget
 
     public bool IncrementCurrentHealth(float value)
     {
+
         if (currentHealth >= playerStats.GetMaxHealth())
         {
             return false;

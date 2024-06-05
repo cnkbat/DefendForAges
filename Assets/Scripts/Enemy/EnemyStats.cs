@@ -63,7 +63,6 @@ public class EnemyStats : MonoBehaviour, IPoolableObject
         OnEnemySpawned?.Invoke();
 
         currentCityManager = enemyTargeter.GetCityManager();
-        Debug.Log(currentCityManager.name);
         assignedEnemySpawner = currentCityManager.GetCurrentWave();
 
         enemyDeathHandler.EnemySpawned();
@@ -101,7 +100,6 @@ public class EnemyStats : MonoBehaviour, IPoolableObject
         attackRange = enemySO.GetAttackRange();
         attackSpeed = enemySO.GetAttackSpeed();
 
-        Debug.Log("enemy range = " + attackRange);
         navMeshAgent.speed = movementSpeed;
     }
 

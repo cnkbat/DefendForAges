@@ -23,7 +23,7 @@ public class EnemyTargeter : MonoBehaviour
         ResetTargetTimer();
         closestDistance = 999999;
 
-        Debug.Log("enemySpawned");
+  
         cityManager = transform.root.GetComponent<CityManager>();
         cityManager.OnTargetListUpdated += ResetTargetTimer;
         

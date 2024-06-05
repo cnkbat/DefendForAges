@@ -146,6 +146,7 @@ Transform:
   - {fileID: 5873530899348311096}
   - {fileID: 5199085442841625420}
   - {fileID: 1050241530691482233}
+  - {fileID: 3571077169294860224}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySO: {fileID: 11400000, guid: 1785fb1e899a0884184317e89773c19a, type: 2}
+  assignedEnemySpawner: {fileID: 0}
   currentMoveSpeed: 0
   maxHealth: 0
 --- !u!114 &584572212228056352
@@ -304,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 2
   aimSpeed: 20
+  raycastPos: {fileID: 3571077169294860224}
   enemyAsset: {fileID: 0}
 --- !u!114 &6001288530368322586
 MonoBehaviour:
@@ -333,7 +336,6 @@ MonoBehaviour:
   aliveLayerName: Enemy
   deadLayerName: DeadEnemy
   deathAnimDur: 1
-  boundRenderer: {fileID: 2472537921761582045}
   materialIndexes: 00000000
   originalMat: {fileID: 0}
   deadMat: {fileID: 0}
@@ -495,6 +497,37 @@ Transform:
   - {fileID: 6422362563981457797}
   m_Father: {fileID: 8684088295841803379}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1808872790586030714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3571077169294860224}
+  m_Layer: 0
+  m_Name: RayCastPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3571077169294860224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808872790586030714}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.0853333, z: -0.128}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 584572212228056357}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1847784321746807728
 GameObject:
@@ -1378,6 +1411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalStoppingDistance: 0
   aimSpeed: 20
+  raycastPos: {fileID: 0}
   enemyAsset: {fileID: 0}
 --- !u!1 &5305407710706617693
 GameObject:

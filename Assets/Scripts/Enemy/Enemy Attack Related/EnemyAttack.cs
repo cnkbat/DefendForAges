@@ -19,6 +19,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float aimSpeed = 20f;
 
     [Header("Combat")]
+    [SerializeField] private Transform raycastPos;
     private float attackTimer;
 
     [Header("Visuals")]
@@ -80,11 +81,11 @@ public class EnemyAttack : MonoBehaviour
     private void Attacking()
     {
         RaycastHit hit;
-        int layerMask = ~LayerMask.GetMask("OnlyPlayer");
+        int layerMask = ~LayerMask.GetMask("Enemy");
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, enemyStats.GetRange(), layerMask))
+        if (Physics.Raycast(raycastPos.position, transform.forward, out hit, enemyStats.GetRange(), layerMask))
         {
-            Debug.DrawRay(transform.position, transform.forward, Color.green, 0.5f);
+            Debug.DrawRay(raycastPos.position, transform.forward, Color.green, 0.5f);
 
             if (hit.transform.TryGetComponent(out EnemyTarget enemyTarget))
             {

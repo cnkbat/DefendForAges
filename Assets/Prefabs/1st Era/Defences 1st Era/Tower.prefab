@@ -777,7 +777,7 @@ MonoBehaviour:
   - {fileID: 5402279503156444669}
   isRepairable: 0
   asset: {fileID: 3815310486027179043}
-  feelFeedBacks: {fileID: 0}
+  feelFeedBacks: {fileID: 8522963525274409092}
   recoveryTimer: 0
 --- !u!114 &1124860432
 MonoBehaviour:
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
-  FlickerOctave: 0.04
+  FlickerOctave: 0.08
   FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
   MaterialIndexes: 0000000001000000020000000300000004000000050000000600000007000000
   UseMaterialPropertyBlocks: 0

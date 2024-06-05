@@ -700,7 +700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4472078763875740990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.19, z: 0}
+  m_LocalPosition: {x: 0, y: 15.190001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   PropertyName: _BaseColor
   FlickerDuration: 0.2
   FlickerOctave: 0.08
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
   MaterialIndexes: 0000000001000000020000000300000004000000050000000600000007000000
   UseMaterialPropertyBlocks: 0
 --- !u!1 &6236504265723582749

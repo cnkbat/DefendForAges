@@ -266,6 +266,7 @@ MonoBehaviour:
   aimSpeed: 20
   raycastPos: {fileID: 2064297305307680688}
   enemyAsset: {fileID: 0}
+  objectToAttack: {fileID: 0}
 --- !u!114 &8892385870384036140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +297,7 @@ MonoBehaviour:
   deathAnimDur: 1
   materialIndexes: 00000000
   originalMat: {fileID: 2100000, guid: b9f4bc62dd928d243b40c78aa3cf5ab1, type: 2}
-  deadMat: {fileID: 2100000, guid: ccf02bd5c27099644b2bb0a4657de22f, type: 2}
+  deadMat: {fileID: 2100000, guid: 7c6f95b8a7c0ecf488687d3e5a5a4727, type: 2}
 --- !u!1 &994552264154554270
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,8 +747,8 @@ MonoBehaviour:
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
-  FlickerOctave: 0.04
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
+  FlickerOctave: 0.05
+  FlickerColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
   MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!1 &5719219395755179665

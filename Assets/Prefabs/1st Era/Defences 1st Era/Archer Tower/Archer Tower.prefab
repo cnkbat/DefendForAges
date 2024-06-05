@@ -483,9 +483,9 @@ MonoBehaviour:
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
-  FlickerOctave: 0.04
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-  MaterialIndexes: 
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!114 &675911636307568048
 MonoBehaviour:
@@ -527,9 +527,9 @@ MonoBehaviour:
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
-  FlickerOctave: 0.04
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-  MaterialIndexes: 
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!114 &4326106271006900295
 MonoBehaviour:
@@ -571,9 +571,9 @@ MonoBehaviour:
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
-  FlickerOctave: 0.04
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-  MaterialIndexes: 
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!114 &1442868830753220955
 MonoBehaviour:
@@ -615,9 +615,9 @@ MonoBehaviour:
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
-  FlickerOctave: 0.04
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-  MaterialIndexes: 
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!1 &7971581208438697618
 GameObject:

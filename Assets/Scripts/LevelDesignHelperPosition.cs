@@ -11,7 +11,7 @@ public class LevelDesignHelperPosition : MonoBehaviour
     {
         if (!Application.isPlaying)
         {
-            transform.position = new(transform.position.x, YAxisPos, transform.position.z);
+            transform.position = new(transform.position.x, YAxisPos+10, transform.position.z);
         }
     }
 }

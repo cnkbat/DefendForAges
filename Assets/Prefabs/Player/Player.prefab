@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 2011076855547121292}
   - component: {fileID: 4805826632684834437}
   m_Layer: 0
-  m_Name: FeelBacks
+  m_Name: FeedBacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,8 +198,8 @@ MonoBehaviour:
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
-  FlickerOctave: 0.04
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
   MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!1 &2186817864630643278

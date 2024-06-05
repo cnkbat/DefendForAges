@@ -43,7 +43,7 @@ public class BuyableArea : MonoBehaviour
     private void OnEnable()
     {
         navMeshManager = NavMeshManager.instance;
-        cityManager = transform.parent.GetComponent<CityManager>();
+        cityManager = transform.root.GetComponent<CityManager>();
 
         LoadBuyableAreaData();
 

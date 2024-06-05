@@ -34,4 +34,4 @@ MonoBehaviour:
   weaponSpawnIndexes: 000000000200000004000000
   upgradeCosts: 320000006400000096000000fa00000090010000
   recoveries:
-  - 1
+  - 0

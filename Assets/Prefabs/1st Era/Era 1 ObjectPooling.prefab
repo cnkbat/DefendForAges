@@ -57,11 +57,23 @@ MonoBehaviour:
   - tag: Tier 3 Small Enemy
     prefab: {fileID: 584572212228056345, guid: ee6618406ab4d1f419080fe1a0628591, type: 3}
     size: 25
-  - tag: Medium Enemy
+  - tag: Tier 1 Medium Enemy
     prefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
     size: 25
-  - tag: Big Enemy
+  - tag: Tier 2 Medium Enemy
+    prefab: {fileID: 584572212228056345, guid: 925866f0853d4294cbeacb3a3cef39dc, type: 3}
+    size: 100
+  - tag: Tier 1 Big Enemy
     prefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+    size: 25
+  - tag: Tier 2 Big Enemy
+    prefab: {fileID: 584572212228056345, guid: 5d1331d9496722945a8e31dc3700a1f3, type: 3}
+    size: 25
+  - tag: Tier 3 Medium Enemy
+    prefab: {fileID: 584572212228056345, guid: 9fb73680d310c5142b5590457293d59b, type: 3}
+    size: 100
+  - tag: Tier 3 Big Enemy
+    prefab: {fileID: 584572212228056345, guid: 0d3574e8b1742f04db69e6d0fe913f99, type: 3}
     size: 25
   - tag: Boss Enemy
     prefab: {fileID: 584572212228056345, guid: ffc1ffa7e6b0e1040aa4e5d0b2ce8175, type: 3}

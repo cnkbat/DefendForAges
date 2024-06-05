@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 3063027529056802795}
   - component: {fileID: -5064338153017675901}
   m_Layer: 8
-  m_Name: Big Enemy
+  m_Name: Tier 1 Big Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1276,68 +1276,6 @@ Transform:
   m_Father: {fileID: 3269652098694201168}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5296658499717392814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7912708311058853605}
-  - component: {fileID: 6783265971651242501}
-  - component: {fileID: 5812108324916222924}
-  m_Layer: 0
-  m_Name: Weapon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7912708311058853605
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296658499717392814}
-  m_LocalRotation: {x: -0.013988835, y: -0.6042993, z: 0.14171988, w: 0.7839274}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11012002, y: 0.11012004, z: 0.11011999}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2838975931603414328}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6783265971651242501
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296658499717392814}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5812108324916222924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296658499717392814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fd4dc1f7cae5014b856d0fbdfb326f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalStoppingDistance: 0
-  aimSpeed: 20
-  raycastPos: {fileID: 0}
-  enemyAsset: {fileID: 0}
 --- !u!1 &5305407710706617693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1627,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3193908874516145922}
-  - {fileID: 7912708311058853605}
   m_Father: {fileID: 5287150081440265060}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

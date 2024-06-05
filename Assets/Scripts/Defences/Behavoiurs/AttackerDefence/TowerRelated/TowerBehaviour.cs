@@ -64,7 +64,7 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
-
+ 
         ResetRecoveryTimer();
         // haptic oynat
         // feeli ver.

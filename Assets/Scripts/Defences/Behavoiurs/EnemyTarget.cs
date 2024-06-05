@@ -72,7 +72,6 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     public virtual void TakeDamage(float dmg)
     {
         if (isDestroyed) return;
-        OnDamageTaken?.Invoke();
         // chlidlara atamak için
     }
 

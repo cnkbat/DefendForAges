@@ -32,12 +32,14 @@ public class DefencesBehaviourBase : EnemyTarget
 
         base.TakeDamage(dmg);
 
+     
         if (feelFeedBacks != null)
         {
             feelFeedBacks?.PlayFeedbacks();
         }
 
         currentHealth -= dmg;
+       
 
         SetisRepairable(true);
 
@@ -49,12 +51,13 @@ public class DefencesBehaviourBase : EnemyTarget
 
     public override void ResetHealthValue()
     {
+        Debug.Log("reset health");
         currentHealth = defencesStatsBase.GetMaxHealth();
     }
 
     protected virtual void DestroyDefence()
     {
-        if(isDestroyed) return;
+        if (isDestroyed) return;
 
         base.TargetDestroyed();
 

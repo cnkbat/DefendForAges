@@ -48,8 +48,12 @@ public class BuyableArea : MonoBehaviour
         LoadBuyableAreaData();
 
         saveManager = SaveManager.instance;
-        saveManager.OnSaved += SaveBuyableAreaData;
-        saveManager.OnResetData += DeleteBuyableAreaData;
+
+        if (saveManager != null)
+        {
+            saveManager.OnSaved += SaveBuyableAreaData;
+            saveManager.OnResetData += DeleteBuyableAreaData;
+        }
 
 
         loadableBase.OnLoadableFilled += AreaBuyed;
@@ -63,8 +67,11 @@ public class BuyableArea : MonoBehaviour
 
     private void OnDisable()
     {
-        saveManager.OnSaved -= SaveBuyableAreaData;
-        saveManager.OnResetData -= DeleteBuyableAreaData;
+        if (saveManager != null)
+        {
+            saveManager.OnSaved -= SaveBuyableAreaData;
+            saveManager.OnResetData -= DeleteBuyableAreaData;
+        }
 
         loadableBase.OnLoadableFilled -= AreaBuyed;
 

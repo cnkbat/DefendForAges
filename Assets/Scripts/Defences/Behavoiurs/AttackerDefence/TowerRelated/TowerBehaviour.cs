@@ -57,7 +57,7 @@ public class TowerBehaviour : AttackerDefenceBehaviour
         {
             if (currentHealth <= towerStats.GetMaxHealth())
             {
-                currentHealth += towerStats.GetRecovery();
+                currentHealth += towerStats.GetRecovery() * Time.deltaTime;
             }
         }
         else

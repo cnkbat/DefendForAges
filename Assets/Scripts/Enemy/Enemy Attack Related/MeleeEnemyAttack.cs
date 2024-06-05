@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class MeleeEnemyAttack : EnemyAttack
 {
+    public EnemyTarget objectToAttack;
+    private void OnEnable()
+    {
+        OnAttackedObjectSet += SetObjectToAttack;
+    }
     public void DealMeleeDamage()
     {
-      
-        enemyTargeter.GetTargetedObject().TakeDamage(enemyStats.GetDamage());
+        if (objectToAttack == null) return;
+
+        objectToAttack.TakeDamage(enemyStats.GetDamage());
+    }
+
+    public void SetObjectToAttack(EnemyTarget newValue)
+    {
+        objectToAttack = newValue;
     }
 }

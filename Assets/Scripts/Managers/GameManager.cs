@@ -87,8 +87,10 @@ public class GameManager : Singleton<GameManager>
         for (int i = 0; i < allCities.Count; i++)
         {
             totalWaveCount += allCities[i].waveList.Count;
+            allCities[i].GetTower().OnTargetDestroyed += FreezeGame;
         }
 
+      
         playerStats.OnWaveWon += CheckIfEraFinished;
         OnCheckPointReached += playerStats.CityChangerReached;
 
@@ -119,6 +121,11 @@ public class GameManager : Singleton<GameManager>
         asyncLoader = AsyncLoader.instance;
     }
 
+    public void FreezeGame()
+    {
+        isGameFreezed = true;
+    }
+    
     #region  Win & Lose Conditions
 
     public void LevelLost()

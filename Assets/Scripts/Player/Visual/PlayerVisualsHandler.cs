@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class PlayerVisualsHandler : MonoBehaviour
     LevelSystem levelSystem;
     PlayerStats playerStats;
     PlayerDeathHandler playerDeathHandler;
-
+    MMFeedbacks feedBacks;
 
     [Header("Health Bar")]
     [SerializeField] private Slider healthBar;
@@ -18,6 +19,8 @@ public class PlayerVisualsHandler : MonoBehaviour
 
     [Header("VFX")]
     private ParticleSystem playerDeathParticle;
+    private ParticleSystem damageTakenParticle;
+
     private ParticleSystem levelUpParticle;
     private ParticleSystem lifeStealParticle;
     private ParticleSystem powerupParticle;
@@ -27,6 +30,12 @@ public class PlayerVisualsHandler : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerDeathHandler = GetComponent<PlayerDeathHandler>();
         levelSystem = GetComponent<LevelSystem>();
+        feedBacks = GetComponentInChildren<MMFeedbacks>();
+
+        if (feedBacks != null)
+        {
+            feedBacks.Initialization();
+        }
     }
 
     private void OnEnable()
@@ -37,6 +46,7 @@ public class PlayerVisualsHandler : MonoBehaviour
         levelUpParticle = GameObject.Find("LevelUpParticle").GetComponent<ParticleSystem>();
         lifeStealParticle = GameObject.Find("LifeStealParticle").GetComponent<ParticleSystem>();
         powerupParticle = GameObject.Find("PowerupParticle").GetComponent<ParticleSystem>();
+        damageTakenParticle = GameObject.Find("DamageTakenParticle").GetComponent<ParticleSystem>();
 
         // Health Bar
         playerDeathHandler.OnDamageTaken += UpdateHealthBarValue;
@@ -48,6 +58,7 @@ public class PlayerVisualsHandler : MonoBehaviour
         playerStats.OnLifeStolen += PlayLifeStealParticle;
         playerStats.OnPowerUpEnabled += PlayPowerupParticle;
         playerStats.OnPowerUpDisabled += StopPowerupParticle;
+        playerDeathHandler.OnDamageTaken += PlayDamageTakenVisuals;
 
 
 
@@ -65,7 +76,7 @@ public class PlayerVisualsHandler : MonoBehaviour
         playerStats.OnPlayerKilled -= PlayDeathParticle;
         levelSystem.OnLevelUp -= PlayLevelupParticle;
         playerStats.OnLifeStolen -= PlayLifeStealParticle;
-         playerStats.OnPowerUpEnabled -= PlayPowerupParticle;
+        playerStats.OnPowerUpEnabled -= PlayPowerupParticle;
         playerStats.OnPowerUpDisabled -= StopPowerupParticle;
     }
 
@@ -121,6 +132,17 @@ public class PlayerVisualsHandler : MonoBehaviour
     public void PlayLifeStealParticle()
     {
         PlayParticle(lifeStealParticle);
+    }
+    public void PlayDamageTakenVisuals()
+    {
+        PlayParticle(damageTakenParticle);
+
+        if (feedBacks.IsPlaying)
+        {
+            feedBacks?.StopFeedbacks();
+        }
+
+        feedBacks?.PlayFeedbacks();
     }
 
     #region Powerup

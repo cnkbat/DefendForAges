@@ -80,7 +80,17 @@ public class Bullet : MonoBehaviour, IPoolableObject
                 powerupedVFX.Play();
                 trailFX.Stop();
             }
+            else
+            {
+                powerupedVFX.Stop();
+
+                if (powerupedVFX.TryGetComponent(out Light light))
+                {
+                    light.enabled = false;
+                }
+            }
         }
+
 
         firedPoint = transform.position;
 
@@ -156,7 +166,8 @@ public class Bullet : MonoBehaviour, IPoolableObject
                 OnDamageDealt.Invoke(damage);
             }
 
-            objectPooler.SpawnFloatingTextFromPool("FloatingText", targetPos, damage, damage * gameManager.fontSizeOnEnemyHit, Color.red);
+            objectPooler.SpawnFloatingTextFromPool("FloatingText", targetPos, damage, damage * gameManager.fontSizeOnEnemyHit,
+                playerStats.GetIsPowerupEnabled() ? Color.red : Color.white);
 
             DisableBullet();
         }

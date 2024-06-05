@@ -27,6 +27,7 @@ public class EnemyAttack : MonoBehaviour
 
     [Header("Events")]
     public Action OnAttacking;
+    public Action<EnemyTarget> OnAttackedObjectSet;
     public Action<float> OnAttackSpeedChanged;
     public Action OnTargetNotReached;
 
@@ -45,7 +46,6 @@ public class EnemyAttack : MonoBehaviour
         ResetAttackSpeed();
         navMeshAgent.stoppingDistance = originalStoppingDistance;
     }
-
 
 
     private void Update()
@@ -96,6 +96,8 @@ public class EnemyAttack : MonoBehaviour
                 if (attackTimer <= 0)
                 {
                     OnAttacking?.Invoke();
+                    OnAttackedObjectSet?.Invoke(enemyTarget);
+
                     ResetAttackSpeed();
                 }
             }

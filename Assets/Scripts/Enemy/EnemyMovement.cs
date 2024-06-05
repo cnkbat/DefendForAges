@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     private EnemyDeathHandler enemyDeathHandler;
     private Rigidbody rb;
     private NavMeshAgent navMeshAgent;
+    private GameManager gameManager;
 
     [Header("State")]
     [SerializeField] private bool canMove;
@@ -30,6 +31,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void EnemySpawned()
     {
+        gameManager = GameManager.instance;
+
         OnMove?.Invoke();
 
         canMove = true;
@@ -61,7 +64,9 @@ public class EnemyMovement : MonoBehaviour
 
     public void Move()
     {
-        navMeshAgent.isStopped = !canMove;
+        bool isStoppedBool = canMove & !gameManager.isGameFreezed;
+
+        navMeshAgent.isStopped = !isStoppedBool;
         OnMove?.Invoke();
 
         OnMovementSpeedChanged?.Invoke(navMeshAgent.speed);

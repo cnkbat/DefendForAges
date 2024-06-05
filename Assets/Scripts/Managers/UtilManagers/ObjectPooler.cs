@@ -17,8 +17,8 @@ public class ObjectPooler : Singleton<ObjectPooler>
         public int size;
     }
 
-    GameManager gameManager;
-    PlayerStats playerStats;
+
+
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
     public bool isObjPoolingActive;
@@ -30,9 +30,6 @@ public class ObjectPooler : Singleton<ObjectPooler>
     void Start()
     {
         if (!isObjPoolingActive) return;
-
-        playerStats = PlayerStats.instance;
-        gameManager = GameManager.instance;
 
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
@@ -166,6 +163,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
         {
             pooled.OnObjectPooled();
         }
+
 
         if (objectToSpawn.TryGetComponent(out FloatingTextAnimation floatingText))
         {

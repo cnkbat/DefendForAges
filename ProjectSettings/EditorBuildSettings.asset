@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/InGameScenes/EraManagementScene.unity
     guid: 5e94230f5d7b69f41a61169252c87200
   - enabled: 1
-    path: Assets/Scenes/Main Scene.unity
-    guid: 9a46da0d428283345a7a2f665ce57d59
+    path: Assets/Scenes/Design.unity
+    guid: e3fc682b9c16f054abb7c2f80e2a48b1
   m_configObjects: {}

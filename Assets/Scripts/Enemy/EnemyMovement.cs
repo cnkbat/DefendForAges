@@ -75,6 +75,7 @@ public class EnemyMovement : MonoBehaviour
         {
             navMeshAgent.destination = enemyTargeter.GetTargetTransform().position;
         }
+        
     }
 
 

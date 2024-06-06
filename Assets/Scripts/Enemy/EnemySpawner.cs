@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -65,6 +66,8 @@ public class EnemySpawner : MonoBehaviour
     [Header("Events")]
     public Action OnWaveCompleted;
     public Action<float> OnWaveProgressed;
+    public Action<int> OnEnemySpawned;
+
     private void OnEnable()
     {
         objectPooler = ObjectPooler.instance;
@@ -106,7 +109,7 @@ public class EnemySpawner : MonoBehaviour
     {
 
         if (!gameManager.canSpawnEnemy) return;
-        
+
         if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == waves[currentWaveCount].enemyQuota) // check if the wave end and is there more?
         {
             StartCoroutine(BeginNextWave());
@@ -172,8 +175,13 @@ public class EnemySpawner : MonoBehaviour
                         return;
                     }
 
+                    OnEnemySpawned?.Invoke(waves[currentWaveCount].enemyGroups.Count);
+
+                    NavMesh.SamplePosition(enemySpawnPoints[spawnIndex].position, out NavMeshHit hit, 3, 63);
+
+
                     GameObject spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
-                        enemySpawnPoints[spawnIndex].position, cityManager.transform);
+                        hit.position, cityManager.transform);
 
                     spawnIndex++;
 
@@ -187,6 +195,7 @@ public class EnemySpawner : MonoBehaviour
                     enemyGroup.spawnedEnemyCounter++;
                     waves[currentWaveCount].spawnCount++;
                     enemiesAlive++;
+
                 }
             }
         }
@@ -228,6 +237,12 @@ public class EnemySpawner : MonoBehaviour
         }
 
         tempList.Clear();
+    }
+
+
+    public bool GetIsMaxEnemyReached()
+    {
+        return maxEnemiesReached;
     }
 
     // Total health calculator

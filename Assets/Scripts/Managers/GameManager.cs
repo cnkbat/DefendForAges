@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using DG.Tweening;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -64,6 +65,11 @@ public class GameManager : Singleton<GameManager>
     [Header("Game End Related")]
     [SerializeField] private float gameLoseDelayAfterButtonPressed = 3;
 
+    [Header("Nav Mesh Surface")]
+    private NavMeshSurface navMeshSurface;
+    private List<EnemySpawner> allWaves = new List<EnemySpawner>();
+    int navMeshsurfaceCounter;
+    private bool isSurfaceUp;
 
     [Header("Events")]
     public Action OnCheckPointReached;
@@ -84,13 +90,22 @@ public class GameManager : Singleton<GameManager>
 
         playerStats = PlayerStats.instance;
 
+        navMeshSurface = FindObjectOfType<NavMeshSurface>();
+
         for (int i = 0; i < allCities.Count; i++)
         {
             totalWaveCount += allCities[i].waveList.Count;
+
             allCities[i].GetTower().OnTargetDestroyed += FreezeGame;
+
+            for (int j = 0; j < allCities[i].waveList.Count; j++)
+            {
+                allCities[i].waveList[j].OnEnemySpawned += ReAdjustNavMeshSurface;
+
+                allWaves.Add(allCities[i].waveList[j]);
+            }
         }
 
-      
         playerStats.OnWaveWon += CheckIfEraFinished;
         OnCheckPointReached += playerStats.CityChangerReached;
 
@@ -104,6 +119,11 @@ public class GameManager : Singleton<GameManager>
         for (int i = 0; i < allCities.Count; i++)
         {
             totalWaveCount -= allCities[i].waveList.Count;
+
+            for (int j = 0; j < allCities[i].waveList.Count; j++)
+            {
+                allCities[i].waveList[j].OnEnemySpawned -= ReAdjustNavMeshSurface;
+            }
         }
 
         playerStats.OnWaveWon -= CheckIfEraFinished;
@@ -125,7 +145,34 @@ public class GameManager : Singleton<GameManager>
     {
         isGameFreezed = true;
     }
-    
+
+    public void ReAdjustNavMeshSurface(int enemyGroupCount)
+    {
+        navMeshsurfaceCounter++;
+
+        if (allWaves[playerStats.GetWaveIndex()].GetIsMaxEnemyReached()) return;
+
+        if (navMeshsurfaceCounter < enemyGroupCount) return;
+
+        if (isSurfaceUp)
+        {
+            navMeshSurface.transform.position = new Vector3(navMeshSurface.transform.position.x,
+                        10,
+                         navMeshSurface.transform.position.z);
+            isSurfaceUp = false;
+        }
+        else
+        {
+            navMeshSurface.transform.position = new Vector3(navMeshSurface.transform.position.x, 9.90f,
+            navMeshSurface.transform.position.z);
+            isSurfaceUp = true;
+        }
+
+        navMeshsurfaceCounter = 0;
+
+
+    }
+
     #region  Win & Lose Conditions
 
     public void LevelLost()

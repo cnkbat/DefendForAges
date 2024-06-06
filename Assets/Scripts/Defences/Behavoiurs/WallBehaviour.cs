@@ -5,7 +5,6 @@ public class WallBehaviour : DefencesBehaviourBase
 {
 
     WallStats wallStats;
-    NavMeshManager navMeshManager;
 
     [SerializeField] private List<Animator> nearbyEnvironment;
 
@@ -14,7 +13,6 @@ public class WallBehaviour : DefencesBehaviourBase
         base.OnEnable();
         wallStats = GetComponent<WallStats>();
 
-        navMeshManager = NavMeshManager.instance;
 
         wallStats.OnBuyDone += TargetRevived;
 
@@ -72,13 +70,11 @@ public class WallBehaviour : DefencesBehaviourBase
         {
             nearbyEnvironment[i].SetTrigger("Revive");
         }
-
-        navMeshManager.BakeNavMesh();
     }
 
     protected override void DestroyDefence()
     {
-        if(isDestroyed) return;
+        if (isDestroyed) return;
         base.DestroyDefence();
 
         for (int i = 0; i < nearbyEnvironment.Count; i++)
@@ -90,8 +86,6 @@ public class WallBehaviour : DefencesBehaviourBase
         {
             wallStats.wallHolderParts[i].SetActive(false);
         }
-
-        navMeshManager.BakeNavMesh();
     }
 
     #endregion

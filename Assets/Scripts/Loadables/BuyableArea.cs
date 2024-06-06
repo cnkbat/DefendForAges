@@ -10,7 +10,7 @@ public class BuyableArea : MonoBehaviour
 
     SaveManager saveManager;
     CityManager cityManager;
-    NavMeshManager navMeshManager;
+
     bool isBuyed;
 
     [Header("Tighted Buyable Area")]
@@ -36,13 +36,12 @@ public class BuyableArea : MonoBehaviour
     [Header("Events")]
     public Action OnAreaBuyed;
     public Action<int> OnAreaEnabled;
-    public Action OnNavMeshUpdated;
+
     public Action<List<Transform>, List<Transform>, List<Transform>> OnAnimPlayNeeded;
 
     #region OnEnable / OnDisable
     private void OnEnable()
     {
-        navMeshManager = NavMeshManager.instance;
         cityManager = transform.root.GetComponent<CityManager>();
 
         LoadBuyableAreaData();
@@ -62,7 +61,6 @@ public class BuyableArea : MonoBehaviour
         OnAreaBuyed += cityManager.AreaBuyed;
         OnAreaEnabled += cityManager.AreaEnabled;
 
-        OnNavMeshUpdated += navMeshManager.BakeNavMesh;
     }
 
     private void OnDisable()
@@ -78,7 +76,6 @@ public class BuyableArea : MonoBehaviour
         OnAreaBuyed -= cityManager.AreaBuyed;
         OnAreaEnabled -= cityManager.AreaEnabled;
 
-        OnNavMeshUpdated -= navMeshManager.BakeNavMesh;
     }
     #endregion
 

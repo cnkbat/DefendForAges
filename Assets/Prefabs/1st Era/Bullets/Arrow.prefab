@@ -51,6 +51,7 @@ MonoBehaviour:
   disappearTime: 5
   gravity: 0
   trailFX: {fileID: 4775862344290582868}
+  powerupedVFX: {fileID: 4775862344290582868}
 --- !u!65 &4966896464346173805
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WallDefenceSO
   m_EditorClassIdentifier: 
   maxHealthValues:
-  - 15
+  - 25

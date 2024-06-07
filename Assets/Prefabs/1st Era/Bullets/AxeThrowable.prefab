@@ -232,7 +232,7 @@ MonoBehaviour:
   travelSpeed: 15
   disappearTime: 5
   gravity: 0
-  trailFX: {fileID: 0}
+  trailFX: {fileID: 3591419516754246681}
   powerupedVFX: {fileID: 3591419516754246681}
 --- !u!114 &6934288632474978714
 MonoBehaviour:

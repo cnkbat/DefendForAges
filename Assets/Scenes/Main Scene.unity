@@ -44166,7 +44166,7 @@ GameObject:
   - component: {fileID: 1215303491}
   - component: {fileID: 1215303490}
   m_Layer: 15
-  m_Name: MeshAreaSurface City 3
+  m_Name: Main Scene MeshAreaSurface City 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44190,8 +44190,8 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
-  m_UseGeometry: 0
+    m_Bits: 32768
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -44200,7 +44200,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 7f666f31811189f43ad0faacfc0f3f14, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 8dd0a6e2993d51d4da096da23b193691, type: 2}
   m_BuildHeightMesh: 0
 --- !u!65 &1215303491
 BoxCollider:

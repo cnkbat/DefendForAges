@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmallEnemyTier3 SO
   m_EditorClassIdentifier: 
   maxHealth: 18
-  moveSpeed: 3.4
+  moveSpeed: 2.8
   knockbackDur: 0.3
   attackSpeed: 1
   attackDur: 1

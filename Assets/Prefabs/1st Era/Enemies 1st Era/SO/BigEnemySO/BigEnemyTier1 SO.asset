@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BigEnemyTier1 SO
   m_EditorClassIdentifier: 
   maxHealth: 12
-  moveSpeed: 3
+  moveSpeed: 2.85
   knockbackDur: 0.3
   attackSpeed: 1.4
   attackDur: 1

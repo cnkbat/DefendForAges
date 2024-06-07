@@ -64,25 +64,24 @@ public class Bullet : MonoBehaviour, IPoolableObject
             targetPos = target.transform.position;
         }
 
-        if (trailFX != null)
-        {
-            if (powerupedVFX != null)
-            {
-                powerupedVFX.Stop();
-            }
-            trailFX.Play();
-        }
+
+        powerupedVFX?.Stop();
+
+        trailFX?.Play();
+
 
         if (isPlayersBullet)
         {
             if (playerStats.GetIsPowerupEnabled() && powerupedVFX != null)
             {
-                powerupedVFX.Play();
-                trailFX.Stop();
+                powerupedVFX?.Play();
+
+
+                trailFX?.Stop();
             }
             else
             {
-                powerupedVFX.Stop();
+                powerupedVFX?.Stop();
 
                 if (powerupedVFX.TryGetComponent(out Light light))
                 {

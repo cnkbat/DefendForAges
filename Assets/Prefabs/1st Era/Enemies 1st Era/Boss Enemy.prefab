@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3633383031985502608}
+  damageTakenParticle: {fileID: 5702332055956768196}
 --- !u!114 &-3061155095112818592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +309,7 @@ MonoBehaviour:
   aimSpeed: 20
   raycastPos: {fileID: 3571077169294860224}
   enemyAsset: {fileID: 0}
+  objectToAttack: {fileID: 0}
 --- !u!114 &6001288530368322586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +1013,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4250931247074447916}
-  m_LocalRotation: {x: 0.000000008039801, y: 0.94384086, z: -0.33040056, w: 0.000000022966947}
+  m_LocalRotation: {x: -0.000000008039801, y: 0.94384086, z: -0.33040056, w: -0.00000002296695}
   m_LocalPosition: {x: 0, y: 7.5799994, z: 9.500001}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_ConstrainProportionsScale: 0
@@ -2941,6 +2943,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47c6eee70f9391f46a710b0592491a63, type: 3}
+--- !u!198 &5702332055956768196 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19852324, guid: 47c6eee70f9391f46a710b0592491a63, type: 3}
+  m_PrefabInstance: {fileID: 5702332055972391392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5702332055972057220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 473444, guid: 47c6eee70f9391f46a710b0592491a63, type: 3}

@@ -14,7 +14,7 @@ public class EnemyVisualsHandler : MonoBehaviour
     private float currentHealthBarDisappearTimer;
 
     [Header("VFX")]
-    private ParticleSystem damageTakenParticle;
+  [SerializeField]  private ParticleSystem damageTakenParticle;
 
     private void OnEnable()
     {
@@ -22,7 +22,6 @@ public class EnemyVisualsHandler : MonoBehaviour
 
         enemyDeathHandler = GetComponent<EnemyDeathHandler>();
         enemyStats = GetComponent<EnemyStats>();
-        damageTakenParticle = GameObject.Find("DamageTakenParticle").GetComponent<ParticleSystem>();
 
         enemyDeathHandler.OnDamageTaken += UpdateHealthBarValue;
         enemyDeathHandler.OnDamageTaken += PlayDamageTakenVFX;

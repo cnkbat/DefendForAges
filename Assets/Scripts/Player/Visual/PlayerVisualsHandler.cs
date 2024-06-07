@@ -18,12 +18,12 @@ public class PlayerVisualsHandler : MonoBehaviour
     private float currentHealthBarDisappearTimer;
 
     [Header("VFX")]
-    private ParticleSystem playerDeathParticle;
-    private ParticleSystem damageTakenParticle;
+    [SerializeField] private ParticleSystem playerDeathParticle;
+    [SerializeField] private ParticleSystem damageTakenParticle;
 
-    private ParticleSystem levelUpParticle;
-    private ParticleSystem lifeStealParticle;
-    private ParticleSystem powerupParticle;
+    [SerializeField] private ParticleSystem levelUpParticle;
+    [SerializeField] private ParticleSystem lifeStealParticle;
+    [SerializeField] private ParticleSystem powerupParticle;
 
     private void Awake()
     {
@@ -41,12 +41,6 @@ public class PlayerVisualsHandler : MonoBehaviour
     private void OnEnable()
     {
         gameManager = GameManager.instance;
-
-        playerDeathParticle = GameObject.Find("PlayerDeathParticle").GetComponent<ParticleSystem>();
-        levelUpParticle = GameObject.Find("LevelUpParticle").GetComponent<ParticleSystem>();
-        lifeStealParticle = GameObject.Find("LifeStealParticle").GetComponent<ParticleSystem>();
-        powerupParticle = GameObject.Find("PowerupParticle").GetComponent<ParticleSystem>();
-        damageTakenParticle = GameObject.Find("DamageTakenParticle").GetComponent<ParticleSystem>();
 
         // Health Bar
         playerDeathHandler.OnDamageTaken += UpdateHealthBarValue;
@@ -135,6 +129,7 @@ public class PlayerVisualsHandler : MonoBehaviour
     }
     public void PlayDamageTakenVisuals()
     {
+        Debug.Log("damage takne particles");
         PlayParticle(damageTakenParticle);
 
         if (feedBacks.IsPlaying)

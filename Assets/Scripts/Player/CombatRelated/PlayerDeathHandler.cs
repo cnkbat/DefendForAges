@@ -86,9 +86,12 @@ public class PlayerDeathHandler : EnemyTarget
         base.TakeDamage(dmg);
 
 
+
         currentHealth -= dmg;
-        OnDamageTaken?.Invoke();
+        Debug.Log("player took damage = " + currentHealth);
         
+        OnDamageTaken?.Invoke();
+
         if (currentHealth <= 0)
         {
             Kill();

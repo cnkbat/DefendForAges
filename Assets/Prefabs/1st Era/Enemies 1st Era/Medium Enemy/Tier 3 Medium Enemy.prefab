@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5770601705379435046}
+  damageTakenParticle: {fileID: 532373668193226021}
 --- !u!114 &-8930580800112434323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,6 +1563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47c6eee70f9391f46a710b0592491a63, type: 3}
+--- !u!198 &532373668193226021 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19852324, guid: 47c6eee70f9391f46a710b0592491a63, type: 3}
+  m_PrefabInstance: {fileID: 532373668207206657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &532373668207269989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 473444, guid: 47c6eee70f9391f46a710b0592491a63, type: 3}

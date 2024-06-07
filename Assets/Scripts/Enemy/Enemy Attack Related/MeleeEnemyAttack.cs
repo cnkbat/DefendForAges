@@ -12,7 +12,12 @@ public class MeleeEnemyAttack : EnemyAttack
     public void DealMeleeDamage()
     {
         if (objectToAttack == null) return;
-
+    
+        if(objectToAttack.name == "Player")
+        {
+            Debug.Log("attack to player");
+        }
+        
         objectToAttack.TakeDamage(enemyStats.GetDamage());
     }
 

@@ -16,9 +16,6 @@ public class BuyableArea : MonoBehaviour
     [Header("Tighted Buyable Area")]
     [SerializeField] BuyableArea tightedBuyableArea;
 
-    [Header("AI Related")]
-    [SerializeField] private int surfaceAreaIndex;
-
     [Header("Save & Load")]
     [Tooltip("Sadece save load için her bir obje için ayrı isimlendirme.")][SerializeField] public string buyableAreaID;
 
@@ -59,7 +56,6 @@ public class BuyableArea : MonoBehaviour
 
 
         OnAreaBuyed += cityManager.AreaBuyed;
-        OnAreaEnabled += cityManager.AreaEnabled;
 
     }
 
@@ -74,7 +70,7 @@ public class BuyableArea : MonoBehaviour
         loadableBase.OnLoadableFilled -= AreaBuyed;
 
         OnAreaBuyed -= cityManager.AreaBuyed;
-        OnAreaEnabled -= cityManager.AreaEnabled;
+
 
     }
     #endregion
@@ -158,10 +154,7 @@ public class BuyableArea : MonoBehaviour
         {
             ghostedAssets[i].gameObject.SetActive(!isBuyed);
         }
-
-
-        OnAreaEnabled?.Invoke(surfaceAreaIndex);
-        //OnNavMeshUpdated?.Invoke();
+    
     }
 
     #region Save & Load

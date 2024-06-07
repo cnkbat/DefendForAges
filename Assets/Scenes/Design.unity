@@ -2490,7 +2490,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 578947880}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ1_AT3
   loadableBase: {fileID: 70757696}
   spawnPosesToDisable: []
@@ -3808,7 +3807,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 0}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ1
   loadableBase: {fileID: 724272928}
   spawnPosesToDisable: []
@@ -4191,7 +4189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1560254208}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ2_AT1
   loadableBase: {fileID: 773685111}
   spawnPosesToDisable: []
@@ -12378,7 +12375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1728663757}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ3_AT4
   loadableBase: {fileID: 1099046223}
   spawnPosesToDisable: []
@@ -12741,7 +12737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1728663757}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ3_AT3
   loadableBase: {fileID: 1645727065}
   spawnPosesToDisable: []
@@ -14375,7 +14370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 0}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ1
   loadableBase: {fileID: 2034837522}
   spawnPosesToDisable:
@@ -16004,7 +15998,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 418421868}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ1_AT1
   loadableBase: {fileID: 896945200}
   spawnPosesToDisable: []
@@ -20489,7 +20482,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1821083020}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ3_AT2
   loadableBase: {fileID: 630553566}
   spawnPosesToDisable: []
@@ -20709,7 +20701,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 454606249}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ1_AT2
   loadableBase: {fileID: 1344590441}
   spawnPosesToDisable: []
@@ -25900,7 +25891,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 946615540}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ3_AT1
   loadableBase: {fileID: 78345393}
   spawnPosesToDisable: []
@@ -26582,7 +26572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 93447718}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ1_AT1
   loadableBase: {fileID: 1564758777}
   spawnPosesToDisable: []
@@ -27997,7 +27986,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1728663757}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ3_AT2
   loadableBase: {fileID: 81426869}
   spawnPosesToDisable: []
@@ -29044,6 +29032,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1408337403}
     m_Modifications:
+    - target: {fileID: 1170748421818378541, guid: fc35c67fb2f5c804c84a8a9d2d649d72, type: 3}
+      propertyPath: m_CarveOnlyStationary
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2460477325727333660, guid: fc35c67fb2f5c804c84a8a9d2d649d72, type: 3}
       propertyPath: m_Name
       value: Barrier (59)
@@ -29066,7 +29058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3767772739588026162, guid: fc35c67fb2f5c804c84a8a9d2d649d72, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 46.26523
+      value: 46.28
       objectReference: {fileID: 0}
     - target: {fileID: 3767772739588026162, guid: fc35c67fb2f5c804c84a8a9d2d649d72, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30846,7 +30838,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1728663757}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ3_AT1
   loadableBase: {fileID: 1989230614}
   spawnPosesToDisable: []
@@ -34995,7 +34986,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1346638871}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ2_AT1
   loadableBase: {fileID: 2064207675}
   spawnPosesToDisable: []
@@ -35183,7 +35173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1359945163}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ2_AT2
   loadableBase: {fileID: 2014716701}
   spawnPosesToDisable: []
@@ -35475,7 +35464,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1560254208}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ3
   loadableBase: {fileID: 1893711448}
   spawnPosesToDisable:
@@ -36366,7 +36354,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 0}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ1
   loadableBase: {fileID: 796112405}
   spawnPosesToDisable:
@@ -37365,8 +37352,8 @@ Transform:
   - {fileID: 843320747}
   - {fileID: 816217779}
   - {fileID: 1405615980}
-  - {fileID: 191619208}
   - {fileID: 284184586}
+  - {fileID: 191619208}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37401,7 +37388,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1404663312}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ3
   loadableBase: {fileID: 1570811695}
   spawnPosesToDisable:
@@ -38085,7 +38071,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 964512153}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ1_AT1
   loadableBase: {fileID: 1828306135}
   spawnPosesToDisable: []
@@ -45472,6 +45457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 9013736830700547598, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 776a4fe6fe2bd9b45983fa3bc9ea3113, type: 3}
 --- !u!4 &1253152872 stripped
@@ -45527,7 +45516,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 0}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_AT1
   loadableBase: {fileID: 688779265}
   spawnPosesToDisable: []
@@ -47014,7 +47002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 102412227}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ2_AT2
   loadableBase: {fileID: 551070507}
   spawnPosesToDisable: []
@@ -48781,7 +48768,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1368501773}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ2_AT2
   loadableBase: {fileID: 751416844}
   spawnPosesToDisable: []
@@ -49202,7 +49188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1404663312}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ2_AT1
   loadableBase: {fileID: 2134342861}
   spawnPosesToDisable: []
@@ -49430,7 +49415,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 418421868}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ2
   loadableBase: {fileID: 965795388}
   spawnPosesToDisable:
@@ -49676,7 +49660,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1728663757}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ3_ST2
   loadableBase: {fileID: 656950272}
   spawnPosesToDisable: []
@@ -49812,7 +49795,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 984706041}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ3_AT2
   loadableBase: {fileID: 1785151236}
   spawnPosesToDisable: []
@@ -50916,7 +50898,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 93447718}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ2
   loadableBase: {fileID: 1708230760}
   spawnPosesToDisable:
@@ -57578,7 +57559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 964512153}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ2
   loadableBase: {fileID: 1668282883}
   spawnPosesToDisable:
@@ -58525,7 +58505,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 964512153}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ1_AT2
   loadableBase: {fileID: 1687353317}
   spawnPosesToDisable: []
@@ -61653,7 +61632,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1728663757}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ3_ST1
   loadableBase: {fileID: 297558206}
   spawnPosesToDisable: []
@@ -62757,7 +62735,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1368501773}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City3_UZ3
   loadableBase: {fileID: 14520488}
   spawnPosesToDisable:
@@ -64199,7 +64176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 984706041}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ3_AT1
   loadableBase: {fileID: 21403799}
   spawnPosesToDisable: []
@@ -65667,8 +65643,6 @@ MonoBehaviour:
   - {fileID: 1401004477}
   - {fileID: 1206260716}
   - {fileID: 1023089745}
-  surfaceAreaIndex: 1
-  samplePositionRadius: 0
   targetFPS: 60
   bulletFireRange: 250
   isPlayerFreezed: 0
@@ -65844,7 +65818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 711023019}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ3_AT3
   loadableBase: {fileID: 1447797531}
   spawnPosesToDisable: []
@@ -67582,7 +67555,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 728427111}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City1_UZ1_AT2
   loadableBase: {fileID: 1958331778}
   spawnPosesToDisable: []
@@ -68829,7 +68801,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1001812044}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ1_AT3
   loadableBase: {fileID: 643346546}
   spawnPosesToDisable: []
@@ -74507,6 +74478,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2072606189640243499, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072606189640243511, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444695822601512325, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb3fc705a16fa64c85e5e607220207d, type: 3}
 --- !u!4 &2059068311 stripped
@@ -76484,7 +76467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 964512153}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ1_ST1
   loadableBase: {fileID: 896749305}
   spawnPosesToDisable: []
@@ -76835,7 +76817,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tightedBuyableArea: {fileID: 1308835405}
-  surfaceAreaIndex: 0
   buyableAreaID: Era1_City2_UZ2_ST1
   loadableBase: {fileID: 721454653}
   spawnPosesToDisable: []

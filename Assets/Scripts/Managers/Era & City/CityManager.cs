@@ -130,10 +130,6 @@ public class CityManager : MonoBehaviour
         saveManager.OnSaved?.Invoke();
     }
 
-    public void AreaEnabled(int newSurfaceAreaIndex)
-    {
-        gameManager.surfaceAreaIndex = newSurfaceAreaIndex;
-    }
 
     #endregion
 

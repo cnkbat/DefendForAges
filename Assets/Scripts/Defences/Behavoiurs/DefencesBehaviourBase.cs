@@ -1,11 +1,14 @@
 using System;
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DefencesBehaviourBase : EnemyTarget
 {
 
     protected DefencesStatsBase defencesStatsBase;
+
+    protected NavMeshObstacle navMeshObstacle;
 
     BoxCollider boxCollider;
     [SerializeField] protected bool isRepairable;
@@ -21,6 +24,12 @@ public class DefencesBehaviourBase : EnemyTarget
     {
         defencesStatsBase = GetComponent<DefencesStatsBase>();
         boxCollider = GetComponent<BoxCollider>();
+
+
+        if (TryGetComponent(out NavMeshObstacle obs))
+        {
+            navMeshObstacle = obs;
+        }
 
         ResetHealthValue();
         CheckForUpgradeable();
@@ -60,6 +69,13 @@ public class DefencesBehaviourBase : EnemyTarget
 
         base.TargetDestroyed();
 
+
+        if (navMeshObstacle != null)
+        {
+            navMeshObstacle.enabled = false;
+        }
+
+
         // animasyon gelince ayarlanacak.
         //asset.SetActive(false);
         boxCollider.enabled = false;
@@ -76,6 +92,13 @@ public class DefencesBehaviourBase : EnemyTarget
 
         asset.SetActive(true);
         boxCollider.enabled = true;
+
+
+        if (navMeshObstacle != null)
+        {
+            navMeshObstacle.enabled = true;
+        }
+
 
         ResetHealthValue();
         SetisRepairable(false);

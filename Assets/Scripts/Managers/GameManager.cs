@@ -24,10 +24,6 @@ public class GameManager : Singleton<GameManager>
     [Header("Cities")]
     [SerializeField] public List<CityManager> allCities;
 
-    [Header("AI Manipulation")]
-    [SerializeField] public int surfaceAreaIndex;
-    [SerializeField] public float samplePositionRadius;
-
     [Header("**------ SETTINGS ------**")]
 
     [Header("Debugging")]
@@ -150,26 +146,29 @@ public class GameManager : Singleton<GameManager>
     {
         navMeshsurfaceCounter++;
 
-        if (allWaves[playerStats.GetWaveIndex()].GetIsMaxEnemyReached()) return;
+        if (allWaves[playerStats.GetWaveIndex()].GetIsMaxEnemyReached())
+        {
+            MoveSurface();
+            return;
+        }
 
         if (navMeshsurfaceCounter < enemyGroupCount) return;
 
-        if (isSurfaceUp)
-        {
-            navMeshSurface.transform.position = new Vector3(navMeshSurface.transform.position.x,
-                        10,
-                         navMeshSurface.transform.position.z);
-            isSurfaceUp = false;
-        }
-        else
-        {
-            navMeshSurface.transform.position = new Vector3(navMeshSurface.transform.position.x, 9.90f,
-            navMeshSurface.transform.position.z);
-            isSurfaceUp = true;
-        }
+        MoveSurface();
 
         navMeshsurfaceCounter = 0;
 
+    }
+
+
+    private void MoveSurface()
+    {
+
+        navMeshSurface.transform.position = new Vector3(navMeshSurface.transform.position.x,
+                    isSurfaceUp ? 10 : 9.90f,
+                     navMeshSurface.transform.position.z);
+
+        isSurfaceUp = !isSurfaceUp;
 
     }
 

@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1278363551, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1056741044626757792, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -233,6 +237,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9184030701331412617, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
   m_PrefabInstance: {fileID: 980080359}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1240728484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4660899307762375929, guid: dc29dfe0a84b4cc47b1dc0db47ad6ec0, type: 3}
+  m_PrefabInstance: {fileID: 4660899306462995528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2011958f6dc1c2841bc75c4b63b93510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1717064087
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,16 +434,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4660899306879933751, guid: dc29dfe0a84b4cc47b1dc0db47ad6ec0, type: 3}
-      propertyPath: allScenes.Array.size
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: asyncLoader
+      value: 
+      objectReference: {fileID: 1240728484}
     - target: {fileID: 4660899306879933751, guid: dc29dfe0a84b4cc47b1dc0db47ad6ec0, type: 3}
       propertyPath: allSceneNames.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4660899306879933751, guid: dc29dfe0a84b4cc47b1dc0db47ad6ec0, type: 3}
       propertyPath: allSceneNames.Array.data[0]
-      value: Main Scene
+      value: Design
       objectReference: {fileID: 0}
     - target: {fileID: 4660899307528953474, guid: dc29dfe0a84b4cc47b1dc0db47ad6ec0, type: 3}
       propertyPath: m_Name

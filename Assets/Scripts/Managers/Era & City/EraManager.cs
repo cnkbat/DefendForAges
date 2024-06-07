@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class EraManager : MonoBehaviour
 {
 
-
     GameManager gameManager;
     SaveManager saveManager;
 

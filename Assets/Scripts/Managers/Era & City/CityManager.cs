@@ -43,6 +43,7 @@ public class CityManager : MonoBehaviour
     [Header("Events")]
     public Action OnTargetListUpdated;
     public Action OnWaveCalled;
+    public Action OnCityWon;
 
     #region OnEnable & OnDisable & Start
     private void OnEnable()
@@ -69,7 +70,7 @@ public class CityManager : MonoBehaviour
 
 
         gameManager.OnCityDidnotChanged += CheckForCheckpointsReached;
-    
+
     }
 
     private void OnDisable()
@@ -145,7 +146,7 @@ public class CityManager : MonoBehaviour
         {
             if (tempList[i].gameObject.activeSelf)
             {
-                if (tempList[i].GetIsTargetable())
+                if (tempList[i].GetIsTargetable() && this == tempList[i].GetCityManager())
                 {
                     targetList.Add(tempList[i]);
                 }

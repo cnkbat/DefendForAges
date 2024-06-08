@@ -23,7 +23,7 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     {
         upgradeUIHandler = GetComponentInChildren<UpgradeUIHandler>();
     }
-    
+
     override protected void OnEnable()
     {
         base.OnEnable();
@@ -125,12 +125,12 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     public void EnableUpgrader()
     {
-        gameObject.SetActive(true);
+        upgradeUIHandler.gameObject.SetActive(true);
     }
 
     public void DisableUpgrader()
     {
-        gameObject.SetActive(false);
+        upgradeUIHandler.gameObject.SetActive(false);
     }
 
 

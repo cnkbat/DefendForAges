@@ -65,10 +65,15 @@ public class Bullet : MonoBehaviour, IPoolableObject
         }
 
 
-        powerupedVFX?.Stop();
+        if (powerupedVFX != null)
+        {
+            powerupedVFX?.Stop();
+        }
 
-        trailFX?.Play();
-
+        if (trailFX != null)
+        {
+            trailFX?.Play();
+        }
 
         if (isPlayersBullet)
         {
@@ -76,16 +81,21 @@ public class Bullet : MonoBehaviour, IPoolableObject
             {
                 powerupedVFX?.Play();
 
-
-                trailFX?.Stop();
+                if (trailFX != null)
+                {
+                    trailFX?.Stop();
+                }
             }
             else
             {
-                powerupedVFX?.Stop();
-
-                if (powerupedVFX.TryGetComponent(out Light light))
+                if (powerupedVFX != null)
                 {
-                    light.enabled = false;
+                    powerupedVFX?.Stop();
+
+                    if (powerupedVFX.TryGetComponent(out Light light))
+                    {
+                        light.enabled = false;
+                    }
                 }
             }
         }

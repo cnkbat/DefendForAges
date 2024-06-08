@@ -8,6 +8,8 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     NearestEnemyFinder nearestEnemyFinder;
     TowerStats towerStats;
 
+    UpgradeUIHandler upgradeUIHandler;
+
     [Header("Events")]
     public Action OnTowerDestroyed;
 
@@ -17,6 +19,11 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     bool isRecoveryActive;
 
+    private void Awake()
+    {
+        upgradeUIHandler = GetComponentInChildren<UpgradeUIHandler>();
+    }
+    
     override protected void OnEnable()
     {
         base.OnEnable();
@@ -26,6 +33,10 @@ public class TowerBehaviour : AttackerDefenceBehaviour
         {
             OnRangedAttack += towerStats.GetWeapons()[i].Attack;
         }
+
+
+        gameManager.OnWaveStarted += DisableUpgrader;
+        playerStats.OnWaveWon += EnableUpgrader;
 
         ResetRecoveryTimer();
     }
@@ -112,6 +123,15 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
 
 
+    public void EnableUpgrader()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void DisableUpgrader()
+    {
+        gameObject.SetActive(false);
+    }
 
 
 }

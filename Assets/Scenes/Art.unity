@@ -217,6 +217,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &808188860
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.024209652
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.716441
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.57670003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
+      propertyPath: m_Name
+      value: Archer Tower Animation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a0a2a9e621b43c45aec17ea9eb14086, type: 3}
 --- !u!1001 &219669802941969740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,7 +283,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5980488626688143750, guid: d7df95c543f5fbf4fb74d2d67bf3a6a1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5980488626688143750, guid: d7df95c543f5fbf4fb74d2d67bf3a6a1, type: 3}
       propertyPath: m_LocalPosition.x

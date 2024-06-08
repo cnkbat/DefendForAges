@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4153842372428246408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3670074214779287346}
+  - component: {fileID: 378692252562782359}
+  - component: {fileID: 2496566293380107357}
+  m_Layer: 0
+  m_Name: 'Boss Weapon '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3670074214779287346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153842372428246408}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5980488626688143750}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &378692252562782359
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153842372428246408}
+  m_Mesh: {fileID: 2365756083085593284, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+--- !u!23 &2496566293380107357
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153842372428246408}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -6148158871446620061, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 4809017812416234529, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 3408160022012221333, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 5988347114677481029, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -1520983473562818571, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -1324757753311300997, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -4536451416547850529, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 5332342493227637695, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 4109172465263556612, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -5158354298151729884, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -7905243626356495181, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -1549502822780733707, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -2349219305878430289, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -7867014136889775686, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 5575885312388358210, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 7520853989790767159, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 3394910537099422468, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -1716226827041223122, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 2244345366039035984, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -4764762090314614994, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: -945105982557730970, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  - {fileID: 3027191208319864836, guid: 3870a35863648a94fbadf716cac516a6, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6069643632066770408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5980488626688143750}
+  m_Layer: 0
+  m_Name: Boss Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5980488626688143750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6069643632066770408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3670074214779287346}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

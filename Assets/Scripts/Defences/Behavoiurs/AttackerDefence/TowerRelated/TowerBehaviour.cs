@@ -64,10 +64,15 @@ public class TowerBehaviour : AttackerDefenceBehaviour
         {
             currentRecoveryTimer -= Time.deltaTime;
 
-            if(currentRecoveryTimer <= 0)
+            if (currentRecoveryTimer <= 0)
             {
                 isRecoveryActive = true;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            DestroyDefence();
         }
 
     }

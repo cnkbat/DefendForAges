@@ -10030,7 +10030,7 @@ MonoBehaviour:
   gameLostClosedChestIcon: {fileID: 6123229298608431696}
   gameLostCollectedXPText: {fileID: 6219423264375672117}
   gameLostCollectedMeatText: {fileID: 1025370641574938010}
-  gameLostCollectedCoinText: {fileID: 1025370641574938010}
+  gameLostCollectedCoinText: {fileID: 9091204006413095651}
   towerDestroyedCountDownText: {fileID: 3429544931104203458}
   loseGameButton: {fileID: 2953474946698213944}
   useGemToReviveTowerButton: {fileID: 539489126579864201}

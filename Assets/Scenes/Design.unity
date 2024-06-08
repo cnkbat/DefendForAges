@@ -76490,16 +76490,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 861108713}
     m_Modifications:
     - target: {fileID: 1468092334640972580, guid: 1620fbc736a2b884c96cc19645f5888a, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 1468092334640972580, guid: 1620fbc736a2b884c96cc19645f5888a, type: 3}
       propertyPath: m_Name
       value: Era 1 ObjectPooling
-      objectReference: {fileID: 0}
-    - target: {fileID: 1468092334640972580, guid: 1620fbc736a2b884c96cc19645f5888a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1468092334640972583, guid: 1620fbc736a2b884c96cc19645f5888a, type: 3}
       propertyPath: m_RootOrder

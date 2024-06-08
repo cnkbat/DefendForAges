@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: Era 1 ObjectPooling
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -76,7 +76,7 @@ MonoBehaviour:
     prefab: {fileID: 584572212228056345, guid: 0d3574e8b1742f04db69e6d0fe913f99, type: 3}
     size: 25
   - tag: Boss Enemy
-    prefab: {fileID: 584572212228056345, guid: ffc1ffa7e6b0e1040aa4e5d0b2ce8175, type: 3}
+    prefab: {fileID: 584572212228056345, guid: 4227ea597d37d624a8c80d993e2d1cfa, type: 3}
     size: 1
   - tag: FloatingText
     prefab: {fileID: 3870968168857410143, guid: d52fb45050d314749a0b39cb7c348749, type: 3}

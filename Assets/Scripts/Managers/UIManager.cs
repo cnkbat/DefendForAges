@@ -678,9 +678,9 @@ public class UIManager : Singleton<UIManager>
         gameLostOpenedChestIcon.SetActive(false);
         gameLostClosedChestIcon.SetActive(true);
 
-        gameLostCollectedXPText.gameObject.SetActive(false);
-        gameLostCollectedCoinText.gameObject.SetActive(false);
-        gameLostCollectedMeatText.gameObject.SetActive(false);
+        gameLostCollectedXPText.transform.parent.gameObject.SetActive(false);
+        gameLostCollectedCoinText.transform.parent.gameObject.SetActive(false);
+        gameLostCollectedMeatText.transform.parent.gameObject.SetActive(false);
 
 
         StartCoroutine(TowerDeathCountDown());
@@ -721,9 +721,9 @@ public class UIManager : Singleton<UIManager>
         gameLostOpenedChestIcon.SetActive(true);
         gameLostClosedChestIcon.SetActive(false);
 
-        gameLostCollectedXPText.gameObject.SetActive(true);
-        gameLostCollectedCoinText.gameObject.SetActive(true);
-        gameLostCollectedMeatText.gameObject.SetActive(true);
+        gameLostCollectedXPText.transform.parent.gameObject.SetActive(true);
+        gameLostCollectedCoinText.transform.parent.gameObject.SetActive(true);
+        gameLostCollectedMeatText.transform.parent.gameObject.SetActive(true);
     }
 
     IEnumerator DisableGameLostUI()

@@ -13,7 +13,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
 
     protected float currentHealth;
     protected bool isTargetable;
-    [SerializeField] protected bool isPlayer;
+    [SerializeField] public bool isPlayer;
     protected bool isDestroyed;
     public Action OnDamageTaken;
 
@@ -44,6 +44,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
         }
         else
         {
+            cityManager = transform.root.GetComponent<CityManager>();
             OnTargetDestroyed += cityManager.UpdateTargetList;
             OnTargetRevived += cityManager.UpdateTargetList;
 
@@ -135,7 +136,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
 
     public CityManager GetCityManager()
     {
-        return isPlayer ? cityManager : gameManager.allCities[playerStats.GetCityIndex()];
+        return cityManager;
     }
     #endregion
 

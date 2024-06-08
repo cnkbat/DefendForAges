@@ -22,12 +22,11 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     private void Awake()
     {
         upgradeUIHandler = GetComponentInChildren<UpgradeUIHandler>();
+        towerStats = GetComponent<TowerStats>();
     }
-
     override protected void OnEnable()
     {
         base.OnEnable();
-        towerStats = GetComponent<TowerStats>();
 
         for (int i = 0; i < towerStats.GetWeapons().Count; i++)
         {

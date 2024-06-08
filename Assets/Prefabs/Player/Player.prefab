@@ -816,6 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ee3879b2b44054b9007861a13b1791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   stoppingDistance: 0.5
   targetPoints:
   - {fileID: 4197459822926179247}

@@ -712,6 +712,18 @@ public class UIManager : Singleton<UIManager>
     private void GameLostPanelSequenceEnd()
     {
         StartCoroutine(DisableGameLostUI());
+
+        OnApplyEarningToPlayerButtonClicked(1);
+
+        loseGameButton.gameObject.SetActive(true);
+        useGemToReviveTowerButton.gameObject.SetActive(false);
+
+        gameLostOpenedChestIcon.SetActive(true);
+        gameLostClosedChestIcon.SetActive(false);
+
+        gameLostCollectedXPText.gameObject.SetActive(true);
+        gameLostCollectedCoinText.gameObject.SetActive(true);
+        gameLostCollectedMeatText.gameObject.SetActive(true);
     }
 
     IEnumerator DisableGameLostUI()
@@ -719,16 +731,15 @@ public class UIManager : Singleton<UIManager>
         yield return new WaitForSeconds(2);
 
         GetBackToGamePanel();
-        OnApplyEarningToPlayerButtonClicked(1);
         gameManager.LevelLost();
     }
 
     private void ActivateAndUpdateTowerDeathEarningsTexts(int meatValue, int coinValue, int xpValue)
     {
-        
+
         gameLostOpenedChestIcon.SetActive(true);
         gameLostClosedChestIcon.SetActive(false);
-    
+
 
         gameLostCollectedXPText.transform.parent.gameObject.SetActive(true);
         gameLostCollectedCoinText.transform.parent.gameObject.SetActive(true);

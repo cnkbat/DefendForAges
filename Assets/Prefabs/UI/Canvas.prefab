@@ -5275,7 +5275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2778389892035388197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10029,7 +10029,7 @@ MonoBehaviour:
   gameLostOpenedChestIcon: {fileID: 5946364799816005959}
   gameLostClosedChestIcon: {fileID: 6123229298608431696}
   gameLostCollectedXPText: {fileID: 6219423264375672117}
-  gameLostCollectedMeatText: {fileID: 7165593443968346700}
+  gameLostCollectedMeatText: {fileID: 1025370641574938010}
   gameLostCollectedCoinText: {fileID: 1025370641574938010}
   towerDestroyedCountDownText: {fileID: 3429544931104203458}
   loseGameButton: {fileID: 2953474946698213944}
@@ -12997,7 +12997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1299842938794564320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15362,7 +15362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4431331885874386006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15687,7 +15687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &716388692428499566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20544,7 +20544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4734942683664151110
 RectTransform:
   m_ObjectHideFlags: 0

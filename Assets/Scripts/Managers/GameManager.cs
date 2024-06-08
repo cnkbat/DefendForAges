@@ -188,6 +188,7 @@ public class GameManager : Singleton<GameManager>
 
         asyncLoader.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    
     public void CheckIfEraFinished()
     {
 

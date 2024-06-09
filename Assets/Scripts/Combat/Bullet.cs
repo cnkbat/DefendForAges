@@ -147,7 +147,10 @@ public class Bullet : MonoBehaviour, IPoolableObject
         {
             DisableBullet();
         }
-
+        if(targetReached && target.gameObject.activeSelf) // disables bullet when it reaches the target but target is dead. bullet does linger until target is pooled, but doesn't affect gameplay and isn't much visible.
+        {
+            DisableBullet();
+        }
     }
 
     private void DisableBullet()

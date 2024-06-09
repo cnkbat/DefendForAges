@@ -73,8 +73,16 @@ public class LoadableBase : MonoBehaviour
 
         if (currentCostLeftForUpgrade > 0)
         {
-            if (playerStats.DecrementMoney(1))
+            if (playerStats.DecrementMoney(10))
             {
+                currentCostLeftForUpgrade -= 10;
+
+                PlayCoinSpentAnim();
+
+                UpdateCurrentMoneyText(currentCostLeftForUpgrade.ToString());
+                saveManager.OnSaved?.Invoke();
+            }
+            else if (playerStats.DecrementMoney(1)){
                 currentCostLeftForUpgrade -= 1;
 
                 PlayCoinSpentAnim();
@@ -83,7 +91,6 @@ public class LoadableBase : MonoBehaviour
                 saveManager.OnSaved?.Invoke();
             }
         }
-
         CheckIfFulled();
     }
 

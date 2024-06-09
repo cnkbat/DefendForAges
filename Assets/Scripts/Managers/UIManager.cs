@@ -715,7 +715,7 @@ public class UIManager : Singleton<UIManager>
 
         OnApplyEarningToPlayerButtonClicked(1);
 
-        loseGameButton.gameObject.SetActive(true);
+        loseGameButton.gameObject.SetActive(false);
         useGemToReviveTowerButton.gameObject.SetActive(false);
 
         gameLostOpenedChestIcon.SetActive(true);

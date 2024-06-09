@@ -68,7 +68,7 @@ public class GameManager : Singleton<GameManager>
     private bool isSurfaceUp;
 
     [Header("Events")]
-    public Action OnCheckPointReached;
+    public Action OnCityChange;
     public Action OnEraChanged;
     public Action OnWaveStarted;
     public Action OnCityDidnotChanged;
@@ -103,7 +103,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         playerStats.OnWaveWon += CheckIfEraFinished;
-        OnCheckPointReached += playerStats.CityChangerReached;
+        OnCityChange += playerStats.CityChangerReached;
 
         OnApplyEarnings += PlayDroppedEarningsCollectionAnim;
 
@@ -123,7 +123,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         playerStats.OnWaveWon -= CheckIfEraFinished;
-        OnCheckPointReached -= playerStats.CityChangerReached;
+        OnCityChange -= playerStats.CityChangerReached;
 
         OnApplyEarnings -= PlayDroppedEarningsCollectionAnim;
 
@@ -146,17 +146,11 @@ public class GameManager : Singleton<GameManager>
     {
         navMeshsurfaceCounter++;
 
-        if (allWaves[playerStats.GetWaveIndex()].GetIsMaxEnemyReached())
+        if (navMeshsurfaceCounter >= enemyGroupCount)
         {
             MoveSurface();
-            return;
+            navMeshsurfaceCounter = 0;
         }
-
-        if (navMeshsurfaceCounter < enemyGroupCount) return;
-
-        MoveSurface();
-
-        navMeshsurfaceCounter = 0;
 
     }
 
@@ -188,6 +182,7 @@ public class GameManager : Singleton<GameManager>
 
         asyncLoader.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void CheckIfEraFinished()
     {
 
@@ -211,15 +206,10 @@ public class GameManager : Singleton<GameManager>
 
         if (playerStats.GetWaveIndex() >= allCities[playerStats.GetCityIndex()].GetCityChangingIndex())
         {
-            OnCheckPointReached?.Invoke();
 
-            for (int i = 0; i < allCities.Count; i++)
-            {
-                allCities[i].gameObject.SetActive(false);
-            }
+            allCities[playerStats.GetCityIndex()].OnCityWon?.Invoke();
 
-
-            allCities[playerStats.GetCityIndex()].gameObject.SetActive(true);
+            OnCityChange?.Invoke();
 
             return;
         }

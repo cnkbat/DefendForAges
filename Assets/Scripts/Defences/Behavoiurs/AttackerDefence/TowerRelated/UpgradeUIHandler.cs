@@ -7,10 +7,12 @@ public class UpgradeUIHandler : MonoBehaviour
     UIManager uiManager;
     GameManager gameManager;
 
-    void Start()
+
+    private void Start()
     {
         uiManager = UIManager.instance;
         gameManager = GameManager.instance;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,5 +42,6 @@ public class UpgradeUIHandler : MonoBehaviour
     {
         uiManager.DisableUpgradingButton();
     }
+
 
 }

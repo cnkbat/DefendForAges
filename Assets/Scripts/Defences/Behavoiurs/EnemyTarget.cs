@@ -13,7 +13,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
 
     protected float currentHealth;
     protected bool isTargetable;
-    protected bool isPlayer;
+    [SerializeField] public bool isPlayer;
     protected bool isDestroyed;
     public Action OnDamageTaken;
 
@@ -24,6 +24,13 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     [Header("Events")]
     public Action OnTargetDestroyed;
     public Action OnTargetRevived;
+    private void Awake()
+    {
+        if (!isPlayer)
+        {
+            cityManager = transform.root.GetComponent<CityManager>();
+        }
+    }
 
     protected virtual void OnEnable()
     {
@@ -125,6 +132,11 @@ public class EnemyTarget : MonoBehaviour, ITargetable
     public float GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public CityManager GetCityManager()
+    {
+        return cityManager;
     }
     #endregion
 

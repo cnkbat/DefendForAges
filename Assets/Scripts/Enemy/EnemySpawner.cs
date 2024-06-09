@@ -46,8 +46,6 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn Atrributes")]
     float spawnTimer; // Timer use to spawn next enemy
     [SerializeField] private int enemiesAlive;
-    [SerializeField] private int maxEnemiesAllowed; // maxnumber of allowed enemies to enhance gameplay
-    [SerializeField] private bool maxEnemiesReached = false;   // a flag indicating if the maximum number of enemies has been reached
     [SerializeField] private float waveGap; // the interval between each wave
 
     [Header("Spawn Positions")]
@@ -158,7 +156,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemies()
     {
         //check if quota is full
-        if (waves[currentWaveCount].spawnCount < waves[currentWaveCount].enemyQuota && !maxEnemiesReached)
+        if (waves[currentWaveCount].spawnCount < waves[currentWaveCount].enemyQuota)
         {
             // spawn each type of enemy until the quota is filled
             foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
@@ -168,12 +166,7 @@ public class EnemySpawner : MonoBehaviour
                 if (enemyGroup.spawnedEnemyCounter < enemyGroup.enemyCount)
                 {
 
-                    // checking for the maxenemies for not breaking the game
-                    if (enemiesAlive >= maxEnemiesAllowed)
-                    {
-                        maxEnemiesReached = true;
-                        return;
-                    }
+             
 
                     OnEnemySpawned?.Invoke(waves[currentWaveCount].enemyGroups.Count);
 
@@ -198,12 +191,6 @@ public class EnemySpawner : MonoBehaviour
 
                 }
             }
-        }
-
-        //reseting the maxenemiesreached to continue spawning enemies
-        if (enemiesAlive < maxEnemiesAllowed)
-        {
-            maxEnemiesReached = false;
         }
 
     }
@@ -239,11 +226,6 @@ public class EnemySpawner : MonoBehaviour
         tempList.Clear();
     }
 
-
-    public bool GetIsMaxEnemyReached()
-    {
-        return maxEnemiesReached;
-    }
 
     // Total health calculator
 

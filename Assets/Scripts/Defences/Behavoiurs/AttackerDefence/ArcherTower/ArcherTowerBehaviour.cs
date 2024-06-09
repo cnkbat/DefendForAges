@@ -13,6 +13,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
     [SerializeField] private float lookAtSense;
 
     [Header("! -- Archer Visuals -- !")]
+    [SerializeField] private Animator animator;
     [SerializeField] private List<ArcherStickman> archerStickmans; // stickman on top
 
     [Header("Actions")]
@@ -70,6 +71,8 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         LookAtNearstEnemy(nearestEnemyFinder.GetNearestEnemy());
     }
 
+    #region Attack
+
     protected override void Attack()
     {
         base.Attack();
@@ -105,9 +108,23 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
                 archerStickmans[i].transform.forward = Vector3.Lerp(archerStickmans[i].transform.forward, aimDirection, lookAtSense * Time.deltaTime);
             }
-
-
         }
+    }
+
+    #endregion
+
+    protected override void DestroyDefence()
+    {
+        base.DestroyDefence();
+
+        animator.SetTrigger("Destroy");
+    }
+
+    public override void TargetRevived()
+    {
+        base.TargetRevived();
+
+        animator.SetTrigger("Revive");
 
     }
 }

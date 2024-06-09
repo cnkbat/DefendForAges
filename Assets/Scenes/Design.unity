@@ -538,8 +538,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -1977,8 +1975,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -4214,8 +4210,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 4
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -5979,8 +5973,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -8914,8 +8906,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -9749,8 +9739,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -9956,8 +9944,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 4
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -11014,8 +11000,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -11524,8 +11508,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -11732,8 +11714,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 1
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -12044,8 +12024,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -12968,14 +12946,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1765314799}
     m_Modifications:
-    - target: {fileID: 156755896, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -136.59998
-      objectReference: {fileID: 0}
-    - target: {fileID: 156755896, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -33.899902
-      objectReference: {fileID: 0}
     - target: {fileID: 3699046735950493041, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -14736,8 +14706,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -19958,8 +19926,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -20320,8 +20286,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -21883,8 +21847,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -22346,8 +22308,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -27224,8 +27184,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -28606,10 +28564,6 @@ PrefabInstance:
     - target: {fileID: 4472078763875740991, guid: feaffec643aeb4149b329c7df35be71c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4472078763875740995, guid: feaffec643aeb4149b329c7df35be71c, type: 3}
-      propertyPath: recoveryTimer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7670766520569855876, guid: feaffec643aeb4149b329c7df35be71c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -31158,8 +31112,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -33668,8 +33620,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -34960,8 +34910,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -35211,8 +35159,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -35297,7 +35243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861108712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.437662, y: -32.85935, z: 38.185814}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35305,6 +35251,7 @@ Transform:
   - {fileID: 1406341021}
   - {fileID: 1444345907}
   - {fileID: 1877242546}
+  - {fileID: 1665137919}
   m_Father: {fileID: 1765314799}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35671,8 +35618,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -36141,8 +36086,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -36223,8 +36166,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -36379,8 +36320,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -47391,8 +47330,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -56148,6 +56085,11 @@ MonoBehaviour:
   dropDownEaseType: 31
   smallToBigAnimationTime: 1
   smallToBigEaseType: 25
+--- !u!1 &1376218972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9184030701331412617, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+  m_PrefabInstance: {fileID: 310772934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1376548818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56476,8 +56418,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -57170,8 +57110,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -57541,7 +57479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406341020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.437662, y: 32.85935, z: -38.185814}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59641,8 +59579,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -60084,8 +60020,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -66215,8 +66149,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -66494,8 +66426,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -66919,8 +66849,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -67491,8 +67419,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -67600,6 +67526,52 @@ Transform:
   m_Father: {fileID: 864115026}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1665137918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1665137919}
+  - component: {fileID: 1665137920}
+  m_Layer: 0
+  m_Name: AsyncLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1665137919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665137918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 861108713}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665137920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665137918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2011958f6dc1c2841bc75c4b63b93510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 1376218972}
+  loadingSlider: {fileID: 0}
 --- !u!1001 &1666109133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68388,8 +68360,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -68636,8 +68606,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -69339,8 +69307,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -69695,8 +69661,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -75704,8 +75668,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -76375,8 +76337,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -76445,16 +76405,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 861108713}
     m_Modifications:
     - target: {fileID: 1468092334640972580, guid: 1620fbc736a2b884c96cc19645f5888a, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 1468092334640972580, guid: 1620fbc736a2b884c96cc19645f5888a, type: 3}
       propertyPath: m_Name
       value: Era 1 ObjectPooling
-      objectReference: {fileID: 0}
-    - target: {fileID: 1468092334640972580, guid: 1620fbc736a2b884c96cc19645f5888a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1468092334640972583, guid: 1620fbc736a2b884c96cc19645f5888a, type: 3}
       propertyPath: m_RootOrder
@@ -78986,8 +78938,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -80703,8 +80653,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 4
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -83336,8 +83284,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -85944,8 +85890,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0
@@ -87480,8 +87424,6 @@ MonoBehaviour:
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  maxEnemiesAllowed: 10
-  maxEnemiesReached: 1
   waveGap: 0
   enemySpawnPoints: []
   totalHealthValue: 0

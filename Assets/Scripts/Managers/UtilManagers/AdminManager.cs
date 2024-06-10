@@ -57,7 +57,7 @@ public class AdminManager : MonoBehaviour
     private void ResetGameData()
     {
         Time.timeScale = 0;
-
+        Debug.Log("reset game data button pushed");
         saveManager.OnResetData?.Invoke();
         //  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

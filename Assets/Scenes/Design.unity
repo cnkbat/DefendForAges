@@ -9924,10 +9924,10 @@ MonoBehaviour:
       enemyCount: 5
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 12
+      enemyCount: 10
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 2
+    enemyQuota: 0
+    spawnGap: 4
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -9936,10 +9936,10 @@ MonoBehaviour:
       enemyCount: 10
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 6
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 2
+    enemyQuota: 0
+    spawnGap: 4
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
@@ -10979,8 +10979,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 20
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.3
+    enemyQuota: 0
+    spawnGap: 2.8
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -10994,13 +10994,13 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 15
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 1.4
+    enemyQuota: 0
+    spawnGap: 3
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 8
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1001 &258496444
@@ -11696,8 +11696,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 45
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1
+    enemyQuota: 0
+    spawnGap: 4
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -11708,13 +11708,13 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 80
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 1
+    enemyQuota: 0
+    spawnGap: 4
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 1
+  waveGap: 8
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1001 &278593163
@@ -12946,6 +12946,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1765314799}
     m_Modifications:
+    - target: {fileID: 156755896, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -136.59998
+      objectReference: {fileID: 0}
+    - target: {fileID: 156755896, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.899902
+      objectReference: {fileID: 0}
     - target: {fileID: 3699046735950493041, guid: ccc906c3d1c2b684a8c591d235f340d3, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -31091,8 +31099,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 30
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.2
+    enemyQuota: 0
+    spawnGap: 2.5
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -31106,13 +31114,13 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 30
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 1.2
+    enemyQuota: 0
+    spawnGap: 2.5
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 8
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1001 &762296254
@@ -33376,6 +33384,14 @@ PrefabInstance:
     - target: {fileID: 4197459822926179247, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197459822926179249, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: maxPowerUpFillValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197459822926179249, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
+      propertyPath: powerUpUpgradeIndexValue
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde27150294f2b04cb84be6432d9e2a2, type: 3}
@@ -36145,8 +36161,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 15
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.3
+    enemyQuota: 0
+    spawnGap: 2.6
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -36160,13 +36176,13 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 35
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 1.3
+    enemyQuota: 0
+    spawnGap: 2.6
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 8
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1001 &874944844
@@ -36299,8 +36315,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 10
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.4
+    enemyQuota: 0
+    spawnGap: 3
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -36314,13 +36330,13 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 10
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 1.4
+    enemyQuota: 0
+    spawnGap: 3
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 10
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1001 &878739861
@@ -40281,7 +40297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3826835, y: -0.000000015896621, z: 0.000000006584596, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000015896624, z: -0.000000006584597, w: 0.92387956}
   m_LocalPosition: {x: 349.94235, y: 35.589348, z: 208.91418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -59558,8 +59574,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 3
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.5
+    enemyQuota: 0
+    spawnGap: 3
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -59573,13 +59589,13 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 4
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 2
+    enemyQuota: 0
+    spawnGap: 4
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 10
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!4 &1459195491 stripped
@@ -59999,8 +60015,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 3
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.5
+    enemyQuota: 0
+    spawnGap: 3
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -60012,15 +60028,15 @@ MonoBehaviour:
       enemyCount: 15
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
-      enemyCount: 2
+      enemyCount: 4
       spawnedEnemyCounter: 0
-    enemyQuota: 10
+    enemyQuota: 0
     spawnGap: 2
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 10
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1001 &1465941539
@@ -67399,10 +67415,10 @@ MonoBehaviour:
       enemyCount: 8
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 15
+      enemyCount: 12
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 2
+    enemyQuota: 0
+    spawnGap: 4
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -67411,15 +67427,15 @@ MonoBehaviour:
       enemyCount: 15
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-      enemyCount: 7
+      enemyCount: 6
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 2.5
+    enemyQuota: 0
+    spawnGap: 5
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 6
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1 &1654027389
@@ -69286,8 +69302,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 6
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.7
+    enemyQuota: 0
+    spawnGap: 3.5
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -69301,13 +69317,13 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 9
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 1.8
+    enemyQuota: 0
+    spawnGap: 3.75
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 10
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1 &1705976404
@@ -76314,13 +76330,13 @@ MonoBehaviour:
       enemyCount: 12
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-      enemyCount: 20
+      enemyCount: 15
       spawnedEnemyCounter: 0
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
       enemyCount: 9
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.7
+    enemyQuota: 0
+    spawnGap: 4
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -76331,8 +76347,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
       enemyCount: 8
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 2
+    enemyQuota: 0
+    spawnGap: 4
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
@@ -83263,8 +83279,8 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 10
       spawnedEnemyCounter: 0
-    enemyQuota: 7
-    spawnGap: 1.6
+    enemyQuota: 0
+    spawnGap: 3.2
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   - waveName: 
@@ -83278,13 +83294,13 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
       enemyCount: 10
       spawnedEnemyCounter: 0
-    enemyQuota: 10
-    spawnGap: 1.5
+    enemyQuota: 0
+    spawnGap: 3
     spawnCount: 0
     totalNumOfEnemiesInWave: 0
   currentWaveCount: 0
   enemiesAlive: 0
-  waveGap: 0
+  waveGap: 10
   enemySpawnPoints: []
   totalHealthValue: 0
 --- !u!1001 &2039407097
@@ -86285,7 +86301,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112842229}
-  m_LocalRotation: {x: 0.3826835, y: -0.000000015896621, z: 0.000000006584596, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: 0.000000015896624, z: -0.000000006584597, w: 0.92387956}
   m_LocalPosition: {x: 349.94235, y: 35.589348, z: 208.91418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

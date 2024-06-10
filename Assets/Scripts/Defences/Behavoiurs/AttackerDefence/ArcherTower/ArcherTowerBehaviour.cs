@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ArcherTowerBehaviour : AttackerDefenceBehaviour
@@ -64,6 +65,14 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
     protected override void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            DestroyDefence();
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ReviveTarget();
+        }
 
         if (isDestroyed) return;
 
@@ -120,12 +129,24 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         base.DestroyDefence();
 
         animator.SetTrigger("Destroy");
+
+        for (int i = 0; i < archerStickmans.Count; i++)
+        {
+            archerStickmans[i].transform.DOScale(0, 0.5f).
+                OnComplete(() => archerStickmans[i].gameObject.SetActive(false));
+        }
     }
 
-    public override void TargetRevived()
+    public override void ReviveTarget()
     {
-        base.TargetRevived();
+        base.ReviveTarget();
 
         animator.SetTrigger("Revive");
+
+        for (int i = 0; i < archerStickmans.Count; i++)
+        {
+            archerStickmans[i].gameObject.SetActive(true);
+            archerStickmans[i].transform.DOScale(new Vector3(0.3580822f, 0.1451476f, 0.3612171f), 1f).SetEase(Ease.OutElastic);
+        }
     }
 }

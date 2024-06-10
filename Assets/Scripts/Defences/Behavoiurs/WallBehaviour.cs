@@ -14,7 +14,7 @@ public class WallBehaviour : DefencesBehaviourBase
         wallStats = GetComponent<WallStats>();
 
 
-        wallStats.OnBuyDone += TargetRevived;
+        wallStats.OnBuyDone += ReviveTarget;
 
         playerStats.OnWaveWon += CheckForUpgradeable;
     }
@@ -23,7 +23,7 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.OnDisable();
 
-        wallStats.OnBuyDone -= TargetRevived;
+        wallStats.OnBuyDone -= ReviveTarget;
 
         playerStats.OnWaveWon -= CheckForUpgradeable;
     }
@@ -52,9 +52,9 @@ public class WallBehaviour : DefencesBehaviourBase
 
     #region Repair Related
 
-    public override void TargetRevived()
+    public override void ReviveTarget()
     {
-        base.TargetRevived();
+        base.ReviveTarget();
 
         foreach (var wallPart in wallStats.wallParts)
         {

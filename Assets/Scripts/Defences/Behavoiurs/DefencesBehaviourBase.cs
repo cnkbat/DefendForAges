@@ -84,10 +84,10 @@ public class DefencesBehaviourBase : EnemyTarget
     }
 
     #region Repair
-    public override void TargetRevived()
+    public override void ReviveTarget()
     {
 
-        base.TargetRevived();
+        base.ReviveTarget();
         if (!isRepairable) return;
 
         asset.SetActive(true);

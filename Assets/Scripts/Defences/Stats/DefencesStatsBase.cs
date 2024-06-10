@@ -30,7 +30,7 @@ public class DefencesStatsBase : MonoBehaviour
         defencesBehaviourBase = GetComponent<DefencesBehaviourBase>();
 
         defencesBehaviourBase.OnRepairStateChange += loadableBase.SetIsRepairNeeded;
-        loadableBase.OnRepairDone += defencesBehaviourBase.TargetRevived;
+        loadableBase.OnRepairDone += defencesBehaviourBase.ReviveTarget;
 
         loadableBase.OnLoadableFilled += BuyDone;
         loadableBase.OnLoadableFilled += SaveDefenceData;
@@ -44,7 +44,7 @@ public class DefencesStatsBase : MonoBehaviour
     {
 
         defencesBehaviourBase.OnRepairStateChange -= loadableBase.SetIsRepairNeeded;
-        loadableBase.OnRepairDone -= defencesBehaviourBase.TargetRevived;
+        loadableBase.OnRepairDone -= defencesBehaviourBase.ReviveTarget;
 
         loadableBase.OnLoadableFilled -= BuyDone;
         loadableBase.OnLoadableFilled -= SaveDefenceData;

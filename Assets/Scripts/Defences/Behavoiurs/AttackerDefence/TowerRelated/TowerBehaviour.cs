@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TowerBehaviour : AttackerDefenceBehaviour
 {
@@ -120,11 +121,13 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     public void EnableUpgrader()
     {
         upgradeUIHandler.gameObject.SetActive(true);
+        upgradeUIHandler.transform.DOScale(4, 1f).SetEase(Ease.OutElastic);
     }
 
     public void DisableUpgrader()
     {
-        upgradeUIHandler.gameObject.SetActive(false);
+        upgradeUIHandler.transform.DOScale(0, 1f).SetEase(Ease.InElastic).OnComplete(() => upgradeUIHandler.gameObject.SetActive(false));
+
     }
 
 

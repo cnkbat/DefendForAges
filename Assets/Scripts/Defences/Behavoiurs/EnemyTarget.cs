@@ -97,7 +97,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
         OnTargetDestroyed?.Invoke();
     }
 
-    public virtual void TargetRevived()
+    public virtual void ReviveTarget()
     {
         isDestroyed = false;
         isTargetable = true;

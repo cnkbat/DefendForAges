@@ -73,9 +73,9 @@ public class TrapBehaviour : AttackerDefenceBehaviour
         }
     }
 
-    public override void TargetRevived()
+    public override void ReviveTarget()
     {
-        base.TargetRevived();
+        base.ReviveTarget();
         isTargetable = false;
     }
 }

@@ -132,6 +132,8 @@ public class PlayerStats : Singleton<PlayerStats>
         LookForDualWeapon();
 
         transform.position = gameManager.allCities[cityIndex].GetStartPoint();
+
+        Debug.Log("power up data " + powerupDurIndex);
     }
 
     #region Upgrading
@@ -523,6 +525,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void ResetData()
     {
+        Debug.Log("delete data");
         SaveSystem.DeletePlayerData();
     }
 

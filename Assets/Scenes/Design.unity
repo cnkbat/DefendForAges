@@ -73876,7 +73876,6 @@ MonoBehaviour:
   fadedObjectAlphaValue: 0.2
   fadingSpeed: 5
   fontSizeOnEnemyHit: 1
-  gameLoseDelayAfterButtonPressed: 3
   totalWaveCount: 0
 --- !u!4 &1818629410
 Transform:

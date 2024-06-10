@@ -152,9 +152,8 @@ public class CityManager : MonoBehaviour
 
             if (tempList[i].gameObject.activeSelf)
             {
-                if (tempList[i].GetIsTargetable() && this == tempList[i].GetCityManager())
+                if (tempList[i].GetIsTargetable() && this.name == tempList[i].GetCityManager().name)
                 {
-                    Debug.Log((this == tempList[i].GetCityManager()) + " " + tempList[i].GetCityManager().name);
                     targetList.Add(tempList[i]);
                 }
             }

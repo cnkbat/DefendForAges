@@ -158,6 +158,20 @@ public class EnemySpawner : MonoBehaviour
         //check if quota is full
         if (waves[currentWaveCount].spawnCount < waves[currentWaveCount].enemyQuota)
         {
+            int localEnemySpawnCounter = 0;
+
+            foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
+            {
+                if (enemyGroup.spawnedEnemyCounter < enemyGroup.enemyCount)
+                {
+                    if (enemyGroup.spawnedEnemyCounter < enemyGroup.enemyCount)
+                    {
+                        localEnemySpawnCounter++;
+                    }
+                }
+
+            }
+
             // spawn each type of enemy until the quota is filled
             foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
             {
@@ -166,15 +180,13 @@ public class EnemySpawner : MonoBehaviour
                 if (enemyGroup.spawnedEnemyCounter < enemyGroup.enemyCount)
                 {
 
-             
-
-                    OnEnemySpawned?.Invoke(waves[currentWaveCount].enemyGroups.Count);
-
                     NavMesh.SamplePosition(enemySpawnPoints[spawnIndex].position, out NavMeshHit hit, 3, 63);
 
 
                     GameObject spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
                         hit.position, cityManager.transform);
+
+                    OnEnemySpawned?.Invoke(localEnemySpawnCounter);
 
                     spawnIndex++;
 
@@ -191,6 +203,8 @@ public class EnemySpawner : MonoBehaviour
 
                 }
             }
+
+
         }
 
     }

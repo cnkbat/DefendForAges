@@ -80,11 +80,6 @@ public class TowerBehaviour : AttackerDefenceBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            DestroyDefence();
-        }
-
     }
 
     public override void TakeDamage(float dmg)

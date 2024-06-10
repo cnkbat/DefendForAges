@@ -7,11 +7,11 @@ public class EarningsHolder : Singleton<EarningsHolder>
 {
     PlayerStats playerStats;
 
-    private int earnedMeat;
-    private int earnedXP;
-    private int earnedCoin;
+    private float tempMeat;
+    private float tempXP;
+    private float tempCoin;
 
-    public Action<int, int, int> OnTempEarningsUpdated;
+    public Action<float, float, float> OnTempEarningsUpdated;
     public Action<float> OnBonusMultiplierApplied;
 
     public Action<int, int, int> OnEarningsApply;
@@ -29,7 +29,7 @@ public class EarningsHolder : Singleton<EarningsHolder>
 
     private void OnDisable()
     {
-        
+
         OnEarningsApply -= playerStats.EarnBonusAtWaveEnd;
 
         OnTempEarningsUpdated -= EarnOnKill;
@@ -38,47 +38,40 @@ public class EarningsHolder : Singleton<EarningsHolder>
 
     }
 
-    private void Update()
+    public void EarnOnKill(float moneyValue, float xpValue, float meatValue)
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            OnBonusMultiplierApplied?.Invoke(1);
-        }
-    }
-
-    public void EarnOnKill(int moneyValue, int xpValue, int meatValue)
-    {
-        IncrementMoney(moneyValue);
-        IncrementXP(xpValue);
-        IncrementMeat(meatValue);
+        IncrementTempMoney(moneyValue);
+        IncrementTempXP(xpValue);
+        IncrementTempMeat(meatValue);
     }
 
     #region Increment Values
-    public void IncrementMeat(int value)
+    public void IncrementTempMeat(float value)
     {
-        earnedMeat += value;
+        tempMeat += value;
     }
-    public void IncrementMoney(int value)
+    public void IncrementTempMoney(float value)
     {
-        earnedCoin += value;
+        tempCoin += value;
     }
-    public void IncrementXP(int value)
+    public void IncrementTempXP(float value)
     {
-        earnedXP += value;
+        tempXP += value;
     }
     #endregion
 
     public void ApplyEarningToPlayer(float multiplier)
     {
-        OnEarningsApply?.Invoke(earnedMeat * (int)multiplier, earnedCoin * (int)multiplier, earnedXP * (int)multiplier);
+        OnEarningsApply?.Invoke((int)Math.Ceiling(tempMeat) * (int)multiplier,
+            (int)Math.Ceiling(tempCoin) * (int)multiplier, (int)Math.Ceiling(tempXP) * (int)multiplier);
         ResetEarnings();
     }
 
     public void ResetEarnings()
     {
-        earnedMeat = 0;
-        earnedCoin = 0;
-        earnedXP = 0;
+        tempMeat = 0;
+        tempCoin = 0;
+        tempXP = 0;
     }
 
 }

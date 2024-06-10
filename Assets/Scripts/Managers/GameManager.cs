@@ -58,9 +58,6 @@ public class GameManager : Singleton<GameManager>
     [Header("Flaoting Text Related")]
     [Tooltip("Hasara göre çarpan olarak çalışıyor.")][SerializeField] public float fontSizeOnEnemyHit = 1;
 
-    [Header("Game End Related")]
-    [SerializeField] private float gameLoseDelayAfterButtonPressed = 3;
-
     [Header("Nav Mesh Surface")]
     private NavMeshSurface navMeshSurface;
     private List<EnemySpawner> allWaves = new List<EnemySpawner>();
@@ -146,8 +143,12 @@ public class GameManager : Singleton<GameManager>
     {
         navMeshsurfaceCounter++;
 
+        Debug.Log(enemyGroupCount + " enemy group count " + navMeshsurfaceCounter);
         if (navMeshsurfaceCounter >= enemyGroupCount)
         {
+
+            Debug.Log("readjust" + navMeshsurfaceCounter);
+
             MoveSurface();
             navMeshsurfaceCounter = 0;
         }
@@ -174,14 +175,9 @@ public class GameManager : Singleton<GameManager>
 
         // oynanacak vfxler animasyonlar vs vs.
 
-        StartCoroutine(LevelLostDelayFunc());
-    }
-    IEnumerator LevelLostDelayFunc()
-    {
-        yield return new WaitForSeconds(gameLoseDelayAfterButtonPressed);
-
         asyncLoader.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
 
     public void CheckIfEraFinished()
     {

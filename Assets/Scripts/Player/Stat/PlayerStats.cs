@@ -422,6 +422,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         yield return new WaitForSeconds(powerupDur);
 
+        isPowerupEnabled = false;
         OnPowerUpDisabled?.Invoke();
 
         currentPowerUpValue = 0;
@@ -499,6 +500,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private void SavePlayerData()
     {
         SaveSystem.SavePlayerData(this);
+        Debug.Log("save player data");
     }
 
     private void LoadPlayerData()

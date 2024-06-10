@@ -9,14 +9,15 @@ public class ArcherStickman : MonoBehaviour
     private Animator animator;
     private ArcherTowerBehaviour archerTowerBehaviour;
     public Action OnThrowArrow;
-    private float yValue;
+    private Vector3 startPos;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+
+        startPos = transform.localPosition;
         archerTowerBehaviour = transform.parent.parent.GetComponent<ArcherTowerBehaviour>();
 
-        yValue = transform.localPosition.y;
     }
 
     private void OnEnable()
@@ -31,12 +32,12 @@ public class ArcherStickman : MonoBehaviour
 
     private void Update()
     {
-        transform.localPosition = new Vector3(transform.localPosition.x, yValue, transform.localPosition.z);
+        transform.localPosition = startPos;
     }
     public void PlayAttackAnimation(float animSpeed)
     {
         animator.SetTrigger("Attack");
-        //     animator.SetFloat("AttackAnimSpeed", animSpeed);
+        animator.SetFloat("AttackAnimSpeed", animSpeed);
     }
 
     public void AttackAtEnemy()

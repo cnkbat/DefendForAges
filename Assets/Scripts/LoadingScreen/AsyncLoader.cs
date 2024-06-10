@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class AsyncLoader : MonoBehaviour
     public static AsyncLoader instance { get; private set; }
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider loadingSlider;
-    
+
     private void Awake()
     {
         if (instance == null)
@@ -32,6 +33,7 @@ public class AsyncLoader : MonoBehaviour
 
     IEnumerator LoadLevelAsync(int levelToLoad)
     {
+        DOTween.Clear();
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
 
         if (loadingSlider)
@@ -55,6 +57,7 @@ public class AsyncLoader : MonoBehaviour
 
     IEnumerator LoadLevelAsync(string levelName)
     {
+        DOTween.Clear();
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelName);
 
         if (loadingSlider)

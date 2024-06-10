@@ -12,8 +12,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
     [Header("Travelling")]
     [SerializeField] private float travelSpeed;
-    [Tooltip("Boşlukta kalınca buga giriyor süresi bundan dolayı var.")][SerializeField] private float disappearTime;
-    private float currentDisappearTime;
     [Tooltip("Yere düşüş için")][SerializeField] private float gravity;
 
     [Header("Targeting")]
@@ -108,8 +106,6 @@ public class Bullet : MonoBehaviour, IPoolableObject
         Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
         transform.forward = aimDirection;
 
-        currentDisappearTime = disappearTime;
-
         hasHit = false;
     }
 
@@ -117,19 +113,10 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
     void Update()
     {
-        currentDisappearTime -= Time.deltaTime;
-        if (currentDisappearTime < 0)
-        {
-            DisableBullet();
-        }
 
         transform.position += Vector3.up * gravity;
 
-        if (target != null && (!target.gameObject.activeSelf || targetReached))
-        {
-            transform.position += transform.forward * travelSpeed * Time.deltaTime;
-        }
-        else if (target != null)
+        if (target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, travelSpeed * Time.deltaTime);
 
@@ -143,14 +130,15 @@ public class Bullet : MonoBehaviour, IPoolableObject
             DisableBullet();
         }
 
+        if (targetReached && target.gameObject.activeSelf) 
+        {
+            transform.position += transform.forward * travelSpeed * Time.deltaTime;
+        }
         if (gameManager.bulletFireRange < Vector3.Distance(transform.position, firedPoint))
         {
             DisableBullet();
         }
-        if(targetReached && target.gameObject.activeSelf) // disables bullet when it reaches the target but target is dead. bullet does linger until target is pooled, but doesn't affect gameplay and isn't much visible.
-        {
-            DisableBullet();
-        }
+
     }
 
     private void DisableBullet()

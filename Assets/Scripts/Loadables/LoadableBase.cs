@@ -73,25 +73,31 @@ public class LoadableBase : MonoBehaviour
 
         if (currentCostLeftForUpgrade > 0)
         {
-            if (playerStats.DecrementMoney(10))
+            if (playerStats.DecrementMoney(10) && currentCostLeftForUpgrade >= 10)
             {
                 currentCostLeftForUpgrade -= 10;
 
+
+                // animation coroutineli
                 PlayCoinSpentAnim();
 
-                UpdateCurrentMoneyText(currentCostLeftForUpgrade.ToString());
-                saveManager.OnSaved?.Invoke();
+                UpdateMoneyTextAndSave();
             }
-            else if (playerStats.DecrementMoney(1)){
+            else if (playerStats.DecrementMoney(1))
+            {
                 currentCostLeftForUpgrade -= 1;
 
                 PlayCoinSpentAnim();
-
-                UpdateCurrentMoneyText(currentCostLeftForUpgrade.ToString());
-                saveManager.OnSaved?.Invoke();
+                UpdateMoneyTextAndSave();
             }
         }
         CheckIfFulled();
+    }
+
+    private void UpdateMoneyTextAndSave()
+    {
+        UpdateCurrentMoneyText(currentCostLeftForUpgrade.ToString());
+        saveManager.OnSaved?.Invoke();
     }
 
     private void PlayCoinSpentAnim()
@@ -99,7 +105,7 @@ public class LoadableBase : MonoBehaviour
         GameObject spawnedObject = objectPooler.SpawnFromPool("Coin", playerStats.transform.position);
 
         spawnedObject.GetComponent<CurrencyAnimationHandler>().PlaySpendAnim();
-        spawnedObject.transform.DOJump(transform.position, 3,1,1f)
+        spawnedObject.transform.DOJump(transform.position, 3, 1, 1f)
             .OnComplete(() => spawnedObject.SetActive(false));
     }
 

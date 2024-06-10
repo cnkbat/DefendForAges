@@ -319,7 +319,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private void XPChange()
     {
         OnExperiencePointChange?.Invoke();
-        saveManager.OnSaved?.Invoke();
+        saveManager.OnSaved?.Invoke(); 
     }
 
     private void ResetXP()
@@ -474,26 +474,19 @@ public class PlayerStats : Singleton<PlayerStats>
     #endregion
 
     #region CheckPoint Related
+    
     public void SetWaveSystemBackToCheckpoint()
     {
-        // kaybettiğimizde devreye girecek
-        // wave indexin en son checkpoint değerine atanması
-        // save edilmesi
         waveIndex = GameManager.instance.allCities[cityIndex].GetCurrentCheckpointIndex();
-        saveManager.OnSaved?.Invoke(); // save çalışmıyor
+        saveManager.OnSaved?.Invoke(); 
     }
 
     public void CityChangerReached()
     {
-
-        cityIndex++;
-        // coroutinele bağlanabilir
-        // diğer şehre hareketi
-        // kazanılan bonus
-        // araya giren ads popupları   
+        cityIndex++; 
         saveManager.OnSaved?.Invoke();
-
     }
+
     #endregion
 
     #region Save & Load

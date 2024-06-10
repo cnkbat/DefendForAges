@@ -17,7 +17,7 @@ MonoBehaviour:
   - 15
   - 25
   - 35
-  upgradeEnablingIndexes: 00000000010000000300000005000000
+  upgradeEnablingIndexes: 00000000000000000000000000000000
   damageValues:
   - 1.5
   - 3

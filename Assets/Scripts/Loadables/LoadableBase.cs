@@ -22,6 +22,7 @@ public class LoadableBase : MonoBehaviour
     [Header("Timers")]
     private float maxRepairTimer;
     private float currentRepairTimer;
+    [SerializeField] private float coinAnimationBuffer = 0.075f;
 
     [Header("Texts")]
     [SerializeField] private TMP_Text currentCostLeftForUpgradeText;
@@ -77,9 +78,7 @@ public class LoadableBase : MonoBehaviour
             {
                 currentCostLeftForUpgrade -= 10;
 
-
-                // animation coroutineli
-                PlayCoinSpentAnim();
+                StartCoroutine(PlayCoinSpentAnimMultiple(10));
 
                 UpdateMoneyTextAndSave();
             }
@@ -107,6 +106,14 @@ public class LoadableBase : MonoBehaviour
         spawnedObject.GetComponent<CurrencyAnimationHandler>().PlaySpendAnim();
         spawnedObject.transform.DOJump(transform.position, 3, 1, 1f)
             .OnComplete(() => spawnedObject.SetActive(false));
+    }
+    IEnumerator PlayCoinSpentAnimMultiple(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            PlayCoinSpentAnim();
+            yield return new WaitForSeconds(coinAnimationBuffer);
+        }
     }
 
     #region Repair Related

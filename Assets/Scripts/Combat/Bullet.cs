@@ -118,7 +118,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
         if (target != null && target.gameObject.activeSelf && !targetReached)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, travelSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position,target.position, travelSpeed * Time.deltaTime);
 
             if (transform.position == targetPos)
             {

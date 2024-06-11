@@ -240,17 +240,20 @@ public class GameManager : Singleton<GameManager>
     #region Earnings
     public void PlayDroppedEarningsCollectionAnim()
     {
+
         for (int i = 0; i < droppedCurrencies.Count; i++)
         {
+            Debug.Log("dropped anim");
             GameObject animatedObject = droppedCurrencies[i].gameObject;
             float animDur = Vector3.Distance(animatedObject.transform.position, playerStats.transform.position) / droppedCollectionAnimDur;
             droppedCurrencies[i].PlayCollectionAnim();
 
             animatedObject.transform.DOMove(playerStats.transform.position, animDur).
-                OnComplete(() => animatedObject.SetActive(false));
+                OnComplete(() => animatedObject.gameObject.SetActive(false));
         }
 
-        droppedCurrencies.Clear();
+
+      //  droppedCurrencies.Clear();
     }
 
     #endregion

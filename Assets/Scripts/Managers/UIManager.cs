@@ -354,7 +354,7 @@ public class UIManager : Singleton<UIManager>
     // Dual Weapon 
     private void UpdateDualWeaponTexts()
     {
-        if (playerStats.isDualWeaponActive)
+        if (playerStats.dualWeaponIndex > 0)
         {
             dualWeaponCostText.text = "MAX";
         }
@@ -762,9 +762,9 @@ public class UIManager : Singleton<UIManager>
         waveWonOpenedChestIcon.SetActive(false);
         waveWonClosedChestIcon.SetActive(true);
 
-        waveWoncollectedXPText.gameObject.SetActive(false);
-        waveWoncollectedCoinText.gameObject.SetActive(false);
-        waveWoncollectedMeatText.gameObject.SetActive(false);
+        waveWoncollectedXPText.transform.parent.gameObject.SetActive(false);
+        waveWoncollectedCoinText.transform.parent.gameObject.SetActive(false);
+        waveWoncollectedMeatText.transform.parent.gameObject.SetActive(false);
 
     }
     IEnumerator DisableWaveWonUI()

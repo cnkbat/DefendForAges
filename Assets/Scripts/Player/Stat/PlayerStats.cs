@@ -25,7 +25,9 @@ public class PlayerStats : Singleton<PlayerStats>
     [HideInInspector] public int powerupDurIndex;
     [HideInInspector] public int lifeStealIndex;
     [HideInInspector] public int maxHealthIndex;
-    [HideInInspector] public bool isDualWeaponActive;
+    [HideInInspector] public int dualWeaponIndex;
+
+
     [HideInInspector] public int waveIndex;
 
     [Header("City & Era Saves")]
@@ -42,7 +44,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
     [Header("Death")]
     public PlayerDeathHandler playerDeathHandler;
-    private bool isDead;
 
     [Header("Power Up")]
     [SerializeField] private float maxPowerUpFillValue;
@@ -133,14 +134,14 @@ public class PlayerStats : Singleton<PlayerStats>
 
         transform.position = gameManager.allCities[cityIndex].GetStartPoint();
 
-      
+
     }
 
     #region Upgrading
 
     private void AttemptUpgradeStat(int indexToUpgrade, List<int> cost, CurrencyType currencyType, RPGUpgradesType upgradeType = RPGUpgradesType.empty)
     {
-        if(indexToUpgrade + 1 >= cost.Count ) return; // geçici max sistemi tex değişecek falan filan.
+        if (indexToUpgrade + 1 >= cost.Count) return; // geçici max sistemi tex değişecek falan filan.
 
         if (currencyType == CurrencyType.money)
         {
@@ -213,6 +214,9 @@ public class PlayerStats : Singleton<PlayerStats>
                 Debug.LogError("Upgrade Type is not defined");
                 break;
         }
+
+        saveManager.OnSaved?.Invoke();
+
         UpdateStats();
     }
 
@@ -248,7 +252,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public void AttemptUpgradeDualWeapon()
     {
 
-        if (isDualWeaponActive) return;
+        if (dualWeaponIndex > 0) return;
 
         if (DecrementMeat(rpgSystemSO.GetDualWeaponCost()))
         {
@@ -265,15 +269,18 @@ public class PlayerStats : Singleton<PlayerStats>
     #region Dual Weapon
     private void ActiveDualWeapon()
     {
-        isDualWeaponActive = true;
+        dualWeaponIndex = 1;
+
         LookForDualWeapon();
 
         OnDualWeaponUpgraded?.Invoke();
+
+        saveManager.OnSaved?.Invoke();
     }
 
     private void LookForDualWeapon()
     {
-        if (isDualWeaponActive)
+        if (dualWeaponIndex > 0)
         {
             OnWeaponActivision.Invoke(2);
         }
@@ -323,7 +330,7 @@ public class PlayerStats : Singleton<PlayerStats>
     private void XPChange()
     {
         OnExperiencePointChange?.Invoke();
-        saveManager.OnSaved?.Invoke(); 
+        saveManager.OnSaved?.Invoke();
     }
 
     private void ResetXP()
@@ -412,11 +419,11 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnPowerUpEnabled?.Invoke();
 
-        int tempMovementIndex = movementSpeedIndex + powerUpUpgradeIndexValue;
-        int tempMaxHealthIndex = maxHealthIndex + powerUpUpgradeIndexValue;
-        int tempAttackSpeedIndex = attackSpeedIndex + powerUpUpgradeIndexValue;
-        int tempDamageIndex = damageIndex + powerUpUpgradeIndexValue;
-        int tempRangeIndex = rangeIndex + powerUpUpgradeIndexValue;
+        int tempMovementIndex = Mathf.Clamp(movementSpeedIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetMovementSpeedValues().Count);
+        int tempMaxHealthIndex = Mathf.Clamp(maxHealthIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetMaxHealthValues().Count);
+        int tempAttackSpeedIndex = Mathf.Clamp(attackSpeedIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetAttackSpeedValues().Count);
+        int tempDamageIndex = Mathf.Clamp(damageIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetDamageValues().Count);
+        int tempRangeIndex = Mathf.Clamp(rangeIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetRangeValues().Count);
 
         UpdateStatsForPowerUp(tempMovementIndex, tempMaxHealthIndex, tempAttackSpeedIndex, tempDamageIndex, tempRangeIndex);
         StartCoroutine(DisablePowerUp());
@@ -470,7 +477,6 @@ public class PlayerStats : Singleton<PlayerStats>
     private void IncrementWaveIndex()
     {
         waveIndex++;
-        Debug.Log("Wave Index = " + waveIndex);
         OnWaveWon?.Invoke();
         saveManager.OnSaved?.Invoke();
     }
@@ -478,16 +484,16 @@ public class PlayerStats : Singleton<PlayerStats>
     #endregion
 
     #region CheckPoint Related
-    
+
     public void SetWaveSystemBackToCheckpoint()
     {
         waveIndex = GameManager.instance.allCities[cityIndex].GetCurrentCheckpointIndex();
-        saveManager.OnSaved?.Invoke(); 
+        saveManager.OnSaved?.Invoke();
     }
 
     public void CityChangerReached()
     {
-        cityIndex++; 
+        cityIndex++;
         saveManager.OnSaved?.Invoke();
     }
 
@@ -518,7 +524,7 @@ public class PlayerStats : Singleton<PlayerStats>
             this.powerupDurIndex = playerData.powerupDurIndex;
             this.lifeStealIndex = playerData.lifeStealIndex;
             this.maxHealthIndex = playerData.maxHealthIndex;
-            this.isDualWeaponActive = playerData.isDualWeaponActiveSavedValue;
+            this.dualWeaponIndex = playerData.dualWeaponIndex;
         }
 
         UpdateStats();

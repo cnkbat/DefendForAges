@@ -37,6 +37,7 @@ public class EnemyTarget : MonoBehaviour, ITargetable
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
 
+
         if (isPlayer)
         {
             OnTargetDestroyed += gameManager.allCities[playerStats.GetCityIndex()].UpdateTargetList;

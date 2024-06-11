@@ -65,14 +65,6 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
 
     protected override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            DestroyDefence();
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            ReviveTarget();
-        }
 
         if (isDestroyed) return;
 

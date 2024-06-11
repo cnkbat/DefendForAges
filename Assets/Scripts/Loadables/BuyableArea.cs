@@ -61,6 +61,7 @@ public class BuyableArea : MonoBehaviour
 
     private void OnDisable()
     {
+
         if (saveManager != null)
         {
             saveManager.OnSaved -= SaveBuyableAreaData;
@@ -79,9 +80,8 @@ public class BuyableArea : MonoBehaviour
     #region Buying Area
     public void AreaBuyed()
     {
-        Debug.Log("area buyed");
-        EnableArea();
         OnAreaBuyed?.Invoke();
+        EnableArea();
     }
 
     public void EnableArea()
@@ -96,6 +96,7 @@ public class BuyableArea : MonoBehaviour
 
         if (tightedBuyableArea != null)
         {
+
             if (tightedBuyableArea.GetIsBuyed())
             {
                 gameObject.SetActive(true);
@@ -132,7 +133,7 @@ public class BuyableArea : MonoBehaviour
     {
         if (isBuyed) return;
 
-        gameObject.SetActive(false);
+        //    gameObject.SetActive(false);
         loadableBase.gameObject.SetActive(false);
     }
 
@@ -154,7 +155,7 @@ public class BuyableArea : MonoBehaviour
         {
             ghostedAssets[i].gameObject.SetActive(!isBuyed);
         }
-    
+
     }
 
     #region Save & Load

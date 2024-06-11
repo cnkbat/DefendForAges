@@ -20,6 +20,7 @@ public class DefencesBehaviourBase : EnemyTarget
     [SerializeField] protected GameObject asset;
     [SerializeField] protected MMFeedbacks feelFeedBacks;
 
+
     override protected void Start()
     {
         defencesStatsBase = GetComponent<DefencesStatsBase>();
@@ -106,9 +107,14 @@ public class DefencesBehaviourBase : EnemyTarget
 
     }
 
-    public void CheckForUpgradeable()
+    public virtual void CheckForUpgradeable()
     {
-        defencesStatsBase.SetLoadableBaseActivity(isRepairable);
+        if (isRepairable)
+        {
+            defencesStatsBase.SetLoadableBaseActivity(true);
+            return;
+        }
+        
     }
 
     #endregion

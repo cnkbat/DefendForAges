@@ -15,7 +15,6 @@ public class WallBehaviour : DefencesBehaviourBase
 
 
         wallStats.OnBuyDone += ReviveTarget;
-
         playerStats.OnWaveWon += CheckForUpgradeable;
     }
 
@@ -24,7 +23,6 @@ public class WallBehaviour : DefencesBehaviourBase
         base.OnDisable();
 
         wallStats.OnBuyDone -= ReviveTarget;
-
         playerStats.OnWaveWon -= CheckForUpgradeable;
     }
 
@@ -89,5 +87,16 @@ public class WallBehaviour : DefencesBehaviourBase
     }
 
     #endregion
+
+    public override void CheckForUpgradeable()
+    {
+        base.CheckForUpgradeable();
+
+        if(!isRepairable)
+        {
+            defencesStatsBase.SetLoadableBaseActivity(false);
+        }
+        
+    }
 
 }

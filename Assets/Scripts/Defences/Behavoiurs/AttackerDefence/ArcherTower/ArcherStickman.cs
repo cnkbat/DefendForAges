@@ -34,6 +34,7 @@ public class ArcherStickman : MonoBehaviour
     {
         transform.localPosition = startPos;
     }
+    
     public void PlayAttackAnimation(float animSpeed)
     {
         animator.SetTrigger("Attack");

@@ -17,14 +17,24 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
     protected override void OnEnable()
     {
         attackerDefenceStat = GetComponent<AttackerDefenceStat>();
-
         base.OnEnable();
         ResetAttackSpeed();
+
+        playerStats.OnWaveWon += CheckForUpgradeable;
     }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        playerStats.OnWaveWon -= CheckForUpgradeable;
+    }
+
 
     protected override void Start()
     {
         base.Start();
+
     }
 
     protected virtual void Update()
@@ -51,6 +61,7 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
     {
         ResetAttackSpeed();
     }
+
     protected virtual void ResetAttackSpeed()
     {
         currentAttackSpeed = attackerDefenceStat.GetAttackSpeed();

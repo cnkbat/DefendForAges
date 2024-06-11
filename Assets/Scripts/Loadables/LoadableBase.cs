@@ -31,7 +31,12 @@ public class LoadableBase : MonoBehaviour
     public Action OnLoadableFilled;
     public Action OnRepairDone;
 
-
+    private Vector3 startPos;
+    
+    private void Awake()
+    {
+        startPos = transform.localPosition;
+    }
     private void OnEnable()
     {
         gameManager = GameManager.instance;
@@ -51,6 +56,12 @@ public class LoadableBase : MonoBehaviour
         saveManager = SaveManager.instance;
 
         maxRepairTimer = gameManager.repairTimer;
+    }
+
+
+    private void Update()
+    {
+        transform.localPosition = startPos;
     }
 
     public void Load()

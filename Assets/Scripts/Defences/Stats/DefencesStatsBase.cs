@@ -119,6 +119,7 @@ public class DefencesStatsBase : MonoBehaviour
     {
         loadableBase.gameObject.SetActive(isActive);
     }
+    
     #endregion
 
     #region !! ADMIN !!

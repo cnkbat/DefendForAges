@@ -133,13 +133,15 @@ public class PlayerStats : Singleton<PlayerStats>
 
         transform.position = gameManager.allCities[cityIndex].GetStartPoint();
 
-        Debug.Log("power up data " + powerupDurIndex);
+      
     }
 
     #region Upgrading
 
     private void AttemptUpgradeStat(int indexToUpgrade, List<int> cost, CurrencyType currencyType, RPGUpgradesType upgradeType = RPGUpgradesType.empty)
     {
+        if(indexToUpgrade + 1 >= cost.Count ) return; // geçici max sistemi tex değişecek falan filan.
+
         if (currencyType == CurrencyType.money)
         {
             if (DecrementMoney(cost[indexToUpgrade]))
@@ -525,7 +527,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void ResetData()
     {
-        Debug.Log("delete data");
         SaveSystem.DeletePlayerData();
     }
 

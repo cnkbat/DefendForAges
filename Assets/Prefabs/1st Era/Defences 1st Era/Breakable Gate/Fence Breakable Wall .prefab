@@ -1646,9 +1646,6 @@ MonoBehaviour:
   targetPoints:
   - {fileID: 726096541051398727}
   - {fileID: 1670332575304322802}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 1939409764042287227}
   isRepairable: 0
   asset: {fileID: 945108643983877482}

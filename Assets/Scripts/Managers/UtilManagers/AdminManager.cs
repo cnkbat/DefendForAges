@@ -47,6 +47,7 @@ public class AdminManager : MonoBehaviour
     {
         playerStats.IncrementMoney(1000);
         playerStats.IncrementMeat(1000);
+        playerStats.IncrementXP(100);
     }
 
     private void EnableDisableAdminPanel()
@@ -57,7 +58,7 @@ public class AdminManager : MonoBehaviour
     private void ResetGameData()
     {
         Time.timeScale = 0;
-        Debug.Log("reset game data button pushed");
+
         saveManager.OnResetData?.Invoke();
         //  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

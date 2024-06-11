@@ -24,6 +24,9 @@ public class CityManager : MonoBehaviour
     [SerializeField] List<int> buyableAreaEnablingIndexes;
     [SerializeField] public List<int> buyableAreaCosts;
 
+    [Header("Defence Buyable Areas")]
+    [SerializeField] public List<BuyableArea> defencesBuyableAreas;
+
     [Header("Save & Load")]
     public string cityName;
     [HideInInspector] public int buyedAreaIndex;
@@ -110,6 +113,11 @@ public class CityManager : MonoBehaviour
             buyableAreas[i].DisableBuying();
         }
 
+        for (int i = 0; i < buyedAreaIndex; i++)
+        {
+            buyableAreas[i].EnableArea();
+        }
+        
         for (int i = 0; i < buyableAreas.Count; i++)
         {
             if (playerStats.GetPlayerLevel() >= buyableAreaEnablingIndexes[i])
@@ -118,16 +126,12 @@ public class CityManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < buyedAreaIndex; i++)
-        {
-            buyableAreas[i].EnableArea();
-        }
     }
 
     public void AreaBuyed()
     {
         buyedAreaIndex += 1;
-
+        HandleAreaBuyingState();
         saveManager.OnSaved?.Invoke();
     }
 

@@ -116,9 +116,9 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
         transform.position += Vector3.up * gravity;
 
-        if (target != null && target.gameObject.activeSelf)
+        if (target != null && target.gameObject.activeSelf && !targetReached)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, travelSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position,target.position, travelSpeed * Time.deltaTime);
 
             if (transform.position == targetPos)
             {
@@ -127,13 +127,9 @@ public class Bullet : MonoBehaviour, IPoolableObject
         }
         else
         {
-            DisableBullet();
-        }
-
-        if (targetReached && target.gameObject.activeSelf)
-        {
             transform.position += transform.forward * travelSpeed * Time.deltaTime;
         }
+
         if (gameManager.bulletFireRange < Vector3.Distance(transform.position, firedPoint))
         {
             DisableBullet();

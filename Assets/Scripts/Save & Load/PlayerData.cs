@@ -17,7 +17,7 @@ public class PlayerData
     public int powerupDurIndex;
     public int lifeStealIndex;
     public int maxHealthIndex;
-    public bool isDualWeaponActiveSavedValue;
+    public int dualWeaponIndex;
 
     //    public bool isHapticActive, isSoundFXActive;
 
@@ -42,7 +42,7 @@ public class PlayerData
         this.lifeStealIndex = playerStats.lifeStealIndex;
         this.maxHealthIndex = playerStats.maxHealthIndex;
 
-        this.isDualWeaponActiveSavedValue = playerStats.isDualWeaponActive;
+        this.dualWeaponIndex = playerStats.dualWeaponIndex;
 
         // isHapticActive = playerStats.isHapticActive;
         // isSoundFXActive = playerStats.isSoundFXActive;

@@ -497,7 +497,6 @@ public class PlayerStats : Singleton<PlayerStats>
     private void SavePlayerData()
     {
         SaveSystem.SavePlayerData(this);
-        Debug.Log("save player data");
     }
 
     private void LoadPlayerData()

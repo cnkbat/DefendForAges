@@ -142,17 +142,11 @@ public class GameManager : Singleton<GameManager>
     public void ReAdjustNavMeshSurface(int enemyGroupCount)
     {
         navMeshsurfaceCounter++;
-
-        Debug.Log(enemyGroupCount + " enemy group count " + navMeshsurfaceCounter);
         if (navMeshsurfaceCounter >= enemyGroupCount)
         {
-
-            Debug.Log("readjust" + navMeshsurfaceCounter);
-
             MoveSurface();
             navMeshsurfaceCounter = 0;
         }
-
     }
 
 

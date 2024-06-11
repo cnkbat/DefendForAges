@@ -45,39 +45,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: TestBullet
-    prefab: {fileID: 5463483835640132673, guid: c5481572d327fd943aef66c661c854fc, type: 3}
-    size: 25
   - tag: Tier 1 Small Enemy
     prefab: {fileID: 584572212228056345, guid: 06ab4fa469244be4aab2f68ac22c56fd, type: 3}
-    size: 25
+    size: 50
   - tag: Tier 2 Small Enemy
     prefab: {fileID: 584572212228056345, guid: 5edf6cbf9e259244dbad04f92cfcce1f, type: 3}
-    size: 25
+    size: 50
   - tag: Tier 3 Small Enemy
     prefab: {fileID: 584572212228056345, guid: ee6618406ab4d1f419080fe1a0628591, type: 3}
-    size: 25
+    size: 50
   - tag: Tier 1 Medium Enemy
     prefab: {fileID: 584572212228056345, guid: 401ea28a56238494c9473fb00ae53d5c, type: 3}
-    size: 25
+    size: 50
   - tag: Tier 2 Medium Enemy
     prefab: {fileID: 584572212228056345, guid: 925866f0853d4294cbeacb3a3cef39dc, type: 3}
-    size: 100
-  - tag: Tier 1 Big Enemy
-    prefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
-    size: 25
-  - tag: Tier 2 Big Enemy
-    prefab: {fileID: 584572212228056345, guid: 5d1331d9496722945a8e31dc3700a1f3, type: 3}
-    size: 25
+    size: 50
   - tag: Tier 3 Medium Enemy
     prefab: {fileID: 584572212228056345, guid: 9fb73680d310c5142b5590457293d59b, type: 3}
-    size: 100
+    size: 50
+  - tag: Tier 1 Big Enemy
+    prefab: {fileID: 584572212228056345, guid: ffc6e119ce46abe49a462f1e9b6d1b50, type: 3}
+    size: 50
+  - tag: Tier 2 Big Enemy
+    prefab: {fileID: 584572212228056345, guid: 5d1331d9496722945a8e31dc3700a1f3, type: 3}
+    size: 50
   - tag: Tier 3 Big Enemy
     prefab: {fileID: 584572212228056345, guid: 0d3574e8b1742f04db69e6d0fe913f99, type: 3}
-    size: 25
-  - tag: Boss Enemy
-    prefab: {fileID: 584572212228056345, guid: 4227ea597d37d624a8c80d993e2d1cfa, type: 3}
-    size: 1
+    size: 50
+  - tag: Boss Enemy 1
+    prefab: {fileID: 584572212228056345, guid: f2e43e1789a9298468f77a30310af706, type: 3}
+    size: 2
+  - tag: Boss Enemy 2
+    prefab: {fileID: 584572212228056345, guid: 556025d58bc73e24499129b248038313, type: 3}
+    size: 2
+  - tag: Boss Enemy 3
+    prefab: {fileID: 584572212228056345, guid: 525ea0384ba89694aa20504cdb65952b, type: 3}
+    size: 2
   - tag: FloatingText
     prefab: {fileID: 3870968168857410143, guid: d52fb45050d314749a0b39cb7c348749, type: 3}
     size: 100
@@ -95,5 +98,5 @@ MonoBehaviour:
     size: 100
   - tag: Arrow
     prefab: {fileID: 6841973581893308495, guid: 7703a2596b95f9f439fe60d3d3194dbe, type: 3}
-    size: 100
+    size: 50
   isObjPoolingActive: 1

@@ -724,6 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rpgSystemSO: {fileID: 11400000, guid: 963bf65ddef16cb4a9999a6b5fa25d86, type: 2}
+  powerUpSO: {fileID: 11400000, guid: 13eaf032a36290242ba8d54a68240bba, type: 2}
   playerLevel: 0
   money: 0
   experiencePoint: 0
@@ -735,7 +736,7 @@ MonoBehaviour:
   powerupDurIndex: 0
   lifeStealIndex: 0
   maxHealthIndex: 0
-  isDualWeaponActive: 0
+  dualWeaponIndex: 0
   waveIndex: 0
   cityIndex: 0
   damage: 0

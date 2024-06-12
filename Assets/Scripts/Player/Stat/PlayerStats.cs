@@ -12,6 +12,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     [Header("Scriptable Object")]
     [SerializeField] private RPGSystemSO rpgSystemSO;
+    [SerializeField] private RPGSystemSO powerUpSO;
 
     [Header("Saved Indexes")]
     [HideInInspector] public int playerLevel;
@@ -419,14 +420,8 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnPowerUpEnabled?.Invoke();
 
-        // değişkenler silinecek, indexler direkt updatestatsforpowerupa yollanacak
-        int tempMovementIndex = Mathf.Clamp(movementSpeedIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetMovementSpeedValues().Count);
-        int tempMaxHealthIndex = Mathf.Clamp(maxHealthIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetMaxHealthValues().Count);
-        int tempAttackSpeedIndex = Mathf.Clamp(attackSpeedIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetAttackSpeedValues().Count);
-        int tempDamageIndex = Mathf.Clamp(damageIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetDamageValues().Count);
-        int tempRangeIndex = Mathf.Clamp(rangeIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetRangeValues().Count);
 
-        UpdateStatsForPowerUp(tempMovementIndex, tempMaxHealthIndex, tempAttackSpeedIndex, tempDamageIndex, tempRangeIndex);
+        UpdateStatsForPowerUp(movementSpeedIndex, maxHealthIndex, attackSpeedIndex, damageIndex, rangeIndex);
         StartCoroutine(DisablePowerUp());
     }
 
@@ -445,11 +440,11 @@ public class PlayerStats : Singleton<PlayerStats>
     private void UpdateStatsForPowerUp(int newMovementSpeedIndex, int newMaxHealthIndex, int newAttackSpeedIndex, int newDamageIndex, int newRangeIndex)
     {
         // SO değişecek
-        damage = rpgSystemSO.GetDamageValues()[newDamageIndex];
-        attackSpeed = rpgSystemSO.GetAttackSpeedValues()[newAttackSpeedIndex];
-        movementSpeed = rpgSystemSO.GetMovementSpeedValues()[newMovementSpeedIndex];
-        maxHealth = rpgSystemSO.GetMaxHealthValues()[newMaxHealthIndex];
-        range = rpgSystemSO.GetRangeValues()[newRangeIndex];
+        damage = powerUpSO.GetDamageValues()[newDamageIndex];
+        attackSpeed = powerUpSO.GetAttackSpeedValues()[newAttackSpeedIndex];
+        movementSpeed = powerUpSO.GetMovementSpeedValues()[newMovementSpeedIndex];
+        maxHealth = powerUpSO.GetMaxHealthValues()[newMaxHealthIndex];
+        range = powerUpSO.GetRangeValues()[newRangeIndex];
         OnRangeSet?.Invoke();
     }
     #endregion

@@ -59,10 +59,10 @@ MonoBehaviour:
   - 2.5
   lifeStealCosts: 0f000000310000005f00000093000000d60000002b01000064010000
   powerupDurValues:
-  - 6
-  - 7
-  - 8
-  - 9
+  - 4
+  - 4.5
+  - 5
+  - 5.5
   powerupDurCosts: 140000004300000082000000d7000000
   maxHealthValues:
   - 10

@@ -12,7 +12,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     [Header("Scriptable Object")]
     [SerializeField] private RPGSystemSO rpgSystemSO;
-    [SerializeField] private RPGSystemSO powerUpSO;
+    [SerializeField] private PowerUpSystemSO powerUpSO;
 
     [Header("Saved Indexes")]
     [HideInInspector] public int playerLevel;
@@ -439,11 +439,11 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void UpdateStatsForPowerUp(int newMovementSpeedIndex, int newMaxHealthIndex, int newAttackSpeedIndex, int newDamageIndex, int newRangeIndex)
     {
-        // SO değişecek
-        damage = powerUpSO.GetDamageValues()[newDamageIndex];
+        
+        // damage = powerUpSO.GetDamageValues()[newDamageIndex];
         attackSpeed = powerUpSO.GetAttackSpeedValues()[newAttackSpeedIndex];
         movementSpeed = powerUpSO.GetMovementSpeedValues()[newMovementSpeedIndex];
-        maxHealth = powerUpSO.GetMaxHealthValues()[newMaxHealthIndex];
+        // maxHealth = powerUpSO.GetMaxHealthValues()[newMaxHealthIndex];
         range = powerUpSO.GetRangeValues()[newRangeIndex];
         OnRangeSet?.Invoke();
     }

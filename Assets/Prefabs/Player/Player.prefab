@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rpgSystemSO: {fileID: 11400000, guid: 963bf65ddef16cb4a9999a6b5fa25d86, type: 2}
-  powerUpSO: {fileID: 11400000, guid: 13eaf032a36290242ba8d54a68240bba, type: 2}
+  powerUpSO: {fileID: 11400000, guid: 3c0338764572c964b924d0e735bbb18c, type: 2}
   playerLevel: 0
   money: 0
   experiencePoint: 0

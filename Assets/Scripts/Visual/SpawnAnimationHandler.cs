@@ -39,11 +39,15 @@ public class SpawnAnimationHandler : MonoBehaviour
         buyableArea.OnAnimPlayNeeded -= PlaySpawningAnimation;
     }
 
-    public void PlaySpawningAnimation(List<Transform> objectsToEnable, List<Transform> objectsToDisable, List<Transform> spawnPosesToDisable)
+    public void PlaySpawningAnimation(List<Transform> objectsToEnable, List<Transform> objectsToDisable, List<Transform> spawnPosesToDisable, List<Transform> spawnPosesToEnable)
     {
         for (int i = 0; i < spawnPosesToDisable.Count; i++)
         {
             spawnPosesToDisable[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < spawnPosesToEnable.Count; i++)
+        {
+            spawnPosesToEnable[i].gameObject.SetActive(false);
         }
 
         if (animationType == AnimationTypes.dropDown)

@@ -23,6 +23,7 @@ public class BuyableArea : MonoBehaviour
     [SerializeField] public LoadableBase loadableBase;
 
     [Header("Spawn Poses")]
+    [SerializeField] private List<Transform> spawnPosesToEnable;
     [SerializeField] private List<Transform> spawnPosesToDisable;
 
     [Header("Visuals")]
@@ -34,7 +35,7 @@ public class BuyableArea : MonoBehaviour
     public Action OnAreaBuyed;
     public Action<int> OnAreaEnabled;
 
-    public Action<List<Transform>, List<Transform>, List<Transform>> OnAnimPlayNeeded;
+    public Action<List<Transform>, List<Transform>, List<Transform>, List<Transform>> OnAnimPlayNeeded;
 
     #region OnEnable / OnDisable
     private void OnEnable()
@@ -147,7 +148,7 @@ public class BuyableArea : MonoBehaviour
         {
             if (objectsToEnableOnBuy[i].gameObject.activeSelf != isBuyed)
             {
-                OnAnimPlayNeeded?.Invoke(objectsToEnableOnBuy, objectsToDisableOnBuy, spawnPosesToDisable);
+                OnAnimPlayNeeded?.Invoke(objectsToEnableOnBuy, objectsToDisableOnBuy, spawnPosesToDisable, spawnPosesToEnable);
             }
         }
 

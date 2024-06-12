@@ -419,6 +419,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnPowerUpEnabled?.Invoke();
 
+        // değişkenler silinecek, indexler direkt updatestatsforpowerupa yollanacak
         int tempMovementIndex = Mathf.Clamp(movementSpeedIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetMovementSpeedValues().Count);
         int tempMaxHealthIndex = Mathf.Clamp(maxHealthIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetMaxHealthValues().Count);
         int tempAttackSpeedIndex = Mathf.Clamp(attackSpeedIndex + powerUpUpgradeIndexValue, 0, rpgSystemSO.GetAttackSpeedValues().Count);
@@ -443,6 +444,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void UpdateStatsForPowerUp(int newMovementSpeedIndex, int newMaxHealthIndex, int newAttackSpeedIndex, int newDamageIndex, int newRangeIndex)
     {
+        // SO değişecek
         damage = rpgSystemSO.GetDamageValues()[newDamageIndex];
         attackSpeed = rpgSystemSO.GetAttackSpeedValues()[newAttackSpeedIndex];
         movementSpeed = rpgSystemSO.GetMovementSpeedValues()[newMovementSpeedIndex];

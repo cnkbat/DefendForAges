@@ -783,10 +783,25 @@ public class UIManager : Singleton<UIManager>
         waveWoncollectedCoinText.transform.parent.gameObject.SetActive(true);
         waveWoncollectedMeatText.transform.parent.gameObject.SetActive(true);
 
-        waveWoncollectedXPText.text = xpValue.ToString();
-        waveWoncollectedCoinText.text = coinValue.ToString();
-        waveWoncollectedMeatText.text = meatValue.ToString();
+       
+        StartCoroutine(UpdateTextOverTime(waveWoncollectedXPText, xpValue));
+        StartCoroutine(UpdateTextOverTime(waveWoncollectedCoinText, coinValue));
+        StartCoroutine(UpdateTextOverTime(waveWoncollectedMeatText, meatValue));
 
+
+        //waveWoncollectedXPText.text = xpValue.ToString();
+        //waveWoncollectedCoinText.text = coinValue.ToString();
+        //waveWoncollectedMeatText.text = meatValue.ToString();
+
+    }
+    // update texts in 5 seconds max
+    IEnumerator UpdateTextOverTime(TMP_Text text, int val)
+    {
+        for(int i = 0; i < val; i++)
+        {
+            text.text = i + "";
+            yield return new WaitForSeconds(1);
+        }
     }
 
     public void RewardedDisableWaveWonUI()

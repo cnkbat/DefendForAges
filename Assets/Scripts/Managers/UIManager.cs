@@ -794,13 +794,13 @@ public class UIManager : Singleton<UIManager>
         //waveWoncollectedMeatText.text = meatValue.ToString();
 
     }
-    // update texts in 5 seconds max
+
     IEnumerator UpdateTextOverTime(TMP_Text text, int val)
     {
         for(int i = 0; i < val; i++)
         {
             text.text = i + "";
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2/(val+1));
         }
     }
 

@@ -227,7 +227,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnAssignEnemySpawnPoints()
     {
-        List<Transform> tempList = gameManager.allCities[playerStats.GetCityIndex()].GetEnemySpawnPoses();
+        List<Transform> tempList = new List<Transform>(gameManager.allCities[playerStats.GetCityIndex()].GetEnemySpawnPoses());
 
         for (int i = 0; i < tempList.Count; i++)
         {

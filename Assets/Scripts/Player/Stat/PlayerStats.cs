@@ -439,7 +439,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void UpdateStatsForPowerUp(int newMovementSpeedIndex, int newMaxHealthIndex, int newAttackSpeedIndex, int newDamageIndex, int newRangeIndex)
     {
-        
+
         // damage = powerUpSO.GetDamageValues()[newDamageIndex];
         attackSpeed = powerUpSO.GetAttackSpeedValues()[newAttackSpeedIndex];
         movementSpeed = powerUpSO.GetMovementSpeedValues()[newMovementSpeedIndex];
@@ -522,6 +522,10 @@ public class PlayerStats : Singleton<PlayerStats>
             this.lifeStealIndex = playerData.lifeStealIndex;
             this.maxHealthIndex = playerData.maxHealthIndex;
             this.dualWeaponIndex = playerData.dualWeaponIndex;
+        }
+        else
+        {
+            money = 50;
         }
 
         UpdateStats();

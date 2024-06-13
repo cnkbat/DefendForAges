@@ -59,7 +59,6 @@ public class LoadableBase : MonoBehaviour
         maxRepairTimer = gameManager.repairTimer;
     }
 
-
     private void Update()
     {
         transform.localPosition = startPos;

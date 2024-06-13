@@ -35,6 +35,7 @@ public class EnemyDropSystem : MonoBehaviour
         GameObject spawnedObject = objectPooler.SpawnFromPool(dropTag, enemyDeathHandler.transform.position);
         CurrencyAnimationHandler currencyAnimationHandler = spawnedObject.GetComponent<CurrencyAnimationHandler>();
         currencyAnimationHandler.PlayDropAnim();
+        
         gameManager.droppedCurrencies.Add(currencyAnimationHandler);
     }
     private string GetDropTag(int dropTypeIndex)

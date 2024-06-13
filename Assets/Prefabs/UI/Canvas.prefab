@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 179206539}
   - component: {fileID: 179206541}
   - component: {fileID: 179206540}
+  - component: {fileID: 2324045263356433502}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -268,6 +269,60 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2324045263356433502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179206538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c72169752e95b246b11fec8d53b0def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeAttackSpeedButton: {fileID: 7794138553285752598}
+  upgradeDamageButton: {fileID: 4714387161515954051}
+  upgradeRangeButton: {fileID: 3874018955689499432}
+  upgradeLifeStealButton: {fileID: 5993710644467308172}
+  upgradeMovementSpeedButton: {fileID: 1697042240114016733}
+  upgradePowerupDurButton: {fileID: 3186951144828399217}
+  upgradeMaxHealthButton: {fileID: 2585840701093613119}
+  upgradeDualWeaponButton: {fileID: 5630444021510732163}
+  attackSpeedCurrentText: {fileID: 4697375198221282599}
+  attackSpeedNextText: {fileID: 4992567372718822998}
+  attackSpeedCostText: {fileID: 8844227862332956948}
+  attackSpeedLevelText: {fileID: 3628551664155812341}
+  damageCurrentText: {fileID: 483628849630216239}
+  damageNextText: {fileID: 4778037908557522080}
+  damageCostText: {fileID: 7235409270326883212}
+  damageLevelText: {fileID: 7160821762966236465}
+  rangeCurrentText: {fileID: 4245009795774229234}
+  rangeNextText: {fileID: 6538606504430258196}
+  rangeCostText: {fileID: 4531561921376448197}
+  rangeLevelText: {fileID: 1885713812935125467}
+  lifeStealCurrentText: {fileID: 5087283606057226692}
+  lifeStealNextText: {fileID: 7328114688376519645}
+  lifeStealCostText: {fileID: 1200636179062511309}
+  lifeStealLevelText: {fileID: 8910052437151348715}
+  movementSpeedCurrentText: {fileID: 2792240119489297166}
+  movementSpeedNextText: {fileID: 8467283069228124239}
+  movementSpeedCostText: {fileID: 8056968496108181034}
+  movementSpeedLevelText: {fileID: 1726039981832703518}
+  powerupDurCurrentText: {fileID: 4959016673648845744}
+  powerupDurNextText: {fileID: 2549116044217035083}
+  powerupDurCostText: {fileID: 3452091272498540207}
+  powerupDurLevelText: {fileID: 1469941190799594334}
+  maxHealthCurrentText: {fileID: 1511443363135473600}
+  maxHealthNextText: {fileID: 4534705446320931973}
+  maxHealthCostText: {fileID: 2935170458859733730}
+  maxHealthLevelText: {fileID: 4012257236513452992}
+  dualWeaponCostText: {fileID: 135899125067818089}
+  attackSpeedVisualValues: []
+  damageVisualValues: []
+  rangeVisualValues: []
+  lifeStealVisualValues: []
+  movementSpeedVisualValues: []
 --- !u!1 &254284220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1625,7 @@ GameObject:
   - component: {fileID: 1636070930}
   - component: {fileID: 1636070932}
   - component: {fileID: 1636070931}
+  - component: {fileID: 6046805434117118596}
   m_Layer: 5
   m_Name: Admin Panel
   m_TagString: Untagged
@@ -1637,6 +1693,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6046805434117118596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636070929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4fc0f72f1f4b648852b1b6c47ffc33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1716827527
 GameObject:
   m_ObjectHideFlags: 0
@@ -4024,6 +4092,7 @@ GameObject:
   - component: {fileID: 1917286991186291008}
   - component: {fileID: 7365464709283950559}
   - component: {fileID: 6108242979342867857}
+  - component: {fileID: 1690401308178527257}
   m_Layer: 5
   m_Name: GameHud
   m_TagString: Untagged
@@ -4097,6 +4166,38 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1690401308178527257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056741044626757792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee82135b971f50429faeea55fe7d085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 8202747446275803444}
+  meatText: {fileID: 3600511749059409903}
+  currentWaveIndexText: {fileID: 4711964450183736904}
+  nextWaveIndexText: {fileID: 4711964450691789182}
+  totalProgressBarImages:
+  - {fileID: 508368078}
+  - {fileID: 386955328}
+  - {fileID: 1716827527}
+  totalWaveProgressBar: {fileID: 6615280819651206276}
+  inwaveProgressBar: {fileID: 4711964450643995551}
+  progressBarHideTransform: {fileID: 7993495389417026164}
+  totalWaveProgressBarOriginalTransform: {fileID: 2301798665122684573}
+  inwaveProgressBarOriginalTransform: {fileID: 2371039179239031525}
+  progressBarAnimDur: 1
+  progressBarEaseType: 1
+  powerUpFill: {fileID: 2635072563502676795}
+  powerUpVFX: {fileID: 9191554900082949534}
+  levelText: {fileID: 7642387759494406983}
+  xpText: {fileID: 7642387760487507075}
+  levelSlider: {fileID: 7642387760325229159}
 --- !u!1 &1084850489400563841
 GameObject:
   m_ObjectHideFlags: 0
@@ -9983,130 +10084,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bd56d7f59c4d9489e57b2b8c415285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSO: {fileID: 0}
-  allPanels:
-  - {fileID: 4204948924759909721}
-  - {fileID: 1056741044626757792}
-  - {fileID: 5033717770325617373}
-  - {fileID: 1636070929}
-  - {fileID: 179206538}
-  - {fileID: 7974713070702253417}
-  - {fileID: 5147416489957131645}
-  joystickPanel: {fileID: 4204948924759909721}
-  gamePanel: {fileID: 1056741044626757792}
-  deathPanel: {fileID: 5033717770325617373}
-  upgradePanel: {fileID: 179206538}
-  waveWonPanel: {fileID: 7974713070702253417}
-  gameLostPanel: {fileID: 5147416489957131645}
-  moneyText: {fileID: 8202747446275803444}
-  meatText: {fileID: 3600511749059409903}
-  currentWaveIndexText: {fileID: 4711964450183736904}
-  nextWaveIndexText: {fileID: 4711964450691789182}
   waveCallButton: {fileID: 3298829451915649636}
-  totalProgressBarImages:
-  - {fileID: 508368078}
-  - {fileID: 386955328}
-  - {fileID: 1716827527}
-  totalWaveProgressBar: {fileID: 6615280819651206276}
-  inwaveProgressBar: {fileID: 4711964450643995551}
-  progressBarHideTransform: {fileID: 7993495389417026164}
-  totalWaveProgressBarOriginalTransform: {fileID: 2301798665122684573}
-  inwaveProgressBarOriginalTransform: {fileID: 2371039179239031525}
-  progressBarAnimDur: 1
-  progressBarEaseType: 1
-  playerKilledCountDownText: {fileID: 2794787059010472220}
-  lateReviveButton: {fileID: 1934017933}
-  rewardedReviveButton: {fileID: 4581551497415672987}
-  powerUpFill: {fileID: 2635072563502676795}
-  powerUpVFX: {fileID: 9191554900082949534}
-  normalApplyEarningsButton: {fileID: 331603633866559663}
-  rewardedApplyEarningsButton: {fileID: 7655229162552742363}
-  waveWonOpenedChestIcon: {fileID: 5120825718845626812}
-  waveWonClosedChestIcon: {fileID: 8966749174010788131}
-  waveWoncollectedXPText: {fileID: 8321016733438307155}
-  waveWoncollectedCoinText: {fileID: 7244157326191840627}
-  waveWoncollectedMeatText: {fileID: 7165593443968346700}
-  gameLostOpenedChestIcon: {fileID: 5946364799816005959}
-  gameLostClosedChestIcon: {fileID: 6123229298608431696}
-  gameLostCollectedXPText: {fileID: 6219423264375672117}
-  gameLostCollectedMeatText: {fileID: 1025370641574938010}
-  gameLostCollectedCoinText: {fileID: 9091204006413095651}
-  towerDestroyedCountDownText: {fileID: 3429544931104203458}
-  loseGameButton: {fileID: 2953474946698213944}
-  useGemToReviveTowerButton: {fileID: 539489126579864201}
+  allPanels:
+  - {fileID: 2988444235175064362}
+  - {fileID: 1690401308178527257}
+  - {fileID: 3567029429843891787}
+  - {fileID: 6046805434117118596}
+  - {fileID: 2324045263356433502}
+  - {fileID: 8643752987566684565}
+  - {fileID: 7836821102166883056}
+  - {fileID: 8925642379887638333}
+  joystickPanel: {fileID: 4204948924759909721}
+  gamePanel: {fileID: 1690401308178527257}
+  playerDeathPanel: {fileID: 3567029429843891787}
+  upgradePanel: {fileID: 2324045263356433502}
+  waveWonPanel: {fileID: 8643752987566684565}
+  towerDeathPanel: {fileID: 7836821102166883056}
   scrollPanel: {fileID: 1412592177}
   enableUpgradeHudButton: {fileID: 3377893146444521265}
   exitUpgradeHudButton: {fileID: 2054197138514052450}
-  upgradeAttackSpeedButton: {fileID: 7794138553285752598}
-  upgradeDamageButton: {fileID: 4714387161515954051}
-  upgradeRangeButton: {fileID: 3874018955689499432}
-  upgradeLifeStealButton: {fileID: 5993710644467308172}
-  upgradeMovementSpeedButton: {fileID: 1697042240114016733}
-  upgradePowerupDurButton: {fileID: 3186951144828399217}
-  upgradeMaxHealthButton: {fileID: 2585840701093613119}
-  upgradeDualWeaponButton: {fileID: 5630444021510732163}
-  levelText: {fileID: 7642387759494406983}
-  xpText: {fileID: 7642387760487507075}
-  levelSlider: {fileID: 7642387760325229159}
-  attackSpeedCurrentText: {fileID: 4697375198221282599}
-  attackSpeedNextText: {fileID: 4992567372718822998}
-  attackSpeedCostText: {fileID: 8844227862332956948}
-  attackSpeedLevelText: {fileID: 3628551664155812341}
-  damageCurrentText: {fileID: 483628849630216239}
-  damageNextText: {fileID: 4778037908557522080}
-  damageCostText: {fileID: 7235409270326883212}
-  damageLevelText: {fileID: 7160821762966236465}
-  rangeCurrentText: {fileID: 4245009795774229234}
-  rangeNextText: {fileID: 6538606504430258196}
-  rangeCostText: {fileID: 4531561921376448197}
-  rangeLevelText: {fileID: 1885713812935125467}
-  lifeStealCurrentText: {fileID: 5087283606057226692}
-  lifeStealNextText: {fileID: 7328114688376519645}
-  lifeStealCostText: {fileID: 1200636179062511309}
-  lifeStealLevelText: {fileID: 8910052437151348715}
-  movementSpeedCurrentText: {fileID: 2792240119489297166}
-  movementSpeedNextText: {fileID: 8467283069228124239}
-  movementSpeedCostText: {fileID: 8056968496108181034}
-  movementSpeedLevelText: {fileID: 1726039981832703518}
-  powerupDurCurrentText: {fileID: 4959016673648845744}
-  powerupDurNextText: {fileID: 2549116044217035083}
-  powerupDurCostText: {fileID: 3452091272498540207}
-  powerupDurLevelText: {fileID: 1469941190799594334}
-  maxHealthCurrentText: {fileID: 1511443363135473600}
-  maxHealthNextText: {fileID: 4534705446320931973}
-  maxHealthCostText: {fileID: 2935170458859733730}
-  maxHealthLevelText: {fileID: 4012257236513452992}
-  dualWeaponCostText: {fileID: 135899125067818089}
-  attackSpeedVisualValues:
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
-  damageVisualValues:
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
-  rangeVisualValues:
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
-  lifeStealVisualValues:
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
-  movementSpeedVisualValues:
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
 --- !u!1 &3776099757408023391
 GameObject:
   m_ObjectHideFlags: 0
@@ -10957,6 +10953,7 @@ GameObject:
   - component: {fileID: 7601506222579997369}
   - component: {fileID: 5831018900215515198}
   - component: {fileID: 6328193100677786008}
+  - component: {fileID: 2988444235175064362}
   m_Layer: 5
   m_Name: JoyStickPanel
   m_TagString: Untagged
@@ -11036,6 +11033,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 3699046735272727882}
+--- !u!114 &2988444235175064362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4204948924759909721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4fc0f72f1f4b648852b1b6c47ffc33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4260254572678423154
 GameObject:
   m_ObjectHideFlags: 0
@@ -12475,8 +12484,9 @@ GameObject:
   - component: {fileID: 1876931537396669075}
   - component: {fileID: 7915350143389856992}
   - component: {fileID: 6519820141877821758}
+  - component: {fileID: 3567029429843891787}
   m_Layer: 5
-  m_Name: DeathHud
+  m_Name: PlayerDeathHud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12542,6 +12552,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3567029429843891787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5033717770325617373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9807e418000034898964a769668b1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerKilledCountDownText: {fileID: 2794787059010472220}
+  lateReviveButton: {fileID: 1934017933}
+  rewardedReviveButton: {fileID: 4581551497415672987}
 --- !u!1 &5046679602257158637
 GameObject:
   m_ObjectHideFlags: 0
@@ -12828,8 +12853,9 @@ GameObject:
   - component: {fileID: 6751617221267911772}
   - component: {fileID: 5036770937167945490}
   - component: {fileID: 8735219514509640205}
+  - component: {fileID: 7836821102166883056}
   m_Layer: 5
-  m_Name: GameLostScreen
+  m_Name: TowerDeathPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12906,6 +12932,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7836821102166883056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147416489957131645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4259fe35f0b338a41bb805db31861d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLostOpenedChestIcon: {fileID: 0}
+  gameLostClosedChestIcon: {fileID: 0}
+  gameLostCollectedXPText: {fileID: 0}
+  gameLostCollectedMeatText: {fileID: 0}
+  gameLostCollectedCoinText: {fileID: 0}
+  towerDestroyedCountDownText: {fileID: 0}
+  loseGameButton: {fileID: 0}
+  useGemToReviveTowerButton: {fileID: 0}
 --- !u!1 &5158826965148975779
 GameObject:
   m_ObjectHideFlags: 0
@@ -13759,7 +13805,7 @@ GameObject:
   - component: {fileID: 6843444265339034631}
   - component: {fileID: 4581551497415672987}
   m_Layer: 5
-  m_Name: InstantReviveButton
+  m_Name: RewardedReviveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19743,6 +19789,7 @@ GameObject:
   - component: {fileID: 8189562802011389096}
   - component: {fileID: 6901194144174019854}
   - component: {fileID: 6471536465074496205}
+  - component: {fileID: 8643752987566684565}
   m_Layer: 5
   m_Name: WaveWonPanel
   m_TagString: Untagged
@@ -19818,6 +19865,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8643752987566684565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7974713070702253417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949404669df04fb428c69579129305e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalApplyEarningsButton: {fileID: 0}
+  rewardedApplyEarningsButton: {fileID: 0}
+  waveWonOpenedChestIcon: {fileID: 0}
+  waveWonClosedChestIcon: {fileID: 0}
+  waveWoncollectedXPText: {fileID: 0}
+  waveWoncollectedCoinText: {fileID: 0}
+  waveWoncollectedMeatText: {fileID: 0}
 --- !u!1 &8032571254133456676
 GameObject:
   m_ObjectHideFlags: 0
@@ -22591,6 +22657,7 @@ GameObject:
   - component: {fileID: 2829684829951810332}
   - component: {fileID: 1542024438527653013}
   - component: {fileID: 205394870912336119}
+  - component: {fileID: 8925642379887638333}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -22657,6 +22724,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8925642379887638333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9184030701331412617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4fc0f72f1f4b648852b1b6c47ffc33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &425736407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22723,6 +22802,10 @@ PrefabInstance:
     - target: {fileID: 7642387760338607189, guid: ab0bb3c789e1c498ea56d1593289dcbe, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642387760338607190, guid: ab0bb3c789e1c498ea56d1593289dcbe, type: 3}
+      propertyPath: m_Name
+      value: XP Text
       objectReference: {fileID: 0}
     - target: {fileID: 7642387760436363952, guid: ab0bb3c789e1c498ea56d1593289dcbe, type: 3}
       propertyPath: m_Value
@@ -23305,7 +23388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8522237334315339615, guid: 3d4bc9b74dbbf4afc8b81e74af06d1ab, type: 3}
       propertyPath: m_Name
-      value: Fx_Glow_04
+      value: PowerupVFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d4bc9b74dbbf4afc8b81e74af06d1ab, type: 3}

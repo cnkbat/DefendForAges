@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,9 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
     [SerializeField] private Slider healthBar;
     private float currentHealthBarDisappearTimer;
 
-    
+    [Header("Enabling Parts")]
+    [Tooltip("Boş olan yerlere boş obje yerleştirilebilir.")][SerializeField] private List<GameObject> enablingObjects;
+
     protected override void Awake()
     {
         base.Awake();
@@ -28,6 +31,7 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
         base.OnEnable();
         attackerDefenceBehaviour.OnDamageTaken += UpdateHealthBarValue;
         attackerDefenceStat.OnUpgraded += PlayUpgradeParticles;
+        attackerDefenceStat.OnUpgraded += EnableUpgradedObjects;
     }
 
     protected override void OnDisable()
@@ -35,8 +39,13 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
         base.OnDisable();
         attackerDefenceBehaviour.OnDamageTaken -= UpdateHealthBarValue;
         attackerDefenceStat.OnUpgraded -= PlayUpgradeParticles;
+        attackerDefenceStat.OnUpgraded -= EnableUpgradedObjects;
     }
 
+    private void Start()
+    {
+        EnableUpgradedObjects();
+    }
 
     protected virtual void Update()
     {
@@ -78,5 +87,22 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
     public void PlayUpgradeParticles()
     {
         PlayParticles(upgradeParticles);
+    }
+
+    public void EnableUpgradedObjects()
+    {
+        if (enablingObjects.Count == 0) return;
+
+
+        for (int i = 0; i < attackerDefenceStat.upgradeIndex; i++)
+        {
+            enablingObjects[i].SetActive(true);
+
+            Vector3 originalScale = enablingObjects[i].transform.localScale;
+            enablingObjects[i].transform.localScale = Vector3.zero;
+
+            enablingObjects[i].transform.DOScale(originalScale, 0.8f).SetEase(Ease.OutElastic);
+        }
+
     }
 }

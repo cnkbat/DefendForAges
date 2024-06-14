@@ -11,14 +11,16 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     UpgradeUIHandler upgradeUIHandler;
 
+    [Header("Recovery")]
+    [SerializeField] private float enableRecoveryTimer;
+    [SerializeField] private float recoveryTimer = 2;
+    private float currentEnableRecoveryTimer;
+    private float currentRecoveryTimer;
+    bool isRecoveryActive;
+
     [Header("Events")]
     public Action OnTowerDestroyed;
-
-    [Header("Recovery")]
-    [SerializeField] private float recoveryTimer;
-    private float currentRecoveryTimer;
-
-    bool isRecoveryActive;
+    public Action OnRecoveryDone;
 
     private void Awake()
     {
@@ -38,7 +40,9 @@ public class TowerBehaviour : AttackerDefenceBehaviour
         gameManager.OnWaveStarted += DisableUpgrader;
         playerStats.OnWaveWon += EnableUpgrader;
 
+        ResetEnableRecoveryTimer();
         ResetRecoveryTimer();
+
     }
 
     protected override void OnDisable()
@@ -61,21 +65,32 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     protected override void Update()
     {
+        if (isDestroyed) return;
+        if(gameManager.isGameFreezed) return;
+        
         base.Update();
 
+        if (currentHealth >= towerStats.GetMaxHealth())
+        {
+            return;
+        }
 
         if (isRecoveryActive)
         {
-            if (currentHealth <= towerStats.GetMaxHealth())
+            recoveryTimer -= Time.deltaTime;
+
+            if (recoveryTimer < 0)
             {
-                currentHealth += towerStats.GetRecovery() * Time.deltaTime;
+                currentHealth += towerStats.GetRecovery();
+                OnRecoveryDone?.Invoke();
+                ResetRecoveryTimer();
             }
         }
         else
         {
-            currentRecoveryTimer -= Time.deltaTime;
+            currentEnableRecoveryTimer -= Time.deltaTime;
 
-            if (currentRecoveryTimer <= 0)
+            if (currentEnableRecoveryTimer <= 0)
             {
                 isRecoveryActive = true;
             }
@@ -87,14 +102,19 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     {
         base.TakeDamage(dmg);
 
-        ResetRecoveryTimer();
+        ResetEnableRecoveryTimer();
         // haptic oynat
         // feeli ver.
     }
 
-    private void ResetRecoveryTimer()
+    private void ResetEnableRecoveryTimer()
     {
         isRecoveryActive = false;
+        currentEnableRecoveryTimer = enableRecoveryTimer;
+    }
+
+    private void ResetRecoveryTimer()
+    {
         currentRecoveryTimer = recoveryTimer;
     }
 

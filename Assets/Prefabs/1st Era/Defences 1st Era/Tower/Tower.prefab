@@ -771,10 +771,8 @@ GameObject:
   - component: {fileID: 5406147970598836803}
   - component: {fileID: 4472078763875740996}
   - component: {fileID: 4472078763875740995}
-  - component: {fileID: 1124860432}
   - component: {fileID: 1384173887}
-  - component: {fileID: 6003985}
-  - component: {fileID: 8783677900583411596}
+  - component: {fileID: 765621396888220632}
   - component: {fileID: 1384173888}
   - component: {fileID: 3836626911777969820}
   m_Layer: 7
@@ -887,19 +885,8 @@ MonoBehaviour:
   isRepairable: 0
   asset: {fileID: 3815310486027179043}
   feelFeedBacks: {fileID: 8522963525274409092}
+  enableRecoveryTimer: 0
   recoveryTimer: 3
---- !u!114 &1124860432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4472078763875740990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ceef43dafcdde84f8adc733f42101d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1384173887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,7 +899,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ceef43dafcdde84f8adc733f42101d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6003985
+  lookAtRange: 0
+--- !u!114 &765621396888220632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -921,19 +909,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4472078763875740990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ceef43dafcdde84f8adc733f42101d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8783677900583411596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4472078763875740990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56b9c4aae0dcad4da0c89ec71fdefc1, type: 3}
+  m_Script: {fileID: 11500000, guid: befc74ccb4c9b2949acca0ad4c7a98b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyParticles:
@@ -943,7 +919,10 @@ MonoBehaviour:
   - {fileID: 6362634768760504987}
   - {fileID: 4800709503023885582}
   - {fileID: 2900172824564027333}
+  repairParticles: []
+  upgradeParticles: []
   healthBar: {fileID: 7670766520213689032}
+  recoveryParticles: []
 --- !u!114 &1384173888
 MonoBehaviour:
   m_ObjectHideFlags: 0

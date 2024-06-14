@@ -19,7 +19,7 @@ public class AttackerDefenceBehaviour : DefencesBehaviourBase
         attackerDefenceStat = GetComponent<AttackerDefenceStat>();
         base.OnEnable();
         ResetAttackSpeed();
-
+        
         playerStats.OnWaveWon += CheckForUpgradeable;
     }
 

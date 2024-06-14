@@ -203,14 +203,14 @@ public class UpgradePanel : PanelBase
             UpdateUpgradeText(maxHealthCurrentText, maxHealthVisualValues[playerStats.maxHealthIndex]);
             UpdateUpgradeText(maxHealthNextText, maxHealthVisualValues[playerStats.maxHealthIndex + 1]);
             UpdateUpgradeText(maxHealthCostText, playerStats.GetPlayerSO().GetMaxHealthCosts()[playerStats.maxHealthIndex].ToString());
-            UpdateUpgradeText(maxHealthLevelText, (playerStats.maxHealthIndex + 1).ToString());
+            UpdateUpgradeText(maxHealthLevelText, (playerStats.maxHealthIndex + 1).ToString() + " / " + maxHealthVisualValues.Count.ToString());
         }
         else
         {
             UpdateUpgradeText(maxHealthCurrentText, maxHealthVisualValues[playerStats.maxHealthIndex]);
             UpdateUpgradeText(maxHealthNextText, "MAX");
             UpdateUpgradeText(maxHealthCostText, "MAX");
-            UpdateUpgradeText(maxHealthLevelText, (playerStats.maxHealthIndex + 1).ToString());
+            UpdateUpgradeText(maxHealthLevelText, (playerStats.maxHealthIndex + 1).ToString() + " / " + maxHealthVisualValues.Count.ToString());
         }
 
     }
@@ -223,14 +223,14 @@ public class UpgradePanel : PanelBase
             UpdateUpgradeText(powerupDurCurrentText, powerupDurVisualValues[playerStats.powerupDurIndex]);
             UpdateUpgradeText(powerupDurNextText, powerupDurVisualValues[playerStats.powerupDurIndex + 1]);
             UpdateUpgradeText(powerupDurCostText, playerStats.GetPlayerSO().GetPowerupDurCosts()[playerStats.powerupDurIndex].ToString());
-            UpdateUpgradeText(powerupDurLevelText, (playerStats.powerupDurIndex + 1).ToString());
+            UpdateUpgradeText(powerupDurLevelText, (playerStats.powerupDurIndex + 1).ToString() + " / " + powerupDurVisualValues.Count.ToString());
         }
         else
         {
             UpdateUpgradeText(powerupDurCurrentText, powerupDurVisualValues[playerStats.powerupDurIndex]);
             UpdateUpgradeText(powerupDurNextText, "MAX");
             UpdateUpgradeText(powerupDurCostText, "MAX");
-            UpdateUpgradeText(powerupDurLevelText, (playerStats.powerupDurIndex + 1).ToString());
+            UpdateUpgradeText(powerupDurLevelText, (playerStats.powerupDurIndex + 1).ToString() + " / " + powerupDurVisualValues.Count.ToString());
         }
     }
 
@@ -242,14 +242,14 @@ public class UpgradePanel : PanelBase
             UpdateUpgradeText(movementSpeedCurrentText, movementSpeedVisualValues[playerStats.movementSpeedIndex]);
             UpdateUpgradeText(movementSpeedNextText, movementSpeedVisualValues[playerStats.movementSpeedIndex + 1]);
             UpdateUpgradeText(movementSpeedCostText, playerStats.GetPlayerSO().GetMovementSpeedCosts()[playerStats.movementSpeedIndex].ToString());
-            UpdateUpgradeText(movementSpeedLevelText, (playerStats.movementSpeedIndex + 1).ToString());
+            UpdateUpgradeText(movementSpeedLevelText, (playerStats.movementSpeedIndex + 1).ToString() + " / " + movementSpeedVisualValues.Count.ToString());
         }
         else
         {
             UpdateUpgradeText(movementSpeedCurrentText, movementSpeedVisualValues[playerStats.movementSpeedIndex]);
             UpdateUpgradeText(movementSpeedNextText, "MAX");
             UpdateUpgradeText(movementSpeedCostText, "MAX");
-            UpdateUpgradeText(movementSpeedLevelText, (playerStats.movementSpeedIndex + 1).ToString());
+            UpdateUpgradeText(movementSpeedLevelText, (playerStats.movementSpeedIndex + 1).ToString() + " / " + movementSpeedVisualValues.Count.ToString());
         }
 
     }
@@ -262,14 +262,14 @@ public class UpgradePanel : PanelBase
             UpdateUpgradeText(lifeStealCurrentText, lifeStealVisualValues[playerStats.lifeStealIndex]);
             UpdateUpgradeText(lifeStealNextText, lifeStealVisualValues[playerStats.lifeStealIndex + 1]);
             UpdateUpgradeText(lifeStealCostText, playerStats.GetPlayerSO().GetLifeStealCosts()[playerStats.lifeStealIndex].ToString());
-            UpdateUpgradeText(lifeStealLevelText, (playerStats.lifeStealIndex + 1).ToString());
+            UpdateUpgradeText(lifeStealLevelText, (playerStats.lifeStealIndex + 1).ToString() + " / " + lifeStealVisualValues.Count.ToString());
         }
         else
         {
             UpdateUpgradeText(lifeStealCurrentText, lifeStealVisualValues[playerStats.lifeStealIndex]);
             UpdateUpgradeText(lifeStealNextText, "MAX");
             UpdateUpgradeText(lifeStealCostText, "MAX");
-            UpdateUpgradeText(lifeStealLevelText, (playerStats.lifeStealIndex + 1).ToString());
+            UpdateUpgradeText(lifeStealLevelText, (playerStats.lifeStealIndex + 1).ToString() + " / " + lifeStealVisualValues.Count.ToString());
         }
 
     }
@@ -282,14 +282,14 @@ public class UpgradePanel : PanelBase
             UpdateUpgradeText(damageCurrentText, damageVisualValues[playerStats.damageIndex]);
             UpdateUpgradeText(damageNextText, damageVisualValues[playerStats.damageIndex + 1]);
             UpdateUpgradeText(damageCostText, playerStats.GetPlayerSO().GetDamageCosts()[playerStats.damageIndex].ToString());
-            UpdateUpgradeText(damageLevelText, (playerStats.damageIndex + 1).ToString());
+            UpdateUpgradeText(damageLevelText, (playerStats.damageIndex + 1).ToString() + " / " + damageVisualValues.Count.ToString());
         }
         else
         {
             UpdateUpgradeText(damageCurrentText, damageVisualValues[playerStats.damageIndex]);
             UpdateUpgradeText(damageNextText, "MAX");
             UpdateUpgradeText(damageCostText, "MAX");
-            UpdateUpgradeText(damageLevelText, (playerStats.damageIndex + 1).ToString());
+            UpdateUpgradeText(damageLevelText, (playerStats.damageIndex + 1).ToString() + " / " + damageVisualValues.Count.ToString());
         }
     }
 
@@ -300,14 +300,14 @@ public class UpgradePanel : PanelBase
             UpdateUpgradeText(rangeCurrentText, rangeVisualValues[playerStats.rangeIndex]);
             UpdateUpgradeText(rangeNextText, rangeVisualValues[playerStats.rangeIndex + 1]);
             UpdateUpgradeText(rangeCostText, playerStats.GetPlayerSO().GetRangeCosts()[playerStats.rangeIndex].ToString());
-            UpdateUpgradeText(rangeLevelText, (playerStats.rangeIndex + 1).ToString());
+            UpdateUpgradeText(rangeLevelText, (playerStats.rangeIndex + 1).ToString() + " / " + rangeVisualValues.Count.ToString());
         }
         else
         {
             UpdateUpgradeText(rangeCurrentText, rangeVisualValues[playerStats.rangeIndex]);
             UpdateUpgradeText(rangeNextText, "MAX");
             UpdateUpgradeText(rangeCostText, "MAX");
-            UpdateUpgradeText(rangeLevelText, (playerStats.rangeIndex + 1).ToString());
+            UpdateUpgradeText(rangeLevelText, (playerStats.rangeIndex + 1).ToString() + " / " + rangeVisualValues.Count.ToString());
         }
     }
 
@@ -319,18 +319,17 @@ public class UpgradePanel : PanelBase
             UpdateUpgradeText(attackSpeedCurrentText, attackSpeedVisualValues[playerStats.attackSpeedIndex]);
             UpdateUpgradeText(attackSpeedNextText, attackSpeedVisualValues[playerStats.attackSpeedIndex + 1]);
             UpdateUpgradeText(attackSpeedCostText, playerStats.GetPlayerSO().GetAttackSpeedCosts()[playerStats.attackSpeedIndex].ToString());
-            UpdateUpgradeText(attackSpeedLevelText, (playerStats.attackSpeedIndex + 1).ToString());
+            UpdateUpgradeText(attackSpeedLevelText, (playerStats.attackSpeedIndex + 1).ToString() + "/" + attackSpeedVisualValues.Count.ToString());
         }
         else
         {
             UpdateUpgradeText(attackSpeedCurrentText, attackSpeedVisualValues[playerStats.attackSpeedIndex]);
             UpdateUpgradeText(attackSpeedNextText, "MAX");
             UpdateUpgradeText(attackSpeedCostText, "MAX");
-            UpdateUpgradeText(attackSpeedLevelText, (playerStats.attackSpeedIndex + 1).ToString());
+            UpdateUpgradeText(attackSpeedLevelText, (playerStats.attackSpeedIndex + 1).ToString() + "/" + attackSpeedVisualValues.Count.ToString());
         }
 
     }
-
 
     #endregion
 }

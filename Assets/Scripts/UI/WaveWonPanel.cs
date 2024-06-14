@@ -11,8 +11,6 @@ public class WaveWonPanel : PanelBase
     [Header("Earnings")]
     [SerializeField] private Button normalApplyEarningsButton;
     [SerializeField] private Button rewardedApplyEarningsButton;
-    [SerializeField] private GameObject waveWonOpenedChestIcon;
-    [SerializeField] private GameObject waveWonClosedChestIcon;
     [SerializeField] private TMP_Text waveWoncollectedXPText;
     [SerializeField] private TMP_Text waveWoncollectedCoinText;
     [SerializeField] private TMP_Text waveWoncollectedMeatText;
@@ -46,13 +44,9 @@ public class WaveWonPanel : PanelBase
 
     public void EnableWaveWonUI()
     {
-        waveWonOpenedChestIcon.SetActive(false);
-        waveWonClosedChestIcon.SetActive(true);
-
         waveWoncollectedXPText.transform.parent.gameObject.SetActive(false);
         waveWoncollectedCoinText.transform.parent.gameObject.SetActive(false);
         waveWoncollectedMeatText.transform.parent.gameObject.SetActive(false);
-
     }
     IEnumerator DisableWaveWonUI()
     {
@@ -64,9 +58,6 @@ public class WaveWonPanel : PanelBase
 
     private void ActivateAndUpdateWaveWonEarningsTexts(int meatValue, int coinValue, int xpValue)
     {
-        waveWonOpenedChestIcon.SetActive(true);
-        waveWonClosedChestIcon.SetActive(false);
-
         waveWoncollectedXPText.transform.parent.gameObject.SetActive(true);
         waveWoncollectedCoinText.transform.parent.gameObject.SetActive(true);
         waveWoncollectedMeatText.transform.parent.gameObject.SetActive(true);
@@ -104,7 +95,6 @@ public class WaveWonPanel : PanelBase
 
         StartCoroutine(DisableWaveWonUI());
     }
-
 
 
     #endregion

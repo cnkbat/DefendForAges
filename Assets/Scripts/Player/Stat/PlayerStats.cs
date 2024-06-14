@@ -44,7 +44,7 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private float maxHealth;
 
     [Header("Death")]
-    public PlayerDeathHandler playerDeathHandler;
+    [HideInInspector] public PlayerDeathHandler playerDeathHandler;
 
     [Header("Power Up")]
     [SerializeField] private float maxPowerUpFillValue;
@@ -142,7 +142,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void AttemptUpgradeStat(int indexToUpgrade, List<int> cost, CurrencyType currencyType, RPGUpgradesType upgradeType = RPGUpgradesType.empty)
     {
-        if (indexToUpgrade + 1 >= cost.Count) return; // geçici max sistemi tex değişecek falan filan.
+        if (indexToUpgrade + 1 >= cost.Count) return;
 
         if (currencyType == CurrencyType.money)
         {

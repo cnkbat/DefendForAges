@@ -318,11 +318,76 @@ MonoBehaviour:
   maxHealthCostText: {fileID: 2935170458859733730}
   maxHealthLevelText: {fileID: 4012257236513452992}
   dualWeaponCostText: {fileID: 135899125067818089}
-  attackSpeedVisualValues: []
-  damageVisualValues: []
-  rangeVisualValues: []
-  lifeStealVisualValues: []
-  movementSpeedVisualValues: []
+  attackSpeedVisualValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  damageVisualValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  rangeVisualValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  lifeStealVisualValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  movementSpeedVisualValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  maxHealthVisualValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  powerupDurVisualValues:
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
 --- !u!1 &254284220
 GameObject:
   m_ObjectHideFlags: 0

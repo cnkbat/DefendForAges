@@ -11,7 +11,8 @@ public class DefencesVisualHandler : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] private List<ParticleSystem> destroyParticles = new List<ParticleSystem>();
-
+    [SerializeField] private List<ParticleSystem> repairParticles = new List<ParticleSystem>();
+    
     protected virtual void Awake()
     {
         defencesBehaviourBase = GetComponent<DefencesBehaviourBase>();
@@ -22,13 +23,14 @@ public class DefencesVisualHandler : MonoBehaviour
         gameManager = GameManager.instance;
 
         defencesBehaviourBase.OnTargetDestroyed += PlayDestroyParticles;
+        defencesBehaviourBase.OnTargetRevived += PlayRepairParticles;
     }
 
     protected virtual void OnDisable()
     {
         defencesBehaviourBase.OnTargetDestroyed -= PlayDestroyParticles;
+        defencesBehaviourBase.OnTargetRevived -= PlayRepairParticles;
     }
-
 
     #region VFX
     public void PlayParticles(List<ParticleSystem> particles)
@@ -48,6 +50,11 @@ public class DefencesVisualHandler : MonoBehaviour
     public void PlayDestroyParticles()
     {
         PlayParticles(destroyParticles);
+    }
+
+    public void PlayRepairParticles()
+    {
+        PlayParticles(repairParticles);
     }
 
     #endregion

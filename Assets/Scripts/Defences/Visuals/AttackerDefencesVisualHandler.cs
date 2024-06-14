@@ -9,10 +9,13 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
     private AttackerDefenceBehaviour attackerDefenceBehaviour;
     private AttackerDefenceStat attackerDefenceStat;
 
+    [SerializeField] private List<ParticleSystem> upgradeParticles = new List<ParticleSystem>();
+
     [Header("Health Bar")]
     [SerializeField] private Slider healthBar;
     private float currentHealthBarDisappearTimer;
 
+    
     protected override void Awake()
     {
         base.Awake();
@@ -24,12 +27,14 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
     {
         base.OnEnable();
         attackerDefenceBehaviour.OnDamageTaken += UpdateHealthBarValue;
+        attackerDefenceStat.OnUpgraded += PlayUpgradeParticles;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
         attackerDefenceBehaviour.OnDamageTaken -= UpdateHealthBarValue;
+        attackerDefenceStat.OnUpgraded -= PlayUpgradeParticles;
     }
 
 
@@ -69,4 +74,9 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
     }
 
     #endregion
+
+    public void PlayUpgradeParticles()
+    {
+        PlayParticles(upgradeParticles);
+    }
 }

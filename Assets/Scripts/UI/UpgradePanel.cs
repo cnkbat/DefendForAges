@@ -71,11 +71,13 @@ public class UpgradePanel : PanelBase
     [SerializeField] private TMP_Text dualWeaponCostText;
 
     [Header("!--- Upgrade Text Visuals ---!")]
-    [SerializeField] private List<float> attackSpeedVisualValues;
-    [SerializeField] private List<float> damageVisualValues;
-    [SerializeField] private List<float> rangeVisualValues;
-    [SerializeField] private List<float> lifeStealVisualValues;
-    [SerializeField] private List<float> movementSpeedVisualValues;
+    [SerializeField] private List<string> attackSpeedVisualValues;
+    [SerializeField] private List<string> damageVisualValues;
+    [SerializeField] private List<string> rangeVisualValues;
+    [SerializeField] private List<string> lifeStealVisualValues;
+    [SerializeField] private List<string> movementSpeedVisualValues;
+    [SerializeField] private List<string> maxHealthVisualValues;
+    [SerializeField] private List<string> powerupDurVisualValues;
 
     #endregion
 
@@ -175,7 +177,7 @@ public class UpgradePanel : PanelBase
         }
     }
 
-    private void UpdateUpgradeText(TMP_Text textToUpdate, float value, string newString = null)
+    private void UpdateUpgradeText(TMP_Text textToUpdate, string value, string newString = null)
     {
         if (textToUpdate == null)
         {
@@ -196,62 +198,137 @@ public class UpgradePanel : PanelBase
     // MAX HEALTH
     private void UpdateMaxHealthTexts()
     {
-        UpdateUpgradeText(maxHealthCurrentText, playerStats.GetPlayerSO().GetMaxHealthValues()[playerStats.maxHealthIndex]);
-        UpdateUpgradeText(maxHealthNextText, playerStats.GetPlayerSO().GetMaxHealthValues()[playerStats.maxHealthIndex + 1]);
-        UpdateUpgradeText(maxHealthCostText, playerStats.GetPlayerSO().GetMaxHealthCosts()[playerStats.maxHealthIndex]);
-        UpdateUpgradeText(maxHealthLevelText, playerStats.maxHealthIndex + 1);
+        if (playerStats.GetPlayerSO().GetMaxHealthValues().Count - 1 > playerStats.maxHealthIndex)
+        {
+            UpdateUpgradeText(maxHealthCurrentText, maxHealthVisualValues[playerStats.maxHealthIndex]);
+            UpdateUpgradeText(maxHealthNextText, maxHealthVisualValues[playerStats.maxHealthIndex + 1]);
+            UpdateUpgradeText(maxHealthCostText, playerStats.GetPlayerSO().GetMaxHealthCosts()[playerStats.maxHealthIndex].ToString());
+            UpdateUpgradeText(maxHealthLevelText, (playerStats.maxHealthIndex + 1).ToString());
+        }
+        else
+        {
+            UpdateUpgradeText(maxHealthCurrentText, maxHealthVisualValues[playerStats.maxHealthIndex]);
+            UpdateUpgradeText(maxHealthNextText, "MAX");
+            UpdateUpgradeText(maxHealthCostText, "MAX");
+            UpdateUpgradeText(maxHealthLevelText, (playerStats.maxHealthIndex + 1).ToString());
+        }
+
     }
 
     //POWER UP DUR
     private void UpdatePowerupDurTexts()
     {
-        UpdateUpgradeText(powerupDurCurrentText, playerStats.GetPlayerSO().GetPowerupDurValues()[playerStats.powerupDurIndex]);
-        UpdateUpgradeText(powerupDurNextText, playerStats.GetPlayerSO().GetPowerupDurValues()[playerStats.powerupDurIndex + 1]);
-        UpdateUpgradeText(powerupDurCostText, playerStats.GetPlayerSO().GetPowerupDurCosts()[playerStats.powerupDurIndex]);
-        UpdateUpgradeText(powerupDurLevelText, playerStats.powerupDurIndex + 1);
+        if (playerStats.GetPlayerSO().GetPowerupDurValues().Count - 1 > playerStats.powerupDurIndex)
+        {
+            UpdateUpgradeText(powerupDurCurrentText, powerupDurVisualValues[playerStats.powerupDurIndex]);
+            UpdateUpgradeText(powerupDurNextText, powerupDurVisualValues[playerStats.powerupDurIndex + 1]);
+            UpdateUpgradeText(powerupDurCostText, playerStats.GetPlayerSO().GetPowerupDurCosts()[playerStats.powerupDurIndex].ToString());
+            UpdateUpgradeText(powerupDurLevelText, (playerStats.powerupDurIndex + 1).ToString());
+        }
+        else
+        {
+            UpdateUpgradeText(powerupDurCurrentText, powerupDurVisualValues[playerStats.powerupDurIndex]);
+            UpdateUpgradeText(powerupDurNextText, "MAX");
+            UpdateUpgradeText(powerupDurCostText, "MAX");
+            UpdateUpgradeText(powerupDurLevelText, (playerStats.powerupDurIndex + 1).ToString());
+        }
     }
 
     // MOVEMENT SPEED
     private void UpdateMovementSpeedTexts()
     {
-        UpdateUpgradeText(movementSpeedCurrentText, movementSpeedVisualValues[playerStats.movementSpeedIndex]);
-        UpdateUpgradeText(movementSpeedNextText, movementSpeedVisualValues[playerStats.movementSpeedIndex + 1]);
-        UpdateUpgradeText(movementSpeedCostText, playerStats.GetPlayerSO().GetMovementSpeedCosts()[playerStats.movementSpeedIndex]);
-        UpdateUpgradeText(movementSpeedLevelText, playerStats.movementSpeedIndex + 1);
+        if (playerStats.GetPlayerSO().GetMovementSpeedValues().Count - 1 > playerStats.movementSpeedIndex)
+        {
+            UpdateUpgradeText(movementSpeedCurrentText, movementSpeedVisualValues[playerStats.movementSpeedIndex]);
+            UpdateUpgradeText(movementSpeedNextText, movementSpeedVisualValues[playerStats.movementSpeedIndex + 1]);
+            UpdateUpgradeText(movementSpeedCostText, playerStats.GetPlayerSO().GetMovementSpeedCosts()[playerStats.movementSpeedIndex].ToString());
+            UpdateUpgradeText(movementSpeedLevelText, (playerStats.movementSpeedIndex + 1).ToString());
+        }
+        else
+        {
+            UpdateUpgradeText(movementSpeedCurrentText, movementSpeedVisualValues[playerStats.movementSpeedIndex]);
+            UpdateUpgradeText(movementSpeedNextText, "MAX");
+            UpdateUpgradeText(movementSpeedCostText, "MAX");
+            UpdateUpgradeText(movementSpeedLevelText, (playerStats.movementSpeedIndex + 1).ToString());
+        }
+
     }
 
     //  LIFE STEAL
     private void UpdateLifeStealTexts()
     {
-        UpdateUpgradeText(lifeStealCurrentText, lifeStealVisualValues[playerStats.lifeStealIndex]);
-        UpdateUpgradeText(lifeStealNextText, lifeStealVisualValues[playerStats.lifeStealIndex + 1]);
-        UpdateUpgradeText(lifeStealCostText, playerStats.GetPlayerSO().GetLifeStealCosts()[playerStats.lifeStealIndex]);
-        UpdateUpgradeText(lifeStealLevelText, playerStats.lifeStealIndex + 1);
+        if (playerStats.GetPlayerSO().GetLifeStealValues().Count - 1 > playerStats.lifeStealIndex)
+        {
+            UpdateUpgradeText(lifeStealCurrentText, lifeStealVisualValues[playerStats.lifeStealIndex]);
+            UpdateUpgradeText(lifeStealNextText, lifeStealVisualValues[playerStats.lifeStealIndex + 1]);
+            UpdateUpgradeText(lifeStealCostText, playerStats.GetPlayerSO().GetLifeStealCosts()[playerStats.lifeStealIndex].ToString());
+            UpdateUpgradeText(lifeStealLevelText, (playerStats.lifeStealIndex + 1).ToString());
+        }
+        else
+        {
+            UpdateUpgradeText(lifeStealCurrentText, lifeStealVisualValues[playerStats.lifeStealIndex]);
+            UpdateUpgradeText(lifeStealNextText, "MAX");
+            UpdateUpgradeText(lifeStealCostText, "MAX");
+            UpdateUpgradeText(lifeStealLevelText, (playerStats.lifeStealIndex + 1).ToString());
+        }
+
     }
 
     // DAMAGE
     private void UpdateDamageTexts()
     {
-        UpdateUpgradeText(damageCurrentText, damageVisualValues[playerStats.damageIndex]);
-        UpdateUpgradeText(damageNextText, damageVisualValues[playerStats.damageIndex + 1]);
-        UpdateUpgradeText(damageCostText, playerStats.GetPlayerSO().GetDamageCosts()[playerStats.damageIndex]);
-        UpdateUpgradeText(damageLevelText, playerStats.damageIndex + 1);
+        if (playerStats.GetPlayerSO().GetDamageValues().Count - 1 > playerStats.damageIndex)
+        {
+            UpdateUpgradeText(damageCurrentText, damageVisualValues[playerStats.damageIndex]);
+            UpdateUpgradeText(damageNextText, damageVisualValues[playerStats.damageIndex + 1]);
+            UpdateUpgradeText(damageCostText, playerStats.GetPlayerSO().GetDamageCosts()[playerStats.damageIndex].ToString());
+            UpdateUpgradeText(damageLevelText, (playerStats.damageIndex + 1).ToString());
+        }
+        else
+        {
+            UpdateUpgradeText(damageCurrentText, damageVisualValues[playerStats.damageIndex]);
+            UpdateUpgradeText(damageNextText, "MAX");
+            UpdateUpgradeText(damageCostText, "MAX");
+            UpdateUpgradeText(damageLevelText, (playerStats.damageIndex + 1).ToString());
+        }
     }
+
     private void UpdateRangeTexts()
     {
-        UpdateUpgradeText(rangeCurrentText, rangeVisualValues[playerStats.rangeIndex]);
-        UpdateUpgradeText(rangeNextText, rangeVisualValues[playerStats.rangeIndex + 1]);
-        UpdateUpgradeText(rangeCostText, playerStats.GetPlayerSO().GetRangeCosts()[playerStats.rangeIndex]);
-        UpdateUpgradeText(rangeLevelText, playerStats.rangeIndex + 1);
+        if (playerStats.GetPlayerSO().GetRangeValues().Count - 1 > playerStats.rangeIndex)
+        {
+            UpdateUpgradeText(rangeCurrentText, rangeVisualValues[playerStats.rangeIndex]);
+            UpdateUpgradeText(rangeNextText, rangeVisualValues[playerStats.rangeIndex + 1]);
+            UpdateUpgradeText(rangeCostText, playerStats.GetPlayerSO().GetRangeCosts()[playerStats.rangeIndex].ToString());
+            UpdateUpgradeText(rangeLevelText, (playerStats.rangeIndex + 1).ToString());
+        }
+        else
+        {
+            UpdateUpgradeText(rangeCurrentText, rangeVisualValues[playerStats.rangeIndex]);
+            UpdateUpgradeText(rangeNextText, "MAX");
+            UpdateUpgradeText(rangeCostText, "MAX");
+            UpdateUpgradeText(rangeLevelText, (playerStats.rangeIndex + 1).ToString());
+        }
     }
 
     // ATTACK SPEED
     private void UpdateAttackSpeedTexts()
     {
-        UpdateUpgradeText(attackSpeedCurrentText, attackSpeedVisualValues[playerStats.attackSpeedIndex]);
-        UpdateUpgradeText(attackSpeedNextText, attackSpeedVisualValues[playerStats.attackSpeedIndex + 1]);
-        UpdateUpgradeText(attackSpeedCostText, playerStats.GetPlayerSO().GetAttackSpeedCosts()[playerStats.attackSpeedIndex]);
-        UpdateUpgradeText(attackSpeedLevelText, playerStats.attackSpeedIndex + 1);
+        if (playerStats.GetPlayerSO().GetAttackSpeedValues().Count - 1 > playerStats.attackSpeedIndex)
+        {
+            UpdateUpgradeText(attackSpeedCurrentText, attackSpeedVisualValues[playerStats.attackSpeedIndex]);
+            UpdateUpgradeText(attackSpeedNextText, attackSpeedVisualValues[playerStats.attackSpeedIndex + 1]);
+            UpdateUpgradeText(attackSpeedCostText, playerStats.GetPlayerSO().GetAttackSpeedCosts()[playerStats.attackSpeedIndex].ToString());
+            UpdateUpgradeText(attackSpeedLevelText, (playerStats.attackSpeedIndex + 1).ToString());
+        }
+        else
+        {
+            UpdateUpgradeText(attackSpeedCurrentText, attackSpeedVisualValues[playerStats.attackSpeedIndex]);
+            UpdateUpgradeText(attackSpeedNextText, "MAX");
+            UpdateUpgradeText(attackSpeedCostText, "MAX");
+            UpdateUpgradeText(attackSpeedLevelText, (playerStats.attackSpeedIndex + 1).ToString());
+        }
+
     }
 
 

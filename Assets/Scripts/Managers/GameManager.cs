@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
     AsyncLoader asyncLoader;
 
     [Header("Enemies")]
-    public List<GameObject> allSpawnedEnemies;
+    public List<EnemyDeathHandler> allSpawnedEnemies;
     private EnemySpawner activeWave;
     public bool canSpawnEnemy;
 

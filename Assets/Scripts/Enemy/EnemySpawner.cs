@@ -183,7 +183,7 @@ public class EnemySpawner : MonoBehaviour
                     NavMesh.SamplePosition(enemySpawnPoints[spawnIndex].position, out NavMeshHit hit, 3, 63);
 
 
-                    GameObject spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
+                    EnemyDeathHandler spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
                         hit.position, cityManager.transform);
 
                     OnEnemySpawned?.Invoke(localEnemySpawnCounter);

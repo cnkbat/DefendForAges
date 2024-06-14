@@ -33,7 +33,7 @@ public class LoadableBase : MonoBehaviour
     public Action OnRepairDone;
 
     private Vector3 startPos;
-    
+
     private void Awake()
     {
         startPos = transform.localPosition;
@@ -84,15 +84,15 @@ public class LoadableBase : MonoBehaviour
 
         if (currentCostLeftForUpgrade > 0)
         {
-            if (playerStats.DecrementMoney(10) && currentCostLeftForUpgrade >= 10)
-            {
-                currentCostLeftForUpgrade -= 10;
+            /*  if (playerStats.DecrementMoney(10) && currentCostLeftForUpgrade >= 10)
+              {
+                  currentCostLeftForUpgrade -= 10;
 
-                StartCoroutine(PlayCoinSpentAnimMultiple(10));
+                  StartCoroutine(PlayCoinSpentAnimMultiple(10));
 
-                UpdateMoneyTextAndSave();
-            }
-            else if (playerStats.DecrementMoney(1))
+                  UpdateMoneyTextAndSave();
+              } */
+            if (playerStats.DecrementMoney(1))
             {
                 currentCostLeftForUpgrade -= 1;
 

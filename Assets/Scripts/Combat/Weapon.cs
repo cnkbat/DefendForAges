@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
         objectPooler = ObjectPooler.instance;
     }
 
-    public void Attack(Transform bulletTarget, float damage, bool isPlayersBullet = false)
+    public void Attack(EnemyDeathHandler bulletTarget, float damage, bool isPlayersBullet = false)
     {
         if (!gameObject.activeSelf) return;
         objectPooler.SpawnBulletFromPool(bulletTag, tipOfWeapon.position, bulletTarget, damage, isPlayersBullet);

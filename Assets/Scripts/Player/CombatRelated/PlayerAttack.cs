@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     float currentAttackSpeed;
 
     [Tooltip("Events")]
-    public Action<Transform, float, bool> OnAttack;
+    public Action<EnemyDeathHandler, float, bool> OnAttack;
     public Action OnAttackAnimPlayNeeded;
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
     {
         playerStats = PlayerStats.instance;
         gameManager = GameManager.instance;
-        
+
         playerStats.OnWeaponActivision += EnableWeapons;
         playerStats.OnRangeSet += UpdateFireRange;
 
@@ -82,12 +82,15 @@ public class PlayerAttack : MonoBehaviour
         if (nearestEnemyFinder.GetNearestEnemy())
         {
             LookAtNearstEnemy(nearestEnemyFinder.GetNearestEnemy());
-
             currentAttackSpeed -= Time.deltaTime;
-            if (currentAttackSpeed <= 0)
+
+            if (nearestEnemyFinder.GetIsEnemyInFiringRange())
             {
-                OnAttackAnimPlayNeeded?.Invoke();
-                ResetAttackSpeed();
+                if (currentAttackSpeed <= 0)
+                {
+                    OnAttackAnimPlayNeeded?.Invoke();
+                    ResetAttackSpeed();
+                }
             }
         }
         else
@@ -103,7 +106,7 @@ public class PlayerAttack : MonoBehaviour
 
     #region  Finding Closest Enemy
 
-    private void LookAtNearstEnemy(Transform closestEnemy)
+    private void LookAtNearstEnemy(EnemyDeathHandler closestEnemy)
     {
 
         if (closestEnemy != null)

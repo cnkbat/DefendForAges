@@ -7,9 +7,10 @@ public class NearestEnemyFinder : MonoBehaviour
     GameManager gameManager;
 
     [Header("Nearest Enemy Finding")]
+    [SerializeField] private float lookAtRange;
     private float nearestEnemyDistance;
     float distance;
-    private Transform nearestEnemy;
+    private EnemyDeathHandler nearestEnemy;
     private float fireRange;
 
     void Start()
@@ -19,7 +20,7 @@ public class NearestEnemyFinder : MonoBehaviour
 
     #region Finding Nearest Enemy
 
-    public Transform GetNearestEnemy()
+    public EnemyDeathHandler GetNearestEnemy()
     {
 
         nearestEnemyDistance = 10000f;
@@ -33,14 +34,13 @@ public class NearestEnemyFinder : MonoBehaviour
 
                 if (distance < nearestEnemyDistance)
                 {
-                    nearestEnemy = gameManager.allSpawnedEnemies[i].transform;
+                    nearestEnemy = gameManager.allSpawnedEnemies[i];
 
                     nearestEnemyDistance = distance;
                 }
             }
 
-
-            if (nearestEnemyDistance < fireRange)
+            if (nearestEnemyDistance < fireRange + lookAtRange)
             {
                 return nearestEnemy;
             }
@@ -52,12 +52,22 @@ public class NearestEnemyFinder : MonoBehaviour
     #endregion
 
 
+    public bool GetIsEnemyInFiringRange()
+    {
+        if (nearestEnemyDistance < fireRange)
+        {
+            return true;
+        }
+        else return false;
+    }
+
     #region Getters & Setters
 
     public void SetFireRange(float value)
     {
         fireRange = value;
     }
+
     #endregion
 
 }

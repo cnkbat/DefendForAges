@@ -91,7 +91,7 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         OnRangedAttack?.Invoke(nearestEnemyFinder.GetNearestEnemy(), attackerDefenceStat.GetDamage(), false);
     }
 
-    private void LookAtNearstEnemy(Transform closestEnemy)
+    private void LookAtNearstEnemy(EnemyDeathHandler closestEnemy)
     {
         if (archerStickmans.Count <= 0) return;
 

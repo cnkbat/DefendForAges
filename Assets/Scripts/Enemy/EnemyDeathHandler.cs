@@ -121,7 +121,7 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
 
         ApplyPlayerEarnings();
 
-        gameManager.allSpawnedEnemies.Remove(gameObject);
+        gameManager.allSpawnedEnemies.Remove(this);
 
         PlayDropSystemAnimation();
 

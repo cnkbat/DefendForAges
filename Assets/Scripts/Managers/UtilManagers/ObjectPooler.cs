@@ -78,7 +78,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
     #region Enemy
 
-    public GameObject SpawnEnemyFromPool(string tag, Vector3 spawnPos, Transform newParent)
+    public EnemyDeathHandler SpawnEnemyFromPool(string tag, Vector3 spawnPos, Transform newParent)
     {
 
         if (!poolDictionary.ContainsKey(tag))
@@ -101,14 +101,14 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
         poolDictionary[tag].Enqueue(objectToSpawn);
 
-        return objectToSpawn;
+        return objectToSpawn.GetComponent<EnemyDeathHandler>();
     }
 
     #endregion
 
     #region Bullet
 
-    public GameObject SpawnBulletFromPool(string tag, Vector3 spawnPos, Transform fireTarget = null, float damage = 0, bool isPlayersBullet = false)
+    public GameObject SpawnBulletFromPool(string tag, Vector3 spawnPos, EnemyDeathHandler fireTarget = null, float damage = 0, bool isPlayersBullet = false)
     {
 
         if (!poolDictionary.ContainsKey(tag))

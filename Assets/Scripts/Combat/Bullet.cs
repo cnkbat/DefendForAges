@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
     [Tooltip("Yere düşüş için")][SerializeField] private float gravity;
 
     [Header("Targeting")]
-    private Transform target;
+    private EnemyDeathHandler target;
     private Vector3 targetPos;
 
     [Header("Damage")]
@@ -116,9 +116,9 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
         transform.position += Vector3.up * gravity;
 
-        if (target != null && target.gameObject.activeSelf && !targetReached)
+        if (target != null && target.gameObject.activeSelf && !targetReached && !target.GetIsDead())
         {
-            transform.position = Vector3.MoveTowards(transform.position,target.position, travelSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position,targetPos, travelSpeed * Time.deltaTime);
 
             if (transform.position == targetPos)
             {
@@ -179,7 +179,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
         damage = newDmg;
     }
 
-    public void SetTarget(Transform newTarget)
+    public void SetTarget(EnemyDeathHandler newTarget)
     {
         target = newTarget;
     }

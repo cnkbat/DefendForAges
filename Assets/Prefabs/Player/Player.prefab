@@ -792,6 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ceef43dafcdde84f8adc733f42101d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAtRange: 0
 --- !u!114 &4197459822926179250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af86f124526de0e4ea6cba199248f63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerTimer: 0.5
+  triggerTimer: 0.025
 --- !u!114 &5663665469081288338
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -89,7 +89,7 @@ MonoBehaviour:
     size: 100
   - tag: Coin
     prefab: {fileID: 6862255010080272240, guid: 09e16b85a63d0b14baf8bc9bf8b5c6c8, type: 3}
-    size: 100
+    size: 350
   - tag: Meat
     prefab: {fileID: 3067304085739547354, guid: 222d35fcc299a9d45be252d0f670826d, type: 3}
     size: 100

@@ -63,8 +63,8 @@ public class RagdollManager : MonoBehaviour
 
     private void EnableRagdoll()
     {
-        objectRigidBody.AddForce((100f * Vector3.up) + (-100f * transform.forward));
-        
+        objectRigidBody.AddForce((25f * Vector3.up) + (-100f * transform.forward));
+
         objectRigidBody.useGravity = false;
         objectRigidBody.velocity = Vector3.zero;
 

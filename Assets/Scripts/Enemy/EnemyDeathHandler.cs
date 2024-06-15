@@ -60,14 +60,6 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Kill();
-        }
-    }
-
     public void EnemySpawned()
     {
         earningsHolder = EarningsHolder.instance;
@@ -141,7 +133,7 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
         SetObjectLayer(deadLayerName);
 
         ragdollManager?.OnRagdollEnable?.Invoke();
-        
+
         StartCoroutine(KillEnemy());
     }
 

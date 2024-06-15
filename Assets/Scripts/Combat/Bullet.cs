@@ -32,6 +32,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
     [SerializeField] private ParticleSystem powerupedVFX;
     private bool targetReached = false;
 
+
     private void OnEnable()
     {
         playerStats = PlayerStats.instance;
@@ -118,7 +119,7 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
         if (target != null && target.gameObject.activeSelf && !targetReached && !target.GetIsDead())
         {
-            transform.position = Vector3.MoveTowards(transform.position,targetPos, travelSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, travelSpeed * Time.deltaTime);
 
             if (transform.position == targetPos)
             {

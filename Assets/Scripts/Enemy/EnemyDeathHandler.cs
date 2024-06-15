@@ -11,11 +11,11 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
     private GameManager gameManager;
     private PlayerStats playerStats;
     private EarningsHolder earningsHolder;
-
     private EnemyStats enemyStats;
     private EnemyMovement enemyMovement;
     private NavMeshAgent navMeshAgent;
     private MMFeedbacks feelFeedBacks;
+    private RagdollManager ragdollManager;
 
     [Header("States")]
     private bool isDead;
@@ -44,12 +44,14 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
 
     [Header("Visual Events")]
     public Action<int> OnDropAnimNeeded;
+
     private void Awake()
     {
         enemyStats = GetComponent<EnemyStats>();
         enemyMovement = GetComponent<EnemyMovement>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
+        ragdollManager = GetComponentInChildren<RagdollManager>();
         feelFeedBacks = GetComponentInChildren<MMFeedbacks>();
 
         if (feelFeedBacks != null)
@@ -58,11 +60,21 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Kill();
+        }
+    }
+
     public void EnemySpawned()
     {
         earningsHolder = EarningsHolder.instance;
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
+
+        ragdollManager?.OnRagdollDisable?.Invoke();
 
         isDead = false;
         boundRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
@@ -113,9 +125,8 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
     public void Kill()
     {
         isDead = true;
-        //canMove = false;
+
         navMeshAgent.speed = 0;
-        // OnMovementSpeedChanged.Invoke(0);
 
         ChangeEnemyMat(deadMat);
 
@@ -125,17 +136,20 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
 
         PlayDropSystemAnimation();
 
+
         OnDeath?.Invoke();
         SetObjectLayer(deadLayerName);
 
+        ragdollManager?.OnRagdollEnable?.Invoke();
+        
         StartCoroutine(KillEnemy());
     }
 
     private void ApplyPlayerEarnings()
     {
         playerStats.OnKillEnemy?.Invoke(enemyStats.GetPowerUpValue());
-        earningsHolder.OnTempEarningsUpdated?.Invoke(enemyStats.GetMoneyValue(), 
-            enemyStats.GetExpValue(),enemyStats.GetMeatValue());
+        earningsHolder.OnTempEarningsUpdated?.Invoke(enemyStats.GetMoneyValue(),
+            enemyStats.GetExpValue(), enemyStats.GetMeatValue());
     }
 
     private IEnumerator KillEnemy()

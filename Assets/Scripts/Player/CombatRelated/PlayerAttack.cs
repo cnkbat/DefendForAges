@@ -82,10 +82,11 @@ public class PlayerAttack : MonoBehaviour
         if (nearestEnemyFinder.GetNearestEnemy())
         {
             LookAtNearstEnemy(nearestEnemyFinder.GetNearestEnemy());
-            currentAttackSpeed -= Time.deltaTime;
+
 
             if (nearestEnemyFinder.GetIsEnemyInFiringRange())
             {
+                currentAttackSpeed -= Time.deltaTime;
                 if (currentAttackSpeed <= 0)
                 {
                     OnAttackAnimPlayNeeded?.Invoke();

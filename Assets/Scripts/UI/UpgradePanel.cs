@@ -18,6 +18,18 @@ public class UpgradePanel : PanelBase
     [SerializeField] private Button upgradeMaxHealthButton;
     [SerializeField] private Button upgradeDualWeaponButton;
 
+    [Header("Grayed Buttons")]
+    [SerializeField] private List<GameObject> grayButtonList;
+    [SerializeField] private GameObject asGrayButton;
+    [SerializeField] private GameObject damageGrayButton;
+    [SerializeField] private GameObject rangeGrayButton;
+    [SerializeField] private GameObject lifeStealGrayButton;
+    [SerializeField] private GameObject movementSpeedGrayButton;
+    [SerializeField] private GameObject powerupDurGrayButton;
+    [SerializeField] private GameObject maxHealthGrayButton;
+    [SerializeField] private GameObject dualWeaponGrayButton;
+
+
 
     #region Upgrading Texts Variables
 
@@ -137,10 +149,20 @@ public class UpgradePanel : PanelBase
         UpdateUpgradeUI();
     }
 
+    private void DisableGrayedButtons()
+    {
+        for (int i = 0; i < grayButtonList.Count; i++)
+        {
+            grayButtonList[i].SetActive(false);
+        }
+    }
+
     #region Upgrade
 
     private void UpdateUpgradeUI()
     {
+        DisableGrayedButtons();
+
         // ATTACK SPEED
         UpdateAttackSpeedTexts();
 
@@ -198,6 +220,15 @@ public class UpgradePanel : PanelBase
     // MAX HEALTH
     private void UpdateMaxHealthTexts()
     {
+        if (playerStats.GetPlayerSO().GetMaxHealthCosts()[playerStats.maxHealthIndex] <= playerStats.money)
+        {
+            maxHealthGrayButton.SetActive(false);
+        }
+        else
+        {
+            maxHealthGrayButton.SetActive(true);
+        }
+
         if (playerStats.GetPlayerSO().GetMaxHealthValues().Count - 1 > playerStats.maxHealthIndex)
         {
             UpdateUpgradeText(maxHealthCurrentText, maxHealthVisualValues[playerStats.maxHealthIndex]);
@@ -218,6 +249,15 @@ public class UpgradePanel : PanelBase
     //POWER UP DUR
     private void UpdatePowerupDurTexts()
     {
+        if (playerStats.GetPlayerSO().GetPowerupDurCosts()[playerStats.powerupDurIndex] <= playerStats.money)
+        {
+            powerupDurGrayButton.SetActive(false);
+        }
+        else
+        {
+            powerupDurGrayButton.SetActive(true);
+        }
+
         if (playerStats.GetPlayerSO().GetPowerupDurValues().Count - 1 > playerStats.powerupDurIndex)
         {
             UpdateUpgradeText(powerupDurCurrentText, powerupDurVisualValues[playerStats.powerupDurIndex]);
@@ -237,6 +277,15 @@ public class UpgradePanel : PanelBase
     // MOVEMENT SPEED
     private void UpdateMovementSpeedTexts()
     {
+        if (playerStats.GetPlayerSO().GetMovementSpeedCosts()[playerStats.movementSpeedIndex] <= playerStats.money)
+        {
+            movementSpeedGrayButton.SetActive(false);
+        }
+        else
+        {
+            movementSpeedGrayButton.SetActive(true);
+        }
+
         if (playerStats.GetPlayerSO().GetMovementSpeedValues().Count - 1 > playerStats.movementSpeedIndex)
         {
             UpdateUpgradeText(movementSpeedCurrentText, movementSpeedVisualValues[playerStats.movementSpeedIndex]);
@@ -257,6 +306,16 @@ public class UpgradePanel : PanelBase
     //  LIFE STEAL
     private void UpdateLifeStealTexts()
     {
+        if (playerStats.GetPlayerSO().GetLifeStealCosts()[playerStats.lifeStealIndex] <= playerStats.money)
+        {
+            lifeStealGrayButton.SetActive(false);
+        }
+        else
+        {
+            lifeStealGrayButton.SetActive(true);
+        }
+
+
         if (playerStats.GetPlayerSO().GetLifeStealValues().Count - 1 > playerStats.lifeStealIndex)
         {
             UpdateUpgradeText(lifeStealCurrentText, lifeStealVisualValues[playerStats.lifeStealIndex]);
@@ -277,6 +336,15 @@ public class UpgradePanel : PanelBase
     // DAMAGE
     private void UpdateDamageTexts()
     {
+        if (playerStats.GetPlayerSO().GetDamageCosts()[playerStats.damageIndex] <= playerStats.money)
+        {
+            damageGrayButton.SetActive(false);
+        }
+        else
+        {
+            damageGrayButton.SetActive(true);
+        }
+
         if (playerStats.GetPlayerSO().GetDamageValues().Count - 1 > playerStats.damageIndex)
         {
             UpdateUpgradeText(damageCurrentText, damageVisualValues[playerStats.damageIndex]);
@@ -295,6 +363,16 @@ public class UpgradePanel : PanelBase
 
     private void UpdateRangeTexts()
     {
+
+        if (playerStats.GetPlayerSO().GetRangeCosts()[playerStats.rangeIndex] <= playerStats.money)
+        {
+            rangeGrayButton.SetActive(false);
+        }
+        else
+        {
+            rangeGrayButton.SetActive(true);
+        }
+
         if (playerStats.GetPlayerSO().GetRangeValues().Count - 1 > playerStats.rangeIndex)
         {
             UpdateUpgradeText(rangeCurrentText, rangeVisualValues[playerStats.rangeIndex]);
@@ -314,6 +392,16 @@ public class UpgradePanel : PanelBase
     // ATTACK SPEED
     private void UpdateAttackSpeedTexts()
     {
+
+        if (playerStats.GetPlayerSO().GetAttackSpeedCosts()[playerStats.attackSpeedIndex] <= playerStats.money)
+        {
+            asGrayButton.SetActive(false);
+        }
+        else
+        {
+            asGrayButton.SetActive(true);
+        }
+
         if (playerStats.GetPlayerSO().GetAttackSpeedValues().Count - 1 > playerStats.attackSpeedIndex)
         {
             UpdateUpgradeText(attackSpeedCurrentText, attackSpeedVisualValues[playerStats.attackSpeedIndex]);

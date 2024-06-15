@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class WallBehaviour : DefencesBehaviourBase
 {
@@ -12,7 +13,7 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.OnEnable();
         wallStats = GetComponent<WallStats>();
-
+        // if setting transforms publicly does not work as intended, here transforms will be cloned and used as starting pos/rotations
         wallStats.OnBuyDone += ReviveTarget;
         playerStats.OnWaveWon += CheckForUpgradeable;
     }
@@ -31,6 +32,9 @@ public class WallBehaviour : DefencesBehaviourBase
     }
     private void Update()
     {
+        // Break test
+        if(Input.GetKeyDown(KeyCode.P))
+        { TakeDamage(10); }
         // Revive defence system needed
         if (Input.GetKeyDown(KeyCode.O))
         { DestroyDefence(); }
@@ -50,10 +54,25 @@ public class WallBehaviour : DefencesBehaviourBase
     }
     public void BreakPart(GameObject part){
         // when defence is destroyed, one by one parts will be broken with this function
+        // this function is repeated for EVERY PART, everytime a new part will be broken. So first part goes through this function 6 times in total.
+        // ^^ looks good because it looks like parts are blown away when last part is broken with wall breakdown animation
+
+
         // first, activate gravity on rigidbody.
-        // launch the rigidbody with addForce (towards the base, not outside)
+        Rigidbody rb = part.GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        // then, unfreeze the rigidbodys movement
+        rb.constraints = RigidbodyConstraints.None;
+        // freeze it back after two seconds
+        StartCoroutine(FreezeRigidbody(rb));
+        // launch the rigidbody with addForce (towards the base, not outside)(inside is -z direction)
+        rb.AddForce(-transform.forward * 20, ForceMode.Impulse);
         // don't deactivate the object, it will be repaired at the end of the wave and go back to its place. (logic missing for this)
 
+    }
+    IEnumerator FreezeRigidbody(Rigidbody rb){
+        yield return new WaitForSeconds(2);
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     #region Repair Related
@@ -62,13 +81,14 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.ReviveTarget();
 
-        foreach (var wallPart in wallStats.wallParts)
+        for (int i = 0; i< wallStats.wallParts.Count; i++)
         {
-            wallPart.SetActive(true);
+            RepairPart(wallStats.wallParts[i]);
         }
 
         for (int i = 0; i < wallStats.wallHolderParts.Count; i++)
         {
+            // could add an animation here, something like they go up from ground and slowly materialise (transparency)
             wallStats.wallHolderParts[i].SetActive(true);
         }
 
@@ -79,8 +99,8 @@ public class WallBehaviour : DefencesBehaviourBase
     }
 
     // when defence is repaired, one by one parts will be put back with this function
-    public void RepairPart(){
-
+    public void RepairPart(GameObject part){
+        // get location from transform list in wallStats
     }
     protected override void DestroyDefence()
     {

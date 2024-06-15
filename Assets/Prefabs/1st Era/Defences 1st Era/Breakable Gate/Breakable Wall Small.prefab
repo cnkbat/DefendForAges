@@ -1012,13 +1012,6 @@ MonoBehaviour:
   - {fileID: 7693246453943027534}
   - {fileID: 8375346670122719931}
   - {fileID: 5487284634353441925}
-  wallPartLocations:
-  - {fileID: 5024832498979140974}
-  - {fileID: 857890857247519772}
-  - {fileID: 48219576710508167}
-  - {fileID: 6923177236706669623}
-  - {fileID: 925213427800919409}
-  - {fileID: 3351342892921159990}
   healthParts:
   - 0
   - 0
@@ -1095,6 +1088,7 @@ GameObject:
   - component: {fileID: 286942555286546639}
   - component: {fileID: 7909313842617239003}
   - component: {fileID: 740356952594122805}
+  - component: {fileID: 8151387668712353501}
   m_Layer: 17
   m_Name: "par\xE7a 1"
   m_TagString: Untagged
@@ -1184,6 +1178,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8151387668712353501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365983663819543381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81888cc2d1114c4fa2807cbcd55c707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broken: 0
+  breakForce: 15
 --- !u!1 &4681027064312319837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1484,7 @@ GameObject:
   - component: {fileID: 82884673159090649}
   - component: {fileID: 8229040090178632787}
   - component: {fileID: 8947142856671472227}
+  - component: {fileID: 1532430165149571299}
   m_Layer: 17
   m_Name: "par\xE7a"
   m_TagString: Untagged
@@ -1565,6 +1574,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1532430165149571299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089725211011924738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81888cc2d1114c4fa2807cbcd55c707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broken: 0
+  breakForce: 15
 --- !u!1 &5323087502550827550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +1743,7 @@ GameObject:
   - component: {fileID: 1905665387371767019}
   - component: {fileID: 259979134435107615}
   - component: {fileID: 1646156400103189704}
+  - component: {fileID: 4150257546586248023}
   m_Layer: 17
   m_Name: "par\xE7a 5"
   m_TagString: Untagged
@@ -1809,6 +1833,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &4150257546586248023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5487284634353441925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81888cc2d1114c4fa2807cbcd55c707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broken: 0
+  breakForce: 15
 --- !u!1 &5562385836538647307
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,6 +3454,7 @@ GameObject:
   - component: {fileID: 2234742699966289965}
   - component: {fileID: 3194214311228373455}
   - component: {fileID: 6790741111737914781}
+  - component: {fileID: 869680347106478965}
   m_Layer: 17
   m_Name: "par\xE7a 2"
   m_TagString: Untagged
@@ -3505,6 +3544,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &869680347106478965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509089408865278799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81888cc2d1114c4fa2807cbcd55c707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broken: 0
+  breakForce: 15
 --- !u!1 &7587100800928003129
 GameObject:
   m_ObjectHideFlags: 0
@@ -3646,6 +3699,7 @@ GameObject:
   - component: {fileID: 632096768943914851}
   - component: {fileID: 912563429105400842}
   - component: {fileID: 1835581066380454591}
+  - component: {fileID: 5878290698047826607}
   m_Layer: 17
   m_Name: "par\xE7a 3 "
   m_TagString: Untagged
@@ -3735,6 +3789,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &5878290698047826607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693246453943027534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81888cc2d1114c4fa2807cbcd55c707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broken: 0
+  breakForce: 15
 --- !u!1 &7745761525577301178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3959,6 +4027,7 @@ GameObject:
   - component: {fileID: 6590397474394930249}
   - component: {fileID: 157763554653622023}
   - component: {fileID: 9120353410203334316}
+  - component: {fileID: 3680029366605371624}
   m_Layer: 17
   m_Name: "par\xE7a 4"
   m_TagString: Untagged
@@ -4048,6 +4117,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3680029366605371624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375346670122719931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81888cc2d1114c4fa2807cbcd55c707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broken: 0
+  breakForce: 15
 --- !u!1 &8573590778509541526
 GameObject:
   m_ObjectHideFlags: 0

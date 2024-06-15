@@ -7,6 +7,7 @@ public class WallStats : DefencesStatsBase
 {
     [Tooltip("Köşeler")] public List<GameObject> wallHolderParts;
     [Tooltip("Ortadaki parçalar")] public List<GameObject> wallParts;
+    [Tooltip("Ortadaki parçaların başlangıç pozisyonu")] public List<Transform> wallPartLocations;
     [HideInInspector] public List<float> healthParts;
 
     protected override void OnEnable()

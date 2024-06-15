@@ -13,7 +13,6 @@ public class WallBehaviour : DefencesBehaviourBase
         base.OnEnable();
         wallStats = GetComponent<WallStats>();
 
-
         wallStats.OnBuyDone += ReviveTarget;
         playerStats.OnWaveWon += CheckForUpgradeable;
     }
@@ -32,6 +31,7 @@ public class WallBehaviour : DefencesBehaviourBase
     }
     private void Update()
     {
+        // Revive defence system needed
         if (Input.GetKeyDown(KeyCode.O))
         { DestroyDefence(); }
     }
@@ -43,9 +43,17 @@ public class WallBehaviour : DefencesBehaviourBase
         {
             if (currentHealth < wallStats.healthParts[i])
             {
-                wallStats.wallParts[i].SetActive(false);
+                // wallStats.wallParts[i].SetActive(false);
+                BreakPart(wallStats.wallParts[i]);
             }
         }
+    }
+    public void BreakPart(GameObject part){
+        // when defence is destroyed, one by one parts will be broken with this function
+        // first, activate gravity on rigidbody.
+        // launch the rigidbody with addForce (towards the base, not outside)
+        // don't deactivate the object, it will be repaired at the end of the wave and go back to its place. (logic missing for this)
+
     }
 
     #region Repair Related
@@ -70,6 +78,10 @@ public class WallBehaviour : DefencesBehaviourBase
         }
     }
 
+    // when defence is repaired, one by one parts will be put back with this function
+    public void RepairPart(){
+
+    }
     protected override void DestroyDefence()
     {
         if (isDestroyed) return;

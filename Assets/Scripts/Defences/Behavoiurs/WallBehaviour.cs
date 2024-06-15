@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class WallBehaviour : DefencesBehaviourBase
 {
@@ -14,6 +15,17 @@ public class WallBehaviour : DefencesBehaviourBase
         base.OnEnable();
         wallStats = GetComponent<WallStats>();
         // if setting transforms publicly does not work as intended, here transforms will be cloned and used as starting pos/rotations
+        for(int i = 0; i < wallStats.wallParts.Count; i++)
+        {
+            // cant clone transforms without creating new objects, had to use a 2d list
+            // wallStats.wallParts[i].transform.position, wallStats.wallParts[i].transform.rotation
+            List<Vector3> pos_rot = new List<Vector3>();
+            Vector3 pos = wallStats.wallParts[i].transform.position;
+            Vector3 rot = wallStats.wallParts[i].transform.rotation.eulerAngles;
+            pos_rot.Add(pos);
+            pos_rot.Add(rot);
+            wallStats.wallPartLocations.Add(pos_rot);
+        }
         wallStats.OnBuyDone += ReviveTarget;
         playerStats.OnWaveWon += CheckForUpgradeable;
     }
@@ -33,11 +45,14 @@ public class WallBehaviour : DefencesBehaviourBase
     private void Update()
     {
         // Break test
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.O))
         { TakeDamage(10); }
         // Revive defence system needed
-        if (Input.GetKeyDown(KeyCode.O))
-        { DestroyDefence(); }
+        if (Input.GetKeyDown(KeyCode.P))
+        { ReviveTarget(); }
+
+        // if (Input.GetKeyDown(KeyCode.O))
+        // { DestroyDefence(); }
     }
     public override void TakeDamage(float dmg)
     {
@@ -83,7 +98,8 @@ public class WallBehaviour : DefencesBehaviourBase
 
         for (int i = 0; i< wallStats.wallParts.Count; i++)
         {
-            RepairPart(wallStats.wallParts[i]);
+            Debug.Log("Repairing part " + i);
+            RepairPart(wallStats.wallParts[i], i);
         }
 
         for (int i = 0; i < wallStats.wallHolderParts.Count; i++)
@@ -99,8 +115,17 @@ public class WallBehaviour : DefencesBehaviourBase
     }
 
     // when defence is repaired, one by one parts will be put back with this function
-    public void RepairPart(GameObject part){
+    public void RepairPart(GameObject part, int index){
         // get location from transform list in wallStats
+        // bug on 121 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Vector3 pos = wallStats.wallPartLocations[index][0];
+        Vector3 rot = wallStats.wallPartLocations[index][1];
+        // unfreeze the rigidbody
+        Rigidbody rb = part.GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.None;
+        // move part to that location with DOmove and Dorotate. Freeze after done.
+        part.transform.DOMove(pos, 2).SetEase(Ease.OutQuad).OnComplete(() => rb.constraints = RigidbodyConstraints.FreezeAll);
+        part.transform.DORotate(rot, 2).SetEase(Ease.OutQuad).OnComplete(() => rb.constraints = RigidbodyConstraints.FreezeAll);
     }
     protected override void DestroyDefence()
     {

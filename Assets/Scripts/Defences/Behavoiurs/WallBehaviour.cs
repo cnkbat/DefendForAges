@@ -47,7 +47,7 @@ public class WallBehaviour : DefencesBehaviourBase
         // Break test
         if(Input.GetKeyDown(KeyCode.O))
         { TakeDamage(10); }
-        // Revive defence system needed
+        // Revive defence
         if (Input.GetKeyDown(KeyCode.P))
         { ReviveTarget(); }
 
@@ -62,19 +62,13 @@ public class WallBehaviour : DefencesBehaviourBase
         {
             if (currentHealth < wallStats.healthParts[i])
             {
-                wallStats.wallParts[i].SetActive(false);
-                // Debug.Log("Breaking part " + i);
-                // var part = wallStats.wallParts[i].GetComponent<WallPartBehaviour>();
-                // if(!part.broken)
-                //     part.BreakPart();
+                var part = wallStats.wallParts[i].GetComponent<WallPartBehaviour>();
+                if(!part.broken)
+                    part.BreakPart(-transform.forward);
             }
         }
     }
     // public void BreakPart(GameObject part){
-    //     // when defence is destroyed, one by one parts will be broken with this function
-    //     // this function is repeated for EVERY PART, everytime a new part will be broken. So first part goes through this function 6 times in total.
-    //     // ^^ looks good because it looks like parts are blown away when last part is broken with wall breakdown animation
-
 
     //     // first, activate gravity on rigidbody.
     //     Rigidbody rb = part.GetComponent<Rigidbody>();
@@ -101,12 +95,11 @@ public class WallBehaviour : DefencesBehaviourBase
 
         for (int i = 0; i< wallStats.wallParts.Count; i++)
         {
-            wallStats.wallParts[i].SetActive(true);
-            // Debug.Log("Repairing part " + i);
-            // // RepairPart(wallStats.wallParts[i], i);
-            // var part = wallStats.wallParts[i].GetComponent<WallPartBehaviour>();
-            // if(part.broken)
-            //     part.RepairPart();
+            // wallStats.wallParts[i].SetActive(true);
+            Debug.Log("Repairing part " + i);
+            var part = wallStats.wallParts[i].GetComponent<WallPartBehaviour>();
+            if(part.broken)
+                part.RepairPart();
         }
         for (int i = 0; i < wallStats.wallHolderParts.Count; i++)
         {

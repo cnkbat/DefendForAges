@@ -6,25 +6,26 @@ using DG.Tweening;
 public class WallPartBehaviour : MonoBehaviour
 {
     Vector3 startPos;
+    Vector3 startRot;
     float startXRot;
     public bool broken;
     Rigidbody rb;
-    [SerializeField] private float breakForce = 15;
+    [SerializeField] private float breakForce = 20;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         startPos = transform.position;
+        startRot = transform.rotation.eulerAngles;
         startXRot = transform.rotation.eulerAngles.x;
     }
-    public void BreakPart(){
-        // first, activate gravity on rigidbody.
-        rb.useGravity = true;
+    public void BreakPart(Vector3 direction){
         // then, unfreeze the rigidbodys position and x rotation
         UnFreezeRigidbody();
+        // launch the rigidbody with addForce (towards the base, not outside)(inside is -z direction)
+        rb.AddForce(direction * breakForce, ForceMode.Impulse);
         // freeze it back after two seconds
         StartCoroutine(FreezeRigidbody(rb));
-        // launch the rigidbody with addForce (towards the base, not outside)(inside is -z direction)
-        rb.AddForce(-transform.forward * breakForce, ForceMode.Impulse);
+        // finish break
         broken = true;
     }
     IEnumerator FreezeRigidbody(Rigidbody rb){
@@ -47,7 +48,8 @@ public class WallPartBehaviour : MonoBehaviour
         // move part to that location with DOmove and Dorotate. Freeze after done.
         transform.DOMove(startPos, 2).SetEase(Ease.OutQuad).OnComplete(() => rb.constraints = RigidbodyConstraints.FreezeAll);
         Vector3 rot = new Vector3(startXRot, transform.rotation.y, transform.rotation.z);
-        transform.DORotate(rot, 2).SetEase(Ease.OutQuad).OnComplete(() => rb.constraints = RigidbodyConstraints.FreezeAll);
+        transform.DORotate(startRot, 2).SetEase(Ease.OutQuad).OnComplete(() => rb.constraints = RigidbodyConstraints.FreezeAll);
+        // finish repair
         broken = false;
     }
 }

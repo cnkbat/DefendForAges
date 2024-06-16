@@ -10898,7 +10898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3018868, g: 0.2776789, b: 0.2776789, a: 0.3529412}
+  m_Color: {r: 0.3018868, g: 0.2776789, b: 0.2776789, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10976,7 +10976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.08235294}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11006,6 +11006,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   result: {x: 0, y: 0}
+  joystickImage: {fileID: 0}
+  joystickImageBackground: {fileID: 0}
+  joystickAlphaMultiplier: 2
   hasJoystickInput: 0
 --- !u!1 &3699046735950493041
 GameObject:

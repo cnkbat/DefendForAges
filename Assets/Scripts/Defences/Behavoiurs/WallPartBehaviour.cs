@@ -10,7 +10,7 @@ public class WallPartBehaviour : MonoBehaviour
     float startXRot;
     public bool broken;
     Rigidbody rb;
-    [SerializeField] private float breakForce = 20;
+    private float breakForce = 8f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();

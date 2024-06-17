@@ -922,6 +922,7 @@ MonoBehaviour:
   repairParticles: []
   upgradeParticles: []
   healthBar: {fileID: 7670766520213689032}
+  enablingObjects: []
   recoveryParticles: []
 --- !u!114 &1384173888
 MonoBehaviour:
@@ -1890,6 +1891,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4472078763875740991}
     m_Modifications:
+    - target: {fileID: 5214964927866890419, guid: aa17ef2a9d2dd554a8963526b51f88f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6932894209063566691, guid: aa17ef2a9d2dd554a8963526b51f88f5, type: 3}
       propertyPath: m_Name
       value: Tower - LoadableBase

@@ -11006,8 +11006,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   result: {x: 0, y: 0}
-  joystickImage: {fileID: 0}
-  joystickImageBackground: {fileID: 0}
+  joystickImage: {fileID: 3699046735064094194}
+  joystickImageBackground: {fileID: 3699046735272727881}
   joystickAlphaMultiplier: 2
   hasJoystickInput: 0
 --- !u!1 &3699046735950493041

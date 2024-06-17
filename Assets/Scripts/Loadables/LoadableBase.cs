@@ -155,7 +155,8 @@ public class LoadableBase : MonoBehaviour
 
     public void DisableObject()
     {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        gameObject.transform.DOScale(0, 1f).SetEase(Ease.InElastic).OnComplete(() => gameObject.SetActive(false));
     }
 
     #endregion
@@ -196,6 +197,14 @@ public class LoadableBase : MonoBehaviour
 
     public void SetIsRepairNeeded(bool newBool)
     {
+        // if(newBool){
+        //     currentCostLeftForUpgradeText.gameObject.transform.DOScale(0, 1f).SetEase(Ease.InElastic).OnComplete(() => currentCostLeftForUpgradeText.gameObject.SetActive(false));
+        //     repairText.gameObject.transform.DOScale(1, 1f).SetEase(Ease.InElastic).OnComplete(() => repairText.gameObject.SetActive(true));
+        // }
+        // else{
+        //     currentCostLeftForUpgradeText.gameObject.transform.DOScale(1, 1f).SetEase(Ease.InElastic).OnComplete(() => currentCostLeftForUpgradeText.gameObject.SetActive(true));
+        //     repairText.gameObject.transform.DOScale(0, 1f).SetEase(Ease.InElastic).OnComplete(() => repairText.gameObject.SetActive(false));
+        // }
         currentCostLeftForUpgradeText.gameObject.SetActive(!newBool);
         repairText.gameObject.SetActive(newBool);
 

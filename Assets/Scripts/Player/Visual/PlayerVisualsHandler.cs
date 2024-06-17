@@ -129,7 +129,6 @@ public class PlayerVisualsHandler : MonoBehaviour
     }
     public void PlayDamageTakenVisuals()
     {
-        Debug.Log("damage takne particles");
         PlayParticle(damageTakenParticle);
 
         if (feedBacks.IsPlaying)

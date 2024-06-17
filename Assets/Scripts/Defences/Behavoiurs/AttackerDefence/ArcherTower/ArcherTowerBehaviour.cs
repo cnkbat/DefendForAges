@@ -69,6 +69,10 @@ public class ArcherTowerBehaviour : AttackerDefenceBehaviour
         {
             DestroyDefence();
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ReviveTarget();
+        }
         
         if (isDestroyed) return;
 

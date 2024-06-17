@@ -32,7 +32,17 @@ public class JoystickSpawnEverywhere : MonoBehaviour, IPointerDownHandler, IPoin
     }
     public void OnPointerUp(PointerEventData ped)
     {
-        joyBG.localPosition = joyBGFirst;
+        StartCoroutine(ResetJoyBGPos());
         joystick.ResetJoy();
+    }
+
+    IEnumerator ResetJoyBGPos()
+    {
+        if (joystick.hasJoystickInput) yield return null;
+        else
+        {
+            yield return new WaitForSeconds(1.2f);
+            joyBG.localPosition = joyBGFirst;
+        }
     }
 }

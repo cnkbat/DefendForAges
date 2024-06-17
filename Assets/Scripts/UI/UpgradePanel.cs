@@ -215,6 +215,15 @@ public class UpgradePanel : PanelBase
         {
             textToUpdate.text = value.ToString();
         }
+
+        /*if (color == "Black")
+        {
+            textToUpdate.color = Color.black;
+        }
+        else
+        {
+            textToUpdate.color = Color.red;
+        } */ 
     }
 
     // MAX HEALTH

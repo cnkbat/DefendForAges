@@ -53,7 +53,7 @@ public class RagdollManager : MonoBehaviour
     {
         foreach (var collider in ragdollColliders)
         {
-            collider.isTrigger = true;
+            collider.enabled = false;
         }
 
         objectCollider.enabled = true;
@@ -74,7 +74,7 @@ public class RagdollManager : MonoBehaviour
 
         foreach (var collider in ragdollColliders)
         {
-            collider.isTrigger = false;
+            collider.enabled = true;
             collider.attachedRigidbody.velocity = Vector3.zero;
         }
 

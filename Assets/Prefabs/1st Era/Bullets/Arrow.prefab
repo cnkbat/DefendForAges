@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6841973581893308531}
   - component: {fileID: 4966896464346173804}
   - component: {fileID: 4966896464346173805}
+  - component: {fileID: -2890609084220299687}
   m_Layer: 9
   m_Name: Arrow
   m_TagString: Untagged
@@ -48,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   travelSpeed: 25
-  disappearTime: 5
   gravity: 0
   trailFX: {fileID: 4775862344290582868}
   powerupedVFX: {fileID: 4775862344290582868}
@@ -65,6 +65,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5869862, y: 0.39798403, z: 4.2137194}
   m_Center: {x: -0.0012673736, y: -0.0042694807, z: 0.063895285}
+--- !u!54 &-2890609084220299687
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841973581893308495}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &4649214397569976122
 PrefabInstance:
   m_ObjectHideFlags: 0

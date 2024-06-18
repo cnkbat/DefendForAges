@@ -9,12 +9,13 @@ public class IndicatorAssigner : MonoBehaviour
     IndicatorOffScreen indicator;
 
     [Header("Textures")]
-    [SerializeField] Texture homeTexture;
-    [SerializeField] Texture repairTexture;
-    [SerializeField] Texture enemyTexture;
+    [SerializeField] private Texture homeTexture;
+    [SerializeField] private Texture repairTexture;
+    [SerializeField] private Texture enemyTexture;
+    [SerializeField] private Texture bossTexture;
 
     [Header("Actions")]
-    public Action<PointableTypes,Color> OnEnableIndicator;
+    public Action<PointableTypes, Color> OnEnableIndicator;
     public Action OnDisableIndicator;
 
     private void Awake()
@@ -34,7 +35,7 @@ public class IndicatorAssigner : MonoBehaviour
         OnDisableIndicator += DisableIndicator;
     }
 
-    private void EnableIndicator(PointableTypes pointableType , Color arrowColor)
+    private void EnableIndicator(PointableTypes pointableType, Color arrowColor)
     {
 
         if (pointableType == PointableTypes.enemy)
@@ -44,6 +45,10 @@ public class IndicatorAssigner : MonoBehaviour
         else if (pointableType == PointableTypes.repair)
         {
             indicator.style.texture = repairTexture;
+        }
+        else if (pointableType == PointableTypes.boss)
+        {
+            indicator.style.texture = bossTexture;
         }
         else if (pointableType == PointableTypes.home)
         {

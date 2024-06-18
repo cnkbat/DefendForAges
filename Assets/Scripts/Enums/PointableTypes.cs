@@ -6,5 +6,6 @@ public enum PointableTypes
 {
     home,
     enemy,
+    boss,
     repair,
 }

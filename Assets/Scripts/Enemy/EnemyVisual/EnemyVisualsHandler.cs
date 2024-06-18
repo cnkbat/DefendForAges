@@ -8,7 +8,7 @@ public class EnemyVisualsHandler : MonoBehaviour
     private EnemyDeathHandler enemyDeathHandler;
     private EnemyStats enemyStats;
     private GameManager gameManager;
-    private IndicatorAssigner indicatorAssigner;
+    protected IndicatorAssigner indicatorAssigner;
 
     [Header("Health Bar")]
     [SerializeField] private Slider healthBar;
@@ -23,7 +23,7 @@ public class EnemyVisualsHandler : MonoBehaviour
         enemyStats = GetComponent<EnemyStats>();
         indicatorAssigner = GetComponentInChildren<IndicatorAssigner>();
     }
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         gameManager = GameManager.instance;
 
@@ -41,7 +41,7 @@ public class EnemyVisualsHandler : MonoBehaviour
         DisableHealthBar();
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         enemyDeathHandler.OnDamageTaken -= UpdateHealthBarValue;
         enemyDeathHandler.OnDamageTaken -= PlayDamageTakenVFX;

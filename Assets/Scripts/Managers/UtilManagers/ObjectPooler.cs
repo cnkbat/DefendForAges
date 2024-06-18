@@ -24,11 +24,12 @@ public class ObjectPooler : Singleton<ObjectPooler>
     public bool isObjPoolingActive;
 
     #region Singleton
-
+    UIManager uIManager;
     #endregion
 
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
         if (!isObjPoolingActive) return;
 
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -49,6 +50,11 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
             poolDictionary.Add(pool.tag, objectPool);
         }
+    }
+
+    private void Start()
+    {
+        uIManager = UIManager.instance;
     }
 
     public GameObject SpawnFromPool(string tag, Vector3 spawnPos)
@@ -176,6 +182,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
         return objectToSpawn;
     }
+
 
     #endregion
 }

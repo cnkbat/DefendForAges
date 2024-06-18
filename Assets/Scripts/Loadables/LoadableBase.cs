@@ -84,15 +84,15 @@ public class LoadableBase : MonoBehaviour
 
         if (currentCostLeftForUpgrade > 0)
         {
-            /*  if (playerStats.DecrementMoney(10) && currentCostLeftForUpgrade >= 10)
-              {
-                  currentCostLeftForUpgrade -= 10;
+            if (playerStats.DecrementMoney(5) && currentCostLeftForUpgrade >= 5)
+            {
+                currentCostLeftForUpgrade -= 5;
 
-                  StartCoroutine(PlayCoinSpentAnimMultiple(10));
+                StartCoroutine(PlayCoinSpentAnimMultiple(5));
 
-                  UpdateMoneyTextAndSave();
-              } */
-            if (playerStats.DecrementMoney(1))
+                UpdateMoneyTextAndSave();
+            }
+            else if (playerStats.DecrementMoney(1))
             {
                 currentCostLeftForUpgrade -= 1;
 

@@ -236,7 +236,7 @@ public class UIManager : Singleton<UIManager>
 
     #region  Update Texts - Text Related
 
-    public void UpdateText(TMP_Text textToUpdate, int value, string newString = null )
+    public void UpdateText(TMP_Text textToUpdate, int value, string newString = null)
     {
         if (textToUpdate == null)
         {
@@ -272,4 +272,11 @@ public class UIManager : Singleton<UIManager>
 
     #endregion
 
+
+    #region Getters
+    public GamePanel GetGamePanel()
+    {
+        return gamePanel;
+    }
+    #endregion
 }

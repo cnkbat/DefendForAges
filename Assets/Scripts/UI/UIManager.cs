@@ -114,7 +114,6 @@ public class UIManager : Singleton<UIManager>
 
     #endregion
 
-
     #region  Wave Related
     private void OnWaveCallClicked()
     {

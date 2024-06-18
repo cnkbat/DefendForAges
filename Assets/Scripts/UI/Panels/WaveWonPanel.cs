@@ -8,6 +8,8 @@ public class WaveWonPanel : PanelBase
 {
     EarningsHolder earningsHolder;
 
+    bool collected;
+
     [Header("Earnings")]
     [SerializeField] private Button normalApplyEarningsButton;
     [SerializeField] private Button rewardedApplyEarningsButton;
@@ -15,12 +17,23 @@ public class WaveWonPanel : PanelBase
     [SerializeField] private TMP_Text waveWoncollectedCoinText;
     [SerializeField] private TMP_Text waveWoncollectedMeatText;
 
+    [Header("Current values")]
+    int currentCoinValue;
+    int currentXPValue;
+    int currentMeatValue;
+
+
     protected override void OnEnable()
     {
         base.OnEnable();
         earningsHolder = EarningsHolder.instance;
 
-       
+        collected = false;
+
+        rewardedApplyEarningsButton.gameObject.SetActive(true);
+        normalApplyEarningsButton.gameObject.SetActive(false);
+
+        StartCoroutine(EnableNormalButton());
 
         normalApplyEarningsButton.onClick.AddListener(RegularDisableWaveWonUI);
         rewardedApplyEarningsButton.onClick.AddListener(RewardedDisableWaveWonUI);
@@ -38,6 +51,20 @@ public class WaveWonPanel : PanelBase
 
         // Text Updates
         earningsHolder.OnEarningsApply -= ActivateAndUpdateWaveWonEarningsTexts;
+    }
+
+    IEnumerator EnableNormalButton()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        if (collected)
+        {
+            yield return null;
+        }
+        else
+        {
+            normalApplyEarningsButton.gameObject.SetActive(true);
+        }
     }
 
     #region Wave Won Management
@@ -63,34 +90,40 @@ public class WaveWonPanel : PanelBase
         waveWoncollectedMeatText.transform.parent.gameObject.SetActive(true);
 
 
-        StartCoroutine(UpdateTextOverTime(waveWoncollectedXPText, xpValue));
-        StartCoroutine(UpdateTextOverTime(waveWoncollectedCoinText, coinValue));
-        StartCoroutine(UpdateTextOverTime(waveWoncollectedMeatText, meatValue));
-
-
-        //waveWoncollectedXPText.text = xpValue.ToString();
-        //waveWoncollectedCoinText.text = coinValue.ToString();
-        //waveWoncollectedMeatText.text = meatValue.ToString();
+        StartCoroutine(UpdateTextOverTime(waveWoncollectedXPText, currentXPValue, xpValue));
+        StartCoroutine(UpdateTextOverTime(waveWoncollectedCoinText, currentCoinValue, coinValue));
+        StartCoroutine(UpdateTextOverTime(waveWoncollectedMeatText, currentMeatValue, meatValue));
 
     }
 
-    IEnumerator UpdateTextOverTime(TMP_Text text, int val)
+    IEnumerator UpdateTextOverTime(TMP_Text text, int currentValue, int targetValue)
     {
-        for (int i = 0; i < val; i++)
+        while (currentValue < targetValue)
         {
-            text.text = i + "";
-            yield return new WaitForSeconds(2 / (val + 1));
+            currentValue++;
+            text.text = currentValue.ToString();
+            yield return new WaitForSeconds(1 / (targetValue + 1));
         }
     }
 
     public void RewardedDisableWaveWonUI()
     {
+        collected = true;
+
         uiManager.OnApplyEarningToPlayerButtonClicked(2);
+
+        normalApplyEarningsButton.gameObject.SetActive(false);
+        rewardedApplyEarningsButton.gameObject.SetActive(false);
 
         StartCoroutine(DisableWaveWonUI());
     }
     public void RegularDisableWaveWonUI()
     {
+        collected = true;
+
+        normalApplyEarningsButton.gameObject.SetActive(false);
+        rewardedApplyEarningsButton.gameObject.SetActive(false);
+
         uiManager.OnApplyEarningToPlayerButtonClicked(1);
 
         StartCoroutine(DisableWaveWonUI());

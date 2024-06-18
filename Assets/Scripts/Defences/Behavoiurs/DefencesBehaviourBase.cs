@@ -15,11 +15,11 @@ public class DefencesBehaviourBase : EnemyTarget
 
     [Header("Events")]
     public Action<bool> OnRepairStateChange;
+    public Action OnRepairDone;
 
     [Header("Visuals")]
     [SerializeField] protected GameObject asset;
     [SerializeField] protected MMFeedbacks feelFeedBacks;
-
 
     override protected void Start()
     {
@@ -101,6 +101,7 @@ public class DefencesBehaviourBase : EnemyTarget
         }
 
 
+        OnRepairDone?.Invoke();
         ResetHealthValue();
         SetisRepairable(false);
         CheckForUpgradeable();
@@ -114,16 +115,23 @@ public class DefencesBehaviourBase : EnemyTarget
             defencesStatsBase.SetLoadableBaseActivity(true);
             return;
         }
-        
+
     }
 
     #endregion
     #region  Getters & Setters
+
     private void SetisRepairable(bool newBool)
     {
         OnRepairStateChange.Invoke(newBool);
 
         isRepairable = newBool;
     }
+
+    public bool GetIsRepariable()
+    {
+        return isRepairable;
+    }
+
     #endregion
 }

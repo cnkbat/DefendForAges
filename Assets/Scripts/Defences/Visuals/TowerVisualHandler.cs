@@ -18,13 +18,19 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
     protected override void OnEnable()
     {
         base.OnEnable();
+
         towerBehaviour.OnRecoveryDone += PlayRecoveryParticles;
+        playerStats.OnWaveWon += CheckIndicator;
+        defencesBehaviourBase.OnRepairDone += CheckIndicator;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
+
         towerBehaviour.OnRecoveryDone -= PlayRecoveryParticles;
+        playerStats.OnWaveWon -= CheckIndicator;
+        defencesBehaviourBase.OnRepairDone -= CheckIndicator;
     }
 
     protected override void Update()
@@ -35,5 +41,15 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
     public void PlayRecoveryParticles()
     {
         PlayParticles(recoveryParticles);
+    }
+
+    protected override void CheckIndicator()
+    {
+        base.CheckIndicator();
+
+        if (!defencesBehaviourBase.GetIsRepariable())
+        {
+            indicatorAssigner.OnEnableIndicator(PointableTypes.home, Color.white);
+        }
     }
 }

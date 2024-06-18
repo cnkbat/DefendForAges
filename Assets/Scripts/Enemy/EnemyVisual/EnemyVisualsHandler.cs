@@ -8,20 +8,26 @@ public class EnemyVisualsHandler : MonoBehaviour
     private EnemyDeathHandler enemyDeathHandler;
     private EnemyStats enemyStats;
     private GameManager gameManager;
+    private IndicatorAssigner indicatorAssigner;
 
     [Header("Health Bar")]
     [SerializeField] private Slider healthBar;
     private float currentHealthBarDisappearTimer;
 
     [Header("VFX")]
-  [SerializeField]  private ParticleSystem damageTakenParticle;
+    [SerializeField] private ParticleSystem damageTakenParticle;
 
+    private void Awake()
+    {
+        enemyDeathHandler = GetComponent<EnemyDeathHandler>();
+        enemyStats = GetComponent<EnemyStats>();
+        indicatorAssigner = GetComponentInChildren<IndicatorAssigner>();
+    }
     private void OnEnable()
     {
         gameManager = GameManager.instance;
 
-        enemyDeathHandler = GetComponent<EnemyDeathHandler>();
-        enemyStats = GetComponent<EnemyStats>();
+        indicatorAssigner?.OnEnableIndicator?.Invoke(PointableTypes.enemy, Color.red);
 
         enemyDeathHandler.OnDamageTaken += UpdateHealthBarValue;
         enemyDeathHandler.OnDamageTaken += PlayDamageTakenVFX;

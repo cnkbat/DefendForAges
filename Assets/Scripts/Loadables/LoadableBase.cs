@@ -16,7 +16,7 @@ public class LoadableBase : MonoBehaviour
     public int currentCostLeftForUpgrade;
 
     [Header("State")]
-    protected bool isFull;
+
     [SerializeField] private bool isRepairNeeded;
 
     [Header("Timers")]
@@ -31,18 +31,20 @@ public class LoadableBase : MonoBehaviour
     [Header("Events")]
     public Action OnLoadableFilled;
     public Action OnRepairDone;
-
     private Vector3 startPos;
 
     private void Awake()
     {
         startPos = transform.localPosition;
     }
+
     private void OnEnable()
     {
         gameManager = GameManager.instance;
 
         gameManager.OnWaveStarted += DisableObject;
+        
+        ResetRepairTimer();
     }
 
     private void OnDisable()
@@ -67,12 +69,10 @@ public class LoadableBase : MonoBehaviour
     public void Load()
     {
 
-        if (isFull) return;
-
         if (isRepairNeeded)
         {
             currentRepairTimer -= Time.deltaTime;
-
+            Debug.Log("isRepairNeeded");
             if (currentRepairTimer <= 0)
             {
                 Repair();
@@ -148,7 +148,6 @@ public class LoadableBase : MonoBehaviour
     {
         if (currentCostLeftForUpgrade <= 0)
         {
-            isFull = true;
             OnLoadableFilled?.Invoke();
         }
     }
@@ -177,15 +176,6 @@ public class LoadableBase : MonoBehaviour
 
         currentCostLeftForUpgrade = value;
         UpdateCurrentMoneyText(currentCostLeftForUpgrade.ToString());
-
-        if (currentCostLeftForUpgrade > 0)
-        {
-            isFull = false;
-        }
-        else
-        {
-            isFull = true;
-        }
 
     }
 

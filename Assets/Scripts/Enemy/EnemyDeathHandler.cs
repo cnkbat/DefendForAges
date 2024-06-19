@@ -83,6 +83,15 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
         OnDeath -= enemyStats.GetAssignedEnemySpawner().OnEnemyKilled;
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Kill();
+        }
+    }
+
     #region Kill & Take Damage
 
     public void TakeDamage(float dmg)
@@ -116,6 +125,8 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
 
     public void Kill()
     {
+        if (isDead) return;
+
         isDead = true;
 
         navMeshAgent.speed = 0;

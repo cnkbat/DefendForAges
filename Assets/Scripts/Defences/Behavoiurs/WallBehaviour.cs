@@ -77,7 +77,6 @@ public class WallBehaviour : DefencesBehaviourBase
 
         for (int i = 0; i< wallStats.wallParts.Count; i++)
         {
-            Debug.Log("Repairing part " + i);
             var part = wallStats.wallParts[i].GetComponent<WallPartBehaviour>();
             if(part.broken)
                 part.RepairPart();

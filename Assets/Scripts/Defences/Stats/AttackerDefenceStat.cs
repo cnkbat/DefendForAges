@@ -64,11 +64,11 @@ public class AttackerDefenceStat : DefencesStatsBase
 
         if (playerStats.GetPlayerLevel() >= upgradeEnablingIndexes[upgradeIndex])
         {
-            loadableBase.gameObject.SetActive(true);
+            SetLoadableBaseActivity(true);
         }
         else
         {
-            loadableBase.gameObject.SetActive(false);
+            SetLoadableBaseActivity(false);
         }
 
     }

@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Drops")]
     [SerializeField] public List<CurrencyAnimationHandler> droppedCurrencies = new List<CurrencyAnimationHandler>();
+    [SerializeField] private Ease droppedAnimEaseType = Ease.Linear;
     [SerializeField] private float droppedCollectionAnimDur;
 
     [Header("Cities")]
@@ -33,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public float bulletFireRange = 150f;
 
     [Header("*---Design & Balance ---*")]
+
     [Header("Game Management")]
     [SerializeField] public bool isPlayerFreezed;
     public bool isAttackPhase;
@@ -248,12 +250,11 @@ public class GameManager : Singleton<GameManager>
             float animDur = Vector3.Distance(animatedObject.transform.position, playerStats.transform.position) / droppedCollectionAnimDur;
             droppedCurrencies[i].PlayCollectionAnim();
 
-            animatedObject.transform.DOMove(playerStats.transform.position, animDur).
+            animatedObject.transform.DOMove(playerStats.transform.position, animDur).SetEase(droppedAnimEaseType).
                 OnComplete(() => animatedObject.gameObject.SetActive(false));
         }
 
-
-      //  droppedCurrencies.Clear();
+        droppedCurrencies.Clear();
     }
 
     #endregion

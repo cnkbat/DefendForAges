@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class DefencesStatsBase : MonoBehaviour
@@ -117,9 +118,18 @@ public class DefencesStatsBase : MonoBehaviour
 
     public void SetLoadableBaseActivity(bool isActive)
     {
-        loadableBase.gameObject.SetActive(isActive);
+        if (isActive)
+        {
+            loadableBase.gameObject.SetActive(true);
+            loadableBase.transform.localScale = Vector3.zero;
+            loadableBase.transform.DOScale(1, 1);
+        }
+        else
+        {
+            loadableBase.transform.DOScale(0, 1f).SetEase(Ease.InElastic).
+                OnComplete(() => loadableBase.gameObject.SetActive(false));
+        }
     }
-    
     #endregion
 
     #region !! ADMIN !!

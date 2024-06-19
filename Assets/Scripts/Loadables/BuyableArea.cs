@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.AI.Navigation;
 using UnityEngine;
 
@@ -103,7 +104,7 @@ public class BuyableArea : MonoBehaviour
                 gameObject.SetActive(true);
 
 
-                loadableBase.gameObject.SetActive(true);
+                SetLoadableBaseActivity(true);
 
                 for (int i = 0; i < ghostedAssets.Count; i++)
                 {
@@ -118,7 +119,7 @@ public class BuyableArea : MonoBehaviour
 
             if (isBuyed == false)
             {
-                loadableBase.gameObject.SetActive(true);
+                SetLoadableBaseActivity(true);
             }
 
 
@@ -134,15 +135,14 @@ public class BuyableArea : MonoBehaviour
     {
         if (isBuyed) return;
 
-        //    gameObject.SetActive(false);
-        loadableBase.gameObject.SetActive(false);
+        SetLoadableBaseActivity(false);
     }
 
     #endregion
 
     private void CheckForAssetsState()
     {
-        loadableBase.gameObject.SetActive(!isBuyed);
+        SetLoadableBaseActivity(!isBuyed);
 
         for (int i = 0; i < objectsToEnableOnBuy.Count; i++)
         {
@@ -157,6 +157,21 @@ public class BuyableArea : MonoBehaviour
             ghostedAssets[i].gameObject.SetActive(!isBuyed);
         }
 
+    }
+
+    public void SetLoadableBaseActivity(bool isActive)
+    {
+        if (isActive)
+        {
+            loadableBase.gameObject.SetActive(true);
+            loadableBase.transform.localScale = Vector3.zero;
+            loadableBase.transform.DOScale(1, 1);
+        }
+        else
+        {
+            loadableBase.transform.DOScale(0, 1f).SetEase(Ease.InElastic).
+                OnComplete(() => loadableBase.gameObject.SetActive(false));
+        }
     }
 
     #region Save & Load

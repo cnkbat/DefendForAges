@@ -49,13 +49,16 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
 
     protected virtual void Update()
     {
-        if (!healthBar.gameObject.activeSelf) return;
-
-        currentHealthBarDisappearTimer -= Time.deltaTime;
-
-        if (currentHealthBarDisappearTimer < 0)
+        if (healthBar != null)
         {
-            DisableHealthBar();
+            if (!healthBar.gameObject.activeSelf) return;
+
+            currentHealthBarDisappearTimer -= Time.deltaTime;
+
+            if (currentHealthBarDisappearTimer < 0)
+            {
+                DisableHealthBar();
+            }
         }
     }
 
@@ -64,6 +67,7 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
 
     public void UpdateHealthBarValue()
     {
+        if(healthBar != null) return;
         if (attackerDefenceBehaviour.GetIsDestroyed()) return;
 
         healthBar.gameObject.SetActive(true);
@@ -79,7 +83,7 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
 
     public void DisableHealthBar()
     {
-        healthBar.gameObject.SetActive(false);
+        healthBar?.gameObject.SetActive(false);
     }
 
     #endregion

@@ -1,11 +1,12 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class TrapBehaviour : AttackerDefenceBehaviour
 {
 
     [Header("Spikes & Spike Poses")]
-    [SerializeField] private Transform spikes;
+    [SerializeField] private List<Transform> spikes;
     [SerializeField] private Transform originalSpikePos;
     [SerializeField] private Transform strikePos;
 
@@ -13,6 +14,7 @@ public class TrapBehaviour : AttackerDefenceBehaviour
     [Tooltip("Yukari ve aşaği olan hareket attackspeede göre hareket ediyor.\n"
     + "Bundan dolayi buraya girilen değer attack speedi bölerek o sürede hareket ettiriyor.")]
     [SerializeField] private float attackSpeedDividor;
+
     private void Awake()
     {
         if (isTargetable)
@@ -22,7 +24,9 @@ public class TrapBehaviour : AttackerDefenceBehaviour
     }
     protected override void OnEnable()
     {
+
         base.OnEnable();
+
         if (isTargetable)
         {
             isTargetable = false;
@@ -32,6 +36,8 @@ public class TrapBehaviour : AttackerDefenceBehaviour
     protected override void OnDisable()
     {
         base.OnDisable();
+
+
         if (isTargetable)
         {
             isTargetable = false;
@@ -57,10 +63,11 @@ public class TrapBehaviour : AttackerDefenceBehaviour
 
         base.Attack();
 
-        spikes.DOMoveY(strikePos.position.y, attackerDefenceStat.GetAttackSpeed() / attackSpeedDividor).
+        spikes[attackerDefenceStat.upgradeIndex].DOMoveY(strikePos.position.y, attackerDefenceStat.GetAttackSpeed() / attackSpeedDividor).
             OnComplete(() =>
             {
-                spikes.DOMoveY(originalSpikePos.position.y, attackerDefenceStat.GetAttackSpeed() / attackSpeedDividor);
+                spikes[attackerDefenceStat.upgradeIndex].
+                    DOMoveY(originalSpikePos.position.y, attackerDefenceStat.GetAttackSpeed() / attackSpeedDividor);
             });
 
     }
@@ -78,4 +85,6 @@ public class TrapBehaviour : AttackerDefenceBehaviour
         base.ReviveTarget();
         isTargetable = false;
     }
+
+
 }

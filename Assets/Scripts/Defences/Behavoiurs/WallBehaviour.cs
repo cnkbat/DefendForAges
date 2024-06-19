@@ -115,7 +115,7 @@ public class WallBehaviour : DefencesBehaviourBase
 
         if(!isRepairable)
         {
-            defencesStatsBase.SetLoadableBaseActivity(false);
+            defencesStatsBase.loadableBase.gameObject.SetActive(false);
         }
         
     }

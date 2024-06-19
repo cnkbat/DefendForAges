@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private float vertical;
     private float targetAngle = 0;
     private Transform playerAsset;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,17 +55,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ToInputAxis();
-    }
-    private void Update()
-    {
+
+
+        if (!joystick.hasJoystickInput)
+        {
+            rb.velocity = Vector3.zero;
+        }
+
         if (gameManager.isPlayerFreezed) return;
         if (playerDeathHandler.GetIsDead()) return;
         if (gameManager.isGameFreezed) return;
 
+        ToInputAxis();
+
 
         ToMove();
-        rb.velocity = Vector3.zero;
     }
 
     void ToInputAxis()
@@ -84,7 +89,8 @@ public class PlayerMovement : MonoBehaviour
         {
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
-            transform.position = new Vector3(transform.position.x + horizontal * speed * Time.deltaTime, transform.position.y, transform.position.z + vertical * speed * Time.deltaTime);
+            // transform.position = new Vector3(transform.position.x + horizontal * speed * Time.deltaTime, transform.position.y, transform.position.z + vertical * speed * Time.deltaTime);
+            rb.velocity = new Vector3(horizontal * speed, 0, vertical * speed);
 
             if (nearestEnemyFinder.GetNearestEnemy() == null)
             {

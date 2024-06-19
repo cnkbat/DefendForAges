@@ -6,7 +6,6 @@ public class TowerStats : AttackerDefenceStat
 {
     [Header("Tower SO")]
     [SerializeField] TowerSO towerSO;
-
     private float recovery;
 
     protected override void OnEnable()

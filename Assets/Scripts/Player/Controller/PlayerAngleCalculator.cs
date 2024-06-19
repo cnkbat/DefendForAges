@@ -10,13 +10,11 @@ public class PlayerAngleCalculator : MonoBehaviour
 
     PlayerDeathHandler playerDeathHandler;
     private Joystick joystick;
-    private NearestEnemyFinder nearestEnemyFinder;
     public Action<float, float> OnPlayerMoved;
 
     private void Awake()
     {
         joystick = FindObjectOfType<Joystick>(true);
-        nearestEnemyFinder = GetComponent<NearestEnemyFinder>();
         playerDeathHandler = GetComponent<PlayerDeathHandler>();
     }
     private void OnEnable()

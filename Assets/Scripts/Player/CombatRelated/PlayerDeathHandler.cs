@@ -85,8 +85,6 @@ public class PlayerDeathHandler : EnemyTarget
 
         base.TakeDamage(dmg);
 
-
-
         currentHealth -= dmg;
         Debug.Log("player took damage = " + currentHealth);
         

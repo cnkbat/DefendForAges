@@ -8,12 +8,14 @@ public class DefencesStatsBase : MonoBehaviour
 {
     [Header("Instances")]
     SaveManager saveManager;
+    protected PlayerStats playerStats;
 
     [Header("Components On This")]
 
     private DefencesBehaviourBase defencesBehaviourBase;
     public StaticDefenceSO defenceSO;
     [SerializeField] public LoadableBase loadableBase;
+    private Vector3 loadableLossyScale;
 
     [Header("Save & Load")]
     [Tooltip("Sadece save load için her bir obje için ayrı isimlendirme.")] public string defenceID;
@@ -25,8 +27,15 @@ public class DefencesStatsBase : MonoBehaviour
     [Header("Events")]
     public Action OnBuyDone;
 
+    private void Awake()
+    {
+        loadableLossyScale = loadableBase.transform.localScale;
+    }
+
     protected virtual void OnEnable()
     {
+        playerStats = PlayerStats.instance;
+
         saveManager = SaveManager.instance;
         defencesBehaviourBase = GetComponent<DefencesBehaviourBase>();
 
@@ -118,11 +127,12 @@ public class DefencesStatsBase : MonoBehaviour
 
     public void SetLoadableBaseActivity(bool isActive)
     {
+
         if (isActive)
         {
             loadableBase.gameObject.SetActive(true);
             loadableBase.transform.localScale = Vector3.zero;
-            loadableBase.transform.DOScale(1, 1);
+            loadableBase.transform.DOScale(loadableLossyScale, 1);
         }
         else
         {

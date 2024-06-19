@@ -44,7 +44,7 @@ MonoBehaviour:
   - 24
   rangeCosts: 140000001d0000003d000000590000006e000000a9000000d700000077010000
   movementSpeedValues:
-  - 8
+  - 15
   - 8.5
   - 9
   - 9.5

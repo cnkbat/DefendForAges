@@ -22,6 +22,7 @@ public class BuyableArea : MonoBehaviour
 
     [Header("Loadable")]
     [SerializeField] public LoadableBase loadableBase;
+    private Vector3 loadableLossyScale;
 
     [Header("Spawn Poses")]
     [SerializeField] private List<Transform> spawnPosesToEnable;
@@ -32,11 +33,17 @@ public class BuyableArea : MonoBehaviour
     [SerializeField] private List<Transform> objectsToDisableOnBuy;
     [SerializeField] private List<Transform> ghostedAssets;
 
+
     [Header("Events")]
     public Action OnAreaBuyed;
     public Action<int> OnAreaEnabled;
 
     public Action<List<Transform>, List<Transform>, List<Transform>, List<Transform>> OnAnimPlayNeeded;
+
+    private void Awake()
+    {
+        loadableLossyScale = loadableBase.transform.localScale;
+    }
 
     #region OnEnable / OnDisable
     private void OnEnable()
@@ -135,7 +142,7 @@ public class BuyableArea : MonoBehaviour
     {
         if (isBuyed) return;
 
-        SetLoadableBaseActivity(false);
+        loadableBase.gameObject.SetActive(false);
     }
 
     #endregion
@@ -165,7 +172,7 @@ public class BuyableArea : MonoBehaviour
         {
             loadableBase.gameObject.SetActive(true);
             loadableBase.transform.localScale = Vector3.zero;
-            loadableBase.transform.DOScale(1, 1);
+            loadableBase.transform.DOScale(loadableLossyScale, 1);
         }
         else
         {

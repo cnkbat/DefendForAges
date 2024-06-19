@@ -93,15 +93,19 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
     {
         if (enablingObjects.Count == 0) return;
 
-
-        for (int i = 0; i < attackerDefenceStat.upgradeIndex; i++)
+        for (int i = 0; i < enablingObjects.Count; i++)
         {
-            enablingObjects[i].SetActive(true);
+            enablingObjects[i].SetActive(false);
+        }
 
-            Vector3 originalScale = enablingObjects[i].transform.localScale;
-            enablingObjects[i].transform.localScale = Vector3.zero;
+        if (enablingObjects.Count > attackerDefenceStat.upgradeIndex)
+        {
+            enablingObjects[attackerDefenceStat.upgradeIndex].SetActive(true);
 
-            enablingObjects[i].transform.DOScale(originalScale, 0.8f).SetEase(Ease.OutElastic);
+            Vector3 originalScale = enablingObjects[attackerDefenceStat.upgradeIndex].transform.localScale;
+            enablingObjects[attackerDefenceStat.upgradeIndex].transform.localScale = Vector3.zero;
+
+            enablingObjects[attackerDefenceStat.upgradeIndex].transform.DOScale(originalScale, 0.8f).SetEase(Ease.OutElastic);
         }
 
     }

@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class AttackerDefenceStat : DefencesStatsBase
 {
-    PlayerStats playerStats;
 
     [Header("Attacker SO")]
     [SerializeField] protected AttackerDefenceSO attackerDefenceSO;
 
     [Header("Ingame Values")]
+
     protected float damage;
     protected float attackSpeed;
 
@@ -59,12 +59,17 @@ public class AttackerDefenceStat : DefencesStatsBase
 
     public void HandleLoableState()
     {
-        // if isRepair sonrasında buraya return sonra bi daha check
-        // tabi para da 0 lanacak 
+
+        if (upgradeIndex >= upgradeEnablingIndexes.Count)
+        {
+            SetLoadableBaseActivity(false);
+            return;
+        }
 
         if (playerStats.GetPlayerLevel() >= upgradeEnablingIndexes[upgradeIndex])
         {
             SetLoadableBaseActivity(true);
+
         }
         else
         {

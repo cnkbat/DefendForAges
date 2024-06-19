@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b6aa5042c819e4d8a8fc49dd4c94b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeTexture: {fileID: 2800000, guid: 8613c1147bc006b44974ea9e9a5e44f6, type: 3}
+  homeTexture: {fileID: 2800000, guid: 2bc20b1c7a9cf4af38e7464961b8429d, type: 3}
   repairTexture: {fileID: 2800000, guid: 4727208bb2bfe404e81ca51e64b9f8cc, type: 3}
-  enemyTexture: {fileID: 2800000, guid: 62ccc79667caf4300ad03d3cf8f40523, type: 3}
+  enemyTexture: {fileID: 2800000, guid: 9dde46eb5e29d40d7bfcfe0245d0377e, type: 3}
+  bossTexture: {fileID: 2800000, guid: 44fcbe9a150c244b7b2ae28131d46f92, type: 3}
 --- !u!114 &1347392691264052527
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,8 +25,8 @@ MonoBehaviour:
   attackSpeedCosts: 08000000140000002d0000005300000068000000c800000029010000de010000
   damageValues:
   - 2
-  - 4
-  - 7
+  - 3
+  - 6
   - 12
   - 18
   - 25
@@ -55,13 +55,13 @@ MonoBehaviour:
   movementSpeedCosts: 0b0000001300000023000000430000005f0000007b000000c70000003b010000
   lifeStealValues:
   - 0
+  - 0.1
+  - 0.2
   - 0.3
+  - 0.4
+  - 0.45
+  - 0.5
   - 0.6
-  - 1
-  - 1.5
-  - 2
-  - 2.5
-  - 3
   lifeStealCosts: 0f000000310000005f00000093000000d60000002b01000064010000f2010000
   powerupDurValues:
   - 3

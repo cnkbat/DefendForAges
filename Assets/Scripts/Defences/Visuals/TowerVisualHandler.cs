@@ -6,7 +6,7 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
 {
     TowerBehaviour towerBehaviour;
 
-    [Header("Recovery")]
+    [Header("Recovery VFX")]
     [SerializeField] private List<ParticleSystem> recoveryParticles = new List<ParticleSystem>();
 
     protected override void Awake()

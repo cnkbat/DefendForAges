@@ -1936,6 +1936,7 @@ GameObject:
   - component: {fileID: 4561286253002256009}
   - component: {fileID: 1632888861140417246}
   - component: {fileID: 2404578083503490393}
+  - component: {fileID: 7618229014253027946}
   m_Layer: 0
   m_Name: MMFeedbacks
   m_TagString: Untagged
@@ -1999,6 +2000,7 @@ MonoBehaviour:
   - {fileID: 4561286253002256009}
   - {fileID: 1632888861140417246}
   - {fileID: 2404578083503490393}
+  - {fileID: 7618229014253027946}
   InitializationMode: 2
   AutoInitialization: 1
   SafeMode: 3
@@ -2198,7 +2200,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5979889970926041967}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2242,7 +2244,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5673497537320442379}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2286,7 +2288,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 7828401202047538297}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2330,7 +2332,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1457362138420035008}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2374,7 +2376,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 7141272825922418408}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2418,7 +2420,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5687644511391926443}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2462,7 +2464,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5984964281620146044}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2506,7 +2508,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 8459552769116467897}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2550,7 +2552,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1347778422774816937}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2594,7 +2596,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 2882751898347566275}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2638,7 +2640,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 4036270130637338229}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2682,7 +2684,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 7728681597424797504}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2726,7 +2728,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5710397650438037072}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2770,7 +2772,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5229526475199913425}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2814,7 +2816,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5663935378150945926}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2858,7 +2860,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 3893649660413042603}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2902,7 +2904,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 6697601072996533193}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2946,7 +2948,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 7262524644519130271}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2990,7 +2992,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 7374537261842438822}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -3034,7 +3036,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1851072384132089525}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -3078,7 +3080,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 9100325977569183251}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -3122,7 +3124,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 684069982688139600}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -3166,7 +3168,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1320238647890370261}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -3210,7 +3212,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1483751618637345766}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -3254,7 +3256,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 9165109671753796589}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -3298,7 +3300,51 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1979713908852006257}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &7618229014253027946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 6262768291720485224}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2

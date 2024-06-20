@@ -1228,7 +1228,7 @@ MonoBehaviour:
   FlickerDuration: 0.2
   FlickerOctave: 0.08
   FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
-  MaterialIndexes: 0000000001000000020000000300000004000000050000000600000007000000
+  MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!114 &2387101142995102380
 MonoBehaviour:

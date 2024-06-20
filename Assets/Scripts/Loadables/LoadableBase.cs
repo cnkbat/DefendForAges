@@ -191,25 +191,10 @@ public class LoadableBase : MonoBehaviour
 
     public void SetIsRepairNeeded(bool newBool)
     {
-        // this doesnt seem to work, just setting active the repair text and image
-        if(newBool){
-            coinImage.gameObject.transform.DOScale(0, 1f).SetEase(Ease.InElastic).OnComplete(() => coinImage.gameObject.SetActive(false));
-            currentCostLeftForUpgradeText.gameObject.transform.DOScale(0, 1f).SetEase(Ease.InElastic).OnComplete(() => currentCostLeftForUpgradeText.gameObject.SetActive(false));
-            repairText.gameObject.SetActive(true);
-            repairText.gameObject.transform.DOScale(1, 1f).SetEase(Ease.InElastic);
-            repairImage.gameObject.SetActive(true);
-            repairImage.gameObject.transform.DOScale(3.3953f, 1f).SetEase(Ease.InElastic);
-        }
-        else{
-            repairImage.gameObject.transform.DOScale(0, 1f).SetEase(Ease.InElastic).OnComplete(() => repairImage.gameObject.SetActive(false));
-            repairText.gameObject.transform.DOScale(0, 1f).SetEase(Ease.InElastic).OnComplete(() => repairText.gameObject.SetActive(false));
-            currentCostLeftForUpgradeText.gameObject.SetActive(true);
-            currentCostLeftForUpgradeText.gameObject.transform.DOScale(1, 1f).SetEase(Ease.InElastic);
-            coinImage.gameObject.SetActive(true);
-            coinImage.gameObject.transform.DOScale(3.3953f, 1f).SetEase(Ease.InElastic);
-        }
+        coinImage.gameObject.SetActive(!newBool);
         // currentCostLeftForUpgradeText.gameObject.SetActive(!newBool);
         // repairText.gameObject.SetActive(newBool);
+        repairImage.gameObject.SetActive(newBool);
 
         if (newBool)
         {

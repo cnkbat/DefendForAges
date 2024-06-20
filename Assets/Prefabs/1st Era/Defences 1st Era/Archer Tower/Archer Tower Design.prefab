@@ -2058,6 +2058,12 @@ GameObject:
   - component: {fileID: 675911636307568048}
   - component: {fileID: 4326106271006900295}
   - component: {fileID: 1442868830753220955}
+  - component: {fileID: 6428172982162637862}
+  - component: {fileID: 6680046941517568298}
+  - component: {fileID: 6810188250655850163}
+  - component: {fileID: 8470497438202296489}
+  - component: {fileID: 2426825691938937075}
+  - component: {fileID: 8598245111624993257}
   m_Layer: 0
   m_Name: MMFeedbacks
   m_TagString: Untagged
@@ -2097,6 +2103,12 @@ MonoBehaviour:
   - {fileID: 675911636307568048}
   - {fileID: 4326106271006900295}
   - {fileID: 1442868830753220955}
+  - {fileID: 6428172982162637862}
+  - {fileID: 6680046941517568298}
+  - {fileID: 6810188250655850163}
+  - {fileID: 8470497438202296489}
+  - {fileID: 2426825691938937075}
+  - {fileID: 8598245111624993257}
   InitializationMode: 2
   AutoInitialization: 1
   SafeMode: 3
@@ -2305,6 +2317,270 @@ MonoBehaviour:
   MaterialIndexes: 00000000
   UseMaterialPropertyBlocks: 0
 --- !u!114 &1442868830753220955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 0}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &6428172982162637862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 0}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &6680046941517568298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 0}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &6810188250655850163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 0}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &8470497438202296489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 0}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &2426825691938937075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 0}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &8598245111624993257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

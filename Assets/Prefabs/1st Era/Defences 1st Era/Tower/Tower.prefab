@@ -1209,7 +1209,8 @@ MonoBehaviour:
   - {fileID: 2028283334897448521}
   - {fileID: 5402279503156444669}
   isRepairable: 0
-  asset: {fileID: 0}
+  isTower: 1
+  asset: {fileID: 5439222904992618280}
   feelFeedBacks: {fileID: 8522963525274409092}
   enableRecoveryTimer: 0
   recoveryTimer: 3
@@ -2292,7 +2293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565551533336850, guid: e1a68788426acc04baef994710608ba7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5.05
       objectReference: {fileID: 0}
     - target: {fileID: 4565551533336850, guid: e1a68788426acc04baef994710608ba7, type: 3}
       propertyPath: m_LocalPosition.z

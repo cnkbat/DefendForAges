@@ -9,16 +9,18 @@ public class DefencesBehaviourBase : EnemyTarget
     protected DefencesStatsBase defencesStatsBase;
 
     protected NavMeshObstacle navMeshObstacle;
-
     BoxCollider boxCollider;
     [SerializeField] protected bool isRepairable;
+
+    [Header("Is Tower?")]
+    [SerializeField] protected bool isTower;
 
     [Header("Events")]
     public Action<bool> OnRepairStateChange;
     public Action OnRepairDone;
 
     [Header("Visuals")]
-    [SerializeField] protected GameObject asset;
+
     [SerializeField] protected MMFeedbacks feelFeedBacks;
 
     override protected void Start()
@@ -78,7 +80,6 @@ public class DefencesBehaviourBase : EnemyTarget
 
 
         // animasyon gelince ayarlanacak.
-        //asset.SetActive(false);
         boxCollider.enabled = false;
 
         // hapticler
@@ -89,11 +90,10 @@ public class DefencesBehaviourBase : EnemyTarget
     {
 
         base.ReviveTarget();
+
         if (!isRepairable) return;
 
-        asset.SetActive(true);
         boxCollider.enabled = true;
-
 
         if (navMeshObstacle != null)
         {
@@ -123,9 +123,20 @@ public class DefencesBehaviourBase : EnemyTarget
 
     private void SetisRepairable(bool newBool)
     {
-        OnRepairStateChange.Invoke(newBool);
 
-        isRepairable = newBool;
+        if (isTower)
+        {
+            isRepairable = false;
+            return;
+        }
+        else
+        {
+            Debug.Log("set repair");
+            OnRepairStateChange.Invoke(newBool);
+
+            isRepairable = newBool;
+        }
+
     }
 
     public bool GetIsRepariable()

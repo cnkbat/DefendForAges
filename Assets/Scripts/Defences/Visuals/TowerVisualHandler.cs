@@ -6,8 +6,9 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
 {
     TowerBehaviour towerBehaviour;
 
-    [Header("Recovery VFX")]
+    [Header("Tower VFXs")]
     [SerializeField] private List<ParticleSystem> recoveryParticles = new List<ParticleSystem>();
+    [SerializeField] private ParticleSystem reviveParticle;
 
     protected override void Awake()
     {
@@ -22,6 +23,10 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
         towerBehaviour.OnRecoveryDone += PlayRecoveryParticles;
         playerStats.OnWaveWon += CheckIndicator;
         defencesBehaviourBase.OnRepairDone += CheckIndicator;
+
+        towerBehaviour.OnDamageTaken += StopRecoveryParticles;
+        towerBehaviour.OnHealthFilled += StopRecoveryParticles;
+        towerBehaviour.OnTowerRevived += PlayReviveParticles;
     }
 
     protected override void OnDisable()
@@ -31,6 +36,11 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
         towerBehaviour.OnRecoveryDone -= PlayRecoveryParticles;
         playerStats.OnWaveWon -= CheckIndicator;
         defencesBehaviourBase.OnRepairDone -= CheckIndicator;
+
+        towerBehaviour.OnDamageTaken -= StopRecoveryParticles;
+        towerBehaviour.OnHealthFilled -= StopRecoveryParticles;
+        towerBehaviour.OnTowerRevived -= PlayReviveParticles;
+
     }
 
     protected override void Update()
@@ -40,7 +50,33 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
 
     public void PlayRecoveryParticles()
     {
-        PlayParticles(recoveryParticles);
+        for (int i = 0; i < recoveryParticles.Count; i++)
+        {
+            if (recoveryParticles[i].isPlaying)
+            {
+                return;
+            }
+            else
+            {
+                PlayParticles(recoveryParticles);
+            }
+        }
+    }
+
+    public void StopRecoveryParticles()
+    {
+        for (int i = 0; i < recoveryParticles.Count; i++)
+        {
+            if (recoveryParticles[i].isPlaying)
+            {
+                recoveryParticles[i].Stop();
+            }
+        }
+    }
+
+    private void PlayReviveParticles()
+    {
+        PlayParticle(reviveParticle);
     }
 
     protected override void CheckIndicator()
@@ -52,4 +88,6 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
             indicatorAssigner.OnEnableIndicator(PointableTypes.home, Color.white);
         }
     }
+
 }
+

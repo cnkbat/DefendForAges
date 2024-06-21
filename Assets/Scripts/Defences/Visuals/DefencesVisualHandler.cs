@@ -56,8 +56,19 @@ public class DefencesVisualHandler : MonoBehaviour
 
         for (int i = 0; i < particles.Count; i++)
         {
-            particles[i].Play();
+            PlayParticle(particles[i]);
         }
+    }
+
+    public void PlayParticle(ParticleSystem particle)
+    {
+        if (particle == null)
+        {
+            Debug.LogWarning(name + " Particle null");
+            return;
+        }
+
+        particle.Play();
     }
 
     public void PlayDestroyParticles()

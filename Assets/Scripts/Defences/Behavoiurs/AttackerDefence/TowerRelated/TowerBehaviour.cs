@@ -12,8 +12,8 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     UpgradeUIHandler upgradeUIHandler;
 
     [Header("Recovery")]
-    [SerializeField] private float enableRecoveryTimer;
-    [SerializeField] private float recoveryTimer = 2;
+    [Tooltip("Vurulduktan kaç saniye sonra başlayacak")][SerializeField] private float enableRecoveryTimer;
+    [Tooltip("Kaç saniyede bir canı artacak")][SerializeField] private float recoveryTimer = 2;
     private float currentEnableRecoveryTimer;
     private float currentRecoveryTimer;
     bool isRecoveryActive;
@@ -65,23 +65,29 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     protected override void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            TakeDamage(5);
+        }
+
         if (isDestroyed) return;
-        if(gameManager.isGameFreezed) return;
-        
+        if (gameManager.isGameFreezed) return;
+
         base.Update();
 
         if (currentHealth >= towerStats.GetMaxHealth())
         {
+            ResetEnableRecoveryTimer();
             return;
         }
 
         if (isRecoveryActive)
         {
-            recoveryTimer -= Time.deltaTime;
+            currentRecoveryTimer -= Time.deltaTime;
 
-            if (recoveryTimer < 0)
+            if (currentRecoveryTimer < 0)
             {
-                currentHealth += towerStats.GetRecovery();
+                IncrementHealth();
                 OnRecoveryDone?.Invoke();
                 ResetRecoveryTimer();
             }
@@ -116,6 +122,18 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     private void ResetRecoveryTimer()
     {
         currentRecoveryTimer = recoveryTimer;
+    }
+
+    private void IncrementHealth()
+    {
+        currentHealth += towerStats.GetRecovery();
+
+        Debug.Log(currentHealth + " =  current health");
+        if (currentHealth >= towerStats.GetMaxHealth())
+        {
+            Debug.Log("health full");
+            currentHealth = towerStats.GetMaxHealth();
+        }
     }
 
     protected override void Attack()

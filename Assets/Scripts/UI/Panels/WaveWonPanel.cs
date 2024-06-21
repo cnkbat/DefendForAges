@@ -110,10 +110,33 @@ public class WaveWonPanel : PanelBase
     {
         collected = true;
 
-        uiManager.OnApplyEarningToPlayerButtonClicked(2);
-
         normalApplyEarningsButton.gameObject.SetActive(false);
         rewardedApplyEarningsButton.gameObject.SetActive(false);
+
+        uiManager.OnApplyEarningToPlayerButtonClicked(2);
+        // Here starts distribution of rewards
+        // for meat and coin only for now.
+        // we need a queue of rewards to distribute, as an object pool. poolu nereye koyacağımız netleşmeli
+        // ayrıca dotweenler için duration hesabı yapılmalı
+        for(int i = 0; i < currentCoinValue; i++)
+        {
+            // dequeue coin
+            // remove 1 coin from earning
+            // coin.setactive(true)
+            // move coin to coin earning position
+            // dotween coin to coin gamehud
+                // on complete add 1 coin to player and queue coin and coin.setactive(false)
+        }
+        for(int i = 0; i < currentMeatValue; i++)
+        {
+            // dequeue meat
+            // remove 1 meat from earning
+            // meat.setactive(true),
+            // move meat to meat earning position
+            // dotween meat to meat gamehud
+                // on complete add 1 meat to player and queue meat and meat.setactive(false)
+        }
+
 
         StartCoroutine(DisableWaveWonUI());
     }
@@ -125,6 +148,28 @@ public class WaveWonPanel : PanelBase
         rewardedApplyEarningsButton.gameObject.SetActive(false);
 
         uiManager.OnApplyEarningToPlayerButtonClicked(1);
+        // Here starts distribution of rewards
+        // for meat and coin only for now.
+        // we need a queue of rewards to distribute, as an object pool. poolu nereye koyacağımız netleşmeli
+        // ayrıca dotweenler için duration hesabı yapılmalı
+        for(int i = 0; i < currentCoinValue; i++)
+        {
+            // dequeue coin
+            // remove 1 coin from earning
+            // coin.setactive(true)
+            // move coin to coin earning position
+            // dotween coin to coin gamehud
+                // on complete add 1 coin to player and queue coin and coin.setactive(false)
+        }
+        for(int i = 0; i < currentMeatValue; i++)
+        {
+            // dequeue meat
+            // remove 1 meat from earning
+            // meat.setactive(true),
+            // move meat to meat earning position
+            // dotween meat to meat gamehud
+                // on complete add 1 meat to player and queue meat and meat.setactive(false)
+        }
 
         StartCoroutine(DisableWaveWonUI());
     }

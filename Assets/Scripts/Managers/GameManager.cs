@@ -45,6 +45,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Defence Related")]
     [SerializeField] public float repairTimer;
+    [SerializeField] public int reviveTowerCost = 10;
 
     [Header("Enemy Related")]
     [SerializeField] public float enemySlowedSpeed;

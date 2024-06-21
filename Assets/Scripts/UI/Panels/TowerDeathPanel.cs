@@ -23,16 +23,37 @@ public class TowerDeathPanel : PanelBase
         base.OnEnable();
         earningsHolder = EarningsHolder.instance;
 
+        useGemToReviveTowerButton.onClick.AddListener(ReviveTowerButtonPressed);
         loseGameButton.onClick.AddListener(GameLostPanelSequenceEnd);
         earningsHolder.OnEarningsApply += ActivateAndUpdateTowerDeathEarningsTexts;
+
     }
 
     private void OnDisable()
     {
         loseGameButton.onClick.RemoveAllListeners();
+        useGemToReviveTowerButton.onClick.RemoveAllListeners();
 
         earningsHolder.OnEarningsApply -= ActivateAndUpdateTowerDeathEarningsTexts;
     }
+
+    public void ReviveTowerButtonPressed()
+    {
+
+        if (playerStats.DecrementGem(gameManager.reviveTowerCost))
+        {
+            loseGameButton.gameObject.SetActive(false);
+            useGemToReviveTowerButton.gameObject.SetActive(false);
+            gameManager.isGameFreezed = false;
+            gameManager.allCities[playerStats.GetCityIndex()].GetTower().ReviveTarget();
+        }
+        else
+        {
+            // popup offer
+        }
+
+    }
+
 
     #region  Lose Panel Management
     public void GameLostPanelSequence()

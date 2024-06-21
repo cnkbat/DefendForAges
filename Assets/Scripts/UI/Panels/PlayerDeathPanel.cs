@@ -15,9 +15,11 @@ public class PlayerDeathPanel : PanelBase
     protected override void OnEnable()
     {
         base.OnEnable();
+        SetButtonActivity(true);
+
         // Revive & Wave Control
-        lateReviveButton.onClick.AddListener(OnLateReviveButtonClicked);
-        rewardedReviveButton.onClick.AddListener(OnReviveButtonClicked);
+        lateReviveButton.onClick.AddListener(RevivePlayer);
+        rewardedReviveButton.onClick.AddListener(RewardedReviveButtonPressed);
     }
 
     private void OnDisable()
@@ -29,14 +31,39 @@ public class PlayerDeathPanel : PanelBase
 
     #region Revive
 
-    private void OnLateReviveButtonClicked()
+    public void RewardedReviveButtonPressed()
     {
-        playerStats.OnLateReviveButtonClicked?.Invoke();
-        playerStats.OnPlayerRevived?.Invoke();
+        if (playerStats.DecrementGem(gameManager.reviveTowerCost))
+        {
+            gameManager.isGameFreezed = false;
+
+            for (int i = 0; i < Mathf.RoundToInt(gameManager.allSpawnedEnemies.Count / 2); i++)
+            {
+                gameManager.allSpawnedEnemies[i].Kill();
+            }
+
+            SetButtonActivity(false);
+            RevivePlayer();
+        }
+        else
+        {
+            // popup offer
+        }
+
     }
-    private void OnReviveButtonClicked()
+
+
+    private void RevivePlayer()
     {
-        playerStats.OnReviveButtonClicked?.Invoke();
+        playerStats.OnRevivePlayer?.Invoke();
+        SetButtonActivity(false);
+    }
+
+
+    private void SetButtonActivity(bool value)
+    {
+        lateReviveButton.gameObject.SetActive(value);
+        rewardedReviveButton.gameObject.SetActive(value);
     }
 
     #endregion

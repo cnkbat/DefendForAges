@@ -2066,6 +2066,28 @@ GameObject:
   - component: {fileID: 3162727694418687387}
   - component: {fileID: 3317357637592141389}
   - component: {fileID: 5540748447874708453}
+  - component: {fileID: 9097597269812685933}
+  - component: {fileID: 1350614994761572780}
+  - component: {fileID: 8711788803751111287}
+  - component: {fileID: 7915117893575844063}
+  - component: {fileID: 769655173714019005}
+  - component: {fileID: 5773217257297391493}
+  - component: {fileID: 63545133616659133}
+  - component: {fileID: 8674712641904999457}
+  - component: {fileID: 7185209586636573141}
+  - component: {fileID: 3932104550503702982}
+  - component: {fileID: 4353490293923391714}
+  - component: {fileID: 9034853906370201593}
+  - component: {fileID: 667495395545075120}
+  - component: {fileID: 9086919310389102086}
+  - component: {fileID: 5542832831096102135}
+  - component: {fileID: 2098774025699681039}
+  - component: {fileID: 7326775557804489579}
+  - component: {fileID: 1797616582632792011}
+  - component: {fileID: 8139858872014898130}
+  - component: {fileID: 7488721993759068232}
+  - component: {fileID: 4011856313893561147}
+  - component: {fileID: 4769189630520389870}
   m_Layer: 0
   m_Name: MMFeedbacks
   m_TagString: Untagged
@@ -2113,6 +2135,28 @@ MonoBehaviour:
   - {fileID: 3162727694418687387}
   - {fileID: 3317357637592141389}
   - {fileID: 5540748447874708453}
+  - {fileID: 9097597269812685933}
+  - {fileID: 1350614994761572780}
+  - {fileID: 8711788803751111287}
+  - {fileID: 7915117893575844063}
+  - {fileID: 769655173714019005}
+  - {fileID: 5773217257297391493}
+  - {fileID: 63545133616659133}
+  - {fileID: 8674712641904999457}
+  - {fileID: 7185209586636573141}
+  - {fileID: 3932104550503702982}
+  - {fileID: 4353490293923391714}
+  - {fileID: 9034853906370201593}
+  - {fileID: 667495395545075120}
+  - {fileID: 9086919310389102086}
+  - {fileID: 5542832831096102135}
+  - {fileID: 2098774025699681039}
+  - {fileID: 7326775557804489579}
+  - {fileID: 1797616582632792011}
+  - {fileID: 8139858872014898130}
+  - {fileID: 7488721993759068232}
+  - {fileID: 4011856313893561147}
+  - {fileID: 4769189630520389870}
   InitializationMode: 2
   AutoInitialization: 1
   SafeMode: 3
@@ -2224,7 +2268,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 728212451240987481}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2268,7 +2312,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1611084221265357373}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2312,7 +2356,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 3766106643809641551}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2356,7 +2400,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5538970453737655798}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2400,7 +2444,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 4322631763471533790}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2444,7 +2488,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 1587912421400164509}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2488,7 +2532,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 858263584178001738}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2532,7 +2576,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 3279087885928628879}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2576,7 +2620,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 5355820331043262623}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2620,7 +2664,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 8135296363641242869}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2664,7 +2708,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 6981776993253819971}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -2708,7 +2752,975 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  BoundRenderer: {fileID: 0}
+  BoundRenderer: {fileID: 3721729855336839030}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &9097597269812685933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1718298128196464230}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &1350614994761572780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1185843066397879783}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &8711788803751111287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1185843066397879783}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &7915117893575844063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1620627727331591344}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &769655173714019005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 7993593431667945373}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &5773217257297391493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 294246713037698047}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &63545133616659133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 4517226914469636752}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &8674712641904999457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 4708412143415948931}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &7185209586636573141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 2786933366393320997}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &3932104550503702982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 5879934632126425446}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &4353490293923391714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 5383377625168522979}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &9034853906370201593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 5508095167736955856}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &667495395545075120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 2870752100653611995}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &9086919310389102086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 4872521155930352967}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &5542832831096102135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1012788710055323998}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &2098774025699681039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1711813854528407766}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &7326775557804489579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1711813856208479296}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &1797616582632792011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1711813854639993826}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &8139858872014898130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1711813855533801387}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &7488721993759068232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1711813855698538820}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &4011856313893561147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1711813855390627247}
+  Mode: 1
+  PropertyName: _BaseColor
+  FlickerDuration: 0.2
+  FlickerOctave: 0.08
+  FlickerColor: {r: 0.2509804, g: 0.003921569, b: 0, a: 1}
+  MaterialIndexes: 00000000
+  UseMaterialPropertyBlocks: 0
+--- !u!114 &4769189630520389870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432874850895255703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ae645c92af634f89036dd5302f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Flicker
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  BoundRenderer: {fileID: 1711813854901564123}
   Mode: 1
   PropertyName: _BaseColor
   FlickerDuration: 0.2
@@ -4025,6 +5037,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7448649bf0fb0cb43b327bc2c1f53447, type: 3}
   m_PrefabInstance: {fileID: 69356992}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1711813855698538820 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7448649bf0fb0cb43b327bc2c1f53447, type: 3}
+  m_PrefabInstance: {fileID: 69356992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &377809195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4107,6 +5124,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 80a2ecb3b9e904a468806cfa22d59104, type: 3}
   m_PrefabInstance: {fileID: 377809195}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1711813855390627247 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 80a2ecb3b9e904a468806cfa22d59104, type: 3}
+  m_PrefabInstance: {fileID: 377809195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &504202031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4177,6 +5199,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6588c8649fd47e2459ba5628857d70da, type: 3}
   m_PrefabInstance: {fileID: 504202031}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1711813855533801387 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6588c8649fd47e2459ba5628857d70da, type: 3}
+  m_PrefabInstance: {fileID: 504202031}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &642218180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4237,6 +5264,11 @@ PrefabInstance:
 --- !u!4 &543450653066403631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7448649bf0fb0cb43b327bc2c1f53447, type: 3}
+  m_PrefabInstance: {fileID: 642218180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1711813856208479296 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7448649bf0fb0cb43b327bc2c1f53447, type: 3}
   m_PrefabInstance: {fileID: 642218180}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1113625682
@@ -4307,6 +5339,11 @@ PrefabInstance:
 --- !u!4 &543450652594795449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7448649bf0fb0cb43b327bc2c1f53447, type: 3}
+  m_PrefabInstance: {fileID: 1113625682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1711813854528407766 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7448649bf0fb0cb43b327bc2c1f53447, type: 3}
   m_PrefabInstance: {fileID: 1113625682}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1170878310
@@ -4391,6 +5428,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e389ef83af5b6d04bb599a97d0049b8b, type: 3}
   m_PrefabInstance: {fileID: 1170878310}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1711813854639993826 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e389ef83af5b6d04bb599a97d0049b8b, type: 3}
+  m_PrefabInstance: {fileID: 1170878310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1952280159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4459,6 +5501,11 @@ PrefabInstance:
 --- !u!4 &543450651756071348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 878ce6ad17ded634ab0b86f11304ced2, type: 3}
+  m_PrefabInstance: {fileID: 1952280159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1711813854901564123 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 878ce6ad17ded634ab0b86f11304ced2, type: 3}
   m_PrefabInstance: {fileID: 1952280159}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1438590772250828650
@@ -4786,6 +5833,10 @@ PrefabInstance:
     - target: {fileID: 6606971654409154502, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
       propertyPath: m_Name
       value: Archer Stickman
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312488030674746350, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f974fe40fb9a736409e025ed4b02e74e, type: 3}

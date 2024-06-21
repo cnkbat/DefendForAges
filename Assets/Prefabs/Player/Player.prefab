@@ -862,7 +862,9 @@ MonoBehaviour:
   damageTakenParticle: {fileID: 2763462888915331953}
   levelUpParticle: {fileID: 4907861336872742076}
   lifeStealParticle: {fileID: 5265241947159177043}
-  powerupParticle: {fileID: 789159722933276720}
+  powerupParticles:
+  - {fileID: 789159722933276720}
+  - {fileID: 7560232594874089840}
 --- !u!208 &1562682102
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2387,7 +2389,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116678, guid: cbaf2c9f645e7d148aa4402a74bf6e9f, type: 3}
       propertyPath: m_Name
-      value: PowerupParticle
+      value: PowerupParticleRight
       objectReference: {fileID: 0}
     - target: {fileID: 403218, guid: cbaf2c9f645e7d148aa4402a74bf6e9f, type: 3}
       propertyPath: m_RootOrder
@@ -2702,7 +2704,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116678, guid: cbaf2c9f645e7d148aa4402a74bf6e9f, type: 3}
       propertyPath: m_Name
-      value: PowerupParticle (1)
+      value: PowerupParticleLeft
       objectReference: {fileID: 0}
     - target: {fileID: 403218, guid: cbaf2c9f645e7d148aa4402a74bf6e9f, type: 3}
       propertyPath: m_RootOrder
@@ -2762,6 +2764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbaf2c9f645e7d148aa4402a74bf6e9f, type: 3}
+--- !u!198 &7560232594874089840 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19822620, guid: cbaf2c9f645e7d148aa4402a74bf6e9f, type: 3}
+  m_PrefabInstance: {fileID: 7560232594892306796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8878673234517715258
 PrefabInstance:
   m_ObjectHideFlags: 0

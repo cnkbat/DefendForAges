@@ -23,7 +23,7 @@ public class PlayerVisualsHandler : MonoBehaviour
 
     [SerializeField] private ParticleSystem levelUpParticle;
     [SerializeField] private ParticleSystem lifeStealParticle;
-    [SerializeField] private ParticleSystem powerupParticle;
+    [SerializeField] private ParticleSystem[] powerupParticles;
 
     private void Awake()
     {
@@ -143,12 +143,18 @@ public class PlayerVisualsHandler : MonoBehaviour
 
     public void PlayPowerupParticle()
     {
-        PlayParticle(powerupParticle);
+        for(int i = 0; i < powerupParticles.Length; i++)
+        {
+            PlayParticle(powerupParticles[i]);
+        }
     }
 
     public void StopPowerupParticle()
     {
-        powerupParticle.Stop();
+        for (int i = 0; i < powerupParticles.Length; i++)
+        {
+            powerupParticles[i].Stop();
+        }
     }
 
     #endregion

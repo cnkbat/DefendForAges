@@ -14484,14 +14484,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4259fe35f0b338a41bb805db31861d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLostOpenedChestIcon: {fileID: 0}
-  gameLostClosedChestIcon: {fileID: 0}
-  gameLostCollectedXPText: {fileID: 0}
-  gameLostCollectedMeatText: {fileID: 0}
-  gameLostCollectedCoinText: {fileID: 0}
-  towerDestroyedCountDownText: {fileID: 0}
-  loseGameButton: {fileID: 0}
-  useGemToReviveTowerButton: {fileID: 0}
+  gameLostOpenedChestIcon: {fileID: 5946364799816005959}
+  gameLostClosedChestIcon: {fileID: 6123229298608431696}
+  gameLostCollectedXPText: {fileID: 6219423264375672117}
+  gameLostCollectedMeatText: {fileID: 1025370641574938010}
+  gameLostCollectedCoinText: {fileID: 9091204006413095651}
+  towerDestroyedCountDownText: {fileID: 3429544931104203458}
+  loseGameButton: {fileID: 2953474946698213944}
+  useGemToReviveTowerButton: {fileID: 539489126579864201}
 --- !u!1 &5158826965148975779
 GameObject:
   m_ObjectHideFlags: 0
@@ -20742,7 +20742,7 @@ GameObject:
   - component: {fileID: 2113731699145867478}
   - component: {fileID: 539489126579864201}
   m_Layer: 5
-  m_Name: Use Gem To Revive Lose Button
+  m_Name: Use Gem To Revive  Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

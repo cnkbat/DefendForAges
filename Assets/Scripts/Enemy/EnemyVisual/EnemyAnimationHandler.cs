@@ -29,7 +29,7 @@ public class EnemyAnimationHandler : MonoBehaviour
         enemyAttack.OnAttacking += Attack;
         enemyAttack.OnTargetNotReached += StopAttack;
         enemyMovement.OnMove += MoveAnimation;
-        //  enemyDeathHandler.OnDeath += Death;
+        enemyDeathHandler.OnDeath += Death;
         enemyDeathHandler.OnDamageTaken += () => animator.SetTrigger("TakeHit");
 
         // Anim speed change
@@ -42,7 +42,7 @@ public class EnemyAnimationHandler : MonoBehaviour
         enemyAttack.OnAttacking -= Attack;
         enemyAttack.OnTargetNotReached -= StopAttack;
         enemyMovement.OnMove -= MoveAnimation;
-        // enemyDeathHandler.OnDeath -= Death;
+        enemyDeathHandler.OnDeath -= Death;
         enemyDeathHandler.OnDamageTaken -= () => animator.SetTrigger("TakeHit");
 
 
@@ -72,10 +72,10 @@ public class EnemyAnimationHandler : MonoBehaviour
         animator.SetBool("isWalking", enemyMovement.GetCanMove());
     }
 
-    /* public void Death()
+    public void Death()
     {
         animator.SetBool("isKill", true);
-    } */
+    }
 
 
     #region Anim Speed Change

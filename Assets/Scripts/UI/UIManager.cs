@@ -16,7 +16,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject poolObject;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private GameObject meatPrefab;
-    
+
     public Queue<GameObject> coinPool = new Queue<GameObject>();
     public Queue<GameObject> meatPool = new Queue<GameObject>();
     // private Queue<GameObject> expQueue = new Queue<GameObject>();
@@ -174,22 +174,25 @@ public class UIManager : Singleton<UIManager>
         towerDeathPanel.GameLostPanelSequence();
     }
 
-    public void EarningPooler(){
+    public void EarningPooler()
+    {
         // pool coins
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameObject coin = Instantiate(coinPrefab, Vector3.zero, Quaternion.identity, poolObject.transform);
+            coin.transform.localPosition = Vector3.zero;
+
             coin.SetActive(false);
             coinPool.Enqueue(coin);
-            Debug.Log("coin pooled");
         }
         // pool meat
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameObject meat = Instantiate(meatPrefab, Vector3.zero, Quaternion.identity, poolObject.transform);
+            meat.transform.localPosition = Vector3.zero;
+
             meat.SetActive(false);
             meatPool.Enqueue(meat);
-            Debug.Log("meat pooled");
         }
     }
     #region Panel Management

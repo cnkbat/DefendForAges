@@ -81,6 +81,8 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
 
     protected override void CheckIndicator()
     {
+        if(gameManager.allCities[playerStats.GetCityIndex()].gameObject != this.gameObject) return;
+
         base.CheckIndicator();
 
         if (!defencesBehaviourBase.GetIsRepariable())

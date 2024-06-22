@@ -15,7 +15,6 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
     private EnemyMovement enemyMovement;
     private NavMeshAgent navMeshAgent;
     private MMFeedbacks feelFeedBacks;
-    private RagdollManager ragdollManager;
 
     [Header("States")]
     private bool isDead;
@@ -51,7 +50,6 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
         enemyMovement = GetComponent<EnemyMovement>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        ragdollManager = GetComponentInChildren<RagdollManager>();
         feelFeedBacks = GetComponentInChildren<MMFeedbacks>();
 
         if (feelFeedBacks != null)
@@ -65,8 +63,6 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
         earningsHolder = EarningsHolder.instance;
         gameManager = GameManager.instance;
         playerStats = PlayerStats.instance;
-
-        ragdollManager?.OnRagdollDisable?.Invoke();
 
         isDead = false;
         boundRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
@@ -139,11 +135,8 @@ public class EnemyDeathHandler : MonoBehaviour, IDamagable
 
         PlayDropSystemAnimation();
 
-
         OnDeath?.Invoke();
         SetObjectLayer(deadLayerName);
-
-        ragdollManager?.OnRagdollEnable?.Invoke();
 
         StartCoroutine(KillEnemy());
     }

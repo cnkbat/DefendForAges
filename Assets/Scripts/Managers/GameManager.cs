@@ -6,6 +6,7 @@ using DG.Tweening;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -45,6 +46,7 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Defence Related")]
     [SerializeField] public float repairTimer;
+    [SerializeField] public int reviveTowerCost = 10;
 
     [Header("Enemy Related")]
     [SerializeField] public float enemySlowedSpeed;
@@ -64,7 +66,7 @@ public class GameManager : Singleton<GameManager>
     private NavMeshSurface navMeshSurface;
     private List<EnemySpawner> allWaves = new List<EnemySpawner>();
     int navMeshsurfaceCounter;
-    private bool isSurfaceUp;
+
 
     [Header("Events")]
     public Action OnCityChange;
@@ -154,13 +156,9 @@ public class GameManager : Singleton<GameManager>
 
     private void MoveSurface()
     {
-
         navMeshSurface.transform.position = new Vector3(navMeshSurface.transform.position.x,
-                    isSurfaceUp ? 10 : 9.90f,
+                    Random.Range(9.80f, 10f),
                      navMeshSurface.transform.position.z);
-
-        isSurfaceUp = !isSurfaceUp;
-
     }
 
     #region  Win & Lose Conditions

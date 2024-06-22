@@ -21,6 +21,8 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     [Header("Events")]
     public Action OnTowerDestroyed;
     public Action OnRecoveryDone;
+    public Action OnHealthFilled;
+    public Action OnTowerRevived;
 
     private void Awake()
     {
@@ -88,7 +90,6 @@ public class TowerBehaviour : AttackerDefenceBehaviour
             if (currentRecoveryTimer < 0)
             {
                 IncrementHealth();
-                OnRecoveryDone?.Invoke();
                 ResetRecoveryTimer();
             }
         }
@@ -104,6 +105,7 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     }
 
+    #region Base Class Func
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
@@ -113,28 +115,6 @@ public class TowerBehaviour : AttackerDefenceBehaviour
         // feeli ver.
     }
 
-    private void ResetEnableRecoveryTimer()
-    {
-        isRecoveryActive = false;
-        currentEnableRecoveryTimer = enableRecoveryTimer;
-    }
-
-    private void ResetRecoveryTimer()
-    {
-        currentRecoveryTimer = recoveryTimer;
-    }
-
-    private void IncrementHealth()
-    {
-        currentHealth += towerStats.GetRecovery();
-
-        Debug.Log(currentHealth + " =  current health");
-        if (currentHealth >= towerStats.GetMaxHealth())
-        {
-            Debug.Log("health full");
-            currentHealth = towerStats.GetMaxHealth();
-        }
-    }
 
     protected override void Attack()
     {
@@ -155,6 +135,56 @@ public class TowerBehaviour : AttackerDefenceBehaviour
     }
 
 
+    public override void ReviveTarget()
+    {
+        ResetHealthValue();
+
+        OnTowerRevived?.Invoke();
+
+        for (int i = 0; i < gameManager.allSpawnedEnemies.Count; i++)
+        {
+            gameManager.allSpawnedEnemies[i].Kill();
+        }
+
+    }
+
+    public override void ResetHealthValue()
+    {
+        base.ResetHealthValue();
+        OnHealthFilled?.Invoke();
+    }
+
+    #endregion
+
+    #region Recovery
+    private void ResetEnableRecoveryTimer()
+    {
+        isRecoveryActive = false;
+        currentEnableRecoveryTimer = enableRecoveryTimer;
+    }
+
+    private void ResetRecoveryTimer()
+    {
+        currentRecoveryTimer = recoveryTimer;
+    }
+
+    private void IncrementHealth()
+    {
+        currentHealth += towerStats.GetRecovery();
+
+        if (currentHealth >= towerStats.GetMaxHealth())
+        {
+            ResetHealthValue();
+        }
+        else
+        {
+            OnRecoveryDone?.Invoke();
+        }
+    }
+
+    #endregion
+
+    #region  Upgrader
 
     public void EnableUpgrader()
     {
@@ -168,5 +198,6 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     }
 
+    #endregion
 
 }

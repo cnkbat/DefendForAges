@@ -14,11 +14,14 @@ public class PlayerStats : Singleton<PlayerStats>
     [SerializeField] private RPGSystemSO rpgSystemSO;
     [SerializeField] private PowerUpSystemSO powerUpSO;
 
+    [Header("Saved Currencies")]
+    [HideInInspector] public int money;
+    [HideInInspector] public int meat;
+    [HideInInspector] public int gem;
+
     [Header("Saved Indexes")]
     [HideInInspector] public int playerLevel;
-    [HideInInspector] public int money;
     [HideInInspector] public int experiencePoint;
-    [HideInInspector] public int meat;
     [HideInInspector] public int damageIndex;
     [HideInInspector] public int attackSpeedIndex;
     [HideInInspector] public int rangeIndex;
@@ -77,9 +80,9 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action OnExperiencePointChange;
     public Action<int, float, int, int> OnExperienceGain;
     public Action OnMoneyChange;
+    public Action OnGemChanged;
     public Action OnMeatChange;
-    public Action OnReviveButtonClicked;
-    public Action OnLateReviveButtonClicked;
+    public Action OnRevivePlayer;
 
     [Header("UI Power Up")]
     public Action<float> OnPowerUpValueChanged;
@@ -104,7 +107,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy += EarnBonusOnKill;
         OnPlayerRevived += FillCurrentHealth;
-        OnLateReviveButtonClicked += SetWaveSystemBackToCheckpoint;
     }
 
     private void OnDisable()
@@ -120,7 +122,6 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy -= EarnBonusOnKill;
         OnPlayerRevived -= FillCurrentHealth;
-        OnLateReviveButtonClicked -= SetWaveSystemBackToCheckpoint;
     }
     #endregion
 
@@ -290,6 +291,36 @@ public class PlayerStats : Singleton<PlayerStats>
             OnWeaponActivision.Invoke(1);
         }
     }
+    #endregion
+
+    #region Gem
+
+    public void IncrementGem(int value)
+    {
+        gem += value;
+        GemChanged();
+    }
+
+    public bool DecrementGem(int value)
+    {
+        if (gem >= value)
+        {
+            gem -= value;
+            GemChanged();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void GemChanged()
+    {
+        OnMoneyChange?.Invoke();
+        saveManager.OnSaved?.Invoke();
+    }
+
     #endregion
 
     #region  MONEY
@@ -526,6 +557,7 @@ public class PlayerStats : Singleton<PlayerStats>
         else
         {
             money = 50;
+            gem = 10;
         }
 
         UpdateStats();

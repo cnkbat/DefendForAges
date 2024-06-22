@@ -15,15 +15,14 @@ public class PlayerDeathHandler : EnemyTarget
     {
         base.OnEnable();
 
-        playerStats.OnReviveButtonClicked += ReviveInstant;
-        playerStats.OnLateReviveButtonClicked += LateRevive;
+        playerStats.OnRevivePlayer += RevivePlayer;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        playerStats.OnReviveButtonClicked -= ReviveInstant;
-        playerStats.OnLateReviveButtonClicked -= LateRevive;
+
+        playerStats.OnRevivePlayer -= RevivePlayer;
     }
 
     override protected void Start()
@@ -48,25 +47,13 @@ public class PlayerDeathHandler : EnemyTarget
         OnTargetDestroyed?.Invoke();
     }
 
-    // will be connected to revive button
-    private void LateRevive()
-    {
-        RevivePlayer();
-
-        transform.position = gameManager.allCities[playerStats.GetCityIndex()].GetRevivePoint().position;
-        // put a timer here maybe?
-    }
-
-    // for the situation that player watches ads or something
-    private void ReviveInstant()
-    {
-        RevivePlayer();
-    }
 
     private void RevivePlayer()
     {
+
         SetIsDead(false);
 
+        transform.position = gameManager.allCities[playerStats.GetCityIndex()].GetRevivePoint().position;
         isDestroyed = false;
         isTargetable = true;
         isDead = false;
@@ -87,7 +74,7 @@ public class PlayerDeathHandler : EnemyTarget
 
         currentHealth -= dmg;
         Debug.Log("player took damage = " + currentHealth);
-        
+
         OnDamageTaken?.Invoke();
 
         if (currentHealth <= 0)

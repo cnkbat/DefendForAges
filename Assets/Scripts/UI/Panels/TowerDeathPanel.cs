@@ -18,21 +18,47 @@ public class TowerDeathPanel : PanelBase
     [SerializeField] private Button useGemToReviveTowerButton;
 
 
+    int currentCoinValue;
+    int currentXPValue;
+    int currentMeatValue;
+
+
     protected override void OnEnable()
     {
         base.OnEnable();
         earningsHolder = EarningsHolder.instance;
 
+        useGemToReviveTowerButton.onClick.AddListener(ReviveTowerButtonPressed);
         loseGameButton.onClick.AddListener(GameLostPanelSequenceEnd);
         earningsHolder.OnEarningsApply += ActivateAndUpdateTowerDeathEarningsTexts;
+
     }
 
     private void OnDisable()
     {
         loseGameButton.onClick.RemoveAllListeners();
+        useGemToReviveTowerButton.onClick.RemoveAllListeners();
 
         earningsHolder.OnEarningsApply -= ActivateAndUpdateTowerDeathEarningsTexts;
     }
+
+    public void ReviveTowerButtonPressed()
+    {
+
+        if (playerStats.DecrementGem(gameManager.reviveTowerCost))
+        {
+            loseGameButton.gameObject.SetActive(false);
+            useGemToReviveTowerButton.gameObject.SetActive(false);
+            gameManager.isGameFreezed = false;
+            gameManager.allCities[playerStats.GetCityIndex()].GetTower().ReviveTarget();
+        }
+        else
+        {
+            // popup offer
+        }
+
+    }
+
 
     #region  Lose Panel Management
     public void GameLostPanelSequence()
@@ -97,7 +123,7 @@ public class TowerDeathPanel : PanelBase
     {
         yield return new WaitForSeconds(2);
 
-        uiManager.GetBackToGamePanel();
+        // uiManager.GetBackToGamePanel();
         gameManager.LevelLost();
     }
 
@@ -112,10 +138,21 @@ public class TowerDeathPanel : PanelBase
         gameLostCollectedCoinText.transform.parent.gameObject.SetActive(true);
         gameLostCollectedMeatText.transform.parent.gameObject.SetActive(true);
 
-        gameLostCollectedXPText.text = xpValue.ToString();
-        gameLostCollectedCoinText.text = coinValue.ToString();
-        gameLostCollectedMeatText.text = meatValue.ToString();
+        StartCoroutine(UpdateTextOverTime(gameLostCollectedXPText, currentXPValue, xpValue));
+        StartCoroutine(UpdateTextOverTime(gameLostCollectedCoinText, currentCoinValue, coinValue));
+        StartCoroutine(UpdateTextOverTime(gameLostCollectedMeatText, currentMeatValue, meatValue));
 
+    }
+
+
+    IEnumerator UpdateTextOverTime(TMP_Text text, int currentValue, int targetValue)
+    {
+        while (currentValue < targetValue)
+        {
+            currentValue++;
+            text.text = currentValue.ToString();
+            yield return new WaitForSeconds(1 / (targetValue + 1));
+        }
     }
 
     #endregion

@@ -1210,10 +1210,9 @@ MonoBehaviour:
   - {fileID: 5402279503156444669}
   isRepairable: 0
   isTower: 1
-  asset: {fileID: 5439222904992618280}
   feelFeedBacks: {fileID: 8522963525274409092}
-  enableRecoveryTimer: 0
-  recoveryTimer: 3
+  enableRecoveryTimer: 4
+  recoveryTimer: 0.7
 --- !u!114 &1384173887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,6 +1257,7 @@ MonoBehaviour:
   - {fileID: 4413744750812007792}
   recoveryParticles:
   - {fileID: 2335259267718724502}
+  reviveParticle: {fileID: 0}
 --- !u!114 &1384173888
 MonoBehaviour:
   m_ObjectHideFlags: 0

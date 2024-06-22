@@ -11253,6 +11253,7 @@ RectTransform:
   - {fileID: 8189562802011389096}
   - {fileID: 6751617221267911772}
   - {fileID: 2829684829951810332}
+  - {fileID: 6250596561728948285}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11334,6 +11335,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bd56d7f59c4d9489e57b2b8c415285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolObject: {fileID: 8705306181023088304}
+  coinPrefab: {fileID: 7264449520923289565}
+  meatPrefab: {fileID: 5894606093402139520}
   waveCallButton: {fileID: 3298829451915649636}
   allPanels:
   - {fileID: 2988444235175064362}
@@ -22287,6 +22291,12 @@ MonoBehaviour:
   waveWoncollectedXPText: {fileID: 8321016733438307155}
   waveWoncollectedCoinText: {fileID: 7244157326191840627}
   waveWoncollectedMeatText: {fileID: 7165593443968346700}
+  coinEarning: {fileID: 3432771763964811355}
+  meatEarning: {fileID: 5701222096833563907}
+  coinGameHud: {fileID: 2251390651020232453}
+  meatGameHud: {fileID: 7612452129336923991}
+  earningReachDuration: 0.2
+  easeType: 28
 --- !u!1 &8032571254133456676
 GameObject:
   m_ObjectHideFlags: 0
@@ -23842,6 +23852,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 7.56
+--- !u!1 &8705306181023088304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6250596561728948285}
+  m_Layer: 5
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6250596561728948285
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705306181023088304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3699046735950493045}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8742343099001396311
 GameObject:
   m_ObjectHideFlags: 0

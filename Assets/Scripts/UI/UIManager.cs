@@ -12,6 +12,16 @@ public class UIManager : Singleton<UIManager>
     private GameManager gameManager;
     private EarningsHolder earningsHolder;
 
+    [Header("Earnings")]
+    [SerializeField] private GameObject poolObject;
+    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private GameObject meatPrefab;
+    
+    public Queue<GameObject> coinPool = new Queue<GameObject>();
+    public Queue<GameObject> meatPool = new Queue<GameObject>();
+    // private Queue<GameObject> expQueue = new Queue<GameObject>();
+
+
     [Header("Wave Control")]
     [SerializeField] private Button waveCallButton;
 
@@ -105,6 +115,7 @@ public class UIManager : Singleton<UIManager>
     {
         DisableUpgradingButton();
         SetStartingUI();
+        EarningPooler();
     }
 
     private void SetStartingUI()
@@ -163,7 +174,24 @@ public class UIManager : Singleton<UIManager>
         towerDeathPanel.GameLostPanelSequence();
     }
 
-
+    public void EarningPooler(){
+        // pool coins
+        for (int i = 0; i < 100; i++)
+        {
+            GameObject coin = Instantiate(coinPrefab, Vector3.zero, Quaternion.identity, poolObject.transform);
+            coin.SetActive(false);
+            coinPool.Enqueue(coin);
+            Debug.Log("coin pooled");
+        }
+        // pool meat
+        for (int i = 0; i < 100; i++)
+        {
+            GameObject meat = Instantiate(meatPrefab, Vector3.zero, Quaternion.identity, poolObject.transform);
+            meat.SetActive(false);
+            meatPool.Enqueue(meat);
+            Debug.Log("meat pooled");
+        }
+    }
     #region Panel Management
 
     public void DeactivateAllPanels()

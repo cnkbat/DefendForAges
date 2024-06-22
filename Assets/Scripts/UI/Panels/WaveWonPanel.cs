@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class WaveWonPanel : PanelBase
 {
     EarningsHolder earningsHolder;
-
     bool collected;
 
     [Header("Earnings")]
@@ -22,11 +22,22 @@ public class WaveWonPanel : PanelBase
     int currentXPValue;
     int currentMeatValue;
 
+    [Header("Earning Positions")]
+    [SerializeField] private Transform coinEarning;
+    [SerializeField] private Transform meatEarning;
+    [Header("Earning Destinations")]
+    [SerializeField] private Transform coinGameHud;
+    [SerializeField] private Transform meatGameHud;
+
+
+    [SerializeField] private float earningReachDuration;
+    [SerializeField] Ease easeType;
 
     protected override void OnEnable()
     {
         base.OnEnable();
         earningsHolder = EarningsHolder.instance;
+        // check this for error for instances
 
         collected = false;
 
@@ -77,7 +88,7 @@ public class WaveWonPanel : PanelBase
     }
     IEnumerator DisableWaveWonUI()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
 
         uiManager.GetBackToGamePanel();
         gameManager.OnApplyEarnings?.Invoke();
@@ -94,6 +105,8 @@ public class WaveWonPanel : PanelBase
         StartCoroutine(UpdateTextOverTime(waveWoncollectedCoinText, currentCoinValue, coinValue));
         StartCoroutine(UpdateTextOverTime(waveWoncollectedMeatText, currentMeatValue, meatValue));
 
+        StartCoroutine(TransferCoinToPlayerAnimation(coinValue));
+        StartCoroutine(TransferMeatToPlayerAnimation(meatValue));
     }
 
     IEnumerator UpdateTextOverTime(TMP_Text text, int currentValue, int targetValue)
@@ -114,29 +127,6 @@ public class WaveWonPanel : PanelBase
         rewardedApplyEarningsButton.gameObject.SetActive(false);
 
         uiManager.OnApplyEarningToPlayerButtonClicked(2);
-        // Here starts distribution of rewards
-        // for meat and coin only for now.
-        // we need a queue of rewards to distribute, as an object pool. poolu nereye koyacağımız netleşmeli
-        // ayrıca dotweenler için duration hesabı yapılmalı
-        for(int i = 0; i < currentCoinValue; i++)
-        {
-            // dequeue coin
-            // remove 1 coin from earning
-            // coin.setactive(true)
-            // move coin to coin earning position
-            // dotween coin to coin gamehud
-                // on complete add 1 coin to player and queue coin and coin.setactive(false)
-        }
-        for(int i = 0; i < currentMeatValue; i++)
-        {
-            // dequeue meat
-            // remove 1 meat from earning
-            // meat.setactive(true),
-            // move meat to meat earning position
-            // dotween meat to meat gamehud
-                // on complete add 1 meat to player and queue meat and meat.setactive(false)
-        }
-
 
         StartCoroutine(DisableWaveWonUI());
     }
@@ -148,32 +138,70 @@ public class WaveWonPanel : PanelBase
         rewardedApplyEarningsButton.gameObject.SetActive(false);
 
         uiManager.OnApplyEarningToPlayerButtonClicked(1);
-        // Here starts distribution of rewards
-        // for meat and coin only for now.
-        // we need a queue of rewards to distribute, as an object pool. poolu nereye koyacağımız netleşmeli
-        // ayrıca dotweenler için duration hesabı yapılmalı
-        for(int i = 0; i < currentCoinValue; i++)
-        {
-            // dequeue coin
-            // remove 1 coin from earning
-            // coin.setactive(true)
-            // move coin to coin earning position
-            // dotween coin to coin gamehud
-                // on complete add 1 coin to player and queue coin and coin.setactive(false)
-        }
-        for(int i = 0; i < currentMeatValue; i++)
-        {
-            // dequeue meat
-            // remove 1 meat from earning
-            // meat.setactive(true),
-            // move meat to meat earning position
-            // dotween meat to meat gamehud
-                // on complete add 1 meat to player and queue meat and meat.setactive(false)
-        }
+        
 
         StartCoroutine(DisableWaveWonUI());
     }
 
+    IEnumerator TransferCoinToPlayerAnimation(int coinValue){
+        yield return new WaitForSeconds(1.5f);
+        // Here starts distribution of rewards
+        // for meat and coin only for now.
+        // we need a queue of rewards to distribute, as an object pool. pool in UIManager publicly
+        // dotween durations will be set on inspector
+        int startCoinVal = coinValue;
+        for(int i = 0; i < startCoinVal; i++)
+        {
+            yield return new WaitForSeconds(1/startCoinVal);
+            // dequeue coin
+            GameObject coin = uiManager.coinPool.Dequeue();
+            // remove 1 coin from earning
+            currentCoinValue--;
+            // move coin to coin earning position
+            coin.transform.position = coinEarning.position;
+            // coin.setactive(true)
+            coin.SetActive(true);
+            // dotween coin to coin gamehud
+                // on complete add 1 coin to player and queue coin and coin.setactive(false)
+            coin.transform.DOMove(coinGameHud.position, earningReachDuration)
+            .SetEase(easeType)
+            .OnComplete(() => {
+                uiManager.coinPool.Enqueue(coin);
+                coin.SetActive(false);
+                playerStats.IncrementMoney(1);
+            });
+        }
+    }
+
+
+IEnumerator TransferMeatToPlayerAnimation(int meatValue){
+        yield return new WaitForSeconds(1.5f);
+        // Here starts distribution of rewards
+        // we need a queue of rewards to distribute, as an object pool. pool in UIManager publicly
+        // dotween durations will be set on inspector
+        int startMeatVal = meatValue;
+        for(int i = 0; i < startMeatVal; i++)
+        {
+            yield return new WaitForSeconds(1/startMeatVal);
+            // dequeue meat
+            GameObject meat = uiManager.meatPool.Dequeue();
+            // remove 1 meat from earning
+            currentMeatValue--;
+            // move meat to meat earning position
+            meat.transform.position = meatEarning.position;
+            // meat.setactive(true)
+            meat.SetActive(true);
+            // dotween meat to meat gamehud
+                // on complete add 1 meat to player and queue meat and meat.setactive(false)
+            meat.transform.DOMove(meatGameHud.position, earningReachDuration)
+            .SetEase(easeType)
+            .OnComplete(() =>{
+                uiManager.meatPool.Enqueue(meat);
+                meat.SetActive(false);
+                playerStats.IncrementMeat(1);
+            });
+        }
+    }
 
     #endregion
 

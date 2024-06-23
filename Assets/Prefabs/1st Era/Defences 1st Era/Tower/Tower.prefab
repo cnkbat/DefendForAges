@@ -2739,6 +2739,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1465656453289255767}
     m_Modifications:
+    - target: {fileID: -4893133330530940092, guid: d773d301d86b3254180a6887af308eef, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1212038522573524, guid: d773d301d86b3254180a6887af308eef, type: 3}
       propertyPath: m_Name
       value: ScanExplosion
@@ -2797,6 +2801,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4246505930568814, guid: d773d301d86b3254180a6887af308eef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198062837662549186, guid: d773d301d86b3254180a6887af308eef, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198171353879996996, guid: d773d301d86b3254180a6887af308eef, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804815348922588674, guid: d773d301d86b3254180a6887af308eef, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

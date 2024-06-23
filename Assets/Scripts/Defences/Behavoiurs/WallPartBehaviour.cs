@@ -10,7 +10,7 @@ public class WallPartBehaviour : MonoBehaviour
     float startXRot;
     public bool broken;
     Rigidbody rb;
-    private float breakForce = 8f;
+    private float breakForce = 4f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();

@@ -18,7 +18,7 @@ MonoBehaviour:
   attackSpeed: 1.4
   attackDur: 1
   damage: 12
-  attackRange: 3.5
+  attackRange: 2.7
   coinValue: 12
   expValue: 2.4
   meatValue: 4

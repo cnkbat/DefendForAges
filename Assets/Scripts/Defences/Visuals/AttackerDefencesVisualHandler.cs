@@ -8,12 +8,12 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
 {
 
     private AttackerDefenceBehaviour attackerDefenceBehaviour;
-    private AttackerDefenceStat attackerDefenceStat;
+    protected AttackerDefenceStat attackerDefenceStat;
 
     [SerializeField] private List<ParticleSystem> upgradeParticles = new List<ParticleSystem>();
 
     [Header("Health Bar")]
-    [SerializeField] private Slider healthBar;
+    [SerializeField] protected Slider healthBar;
     private float currentHealthBarDisappearTimer;
 
     [Header("Enabling Parts")]

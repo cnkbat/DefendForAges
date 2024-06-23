@@ -42,6 +42,7 @@ public class PlayerDeathPanel : PanelBase
                 gameManager.allSpawnedEnemies[i].Kill();
             }
 
+            playerStats.OnRewardedRevivePlayer?.Invoke();
             SetButtonActivity(false);
             RevivePlayer();
         }

@@ -165,11 +165,13 @@ public class Bullet : MonoBehaviour, IPoolableObject
 
             objectPooler.SpawnFloatingTextFromPool("FloatingText", targetPos, damage, damage * gameManager.fontSizeOnEnemyHit,
                 playerStats.GetIsPowerupEnabled() ? Color.red : Color.white);
-
+            objectPooler.SpawnHitFXFromPool("HitParticle", transform.position);
+            
             DisableBullet();
         }
         else if (other.TryGetComponent(out IEnvironment environment))
         {
+            objectPooler.SpawnHitFXFromPool("HitParticle", transform.position);
             DisableBullet();
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TowerVisualHandler : AttackerDefencesVisualHandler
@@ -9,6 +10,9 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
     [Header("Tower VFXs")]
     [SerializeField] private List<ParticleSystem> recoveryParticles = new List<ParticleSystem>();
     [SerializeField] private ParticleSystem reviveParticle;
+
+    [Header("Health Bar Poses")]
+    [SerializeField] private List<float> healthBarHeights;
 
     protected override void Awake()
     {
@@ -23,6 +27,7 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
         towerBehaviour.OnRecoveryDone += PlayRecoveryParticles;
         playerStats.OnWaveWon += CheckIndicator;
         defencesBehaviourBase.OnRepairDone += CheckIndicator;
+        defencesBehaviourBase.OnRepairDone += AdjustHealthBarHeight;
 
         towerBehaviour.OnDamageTaken += StopRecoveryParticles;
         towerBehaviour.OnHealthFilled += StopRecoveryParticles;
@@ -36,11 +41,18 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
         towerBehaviour.OnRecoveryDone -= PlayRecoveryParticles;
         playerStats.OnWaveWon -= CheckIndicator;
         defencesBehaviourBase.OnRepairDone -= CheckIndicator;
+        defencesBehaviourBase.OnRepairDone -= AdjustHealthBarHeight;
+
 
         towerBehaviour.OnDamageTaken -= StopRecoveryParticles;
         towerBehaviour.OnHealthFilled -= StopRecoveryParticles;
         towerBehaviour.OnTowerRevived -= PlayReviveParticles;
 
+    }
+
+    private void Start()
+    {
+        AdjustHealthBarHeight();
     }
 
     protected override void Update()
@@ -81,7 +93,7 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
 
     protected override void CheckIndicator()
     {
-        if(gameManager.allCities[playerStats.GetCityIndex()].gameObject != this.gameObject) return;
+        if (gameManager.allCities[playerStats.GetCityIndex()].gameObject != this.gameObject) return;
 
         base.CheckIndicator();
 
@@ -91,5 +103,10 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
         }
     }
 
+    private void AdjustHealthBarHeight()
+    {
+        healthBar.transform.localPosition = new Vector3(healthBar.transform.localPosition.x, healthBarHeights[attackerDefenceStat.upgradeIndex],
+            healthBar.transform.localPosition.z);
+    }
 }
 

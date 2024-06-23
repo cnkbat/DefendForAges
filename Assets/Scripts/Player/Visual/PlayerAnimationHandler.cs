@@ -11,7 +11,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     private PlayerAngleCalculator playerAngleCalculator;
     private PlayerAttack playerAttack;
     private PlayerDeathHandler playerDeathHandler;
-    
+
     [Header("Animation Speed Changers")]
     [SerializeField] private float walkASMultiplier;
     [SerializeField] private float attackASMultiplier;
@@ -33,6 +33,8 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         playerStats.OnMovementSpeedUpgraded += ChangeWalkAS;
         playerStats.OnAttackSpeedUpgraded += ChangeAttackAS;
+        playerDeathHandler.OnTargetDestroyed += SetDeathAnim;
+        playerStats.OnRevivePlayer += SetReviveAnim;
 
         playerAngleCalculator.OnPlayerMoved += SetWalkAnimationValues;
 
@@ -50,6 +52,9 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         playerStats.OnMovementSpeedUpgraded -= ChangeWalkAS;
         playerStats.OnAttackSpeedUpgraded -= ChangeAttackAS;
+
+        playerDeathHandler.OnTargetDestroyed -= SetDeathAnim;
+        playerStats.OnRevivePlayer -= SetReviveAnim;
 
         playerAttack.OnAttackAnimPlayNeeded -= SetAttackTrigger;
         playerAngleCalculator.OnPlayerMoved -= SetWalkAnimationValues;
@@ -95,4 +100,12 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     #endregion
 
+    private void SetDeathAnim()
+    {
+        animator.SetBool("isDead", true);
+    }
+    private void SetReviveAnim()
+    {
+        animator.SetBool("isDead", false);
+    }
 }

@@ -83,6 +83,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public Action OnGemChanged;
     public Action OnMeatChange;
     public Action OnRevivePlayer;
+    public Action OnRewardedRevivePlayer;
 
     [Header("UI Power Up")]
     public Action<float> OnPowerUpValueChanged;
@@ -557,7 +558,7 @@ public class PlayerStats : Singleton<PlayerStats>
         else
         {
             money = 50;
-            gem = 10;
+            gem = 15;
         }
 
         UpdateStats();

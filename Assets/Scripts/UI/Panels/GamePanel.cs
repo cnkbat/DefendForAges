@@ -11,9 +11,9 @@ public class GamePanel : PanelBase
     [Header("GameHud Texts")]
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text meatText;
+    [SerializeField] private TMP_Text gemText;
     [SerializeField] private TMP_Text currentWaveIndexText;
     [SerializeField] private TMP_Text nextWaveIndexText;
-
 
     [Header("Wave Control")]
     [SerializeField] private List<GameObject> totalProgressBarImages;
@@ -45,6 +45,7 @@ public class GamePanel : PanelBase
         playerStats.OnExperienceGain += UpdateLevelBar;
         playerStats.OnMoneyChange += UpdateMoneyText;
         playerStats.OnMeatChange += UpdateMeatText;
+        playerStats.OnGemChanged += UpdateGemText;
 
         // Power UP
         playerStats.OnPowerUpValueChanged += UpdatePowerUpSliderValue;
@@ -60,6 +61,7 @@ public class GamePanel : PanelBase
         playerStats.OnExperienceGain -= UpdateLevelBar;
         playerStats.OnMoneyChange -= UpdateMoneyText;
         playerStats.OnMeatChange -= UpdateMeatText;
+        playerStats.OnGemChanged -= UpdateGemText;
 
         // Power UP cleanup
         playerStats.OnPowerUpValueChanged += UpdatePowerUpSliderValue;
@@ -71,6 +73,7 @@ public class GamePanel : PanelBase
     {
         UpdateMoneyText();
         UpdateMeatText();
+        UpdateGemText();
         UpdateAllWavesProgressBar();
         UpdatePowerUpSliderValue(0);
     }
@@ -137,7 +140,10 @@ public class GamePanel : PanelBase
     {
         uiManager.UpdateText(meatText, playerStats.meat);
     }
-
+    private void UpdateGemText()
+    {
+        uiManager.UpdateText(gemText, playerStats.gem);
+    }
     #endregion
 
     #region LevelBar

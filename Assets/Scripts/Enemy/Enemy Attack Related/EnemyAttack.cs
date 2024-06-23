@@ -11,6 +11,7 @@ public class EnemyAttack : MonoBehaviour
     protected EnemyMovement enemyMovement;
     protected EnemyDeathHandler enemyDeathHandler;
     private NavMeshAgent navMeshAgent;
+    protected ObjectPooler objectPooler;
 
     [Header("AI")]
     [SerializeField] private float originalStoppingDistance;
@@ -47,6 +48,10 @@ public class EnemyAttack : MonoBehaviour
         navMeshAgent.stoppingDistance = originalStoppingDistance;
     }
 
+    private void Start()
+    {
+        objectPooler = ObjectPooler.instance;
+    }
 
     private void Update()
     {

@@ -25,6 +25,10 @@ public class PlayerVisualsHandler : MonoBehaviour
     [SerializeField] private ParticleSystem lifeStealParticle;
     [SerializeField] private ParticleSystem[] powerupParticles;
 
+    [Header("Revive")]
+    [SerializeField] private ParticleSystem rewardedReviveParticle;
+    [SerializeField] private ParticleSystem playerRevivedParticle;
+
     private void Awake()
     {
         playerStats = GetComponent<PlayerStats>();
@@ -46,7 +50,11 @@ public class PlayerVisualsHandler : MonoBehaviour
         playerDeathHandler.OnDamageTaken += UpdateHealthBarValue;
         playerStats.OnLifeStolen += UpdateHealthBarValue;
 
+
         // VFX
+        playerStats.OnPlayerRevived += PlayReviveParticle;
+        playerStats.OnRewardedRevivePlayer += PlayRewardedReviveParticle;
+
         playerStats.OnPlayerKilled += PlayDeathParticle;
         levelSystem.OnLevelUp += PlayLevelupParticle;
         playerStats.OnLifeStolen += PlayLifeStealParticle;
@@ -67,6 +75,8 @@ public class PlayerVisualsHandler : MonoBehaviour
         playerStats.OnLifeStolen -= UpdateHealthBarValue;
 
         // VFX
+        playerStats.OnPlayerRevived -= PlayReviveParticle;
+        playerStats.OnRewardedRevivePlayer -= PlayRewardedReviveParticle;
         playerStats.OnPlayerKilled -= PlayDeathParticle;
         levelSystem.OnLevelUp -= PlayLevelupParticle;
         playerStats.OnLifeStolen -= PlayLifeStealParticle;
@@ -139,11 +149,21 @@ public class PlayerVisualsHandler : MonoBehaviour
         feedBacks?.PlayFeedbacks();
     }
 
+    private void PlayReviveParticle()
+    {
+        PlayParticle(playerRevivedParticle);
+    }
+
+    private void PlayRewardedReviveParticle()
+    {
+        PlayParticle(rewardedReviveParticle);
+    }
+
     #region Powerup
 
     public void PlayPowerupParticle()
     {
-        for(int i = 0; i < powerupParticles.Length; i++)
+        for (int i = 0; i < powerupParticles.Length; i++)
         {
             PlayParticle(powerupParticles[i]);
         }

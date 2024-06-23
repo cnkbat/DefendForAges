@@ -175,5 +175,27 @@ public class ObjectPooler : Singleton<ObjectPooler>
     }
 
 
+    public GameObject SpawnHitFXFromPool(string tag, Vector3 spawnPos)
+    {
+
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.Log("object spawn error with " + tag);
+            return null;
+        }
+
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        objectToSpawn.SetActive(true);
+
+        objectToSpawn.transform.position = spawnPos;
+        
+        objectToSpawn.GetComponent<ParticleSystem>().Play();
+
+        poolDictionary[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
+    }
+
+
     #endregion
 }

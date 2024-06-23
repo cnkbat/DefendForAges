@@ -568,8 +568,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4059722526891278447}
   m_LocalRotation: {x: 0, y: 0.9659259, z: 0.258819, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.02281507}
-  m_LocalScale: {x: 0.015780596, y: 0.015780596, z: 0.015780596}
+  m_LocalPosition: {x: 0, y: 0, z: 0.04}
+  m_LocalScale: {x: 0.017206429, y: 0.017206429, z: 0.017206429}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4059722526058414377}
@@ -580,7 +580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -30, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.2877495}
+  m_AnchoredPosition: {x: 0, y: 3.4}
   m_SizeDelta: {x: 166.96106, y: 16.49601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4059722526891278445
@@ -724,10 +724,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rpgSystemSO: {fileID: 11400000, guid: 963bf65ddef16cb4a9999a6b5fa25d86, type: 2}
   powerUpSO: {fileID: 11400000, guid: 3c0338764572c964b924d0e735bbb18c, type: 2}
-  playerLevel: 0
   money: 0
-  experiencePoint: 0
   meat: 0
+  gem: 0
+  playerLevel: 0
+  experiencePoint: 0
   damageIndex: 0
   attackSpeedIndex: 0
   rangeIndex: 0

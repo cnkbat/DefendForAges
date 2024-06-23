@@ -147,6 +147,7 @@ public class TowerDeathPanel : PanelBase
 
     IEnumerator UpdateTextOverTime(TMP_Text text, int currentValue, int targetValue)
     {
+        Debug.Log("target value = " + targetValue);
         while (currentValue < targetValue)
         {
             currentValue++;

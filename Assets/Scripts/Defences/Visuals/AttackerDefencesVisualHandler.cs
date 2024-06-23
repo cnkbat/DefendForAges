@@ -67,9 +67,9 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
 
     public void UpdateHealthBarValue()
     {
-        if(healthBar != null) return;
+        if (healthBar == null) return;
         if (attackerDefenceBehaviour.GetIsDestroyed()) return;
-
+        
         healthBar.gameObject.SetActive(true);
         healthBar.value = attackerDefenceBehaviour.GetCurrentHealth() / attackerDefenceStat.GetMaxHealth();
 

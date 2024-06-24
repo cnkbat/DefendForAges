@@ -50,9 +50,10 @@ public class TowerVisualHandler : AttackerDefencesVisualHandler
 
     }
 
-    private void Start()
+    protected override void Start()
     {
-        AdjustHealthBarHeight();
+        base.Start();
+         AdjustHealthBarHeight();
     }
 
     protected override void Update()

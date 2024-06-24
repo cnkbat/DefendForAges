@@ -26,6 +26,9 @@ public class WallBehaviour : DefencesBehaviourBase
         //     pos_rot.Add(rot);
         //     wallStats.wallPartLocations.Add(pos_rot);
         // }
+
+        wallStats.loadableBase.OnRepairDone += ReviveTarget;
+
         wallStats.OnBuyDone += ReviveTarget;
         playerStats.OnWaveWon += CheckForUpgradeable;
     }
@@ -33,6 +36,8 @@ public class WallBehaviour : DefencesBehaviourBase
     protected override void OnDisable()
     {
         base.OnDisable();
+
+        wallStats.loadableBase.OnRepairDone -= ReviveTarget;
 
         wallStats.OnBuyDone -= ReviveTarget;
         playerStats.OnWaveWon -= CheckForUpgradeable;
@@ -45,7 +50,7 @@ public class WallBehaviour : DefencesBehaviourBase
     private void Update()
     {
         // Break test
-        if(Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         { TakeDamage(10); }
         // Revive defence
         if (Input.GetKeyDown(KeyCode.P))
@@ -63,7 +68,7 @@ public class WallBehaviour : DefencesBehaviourBase
             if (currentHealth < wallStats.healthParts[i])
             {
                 var part = wallStats.wallParts[i].GetComponent<WallPartBehaviour>();
-                if(!part.broken)
+                if (!part.broken)
                     part.BreakPart(-transform.forward);
             }
         }
@@ -75,10 +80,10 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.ReviveTarget();
 
-        for (int i = 0; i< wallStats.wallParts.Count; i++)
+        for (int i = 0; i < wallStats.wallParts.Count; i++)
         {
             var part = wallStats.wallParts[i].GetComponent<WallPartBehaviour>();
-            if(part.broken)
+            if (part.broken)
                 part.RepairPart();
         }
         for (int i = 0; i < wallStats.wallHolderParts.Count; i++)
@@ -113,11 +118,11 @@ public class WallBehaviour : DefencesBehaviourBase
     {
         base.CheckForUpgradeable();
 
-        if(!isRepairable)
+        if (!isRepairable)
         {
             defencesStatsBase.loadableBase.gameObject.SetActive(false);
         }
-        
+
     }
 
 }

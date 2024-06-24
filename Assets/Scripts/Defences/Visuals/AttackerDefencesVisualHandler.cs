@@ -32,6 +32,9 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
         attackerDefenceBehaviour.OnDamageTaken += UpdateHealthBarValue;
         attackerDefenceStat.OnUpgraded += PlayUpgradeParticles;
         attackerDefenceStat.OnUpgraded += EnableUpgradedObjects;
+
+        attackerDefenceBehaviour.OnTargetDestroyed += DisableUpgradedObjects;
+        attackerDefenceBehaviour.OnTargetRevived += EnableUpgradedObjects;
     }
 
     protected override void OnDisable()
@@ -40,9 +43,12 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
         attackerDefenceBehaviour.OnDamageTaken -= UpdateHealthBarValue;
         attackerDefenceStat.OnUpgraded -= PlayUpgradeParticles;
         attackerDefenceStat.OnUpgraded -= EnableUpgradedObjects;
+
+        attackerDefenceBehaviour.OnTargetDestroyed -= DisableUpgradedObjects;
+        attackerDefenceBehaviour.OnTargetRevived -= EnableUpgradedObjects;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         EnableUpgradedObjects();
     }
@@ -69,7 +75,7 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
     {
         if (healthBar == null) return;
         if (attackerDefenceBehaviour.GetIsDestroyed()) return;
-        
+
         healthBar.gameObject.SetActive(true);
         healthBar.value = attackerDefenceBehaviour.GetCurrentHealth() / attackerDefenceStat.GetMaxHealth();
 
@@ -112,5 +118,15 @@ public class AttackerDefencesVisualHandler : DefencesVisualHandler
             enablingObjects[attackerDefenceStat.upgradeIndex].transform.DOScale(originalScale, 0.8f).SetEase(Ease.OutElastic);
         }
 
+    }
+
+    public void DisableUpgradedObjects()
+    {
+        if (enablingObjects.Count == 0) return;
+
+        for (int i = 0; i < enablingObjects.Count; i++)
+        {
+            enablingObjects[i].SetActive(false);
+        }
     }
 }

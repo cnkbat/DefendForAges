@@ -131,9 +131,7 @@ public class DefencesBehaviourBase : EnemyTarget
         }
         else
         {
-            Debug.Log("set repair");
             OnRepairStateChange.Invoke(newBool);
-
             isRepairable = newBool;
         }
 

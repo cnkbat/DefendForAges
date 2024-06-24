@@ -108,6 +108,8 @@ public class PlayerStats : Singleton<PlayerStats>
 
         OnKillEnemy += EarnBonusOnKill;
         OnPlayerRevived += FillCurrentHealth;
+        
+        UpdateStats();
     }
 
     private void OnDisable()

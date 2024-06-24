@@ -45,9 +45,10 @@ public class LoadableBase : MonoBehaviour
     private void OnEnable()
     {
         gameManager = GameManager.instance;
-
-        gameManager.OnWaveStarted += DisableObject;
+        maxRepairTimer = gameManager.repairTimer;
         
+        gameManager.OnWaveStarted += DisableObject;
+
         ResetRepairTimer();
     }
 
@@ -62,7 +63,7 @@ public class LoadableBase : MonoBehaviour
         playerStats = PlayerStats.instance;
         saveManager = SaveManager.instance;
 
-        maxRepairTimer = gameManager.repairTimer;
+
     }
 
     private void Update()
@@ -76,7 +77,7 @@ public class LoadableBase : MonoBehaviour
         if (isRepairNeeded)
         {
             currentRepairTimer -= Time.deltaTime;
-            Debug.Log("isRepairNeeded");
+
             if (currentRepairTimer <= 0)
             {
                 Repair();

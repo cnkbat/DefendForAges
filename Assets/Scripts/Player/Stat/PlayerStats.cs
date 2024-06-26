@@ -320,7 +320,7 @@ public class PlayerStats : Singleton<PlayerStats>
 
     private void GemChanged()
     {
-        OnMoneyChange?.Invoke();
+        OnGemChanged?.Invoke();
         saveManager.OnSaved?.Invoke();
     }
 
@@ -544,6 +544,8 @@ public class PlayerStats : Singleton<PlayerStats>
         {
             this.playerLevel = playerData.playerLevel;
             this.money = playerData.money;
+            this.gem = playerData.gem;
+
             this.experiencePoint = playerData.experiencePoint;
             this.meat = playerData.meat;
             this.cityIndex = playerData.cityIndex;

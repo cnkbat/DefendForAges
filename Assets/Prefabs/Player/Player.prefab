@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af86f124526de0e4ea6cba199248f63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerTimer: 0.4
+  triggerTimer: 0.1
 --- !u!114 &5663665469081288338
 MonoBehaviour:
   m_ObjectHideFlags: 0

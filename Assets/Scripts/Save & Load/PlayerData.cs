@@ -6,7 +6,8 @@ public class PlayerData
     public int money;
     public int experiencePoint;
     public int meat;
-
+    public int gem;
+    
     public int cityIndex;
     public int waveIndex;
 
@@ -28,6 +29,7 @@ public class PlayerData
         this.money = playerStats.money;
         this.experiencePoint = playerStats.experiencePoint;
         this.meat = playerStats.meat;
+        this.gem = playerStats.gem;
 
         this.cityIndex = playerStats.cityIndex;
         this.waveIndex = playerStats.waveIndex;

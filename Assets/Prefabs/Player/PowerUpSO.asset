@@ -20,7 +20,7 @@ MonoBehaviour:
   - 0.6
   - 0.45
   - 0.4
-  attackSpeedCosts: 08000000140000002d0000005300000068000000c800000029010000
+  - 0.35
   rangeValues:
   - 14
   - 15
@@ -29,7 +29,7 @@ MonoBehaviour:
   - 20
   - 23
   - 24
-  rangeCosts: 140000001d0000003d000000590000006e000000a9000000d7000000
+  - 25
   movementSpeedValues:
   - 9
   - 10
@@ -38,4 +38,4 @@ MonoBehaviour:
   - 11
   - 11.25
   - 11.5
-  movementSpeedCosts: 0b0000001300000023000000430000005f0000007b000000c7000000
+  - 12

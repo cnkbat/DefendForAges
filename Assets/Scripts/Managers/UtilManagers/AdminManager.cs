@@ -48,6 +48,7 @@ public class AdminManager : MonoBehaviour
         playerStats.IncrementMoney(1000);
         playerStats.IncrementMeat(1000);
         playerStats.IncrementXP(100);
+        playerStats.IncrementGem(100);
     }
 
     private void EnableDisableAdminPanel()

@@ -16,10 +16,11 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject poolObject;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private GameObject meatPrefab;
+    [SerializeField] private GameObject xpPrefab;
 
     public Queue<GameObject> coinPool = new Queue<GameObject>();
     public Queue<GameObject> meatPool = new Queue<GameObject>();
-    // private Queue<GameObject> expQueue = new Queue<GameObject>();
+    public Queue<GameObject> xpPool = new Queue<GameObject>();
 
 
     [Header("Wave Control")]
@@ -195,6 +196,14 @@ public class UIManager : Singleton<UIManager>
             meatPool.Enqueue(meat);
         }
         // going to pool xp
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject xp = Instantiate(xpPrefab, Vector3.zero, Quaternion.identity, poolObject.transform);
+            xp.transform.localPosition = Vector3.zero;
+
+            xp.SetActive(false);
+            xpPool.Enqueue(xp);
+        }
     }
     #region Panel Management
 

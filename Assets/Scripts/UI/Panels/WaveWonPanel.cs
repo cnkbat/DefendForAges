@@ -25,9 +25,11 @@ public class WaveWonPanel : PanelBase
     [Header("Earning Positions")]
     [SerializeField] private Transform coinEarning;
     [SerializeField] private Transform meatEarning;
+    [SerializeField] private Transform xpEarning;
     [Header("Earning Destinations")]
     [SerializeField] private Transform coinGameHud;
     [SerializeField] private Transform meatGameHud;
+    [SerializeField] private Transform xpGameHud;
 
 
     [SerializeField] private float earningReachDuration;
@@ -109,8 +111,10 @@ public class WaveWonPanel : PanelBase
         StartCoroutine(UpdateTextOverTime(waveWoncollectedCoinText, currentCoinValue, coinValue));
         StartCoroutine(UpdateTextOverTime(waveWoncollectedMeatText, currentMeatValue, meatValue));
 
-        StartCoroutine(TransferCoinToPlayerAnimation(coinValue));
-        StartCoroutine(TransferMeatToPlayerAnimation(meatValue));
+        StartCoroutine(TransferCoinToPlayerAnimation());
+        StartCoroutine(TransferMeatToPlayerAnimation());
+        StartCoroutine(TransferXpToPlayerAnimation());
+        
     }
 
     IEnumerator UpdateTextOverTime(TMP_Text text, int currentValue, int targetValue)
@@ -143,31 +147,26 @@ public class WaveWonPanel : PanelBase
 
         uiManager.OnApplyEarningToPlayerButtonClicked(1);
 
+        StartCoroutine(CoroutineFuncDisableWaveWonUI());
 
-        DisableWonUI();
+        //DisableWonUI();
     }
 
-    IEnumerator TransferCoinToPlayerAnimation(int coinValue)
+    IEnumerator TransferCoinToPlayerAnimation()
     {
         yield return new WaitForSeconds(1.5f);
-        // Here starts distribution of rewards
-        // for meat and coin only for now.
-        // we need a queue of rewards to distribute, as an object pool. pool in UIManager publicly
-        // dotween durations will be set on inspector
         int startCoinVal = 5;
         for (int i = 0; i < startCoinVal; i++)
         {
             yield return new WaitForSeconds(1 / startCoinVal);
             // dequeue coin
             GameObject coin = uiManager.coinPool.Dequeue();
-            // remove 1 coin from earning
-            currentCoinValue--;
             // move coin to coin earning position
             coin.transform.position = coinEarning.position;
             // coin.setactive(true)
             coin.SetActive(true);
             // dotween coin to coin gamehud
-            // on complete add 1 coin to player and queue coin and coin.setactive(false)
+            // on complete queue coin and coin.setactive(false)
             coin.transform.DOMove(coinGameHud.position, earningReachDuration)
             .SetEase(easeType)
             .OnComplete(() =>
@@ -177,28 +176,21 @@ public class WaveWonPanel : PanelBase
             });
         }
     }
-
-
-    IEnumerator TransferMeatToPlayerAnimation(int meatValue)
+    IEnumerator TransferMeatToPlayerAnimation()
     {
         yield return new WaitForSeconds(1.5f);
-        // Here starts distribution of rewards
-        // we need a queue of rewards to distribute, as an object pool. pool in UIManager publicly
-        // dotween durations will be set on inspector
         int startMeatVal = 5;
         for (int i = 0; i < startMeatVal; i++)
         {
             yield return new WaitForSeconds(1 / startMeatVal);
             // dequeue meat
             GameObject meat = uiManager.meatPool.Dequeue();
-            // remove 1 meat from earning
-            currentMeatValue--;
             // move meat to meat earning position
             meat.transform.position = meatEarning.position;
             // meat.setactive(true)
             meat.SetActive(true);
             // dotween meat to meat gamehud
-            // on complete add 1 meat to player and queue meat and meat.setactive(false)
+            // on complete queue meat and meat.setactive(false)
             meat.transform.DOMove(meatGameHud.position, earningReachDuration)
             .SetEase(easeType)
             .OnComplete(() =>
@@ -208,7 +200,30 @@ public class WaveWonPanel : PanelBase
             });
         }
     }
-
+    IEnumerator TransferXpToPlayerAnimation()
+    {
+        yield return new WaitForSeconds(1.5f);
+        int startXpVal = 5;
+        for (int i = 0; i < startXpVal; i++)
+        {
+            yield return new WaitForSeconds(1 / startXpVal);
+            // dequeue xp
+            GameObject xp = uiManager.xpPool.Dequeue();
+            // move xp to xp earning position
+            xp.transform.position = xpEarning.position;
+            // coin.setactive(true)
+            xp.SetActive(true);
+            // dotween xp to xp gamehud
+            // on complete queue xp and xp.setactive(false)
+            xp.transform.DOMove(xpGameHud.position, earningReachDuration)
+            .SetEase(easeType)
+            .OnComplete(() =>
+            {
+                uiManager.xpPool.Enqueue(xp);
+                xp.SetActive(false);
+            });
+        }
+    }
     #endregion
 
 }

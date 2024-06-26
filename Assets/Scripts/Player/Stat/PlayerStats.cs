@@ -490,7 +490,7 @@ public class PlayerStats : Singleton<PlayerStats>
         IncrementPowerUp(powerUpAddOnValue);
     }
 
-    public void EarnBonusAtWaveEnd(int moneyValue, int xpValue, int meatValue)
+    public void EarnBonusAtWaveEnd(int meatValue, int moneyValue, int xpValue)
     {
         IncrementMeat(meatValue);
         IncrementMoney(moneyValue);

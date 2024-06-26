@@ -194,6 +194,7 @@ public class UIManager : Singleton<UIManager>
             meat.SetActive(false);
             meatPool.Enqueue(meat);
         }
+        // going to pool xp
     }
     #region Panel Management
 

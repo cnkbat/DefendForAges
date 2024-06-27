@@ -137,13 +137,16 @@ public class TowerBehaviour : AttackerDefenceBehaviour
 
     public override void ReviveTarget()
     {
+        isRepairable = true;
+        base.ReviveTarget();
         ResetHealthValue();
 
         OnTowerRevived?.Invoke();
 
-        for (int i = 0; i < gameManager.allSpawnedEnemies.Count; i++)
+        List<EnemyDeathHandler> targets = new List<EnemyDeathHandler>(gameManager.allSpawnedEnemies);
+        for (int i = 0; i < targets.Count; i++)
         {
-            gameManager.allSpawnedEnemies[i].Kill();
+            targets[i].Kill();
         }
 
     }

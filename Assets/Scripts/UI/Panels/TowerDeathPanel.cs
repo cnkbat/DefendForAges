@@ -36,6 +36,8 @@ public class TowerDeathPanel : PanelBase
         loseGameButton.onClick.AddListener(GameLostPanelSequenceEnd);
         earningsHolder.OnEarningsApply += ActivateAndUpdateTowerDeathEarningsTexts;
 
+        gameManager.allCities[playerStats.GetCityIndex()].GetTower().OnTowerRevived += ReviveTowerPanelSequence;
+
     }
 
     private void OnDisable()
@@ -44,6 +46,7 @@ public class TowerDeathPanel : PanelBase
         useGemToReviveTowerButton.onClick.RemoveAllListeners();
 
         earningsHolder.OnEarningsApply -= ActivateAndUpdateTowerDeathEarningsTexts;
+        gameManager.allCities[playerStats.GetCityIndex()].GetTower().OnTowerRevived -= ReviveTowerPanelSequence;
     }
 
     public void ReviveTowerButtonPressed()
@@ -158,6 +161,11 @@ public class TowerDeathPanel : PanelBase
             text.text = currentValue.ToString();
             yield return new WaitForSeconds(1 / (targetValue + 1));
         }
+    }
+
+    public void ReviveTowerPanelSequence()
+    {
+        uiManager.GetBackToGamePanel();
     }
 
     #endregion

@@ -37,7 +37,7 @@ public class PlayerCollisionHandler : MonoBehaviour
             {
                 currentTriggerTimer -= Time.deltaTime;
 
-                if (currentTriggerTimer < 0)
+                if (currentTriggerTimer < 0) // buraya sürekli girip duruyor
                 {
                     loadable.Load();
                     ResetTriggerTimer();

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -135,7 +135,7 @@ public class LoadableBase : MonoBehaviour
     private void Repair()
     {
         Debug.Log("repair");
-
+        isRepairNeeded = false;
         OnRepairDone?.Invoke();
         // dur simdi bakcaz 
     }

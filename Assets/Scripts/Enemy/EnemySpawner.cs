@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -180,11 +181,18 @@ public class EnemySpawner : MonoBehaviour
                 if (enemyGroup.spawnedEnemyCounter < enemyGroup.enemyCount)
                 {
 
-                    NavMesh.SamplePosition(enemySpawnPoints[spawnIndex].position, out NavMeshHit hit, 3, 63);
+                    //NavMesh.SamplePosition(enemySpawnPoints[spawnIndex].position, out NavMeshHit hit, 3, 63);
 
 
+                    //EnemyDeathHandler spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
+                    //    hit.position, cityManager.transform);
+
+
+                    
+
+                     // parametre olarak verilen pozisyon doğru, ama belirli bir noktadan sonra enemyler daha yakın spawn oluyor çözemedim
                     EnemyDeathHandler spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
-                        hit.position, cityManager.transform);
+                        enemySpawnPoints[spawnIndex].position, cityManager.transform);
 
                     OnEnemySpawned?.Invoke(localEnemySpawnCounter);
 

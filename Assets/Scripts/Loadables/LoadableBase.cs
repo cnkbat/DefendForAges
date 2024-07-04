@@ -16,7 +16,7 @@ public class LoadableBase : MonoBehaviour
     public int currentCostLeftForUpgrade;
 
     [Header("State")]
-
+    [SerializeField] private bool isBuying;
     [SerializeField] private bool isRepairNeeded;
 
     [Header("Timers")]
@@ -40,6 +40,7 @@ public class LoadableBase : MonoBehaviour
     private void Awake()
     {
         startPos = transform.localPosition;
+        isBuying = false;
     }
 
     private void OnEnable()
@@ -73,7 +74,7 @@ public class LoadableBase : MonoBehaviour
 
     public void Load()
     {
-        if (isRepairNeeded) // takes 10 seconds to repair instead of 2 seconds
+        if (isRepairNeeded)
         {
             currentRepairTimer -= Time.deltaTime;
 
@@ -88,20 +89,23 @@ public class LoadableBase : MonoBehaviour
 
         if (currentCostLeftForUpgrade > 0)
         {
-            if (playerStats.DecrementMoney(5) && currentCostLeftForUpgrade >= 5)
+            if (!isBuying)
             {
-                currentCostLeftForUpgrade -= 5;
+                if (playerStats.DecrementMoney(5) && currentCostLeftForUpgrade >= 5)
+                {
+                    currentCostLeftForUpgrade -= 5;
 
-                StartCoroutine(PlayCoinSpentAnimMultiple(5));
+                    StartCoroutine(PlayCoinSpentAnimMultiple(5));
 
-                UpdateMoneyTextAndSave();
-            }
-            else if (playerStats.DecrementMoney(1))
-            {
-                currentCostLeftForUpgrade -= 1;
+                    UpdateMoneyTextAndSave();
+                }
+                else if (playerStats.DecrementMoney(1))
+                {
+                    currentCostLeftForUpgrade -= 1;
 
-                PlayCoinSpentAnim();
-                UpdateMoneyTextAndSave();
+                    PlayCoinSpentAnim();
+                    UpdateMoneyTextAndSave();
+                }
             }
         }
         CheckIfFulled();
@@ -115,19 +119,25 @@ public class LoadableBase : MonoBehaviour
 
     private void PlayCoinSpentAnim()
     {
+        isBuying = true;
         GameObject spawnedObject = objectPooler.SpawnFromPool("Coin", playerStats.transform.position);
 
         spawnedObject.GetComponent<CurrencyAnimationHandler>().PlaySpendAnim();
         spawnedObject.transform.DOJump(transform.position, 3, 1, 1f)
-            .OnComplete(() => spawnedObject.SetActive(false));
+            .OnComplete(() => {
+                spawnedObject.SetActive(false);
+                isBuying = false;
+            });
     }
     IEnumerator PlayCoinSpentAnimMultiple(int amount)
     {
+        isBuying = true;
         for (int i = 0; i < amount; i++)
         {
             PlayCoinSpentAnim();
             yield return new WaitForSeconds(coinAnimationBuffer);
         }
+        isBuying = false;
     }
 
     #region Repair Related

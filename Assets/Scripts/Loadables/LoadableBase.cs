@@ -73,8 +73,7 @@ public class LoadableBase : MonoBehaviour
 
     public void Load()
     {
-
-        if (isRepairNeeded)
+        if (isRepairNeeded) // takes 10 seconds to repair instead of 2 seconds
         {
             currentRepairTimer -= Time.deltaTime;
 

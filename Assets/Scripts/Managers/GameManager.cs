@@ -201,6 +201,7 @@ public class GameManager : Singleton<GameManager>
 
             OnCityChange?.Invoke();
 
+            playerStats.transform.position = allCities[playerStats.GetCityIndex()].GetStartPoint();
             return;
         }
         else

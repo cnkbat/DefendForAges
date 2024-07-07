@@ -100,12 +100,10 @@ public class DefencesBehaviourBase : EnemyTarget
             navMeshObstacle.enabled = true;
         }
 
-
-        OnRepairDone?.Invoke();
         ResetHealthValue();
         SetisRepairable(false);
         CheckForUpgradeable();
-
+        OnRepairDone?.Invoke();
     }
 
     public virtual void CheckForUpgradeable()

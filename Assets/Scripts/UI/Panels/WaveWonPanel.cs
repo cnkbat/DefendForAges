@@ -39,7 +39,11 @@ public class WaveWonPanel : PanelBase
     {
         base.OnEnable();
         earningsHolder = EarningsHolder.instance;
-        // check this for error for instances
+
+        waveWoncollectedCoinText.text = "0";
+        waveWoncollectedMeatText.text = "0";
+        waveWoncollectedXPText.text = "0";
+
 
         collected = false;
 
@@ -89,7 +93,7 @@ public class WaveWonPanel : PanelBase
     }
     IEnumerator CoroutineFuncDisableWaveWonUI()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2f);
 
         uiManager.GetBackToGamePanel();
         gameManager.OnApplyEarnings?.Invoke();
@@ -124,7 +128,7 @@ public class WaveWonPanel : PanelBase
         {
             currentValue++;
             text.text = currentValue.ToString();
-            yield return new WaitForSeconds(1 / (targetValue + 1));
+            yield return new WaitForSeconds(1 / (2f*targetValue));
         }
     }
 

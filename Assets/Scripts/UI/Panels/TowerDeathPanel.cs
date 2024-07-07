@@ -32,6 +32,10 @@ public class TowerDeathPanel : PanelBase
         currentMeatValue = 0;
         currentXPValue = 0;
 
+        gameLostCollectedCoinText.text = "0";
+        gameLostCollectedMeatText.text = "0";
+        gameLostCollectedXPText.text = "0";
+
         useGemToReviveTowerButton.onClick.AddListener(ReviveTowerButtonPressed);
         loseGameButton.onClick.AddListener(GameLostPanelSequenceEnd);
         earningsHolder.OnEarningsApply += ActivateAndUpdateTowerDeathEarningsTexts;

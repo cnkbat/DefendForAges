@@ -55,7 +55,7 @@ public class EnemyTargeter : MonoBehaviour
             Debug.LogWarning("city manager null");
             return;
         }
-
+        if(target == null) ResetTargetTimer();
         currentTargetTimer -= Time.deltaTime;
 
         if (currentTargetTimer < 0)
@@ -75,7 +75,6 @@ public class EnemyTargeter : MonoBehaviour
 
                     closestDistance = Vector3.Distance(transform.position, targetableTransform.position);
                     tempTargetTransform = targetableTransform;
-
                     UpdateTargetTimer();
                 }
             }
@@ -88,9 +87,9 @@ public class EnemyTargeter : MonoBehaviour
             {
                 return;
             }
-
         }
     }
+
 
     private void UpdateTargetTimer()
     {

@@ -188,9 +188,9 @@ public class EnemySpawner : MonoBehaviour
                     //    hit.position, cityManager.transform);
 
 
-                    
 
-                     // parametre olarak verilen pozisyon doğru, ama belirli bir noktadan sonra enemyler daha yakın spawn oluyor çözemedim
+
+                    // parametre olarak verilen pozisyon doğru, ama belirli bir noktadan sonra enemyler daha yakın spawn oluyor çözemedim 
                     EnemyDeathHandler spawnedEnemy = objectPooler.SpawnEnemyFromPool(enemyGroup.enemyPrefab.name,
                         enemySpawnPoints[spawnIndex].position, cityManager.transform);
 

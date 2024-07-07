@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -43,7 +43,8 @@ public class WaveWonPanel : PanelBase
 
         collected = false;
 
-        rewardedApplyEarningsButton.gameObject.SetActive(true);
+        // rewarded şimdilik kapatılacak, sonradan açılacak
+        rewardedApplyEarningsButton.gameObject.SetActive(false);
         normalApplyEarningsButton.gameObject.SetActive(false);
 
         StartCoroutine(EnableNormalButton());

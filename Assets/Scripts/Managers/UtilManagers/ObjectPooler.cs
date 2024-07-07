@@ -86,9 +86,11 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
         objectToSpawn.transform.parent = newParent;
+        objectToSpawn.transform.position = spawnPos;
+
+
         objectToSpawn.SetActive(true);
 
-        objectToSpawn.transform.position = spawnPos;
 
         if (objectToSpawn.TryGetComponent(out IPoolableObject pooled))
         {

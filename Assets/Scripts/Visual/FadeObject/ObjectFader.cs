@@ -21,12 +21,12 @@ public class ObjectFader : MonoBehaviour, IFadeable
     bool isFade;
 
     private float currentTimer = 0;
-
+    
     void Start()
     {
         gameManager = GameManager.instance;
 
-        renderers = gameObject.GetComponentsInChildren<MeshRenderer>();
+        renderers = gameObject.GetComponentsInChildren<MeshRenderer>(true);
 
         foreach (var renderer in renderers)
         {

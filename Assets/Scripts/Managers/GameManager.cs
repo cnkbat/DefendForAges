@@ -7,6 +7,8 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using GameAnalyticsSDK;
+using GameAnalyticsSDK.Events;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -134,7 +136,6 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         CheckIfEraFinished();
-
         asyncLoader = AsyncLoader.instance;
     }
 
@@ -165,7 +166,9 @@ public class GameManager : Singleton<GameManager>
 
     public void LevelLost()
     {
+
         playerStats.SetWaveSystemBackToCheckpoint();
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Wave Lost at " + playerStats.GetWaveIndex());
 
         // oynanacak vfxler animasyonlar vs vs.
 
@@ -224,6 +227,7 @@ public class GameManager : Singleton<GameManager>
 
     public void OnWaveFinished()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Wave won at " + playerStats.GetWaveIndex());
 
         for (int i = 0; i < allSpawnedEnemies.Count; i++)
         {
